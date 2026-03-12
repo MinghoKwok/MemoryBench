@@ -1,0 +1,22 @@
+{
+  "timestamp": "2026-02-20T18:50:33",
+  "model_path": "/common/users/mg1998/models/Qwen2-VL-2B-Instruct",
+  "single_image_test": false,
+  "max_new_tokens": 64,
+  "max_image_pixels": 129600,
+  "story_text": "- King Guz's 'Rescue' and the Unpaid Debt: King Guz is drowning and calls for help. A woman urges Alley to save him. After Alley saves King Guz, and as King Guz recovers from the near-death experience, Alley reminds him about an old debt of five clams. King Guz, caught off guard, tries to feign that he was about to repay the debt at the very moment of his rescue. In a surprising turn, the woman ends up in the water, questioning Alley's actions. Alley responds casually, stating it was easy, implying he might have put her in the water intentionally, possibly as a distraction or further humorous act after the debt discussion.",
+  "results": [
+    {
+      "id": "mcq_default",
+      "type": "mcq",
+      "question": "Look at the sequence of 5 comic panels. Pay close attention to the character 'King Guz' (wearing a crown) in Panel 1 and Panel 5.\nQuestion: What happens to his location?\nA) He stays on land the entire time.\nB) He starts in the water (drowning) in Panel 1, and is back in the water in Panel 5.\nC) He flies into the sky.\nPlease answer with only the letter A, B, or C.",
+      "answer": "B. He starts in the water (drowning) in Panel 1, and is back in the water in Panel 5.",
+      "garbled": false,
+      "used_single_image_fallback": false,
+      "mcq_pred": "B",
+      "mcq_gt": "B",
+      "mcq_valid": true,
+      "mcq_correct": true
+    }
+  ]
+}
