@@ -2,17 +2,14 @@
   "dialog_json": "/common/home/mg1998/MemoryBench/PittAds_Pipeline/data/dialog/Brand_Memory_Test.json",
   "model_path": "/common/users/mg1998/models/Qwen2-VL-2B-Instruct",
   "mode": "open",
-  "num_qas": 4,
+  "num_qas": 1,
   "summary": {
-    "open_count": 4,
+    "open_count": 1,
     "open_exact_rate": 0.0,
-    "open_contains_rate": 0.25,
-    "open_soft_avg": 0.5208333333333334,
+    "open_contains_rate": 0.0,
+    "open_soft_avg": 0.5,
     "point_soft_avg": {
-      "FR": 0.5,
-      "VS": 1.0,
-      "MR": 0.25,
-      "CD": 0.3333333333333333
+      "FR": 0.5
     }
   },
   "results": [
@@ -21,8 +18,8 @@
       "point": "FR",
       "mode": "open",
       "question": "Think back to the first advertisement we discussed on 2024-03-10. What specific type of container was the Coca-Cola in?",
-      "pred": "The Coca-Cola in the first advertisement was in a glass bottle.",
       "gt": "It was in a classic glass contour bottle.",
+      "pred": "The Coca-Cola in the first advertisement was in a glass bottle.",
       "exact_match": false,
       "contains_gt": false,
       "keyword_hits": [
@@ -30,54 +27,18 @@
         "bottle"
       ],
       "open_soft_score": 0.5,
-      "latency_ms": 10931
-    },
-    {
-      "idx": 2,
-      "point": "VS",
-      "mode": "open",
-      "question": "What were the two main colors of the logo on the iced coffee cup we saw in the Dunkin' ad?",
-      "pred": "The two main colors of the logo on the iced coffee cup were orange and pink.",
-      "gt": "Orange and pink.",
-      "exact_match": false,
-      "contains_gt": true,
-      "keyword_hits": [
-        "orange",
-        "pink"
+      "latency_ms": 10174,
+      "method_name": "full_context",
+      "history_turns": 4,
+      "source_sessions": [
+        "D1"
       ],
-      "open_soft_score": 1.0,
-      "latency_ms": 10231
-    },
-    {
-      "idx": 3,
-      "point": "MR",
-      "mode": "open",
-      "question": "Between the two sessions, which brand relied on a solid red background as a visual anchor?",
-      "pred": "Coca-Cola.",
-      "gt": "Coca-Cola (discussed in the first session).",
-      "exact_match": false,
-      "contains_gt": false,
-      "keyword_hits": [
-        "coca-cola"
-      ],
-      "open_soft_score": 0.25,
-      "latency_ms": 7068
-    },
-    {
-      "idx": 4,
-      "point": "CD",
-      "mode": "open",
-      "question": "Did the user ever explicitly state that they wanted to purchase any of these products?",
-      "pred": "No, the user did not explicitly state that they wanted to purchase any of these products.",
-      "gt": "No, the user was analyzing them as part of testing visual extraction capabilities.",
-      "exact_match": false,
-      "contains_gt": false,
-      "keyword_hits": [
-        "no",
-        "not"
-      ],
-      "open_soft_score": 0.3333333333333333,
-      "latency_ms": 12598
+      "clue_rounds": [
+        "D1:1"
+      ]
     }
-  ]
+  ],
+  "method_name": "full_context",
+  "run_dir": "/common/home/mg1998/MemoryBench/PittAds_Pipeline/runs/pittads/20260316_004648_qwen2_vl_local_full_context",
+  "git_commit": "0d0ad624718b72e4762ec7d03dec5da604da8022"
 }

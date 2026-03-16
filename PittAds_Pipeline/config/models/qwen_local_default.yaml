@@ -1,0 +1,4 @@
+name: qwen2_vl_local
+provider: qwen_local
+model_path: /common/users/mg1998/models/Qwen2-VL-2B-Instruct
+max_new_tokens: 128
