@@ -3,7 +3,7 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Any, Dict, List, Optional
 
-from router import QwenLocalRouter
+from router import GeminiAPIRouter, OpenAIAPIRouter, QwenLocalRouter
 
 from .common import (
     REPO_ROOT,
@@ -32,14 +32,32 @@ class LegacyRunOptions:
     max_questions: int = 0
 
 
-def instantiate_router(model_cfg: Dict[str, Any]) -> QwenLocalRouter:
+def instantiate_router(model_cfg: Dict[str, Any]):
     provider = model_cfg.get("provider", "qwen_local")
-    if provider != "qwen_local":
-        raise ValueError(f"Unsupported provider: {provider}")
-    return QwenLocalRouter(
-        model_path=str(model_cfg["model_path"]),
-        max_new_tokens=int(model_cfg.get("max_new_tokens", 128)),
-    )
+    if provider == "qwen_local":
+        return QwenLocalRouter(
+            model_path=str(model_cfg["model_path"]),
+            max_new_tokens=int(model_cfg.get("max_new_tokens", 128)),
+        )
+    if provider == "openai_api":
+        return OpenAIAPIRouter(
+            model=str(model_cfg["model"]),
+            api_key=str(model_cfg.get("api_key", "")),
+            api_key_env=str(model_cfg.get("api_key_env", "OPENAI_API_KEY")),
+            base_url=str(model_cfg.get("base_url", "https://api.openai.com/v1")),
+            max_new_tokens=int(model_cfg.get("max_new_tokens", 128)),
+            timeout=int(model_cfg.get("timeout", 90)),
+        )
+    if provider == "gemini_api":
+        return GeminiAPIRouter(
+            model=str(model_cfg["model"]),
+            api_key=str(model_cfg.get("api_key", "")),
+            api_key_env=str(model_cfg.get("api_key_env", "GEMINI_API_KEY")),
+            base_url=str(model_cfg.get("base_url", "https://generativelanguage.googleapis.com/v1beta")),
+            max_new_tokens=int(model_cfg.get("max_new_tokens", 128)),
+            timeout=int(model_cfg.get("timeout", 90)),
+        )
+    raise ValueError(f"Unsupported provider: {provider}")
 
 
 def merge_legacy_config(options: LegacyRunOptions) -> Dict[str, Any]:
@@ -104,7 +122,15 @@ def resolve_runtime_paths(cfg: Dict[str, Any], config_dir: Path) -> Dict[str, Pa
     image_root = resolve_dataset_path(image_root_raw, config_dir) if image_root_raw else None
 
     output_json_raw = str(eval_cfg.get("output_json", "")).strip()
-    output_json = resolve_dataset_path(output_json_raw, config_dir) if output_json_raw else None
+    if output_json_raw:
+        output_json_path = Path(output_json_raw)
+        output_json = (
+            output_json_path
+            if output_json_path.is_absolute()
+            else (SCRIPT_DIR / output_json_path).resolve()
+        )
+    else:
+        output_json = None
     output_root_raw = str(cfg.get("run", {}).get("output_root", "")).strip()
     if output_root_raw:
         output_root_path = Path(output_root_raw)
@@ -128,6 +154,16 @@ def default_run_dir(cfg: Dict[str, Any], output_root: Path) -> Path:
     return output_root / task_name / f"{ts}_{model_name}_{method_name}"
 
 
+def legacy_output_path(cfg: Dict[str, Any], output_json: Path) -> Path:
+    task_name = str(cfg.get("task", {}).get("name", "task"))
+    model_name = str(cfg.get("model", {}).get("name", "model"))
+    method_name = str(cfg.get("method", {}).get("name", "method"))
+    stem = output_json.stem
+    suffix = output_json.suffix or ".json"
+    task_dir = output_json.parent / task_name
+    return task_dir / f"{stem}__{model_name}__{method_name}{suffix}"
+
+
 def build_payload(
     cfg: Dict[str, Any],
     paths: Dict[str, Path],
@@ -136,10 +172,11 @@ def build_payload(
     results: List[Dict[str, Any]],
 ) -> Dict[str, Any]:
     summary = summarize_results(results)
+    model_ref = cfg["model"].get("model_path") or cfg["model"].get("model", "")
     return {
         "task_name": cfg.get("task", {}).get("name", "pittads"),
         "model_name": cfg.get("model", {}).get("name", "qwen_local"),
-        "model_path": cfg["model"]["model_path"],
+        "model_path": model_ref,
         "method_name": cfg.get("method", {}).get("name", "full_context"),
         "mode": cfg["eval"].get("mode", "open"),
         "num_qas": len(dataset.qas),
@@ -237,6 +274,7 @@ def run_benchmark(cfg: Dict[str, Any], config_dir: Path) -> Dict[str, Any]:
     write_jsonl(run_dir / "predictions.jsonl", results)
 
     if paths["output_json"] is not None:
+        legacy_output_json = legacy_output_path(cfg, paths["output_json"])
         legacy_payload = {
             "dialog_json": payload["dialog_json"],
             "model_path": payload["model_path"],
@@ -248,8 +286,8 @@ def run_benchmark(cfg: Dict[str, Any], config_dir: Path) -> Dict[str, Any]:
             "run_dir": payload["run_dir"],
             "git_commit": payload["git_commit"],
         }
-        write_json(paths["output_json"], legacy_payload)
-        print(f"[INFO] Saved legacy output: {paths['output_json']}")
+        write_json(legacy_output_json, legacy_payload)
+        print(f"[INFO] Saved legacy output: {legacy_output_json}")
 
     print(f"[INFO] Saved run artifacts: {run_dir}")
     return payload
