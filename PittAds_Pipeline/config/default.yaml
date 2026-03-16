@@ -1,0 +1,12 @@
+model:
+  provider: qwen_local
+  model_path: /common/users/mg1998/models/Qwen2-VL-2B-Instruct
+  max_new_tokens: 128
+
+dataset:
+  dialog_json: data/dialog/Brand_Memory_Test.json
+  image_root: data/image
+
+eval:
+  mode: open
+  output_json: output/results_mem_gallery.json
