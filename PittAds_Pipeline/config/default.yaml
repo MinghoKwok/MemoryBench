@@ -9,4 +9,4 @@ dataset:
 
 eval:
   mode: open
-  output_json: output/results_mem_gallery.json
+  output_json: output/results_pittads.json

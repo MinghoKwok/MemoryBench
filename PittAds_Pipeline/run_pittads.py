@@ -3,11 +3,13 @@ import datetime as dt
 import json
 import re
 from pathlib import Path
-from typing import Any, Dict, List, Tuple
+from typing import Any, Dict, List, Optional, Tuple
 
 import yaml
 
 from router import QwenLocalRouter
+
+SCRIPT_DIR = Path(__file__).resolve().parent
 
 
 def parse_args() -> argparse.Namespace:
@@ -32,8 +34,39 @@ def load_json(path: Path) -> Dict[str, Any]:
         return json.load(f)
 
 
+def resolve_config_path(raw_path: str) -> Path:
+    path = Path(raw_path)
+    if path.is_absolute():
+        return path
+    cwd_candidate = path.resolve()
+    if cwd_candidate.exists():
+        return cwd_candidate
+    return (SCRIPT_DIR / path).resolve()
+
+
+def resolve_dataset_path(raw_path: str, base_dir: Path) -> Path:
+    path = Path(raw_path)
+    if path.is_absolute():
+        return path
+    base_candidates = [base_dir, base_dir.parent, SCRIPT_DIR, Path.cwd()]
+    candidates: List[Path] = []
+    seen: set[str] = set()
+    for base in base_candidates:
+        candidate = (base / path).resolve()
+        key = str(candidate)
+        if key in seen:
+            continue
+        seen.add(key)
+        candidates.append(candidate)
+
+    for candidate in candidates:
+        if candidate.exists():
+            return candidate
+    return candidates[0]
+
+
 def merge_config(args: argparse.Namespace) -> Dict[str, Any]:
-    cfg = load_yaml(Path(args.config))
+    cfg = load_yaml(resolve_config_path(args.config))
     model = cfg.setdefault("model", {})
     dataset = cfg.setdefault("dataset", {})
     ev = cfg.setdefault("eval", {})
@@ -54,8 +87,55 @@ def merge_config(args: argparse.Namespace) -> Dict[str, Any]:
     return cfg
 
 
-def build_rounds(dialog_data: Dict[str, Any], dialog_json_path: Path) -> Dict[str, Dict[str, Any]]:
-    image_root = dialog_json_path.parent.parent / "image"
+def resolve_image_path(
+    raw_image_path: str, dialog_json_path: Path, image_root: Optional[Path]
+) -> str:
+    cleaned = raw_image_path.replace("file://", "")
+    source_path = Path(cleaned)
+    candidates: List[Path] = []
+
+    if source_path.is_absolute():
+        candidates.append(source_path)
+    else:
+        candidates.append((dialog_json_path.parent / source_path).resolve())
+        candidates.append((dialog_json_path.parent.parent / source_path).resolve())
+
+        normalized = cleaned
+        for prefix in ("../image/", "./image/", "image/", "data/image/"):
+            if normalized.startswith(prefix):
+                normalized = normalized[len(prefix) :]
+                break
+
+        if image_root is not None:
+            candidates.append((image_root / normalized).resolve())
+            candidates.append((image_root / source_path.name).resolve())
+
+        default_image_root = (dialog_json_path.parent.parent / "image").resolve()
+        candidates.append((default_image_root / normalized).resolve())
+
+    deduped: List[Path] = []
+    seen: set[str] = set()
+    for candidate in candidates:
+        key = str(candidate)
+        if key in seen:
+            continue
+        seen.add(key)
+        deduped.append(candidate)
+
+    for candidate in deduped:
+        if candidate.exists():
+            return str(candidate)
+
+    raise FileNotFoundError(
+        "Could not resolve image path "
+        f"'{raw_image_path}' from dialog file '{dialog_json_path}'. "
+        f"Tried: {[str(p) for p in deduped]}"
+    )
+
+
+def build_rounds(
+    dialog_data: Dict[str, Any], dialog_json_path: Path, image_root: Optional[Path]
+) -> Dict[str, Dict[str, Any]]:
     rounds: Dict[str, Dict[str, Any]] = {}
     for sess in dialog_data.get("multi_session_dialogues", []):
         sid = sess.get("session_id", "")
@@ -63,10 +143,7 @@ def build_rounds(dialog_data: Dict[str, Any], dialog_json_path: Path) -> Dict[st
             rid = d.get("round", "")
             images: List[str] = []
             for rel in d.get("input_image", []) or []:
-                # source paths look like ../image/<scenario>/X.png
-                rel_path = rel.replace("../image/", "")
-                abs_path = (image_root / rel_path).resolve()
-                images.append(str(abs_path))
+                images.append(resolve_image_path(rel, dialog_json_path, image_root))
             rounds[rid] = {
                 "session_id": sid,
                 "user": d.get("user", ""),
@@ -156,23 +233,34 @@ def score_open_soft(point: str, pred: str, gt: str) -> Tuple[List[str], float]:
     return hits, score
 
 
+def get_qas(data: Dict[str, Any]) -> List[Dict[str, Any]]:
+    for key in ("human-annotated QAs", "human_annotated_qas", "qas"):
+        value = data.get(key)
+        if isinstance(value, list):
+            return value
+    return []
+
+
 def main() -> None:
     args = parse_args()
     cfg = merge_config(args)
 
-    dialog_json = Path(cfg["dataset"]["dialog_json"]).resolve()
-    output_json = Path(cfg["eval"]["output_json"]).resolve()
+    config_dir = resolve_config_path(args.config).parent
+    dialog_json = resolve_dataset_path(str(cfg["dataset"]["dialog_json"]), config_dir)
+    image_root_raw = str(cfg["dataset"].get("image_root", "")).strip()
+    image_root = resolve_dataset_path(image_root_raw, config_dir) if image_root_raw else None
+    output_json = resolve_dataset_path(str(cfg["eval"]["output_json"]), config_dir)
     mode = cfg["eval"].get("mode", "open")
 
     data = load_json(dialog_json)
-    rounds = build_rounds(data, dialog_json)
+    rounds = build_rounds(data, dialog_json, image_root)
 
     router = QwenLocalRouter(
         model_path=cfg["model"]["model_path"],
         max_new_tokens=int(cfg["model"].get("max_new_tokens", 128)),
     )
 
-    qas = data.get("human-annotated QAs", [])
+    qas = get_qas(data)
     results: List[Dict[str, Any]] = []
     point_counter: Dict[str, Dict[str, float]] = {}
     for i, qa in enumerate(qas, start=1):
