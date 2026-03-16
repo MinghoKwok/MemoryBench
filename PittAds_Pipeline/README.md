@@ -24,19 +24,21 @@ Recommended:
 - Python 3.10+
 - A local Qwen2-VL or Qwen2.5-VL checkpoint
 
-Python packages:
+Python packages are listed in `requirements.txt`.
+
+## Environment Setup
+
+Create and activate a Python 3.10 environment with Conda or another environment manager, then install dependencies:
 
 ```bash
-pip install torch transformers qwen-vl-utils pyyaml
+pip install -r requirements.txt
 ```
 
-Default local model path in this repo:
-
-```text
-/common/users/mg1998/models/Qwen2-VL-2B-Instruct
-```
+If you maintain a machine-specific setup, keep those details in `README.local.md`, which is intended to stay untracked.
 
 ## Quick Start
+
+Activate your project environment first.
 
 From repo root:
 
@@ -85,7 +87,7 @@ Default config:
 ```yaml
 model:
   provider: qwen_local
-  model_path: /common/users/mg1998/models/Qwen2-VL-2B-Instruct
+  model_path: /path/to/local/Qwen2-VL
   max_new_tokens: 128
 
 dataset:

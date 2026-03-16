@@ -1,0 +1,4 @@
+torch
+transformers
+qwen-vl-utils
+pyyaml
