@@ -1,0 +1,22 @@
+{
+  "task_name": "brand_memory_test",
+  "model_name": "gpt_4_1_nano",
+  "model_path": "gpt-4.1-nano",
+  "method_name": "full_context",
+  "mode": "open",
+  "num_qas": 4,
+  "num_qas_run": 1,
+  "dialog_json": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/dialog/Brand_Memory_Test.json",
+  "image_root": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/image",
+  "run_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/brand_memory_test/20260316_224146_gpt_4_1_nano_full_context",
+  "git_commit": "755123113d081f61838df6da71783c0771118de3",
+  "summary": {
+    "open_count": 1,
+    "open_exact_rate": 0.0,
+    "open_contains_rate": 0.0,
+    "open_soft_avg": 1.0,
+    "point_soft_avg": {
+      "FR": 1.0
+    }
+  }
+}
