@@ -32,8 +32,8 @@
         "glass contour bottle"
       ],
       "open_soft_score": 1.0,
-      "latency_ms": 1621,
-      "method_name": "full_context",
+      "latency_ms": 962,
+      "method_name": "m2a_lite",
       "history_turns": 4,
       "source_sessions": [
         "D1"
@@ -56,8 +56,8 @@
         "pink"
       ],
       "open_soft_score": 1.0,
-      "latency_ms": 1421,
-      "method_name": "full_context",
+      "latency_ms": 1028,
+      "method_name": "m2a_lite",
       "history_turns": 4,
       "source_sessions": [
         "D2"
@@ -82,9 +82,9 @@
         "solid red"
       ],
       "open_soft_score": 0.75,
-      "latency_ms": 2771,
-      "method_name": "full_context",
-      "history_turns": 8,
+      "latency_ms": 811,
+      "method_name": "m2a_lite",
+      "history_turns": 4,
       "source_sessions": [
         "D1",
         "D2"
@@ -107,8 +107,8 @@
         "not"
       ],
       "open_soft_score": 0.3333333333333333,
-      "latency_ms": 1934,
-      "method_name": "full_context",
+      "latency_ms": 1845,
+      "method_name": "m2a_lite",
       "history_turns": 8,
       "source_sessions": [
         "D1",
@@ -120,7 +120,7 @@
       ]
     }
   ],
-  "method_name": "full_context",
-  "run_dir": "/common/home/mg1998/MemoryBench/PittAds_Pipeline/runs/pittads/20260316_221355_gpt_4_1_nano_full_context",
+  "method_name": "m2a_lite",
+  "run_dir": "/common/home/mg1998/MemoryBench/PittAds_Pipeline/runs/pittads/20260316_221411_gpt_4_1_nano_m2a_lite",
   "git_commit": "72d66afac5eee70274befc720eebb475d0717840"
 }

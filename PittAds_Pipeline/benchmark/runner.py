@@ -196,7 +196,10 @@ def run_benchmark(cfg: Dict[str, Any], config_dir: Path) -> Dict[str, Any]:
     max_questions = int(cfg.get("eval", {}).get("max_questions", 0))
 
     dataset = PittAdsDataset(paths["dialog_json"], paths["image_root"])
-    method = get_method(str(cfg.get("method", {}).get("name", "full_context")))
+    method = get_method(
+        str(cfg.get("method", {}).get("name", "full_context")),
+        config=dict(cfg.get("method", {})),
+    )
     router = instantiate_router(cfg["model"])
 
     qas = dataset.iter_qas(limit=max_questions)

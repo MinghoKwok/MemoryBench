@@ -32,7 +32,7 @@
         "glass contour bottle"
       ],
       "open_soft_score": 1.0,
-      "latency_ms": 1289,
+      "latency_ms": 1476,
       "method_name": "clue_only",
       "history_turns": 2,
       "source_sessions": [
@@ -56,7 +56,7 @@
         "pink"
       ],
       "open_soft_score": 1.0,
-      "latency_ms": 1533,
+      "latency_ms": 1638,
       "method_name": "clue_only",
       "history_turns": 4,
       "source_sessions": [
@@ -82,7 +82,7 @@
         "solid red"
       ],
       "open_soft_score": 0.75,
-      "latency_ms": 772,
+      "latency_ms": 1608,
       "method_name": "clue_only",
       "history_turns": 2,
       "source_sessions": [
@@ -107,7 +107,7 @@
         "not"
       ],
       "open_soft_score": 0.3333333333333333,
-      "latency_ms": 1887,
+      "latency_ms": 1572,
       "method_name": "clue_only",
       "history_turns": 4,
       "source_sessions": [
@@ -121,6 +121,6 @@
     }
   ],
   "method_name": "clue_only",
-  "run_dir": "/common/home/mg1998/MemoryBench/PittAds_Pipeline/runs/pittads/20260316_162325_gpt_4_1_nano_clue_only",
-  "git_commit": "a21bfcaa011da6e5ab13304879aae71e7fae39fa"
+  "run_dir": "/common/home/mg1998/MemoryBench/PittAds_Pipeline/runs/pittads/20260316_221401_gpt_4_1_nano_clue_only",
+  "git_commit": "72d66afac5eee70274befc720eebb475d0717840"
 }
