@@ -1,0 +1,288 @@
+{
+  "episode_id": "CHAT_0002",
+  "speakers": [
+    {
+      "speaker_id": "spk_1",
+      "name": "Leah",
+      "avatar_id": "avatar_1",
+      "side": "left",
+      "fill": "#FFB4A2",
+      "accent": "#C75146",
+      "pattern": "dot"
+    },
+    {
+      "speaker_id": "spk_2",
+      "name": "Ivy",
+      "avatar_id": "avatar_2",
+      "side": "right",
+      "fill": "#A0C4FF",
+      "accent": "#285185",
+      "pattern": "stripe"
+    },
+    {
+      "speaker_id": "spk_3",
+      "name": "Noah",
+      "avatar_id": "avatar_3",
+      "side": "left",
+      "fill": "#B9FBC0",
+      "accent": "#237A57",
+      "pattern": "ring"
+    },
+    {
+      "speaker_id": "spk_4",
+      "name": "Ava",
+      "avatar_id": "avatar_4",
+      "side": "right",
+      "fill": "#FFD166",
+      "accent": "#9B6A00",
+      "pattern": "cross"
+    }
+  ],
+  "messages": [
+    {
+      "message_id": "m_001",
+      "speaker_id": "spk_3",
+      "text": "Dinner at 7 still works for me.",
+      "topic": "dinner",
+      "screenshot_index": 0,
+      "kind": "text"
+    },
+    {
+      "message_id": "m_002",
+      "speaker_id": "spk_1",
+      "text": "The meeting got moved to 10:30.",
+      "topic": "meeting",
+      "screenshot_index": 0,
+      "kind": "text"
+    },
+    {
+      "message_id": "m_003",
+      "speaker_id": "spk_2",
+      "text": "I can handle that part.",
+      "topic": "filler",
+      "screenshot_index": 0,
+      "kind": "text"
+    },
+    {
+      "message_id": "m_004",
+      "speaker_id": "spk_4",
+      "text": "I saw that earlier.",
+      "topic": "filler",
+      "screenshot_index": 0,
+      "kind": "text"
+    },
+    {
+      "message_id": "m_005",
+      "speaker_id": "spk_4",
+      "text": "I can handle that part.",
+      "topic": "filler",
+      "screenshot_index": 0,
+      "kind": "text"
+    },
+    {
+      "message_id": "m_006",
+      "speaker_id": "spk_2",
+      "text": "On my way, five minutes out.",
+      "topic": "way",
+      "screenshot_index": 1,
+      "kind": "text"
+    },
+    {
+      "message_id": "m_007",
+      "speaker_id": "spk_1",
+      "text": "The photo card is right below this message.",
+      "topic": "photo",
+      "screenshot_index": 1,
+      "kind": "image_card"
+    },
+    {
+      "message_id": "m_008",
+      "speaker_id": "spk_2",
+      "text": "I will confirm soon.",
+      "topic": "filler",
+      "screenshot_index": 1,
+      "kind": "text"
+    },
+    {
+      "message_id": "m_009",
+      "speaker_id": "spk_2",
+      "text": "Give me a minute.",
+      "topic": "filler",
+      "screenshot_index": 1,
+      "kind": "text"
+    },
+    {
+      "message_id": "m_010",
+      "speaker_id": "spk_3",
+      "text": "I can handle that part.",
+      "topic": "filler",
+      "screenshot_index": 1,
+      "kind": "text"
+    },
+    {
+      "message_id": "m_011",
+      "speaker_id": "spk_2",
+      "text": "I will be out of town until Friday afternoon.",
+      "topic": "friday",
+      "screenshot_index": 2,
+      "kind": "text"
+    },
+    {
+      "message_id": "m_012",
+      "speaker_id": "spk_4",
+      "text": "Let me check the details.",
+      "topic": "filler",
+      "screenshot_index": 2,
+      "kind": "text"
+    },
+    {
+      "message_id": "m_013",
+      "speaker_id": "spk_1",
+      "text": "Give me a minute.",
+      "topic": "filler",
+      "screenshot_index": 2,
+      "kind": "text"
+    },
+    {
+      "message_id": "m_014",
+      "speaker_id": "spk_4",
+      "text": "I will confirm soon.",
+      "topic": "filler",
+      "screenshot_index": 2,
+      "kind": "text"
+    },
+    {
+      "message_id": "m_015",
+      "speaker_id": "spk_3",
+      "text": "I will confirm soon.",
+      "topic": "filler",
+      "screenshot_index": 2,
+      "kind": "text"
+    }
+  ],
+  "images": [
+    "CHAT_0002_1.png",
+    "CHAT_0002_2.png",
+    "CHAT_0002_3.png"
+  ],
+  "queries": [
+    {
+      "sample_id": "CHAT_0002_q1",
+      "episode_id": "CHAT_0002",
+      "query_type": "speaker_binding",
+      "query": "Which avatar belongs to the person who asked about dinner?",
+      "answer": "avatar_3",
+      "choices": [
+        "avatar_1",
+        "avatar_2",
+        "avatar_3",
+        "avatar_4"
+      ],
+      "point": "VB",
+      "session_id": [
+        "CHAT_0002"
+      ],
+      "clue": [
+        "CHAT_0002:1"
+      ],
+      "meta": {
+        "target_topic": "dinner",
+        "target_speaker_id": "spk_3"
+      }
+    },
+    {
+      "sample_id": "CHAT_0002_q2",
+      "episode_id": "CHAT_0002",
+      "query_type": "cross_screenshot_consistency",
+      "query": "The person who mentioned Friday later said what in another screenshot?",
+      "answer": "On my way, five minutes out.",
+      "choices": [
+        "Dinner at 7 still works for me.",
+        "The meeting got moved to 10:30.",
+        "On my way, five minutes out.",
+        "I will be out of town until Friday afternoon."
+      ],
+      "point": "CS",
+      "session_id": [
+        "CHAT_0002"
+      ],
+      "clue": [
+        "CHAT_0002:3",
+        "CHAT_0002:2"
+      ],
+      "meta": {
+        "reference_topic": "friday",
+        "reference_avatar": "avatar_2"
+      }
+    },
+    {
+      "sample_id": "CHAT_0002_q3",
+      "episode_id": "CHAT_0002",
+      "query_type": "visual_structure",
+      "query": "Was the message 'On my way, five minutes out.' shown on the left or right side?",
+      "answer": "right",
+      "choices": [
+        "left",
+        "right"
+      ],
+      "point": "VS",
+      "session_id": [
+        "CHAT_0002"
+      ],
+      "clue": [
+        "CHAT_0002:2"
+      ],
+      "meta": {
+        "target_message_id": "m_006"
+      }
+    },
+    {
+      "sample_id": "CHAT_0002_q4",
+      "episode_id": "CHAT_0002",
+      "query_type": "hallucination_resistance",
+      "query": "Did the speaker with avatar avatar_1 mention airport?",
+      "answer": "no",
+      "choices": [
+        "yes",
+        "no"
+      ],
+      "point": "HR",
+      "session_id": [
+        "CHAT_0002"
+      ],
+      "clue": [
+        "CHAT_0002:1",
+        "CHAT_0002:2",
+        "CHAT_0002:3"
+      ],
+      "meta": {
+        "distractor_topic": "airport",
+        "probe_avatar": "avatar_1"
+      }
+    },
+    {
+      "sample_id": "CHAT_0002_q5",
+      "episode_id": "CHAT_0002",
+      "query_type": "visual_structure",
+      "query": "Which avatar had a message followed by a photo card?",
+      "answer": "avatar_1",
+      "choices": [
+        "avatar_1",
+        "avatar_2",
+        "avatar_3",
+        "avatar_4"
+      ],
+      "point": "VB",
+      "session_id": [
+        "CHAT_0002"
+      ],
+      "clue": [
+        "CHAT_0002:2"
+      ],
+      "meta": {
+        "target_topic": "photo",
+        "message_kind": "image_card"
+      }
+    }
+  ]
+}

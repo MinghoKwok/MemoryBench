@@ -1,0 +1,10 @@
+name: chat_ui_memory_test
+
+dataset:
+  dialog_json: data/dialog/Chat_UI_Memory_Test.json
+  image_root: data/image
+
+eval:
+  mode: open
+  output_json: output/results_chat_ui_memory_test.json
+  max_questions: 0
