@@ -7,3 +7,5 @@ __pycache__/
 .env.*
 PittAds_Pipeline/runs/
 ComicScene_Pipeline/
+Benchmark_Pipeline/data/dialog/*.json
+Benchmark_Pipeline/data/image/

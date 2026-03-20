@@ -374,6 +374,7 @@ Recommended separation of concerns:
 - keep code, benchmark logic, generators, configs, and docs in this GitHub repo
 - keep benchmark `data/` as the canonical dataset payload in the Hugging Face dataset repo
 - keep images in the Hugging Face dataset repo rather than the GitHub code repo when the files are large
+- treat local `Benchmark_Pipeline/data/` as a synced working copy from the HF dataset repo, not as the long-term source of truth
 
 This is the cleaner workflow for ongoing benchmark development:
 
