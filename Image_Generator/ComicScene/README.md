@@ -6,6 +6,10 @@ This demo runs an end-to-end pipeline for comic memory testing:
 2. Extract a ground-truth story summary from annotations.
 3. Run Qwen2-VL visual QA on a sequence of panel images.
 
+For the MemEye-oriented assessment and candidate task directions, see:
+
+- `Image_Generator/ComicScene/MemEye_ComicScene_Assessment.md`
+
 ## Files
 
 - `run_pipeline.py`: main pipeline.
