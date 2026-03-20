@@ -1,0 +1,216 @@
+{
+  "task_name": "Home_Renovation_Interior_Design",
+  "generated_at": "2026-03-20T14:01:32",
+  "rows": [
+    {
+      "task_name": "Home_Renovation_Interior_Design",
+      "model_name": "gpt_4_1_nano",
+      "method_name": "full_context",
+      "mode": "open",
+      "num_qas_run": 1,
+      "open_count": 1,
+      "em": 0.0,
+      "f1": 0.4,
+      "bleu": 0.05873949094699214,
+      "bleu_1": 0.25,
+      "bleu_2": 0.18898223650461357,
+      "bert": "",
+      "judge": "",
+      "mcq_count": 0,
+      "mcq_valid_rate": "",
+      "run_dir": "/Users/qingyuejiao/Desktop/MemoryBenchLocal/MemoryBench/Benchmark_Pipeline/runs/Home_Renovation_Interior_Design/20260320_140131_gpt_4_1_nano_full_context"
+    },
+    {
+      "task_name": "Home_Renovation_Interior_Design",
+      "model_name": "gpt_4_1_nano",
+      "method_name": "clue_only",
+      "mode": "open",
+      "num_qas_run": 1,
+      "open_count": 1,
+      "em": 0.0,
+      "f1": 0.4,
+      "bleu": 0.05873949094699214,
+      "bleu_1": 0.25,
+      "bleu_2": 0.18898223650461357,
+      "bert": "",
+      "judge": "",
+      "mcq_count": 0,
+      "mcq_valid_rate": "",
+      "run_dir": "/Users/qingyuejiao/Desktop/MemoryBenchLocal/MemoryBench/Benchmark_Pipeline/runs/Home_Renovation_Interior_Design/20260320_140132_gpt_4_1_nano_clue_only"
+    }
+  ],
+  "runs": [
+    {
+      "task_name": "Home_Renovation_Interior_Design",
+      "model_name": "gpt_4_1_nano",
+      "model_path": "gpt-4.1-nano",
+      "method_name": "full_context",
+      "mode": "open",
+      "num_qas": 30,
+      "num_qas_run": 1,
+      "dialog_json": "/Users/qingyuejiao/Desktop/MemoryBenchLocal/MemoryBench/Benchmark_Pipeline/data/dialog/Home_Renovation_Interior_Design.json",
+      "image_root": "/Users/qingyuejiao/Desktop/MemoryBenchLocal/MemoryBench/Benchmark_Pipeline/data/image",
+      "run_dir": "/Users/qingyuejiao/Desktop/MemoryBenchLocal/MemoryBench/Benchmark_Pipeline/runs/Home_Renovation_Interior_Design/20260320_140131_gpt_4_1_nano_full_context",
+      "git_commit": "cc1fb25235a35e4fb8e49d14641916ec8a176b50",
+      "summary": {
+        "open_count": 1,
+        "overall": {
+          "em": 0.0,
+          "f1": 0.4,
+          "bleu": 0.05873949094699214,
+          "bleu_1": 0.25,
+          "bleu_2": 0.18898223650461357
+        },
+        "by_x": {
+          "X1": {
+            "em": 0.0,
+            "f1": 0.4,
+            "bleu": 0.05873949094699214,
+            "bleu_1": 0.25,
+            "bleu_2": 0.18898223650461357
+          }
+        },
+        "by_y": {
+          "Y1": {
+            "em": 0.0,
+            "f1": 0.4,
+            "bleu": 0.05873949094699214,
+            "bleu_1": 0.25,
+            "bleu_2": 0.18898223650461357
+          }
+        },
+        "by_cell": {
+          "X1_Y1": {
+            "em": 0.0,
+            "f1": 0.4,
+            "bleu": 0.05873949094699214,
+            "bleu_1": 0.25,
+            "bleu_2": 0.18898223650461357
+          }
+        }
+      },
+      "results": [
+        {
+          "idx": 1,
+          "point": [
+            [
+              "X1"
+            ],
+            [
+              "Y1"
+            ]
+          ],
+          "mode": "open",
+          "question": "What is Hannah's total renovation budget?",
+          "gt": "$30,000.",
+          "pred": "Hannah's total renovation budget is $30,000.",
+          "exact_match": false,
+          "em": 0.0,
+          "contains_gt": true,
+          "f1": 0.4,
+          "bleu": 0.05873949094699214,
+          "bleu_1": 0.25,
+          "bleu_2": 0.18898223650461357,
+          "bert": null,
+          "judge": null,
+          "judge_reasoning": null,
+          "latency_ms": 4332,
+          "method_name": "full_context",
+          "history_turns": 36,
+          "source_sessions": [
+            "D1"
+          ],
+          "clue_rounds": [
+            "D1:14"
+          ]
+        }
+      ]
+    },
+    {
+      "task_name": "Home_Renovation_Interior_Design",
+      "model_name": "gpt_4_1_nano",
+      "model_path": "gpt-4.1-nano",
+      "method_name": "clue_only",
+      "mode": "open",
+      "num_qas": 30,
+      "num_qas_run": 1,
+      "dialog_json": "/Users/qingyuejiao/Desktop/MemoryBenchLocal/MemoryBench/Benchmark_Pipeline/data/dialog/Home_Renovation_Interior_Design.json",
+      "image_root": "/Users/qingyuejiao/Desktop/MemoryBenchLocal/MemoryBench/Benchmark_Pipeline/data/image",
+      "run_dir": "/Users/qingyuejiao/Desktop/MemoryBenchLocal/MemoryBench/Benchmark_Pipeline/runs/Home_Renovation_Interior_Design/20260320_140132_gpt_4_1_nano_clue_only",
+      "git_commit": "cc1fb25235a35e4fb8e49d14641916ec8a176b50",
+      "summary": {
+        "open_count": 1,
+        "overall": {
+          "em": 0.0,
+          "f1": 0.4,
+          "bleu": 0.05873949094699214,
+          "bleu_1": 0.25,
+          "bleu_2": 0.18898223650461357
+        },
+        "by_x": {
+          "X1": {
+            "em": 0.0,
+            "f1": 0.4,
+            "bleu": 0.05873949094699214,
+            "bleu_1": 0.25,
+            "bleu_2": 0.18898223650461357
+          }
+        },
+        "by_y": {
+          "Y1": {
+            "em": 0.0,
+            "f1": 0.4,
+            "bleu": 0.05873949094699214,
+            "bleu_1": 0.25,
+            "bleu_2": 0.18898223650461357
+          }
+        },
+        "by_cell": {
+          "X1_Y1": {
+            "em": 0.0,
+            "f1": 0.4,
+            "bleu": 0.05873949094699214,
+            "bleu_1": 0.25,
+            "bleu_2": 0.18898223650461357
+          }
+        }
+      },
+      "results": [
+        {
+          "idx": 1,
+          "point": [
+            [
+              "X1"
+            ],
+            [
+              "Y1"
+            ]
+          ],
+          "mode": "open",
+          "question": "What is Hannah's total renovation budget?",
+          "gt": "$30,000.",
+          "pred": "Hannah's total renovation budget is $30,000.",
+          "exact_match": false,
+          "em": 0.0,
+          "contains_gt": true,
+          "f1": 0.4,
+          "bleu": 0.05873949094699214,
+          "bleu_1": 0.25,
+          "bleu_2": 0.18898223650461357,
+          "bert": null,
+          "judge": null,
+          "judge_reasoning": null,
+          "latency_ms": 713,
+          "method_name": "clue_only",
+          "history_turns": 2,
+          "source_sessions": [
+            "D1"
+          ],
+          "clue_rounds": [
+            "D1:14"
+          ]
+        }
+      ]
+    }
+  ]
+}

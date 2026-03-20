@@ -1,0 +1,1 @@
+{"idx": 1, "point": [["X1"], ["Y1"]], "mode": "mcq", "question": "What is Hannah's total renovation budget?", "gt": "$30,000.", "pred": "A", "choice": "A", "valid_choice": true, "method_name": "full_context", "history_turns": 36, "source_sessions": ["D1"], "clue_rounds": ["D1:14"]}

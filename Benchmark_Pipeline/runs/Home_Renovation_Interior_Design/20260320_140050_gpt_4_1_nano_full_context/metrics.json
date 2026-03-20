@@ -1,0 +1,22 @@
+{
+  "task_name": "Home_Renovation_Interior_Design",
+  "model_name": "gpt_4_1_nano",
+  "model_path": "gpt-4.1-nano",
+  "method_name": "full_context",
+  "mode": "mcq",
+  "num_qas": 30,
+  "num_qas_run": 1,
+  "dialog_json": "/Users/qingyuejiao/Desktop/MemoryBenchLocal/MemoryBench/Benchmark_Pipeline/data/dialog/Home_Renovation_Interior_Design.json",
+  "image_root": "/Users/qingyuejiao/Desktop/MemoryBenchLocal/MemoryBench/Benchmark_Pipeline/data/image",
+  "run_dir": "/Users/qingyuejiao/Desktop/MemoryBenchLocal/MemoryBench/Benchmark_Pipeline/runs/Home_Renovation_Interior_Design/20260320_140050_gpt_4_1_nano_full_context",
+  "git_commit": "cc1fb25235a35e4fb8e49d14641916ec8a176b50",
+  "summary": {
+    "open_count": 0,
+    "overall": {},
+    "by_x": {},
+    "by_y": {},
+    "by_cell": {},
+    "mcq_count": 1,
+    "mcq_valid_rate": 1.0
+  }
+}

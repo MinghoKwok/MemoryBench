@@ -14,6 +14,10 @@ The current sample task is `brand_memory_test`. The benchmark supports local and
 - `hybrid_rag`
 - `m2a_lite`
 
+For MemEye task design and `point` annotation rules, read:
+
+- `Benchmark_Pipeline/MemEye_Annotation_Guide.md`
+
 ## Layout
 
 - `run_benchmark.py`: modular benchmark entrypoint
@@ -150,6 +154,20 @@ python -m Benchmark_Pipeline.run_benchmark \
   --mode both
 ```
 
+Enable rich evaluation metrics (F1, BLEU, BERTScore, LLM judge):
+
+```bash
+python -m Benchmark_Pipeline.run_benchmark \
+  --task-config Benchmark_Pipeline/config/tasks/brand_memory_test.yaml \
+  --model-config Benchmark_Pipeline/config/models/gpt_4_1_nano.yaml \
+  --method-config Benchmark_Pipeline/config/methods/full_context.yaml \
+  --enable-bert-score \
+  --enable-llm-judge \
+  --judge-model gpt-4.1-nano \
+  --judge-max-retries 3 \
+  --judge-timeout 60
+```
+
 Run a model x method matrix:
 
 ```bash
@@ -273,7 +291,7 @@ The expected top-level structure is:
   ],
   "human-annotated QAs": [
     {
-      "point": "FR",
+      "point": [["X2"], ["Y1"]],
       "question": "...",
       "answer": "...",
       "session_id": ["D1"],
@@ -287,6 +305,8 @@ Also accepted for the QA list:
 - `human_annotated_qas`
 - `qas`
 
+- `point` should use MemEye binocular coordinates, for example `[['X2'], ['Y1']]`
+- multiple labels are allowed when justified, for example `[['X0', 'X4'], ['Y3']]`
 - `input_image` may use relative paths such as `../image/...`, `./image/...`, `image/...`, or `data/image/...`
 - absolute image paths are supported
 - `file://...` image paths are supported
@@ -322,6 +342,102 @@ eval:
   mode: open
   output_json: output/results_my_task.json
   max_questions: 0
+```
+
+## Using An External Data Repo
+
+If your MemEye data lives outside this repo, for example in a separate local clone of a Hugging Face dataset repo, you do not need to copy it into `Benchmark_Pipeline/data`.
+
+Expected external layout:
+
+```bash
+<external_data_root>/
+  dialog/
+    *.json
+  image/
+    ...
+```
+
+Generate task configs that point to the external absolute paths:
+
+```bash
+python Benchmark_Pipeline/register_external_data.py \
+  --data-root /path/to/external/data \
+  --overwrite
+```
+
+This writes generated task configs under:
+
+```bash
+Benchmark_Pipeline/config/tasks_external/
+```
+
+Then run any generated task config normally, for example:
+
+```bash
+python -m Benchmark_Pipeline.run_benchmark \
+  --task-config Benchmark_Pipeline/config/tasks_external/chat_ui_memory_test.yaml \
+  --model-config Benchmark_Pipeline/config/models/gpt_4_1_nano.yaml \
+  --method-config Benchmark_Pipeline/config/methods/clue_only.yaml
+```
+
+## Recommended HF Dataset Workflow
+
+Recommended separation of concerns:
+
+- keep code, benchmark logic, generators, configs, and docs in this GitHub repo
+- keep benchmark `data/` as the canonical dataset payload in the Hugging Face dataset repo
+- keep images in the Hugging Face dataset repo rather than the GitHub code repo when the files are large
+- treat local `Benchmark_Pipeline/data/` as a synced working copy from the HF dataset repo, not as the long-term source of truth
+
+This is the cleaner workflow for ongoing benchmark development:
+
+1. Pull the latest dataset from Hugging Face into your local working copy.
+2. Make dataset edits locally.
+3. Validate with `run_benchmark`.
+4. Push dataset changes back to the Hugging Face dataset repo.
+
+The sync helper script uses `HF_TOKEN` or `HUGGINGFACE_HUB_TOKEN` from your environment:
+
+```bash
+set -a
+source .env.local
+set +a
+```
+
+Check sync status:
+
+```bash
+python Benchmark_Pipeline/sync_hf_data.py status
+```
+
+Pull HF dataset `data/` into local `Benchmark_Pipeline/data`:
+
+```bash
+python Benchmark_Pipeline/sync_hf_data.py pull
+```
+
+Commit local `Benchmark_Pipeline/data` changes into the HF dataset repo working copy:
+
+```bash
+python Benchmark_Pipeline/sync_hf_data.py push \
+  --commit-message "Update MemEye benchmark data"
+```
+
+Push those committed changes back to Hugging Face:
+
+```bash
+python Benchmark_Pipeline/sync_hf_data.py push \
+  --commit-message "Update MemEye benchmark data" \
+  --git-user-name "Your Name" \
+  --git-user-email "you@example.com" \
+  --push
+```
+
+By default the HF repo working copy lives at:
+
+```bash
+~/.cache/memeye_hf/MemEye
 ```
 
 4. Run the benchmark against the new task config:
@@ -372,14 +488,16 @@ If `eval.output_json` is set, the benchmark also writes a legacy summary JSON fo
 For `open` mode, each result includes:
 - predicted answer
 - ground truth
-- exact-match / contains-GT flags
-- keyword hits
-- soft score
+- exact-match (`em`) and contains-GT flags
+- token-level F1 (`f1`) with Porter stemming
+- BLEU-4 / BLEU-1 / BLEU-2 (`bleu`, `bleu_1`, `bleu_2`) via NLTK smoothing
+- BERTScore F1 (`bert`) — enabled with `--enable-bert-score`; downloads roberta-large (~440 MB) on first use
+- LLM-as-a-judge score (`judge`) ∈ {0, 0.25, 0.5, 0.75, 1.0} — enabled with `--enable-llm-judge`
 - latency
 
 For `mcq` mode, each result includes:
 - raw model output
-- extracted choice
+- extracted choice (`A`, `B`, or `C`)
 - valid-choice flag
 - latency
 
@@ -388,6 +506,48 @@ Each row also records benchmark metadata such as:
 - `history_turns`
 - `source_sessions`
 - `clue_rounds`
+
+## Rich Evaluation Metrics
+
+By default the pipeline computes exact-match, contains-GT, F1, and BLEU on every open-ended QA. Two additional metric families can be enabled at runtime:
+
+### BERTScore
+
+Enable with `--enable-bert-score`. Uses `roberta-large` (rescaled). Downloads ~440 MB on first use; subsequent runs use the cached model.
+
+```bash
+python -m Benchmark_Pipeline.run_benchmark \
+  --task-config ... --model-config ... --method-config ... \
+  --enable-bert-score
+```
+
+### LLM-as-a-judge
+
+Enable with `--enable-llm-judge`. Scores each prediction on a 5-point scale (0 / 0.25 / 0.5 / 0.75 / 1.0) using a judge model. Defaults to `gpt-4.1-nano` via the `OPENAI_API_KEY` environment variable.
+
+```bash
+python -m Benchmark_Pipeline.run_benchmark \
+  --task-config ... --model-config ... --method-config ... \
+  --enable-llm-judge \
+  --judge-model gpt-4.1-nano \
+  --judge-api-key <key>        # optional; falls back to OPENAI_API_KEY
+  --judge-base-url <url>       # optional; defaults to OpenAI endpoint
+  --judge-max-retries 3        # optional; default 3
+  --judge-timeout 60           # optional; default 60 seconds
+```
+
+### Aggregation in `metrics.json`
+
+When either flag is used, `metrics.json` includes a `summary` block with per-metric averages broken down along the MemEye Matrix axes:
+
+```json
+"summary": {
+  "overall":  { "em": 0.10, "f1": 0.42, "bleu": 0.18, "bert": 0.61, "judge": 0.55 },
+  "by_x":     { "X1": { "f1": 0.50 }, "X3": { "f1": 0.30 } },
+  "by_y":     { "Y1": { "f1": 0.55 }, "Y2": { "f1": 0.38 } },
+  "by_cell":  { "X1_Y1": { "f1": 0.60 }, "X3_Y2": { "f1": 0.28 } }
+}
+```
 
 ## Notes
 

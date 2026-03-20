@@ -16,7 +16,16 @@ from .common import (
     write_jsonl,
 )
 from .dataset import MemoryBenchmarkDataset
-from .evaluator import extract_choice, score_open, score_open_soft, summarize_results, to_mcq
+from .evaluator import (
+    bert_score_metric,
+    bleu_score,
+    extract_choice,
+    f1_score,
+    llm_judge_score,
+    score_open,
+    summarize_results,
+    to_mcq,
+)
 from .methods import get_method
 
 
@@ -32,12 +41,67 @@ class LegacyRunOptions:
     max_questions: int = 0
 
 
-def instantiate_router(model_cfg: Dict[str, Any]):
+def merge_legacy_config(opts: LegacyRunOptions) -> Dict[str, Any]:
+    # Try to load base config from file
+    base: Dict[str, Any] = {}
+    if opts.config_path:
+        try:
+            base = load_yaml(resolve_config_path(opts.config_path))
+        except Exception:
+            pass
+
+    # Build merged config; CLI opts override file-based config
+    dataset = dict(base.get("dataset", {}))
+    if opts.dialog_json:
+        dataset["dialog_json"] = opts.dialog_json
+    if opts.image_root:
+        dataset["image_root"] = opts.image_root
+
+    model = dict(base.get("model", {}))
+    if opts.model_path:
+        model.update({"provider": "qwen_local", "name": "legacy_model", "model_path": opts.model_path})
+    if opts.max_new_tokens:
+        model["max_new_tokens"] = opts.max_new_tokens
+    model.setdefault("provider", "qwen_local")
+    model.setdefault("name", "legacy_model")
+    model.setdefault("max_new_tokens", 128)
+
+    eval_cfg = dict(base.get("eval", {}))
+    if opts.mode:
+        eval_cfg["mode"] = opts.mode
+    if opts.max_questions:
+        eval_cfg["max_questions"] = opts.max_questions
+    eval_cfg.setdefault("mode", "open")
+    eval_cfg.setdefault("max_questions", 0)
+
+    run_cfg = dict(base.get("run", {}))
+    if opts.output_json:
+        run_cfg["output_root"] = str(Path(opts.output_json).parent)
+
+    return {
+        "task": base.get("task", {"name": "legacy"}),
+        "dataset": dataset,
+        "eval": eval_cfg,
+        "model": model,
+        "method": base.get("method", {"name": "full_context"}),
+        "run": run_cfg,
+    }
+
+
+
+def load_sys_prompt() -> str:
+    """Load MemEye system prompt from benchmark/prompt/sys_prompt.txt."""
+    prompt_path = Path(__file__).parent / "prompt" / "sys_prompt.txt"
+    return prompt_path.read_text(encoding="utf-8").strip()
+
+
+def instantiate_router(model_cfg: Dict[str, Any], system_prompt: str = ""):
     provider = model_cfg.get("provider", "qwen_local")
     if provider == "qwen_local":
         return QwenLocalRouter(
             model_path=str(model_cfg["model_path"]),
             max_new_tokens=int(model_cfg.get("max_new_tokens", 128)),
+            system_prompt=system_prompt,
         )
     if provider == "openai_api":
         return OpenAIAPIRouter(
@@ -47,6 +111,7 @@ def instantiate_router(model_cfg: Dict[str, Any]):
             base_url=str(model_cfg.get("base_url", "https://api.openai.com/v1")),
             max_new_tokens=int(model_cfg.get("max_new_tokens", 128)),
             timeout=int(model_cfg.get("timeout", 90)),
+            system_prompt=system_prompt,
         )
     if provider == "gemini_api":
         return GeminiAPIRouter(
@@ -56,34 +121,10 @@ def instantiate_router(model_cfg: Dict[str, Any]):
             base_url=str(model_cfg.get("base_url", "https://generativelanguage.googleapis.com/v1beta")),
             max_new_tokens=int(model_cfg.get("max_new_tokens", 128)),
             timeout=int(model_cfg.get("timeout", 90)),
+            system_prompt=system_prompt,
         )
     raise ValueError(f"Unsupported provider: {provider}")
 
-
-def merge_legacy_config(options: LegacyRunOptions) -> Dict[str, Any]:
-    cfg = load_yaml(resolve_config_path(options.config_path))
-    model = cfg.setdefault("model", {})
-    dataset = cfg.setdefault("dataset", {})
-    ev = cfg.setdefault("eval", {})
-
-    if options.dialog_json:
-        dataset["dialog_json"] = options.dialog_json
-    if options.image_root:
-        dataset["image_root"] = options.image_root
-    if options.model_path:
-        model["model_path"] = options.model_path
-    if options.max_new_tokens:
-        model["max_new_tokens"] = options.max_new_tokens
-    if options.output_json:
-        ev["output_json"] = options.output_json
-    if options.mode:
-        ev["mode"] = options.mode
-    if options.max_questions:
-        ev["max_questions"] = options.max_questions
-    cfg.setdefault("method", {}).setdefault("name", "full_context")
-    cfg.setdefault("task", {}).setdefault("name", "task")
-    cfg.setdefault("run", {})
-    return cfg
 
 
 def compose_modular_config(
@@ -121,16 +162,6 @@ def resolve_runtime_paths(cfg: Dict[str, Any], config_dir: Path) -> Dict[str, Pa
     image_root_raw = str(dataset_cfg.get("image_root", "")).strip()
     image_root = resolve_dataset_path(image_root_raw, config_dir) if image_root_raw else None
 
-    output_json_raw = str(eval_cfg.get("output_json", "")).strip()
-    if output_json_raw:
-        output_json_path = Path(output_json_raw)
-        output_json = (
-            output_json_path
-            if output_json_path.is_absolute()
-            else (SCRIPT_DIR / output_json_path).resolve()
-        )
-    else:
-        output_json = None
     output_root_raw = str(cfg.get("run", {}).get("output_root", "")).strip()
     if output_root_raw:
         output_root_path = Path(output_root_raw)
@@ -141,7 +172,6 @@ def resolve_runtime_paths(cfg: Dict[str, Any], config_dir: Path) -> Dict[str, Pa
     return {
         "dialog_json": dialog_json,
         "image_root": image_root,
-        "output_json": output_json,
         "output_root": output_root,
     }
 
@@ -153,15 +183,6 @@ def default_run_dir(cfg: Dict[str, Any], output_root: Path) -> Path:
     ts = dt.datetime.now().strftime("%Y%m%d_%H%M%S")
     return output_root / task_name / f"{ts}_{model_name}_{method_name}"
 
-
-def legacy_output_path(cfg: Dict[str, Any], output_json: Path) -> Path:
-    task_name = str(cfg.get("task", {}).get("name", "task"))
-    model_name = str(cfg.get("model", {}).get("name", "model"))
-    method_name = str(cfg.get("method", {}).get("name", "method"))
-    stem = output_json.stem
-    suffix = output_json.suffix or ".json"
-    task_dir = output_json.parent / task_name
-    return task_dir / f"{stem}__{model_name}__{method_name}{suffix}"
 
 
 def build_payload(
@@ -190,7 +211,13 @@ def build_payload(
     }
 
 
-def run_benchmark(cfg: Dict[str, Any], config_dir: Path) -> Dict[str, Any]:
+def run_benchmark(
+    cfg: Dict[str, Any],
+    config_dir: Path,
+    enable_bert_score: bool = False,
+    enable_llm_judge: bool = False,
+    judge_config: Optional[Dict[str, Any]] = None,
+) -> Dict[str, Any]:
     paths = resolve_runtime_paths(cfg, config_dir)
     mode = str(cfg.get("eval", {}).get("mode", "open"))
     max_questions = int(cfg.get("eval", {}).get("max_questions", 0))
@@ -200,7 +227,24 @@ def run_benchmark(cfg: Dict[str, Any], config_dir: Path) -> Dict[str, Any]:
         str(cfg.get("method", {}).get("name", "full_context")),
         config=dict(cfg.get("method", {})),
     )
-    router = instantiate_router(cfg["model"])
+    sys_prompt = load_sys_prompt()
+    router = instantiate_router(cfg["model"], system_prompt=sys_prompt)
+
+    # Build LLM judge client once before the loop
+    _judge_client = None
+    _judge_template = None
+    _judge_model = None
+    if enable_llm_judge:
+        if not judge_config:
+            raise ValueError("judge_config must be provided when enable_llm_judge=True")
+        from openai import OpenAI
+        _judge_client = OpenAI(
+            api_key=judge_config.get("api_key") or None,
+            base_url=judge_config.get("base_url") or None,
+        )
+        _judge_model = judge_config["model"]
+        prompt_path = Path(__file__).parent / "llm_judge.txt"
+        _judge_template = prompt_path.read_text(encoding="utf-8")
 
     qas = dataset.iter_qas(limit=max_questions)
     results: List[Dict[str, Any]] = []
@@ -217,56 +261,82 @@ def run_benchmark(cfg: Dict[str, Any], config_dir: Path) -> Dict[str, Any]:
             t0 = dt.datetime.now()
             pred = router.answer(history, question)
             latency_ms = int((dt.datetime.now() - t0).total_seconds() * 1000)
+
             exact, contains = score_open(pred, gt)
-            hits, soft = score_open_soft(qa.get("point", ""), pred, gt)
-            results.append(
-                {
-                    "idx": i,
-                    "point": qa.get("point"),
-                    "mode": "open",
-                    "question": question,
-                    "gt": gt,
-                    "pred": pred,
-                    "exact_match": exact,
-                    "contains_gt": contains,
-                    "keyword_hits": hits,
-                    "open_soft_score": soft,
-                    "latency_ms": latency_ms,
-                    "method_name": method.name,
-                    "history_turns": len(history),
-                    "source_sessions": qa.get("session_id", []),
-                    "clue_rounds": qa.get("clue", []),
-                }
-            )
+            _f1    = f1_score(pred, gt)
+            _bleu  = bleu_score(pred, gt)
+            _bleu1 = bleu_score(pred, gt, weights=(1, 0, 0, 0))
+            _bleu2 = bleu_score(pred, gt, weights=(0.5, 0.5, 0, 0))
+            _bert  = bert_score_metric(pred, gt) if enable_bert_score else None
+
+            _judge: Optional[float] = None
+            _judge_reasoning: Optional[str] = None
+            if enable_llm_judge and _judge_client is not None:
+                try:
+                    jr = llm_judge_score(
+                        question=question,
+                        ground_truth=gt,
+                        model_output=pred,
+                        client=_judge_client,
+                        model_name=_judge_model,
+                        prompt_template=_judge_template,
+                        max_retries=judge_config.get("max_retries", 3),
+                        timeout=judge_config.get("timeout", 60),
+                    )
+                    _judge = jr["score"]
+                    _judge_reasoning = jr.get("reasoning", "")
+                except RuntimeError as exc:
+                    print(f"[WARN] LLM judge failed for QA {i}: {exc}")
+
+            results.append({
+                "idx": i,
+                "point": qa.get("point"),
+                "mode": "open",
+                "question": question,
+                "gt": gt,
+                "pred": pred,
+                "exact_match": exact,
+                "em": 1.0 if exact else 0.0,
+                "contains_gt": contains,
+                "f1": _f1,
+                "bleu": _bleu,
+                "bleu_1": _bleu1,
+                "bleu_2": _bleu2,
+                "bert": _bert,
+                "judge": _judge,
+                "judge_reasoning": _judge_reasoning,
+                "latency_ms": latency_ms,
+                "method_name": method.name,
+                "history_turns": len(history),
+                "source_sessions": qa.get("session_id", []),
+                "clue_rounds": qa.get("clue", []),
+            })
             print(
-                f"[OPEN][{i}] exact={exact} contains={contains} "
-                f"soft={soft:.2f} latency_ms={latency_ms}"
+                f"[OPEN][{i}] em={exact} f1={_f1:.3f} bleu={_bleu:.3f}"
+                + (f" bert={_bert:.3f}" if _bert is not None else "")
+                + (f" judge={_judge}" if _judge is not None else "")
+                + f" latency_ms={latency_ms}"
             )
 
         if mode in {"mcq", "both"}:
             mcq_question = to_mcq(question)
-            t0 = dt.datetime.now()
-            pred_raw = router.answer(history, mcq_question)
-            latency_ms = int((dt.datetime.now() - t0).total_seconds() * 1000)
-            choice = extract_choice(pred_raw)
-            results.append(
-                {
-                    "idx": i,
-                    "point": qa.get("point"),
-                    "mode": "mcq",
-                    "question": mcq_question,
-                    "gt": gt,
-                    "pred_raw": pred_raw,
-                    "pred_choice": choice,
-                    "valid_choice": choice in {"A", "B", "C"},
-                    "latency_ms": latency_ms,
-                    "method_name": method.name,
-                    "history_turns": len(history),
-                    "source_sessions": qa.get("session_id", []),
-                    "clue_rounds": qa.get("clue", []),
-                }
-            )
-            print(f"[MCQ][{i}] choice={choice} latency_ms={latency_ms}")
+            pred_mcq = router.answer(history, mcq_question)
+            choice = extract_choice(pred_mcq)
+            results.append({
+                "idx": i,
+                "point": qa.get("point"),
+                "mode": "mcq",
+                "question": question,
+                "gt": gt,
+                "pred": pred_mcq,
+                "choice": choice,
+                "valid_choice": choice in {"A", "B", "C"},
+                "method_name": method.name,
+                "history_turns": len(history),
+                "source_sessions": qa.get("session_id", []),
+                "clue_rounds": qa.get("clue", []),
+            })
+            print(f"[MCQ][{i}] choice={choice} valid={choice in {'A', 'B', 'C'}}")
 
     run_dir = default_run_dir(cfg, paths["output_root"])
     run_dir.mkdir(parents=True, exist_ok=True)
@@ -276,30 +346,9 @@ def run_benchmark(cfg: Dict[str, Any], config_dir: Path) -> Dict[str, Any]:
     write_json(run_dir / "metrics.json", {k: payload[k] for k in payload if k != "results"})
     write_jsonl(run_dir / "predictions.jsonl", results)
 
-    if paths["output_json"] is not None:
-        legacy_output_json = legacy_output_path(cfg, paths["output_json"])
-        legacy_payload = {
-            "dialog_json": payload["dialog_json"],
-            "model_path": payload["model_path"],
-            "mode": payload["mode"],
-            "num_qas": payload["num_qas_run"],
-            "summary": payload["summary"],
-            "results": payload["results"],
-            "method_name": payload["method_name"],
-            "run_dir": payload["run_dir"],
-            "git_commit": payload["git_commit"],
-        }
-        write_json(legacy_output_json, legacy_payload)
-        print(f"[INFO] Saved legacy output: {legacy_output_json}")
-
     print(f"[INFO] Saved run artifacts: {run_dir}")
     return payload
 
-
-def run_legacy_benchmark(options: LegacyRunOptions) -> Dict[str, Any]:
-    cfg = merge_legacy_config(options)
-    config_dir = resolve_config_path(options.config_path).parent
-    return run_benchmark(cfg, config_dir)
 
 
 def run_modular_benchmark(
@@ -309,6 +358,9 @@ def run_modular_benchmark(
     output_root: str = "",
     mode: str = "",
     max_questions: int = 0,
+    enable_bert_score: bool = False,
+    enable_llm_judge: bool = False,
+    judge_config: Optional[Dict[str, Any]] = None,
 ) -> Dict[str, Any]:
     cfg = compose_modular_config(
         task_config_path=task_config_path,
@@ -319,4 +371,30 @@ def run_modular_benchmark(
         max_questions=max_questions,
     )
     config_dir = resolve_config_path(task_config_path).parent
-    return run_benchmark(cfg, config_dir)
+    return run_benchmark(
+        cfg,
+        config_dir,
+        enable_bert_score=enable_bert_score,
+        enable_llm_judge=enable_llm_judge,
+        judge_config=judge_config,
+    )
+
+
+def run_legacy_benchmark(
+    opts: LegacyRunOptions,
+    enable_bert_score: bool = False,
+    enable_llm_judge: bool = False,
+    judge_config: Optional[Dict[str, Any]] = None,
+) -> Dict[str, Any]:
+    cfg = merge_legacy_config(opts)
+    if opts.dialog_json:
+        config_dir = Path(opts.dialog_json).parent
+    else:
+        config_dir = resolve_config_path(opts.config_path).parent
+    return run_benchmark(
+        cfg,
+        config_dir,
+        enable_bert_score=enable_bert_score,
+        enable_llm_judge=enable_llm_judge,
+        judge_config=judge_config,
+    )

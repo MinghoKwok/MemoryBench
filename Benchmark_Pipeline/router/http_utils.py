@@ -2,6 +2,8 @@ import base64
 import json
 import mimetypes
 import os
+import re
+import time
 from pathlib import Path
 from typing import Any, Dict, Optional
 from urllib import error, request
@@ -36,24 +38,40 @@ def encode_image_inline(image_path: str) -> Dict[str, str]:
     return {"mime_type": mime_type, "data": data}
 
 
+def _parse_retry_after(body: str) -> Optional[float]:
+    """Extract seconds from '...try again in 1.933s...' in a 429 body."""
+    m = re.search(r"try again in ([\d.]+)s", body)
+    return float(m.group(1)) if m else None
+
+
 def post_json(
     url: str,
     headers: Dict[str, str],
     payload: Dict[str, Any],
     timeout: int = 60,
+    max_retries: int = 5,
 ) -> Dict[str, Any]:
     body = json.dumps(payload).encode("utf-8")
-    req = request.Request(
-        url,
-        data=body,
-        headers={**headers, "Content-Type": "application/json"},
-        method="POST",
-    )
-    try:
-        with request.urlopen(req, timeout=timeout) as resp:
-            return json.loads(resp.read().decode("utf-8"))
-    except error.HTTPError as exc:
-        details = exc.read().decode("utf-8", errors="replace")
-        raise RuntimeError(f"HTTP {exc.code} calling {url}: {details}") from exc
-    except error.URLError as exc:
-        raise RuntimeError(f"Network error calling {url}: {exc}") from exc
+    last_err: Optional[Exception] = None
+    for attempt in range(max_retries):
+        req = request.Request(
+            url,
+            data=body,
+            headers={**headers, "Content-Type": "application/json"},
+            method="POST",
+        )
+        try:
+            with request.urlopen(req, timeout=timeout) as resp:
+                return json.loads(resp.read().decode("utf-8"))
+        except error.HTTPError as exc:
+            details = exc.read().decode("utf-8", errors="replace")
+            if exc.code == 429 and attempt < max_retries - 1:
+                wait = (_parse_retry_after(details) or (2 ** attempt)) + 0.5
+                print(f"[WARN] 429 rate limit — waiting {wait:.1f}s (attempt {attempt + 1}/{max_retries})")
+                time.sleep(wait)
+                last_err = exc
+                continue
+            raise RuntimeError(f"HTTP {exc.code} calling {url}: {details}") from exc
+        except error.URLError as exc:
+            raise RuntimeError(f"Network error calling {url}: {exc}") from exc
+    raise RuntimeError(f"Request failed after {max_retries} attempts: {last_err}")
