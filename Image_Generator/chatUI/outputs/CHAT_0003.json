@@ -170,15 +170,22 @@
       "sample_id": "CHAT_0003_q1",
       "episode_id": "CHAT_0003",
       "query_type": "speaker_binding",
-      "query": "Which avatar belongs to the person who asked about dinner?",
-      "answer": "avatar_3",
+      "query": "Who asked about dinner? Answer with the speaker name only.",
+      "answer": "Mia",
       "choices": [
-        "avatar_1",
-        "avatar_2",
-        "avatar_3",
-        "avatar_4"
+        "Owen",
+        "Nina",
+        "Mia",
+        "Ava"
       ],
-      "point": "VB",
+      "point": [
+        [
+          "X2"
+        ],
+        [
+          "Y1"
+        ]
+      ],
       "session_id": [
         "CHAT_0003"
       ],
@@ -187,7 +194,8 @@
       ],
       "meta": {
         "target_topic": "dinner",
-        "target_speaker_id": "spk_3"
+        "target_speaker_id": "spk_3",
+        "target_speaker_name": "Mia"
       }
     },
     {
@@ -202,7 +210,14 @@
         "I am on my way with the charger.",
         "I will be out of town until Friday afternoon."
       ],
-      "point": "CS",
+      "point": [
+        [
+          "X2"
+        ],
+        [
+          "Y2"
+        ]
+      ],
       "session_id": [
         "CHAT_0003"
       ],
@@ -225,7 +240,14 @@
         "left",
         "right"
       ],
-      "point": "VS",
+      "point": [
+        [
+          "X3"
+        ],
+        [
+          "Y1"
+        ]
+      ],
       "session_id": [
         "CHAT_0003"
       ],
@@ -240,13 +262,20 @@
       "sample_id": "CHAT_0003_q4",
       "episode_id": "CHAT_0003",
       "query_type": "hallucination_resistance",
-      "query": "Did the speaker with avatar avatar_3 mention airport?",
+      "query": "Did Mia mention airport? Answer yes or no.",
       "answer": "no",
       "choices": [
         "yes",
         "no"
       ],
-      "point": "HR",
+      "point": [
+        [
+          "X2"
+        ],
+        [
+          "Y2"
+        ]
+      ],
       "session_id": [
         "CHAT_0003"
       ],
@@ -257,22 +286,31 @@
       ],
       "meta": {
         "distractor_topic": "airport",
-        "probe_avatar": "avatar_3"
+        "probe_speaker_id": "spk_3",
+        "probe_speaker_name": "Mia"
       }
     },
     {
       "sample_id": "CHAT_0003_q5",
       "episode_id": "CHAT_0003",
       "query_type": "visual_structure",
-      "query": "Which avatar had a message followed by a photo card?",
-      "answer": "avatar_4",
+      "query": "Who sent a message followed by a photo card? Answer with the speaker name only.",
+      "answer": "Ava",
       "choices": [
-        "avatar_1",
-        "avatar_2",
-        "avatar_3",
-        "avatar_4"
+        "Owen",
+        "Nina",
+        "Mia",
+        "Ava"
       ],
-      "point": "VB",
+      "point": [
+        [
+          "X2",
+          "X3"
+        ],
+        [
+          "Y1"
+        ]
+      ],
       "session_id": [
         "CHAT_0003"
       ],
@@ -281,7 +319,9 @@
       ],
       "meta": {
         "target_topic": "photo",
-        "message_kind": "image_card"
+        "message_kind": "image_card",
+        "target_speaker_id": "spk_4",
+        "target_speaker_name": "Ava"
       }
     }
   ]

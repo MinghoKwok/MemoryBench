@@ -157,9 +157,16 @@
   ],
   "human-annotated QAs": [
     {
-      "point": "VB",
-      "question": "Which avatar belongs to the person who asked about dinner?",
-      "answer": "avatar_1",
+      "point": [
+        [
+          "X2"
+        ],
+        [
+          "Y1"
+        ]
+      ],
+      "question": "Who asked about dinner? Answer with the speaker name only.",
+      "answer": "Zoe",
       "session_id": [
         "CHAT_0001"
       ],
@@ -170,11 +177,19 @@
       "sample_id": "CHAT_0001_q1",
       "meta": {
         "target_topic": "dinner",
-        "target_speaker_id": "spk_1"
+        "target_speaker_id": "spk_1",
+        "target_speaker_name": "Zoe"
       }
     },
     {
-      "point": "CS",
+      "point": [
+        [
+          "X2"
+        ],
+        [
+          "Y2"
+        ]
+      ],
       "question": "The person who mentioned Friday later said what in another screenshot?",
       "answer": "I am on my way now.",
       "session_id": [
@@ -192,7 +207,14 @@
       }
     },
     {
-      "point": "VS",
+      "point": [
+        [
+          "X3"
+        ],
+        [
+          "Y1"
+        ]
+      ],
       "question": "Was the message 'I am on my way now.' shown on the left or right side?",
       "answer": "left",
       "session_id": [
@@ -208,8 +230,15 @@
       }
     },
     {
-      "point": "HR",
-      "question": "Did the speaker with avatar avatar_3 mention airport?",
+      "point": [
+        [
+          "X2"
+        ],
+        [
+          "Y2"
+        ]
+      ],
+      "question": "Did Nina mention airport? Answer yes or no.",
       "answer": "no",
       "session_id": [
         "CHAT_0001"
@@ -223,13 +252,22 @@
       "sample_id": "CHAT_0001_q4",
       "meta": {
         "distractor_topic": "airport",
-        "probe_avatar": "avatar_3"
+        "probe_speaker_id": "spk_3",
+        "probe_speaker_name": "Nina"
       }
     },
     {
-      "point": "VB",
-      "question": "Which avatar had a message followed by a photo card?",
-      "answer": "avatar_1",
+      "point": [
+        [
+          "X2",
+          "X3"
+        ],
+        [
+          "Y1"
+        ]
+      ],
+      "question": "Who sent a message followed by a photo card? Answer with the speaker name only.",
+      "answer": "Zoe",
       "session_id": [
         "CHAT_0001"
       ],
@@ -240,13 +278,22 @@
       "sample_id": "CHAT_0001_q5",
       "meta": {
         "target_topic": "photo",
-        "message_kind": "image_card"
+        "message_kind": "image_card",
+        "target_speaker_id": "spk_1",
+        "target_speaker_name": "Zoe"
       }
     },
     {
-      "point": "VB",
-      "question": "Which avatar belongs to the person who asked about dinner?",
-      "answer": "avatar_3",
+      "point": [
+        [
+          "X2"
+        ],
+        [
+          "Y1"
+        ]
+      ],
+      "question": "Who asked about dinner? Answer with the speaker name only.",
+      "answer": "Noah",
       "session_id": [
         "CHAT_0002"
       ],
@@ -257,11 +304,19 @@
       "sample_id": "CHAT_0002_q1",
       "meta": {
         "target_topic": "dinner",
-        "target_speaker_id": "spk_3"
+        "target_speaker_id": "spk_3",
+        "target_speaker_name": "Noah"
       }
     },
     {
-      "point": "CS",
+      "point": [
+        [
+          "X2"
+        ],
+        [
+          "Y2"
+        ]
+      ],
       "question": "The person who mentioned Friday later said what in another screenshot?",
       "answer": "On my way, five minutes out.",
       "session_id": [
@@ -279,7 +334,14 @@
       }
     },
     {
-      "point": "VS",
+      "point": [
+        [
+          "X3"
+        ],
+        [
+          "Y1"
+        ]
+      ],
       "question": "Was the message 'On my way, five minutes out.' shown on the left or right side?",
       "answer": "right",
       "session_id": [
@@ -295,8 +357,15 @@
       }
     },
     {
-      "point": "HR",
-      "question": "Did the speaker with avatar avatar_1 mention airport?",
+      "point": [
+        [
+          "X2"
+        ],
+        [
+          "Y2"
+        ]
+      ],
+      "question": "Did Leah mention airport? Answer yes or no.",
       "answer": "no",
       "session_id": [
         "CHAT_0002"
@@ -310,13 +379,22 @@
       "sample_id": "CHAT_0002_q4",
       "meta": {
         "distractor_topic": "airport",
-        "probe_avatar": "avatar_1"
+        "probe_speaker_id": "spk_1",
+        "probe_speaker_name": "Leah"
       }
     },
     {
-      "point": "VB",
-      "question": "Which avatar had a message followed by a photo card?",
-      "answer": "avatar_1",
+      "point": [
+        [
+          "X2",
+          "X3"
+        ],
+        [
+          "Y1"
+        ]
+      ],
+      "question": "Who sent a message followed by a photo card? Answer with the speaker name only.",
+      "answer": "Leah",
       "session_id": [
         "CHAT_0002"
       ],
@@ -327,13 +405,22 @@
       "sample_id": "CHAT_0002_q5",
       "meta": {
         "target_topic": "photo",
-        "message_kind": "image_card"
+        "message_kind": "image_card",
+        "target_speaker_id": "spk_1",
+        "target_speaker_name": "Leah"
       }
     },
     {
-      "point": "VB",
-      "question": "Which avatar belongs to the person who asked about dinner?",
-      "answer": "avatar_3",
+      "point": [
+        [
+          "X2"
+        ],
+        [
+          "Y1"
+        ]
+      ],
+      "question": "Who asked about dinner? Answer with the speaker name only.",
+      "answer": "Mia",
       "session_id": [
         "CHAT_0003"
       ],
@@ -344,11 +431,19 @@
       "sample_id": "CHAT_0003_q1",
       "meta": {
         "target_topic": "dinner",
-        "target_speaker_id": "spk_3"
+        "target_speaker_id": "spk_3",
+        "target_speaker_name": "Mia"
       }
     },
     {
-      "point": "CS",
+      "point": [
+        [
+          "X2"
+        ],
+        [
+          "Y2"
+        ]
+      ],
       "question": "The person who mentioned Friday later said what in another screenshot?",
       "answer": "I am on my way with the charger.",
       "session_id": [
@@ -366,7 +461,14 @@
       }
     },
     {
-      "point": "VS",
+      "point": [
+        [
+          "X3"
+        ],
+        [
+          "Y1"
+        ]
+      ],
       "question": "Was the message 'I am on my way with the charger.' shown on the left or right side?",
       "answer": "left",
       "session_id": [
@@ -382,8 +484,15 @@
       }
     },
     {
-      "point": "HR",
-      "question": "Did the speaker with avatar avatar_3 mention airport?",
+      "point": [
+        [
+          "X2"
+        ],
+        [
+          "Y2"
+        ]
+      ],
+      "question": "Did Mia mention airport? Answer yes or no.",
       "answer": "no",
       "session_id": [
         "CHAT_0003"
@@ -397,13 +506,22 @@
       "sample_id": "CHAT_0003_q4",
       "meta": {
         "distractor_topic": "airport",
-        "probe_avatar": "avatar_3"
+        "probe_speaker_id": "spk_3",
+        "probe_speaker_name": "Mia"
       }
     },
     {
-      "point": "VB",
-      "question": "Which avatar had a message followed by a photo card?",
-      "answer": "avatar_4",
+      "point": [
+        [
+          "X2",
+          "X3"
+        ],
+        [
+          "Y1"
+        ]
+      ],
+      "question": "Who sent a message followed by a photo card? Answer with the speaker name only.",
+      "answer": "Ava",
       "session_id": [
         "CHAT_0003"
       ],
@@ -414,7 +532,9 @@
       "sample_id": "CHAT_0003_q5",
       "meta": {
         "target_topic": "photo",
-        "message_kind": "image_card"
+        "message_kind": "image_card",
+        "target_speaker_id": "spk_4",
+        "target_speaker_name": "Ava"
       }
     }
   ]

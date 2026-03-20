@@ -64,9 +64,16 @@
     ],
     "human-annotated QAs": [
       {
-        "point": "FR",
-        "question": "Think back to the first advertisement we discussed on 2024-03-10. What specific type of container was the Coca-Cola in?",
-        "answer": "It was in a classic glass contour bottle.",
+        "point": [
+          [
+            "X2"
+          ],
+          [
+            "Y1"
+          ]
+        ],
+        "question": "In the first advertisement, was the Coca-Cola shown in a bottle or a can? Answer with one word only.",
+        "answer": "bottle",
         "session_id": [
           "D1"
         ],
@@ -75,9 +82,16 @@
         ]
       },
       {
-        "point": "VS",
-        "question": "What were the two main colors of the logo on the iced coffee cup we saw in the Dunkin' ad?",
-        "answer": "Orange and pink.",
+        "point": [
+          [
+            "X4"
+          ],
+          [
+            "Y1"
+          ]
+        ],
+        "question": "What were the two main colors of the logo on the iced coffee cup in the Dunkin' ad? Answer with exactly two color words separated by 'and'.",
+        "answer": "orange and pink",
         "session_id": [
           "D2"
         ],
@@ -87,9 +101,16 @@
         ]
       },
       {
-        "point": "MR",
-        "question": "Between the two sessions, which brand relied on a solid red background as a visual anchor?",
-        "answer": "Coca-Cola (discussed in the first session).",
+        "point": [
+          [
+            "X0"
+          ],
+          [
+            "Y2"
+          ]
+        ],
+        "question": "Across the two advertisements, which brand relied on a solid red background as its visual anchor? Answer with the brand name only.",
+        "answer": "Coca-Cola",
         "session_id": [
           "D1",
           "D2"
@@ -99,9 +120,17 @@
         ]
       },
       {
-        "point": "CD",
-        "question": "Did the user ever explicitly state that they wanted to purchase any of these products?",
-        "answer": "No, the user was analyzing them as part of testing visual extraction capabilities.",
+        "point": [
+          [
+            "X2",
+            "X3"
+          ],
+          [
+            "Y2"
+          ]
+        ],
+        "question": "Across the two advertisements, which brand showed its featured drink next to a donut and sandwich rather than in a person's hand? Answer with the brand name only.",
+        "answer": "Dunkin' Donuts",
         "session_id": [
           "D1",
           "D2"

@@ -18,6 +18,7 @@ cd Benchmark_Pipeline
 and read:
 
 - `Benchmark_Pipeline/README.md`
+- `Benchmark_Pipeline/MemEye_Annotation_Guide.md`
 
 The `Benchmark_Pipeline` directory is the main benchmark scaffold in active use. It supports:
 

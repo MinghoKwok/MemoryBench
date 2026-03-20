@@ -1,0 +1,85 @@
+{
+  "dialog_json": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/dialog/Chat_UI_Memory_Test.json",
+  "model_path": "gpt-4.1-nano",
+  "mode": "open",
+  "num_qas": 2,
+  "summary": {
+    "open_count": 2,
+    "open_exact_rate": 0.5,
+    "open_contains_rate": 0.5,
+    "open_soft_avg": 0.1,
+    "point_soft_avg": {
+      "X2|Y1": 0.2,
+      "X2|Y2": 0.0
+    },
+    "x_soft_avg": {
+      "X2": 0.1
+    },
+    "y_soft_avg": {
+      "Y1": 0.2,
+      "Y2": 0.0
+    }
+  },
+  "results": [
+    {
+      "idx": 1,
+      "point": [
+        [
+          "X2"
+        ],
+        [
+          "Y1"
+        ]
+      ],
+      "mode": "open",
+      "question": "Who asked about dinner? Answer with the speaker name only.",
+      "gt": "Zoe",
+      "pred": "Zoe",
+      "exact_match": true,
+      "contains_gt": true,
+      "keyword_hits": [],
+      "open_soft_score": 0.2,
+      "latency_ms": 1029,
+      "method_name": "clue_only",
+      "history_turns": 2,
+      "source_sessions": [
+        "CHAT_0001"
+      ],
+      "clue_rounds": [
+        "CHAT_0001:1"
+      ]
+    },
+    {
+      "idx": 2,
+      "point": [
+        [
+          "X2"
+        ],
+        [
+          "Y2"
+        ]
+      ],
+      "mode": "open",
+      "question": "The person who mentioned Friday later said what in another screenshot?",
+      "gt": "I am on my way now.",
+      "pred": "The person who mentioned Friday, Zoe, later said, \"Let me check the details.\"",
+      "exact_match": false,
+      "contains_gt": false,
+      "keyword_hits": [],
+      "open_soft_score": 0.0,
+      "latency_ms": 1312,
+      "method_name": "clue_only",
+      "history_turns": 4,
+      "source_sessions": [
+        "CHAT_0001"
+      ],
+      "clue_rounds": [
+        "CHAT_0001:3",
+        "CHAT_0001:2"
+      ]
+    }
+  ],
+  "method_name": "clue_only",
+  "run_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/chat_ui_memory_test/20260319_211227_gpt_4_1_nano_clue_only",
+  "git_commit": "e2e314bb5f143152040cd8d8d1548d2d94591010"
+}

@@ -14,6 +14,10 @@ The current sample task is `brand_memory_test`. The benchmark supports local and
 - `hybrid_rag`
 - `m2a_lite`
 
+For MemEye task design and `point` annotation rules, read:
+
+- `Benchmark_Pipeline/MemEye_Annotation_Guide.md`
+
 ## Layout
 
 - `run_benchmark.py`: modular benchmark entrypoint
@@ -273,7 +277,7 @@ The expected top-level structure is:
   ],
   "human-annotated QAs": [
     {
-      "point": "FR",
+      "point": [["X2"], ["Y1"]],
       "question": "...",
       "answer": "...",
       "session_id": ["D1"],
@@ -287,6 +291,8 @@ Also accepted for the QA list:
 - `human_annotated_qas`
 - `qas`
 
+- `point` should use MemEye binocular coordinates, for example `[['X2'], ['Y1']]`
+- multiple labels are allowed when justified, for example `[['X0', 'X4'], ['Y3']]`
 - `input_image` may use relative paths such as `../image/...`, `./image/...`, `image/...`, or `data/image/...`
 - absolute image paths are supported
 - `file://...` image paths are supported

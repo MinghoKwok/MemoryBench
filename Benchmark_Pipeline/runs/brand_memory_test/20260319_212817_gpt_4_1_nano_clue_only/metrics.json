@@ -1,0 +1,35 @@
+{
+  "task_name": "brand_memory_test",
+  "model_name": "gpt_4_1_nano",
+  "model_path": "gpt-4.1-nano",
+  "method_name": "clue_only",
+  "mode": "open",
+  "num_qas": 4,
+  "num_qas_run": 4,
+  "dialog_json": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/dialog/Brand_Memory_Test.json",
+  "image_root": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/image",
+  "run_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/brand_memory_test/20260319_212817_gpt_4_1_nano_clue_only",
+  "git_commit": "e2e314bb5f143152040cd8d8d1548d2d94591010",
+  "summary": {
+    "open_count": 4,
+    "open_exact_rate": 0.5,
+    "open_contains_rate": 0.75,
+    "open_soft_avg": 0.15000000000000002,
+    "point_soft_avg": {
+      "X2|Y1": 0.0,
+      "X4|Y1": 0.2,
+      "X0|Y2": 0.2,
+      "X2+X3|Y2": 0.2
+    },
+    "x_soft_avg": {
+      "X2": 0.1,
+      "X4": 0.2,
+      "X0": 0.2,
+      "X3": 0.2
+    },
+    "y_soft_avg": {
+      "Y1": 0.1,
+      "Y2": 0.2
+    }
+  }
+}

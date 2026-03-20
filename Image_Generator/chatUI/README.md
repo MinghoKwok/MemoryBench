@@ -22,6 +22,10 @@ This folder contains a minimal synthetic chat UI generator for MemEye-style iden
 
 The generator is intentionally simple. It is designed to test whether a model keeps avatar-message bindings over multiple turns, not just whether it can read chat text.
 
+The generated benchmark JSON uses the MemEye binocular `point` format documented in:
+
+- `Benchmark_Pipeline/MemEye_Annotation_Guide.md`
+
 ## Run
 
 ```bash
