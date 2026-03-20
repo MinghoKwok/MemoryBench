@@ -1,13 +1,14 @@
 # MemoryBench
 
-This repository currently contains two separate multimodal memory experiment directories:
+This repository currently contains several multimodal memory workstreams:
 
 - `Benchmark_Pipeline`
+- `Image_Generator`
 - `ComicScene_Pipeline`
 
 ## What To Focus On
 
-For current benchmark work, treat `Benchmark_Pipeline` as the active project.
+For current MemEye benchmark work, treat `Benchmark_Pipeline` as the active benchmark scaffold.
 
 If you are a collaborator joining this repo for the first time, start with:
 
@@ -19,6 +20,7 @@ and read:
 
 - `Benchmark_Pipeline/README.md`
 - `Benchmark_Pipeline/MemEye_Annotation_Guide.md`
+- `Image_Generator/Generation_Guidelines.md`
 
 The `Benchmark_Pipeline` directory is the main benchmark scaffold in active use. It supports:
 
@@ -26,12 +28,19 @@ The `Benchmark_Pipeline` directory is the main benchmark scaffold in active use.
 - benchmark runs and matrix runs
 - current memory methods including `full_context`, `clue_only`, `hybrid_rag`, and `m2a_lite`
 - partner-added tasks that reuse the same dialogue/image format
+- task data that is canonically stored in the Hugging Face dataset repo and synced locally when needed
+
+For current generator work, the active entry points are:
+
+- `Image_Generator/chatUI`
+- `Image_Generator/ComicScene`
 
 ## What To Ignore For Now
 
 `ComicScene_Pipeline` is an older comic-memory demo and is not the current focus of benchmark development.
 
-Unless you are explicitly working on the comic demo, you can ignore `ComicScene_Pipeline` for now.
+Unless you are explicitly working on legacy comic demo code, you can ignore `ComicScene_Pipeline` for now.
+Current comic-task generation work lives under `Image_Generator/ComicScene`.
 
 ## Recommended Entry Points
 

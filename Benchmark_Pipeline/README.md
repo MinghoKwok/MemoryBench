@@ -29,7 +29,7 @@ For MemEye task design and `point` annotation rules, read:
 - `config/tasks/`: task configs
 - `config/models/`: model configs
 - `config/methods/`: method configs
-- `data/`: example dialogue and images
+- `data/`: local synced working copy of benchmark dialogue/images from the HF dataset repo
 - `runs/`: per-run artifacts
 - `output/results_brand_memory_test.json`: optional legacy output file for the sample task
 
@@ -301,21 +301,14 @@ Also accepted for the QA list:
 
 ## Adding A New Task
 
-If another partner wants to add a new dataset with the same format, the recommended workflow is:
+For new MemEye datasets, the recommended workflow is:
 
-1. Put the dialogue JSON under `data/dialog/`, for example:
+1. Add or update the dataset under the HF dataset repo `data/` tree.
+2. Pull that dataset into your local synced working copy with `sync_hf_data.py pull`, or work directly from an external local clone.
+3. Generate a task config that points to the dataset JSON and image root.
+4. Validate with `run_benchmark`.
 
-```bash
-Benchmark_Pipeline/data/dialog/My_Task.json
-```
-
-2. Put the corresponding images under `data/image/<task_name>/`, for example:
-
-```bash
-Benchmark_Pipeline/data/image/My_Task/...
-```
-
-3. Add a task config under `config/tasks/`, for example:
+For a task that already lives under local `Benchmark_Pipeline/data/`, a minimal task config still looks like:
 
 ```yaml
 name: my_task
@@ -329,6 +322,8 @@ eval:
   output_json: output/results_my_task.json
   max_questions: 0
 ```
+
+Use this only for a synced local working copy. The long-term source of truth should remain the HF dataset repo.
 
 ## Using An External Data Repo
 
@@ -426,16 +421,16 @@ By default the HF repo working copy lives at:
 ~/.cache/memeye_hf/MemEye
 ```
 
-4. Run the benchmark against the new task config:
+To benchmark against a synced local task config, run for example:
 
 ```bash
 python -m Benchmark_Pipeline.run_benchmark \
-  --task-config Benchmark_Pipeline/config/tasks/my_task.yaml \
+  --task-config Benchmark_Pipeline/config/tasks_external/chat_ui_memory_test.yaml \
   --model-config Benchmark_Pipeline/config/models/gpt_4_1_nano.yaml \
-  --method-config Benchmark_Pipeline/config/methods/full_context.yaml
+  --method-config Benchmark_Pipeline/config/methods/clue_only.yaml
 ```
 
-This lets each partner add a task instance without changing framework code.
+This lets each partner add a task instance without changing framework code while keeping benchmark data canonical in the HF dataset repo.
 
 ## Package Usage
 

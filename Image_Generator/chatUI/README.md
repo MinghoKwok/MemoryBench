@@ -6,8 +6,9 @@ This folder contains a minimal synthetic chat UI generator for MemEye-style iden
 
 - procedurally rendered multi-screenshot chat episodes
 - episode-level JSON metadata under `Image_Generator/chatUI/outputs`
-- benchmark-ready dialog JSON at `Benchmark_Pipeline/data/dialog/Chat_UI_Memory_Test.json`
-- rendered screenshots at `Benchmark_Pipeline/data/image/Chat_UI_Memory_Test`
+- benchmark-ready dialog JSON that can be synced into the HF dataset repo `data/dialog/`
+- rendered screenshots that can be synced into the HF dataset repo `data/image/`
+- optional local working-copy outputs under `Benchmark_Pipeline/data/...` when you want to benchmark immediately on this machine
 
 ## Current MVP Scope
 
@@ -25,6 +26,14 @@ The generator is intentionally simple. It is designed to test whether a model ke
 The generated benchmark JSON uses the MemEye binocular `point` format documented in:
 
 - `Benchmark_Pipeline/MemEye_Annotation_Guide.md`
+
+Cross-generator task and image design rules are documented in:
+
+- `Image_Generator/Generation_Guidelines.md`
+
+When integrating generated data into the benchmark, follow the HF-first workflow documented in:
+
+- `Benchmark_Pipeline/README.md`
 
 ## Run
 
@@ -44,4 +53,4 @@ pip install pillow
 - add explicit negative topics per episode
 - vary theme/layout while keeping identity consistent
 - generate train/dev/test splits
-- add a task config so this dataset can be benchmarked directly with `run_benchmark.py`
+- keep syncing the dataset through the HF dataset repo rather than treating local `Benchmark_Pipeline/data` as canonical

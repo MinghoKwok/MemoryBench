@@ -1,0 +1,56 @@
+{
+  "dialog_json": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/dialog/ComicScene_Alley_Oop_Draft.json",
+  "model_path": "gpt-4.1-nano",
+  "mode": "open",
+  "num_qas": 1,
+  "summary": {
+    "open_count": 1,
+    "open_exact_rate": 1.0,
+    "open_contains_rate": 1.0,
+    "open_soft_avg": 0.2,
+    "point_soft_avg": {
+      "X2+X3|Y2": 0.2
+    },
+    "x_soft_avg": {
+      "X2": 0.2,
+      "X3": 0.2
+    },
+    "y_soft_avg": {
+      "Y2": 0.2
+    }
+  },
+  "results": [
+    {
+      "idx": 1,
+      "point": [
+        [
+          "X2",
+          "X3"
+        ],
+        [
+          "Y2"
+        ]
+      ],
+      "mode": "open",
+      "question": "In panel 1 and panel 5 of page 1, is the crowned character in the water both times? Reply with only yes or no in lowercase, with no punctuation.",
+      "gt": "yes",
+      "pred": "yes",
+      "exact_match": true,
+      "contains_gt": true,
+      "keyword_hits": [],
+      "open_soft_score": 0.2,
+      "latency_ms": 966,
+      "method_name": "clue_only",
+      "history_turns": 2,
+      "source_sessions": [
+        "D1"
+      ],
+      "clue_rounds": [
+        "D1:1"
+      ]
+    }
+  ],
+  "method_name": "clue_only",
+  "run_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/comicscene_alley_oop_draft/20260320_191524_gpt_4_1_nano_clue_only",
+  "git_commit": "ffe3c3fc5fc17a46f091892129f5a4b43900ab8b"
+}

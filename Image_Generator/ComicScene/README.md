@@ -1,20 +1,29 @@
-# Comic Memory Benchmark Demo
+# ComicScene Generator
 
-This demo runs an end-to-end pipeline for comic memory testing:
+This directory is the active home for MemEye comic-task generation work.
 
-1. Crop panels from a comic page using panel `bbox` from JSON.
-2. Extract a ground-truth story summary from annotations.
-3. Run Qwen2-VL visual QA on a sequence of panel images.
+The current focus is not story-summary evaluation. The current focus is turning comic pages into MemEye-style benchmark items with:
+
+1. visible answers only
+2. controlled answer formats
+3. MemEye binocular `point` labels such as `[['X2'], ['Y2']]`
+4. intentionally retained hard items when the difficulty reflects real visual-memory failure rather than annotation noise
 
 For the MemEye-oriented assessment and candidate task directions, see:
 
 - `Image_Generator/ComicScene/MemEye_ComicScene_Assessment.md`
 
+Cross-generator task and image design rules are documented in:
+
+- `Image_Generator/Generation_Guidelines.md`
+
 ## Files
 
-- `run_pipeline.py`: main pipeline.
-- `run_demo.sh`: one-command runner script.
-- `output/panels/`: generated panel crops and low-res images.
+- `drafts/`: current MemEye task drafts such as `Alley_Oop_MemEye_Draft.json`
+- `Data/`: source comic pages and metadata
+- `run_pipeline.py`: legacy demo pipeline
+- `run_demo.sh`: legacy one-command demo runner
+- `output/panels/`: generated panel crops and low-res images from the legacy demo
 
 ## Requirements
 
@@ -31,7 +40,7 @@ Install:
 pip install torch transformers qwen-vl-utils pillow
 ```
 
-## Local Model
+## Legacy Demo Model
 
 Default local model path in this project:
 
@@ -39,7 +48,22 @@ Default local model path in this project:
 
 You can also use an HF model name, but local path is recommended for stability and speed.
 
-## Quick Start
+## Current Workflow
+
+For current MemEye work in this directory:
+
+1. start from source pages under `Data/`
+2. design questions using `Image_Generator/Generation_Guidelines.md`
+3. assign MemEye `point` labels using `Benchmark_Pipeline/MemEye_Annotation_Guide.md`
+4. write draft benchmark JSON under `drafts/`
+5. sync finalized dialog/image assets into the HF dataset repo `data/` tree
+6. benchmark the synced task through `Benchmark_Pipeline`
+
+The current Alley Oop draft already follows this pattern:
+
+- `Image_Generator/ComicScene/drafts/Alley_Oop_MemEye_Draft.json`
+
+## Legacy Demo Quick Start
 
 From project root:
 
@@ -47,7 +71,7 @@ From project root:
 bash run_demo.sh
 ```
 
-## Useful Run Modes
+## Legacy Demo Run Modes
 
 - Full multi-image memory test (default):
 
@@ -73,7 +97,7 @@ bash run_demo.sh --skip-vlm
 MAX_NEW_TOKENS=160 MAX_IMAGE_PIXELS=102400 bash run_demo.sh
 ```
 
-## Direct Python Command
+## Legacy Demo Direct Python Command
 
 ```bash
 python run_pipeline.py \
@@ -84,6 +108,7 @@ python run_pipeline.py \
 
 ## Notes
 
+- The demo scripts in this directory are legacy helpers, not the MemEye benchmark interface.
 - `--max-image-pixels` controls per-panel downsampling before VLM inference.
 - Lower `max_image_pixels` helps avoid multi-image context overflow on small models.
-- Output answer quality may vary; compare `[VLM Answer]` with `[Step 2] Ground Truth Story`.
+- Do not use hidden metadata or free-form story summaries as MemEye ground truth for new tasks.

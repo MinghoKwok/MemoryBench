@@ -71,6 +71,26 @@
       ]
     },
     {
+      "session_id": "D4",
+      "date": "1933-01-04",
+      "dialogues": [
+        {
+          "round": "D4:1",
+          "user": "Memorize this comic page. Track the rider, the smaller dinosaur, and visible state changes by the end of the page.",
+          "assistant": "Stored for later memory questions.",
+          "image_id": [
+            "D4:IMG_001"
+          ],
+          "input_image": [
+            "../Data/Alley_Oop/images/Alley_Oop_Page_4.jpg"
+          ],
+          "image_caption": [
+            "Alley Oop page 4 with six panels showing Alley riding a smaller dinosaur, a test drive, and the dinosaur shown drooling in the final panel."
+          ]
+        }
+      ]
+    },
+    {
       "session_id": "D27",
       "date": "1933-01-27",
       "dialogues": [
@@ -86,6 +106,46 @@
           ],
           "image_caption": [
             "Alley Oop page 27 with a crowned character appearing across multiple panels and a final physical confrontation with a shirtless man."
+          ]
+        }
+      ]
+    },
+    {
+      "session_id": "D28",
+      "date": "1933-01-28",
+      "dialogues": [
+        {
+          "round": "D28:1",
+          "user": "Memorize this comic page. Track the crowned character, the temporary king, and the work he is forced to do later on the page.",
+          "assistant": "Stored for later memory questions.",
+          "image_id": [
+            "D28:IMG_001"
+          ],
+          "input_image": [
+            "../Data/Alley_Oop/images/Alley_Oop_Page_28.jpg"
+          ],
+          "image_caption": [
+            "Alley Oop page 28 with the crowned character giving instructions, a temporary king being pelted by the crowd, and later doing work inside a cave."
+          ]
+        }
+      ]
+    },
+    {
+      "session_id": "D29",
+      "date": "1933-01-29",
+      "dialogues": [
+        {
+          "round": "D29:1",
+          "user": "Memorize this comic page. Track the crowned character as he relaxes, gets punished, and later performs chores himself.",
+          "assistant": "Stored for later memory questions.",
+          "image_id": [
+            "D29:IMG_001"
+          ],
+          "input_image": [
+            "../Data/Alley_Oop/images/Alley_Oop_Page_29.jpg"
+          ],
+          "image_caption": [
+            "Alley Oop page 29 with the crowned character relaxing with bon-bons, then being punished, then doing chores and running with a basin."
           ]
         }
       ]
@@ -116,7 +176,8 @@
           1,
           5
         ],
-        "task_family": "character_tracking"
+        "task_family": "character_tracking",
+        "difficulty_hint": "hard"
       }
     },
     {
@@ -141,7 +202,8 @@
         "panel_refs": [
           1
         ],
-        "task_family": "character_tracking"
+        "task_family": "character_tracking",
+        "difficulty_hint": "hard"
       }
     },
     {
@@ -167,7 +229,8 @@
           1,
           5
         ],
-        "task_family": "spatial_continuity"
+        "task_family": "spatial_continuity",
+        "difficulty_hint": "baseline"
       }
     },
     {
@@ -194,7 +257,8 @@
           2,
           4
         ],
-        "task_family": "visual_state_change"
+        "task_family": "visual_state_change",
+        "difficulty_hint": "baseline"
       }
     },
     {
@@ -234,7 +298,8 @@
             5
           ]
         },
-        "task_family": "visual_state_change"
+        "task_family": "visual_state_change",
+        "difficulty_hint": "hard"
       }
     },
     {
@@ -260,7 +325,8 @@
         "panel_refs": [
           3
         ],
-        "task_family": "fine_detail"
+        "task_family": "fine_detail",
+        "difficulty_hint": "hard"
       }
     },
     {
@@ -288,7 +354,8 @@
           4,
           5
         ],
-        "task_family": "character_tracking"
+        "task_family": "character_tracking",
+        "difficulty_hint": "baseline"
       }
     },
     {
@@ -315,7 +382,207 @@
           1,
           5
         ],
-        "task_family": "visual_state_change"
+        "task_family": "visual_state_change",
+        "difficulty_hint": "hard"
+      }
+    },
+    {
+      "question": "On page 4, is Alley still riding the smaller dinosaur in both panel 1 and panel 5? Reply with only yes or no in lowercase, with no punctuation.",
+      "answer": "yes",
+      "point": [
+        [
+          "X2"
+        ],
+        [
+          "Y2"
+        ]
+      ],
+      "session_id": [
+        "D4"
+      ],
+      "clue": [
+        "D4:1"
+      ],
+      "meta": {
+        "page_number": 4,
+        "panel_refs": [
+          1,
+          5
+        ],
+        "task_family": "character_tracking",
+        "difficulty_hint": "baseline"
+      }
+    },
+    {
+      "question": "On page 4, by the final panel, is the dinosaur shown with drool coming from its mouth? Reply with only yes or no in lowercase, with no punctuation.",
+      "answer": "yes",
+      "point": [
+        [
+          "X4"
+        ],
+        [
+          "Y1"
+        ]
+      ],
+      "session_id": [
+        "D4"
+      ],
+      "clue": [
+        "D4:1"
+      ],
+      "meta": {
+        "page_number": 4,
+        "panel_refs": [
+          6
+        ],
+        "task_family": "fine_detail",
+        "difficulty_hint": "hard"
+      }
+    },
+    {
+      "question": "On page 28, after the crowd throws objects at the temporary king, is he later shown doing work inside a cave? Reply with only yes or no in lowercase, with no punctuation.",
+      "answer": "yes",
+      "point": [
+        [
+          "X2",
+          "X3"
+        ],
+        [
+          "Y2"
+        ]
+      ],
+      "session_id": [
+        "D28"
+      ],
+      "clue": [
+        "D28:1"
+      ],
+      "meta": {
+        "page_number": 28,
+        "panel_refs": [
+          3,
+          4
+        ],
+        "task_family": "visual_state_change",
+        "difficulty_hint": "hard"
+      }
+    },
+    {
+      "question": "On page 28, is the crowned character the one giving instructions in panel 2 rather than the shirtless man? Reply with only yes or no in lowercase, with no punctuation.",
+      "answer": "yes",
+      "point": [
+        [
+          "X2"
+        ],
+        [
+          "Y1"
+        ]
+      ],
+      "session_id": [
+        "D28"
+      ],
+      "clue": [
+        "D28:1"
+      ],
+      "meta": {
+        "page_number": 28,
+        "panel_refs": [
+          2
+        ],
+        "task_family": "character_tracking",
+        "difficulty_hint": "baseline"
+      }
+    },
+    {
+      "question": "Across pages 28 and 29, is the crowned character first shown relaxing and later shown doing chores himself? Reply with only yes or no in lowercase, with no punctuation.",
+      "answer": "yes",
+      "point": [
+        [
+          "X2"
+        ],
+        [
+          "Y3"
+        ]
+      ],
+      "session_id": [
+        "D28",
+        "D29"
+      ],
+      "clue": [
+        "D28:1",
+        "D29:1"
+      ],
+      "meta": {
+        "page_number": [
+          28,
+          29
+        ],
+        "panel_refs": {
+          "D28": [
+            5
+          ],
+          "D29": [
+            3,
+            5,
+            6
+          ]
+        },
+        "task_family": "visual_state_change",
+        "difficulty_hint": "hard"
+      }
+    },
+    {
+      "question": "On page 29, are bon-bons shown next to the reclining crowned character in the first panel? Reply with only yes or no in lowercase, with no punctuation.",
+      "answer": "yes",
+      "point": [
+        [
+          "X4"
+        ],
+        [
+          "Y1"
+        ]
+      ],
+      "session_id": [
+        "D29"
+      ],
+      "clue": [
+        "D29:1"
+      ],
+      "meta": {
+        "page_number": 29,
+        "panel_refs": [
+          1
+        ],
+        "task_family": "fine_detail",
+        "difficulty_hint": "hard"
+      }
+    },
+    {
+      "question": "On page 29, does the crowned character get struck by another person before he is shown running with a basin on his head later in the page? Reply with only yes or no in lowercase, with no punctuation.",
+      "answer": "yes",
+      "point": [
+        [
+          "X2",
+          "X3"
+        ],
+        [
+          "Y2"
+        ]
+      ],
+      "session_id": [
+        "D29"
+      ],
+      "clue": [
+        "D29:1"
+      ],
+      "meta": {
+        "page_number": 29,
+        "panel_refs": [
+          3,
+          5
+        ],
+        "task_family": "visual_state_change",
+        "difficulty_hint": "hard"
       }
     }
   ]

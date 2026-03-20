@@ -1,5 +1,7 @@
 # ComicScene154: A Scene Dataset for Comic Analysis
 
+Legacy reference only. This README documents an older scene-segmentation dataset layout, not the current MemEye comic-task workflow. For current task-generation rules, start from `Image_Generator/ComicScene/README.md`.
+
 ## Overview
 ComicScene154 is a dataset designed for the analysis of comic book scenes, enabling research in scene segmentation, multimodal learning, and captioning. The dataset includes multiple comic titles, each with annotated ground truth data, images, and benchmarked scene segmentations.
 
