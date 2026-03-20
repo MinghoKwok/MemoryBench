@@ -330,6 +330,101 @@ eval:
   max_questions: 0
 ```
 
+## Using An External Data Repo
+
+If your MemEye data lives outside this repo, for example in a separate local clone of a Hugging Face dataset repo, you do not need to copy it into `Benchmark_Pipeline/data`.
+
+Expected external layout:
+
+```bash
+<external_data_root>/
+  dialog/
+    *.json
+  image/
+    ...
+```
+
+Generate task configs that point to the external absolute paths:
+
+```bash
+python Benchmark_Pipeline/register_external_data.py \
+  --data-root /path/to/external/data \
+  --overwrite
+```
+
+This writes generated task configs under:
+
+```bash
+Benchmark_Pipeline/config/tasks_external/
+```
+
+Then run any generated task config normally, for example:
+
+```bash
+python -m Benchmark_Pipeline.run_benchmark \
+  --task-config Benchmark_Pipeline/config/tasks_external/chat_ui_memory_test.yaml \
+  --model-config Benchmark_Pipeline/config/models/gpt_4_1_nano.yaml \
+  --method-config Benchmark_Pipeline/config/methods/clue_only.yaml
+```
+
+## Recommended HF Dataset Workflow
+
+Recommended separation of concerns:
+
+- keep code, benchmark logic, generators, configs, and docs in this GitHub repo
+- keep benchmark `data/` as the canonical dataset payload in the Hugging Face dataset repo
+- keep images in the Hugging Face dataset repo rather than the GitHub code repo when the files are large
+
+This is the cleaner workflow for ongoing benchmark development:
+
+1. Pull the latest dataset from Hugging Face into your local working copy.
+2. Make dataset edits locally.
+3. Validate with `run_benchmark`.
+4. Push dataset changes back to the Hugging Face dataset repo.
+
+The sync helper script uses `HF_TOKEN` or `HUGGINGFACE_HUB_TOKEN` from your environment:
+
+```bash
+set -a
+source .env.local
+set +a
+```
+
+Check sync status:
+
+```bash
+python Benchmark_Pipeline/sync_hf_data.py status
+```
+
+Pull HF dataset `data/` into local `Benchmark_Pipeline/data`:
+
+```bash
+python Benchmark_Pipeline/sync_hf_data.py pull
+```
+
+Commit local `Benchmark_Pipeline/data` changes into the HF dataset repo working copy:
+
+```bash
+python Benchmark_Pipeline/sync_hf_data.py push \
+  --commit-message "Update MemEye benchmark data"
+```
+
+Push those committed changes back to Hugging Face:
+
+```bash
+python Benchmark_Pipeline/sync_hf_data.py push \
+  --commit-message "Update MemEye benchmark data" \
+  --git-user-name "Your Name" \
+  --git-user-email "you@example.com" \
+  --push
+```
+
+By default the HF repo working copy lives at:
+
+```bash
+~/.cache/memeye_hf/MemEye
+```
+
 4. Run the benchmark against the new task config:
 
 ```bash

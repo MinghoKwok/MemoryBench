@@ -1,0 +1,38 @@
+{
+  "task": {
+    "name": "home_renovation_interior_design",
+    "dataset": {
+      "dialog_json": "/tmp/memeye_hf_inspect/data/dialog/Home_Renovation_Interior_Design.json",
+      "image_root": "/tmp/memeye_hf_inspect/data/image"
+    },
+    "eval": {
+      "mode": "open",
+      "output_json": "output/results_home_renovation_interior_design.json",
+      "max_questions": 1
+    }
+  },
+  "dataset": {
+    "dialog_json": "/tmp/memeye_hf_inspect/data/dialog/Home_Renovation_Interior_Design.json",
+    "image_root": "/tmp/memeye_hf_inspect/data/image"
+  },
+  "eval": {
+    "mode": "open",
+    "output_json": "output/results_home_renovation_interior_design.json",
+    "max_questions": 1
+  },
+  "model": {
+    "name": "gpt_4_1_nano",
+    "provider": "openai_api",
+    "model": "gpt-4.1-nano",
+    "api_key_env": "OPENAI_API_KEY",
+    "base_url": "https://api.openai.com/v1",
+    "max_new_tokens": 128,
+    "timeout": 90
+  },
+  "method": {
+    "name": "clue_only"
+  },
+  "run": {
+    "output_root": "runs"
+  }
+}
