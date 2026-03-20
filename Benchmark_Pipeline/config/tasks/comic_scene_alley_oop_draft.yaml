@@ -1,0 +1,10 @@
+name: comic_scene_alley_oop_draft
+
+dataset:
+  dialog_json: Image_Generator/ComicScene/drafts/Alley_Oop_MemEye_Draft.json
+  image_root: Image_Generator/ComicScene/Data/Alley_Oop/images
+
+eval:
+  mode: open
+  output_json: output/results_comic_scene_alley_oop_draft.json
+  max_questions: 0

@@ -1,0 +1,322 @@
+{
+  "character_profile": {
+    "name": "Alley Oop MemEye Draft Curator",
+    "persona_summary": "A draft curator for visually grounded comic memory tasks built from page-level Alley Oop evidence.",
+    "traits": [
+      "visual",
+      "comics-oriented",
+      "memory-focused"
+    ],
+    "conversation_style": "Short and factual. Emphasizes panel-level identity, location, and state changes."
+  },
+  "multi_session_dialogues": [
+    {
+      "session_id": "D1",
+      "date": "1933-01-01",
+      "dialogues": [
+        {
+          "round": "D1:1",
+          "user": "Memorize this comic page. Track who appears, where they are, and how their state changes across panels.",
+          "assistant": "Stored for later memory questions.",
+          "image_id": [
+            "D1:IMG_001"
+          ],
+          "input_image": [
+            "../Data/Alley_Oop/images/Alley_Oop_Page_1.jpg"
+          ],
+          "image_caption": [
+            "Alley Oop page 1 with five panels, including a crowned character in water and later panels showing the same crowned character again."
+          ]
+        }
+      ]
+    },
+    {
+      "session_id": "D2",
+      "date": "1933-01-02",
+      "dialogues": [
+        {
+          "round": "D2:1",
+          "user": "Memorize this comic page. Track repeated dinosaurs, collisions, and dialogue-linked actions across panels.",
+          "assistant": "Stored for later memory questions.",
+          "image_id": [
+            "D2:IMG_001"
+          ],
+          "input_image": [
+            "../Data/Alley_Oop/images/Alley_Oop_Page_2.jpg"
+          ],
+          "image_caption": [
+            "Alley Oop page 2 with five panels showing Dinny, a crash into a tree, and a later discussion about clumsiness and trade-ins."
+          ]
+        }
+      ]
+    },
+    {
+      "session_id": "D3",
+      "date": "1933-01-03",
+      "dialogues": [
+        {
+          "round": "D3:1",
+          "user": "Memorize this comic page. Track the dinosaurs on display, signage, and the relative size of different dinosaurs.",
+          "assistant": "Stored for later memory questions.",
+          "image_id": [
+            "D3:IMG_001"
+          ],
+          "input_image": [
+            "../Data/Alley_Oop/images/Alley_Oop_Page_3.jpg"
+          ],
+          "image_caption": [
+            "Alley Oop page 3 with dinosaur dealership panels, including a cheap dinosaur, a today's special dinosaur, and a smaller newer dinosaur."
+          ]
+        }
+      ]
+    },
+    {
+      "session_id": "D27",
+      "date": "1933-01-27",
+      "dialogues": [
+        {
+          "round": "D27:1",
+          "user": "Memorize this comic page. Track the crowned character and his interactions with the shirtless man across the page.",
+          "assistant": "Stored for later memory questions.",
+          "image_id": [
+            "D27:IMG_001"
+          ],
+          "input_image": [
+            "../Data/Alley_Oop/images/Alley_Oop_Page_27.jpg"
+          ],
+          "image_caption": [
+            "Alley Oop page 27 with a crowned character appearing across multiple panels and a final physical confrontation with a shirtless man."
+          ]
+        }
+      ]
+    }
+  ],
+  "human-annotated QAs": [
+    {
+      "question": "In panel 1 and panel 5 of page 1, is the crowned character in the water both times? Reply with only yes or no in lowercase, with no punctuation.",
+      "answer": "yes",
+      "point": [
+        [
+          "X2",
+          "X3"
+        ],
+        [
+          "Y2"
+        ]
+      ],
+      "session_id": [
+        "D1"
+      ],
+      "clue": [
+        "D1:1"
+      ],
+      "meta": {
+        "page_number": 1,
+        "panel_refs": [
+          1,
+          5
+        ],
+        "task_family": "character_tracking"
+      }
+    },
+    {
+      "question": "In panel 1 of page 1, is the character in the water wearing a crown? Reply with only yes or no in lowercase, with no punctuation.",
+      "answer": "yes",
+      "point": [
+        [
+          "X2"
+        ],
+        [
+          "Y1"
+        ]
+      ],
+      "session_id": [
+        "D1"
+      ],
+      "clue": [
+        "D1:1"
+      ],
+      "meta": {
+        "page_number": 1,
+        "panel_refs": [
+          1
+        ],
+        "task_family": "character_tracking"
+      }
+    },
+    {
+      "question": "On page 1, does the crowned character start in the water and end in the water by panel 5? Reply with only yes or no in lowercase, with no punctuation.",
+      "answer": "yes",
+      "point": [
+        [
+          "X3"
+        ],
+        [
+          "Y2"
+        ]
+      ],
+      "session_id": [
+        "D1"
+      ],
+      "clue": [
+        "D1:1"
+      ],
+      "meta": {
+        "page_number": 1,
+        "panel_refs": [
+          1,
+          5
+        ],
+        "task_family": "spatial_continuity"
+      }
+    },
+    {
+      "question": "On page 2, does Dinny run into a tree before the conversation about his clumsiness? Reply with only yes or no in lowercase, with no punctuation.",
+      "answer": "yes",
+      "point": [
+        [
+          "X2",
+          "X3"
+        ],
+        [
+          "Y2"
+        ]
+      ],
+      "session_id": [
+        "D2"
+      ],
+      "clue": [
+        "D2:1"
+      ],
+      "meta": {
+        "page_number": 2,
+        "panel_refs": [
+          2,
+          4
+        ],
+        "task_family": "visual_state_change"
+      }
+    },
+    {
+      "question": "Across pages 2 and 3, is the dinosaur being considered for trade-in larger than the newer dinosaur shown at the dealership? Reply with only yes or no in lowercase, with no punctuation.",
+      "answer": "yes",
+      "point": [
+        [
+          "X2"
+        ],
+        [
+          "Y2"
+        ]
+      ],
+      "session_id": [
+        "D2",
+        "D3"
+      ],
+      "clue": [
+        "D2:1",
+        "D3:1"
+      ],
+      "meta": {
+        "page_number": [
+          2,
+          3
+        ],
+        "panel_refs": {
+          "D2": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "D3": [
+            3,
+            4,
+            5
+          ]
+        },
+        "task_family": "visual_state_change"
+      }
+    },
+    {
+      "question": "At the dealership, is the dinosaur labeled as today's special smaller than the dinosaur marked cheap? Reply with only yes or no in lowercase, with no punctuation.",
+      "answer": "yes",
+      "point": [
+        [
+          "X3",
+          "X4"
+        ],
+        [
+          "Y1"
+        ]
+      ],
+      "session_id": [
+        "D3"
+      ],
+      "clue": [
+        "D3:1"
+      ],
+      "meta": {
+        "page_number": 3,
+        "panel_refs": [
+          3
+        ],
+        "task_family": "fine_detail"
+      }
+    },
+    {
+      "question": "On page 27, does the crowned character appear in more than one panel? Reply with only yes or no in lowercase, with no punctuation.",
+      "answer": "yes",
+      "point": [
+        [
+          "X2"
+        ],
+        [
+          "Y1"
+        ]
+      ],
+      "session_id": [
+        "D27"
+      ],
+      "clue": [
+        "D27:1"
+      ],
+      "meta": {
+        "page_number": 27,
+        "panel_refs": [
+          1,
+          3,
+          4,
+          5
+        ],
+        "task_family": "character_tracking"
+      }
+    },
+    {
+      "question": "On page 27, is the crowned character physically confronted by the shirtless man by the final panel? Reply with only yes or no in lowercase, with no punctuation.",
+      "answer": "yes",
+      "point": [
+        [
+          "X2",
+          "X3"
+        ],
+        [
+          "Y2"
+        ]
+      ],
+      "session_id": [
+        "D27"
+      ],
+      "clue": [
+        "D27:1"
+      ],
+      "meta": {
+        "page_number": 27,
+        "panel_refs": [
+          1,
+          5
+        ],
+        "task_family": "visual_state_change"
+      }
+    }
+  ]
+}

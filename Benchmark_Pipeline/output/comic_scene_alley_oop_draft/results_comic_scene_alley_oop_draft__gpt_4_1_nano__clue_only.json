@@ -1,0 +1,263 @@
+{
+  "dialog_json": "/common/home/mg1998/MemoryBench/Image_Generator/ComicScene/drafts/Alley_Oop_MemEye_Draft.json",
+  "model_path": "gpt-4.1-nano",
+  "mode": "open",
+  "num_qas": 8,
+  "summary": {
+    "open_count": 8,
+    "open_exact_rate": 0.875,
+    "open_contains_rate": 0.875,
+    "open_soft_avg": 0.17500000000000002,
+    "point_soft_avg": {
+      "X2+X3|Y2": 0.20000000000000004,
+      "X2|Y1": 0.1,
+      "X3|Y2": 0.2,
+      "X2|Y2": 0.2,
+      "X3+X4|Y1": 0.2
+    },
+    "x_soft_avg": {
+      "X2": 0.16666666666666666,
+      "X3": 0.2,
+      "X4": 0.2
+    },
+    "y_soft_avg": {
+      "Y2": 0.2,
+      "Y1": 0.13333333333333333
+    }
+  },
+  "results": [
+    {
+      "idx": 1,
+      "point": [
+        [
+          "X2",
+          "X3"
+        ],
+        [
+          "Y2"
+        ]
+      ],
+      "mode": "open",
+      "question": "In panel 1 and panel 5 of page 1, is the crowned character in the water both times? Reply with only yes or no in lowercase, with no punctuation.",
+      "gt": "yes",
+      "pred": "yes",
+      "exact_match": true,
+      "contains_gt": true,
+      "keyword_hits": [],
+      "open_soft_score": 0.2,
+      "latency_ms": 903,
+      "method_name": "clue_only",
+      "history_turns": 2,
+      "source_sessions": [
+        "D1"
+      ],
+      "clue_rounds": [
+        "D1:1"
+      ]
+    },
+    {
+      "idx": 2,
+      "point": [
+        [
+          "X2"
+        ],
+        [
+          "Y1"
+        ]
+      ],
+      "mode": "open",
+      "question": "In panel 1 of page 1, is the character in the water wearing a crown? Reply with only yes or no in lowercase, with no punctuation.",
+      "gt": "yes",
+      "pred": "no",
+      "exact_match": false,
+      "contains_gt": false,
+      "keyword_hits": [],
+      "open_soft_score": 0.0,
+      "latency_ms": 647,
+      "method_name": "clue_only",
+      "history_turns": 2,
+      "source_sessions": [
+        "D1"
+      ],
+      "clue_rounds": [
+        "D1:1"
+      ]
+    },
+    {
+      "idx": 3,
+      "point": [
+        [
+          "X3"
+        ],
+        [
+          "Y2"
+        ]
+      ],
+      "mode": "open",
+      "question": "On page 1, does the crowned character start in the water and end in the water by panel 5? Reply with only yes or no in lowercase, with no punctuation.",
+      "gt": "yes",
+      "pred": "yes",
+      "exact_match": true,
+      "contains_gt": true,
+      "keyword_hits": [],
+      "open_soft_score": 0.2,
+      "latency_ms": 723,
+      "method_name": "clue_only",
+      "history_turns": 2,
+      "source_sessions": [
+        "D1"
+      ],
+      "clue_rounds": [
+        "D1:1"
+      ]
+    },
+    {
+      "idx": 4,
+      "point": [
+        [
+          "X2",
+          "X3"
+        ],
+        [
+          "Y2"
+        ]
+      ],
+      "mode": "open",
+      "question": "On page 2, does Dinny run into a tree before the conversation about his clumsiness? Reply with only yes or no in lowercase, with no punctuation.",
+      "gt": "yes",
+      "pred": "yes",
+      "exact_match": true,
+      "contains_gt": true,
+      "keyword_hits": [],
+      "open_soft_score": 0.2,
+      "latency_ms": 1464,
+      "method_name": "clue_only",
+      "history_turns": 2,
+      "source_sessions": [
+        "D2"
+      ],
+      "clue_rounds": [
+        "D2:1"
+      ]
+    },
+    {
+      "idx": 5,
+      "point": [
+        [
+          "X2"
+        ],
+        [
+          "Y2"
+        ]
+      ],
+      "mode": "open",
+      "question": "Across pages 2 and 3, is the dinosaur being considered for trade-in larger than the newer dinosaur shown at the dealership? Reply with only yes or no in lowercase, with no punctuation.",
+      "gt": "yes",
+      "pred": "yes",
+      "exact_match": true,
+      "contains_gt": true,
+      "keyword_hits": [],
+      "open_soft_score": 0.2,
+      "latency_ms": 1406,
+      "method_name": "clue_only",
+      "history_turns": 4,
+      "source_sessions": [
+        "D2",
+        "D3"
+      ],
+      "clue_rounds": [
+        "D2:1",
+        "D3:1"
+      ]
+    },
+    {
+      "idx": 6,
+      "point": [
+        [
+          "X3",
+          "X4"
+        ],
+        [
+          "Y1"
+        ]
+      ],
+      "mode": "open",
+      "question": "At the dealership, is the dinosaur labeled as today's special smaller than the dinosaur marked cheap? Reply with only yes or no in lowercase, with no punctuation.",
+      "gt": "yes",
+      "pred": "yes",
+      "exact_match": true,
+      "contains_gt": true,
+      "keyword_hits": [],
+      "open_soft_score": 0.2,
+      "latency_ms": 926,
+      "method_name": "clue_only",
+      "history_turns": 2,
+      "source_sessions": [
+        "D3"
+      ],
+      "clue_rounds": [
+        "D3:1"
+      ]
+    },
+    {
+      "idx": 7,
+      "point": [
+        [
+          "X2"
+        ],
+        [
+          "Y1"
+        ]
+      ],
+      "mode": "open",
+      "question": "On page 27, does the crowned character appear in more than one panel? Reply with only yes or no in lowercase, with no punctuation.",
+      "gt": "yes",
+      "pred": "yes",
+      "exact_match": true,
+      "contains_gt": true,
+      "keyword_hits": [],
+      "open_soft_score": 0.2,
+      "latency_ms": 787,
+      "method_name": "clue_only",
+      "history_turns": 2,
+      "source_sessions": [
+        "D27"
+      ],
+      "clue_rounds": [
+        "D27:1"
+      ]
+    },
+    {
+      "idx": 8,
+      "point": [
+        [
+          "X2",
+          "X3"
+        ],
+        [
+          "Y2"
+        ]
+      ],
+      "mode": "open",
+      "question": "On page 27, is the crowned character physically confronted by the shirtless man by the final panel? Reply with only yes or no in lowercase, with no punctuation.",
+      "gt": "yes",
+      "pred": "yes",
+      "exact_match": true,
+      "contains_gt": true,
+      "keyword_hits": [],
+      "open_soft_score": 0.2,
+      "latency_ms": 875,
+      "method_name": "clue_only",
+      "history_turns": 2,
+      "source_sessions": [
+        "D27"
+      ],
+      "clue_rounds": [
+        "D27:1"
+      ]
+    }
+  ],
+  "method_name": "clue_only",
+  "run_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/comic_scene_alley_oop_draft/20260320_185637_gpt_4_1_nano_clue_only",
+  "git_commit": "4fdd85ccf19652375a40142f1a2a87d168269925"
+}
