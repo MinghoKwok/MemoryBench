@@ -29,6 +29,8 @@ The `Benchmark_Pipeline` directory is the main benchmark scaffold in active use.
 - current memory methods including `full_context`, `clue_only`, `hybrid_rag`, and `m2a_lite`
 - partner-added tasks that reuse the same dialogue/image format
 - task data that is canonically stored in the Hugging Face dataset repo and synced locally when needed
+- representative active tasks including `brand_memory_test`, `chat_ui_memory_test`, `comicscene_alley_oop_draft`, and `home_renovation_interior_design`
+- open-answer evaluation centered on `EM/F1/BLEU-1/BLEU-2`
 
 For current generator work, the active entry points are:
 

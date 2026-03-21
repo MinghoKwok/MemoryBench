@@ -1,5 +1,0 @@
-task_name,model_name,method_name,mode,num_qas_run,open_count,open_exact_rate,open_contains_rate,open_soft_avg,mcq_count,mcq_valid_rate,run_dir
-chat_ui_memory_test,gpt_4_1_nano,full_context,open,15,15,0.4,0.8,0.16000000000000003,0,,/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/chat_ui_memory_test/20260319_204702_gpt_4_1_nano_full_context
-chat_ui_memory_test,gpt_4_1_nano,clue_only,open,15,15,0.4,0.8,0.16000000000000003,0,,/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/chat_ui_memory_test/20260319_204716_gpt_4_1_nano_clue_only
-chat_ui_memory_test,gpt_4_1_nano,hybrid_rag,open,15,15,0.4,0.8,0.16000000000000003,0,,/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/chat_ui_memory_test/20260319_204733_gpt_4_1_nano_hybrid_rag
-chat_ui_memory_test,gpt_4_1_nano,m2a_lite,open,15,15,0.4,0.8,0.16000000000000003,0,,/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/chat_ui_memory_test/20260319_204751_gpt_4_1_nano_m2a_lite

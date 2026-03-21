@@ -16,7 +16,7 @@ from .common import (
     write_jsonl,
 )
 from .dataset import MemoryBenchmarkDataset
-from .evaluator import extract_choice, score_open, score_open_soft, summarize_results, to_mcq
+from .evaluator import bleu_score, extract_choice, f1_score, score_open, summarize_results, to_mcq
 from .methods import get_method
 
 
@@ -218,7 +218,9 @@ def run_benchmark(cfg: Dict[str, Any], config_dir: Path) -> Dict[str, Any]:
             pred = router.answer(history, question)
             latency_ms = int((dt.datetime.now() - t0).total_seconds() * 1000)
             exact, contains = score_open(pred, gt)
-            hits, soft = score_open_soft(qa.get("point", ""), pred, gt)
+            f1 = f1_score(pred, gt)
+            bleu_1 = bleu_score(pred, gt, weights=(1.0, 0.0, 0.0, 0.0))
+            bleu_2 = bleu_score(pred, gt, weights=(0.5, 0.5, 0.0, 0.0))
             results.append(
                 {
                     "idx": i,
@@ -228,9 +230,11 @@ def run_benchmark(cfg: Dict[str, Any], config_dir: Path) -> Dict[str, Any]:
                     "gt": gt,
                     "pred": pred,
                     "exact_match": exact,
+                    "em": 1.0 if exact else 0.0,
                     "contains_gt": contains,
-                    "keyword_hits": hits,
-                    "open_soft_score": soft,
+                    "f1": f1,
+                    "bleu_1": bleu_1,
+                    "bleu_2": bleu_2,
                     "latency_ms": latency_ms,
                     "method_name": method.name,
                     "history_turns": len(history),
@@ -240,7 +244,7 @@ def run_benchmark(cfg: Dict[str, Any], config_dir: Path) -> Dict[str, Any]:
             )
             print(
                 f"[OPEN][{i}] exact={exact} contains={contains} "
-                f"soft={soft:.2f} latency_ms={latency_ms}"
+                f"f1={f1:.3f} bleu_1={bleu_1:.3f} bleu_2={bleu_2:.3f} latency_ms={latency_ms}"
             )
 
         if mode in {"mcq", "both"}:

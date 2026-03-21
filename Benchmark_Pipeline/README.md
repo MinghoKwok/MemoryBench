@@ -14,6 +14,18 @@ The current sample task is `brand_memory_test`. The benchmark supports local and
 - `hybrid_rag`
 - `m2a_lite`
 
+Current representative tasks in active use include:
+- `brand_memory_test`
+- `chat_ui_memory_test`
+- `comicscene_alley_oop_draft`
+- `home_renovation_interior_design`
+
+The main open-answer metrics now emphasized in this repo are:
+- `EM`
+- `F1`
+- `BLEU-1`
+- `BLEU-2`
+
 For MemEye task design and `point` annotation rules, read:
 
 - `Benchmark_Pipeline/MemEye_Annotation_Guide.md`
@@ -362,6 +374,12 @@ python -m Benchmark_Pipeline.run_benchmark \
   --method-config Benchmark_Pipeline/config/methods/clue_only.yaml
 ```
 
+Current generated external task configs commonly used in this repo are:
+- `Benchmark_Pipeline/config/tasks_external/brand_memory_test.yaml`
+- `Benchmark_Pipeline/config/tasks_external/chat_ui_memory_test.yaml`
+- `Benchmark_Pipeline/config/tasks_external/comicscene_alley_oop_draft.yaml`
+- `Benchmark_Pipeline/config/tasks_external/home_renovation_interior_design.yaml`
+
 ## Recommended HF Dataset Workflow
 
 Recommended separation of concerns:
@@ -470,8 +488,10 @@ For `open` mode, each result includes:
 - predicted answer
 - ground truth
 - exact-match / contains-GT flags
-- keyword hits
-- soft score
+- `EM`
+- `F1`
+- `BLEU-1`
+- `BLEU-2`
 - latency
 
 For `mcq` mode, each result includes:
@@ -489,7 +509,7 @@ Each row also records benchmark metadata such as:
 ## Notes
 
 - The current methods are intentionally lightweight baselines, intended to make cross-model and cross-method comparison easy.
-- The current scoring is still lightweight and heuristic, not a final benchmark spec.
+- The current scoring emphasis for open-answer tasks is `EM/F1/BLEU-1/BLEU-2`.
 - `mode=mcq` still checks output validity rather than gold-option accuracy.
 - Large models and long histories can be slow or memory-intensive.
 - `hybrid_rag` and `m2a_lite` currently use local token-based retrieval only; they do not require an external embedding service.
