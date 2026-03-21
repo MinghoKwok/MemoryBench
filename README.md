@@ -46,11 +46,18 @@ Current comic-task generation work lives under `Image_Generator/ComicScene`.
 
 ## Recommended Entry Points
 
+Current representative benchmark tasks:
+
+- `Benchmark_Pipeline/config/tasks_external/brand_memory_test.yaml`
+- `Benchmark_Pipeline/config/tasks_external/chat_ui_memory_test.yaml`
+- `Benchmark_Pipeline/config/tasks_external/comicscene_alley_oop_draft.yaml`
+- `Benchmark_Pipeline/config/tasks_external/home_renovation_interior_design.yaml`
+
 Single benchmark run:
 
 ```bash
 python -m Benchmark_Pipeline.run_benchmark \
-  --task-config Benchmark_Pipeline/config/tasks/brand_memory_test.yaml \
+  --task-config Benchmark_Pipeline/config/tasks_external/brand_memory_test.yaml \
   --model-config Benchmark_Pipeline/config/models/gpt_4_1_nano.yaml \
   --method-config Benchmark_Pipeline/config/methods/full_context.yaml
 ```
@@ -59,7 +66,7 @@ Method comparison matrix:
 
 ```bash
 python -m Benchmark_Pipeline.run_matrix \
-  --task-config Benchmark_Pipeline/config/tasks/brand_memory_test.yaml \
+  --task-config Benchmark_Pipeline/config/tasks_external/chat_ui_memory_test.yaml \
   --model-config Benchmark_Pipeline/config/models/gpt_4_1_nano.yaml \
   --method-config Benchmark_Pipeline/config/methods/full_context.yaml \
   --method-config Benchmark_Pipeline/config/methods/clue_only.yaml \

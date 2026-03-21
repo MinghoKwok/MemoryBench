@@ -8,7 +8,7 @@ The benchmark separates:
 - memory method selection
 - run artifact storage
 
-The current sample task is `brand_memory_test`. The benchmark supports local and API-backed model routers, plus multiple memory methods:
+The benchmark supports local and API-backed model routers, plus multiple memory methods:
 - `full_context`
 - `clue_only`
 - `hybrid_rag`
@@ -35,15 +35,16 @@ For MemEye task design and `point` annotation rules, read:
 - `run_benchmark.py`: modular benchmark entrypoint
 - `run_matrix.py`: model x method matrix runner
 - `run_legacy_benchmark.py`: generic legacy-compatible single-config entrypoint
-- `run_pittads.py`: compatibility shim for older commands
+- `run_pittads.py`: legacy compatibility shim for older commands
 - `benchmark/`: dataset loading, method selection, evaluation, run orchestration
 - `router/`: model router implementations
 - `config/tasks/`: task configs
+- `config/tasks_external/`: generated task configs that point to external or HF-synced datasets
 - `config/models/`: model configs
 - `config/methods/`: method configs
 - `data/`: local synced working copy of benchmark dialogue/images from the HF dataset repo
 - `runs/`: per-run artifacts
-- `output/results_brand_memory_test.json`: optional legacy output file for the sample task
+- `output/`: optional legacy-style summary JSON outputs
 
 ## Requirements
 
@@ -91,7 +92,7 @@ Run the modular benchmark from the repo root:
 
 ```bash
 python -m Benchmark_Pipeline.run_benchmark \
-  --task-config Benchmark_Pipeline/config/tasks/brand_memory_test.yaml \
+  --task-config Benchmark_Pipeline/config/tasks_external/brand_memory_test.yaml \
   --model-config Benchmark_Pipeline/config/models/qwen_local_default.yaml \
   --method-config Benchmark_Pipeline/config/methods/full_context.yaml
 ```
@@ -100,22 +101,17 @@ Script execution still works if you prefer it:
 
 ```bash
 python Benchmark_Pipeline/run_benchmark.py \
-  --task-config Benchmark_Pipeline/config/tasks/brand_memory_test.yaml \
+  --task-config Benchmark_Pipeline/config/tasks_external/brand_memory_test.yaml \
   --model-config Benchmark_Pipeline/config/models/qwen_local_default.yaml \
   --method-config Benchmark_Pipeline/config/methods/full_context.yaml
 ```
 
-The generic legacy command still works:
+Representative current task configs:
 
-```bash
-python -m Benchmark_Pipeline.run_legacy_benchmark --config Benchmark_Pipeline/config/default.yaml
-```
-
-The older task-specific entrypoint still exists for compatibility:
-
-```bash
-python Benchmark_Pipeline/run_pittads.py --config Benchmark_Pipeline/config/default.yaml
-```
+- `Benchmark_Pipeline/config/tasks_external/brand_memory_test.yaml`
+- `Benchmark_Pipeline/config/tasks_external/chat_ui_memory_test.yaml`
+- `Benchmark_Pipeline/config/tasks_external/comicscene_alley_oop_draft.yaml`
+- `Benchmark_Pipeline/config/tasks_external/home_renovation_interior_design.yaml`
 
 ## Common Experiments
 
@@ -123,7 +119,7 @@ Switch method:
 
 ```bash
 python -m Benchmark_Pipeline.run_benchmark \
-  --task-config Benchmark_Pipeline/config/tasks/brand_memory_test.yaml \
+  --task-config Benchmark_Pipeline/config/tasks_external/brand_memory_test.yaml \
   --model-config Benchmark_Pipeline/config/models/qwen_local_default.yaml \
   --method-config Benchmark_Pipeline/config/methods/clue_only.yaml
 ```
@@ -132,7 +128,7 @@ Run the lightweight retrieval baseline:
 
 ```bash
 python -m Benchmark_Pipeline.run_benchmark \
-  --task-config Benchmark_Pipeline/config/tasks/brand_memory_test.yaml \
+  --task-config Benchmark_Pipeline/config/tasks_external/home_renovation_interior_design.yaml \
   --model-config Benchmark_Pipeline/config/models/gpt_4_1_nano.yaml \
   --method-config Benchmark_Pipeline/config/methods/hybrid_rag.yaml
 ```
@@ -141,7 +137,7 @@ Run the lightweight M2A-style baseline:
 
 ```bash
 python -m Benchmark_Pipeline.run_benchmark \
-  --task-config Benchmark_Pipeline/config/tasks/brand_memory_test.yaml \
+  --task-config Benchmark_Pipeline/config/tasks_external/comicscene_alley_oop_draft.yaml \
   --model-config Benchmark_Pipeline/config/models/gpt_4_1_nano.yaml \
   --method-config Benchmark_Pipeline/config/methods/m2a_lite.yaml
 ```
@@ -150,7 +146,7 @@ Limit to a quick smoke test:
 
 ```bash
 python -m Benchmark_Pipeline.run_benchmark \
-  --task-config Benchmark_Pipeline/config/tasks/brand_memory_test.yaml \
+  --task-config Benchmark_Pipeline/config/tasks_external/chat_ui_memory_test.yaml \
   --model-config Benchmark_Pipeline/config/models/qwen_local_default.yaml \
   --method-config Benchmark_Pipeline/config/methods/full_context.yaml \
   --max-questions 1
@@ -160,7 +156,7 @@ Override evaluation mode:
 
 ```bash
 python -m Benchmark_Pipeline.run_benchmark \
-  --task-config Benchmark_Pipeline/config/tasks/brand_memory_test.yaml \
+  --task-config Benchmark_Pipeline/config/tasks_external/brand_memory_test.yaml \
   --model-config Benchmark_Pipeline/config/models/qwen_local_default.yaml \
   --method-config Benchmark_Pipeline/config/methods/full_context.yaml \
   --mode both
@@ -170,7 +166,7 @@ Run a model x method matrix:
 
 ```bash
 python -m Benchmark_Pipeline.run_matrix \
-  --task-config Benchmark_Pipeline/config/tasks/brand_memory_test.yaml \
+  --task-config Benchmark_Pipeline/config/tasks_external/chat_ui_memory_test.yaml \
   --model-config Benchmark_Pipeline/config/models/gpt_4_1_nano.yaml \
   --method-config Benchmark_Pipeline/config/methods/full_context.yaml \
   --method-config Benchmark_Pipeline/config/methods/clue_only.yaml \
@@ -233,7 +229,7 @@ raw_lexical_weight: 0.4
 raw_dense_weight: 0.6
 ```
 
-The default `config/default.yaml` composes the same pieces in one file. The older `config/tasks/pittads.yaml` remains as a legacy alias for backward compatibility.
+The default `config/default.yaml` composes the same pieces in one file. Legacy single-file configs still exist for compatibility, but new work should prefer task/model/method configs plus `config/tasks_external/`.
 
 ## Memory Methods
 
@@ -467,7 +463,7 @@ Compatibility script entrypoints still work:
 ```bash
 python Benchmark_Pipeline/run_benchmark.py ...
 python Benchmark_Pipeline/run_matrix.py ...
-python Benchmark_Pipeline/run_pittads.py ...
+python -m Benchmark_Pipeline.run_legacy_benchmark ...
 ```
 
 ## Output

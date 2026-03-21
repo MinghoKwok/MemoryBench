@@ -21,6 +21,7 @@ Cross-generator task and image design rules are documented in:
 
 - `drafts/`: current MemEye task drafts such as `Alley_Oop_MemEye_Draft.json`
 - `Data/`: source comic pages and metadata
+- `ComicScene154/`: legacy scene-segmentation reference assets kept only for historical reference
 - `run_pipeline.py`: legacy demo pipeline
 - `run_demo.sh`: legacy one-command demo runner
 - `output/panels/`: generated panel crops and low-res images from the legacy demo
@@ -62,6 +63,15 @@ For current MemEye work in this directory:
 The current Alley Oop draft already follows this pattern:
 
 - `Image_Generator/ComicScene/drafts/Alley_Oop_MemEye_Draft.json`
+
+Its current benchmark-facing task config is:
+
+- `Benchmark_Pipeline/config/tasks_external/comicscene_alley_oop_draft.yaml`
+
+Its current canonical dataset payload lives in the HF dataset repo under:
+
+- `data/dialog/ComicScene_Alley_Oop_Draft.json`
+- `data/image/ComicScene_Alley_Oop_Draft/`
 
 ## Legacy Demo Quick Start
 

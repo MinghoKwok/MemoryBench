@@ -4,6 +4,12 @@ import string
 from collections import Counter
 from typing import Any, Dict, List, Tuple
 
+from nltk.stem import PorterStemmer
+from nltk.translate.bleu_score import SmoothingFunction, sentence_bleu
+
+_stemmer = PorterStemmer()
+_ARTICLES = re.compile(r"\b(a|an|the)\b")
+
 
 def to_mcq(question: str) -> str:
     return (
@@ -25,14 +31,17 @@ def extract_choice(text: str) -> str:
 
 
 def normalize(s: str) -> str:
-    return re.sub(r"\s+", " ", s.strip().lower())
+    text = str(s).lower()
+    text = re.sub(r"(?<=\d)\.(?=\d)", "DOTPLACEHOLDER", text)
+    text = text.replace("_", "UNDERSCOREPLACEHOLDER")
+    text = _ARTICLES.sub(" ", text)
+    text = "".join(ch if ch not in string.punctuation else " " for ch in text)
+    text = text.replace("DOTPLACEHOLDER", ".").replace("UNDERSCOREPLACEHOLDER", "_")
+    return " ".join(text.split())
 
 
 def normalized_tokens(s: str) -> List[str]:
-    text = str(s).lower().replace("_", " UNDERSCORETOKEN ")
-    table = str.maketrans({ch: " " for ch in string.punctuation if ch != "_"})
-    text = text.translate(table).replace("UNDERSCORETOKEN", "_")
-    return [tok for tok in text.split() if tok]
+    return normalize(s).split()
 
 
 def score_open(pred: str, gt: str) -> Tuple[bool, bool]:
@@ -44,8 +53,8 @@ def score_open(pred: str, gt: str) -> Tuple[bool, bool]:
 
 
 def f1_score(pred: str, gt: str) -> float:
-    pred_tokens = normalized_tokens(pred)
-    gt_tokens = normalized_tokens(gt)
+    pred_tokens = [_stemmer.stem(tok) for tok in normalized_tokens(pred)]
+    gt_tokens = [_stemmer.stem(tok) for tok in normalized_tokens(gt)]
     if not pred_tokens or not gt_tokens:
         return 0.0
     overlap = Counter(pred_tokens) & Counter(gt_tokens)
@@ -68,30 +77,14 @@ def bleu_score(pred: str, gt: str, weights: Tuple[float, ...] = (0.25, 0.25, 0.2
     gt_tokens = normalized_tokens(gt)
     if not pred_tokens or not gt_tokens:
         return 0.0
-
-    precisions: List[float] = []
-    for n, weight in enumerate(weights, start=1):
-        if weight <= 0:
-            continue
-        pred_counts = _ngram_counts(pred_tokens, n)
-        gt_counts = _ngram_counts(gt_tokens, n)
-        total = sum(pred_counts.values())
-        if total == 0:
-            precisions.append(0.0)
-            continue
-        clipped = sum(min(count, gt_counts[ngram]) for ngram, count in pred_counts.items())
-        precisions.append((clipped + 1.0) / (total + 1.0))
-
-    if not precisions or any(p <= 0.0 for p in precisions):
-        return 0.0
-
-    pred_len = len(pred_tokens)
-    gt_len = len(gt_tokens)
-    brevity_penalty = 1.0 if pred_len > gt_len else math.exp(1.0 - (gt_len / pred_len))
-    weighted_log_precision = 0.0
-    for precision, weight in zip(precisions, [w for w in weights if w > 0]):
-        weighted_log_precision += weight * math.log(precision)
-    return brevity_penalty * math.exp(weighted_log_precision)
+    return float(
+        sentence_bleu(
+            [gt_tokens],
+            pred_tokens,
+            weights=weights,
+            smoothing_function=SmoothingFunction().method1,
+        )
+    )
 
 
 def point_axes(point: Any) -> Tuple[List[str], List[str]]:
