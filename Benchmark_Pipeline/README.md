@@ -29,6 +29,7 @@ The main open-answer metrics now emphasized in this repo are:
 For MemEye task design and `point` annotation rules, read:
 
 - `Benchmark_Pipeline/MemEye_Annotation_Guide.md`
+- `Benchmark_Pipeline/benchmark/prompt/README.md`
 
 ## Layout
 
@@ -37,6 +38,7 @@ For MemEye task design and `point` annotation rules, read:
 - `run_legacy_benchmark.py`: generic legacy-compatible single-config entrypoint
 - `run_pittads.py`: legacy compatibility shim for older commands
 - `benchmark/`: dataset loading, method selection, evaluation, run orchestration
+- `benchmark/prompt/`: MemEye benchmark prompt templates and task-family prompt building blocks
 - `router/`: model router implementations
 - `config/tasks/`: task configs
 - `config/tasks_external/`: generated task configs that point to external or HF-synced datasets
@@ -504,6 +506,7 @@ Each row also records benchmark metadata such as:
 
 ## Notes
 
+- The code repository is still named `MemoryBench`, but the current benchmark identity and taxonomy are `MemEye`.
 - The current methods are intentionally lightweight baselines, intended to make cross-model and cross-method comparison easy.
 - The current scoring emphasis for open-answer tasks is `EM/F1/BLEU-1/BLEU-2`.
 - `mode=mcq` still checks output validity rather than gold-option accuracy.

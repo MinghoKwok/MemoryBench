@@ -4,7 +4,7 @@ from .base import BaseRouter
 
 
 class QwenLocalRouter(BaseRouter):
-    def __init__(self, model_path: str, max_new_tokens: int = 128) -> None:
+    def __init__(self, model_path: str, max_new_tokens: int = 128, system_prompt: str = "") -> None:
         import importlib
 
         self.torch = importlib.import_module("torch")
@@ -13,6 +13,10 @@ class QwenLocalRouter(BaseRouter):
 
         self.max_new_tokens = max_new_tokens
         self.model_path = model_path
+        self.system_prompt = system_prompt.strip() or (
+            "You answer questions about a prior multimodal conversation. "
+            "Use only the provided messages and images. Be concise and factual."
+        )
 
         AutoConfig = self.transformers.AutoConfig
         cfg = AutoConfig.from_pretrained(model_path)
@@ -51,7 +55,12 @@ class QwenLocalRouter(BaseRouter):
                     setattr(self.model.generation_config, attr, None)
 
     def _to_qwen_messages(self, history_messages: List[Dict[str, Any]], question: str) -> List[Dict[str, Any]]:
-        messages: List[Dict[str, Any]] = []
+        messages: List[Dict[str, Any]] = [
+            {
+                "role": "system",
+                "content": [{"type": "text", "text": self.system_prompt}],
+            }
+        ]
         for msg in history_messages:
             content: List[Dict[str, str]] = []
             for img in msg.get("images", []) or []:

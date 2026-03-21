@@ -1,0 +1,48 @@
+{
+  "task_name": "brand_memory_test",
+  "model_name": "gpt_4_1_nano",
+  "model_path": "gpt-4.1-nano",
+  "method_name": "clue_only",
+  "mode": "open",
+  "num_qas": 4,
+  "num_qas_run": 1,
+  "dialog_json": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/dialog/Brand_Memory_Test.json",
+  "image_root": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image",
+  "run_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/brand_memory_test/20260321_011037_gpt_4_1_nano_clue_only",
+  "git_commit": "1ffa0a1dcc7b55e0286679868b64c554741f7a14",
+  "summary": {
+    "open_count": 1,
+    "open_exact_rate": 1.0,
+    "open_contains_rate": 1.0,
+    "open_f1_avg": 1.0,
+    "open_bleu_1_avg": 1.0,
+    "open_bleu_2_avg": 0.316227766016838,
+    "point_metrics": {
+      "X2|Y1": {
+        "open_exact_rate": 1.0,
+        "open_contains_rate": 1.0,
+        "open_f1_avg": 1.0,
+        "open_bleu_1_avg": 1.0,
+        "open_bleu_2_avg": 0.316227766016838
+      }
+    },
+    "x_metrics": {
+      "X2": {
+        "open_exact_rate": 1.0,
+        "open_contains_rate": 1.0,
+        "open_f1_avg": 1.0,
+        "open_bleu_1_avg": 1.0,
+        "open_bleu_2_avg": 0.316227766016838
+      }
+    },
+    "y_metrics": {
+      "Y1": {
+        "open_exact_rate": 1.0,
+        "open_contains_rate": 1.0,
+        "open_f1_avg": 1.0,
+        "open_bleu_1_avg": 1.0,
+        "open_bleu_2_avg": 0.316227766016838
+      }
+    }
+  }
+}

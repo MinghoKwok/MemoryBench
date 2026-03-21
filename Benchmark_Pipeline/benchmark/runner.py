@@ -31,13 +31,18 @@ class LegacyRunOptions:
     mode: str = ""
     max_questions: int = 0
 
+def load_sys_prompt() -> str:
+    prompt_path = Path(__file__).parent / "prompt" / "sys_prompt.txt"
+    return prompt_path.read_text(encoding="utf-8").strip()
 
-def instantiate_router(model_cfg: Dict[str, Any]):
+
+def instantiate_router(model_cfg: Dict[str, Any], system_prompt: str = ""):
     provider = model_cfg.get("provider", "qwen_local")
     if provider == "qwen_local":
         return QwenLocalRouter(
             model_path=str(model_cfg["model_path"]),
             max_new_tokens=int(model_cfg.get("max_new_tokens", 128)),
+            system_prompt=system_prompt,
         )
     if provider == "openai_api":
         return OpenAIAPIRouter(
@@ -47,6 +52,7 @@ def instantiate_router(model_cfg: Dict[str, Any]):
             base_url=str(model_cfg.get("base_url", "https://api.openai.com/v1")),
             max_new_tokens=int(model_cfg.get("max_new_tokens", 128)),
             timeout=int(model_cfg.get("timeout", 90)),
+            system_prompt=system_prompt,
         )
     if provider == "gemini_api":
         return GeminiAPIRouter(
@@ -56,6 +62,7 @@ def instantiate_router(model_cfg: Dict[str, Any]):
             base_url=str(model_cfg.get("base_url", "https://generativelanguage.googleapis.com/v1beta")),
             max_new_tokens=int(model_cfg.get("max_new_tokens", 128)),
             timeout=int(model_cfg.get("timeout", 90)),
+            system_prompt=system_prompt,
         )
     raise ValueError(f"Unsupported provider: {provider}")
 
@@ -200,7 +207,7 @@ def run_benchmark(cfg: Dict[str, Any], config_dir: Path) -> Dict[str, Any]:
         str(cfg.get("method", {}).get("name", "full_context")),
         config=dict(cfg.get("method", {})),
     )
-    router = instantiate_router(cfg["model"])
+    router = instantiate_router(cfg["model"], system_prompt=load_sys_prompt())
 
     qas = dataset.iter_qas(limit=max_questions)
     results: List[Dict[str, Any]] = []

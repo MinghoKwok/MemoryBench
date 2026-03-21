@@ -1,5 +1,8 @@
 # MemoryBench
 
+Code repository name: `MemoryBench`
+Current benchmark name: `MemEye`
+
 This repository currently contains several multimodal memory workstreams:
 
 - `Benchmark_Pipeline`
