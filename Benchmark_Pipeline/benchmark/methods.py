@@ -2,7 +2,11 @@ from abc import ABC, abstractmethod
 from typing import Any, Dict, List, Optional
 
 from .dataset import MemoryBenchmarkDataset, history_from_round_ids
-from .retrieval import select_round_ids_for_qa, select_round_ids_for_qa_m2a_lite
+from .retrieval import (
+    select_round_ids_for_qa,
+    select_round_ids_for_qa_m2a_full,
+    select_round_ids_for_qa_m2a_lite,
+)
 
 
 class HistoryMethod(ABC):
@@ -77,11 +81,30 @@ class M2ALiteMethod(HistoryMethod):
         return history
 
 
+class M2AFullMethod(HistoryMethod):
+    name = "m2a_full"
+
+    def build_history(self, dataset: MemoryBenchmarkDataset, qa: Dict[str, Any]) -> List[Dict[str, Any]]:
+        selected_round_ids = select_round_ids_for_qa_m2a_full(dataset, qa, self.config)
+        if not selected_round_ids:
+            return M2ALiteMethod(config=self.config).build_history(dataset, qa)
+
+        history: List[Dict[str, Any]] = []
+        allowed_round_ids = set(selected_round_ids)
+        target_sessions = set(qa.get("session_id", []))
+        for sid in dataset.session_order():
+            if sid not in target_sessions:
+                continue
+            history.extend(history_from_round_ids(dataset.get_session(sid), dataset.rounds, allowed_round_ids))
+        return history
+
+
 def get_method(method_name: str, config: Optional[Dict[str, Any]] = None) -> HistoryMethod:
     registry = {
         FullContextMethod.name: FullContextMethod,
         HybridRAGMethod.name: HybridRAGMethod,
         M2ALiteMethod.name: M2ALiteMethod,
+        M2AFullMethod.name: M2AFullMethod,
     }
     cls = registry.get(method_name)
     if cls is None:

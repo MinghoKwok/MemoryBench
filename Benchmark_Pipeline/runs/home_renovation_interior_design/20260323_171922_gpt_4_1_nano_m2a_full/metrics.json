@@ -1,0 +1,174 @@
+{
+  "task_name": "home_renovation_interior_design",
+  "model_name": "gpt_4_1_nano",
+  "model_path": "gpt-4.1-nano",
+  "method_name": "m2a_full",
+  "mode": "open",
+  "num_qas": 25,
+  "num_qas_run": 25,
+  "dialog_json": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/dialog/Home_Renovation_Interior_Design.json",
+  "image_root": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image",
+  "run_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/home_renovation_interior_design/20260323_171922_gpt_4_1_nano_m2a_full",
+  "git_commit": "a66119f1040d9ba5110ee1855fa02c5926155942",
+  "summary": {
+    "open_count": 25,
+    "open_exact_rate": 0.08,
+    "open_contains_rate": 0.16,
+    "open_f1_avg": 0.45269472008733636,
+    "open_bleu_1_avg": 0.29713522588089647,
+    "open_bleu_2_avg": 0.20407628673774014,
+    "point_metrics": {
+      "X3|Y2": {
+        "open_exact_rate": 0.0,
+        "open_contains_rate": 0.0,
+        "open_f1_avg": 0.4,
+        "open_bleu_1_avg": 0.30668147154310776,
+        "open_bleu_2_avg": 0.27740382852614875
+      },
+      "X3+X4|Y2": {
+        "open_exact_rate": 0.0,
+        "open_contains_rate": 0.0,
+        "open_f1_avg": 0.33333333333333337,
+        "open_bleu_1_avg": 0.01831563888873418,
+        "open_bleu_2_avg": 0.01831563888873418
+      },
+      "X2|Y1": {
+        "open_exact_rate": 0.0,
+        "open_contains_rate": 0.0,
+        "open_f1_avg": 0.3,
+        "open_bleu_1_avg": 0.06170745053482555,
+        "open_bleu_2_avg": 0.030861280883011336
+      },
+      "X3|Y1": {
+        "open_exact_rate": 0.0,
+        "open_contains_rate": 0.125,
+        "open_f1_avg": 0.5208163238054542,
+        "open_bleu_1_avg": 0.3184409208177138,
+        "open_bleu_2_avg": 0.23861974678639966
+      },
+      "X0|Y3": {
+        "open_exact_rate": 1.0,
+        "open_contains_rate": 1.0,
+        "open_f1_avg": 1.0,
+        "open_bleu_1_avg": 1.0,
+        "open_bleu_2_avg": 0.316227766016838
+      },
+      "X1|Y3": {
+        "open_exact_rate": 0.0,
+        "open_contains_rate": 0.0,
+        "open_f1_avg": 0.41071428571428564,
+        "open_bleu_1_avg": 0.30666666666666664,
+        "open_bleu_2_avg": 0.157685969143944
+      },
+      "X4|Y2": {
+        "open_exact_rate": 0.0,
+        "open_contains_rate": 0.0,
+        "open_f1_avg": 0.5862068965517242,
+        "open_bleu_1_avg": 0.2939099544684799,
+        "open_bleu_2_avg": 0.16880288087992268
+      },
+      "X3+X4|Y1": {
+        "open_exact_rate": 0.0,
+        "open_contains_rate": 0.0,
+        "open_f1_avg": 0.7368421052631579,
+        "open_bleu_1_avg": 0.48954165955695317,
+        "open_bleu_2_avg": 0.4468883496297629
+      },
+      "X0+X4|Y3": {
+        "open_exact_rate": 0.0,
+        "open_contains_rate": 0.0,
+        "open_f1_avg": 0.4745762711864407,
+        "open_bleu_1_avg": 0.2707187164181508,
+        "open_bleu_2_avg": 0.14846444440963638
+      },
+      "X4|Y3": {
+        "open_exact_rate": 0.0,
+        "open_contains_rate": 1.0,
+        "open_f1_avg": 0.0909090909090909,
+        "open_bleu_1_avg": 0.047619047619047616,
+        "open_bleu_2_avg": 0.01543033499620919
+      },
+      "X4|Y1": {
+        "open_exact_rate": 0.3333333333333333,
+        "open_contains_rate": 0.3333333333333333,
+        "open_f1_avg": 0.5384615384615384,
+        "open_bleu_1_avg": 0.5238095238095238,
+        "open_bleu_2_avg": 0.4362022333080613
+      },
+      "X0|Y2": {
+        "open_exact_rate": 0.0,
+        "open_contains_rate": 0.0,
+        "open_f1_avg": 0.4210526315789474,
+        "open_bleu_1_avg": 0.27973809117540177,
+        "open_bleu_2_avg": 0.205271639462895
+      },
+      "X1|Y1": {
+        "open_exact_rate": 0.0,
+        "open_contains_rate": 0.0,
+        "open_f1_avg": 0.0909090909090909,
+        "open_bleu_1_avg": 0.055555555555555546,
+        "open_bleu_2_avg": 0.018633899812498245
+      }
+    },
+    "x_metrics": {
+      "X3": {
+        "open_exact_rate": 0.0,
+        "open_contains_rate": 0.09090909090909091,
+        "open_f1_avg": 0.5124278208218297,
+        "open_bleu_1_avg": 0.3056423760482278,
+        "open_bleu_2_avg": 0.2410514355759857
+      },
+      "X4": {
+        "open_exact_rate": 0.125,
+        "open_contains_rate": 0.25,
+        "open_f1_avg": 0.4796565390785453,
+        "open_bleu_1_avg": 0.3364416985474922,
+        "open_bleu_2_avg": 0.26331354359105613
+      },
+      "X2": {
+        "open_exact_rate": 0.0,
+        "open_contains_rate": 0.0,
+        "open_f1_avg": 0.3,
+        "open_bleu_1_avg": 0.06170745053482555,
+        "open_bleu_2_avg": 0.030861280883011336
+      },
+      "X0": {
+        "open_exact_rate": 0.3333333333333333,
+        "open_contains_rate": 0.3333333333333333,
+        "open_f1_avg": 0.631876300921796,
+        "open_bleu_1_avg": 0.5168189358645175,
+        "open_bleu_2_avg": 0.22332128329645648
+      },
+      "X1": {
+        "open_exact_rate": 0.0,
+        "open_contains_rate": 0.0,
+        "open_f1_avg": 0.1975108225108225,
+        "open_bleu_1_avg": 0.13925925925925925,
+        "open_bleu_2_avg": 0.06498458958964683
+      }
+    },
+    "y_metrics": {
+      "Y2": {
+        "open_exact_rate": 0.0,
+        "open_contains_rate": 0.0,
+        "open_f1_avg": 0.43514821536600123,
+        "open_bleu_1_avg": 0.2246612890189309,
+        "open_bleu_2_avg": 0.16744849693942515
+      },
+      "Y1": {
+        "open_exact_rate": 0.058823529411764705,
+        "open_contains_rate": 0.11764705882352941,
+        "open_f1_avg": 0.4470926760535052,
+        "open_bleu_1_avg": 0.28851359177898955,
+        "open_bleu_2_avg": 0.2231943921246573
+      },
+      "Y3": {
+        "open_exact_rate": 0.25,
+        "open_contains_rate": 0.5,
+        "open_f1_avg": 0.4940499119524543,
+        "open_bleu_1_avg": 0.4062511076759663,
+        "open_bleu_2_avg": 0.1594521286416569
+      }
+    }
+  }
+}

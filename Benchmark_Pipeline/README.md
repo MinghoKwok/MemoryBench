@@ -12,6 +12,7 @@ The benchmark supports local and API-backed model routers, plus multiple memory 
 - `full_context`
 - `hybrid_rag`
 - `m2a_lite`
+- `m2a_full`
 
 Current representative tasks in active use include:
 - `brand_memory_test`
@@ -162,7 +163,8 @@ python -m Benchmark_Pipeline.run_matrix \
   --model-config Benchmark_Pipeline/config/models/gpt_4_1_nano.yaml \
   --method-config Benchmark_Pipeline/config/methods/full_context.yaml \
   --method-config Benchmark_Pipeline/config/methods/hybrid_rag.yaml \
-  --method-config Benchmark_Pipeline/config/methods/m2a_lite.yaml
+  --method-config Benchmark_Pipeline/config/methods/m2a_lite.yaml \
+  --method-config Benchmark_Pipeline/config/methods/m2a_full.yaml
 ```
 
 Representative `gpt-4.1-nano` results on the four active MemEye tasks:
@@ -229,6 +231,22 @@ raw_lexical_weight: 0.4
 raw_dense_weight: 0.6
 ```
 
+`m2a_full` uses a fuller M2A-style retrieval pipeline:
+
+```yaml
+name: m2a_full
+semantic_top_k: 8
+raw_top_k: 6
+neighbor_window: 1
+max_iterations: 2
+rrf_k: 60
+min_round_words_for_memory: 3
+semantic_lexical_weight: 0.35
+semantic_dense_weight: 0.65
+raw_lexical_weight: 0.35
+raw_dense_weight: 0.65
+```
+
 The default `config/default.yaml` composes the same pieces in one file. Legacy single-file configs still exist for compatibility, but new work should prefer task/model/method configs plus `config/tasks_external/`.
 
 ## Memory Methods
@@ -236,6 +254,7 @@ The default `config/default.yaml` composes the same pieces in one file. Legacy s
 - `full_context`: feeds all rounds from the target session set.
 - `hybrid_rag`: retrieves round-level evidence with a lightweight lexical + TF-IDF scoring pass, then expands local neighbors.
 - `m2a_lite`: builds a simple two-layer memory over session summaries and round summaries, retrieves semantic memory first, then resolves back to raw rounds.
+- `m2a_full`: builds multi-granularity semantic memories (turn/round/session), fuses dense and lexical ranks with RRF, then iteratively refines semantic-to-raw evidence retrieval.
 
 When `hybrid_rag` retrieves no evidence, it falls back internally to the QA's annotated clue rounds. This fallback is an implementation detail, not a separately exposed benchmark method.
 
@@ -260,6 +279,7 @@ So the intended comparison in this benchmark is:
 
 - `hybrid_rag`: direct retrieval over raw rounds
 - `m2a_lite`: lightweight two-stage memory retrieval inspired by M2A
+- `m2a_full`: richer M2A-style iterative semantic-to-raw retrieval baseline (benchmark-oriented)
 
 It should not be described as "the full M2A method" in reports or comparisons.
 
@@ -510,4 +530,4 @@ Each row also records benchmark metadata such as:
 - The current scoring emphasis for open-answer tasks is `EM/F1/BLEU-1/BLEU-2`.
 - `mode=mcq` still checks output validity rather than gold-option accuracy.
 - Large models and long histories can be slow or memory-intensive.
-- `hybrid_rag` and `m2a_lite` currently use local token-based retrieval only; they do not require an external embedding service.
+- `hybrid_rag`, `m2a_lite`, and `m2a_full` currently use local token-based retrieval only; they do not require an external embedding service.
