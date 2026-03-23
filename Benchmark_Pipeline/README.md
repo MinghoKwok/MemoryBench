@@ -10,7 +10,6 @@ The benchmark separates:
 
 The benchmark supports local and API-backed model routers, plus multiple memory methods:
 - `full_context`
-- `clue_only`
 - `hybrid_rag`
 - `m2a_lite`
 
@@ -117,15 +116,6 @@ Representative current task configs:
 
 ## Common Experiments
 
-Switch method:
-
-```bash
-python -m Benchmark_Pipeline.run_benchmark \
-  --task-config Benchmark_Pipeline/config/tasks_external/brand_memory_test.yaml \
-  --model-config Benchmark_Pipeline/config/models/qwen_local_default.yaml \
-  --method-config Benchmark_Pipeline/config/methods/clue_only.yaml
-```
-
 Run the lightweight retrieval baseline:
 
 ```bash
@@ -171,10 +161,18 @@ python -m Benchmark_Pipeline.run_matrix \
   --task-config Benchmark_Pipeline/config/tasks_external/chat_ui_memory_test.yaml \
   --model-config Benchmark_Pipeline/config/models/gpt_4_1_nano.yaml \
   --method-config Benchmark_Pipeline/config/methods/full_context.yaml \
-  --method-config Benchmark_Pipeline/config/methods/clue_only.yaml \
   --method-config Benchmark_Pipeline/config/methods/hybrid_rag.yaml \
   --method-config Benchmark_Pipeline/config/methods/m2a_lite.yaml
 ```
+
+Representative `gpt-4.1-nano` results on the four active MemEye tasks:
+
+| Task | Full Context | Hybrid RAG | M2A Lite |
+| --- | --- | --- | --- |
+| `brand_memory_test` | EM `1.000`, F1 `1.000`, BLEU-1 `1.000`, BLEU-2 `0.829` | EM `1.000`, F1 `1.000`, BLEU-1 `1.000`, BLEU-2 `0.829` | EM `1.000`, F1 `1.000`, BLEU-1 `1.000`, BLEU-2 `0.829` |
+| `chat_ui_memory_test` | EM `0.600`, F1 `0.744`, BLEU-1 `0.709`, BLEU-2 `0.238` | EM `0.600`, F1 `0.745`, BLEU-1 `0.708`, BLEU-2 `0.237` | EM `0.600`, F1 `0.745`, BLEU-1 `0.708`, BLEU-2 `0.237` |
+| `comicscene_alley_oop_draft` | EM `0.933`, F1 `0.933`, BLEU-1 `0.933`, BLEU-2 `0.295` | EM `0.933`, F1 `0.933`, BLEU-1 `0.933`, BLEU-2 `0.295` | EM `0.933`, F1 `0.933`, BLEU-1 `0.933`, BLEU-2 `0.295` |
+| `home_renovation_interior_design` | EM `0.200`, F1 `0.520`, BLEU-1 `0.386`, BLEU-2 `0.298` | EM `0.167`, F1 `0.481`, BLEU-1 `0.360`, BLEU-2 `0.297` | EM `0.200`, F1 `0.523`, BLEU-1 `0.388`, BLEU-2 `0.301` |
 
 ## Config Structure
 
@@ -236,9 +234,10 @@ The default `config/default.yaml` composes the same pieces in one file. Legacy s
 ## Memory Methods
 
 - `full_context`: feeds all rounds from the target session set.
-- `clue_only`: feeds only annotated clue rounds.
 - `hybrid_rag`: retrieves round-level evidence with a lightweight lexical + TF-IDF scoring pass, then expands local neighbors.
 - `m2a_lite`: builds a simple two-layer memory over session summaries and round summaries, retrieves semantic memory first, then resolves back to raw rounds.
+
+When `hybrid_rag` retrieves no evidence, it falls back internally to the QA's annotated clue rounds. This fallback is an implementation detail, not a separately exposed benchmark method.
 
 ## M2A Note
 
@@ -369,7 +368,7 @@ Then run any generated task config normally, for example:
 python -m Benchmark_Pipeline.run_benchmark \
   --task-config Benchmark_Pipeline/config/tasks_external/chat_ui_memory_test.yaml \
   --model-config Benchmark_Pipeline/config/models/gpt_4_1_nano.yaml \
-  --method-config Benchmark_Pipeline/config/methods/clue_only.yaml
+  --method-config Benchmark_Pipeline/config/methods/full_context.yaml
 ```
 
 Current generated external task configs commonly used in this repo are:
@@ -443,7 +442,7 @@ To benchmark against a synced local task config, run for example:
 python -m Benchmark_Pipeline.run_benchmark \
   --task-config Benchmark_Pipeline/config/tasks_external/chat_ui_memory_test.yaml \
   --model-config Benchmark_Pipeline/config/models/gpt_4_1_nano.yaml \
-  --method-config Benchmark_Pipeline/config/methods/clue_only.yaml
+  --method-config Benchmark_Pipeline/config/methods/full_context.yaml
 ```
 
 This lets each partner add a task instance without changing framework code while keeping benchmark data canonical in the HF dataset repo.

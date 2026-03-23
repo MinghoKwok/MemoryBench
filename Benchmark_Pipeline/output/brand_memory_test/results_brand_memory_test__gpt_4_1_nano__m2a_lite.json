@@ -108,9 +108,9 @@
       "f1": 1.0,
       "bleu_1": 1.0,
       "bleu_2": 0.316227766016838,
-      "latency_ms": 998,
-      "method_name": "clue_only",
-      "history_turns": 2,
+      "latency_ms": 726,
+      "method_name": "m2a_lite",
+      "history_turns": 4,
       "source_sessions": [
         "D1"
       ],
@@ -138,8 +138,8 @@
       "f1": 1.0,
       "bleu_1": 1.0,
       "bleu_2": 1.0,
-      "latency_ms": 1427,
-      "method_name": "clue_only",
+      "latency_ms": 950,
+      "method_name": "m2a_lite",
       "history_turns": 4,
       "source_sessions": [
         "D2"
@@ -169,9 +169,9 @@
       "f1": 1.0,
       "bleu_1": 1.0,
       "bleu_2": 1.0,
-      "latency_ms": 919,
-      "method_name": "clue_only",
-      "history_turns": 2,
+      "latency_ms": 786,
+      "method_name": "m2a_lite",
+      "history_turns": 4,
       "source_sessions": [
         "D1",
         "D2"
@@ -201,9 +201,9 @@
       "f1": 1.0,
       "bleu_1": 1.0,
       "bleu_2": 1.0,
-      "latency_ms": 1579,
-      "method_name": "clue_only",
-      "history_turns": 4,
+      "latency_ms": 1874,
+      "method_name": "m2a_lite",
+      "history_turns": 8,
       "source_sessions": [
         "D1",
         "D2"
@@ -214,7 +214,7 @@
       ]
     }
   ],
-  "method_name": "clue_only",
-  "run_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/brand_memory_test/20260322_185409_gpt_4_1_nano_clue_only",
+  "method_name": "m2a_lite",
+  "run_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/brand_memory_test/20260322_214150_gpt_4_1_nano_m2a_lite",
   "git_commit": "e73b45ce3934f16cdff09951c72a63718e3e5fc3"
 }

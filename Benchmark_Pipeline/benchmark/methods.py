@@ -29,9 +29,7 @@ class FullContextMethod(HistoryMethod):
         return history
 
 
-class ClueOnlyMethod(HistoryMethod):
-    name = "clue_only"
-
+class _ClueRoundFallbackMethod(HistoryMethod):
     def build_history(self, dataset: MemoryBenchmarkDataset, qa: Dict[str, Any]) -> List[Dict[str, Any]]:
         history: List[Dict[str, Any]] = []
         target_sessions = set(qa.get("session_id", []))
@@ -49,7 +47,7 @@ class HybridRAGMethod(HistoryMethod):
     def build_history(self, dataset: MemoryBenchmarkDataset, qa: Dict[str, Any]) -> List[Dict[str, Any]]:
         selected_round_ids = select_round_ids_for_qa(dataset, qa, self.config)
         if not selected_round_ids:
-            return ClueOnlyMethod().build_history(dataset, qa)
+            return _ClueRoundFallbackMethod().build_history(dataset, qa)
 
         history: List[Dict[str, Any]] = []
         allowed_round_ids = set(selected_round_ids)
@@ -82,7 +80,6 @@ class M2ALiteMethod(HistoryMethod):
 def get_method(method_name: str, config: Optional[Dict[str, Any]] = None) -> HistoryMethod:
     registry = {
         FullContextMethod.name: FullContextMethod,
-        ClueOnlyMethod.name: ClueOnlyMethod,
         HybridRAGMethod.name: HybridRAGMethod,
         M2ALiteMethod.name: M2ALiteMethod,
     }
