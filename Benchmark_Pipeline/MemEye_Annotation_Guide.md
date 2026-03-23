@@ -196,15 +196,82 @@ For benchmark stability:
 
 Avoid vague free-form questions when a constrained answer space is available.
 
-### 4. Flag visually weak items
+### 4. Ensure QAs require image memory (critical)
 
-If a question is mostly answerable from text-only history, it should be marked for rewrite or excluded from the MemEye core set even if it remains in a legacy task file.
+Every QA must require viewing the actual images to answer correctly. Text-only answerable QAs defeat the purpose of visual memory benchmarking.
 
-Typical warning signs:
+#### 4.1 Prohibited patterns in dialogue
 
-- the image is incidental rather than necessary
-- the answer depends only on dialogue semantics
-- replacing the image with a dense caption would preserve nearly all information
+**Do NOT include image descriptions in assistant responses:**
+
+Bad:
+```json
+{
+  "assistant": "This advertisement features a classic Coca-Cola glass contour bottle held by a person. The product is set against the brand's signature solid red background."
+}
+```
+
+Good:
+```json
+{
+  "assistant": "Stored for later memory questions."
+}
+```
+
+**Do NOT include answer-revealing details in user or assistant text:**
+
+Bad:
+```json
+{
+  "user": "Look at those gray cabinets. That color is so depressing."
+}
+```
+(If a QA asks "What color are the cabinets?", the answer "gray" is in the text)
+
+Good:
+```json
+{
+  "user": "Look at those cabinets. That color is so depressing."
+}
+```
+
+#### 4.2 Keep image_caption minimal
+
+The `image_caption` field should be generic and not reveal visual details that could answer QAs.
+
+Bad:
+```json
+{
+  "image_caption": ["Alley Oop page 1 with five panels, including a crowned character in water and later panels showing the same crowned character again."]
+}
+```
+
+Good:
+```json
+{
+  "image_caption": ["Alley Oop comic page 1."]
+}
+```
+
+#### 4.3 Prohibited QA types
+
+The following QA patterns should be excluded or rewritten:
+
+| Pattern | Example | Problem |
+|---------|---------|---------|
+| Answer is "Not mentioned" | "What brand is the refrigerator?" → "Not mentioned" | No image viewing required |
+| Answer is in dialogue | "What color did she choose?" when dialogue says "I'll go with Cavern Clay" | Text memory sufficient |
+| Synthesis of text-only facts | "Trace the evolution of her color choice" when all colors are named in dialogue | Text memory sufficient |
+
+#### 4.4 Verification checklist
+
+Before finalizing a QA, verify:
+
+- [ ] The answer cannot be found by searching dialogue text
+- [ ] The assistant never describes the image content
+- [ ] The image_caption does not reveal the answer
+- [ ] Removing the image would make the question unanswerable
+- [ ] The answer is NOT "Not mentioned" or similar negative responses
 
 ### 5. Use `X0` carefully
 
@@ -262,11 +329,23 @@ Recommended mappings:
 
 Before merging a new task, verify:
 
+**Annotation quality:**
 - the answer is recoverable from visible inputs
 - the question does not depend on hidden metadata
 - the `X` label describes the minimal necessary visual demand
 - the `Y` label describes the minimal necessary reasoning demand
 - multi-label `point` is used only when justified
-- the item is not obviously text-bypassable
 - the clue list actually supports the annotated reasoning path
 - the answer format is as controlled as possible without weakening the underlying visual or reasoning demand
+
+**Image memory requirement (critical):**
+- the answer is NOT findable in dialogue text alone
+- assistant responses do NOT describe image contents
+- image_caption fields are generic (e.g., "Comic page 1") not descriptive
+- the answer is NOT "Not mentioned" or similar negative responses
+- removing the image would make the question unanswerable
+
+**Common failures to check:**
+- grep the dialogue for keywords in the answer
+- verify assistant responses are minimal (e.g., "Stored for later memory questions")
+- confirm image_caption does not contain answer-relevant details
