@@ -1,0 +1,8 @@
+name: visual_case_archive_assistant
+dataset:
+  dialog_json: /common/home/mg1998/.cache/memeye_hf/MemEye/data/dialog/Visual_Case_Archive_Assistant.json
+  image_root: /common/home/mg1998/.cache/memeye_hf/MemEye/data/image
+eval:
+  mode: open
+  output_json: output/results_visual_case_archive_assistant.json
+  max_questions: 0
