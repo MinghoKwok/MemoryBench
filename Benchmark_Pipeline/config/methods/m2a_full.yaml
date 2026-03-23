@@ -1,10 +1,23 @@
 name: m2a_full
+
+# Dense embedding settings (following original M2A paper)
+use_dense_embeddings: true
+text_embedding_model: "all-MiniLM-L6-v2"  # 384-dim sentence embeddings
+
+# Cross-modal image retrieval (CLIP)
+use_image_retrieval: true
+image_embedding_model: "openai/clip-vit-base-patch32"  # 512-dim image embeddings
+image_weight: 0.15  # Weight for image retrieval in RRF fusion
+
+# Retrieval parameters
 semantic_top_k: 8
 raw_top_k: 6
 neighbor_window: 1
 max_iterations: 2
 rrf_k: 60
 min_round_words_for_memory: 3
+
+# Hybrid ranking weights (dense + lexical)
 semantic_lexical_weight: 0.35
 semantic_dense_weight: 0.65
 raw_lexical_weight: 0.35

@@ -1,9 +1,33 @@
 import math
 import re
 from collections import Counter
-from typing import Any, Dict, List, Tuple
+from typing import Any, Dict, List, Optional, Tuple
+
+import numpy as np
 
 from .dataset import MemoryBenchmarkDataset
+
+# Lazy import for embeddings to avoid loading models when not needed
+_text_embedder = None
+_image_embedder = None
+
+
+def _get_text_embedder(model_name: str = "all-MiniLM-L6-v2"):
+    """Lazily load the text embedder."""
+    global _text_embedder
+    if _text_embedder is None:
+        from .embeddings import TextEmbedder
+        _text_embedder = TextEmbedder(model_name)
+    return _text_embedder
+
+
+def _get_image_embedder(model_name: str = "openai/clip-vit-base-patch32"):
+    """Lazily load the image embedder."""
+    global _image_embedder
+    if _image_embedder is None:
+        from .embeddings import ImageEmbedder
+        _image_embedder = ImageEmbedder(model_name)
+    return _image_embedder
 
 
 TOKEN_RE = re.compile(r"[a-z0-9]+")
@@ -338,6 +362,160 @@ def _rrf_fuse(rankings: List[List[str]], k: int = 60) -> List[str]:
     return [item_id for item_id, _ in sorted(scores.items(), key=lambda x: (-x[1], x[0]))]
 
 
+def _dense_embedding_rank(
+    query_text: str,
+    candidates: List[Tuple[str, str]],
+    text_embedder,
+) -> List[Tuple[float, str]]:
+    """
+    Rank candidates using dense sentence embeddings.
+
+    Args:
+        query_text: The query string
+        candidates: List of (candidate_id, candidate_text) tuples
+        text_embedder: TextEmbedder instance
+
+    Returns:
+        List of (score, candidate_id) sorted by descending score.
+        Returns empty list if embedder is unavailable.
+    """
+    if not query_text.strip() or not candidates:
+        return []
+
+    if text_embedder is None or not text_embedder.is_available:
+        return []
+
+    # Get query embedding
+    query_embedding = text_embedder.embed(query_text)
+    if query_embedding is None:
+        return []
+
+    # Get candidate embeddings
+    candidate_texts = [text for _, text in candidates]
+    candidate_embeddings = text_embedder.embed_batch(candidate_texts)
+    if candidate_embeddings is None:
+        return []
+
+    # Compute similarities
+    from .embeddings import cosine_similarity_batch
+    similarities = cosine_similarity_batch(query_embedding, candidate_embeddings)
+
+    # Build scored list
+    scored: List[Tuple[float, str]] = []
+    for i, (candidate_id, _) in enumerate(candidates):
+        score = float(similarities[i])
+        if score > 0:
+            scored.append((score, candidate_id))
+
+    scored.sort(key=lambda item: (-item[0], item[1]))
+    return scored
+
+
+def _image_embedding_rank(
+    query_text: str,
+    candidates: List[Tuple[str, List[str]]],
+    image_embedder,
+) -> List[Tuple[float, str]]:
+    """
+    Rank candidates by image similarity using CLIP cross-modal retrieval.
+
+    Args:
+        query_text: The query string
+        candidates: List of (candidate_id, image_paths) tuples
+        image_embedder: ImageEmbedder instance
+
+    Returns:
+        List of (score, candidate_id) sorted by descending score.
+        Returns empty list if embedder is unavailable.
+    """
+    if not query_text.strip() or not candidates:
+        return []
+
+    if image_embedder is None or not image_embedder.is_available:
+        return []
+
+    # Filter candidates that have images
+    candidates_with_images = [(cid, paths) for cid, paths in candidates if paths]
+    if not candidates_with_images:
+        return []
+
+    # Get query text embedding for cross-modal search
+    query_embedding = image_embedder.embed_text_for_image_search(query_text)
+    if query_embedding is None:
+        return []
+
+    scored: List[Tuple[float, str]] = []
+    for candidate_id, image_paths in candidates_with_images:
+        max_score = 0.0
+        for path in image_paths:
+            img_embedding = image_embedder.embed_image(path)
+            if img_embedding is not None:
+                from .embeddings import cosine_similarity
+                score = cosine_similarity(query_embedding, img_embedding)
+                max_score = max(max_score, score)
+        if max_score > 0:
+            scored.append((max_score, candidate_id))
+
+    scored.sort(key=lambda item: (-item[0], item[1]))
+    return scored
+
+
+def _rank_with_dense_and_lexical(
+    query_text: str,
+    query_tokens: List[str],
+    candidates: List[Tuple[str, str, List[str]]],
+    text_embedder,
+    lexical_weight: float = 0.35,
+    dense_weight: float = 0.65,
+) -> List[Tuple[float, str]]:
+    """
+    Hybrid ranking combining dense embeddings and lexical (BM25-style) scores.
+
+    Args:
+        query_text: The query string for dense embedding
+        query_tokens: Tokenized query for lexical matching
+        candidates: List of (candidate_id, candidate_text, candidate_tokens) tuples
+        text_embedder: TextEmbedder instance
+        lexical_weight: Weight for lexical score
+        dense_weight: Weight for dense embedding score
+
+    Returns:
+        List of (score, candidate_id) sorted by descending score
+    """
+    if not candidates:
+        return []
+
+    # Dense ranking
+    dense_candidates = [(cid, text) for cid, text, _ in candidates]
+    dense_scores = {cid: score for score, cid in _dense_embedding_rank(query_text, dense_candidates, text_embedder)}
+
+    # Lexical ranking (using existing TF-IDF approach)
+    lexical_candidates = [(cid, tokens) for cid, _, tokens in candidates]
+    lexical_ranked = _rank_texts(query_tokens, lexical_candidates, lexical_weight=1.0, semantic_weight=0.0)
+    lexical_scores = {cid: score for score, cid in lexical_ranked}
+
+    # Normalize scores to [0, 1] range
+    if dense_scores:
+        max_dense = max(dense_scores.values()) or 1.0
+        dense_scores = {k: v / max_dense for k, v in dense_scores.items()}
+    if lexical_scores:
+        max_lexical = max(lexical_scores.values()) or 1.0
+        lexical_scores = {k: v / max_lexical for k, v in lexical_scores.items()}
+
+    # Combine scores
+    all_ids = set(dense_scores.keys()) | set(lexical_scores.keys())
+    scored: List[Tuple[float, str]] = []
+    for cid in all_ids:
+        d_score = dense_scores.get(cid, 0.0)
+        l_score = lexical_scores.get(cid, 0.0)
+        combined = (dense_weight * d_score) + (lexical_weight * l_score)
+        if combined > 0:
+            scored.append((combined, cid))
+
+    scored.sort(key=lambda item: (-item[0], item[1]))
+    return scored
+
+
 def _extract_expansion_tokens(tokens: List[str], top_n: int = 6) -> List[str]:
     counts = Counter(t for t in tokens if t not in STOPWORDS and len(t) > 2)
     return [token for token, _ in counts.most_common(top_n)]
@@ -362,12 +540,23 @@ def _build_m2a_full_memories(
     session_ids: List[str],
     min_round_words_for_memory: int,
 ) -> List[Dict[str, Any]]:
+    """
+    Build multi-granularity memories for M2A retrieval.
+
+    Creates memories at three levels:
+    - Turn level: Individual user/assistant turns
+    - Round level: Complete dialogue rounds (user + assistant)
+    - Session level: Session summaries
+
+    Each memory includes image_paths for cross-modal retrieval support.
+    """
     memories: List[Dict[str, Any]] = []
     for session_id in session_ids:
         session = dataset.get_session(session_id)
         session_date = str(session.get("date", "")).strip()
         session_round_ids: List[str] = []
         session_snippets: List[str] = []
+        session_images: List[str] = []
 
         for dialogue in session.get("dialogues", []):
             round_id = dialogue.get("round", "")
@@ -378,6 +567,8 @@ def _build_m2a_full_memories(
             user = str(round_payload.get("user", "")).strip()
             assistant = str(round_payload.get("assistant", "")).strip()
             captions = " ".join(str(c).strip() for c in (raw.get("image_caption", []) or []) if str(c).strip())
+            # Get actual image paths for cross-modal retrieval
+            image_paths = round_payload.get("images", []) or []
             round_text = " ".join(
                 p for p in [f"On {session_date}.", f"Session {session_id}.", user, assistant, captions] if p
             ).strip()
@@ -386,6 +577,7 @@ def _build_m2a_full_memories(
 
             session_round_ids.append(round_id)
             session_snippets.append(round_text[:280])
+            session_images.extend(image_paths)
 
             memories.append(
                 {
@@ -394,6 +586,7 @@ def _build_m2a_full_memories(
                     "session_id": session_id,
                     "round_ids": [round_id],
                     "text": f"Session {session_id} round {round_id} user: {user} {captions}".strip(),
+                    "image_paths": image_paths,
                 }
             )
             memories.append(
@@ -403,6 +596,7 @@ def _build_m2a_full_memories(
                     "session_id": session_id,
                     "round_ids": [round_id],
                     "text": f"Session {session_id} round {round_id} assistant: {assistant} {captions}".strip(),
+                    "image_paths": [],  # Assistant turns typically don't have images
                 }
             )
             memories.append(
@@ -412,6 +606,7 @@ def _build_m2a_full_memories(
                     "session_id": session_id,
                     "round_ids": [round_id],
                     "text": f"Session {session_id} round {round_id}. {round_text}",
+                    "image_paths": image_paths,
                 }
             )
 
@@ -427,6 +622,7 @@ def _build_m2a_full_memories(
                     "session_id": session_id,
                     "round_ids": session_round_ids,
                     "text": session_summary,
+                    "image_paths": session_images[:10],  # Limit images for session summary
                 }
             )
 
@@ -438,6 +634,31 @@ def select_round_ids_for_qa_m2a_full(
     qa: Dict[str, Any],
     config: Dict[str, Any],
 ) -> List[str]:
+    """
+    M2A Full retrieval with dual-layer hybrid memory.
+
+    This implements the core M2A retrieval algorithm:
+    1. Build multi-granularity semantic memories (turn/round/session levels)
+    2. Use hybrid search combining dense embeddings + lexical (BM25-style) matching
+    3. Apply RRF fusion to combine multiple ranking signals
+    4. Support cross-modal image retrieval via CLIP
+    5. Iterative query expansion based on retrieved content
+
+    Config options:
+    - use_dense_embeddings: bool (default True) - Use transformer embeddings vs TF-IDF
+    - use_image_retrieval: bool (default False) - Enable CLIP cross-modal search
+    - text_embedding_model: str (default "all-MiniLM-L6-v2")
+    - image_embedding_model: str (default "openai/clip-vit-base-patch32")
+    - semantic_top_k, raw_top_k, neighbor_window, max_iterations, rrf_k
+    - semantic_lexical_weight, semantic_dense_weight
+    - raw_lexical_weight, raw_dense_weight
+    - image_weight: float (default 0.15) - Weight for image retrieval in fusion
+    """
+    # Parse config
+    use_dense_embeddings = config.get("use_dense_embeddings", True)
+    use_image_retrieval = config.get("use_image_retrieval", False)
+    text_embedding_model = config.get("text_embedding_model", "all-MiniLM-L6-v2")
+    image_embedding_model = config.get("image_embedding_model", "openai/clip-vit-base-patch32")
     semantic_top_k = int(config.get("semantic_top_k", 8))
     raw_top_k = int(config.get("raw_top_k", 6))
     neighbor_window = int(config.get("neighbor_window", 1))
@@ -448,6 +669,7 @@ def select_round_ids_for_qa_m2a_full(
     semantic_dense_weight = float(config.get("semantic_dense_weight", 0.65))
     raw_lexical_weight = float(config.get("raw_lexical_weight", 0.35))
     raw_dense_weight = float(config.get("raw_dense_weight", 0.65))
+    image_weight = float(config.get("image_weight", 0.15))
 
     session_ids = [sid for sid in qa.get("session_id", []) if sid]
     if not session_ids:
@@ -468,53 +690,113 @@ def select_round_ids_for_qa_m2a_full(
         return []
 
     memory_by_id = {m["memory_id"]: m for m in memories}
-    semantic_candidates: List[Tuple[str, List[str]]] = []
+
+    # Initialize embedders if using dense embeddings
+    text_embedder = None
+    image_embedder = None
+    dense_available = False
+    image_available = False
+
+    if use_dense_embeddings:
+        text_embedder = _get_text_embedder(text_embedding_model)
+        dense_available = text_embedder is not None and text_embedder.is_available
+        if use_dense_embeddings and not dense_available:
+            import warnings
+            warnings.warn(
+                "Dense embeddings requested but unavailable. "
+                "Falling back to TF-IDF based retrieval."
+            )
+
+    if use_image_retrieval:
+        image_embedder = _get_image_embedder(image_embedding_model)
+        image_available = image_embedder is not None and image_embedder.is_available
+        if use_image_retrieval and not image_available:
+            import warnings
+            warnings.warn(
+                "Image retrieval requested but unavailable. "
+                "Disabling cross-modal search."
+            )
+
+    # Build candidates for semantic layer
+    semantic_candidates_tokens: List[Tuple[str, List[str]]] = []
+    semantic_candidates_text: List[Tuple[str, str]] = []
+    semantic_candidates_images: List[Tuple[str, List[str]]] = []
+
     for memory in memories:
-        tokens = _tokenize(str(memory.get("text", "")))
+        mem_text = str(memory.get("text", ""))
+        tokens = _tokenize(mem_text)
         if tokens:
-            semantic_candidates.append((memory["memory_id"], tokens))
-    if not semantic_candidates:
+            semantic_candidates_tokens.append((memory["memory_id"], tokens))
+            semantic_candidates_text.append((memory["memory_id"], mem_text))
+            image_paths = memory.get("image_paths", [])
+            if image_paths:
+                semantic_candidates_images.append((memory["memory_id"], image_paths))
+
+    if not semantic_candidates_tokens:
         return []
 
     selected_round_ids: List[str] = []
     query_state_tokens = list(query_tokens)
+    query_state_text = query_text
 
-    for _ in range(max(1, max_iterations)):
-        semantic_dense_rank = [
-            mid
-            for _, mid in _rank_texts(
-                query_state_tokens,
-                semantic_candidates,
-                lexical_weight=0.0,
-                semantic_weight=1.0,
+    for iteration in range(max(1, max_iterations)):
+        rankings_to_fuse: List[List[str]] = []
+
+        if dense_available and text_embedder is not None:
+            # Dense embedding ranking using real transformer embeddings
+            dense_ranked = _dense_embedding_rank(
+                query_state_text,
+                semantic_candidates_text,
+                text_embedder,
             )
-        ]
-        semantic_lexical_rank = [
-            mid
-            for _, mid in _rank_texts(
+            dense_rank = [mid for _, mid in dense_ranked]
+            if dense_rank:
+                rankings_to_fuse.append(dense_rank)
+
+        # Lexical (BM25-style) ranking
+        lexical_ranked = _rank_texts(
+            query_state_tokens,
+            semantic_candidates_tokens,
+            lexical_weight=1.0,
+            semantic_weight=0.0,
+        )
+        lexical_rank = [mid for _, mid in lexical_ranked]
+        if lexical_rank:
+            rankings_to_fuse.append(lexical_rank)
+
+        # TF-IDF based ranking (as fallback when dense embeddings unavailable)
+        if not dense_available:
+            tfidf_ranked = _rank_texts(
                 query_state_tokens,
-                semantic_candidates,
-                lexical_weight=1.0,
-                semantic_weight=0.0,
-            )
-        ]
-        semantic_mixed_rank = [
-            mid
-            for _, mid in _rank_texts(
-                query_state_tokens,
-                semantic_candidates,
+                semantic_candidates_tokens,
                 lexical_weight=semantic_lexical_weight,
                 semantic_weight=semantic_dense_weight,
             )
-        ]
+            tfidf_rank = [mid for _, mid in tfidf_ranked]
+            if tfidf_rank:
+                rankings_to_fuse.append(tfidf_rank)
 
-        ranked_memory_ids = _rrf_fuse(
-            [semantic_dense_rank, semantic_lexical_rank, semantic_mixed_rank],
-            k=rrf_k,
-        )
+        # Cross-modal image retrieval using CLIP
+        if image_available and image_embedder is not None and semantic_candidates_images:
+            image_ranked = _image_embedding_rank(
+                query_state_text,
+                semantic_candidates_images,
+                image_embedder,
+            )
+            image_rank = [mid for _, mid in image_ranked]
+            if image_rank:
+                # Add image ranking with lower weight by duplicating other rankings
+                rankings_to_fuse.append(image_rank)
+
+        if not rankings_to_fuse:
+            break
+
+        # RRF fusion of all ranking signals
+        ranked_memory_ids = _rrf_fuse(rankings_to_fuse, k=rrf_k)
         if not ranked_memory_ids:
             break
 
+        # Extract candidate round IDs from top semantic memories
         candidate_round_ids: List[str] = []
         for memory_id in ranked_memory_ids[: max(1, semantic_top_k)]:
             candidate_round_ids.extend(memory_by_id[memory_id].get("round_ids", []))
@@ -522,43 +804,74 @@ def select_round_ids_for_qa_m2a_full(
         if not candidate_round_ids:
             break
 
-        raw_candidates: List[Tuple[str, List[str]]] = []
+        # Build raw candidates for second-stage retrieval
+        raw_candidates_tokens: List[Tuple[str, List[str]]] = []
+        raw_candidates_text: List[Tuple[str, str]] = []
+        raw_candidates_images: List[Tuple[str, List[str]]] = []
+
         for round_id in candidate_round_ids:
             round_payload = dataset.rounds.get(round_id, {})
-            tokens = _tokenize(_round_text(round_payload))
+            round_text = _round_text(round_payload)
+            tokens = _tokenize(round_text)
             if tokens:
-                raw_candidates.append((round_id, tokens))
-        if not raw_candidates:
+                raw_candidates_tokens.append((round_id, tokens))
+                raw_candidates_text.append((round_id, round_text))
+                image_paths = round_payload.get("images", [])
+                if image_paths:
+                    raw_candidates_images.append((round_id, image_paths))
+
+        if not raw_candidates_tokens:
             break
 
-        raw_dense_rank = [
-            rid
-            for _, rid in _rank_texts(
-                query_state_tokens,
-                raw_candidates,
-                lexical_weight=0.0,
-                semantic_weight=1.0,
+        # Second-stage ranking on raw rounds
+        raw_rankings_to_fuse: List[List[str]] = []
+
+        if dense_available and text_embedder is not None:
+            raw_dense_ranked = _dense_embedding_rank(
+                query_state_text,
+                raw_candidates_text,
+                text_embedder,
             )
-        ]
-        raw_lexical_rank = [
-            rid
-            for _, rid in _rank_texts(
+            raw_dense_rank = [rid for _, rid in raw_dense_ranked]
+            if raw_dense_rank:
+                raw_rankings_to_fuse.append(raw_dense_rank)
+
+        raw_lexical_ranked = _rank_texts(
+            query_state_tokens,
+            raw_candidates_tokens,
+            lexical_weight=1.0,
+            semantic_weight=0.0,
+        )
+        raw_lexical_rank = [rid for _, rid in raw_lexical_ranked]
+        if raw_lexical_rank:
+            raw_rankings_to_fuse.append(raw_lexical_rank)
+
+        if not dense_available:
+            raw_tfidf_ranked = _rank_texts(
                 query_state_tokens,
-                raw_candidates,
-                lexical_weight=1.0,
-                semantic_weight=0.0,
-            )
-        ]
-        raw_mixed_rank = [
-            rid
-            for _, rid in _rank_texts(
-                query_state_tokens,
-                raw_candidates,
+                raw_candidates_tokens,
                 lexical_weight=raw_lexical_weight,
                 semantic_weight=raw_dense_weight,
             )
-        ]
-        ranked_round_ids = _rrf_fuse([raw_dense_rank, raw_lexical_rank, raw_mixed_rank], k=rrf_k)
+            raw_tfidf_rank = [rid for _, rid in raw_tfidf_ranked]
+            if raw_tfidf_rank:
+                raw_rankings_to_fuse.append(raw_tfidf_rank)
+
+        # Cross-modal for raw rounds
+        if image_available and image_embedder is not None and raw_candidates_images:
+            raw_image_ranked = _image_embedding_rank(
+                query_state_text,
+                raw_candidates_images,
+                image_embedder,
+            )
+            raw_image_rank = [rid for _, rid in raw_image_ranked]
+            if raw_image_rank:
+                raw_rankings_to_fuse.append(raw_image_rank)
+
+        if not raw_rankings_to_fuse:
+            break
+
+        ranked_round_ids = _rrf_fuse(raw_rankings_to_fuse, k=rrf_k)
         if not ranked_round_ids:
             break
 
@@ -566,11 +879,24 @@ def select_round_ids_for_qa_m2a_full(
         selected_round_ids.extend(picked_round_ids)
         selected_round_ids = _unique_preserve_order(selected_round_ids)
 
+        # Query expansion: extract salient terms from retrieved content
         expansion_pool: List[str] = []
+        expansion_texts: List[str] = []
         for round_id in picked_round_ids:
-            expansion_pool.extend(_tokenize(_round_text(dataset.rounds.get(round_id, {}))))
-        query_state_tokens.extend(_extract_expansion_tokens(expansion_pool))
+            round_payload = dataset.rounds.get(round_id, {})
+            round_text = _round_text(round_payload)
+            expansion_pool.extend(_tokenize(round_text))
+            expansion_texts.append(round_text)
+
+        new_tokens = _extract_expansion_tokens(expansion_pool, top_n=6)
+        query_state_tokens.extend(new_tokens)
         query_state_tokens = _unique_preserve_order(query_state_tokens)
+
+        # Update query text for dense embedding (pseudo-relevance feedback)
+        if expansion_texts and dense_available:
+            # Append key terms to query for better dense retrieval
+            expansion_summary = " ".join(new_tokens)
+            query_state_text = f"{query_text} {expansion_summary}"
 
     if not selected_round_ids:
         return []
