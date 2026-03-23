@@ -15,3 +15,4 @@ overleaf_paper/*.fls
 overleaf_paper/*.log
 overleaf_paper/*.out
 overleaf_paper/*.pdf
+CLAUDE.md
