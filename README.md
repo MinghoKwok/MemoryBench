@@ -77,14 +77,15 @@ python -m Benchmark_Pipeline.run_matrix \
   --method-config Benchmark_Pipeline/config/methods/m2a_full.yaml
 ```
 
-Current `gpt-4.1-nano` comparison snapshot on the four representative MemEye tasks:
+Current `gpt-4.1-nano` comparison snapshot on five representative MemEye tasks:
 
 | Task | Full Context | Hybrid RAG | M2A Lite |
 | --- | --- | --- | --- |
 | `brand_memory_test` | EM `1.000`, F1 `1.000`, B1 `1.000`, B2 `0.829` | EM `1.000`, F1 `1.000`, B1 `1.000`, B2 `0.829` | EM `1.000`, F1 `1.000`, B1 `1.000`, B2 `0.829` |
 | `chat_ui_memory_test` | EM `0.600`, F1 `0.744`, B1 `0.709`, B2 `0.238` | EM `0.600`, F1 `0.745`, B1 `0.708`, B2 `0.237` | EM `0.600`, F1 `0.745`, B1 `0.708`, B2 `0.237` |
 | `comicscene_alley_oop_draft` | EM `0.933`, F1 `0.933`, B1 `0.933`, B2 `0.295` | EM `0.933`, F1 `0.933`, B1 `0.933`, B2 `0.295` | EM `0.933`, F1 `0.933`, B1 `0.933`, B2 `0.295` |
-| `home_renovation_interior_design` | EM `0.200`, F1 `0.520`, B1 `0.386`, B2 `0.298` | EM `0.167`, F1 `0.481`, B1 `0.360`, B2 `0.297` | EM `0.200`, F1 `0.523`, B1 `0.388`, B2 `0.301` |
+| `home_renovation_interior_design` | EM `0.080`, F1 `0.428`, B1 `0.296`, B2 `0.195` | EM `0.167`, F1 `0.481`, B1 `0.360`, B2 `0.297` | EM `0.200`, F1 `0.523`, B1 `0.388`, B2 `0.301` |
+| `visual_case_archive_assistant` | EM `0.059`, F1 `0.251`, B1 `0.204`, B2 `0.102` | EM `0.059`, F1 `0.188`, B1 `0.176`, B2 `0.125` | EM `0.118`, F1 `0.289`, B1 `0.263`, B2 `0.132` |
 
 If you use API-backed models, load local credentials first:
 

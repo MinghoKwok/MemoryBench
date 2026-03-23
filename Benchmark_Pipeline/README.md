@@ -167,14 +167,15 @@ python -m Benchmark_Pipeline.run_matrix \
   --method-config Benchmark_Pipeline/config/methods/m2a_full.yaml
 ```
 
-Representative `gpt-4.1-nano` results on the four active MemEye tasks:
+Representative `gpt-4.1-nano` results on five active MemEye tasks:
 
 | Task | Full Context | Hybrid RAG | M2A Lite |
 | --- | --- | --- | --- |
 | `brand_memory_test` | EM `1.000`, F1 `1.000`, BLEU-1 `1.000`, BLEU-2 `0.829` | EM `1.000`, F1 `1.000`, BLEU-1 `1.000`, BLEU-2 `0.829` | EM `1.000`, F1 `1.000`, BLEU-1 `1.000`, BLEU-2 `0.829` |
 | `chat_ui_memory_test` | EM `0.600`, F1 `0.744`, BLEU-1 `0.709`, BLEU-2 `0.238` | EM `0.600`, F1 `0.745`, BLEU-1 `0.708`, BLEU-2 `0.237` | EM `0.600`, F1 `0.745`, BLEU-1 `0.708`, BLEU-2 `0.237` |
 | `comicscene_alley_oop_draft` | EM `0.933`, F1 `0.933`, BLEU-1 `0.933`, BLEU-2 `0.295` | EM `0.933`, F1 `0.933`, BLEU-1 `0.933`, BLEU-2 `0.295` | EM `0.933`, F1 `0.933`, BLEU-1 `0.933`, BLEU-2 `0.295` |
-| `home_renovation_interior_design` | EM `0.200`, F1 `0.520`, BLEU-1 `0.386`, BLEU-2 `0.298` | EM `0.167`, F1 `0.481`, BLEU-1 `0.360`, BLEU-2 `0.297` | EM `0.200`, F1 `0.523`, BLEU-1 `0.388`, BLEU-2 `0.301` |
+| `home_renovation_interior_design` | EM `0.080`, F1 `0.428`, BLEU-1 `0.296`, BLEU-2 `0.195` | EM `0.167`, F1 `0.481`, BLEU-1 `0.360`, BLEU-2 `0.297` | EM `0.200`, F1 `0.523`, BLEU-1 `0.388`, BLEU-2 `0.301` |
+| `visual_case_archive_assistant` | EM `0.059`, F1 `0.251`, BLEU-1 `0.204`, BLEU-2 `0.102` | EM `0.059`, F1 `0.188`, BLEU-1 `0.176`, BLEU-2 `0.125` | EM `0.118`, F1 `0.289`, BLEU-1 `0.263`, BLEU-2 `0.132` |
 
 ## Config Structure
 
