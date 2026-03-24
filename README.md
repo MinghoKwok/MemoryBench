@@ -9,6 +9,43 @@ This repository currently contains several multimodal memory workstreams:
 - `Image_Generator`
 - `overleaf_paper`
 
+## Unified Persona & Life-Scenario Design
+
+MemEye tasks are designed to form a coherent life scenario for a single persona, so that different tasks naturally represent different facets of one person's daily life. This ensures cross-task ecological validity: a memory system must handle the same user across social, domestic, professional, and leisure contexts.
+
+### Persona: Hannah Brooks
+
+- **Age:** 32
+- **Occupation:** Freelance graphic designer / remote worker
+- **Personality:** Visually perceptive, meticulous, occasionally indecisive, budget-conscious
+- **Living situation:** Recently purchased a 970 sq ft two-bedroom apartment; undergoing full renovation
+
+### Life-Scenario Task Mapping
+
+| Life Facet | Task | What Hannah Is Doing |
+|-----------|------|---------------------|
+| **Home** | `home_renovation_interior_design` | Documenting and planning her apartment renovation with an AI assistant — choosing furniture, paint colors, layouts |
+| **Work (Screen)** | `work_screen_memory` *(planned)* | Sharing computer screenshots during design work — IDE, documents, dashboards, emails — and discussing them with AI |
+| **Social** | `chat_ui_memory_test` | Reviewing chat conversations with friends; the AI helps her recall who said what |
+| **Organization** | `visual_case_archive_assistant` | Tracking objects and room states in her apartment/office as she reorganizes during renovation |
+| **Leisure** | `comicscene_alley_oop_draft` | Reading comics in her downtime; the AI helps her remember plot and character details |
+| **Work (Analysis)** | `brand_memory_test` | Analyzing brand advertisements for client projects as a graphic designer |
+
+### Planned: Work Screen Memory
+
+Inspired by ScreenshotVQA (MIRIX, Wang & Chen 2025), this task captures Hannah's computer work sessions. Key design principles:
+
+- **Screenshots with memory value:** IDE with code review, document version diffs, data dashboards, email threads — not random browsing
+- **Queries require image grounding:** File paths, variable names, chart values, UI element positions are only visible in screenshots
+- **Cross-session state tracking:** The same document or project evolves across sessions, requiring the agent to track changes
+- **MemEye coverage:** Fills X4 (OCR/micro-attribute) + Y2/Y3 (cross-session version tracking) coordinates that are under-represented in current tasks
+
+### Design Principles
+
+1. **Visual necessity:** Every query must require seeing the original image — text dialogue alone never leaks the answer
+2. **Cross-task coherence:** Sessions across tasks share a consistent timeline and persona context
+3. **Complementary memory demands:** Each task stresses a different combination of visual granularity (X-axis) and reasoning complexity (Y-axis)
+
 ## What To Focus On
 
 For current MemEye benchmark work, treat `Benchmark_Pipeline` as the active benchmark scaffold.
