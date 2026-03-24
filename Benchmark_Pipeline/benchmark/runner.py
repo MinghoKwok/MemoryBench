@@ -177,10 +177,11 @@ def build_payload(
     run_dir: Path,
     dataset: MemoryBenchmarkDataset,
     results: List[Dict[str, Any]],
+    method_runtime: Optional[Dict[str, Any]] = None,
 ) -> Dict[str, Any]:
     summary = summarize_results(results)
     model_ref = cfg["model"].get("model_path") or cfg["model"].get("model", "")
-    return {
+    payload = {
         "task_name": cfg.get("task", {}).get("name", "task"),
         "model_name": cfg.get("model", {}).get("name", "qwen_local"),
         "model_path": model_ref,
@@ -195,6 +196,9 @@ def build_payload(
         "summary": summary,
         "results": results,
     }
+    if method_runtime:
+        payload["method_runtime"] = method_runtime
+    return payload
 
 
 def run_benchmark(cfg: Dict[str, Any], config_dir: Path) -> Dict[str, Any]:
@@ -281,9 +285,15 @@ def run_benchmark(cfg: Dict[str, Any], config_dir: Path) -> Dict[str, Any]:
 
     run_dir = default_run_dir(cfg, paths["output_root"])
     run_dir.mkdir(parents=True, exist_ok=True)
-    payload = build_payload(cfg, paths, run_dir, dataset, results)
+    method_runtime = dict(getattr(method, "runtime_info", {}) or {})
+    payload = build_payload(cfg, paths, run_dir, dataset, results, method_runtime=method_runtime)
+    cfg_to_write = dict(cfg)
+    run_cfg = dict(cfg_to_write.get("run", {}))
+    if method_runtime:
+        run_cfg["method_runtime"] = method_runtime
+    cfg_to_write["run"] = run_cfg
 
-    write_json(run_dir / "config.json", cfg)
+    write_json(run_dir / "config.json", cfg_to_write)
     write_json(run_dir / "metrics.json", {k: payload[k] for k in payload if k != "results"})
     write_jsonl(run_dir / "predictions.jsonl", results)
 

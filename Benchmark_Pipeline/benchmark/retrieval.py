@@ -6,28 +6,18 @@ from typing import Any, Dict, List, Optional, Tuple
 import numpy as np
 
 from .dataset import MemoryBenchmarkDataset
+from .embeddings import get_image_embedder, get_text_embedder
 
-# Lazy import for embeddings to avoid loading models when not needed
-_text_embedder = None
-_image_embedder = None
-
-
-def _get_text_embedder(model_name: str = "all-MiniLM-L6-v2"):
-    """Lazily load the text embedder."""
-    global _text_embedder
-    if _text_embedder is None:
-        from .embeddings import TextEmbedder
-        _text_embedder = TextEmbedder(model_name)
-    return _text_embedder
+_last_m2a_capabilities: Dict[str, Any] = {}
 
 
-def _get_image_embedder(model_name: str = "openai/clip-vit-base-patch32"):
-    """Lazily load the image embedder."""
-    global _image_embedder
-    if _image_embedder is None:
-        from .embeddings import ImageEmbedder
-        _image_embedder = ImageEmbedder(model_name)
-    return _image_embedder
+def _record_m2a_capabilities(capabilities: Dict[str, Any]) -> None:
+    global _last_m2a_capabilities
+    _last_m2a_capabilities = dict(capabilities)
+
+
+def get_last_m2a_capabilities() -> Dict[str, Any]:
+    return dict(_last_m2a_capabilities)
 
 
 TOKEN_RE = re.compile(r"[a-z0-9]+")
@@ -657,6 +647,7 @@ def select_round_ids_for_qa_m2a_full(
     # Parse config
     use_dense_embeddings = config.get("use_dense_embeddings", True)
     use_image_retrieval = config.get("use_image_retrieval", False)
+    strict_capabilities = bool(config.get("strict_capabilities", False))
     text_embedding_model = config.get("text_embedding_model", "all-MiniLM-L6-v2")
     image_embedding_model = config.get("image_embedding_model", "openai/clip-vit-base-patch32")
     semantic_top_k = int(config.get("semantic_top_k", 8))
@@ -670,10 +661,27 @@ def select_round_ids_for_qa_m2a_full(
     raw_lexical_weight = float(config.get("raw_lexical_weight", 0.35))
     raw_dense_weight = float(config.get("raw_dense_weight", 0.65))
     image_weight = float(config.get("image_weight", 0.15))
+    capabilities: Dict[str, Any] = {
+        "requested_dense_embeddings": bool(use_dense_embeddings),
+        "requested_image_retrieval": bool(use_image_retrieval),
+        "dense_embeddings_enabled": False,
+        "image_retrieval_enabled": False,
+        "text_embedding_model": str(text_embedding_model),
+        "image_embedding_model": str(image_embedding_model),
+        "strict_capabilities": strict_capabilities,
+        "dense_fallback_reason": "",
+        "image_fallback_reason": "",
+    }
+
+    def finish(round_ids: List[str]) -> List[str]:
+        payload = dict(capabilities)
+        payload["selected_round_count"] = len(round_ids)
+        _record_m2a_capabilities(payload)
+        return round_ids
 
     session_ids = [sid for sid in qa.get("session_id", []) if sid]
     if not session_ids:
-        return []
+        return finish([])
 
     query_text = " ".join(
         part
@@ -682,12 +690,12 @@ def select_round_ids_for_qa_m2a_full(
     )
     query_tokens = _tokenize(query_text)
     if not query_tokens:
-        return []
+        return finish([])
 
     round_order = _round_index_maps(dataset, session_ids)
     memories = _build_m2a_full_memories(dataset, session_ids, min_round_words_for_memory=min_round_words_for_memory)
     if not memories:
-        return []
+        return finish([])
 
     memory_by_id = {m["memory_id"]: m for m in memories}
 
@@ -698,8 +706,18 @@ def select_round_ids_for_qa_m2a_full(
     image_available = False
 
     if use_dense_embeddings:
-        text_embedder = _get_text_embedder(text_embedding_model)
+        text_embedder = get_text_embedder(text_embedding_model)
         dense_available = text_embedder is not None and text_embedder.is_available
+        capabilities["dense_embeddings_enabled"] = dense_available
+        if not dense_available:
+            capabilities["dense_fallback_reason"] = (
+                "dense embeddings requested but unavailable in the current environment"
+            )
+        if use_dense_embeddings and not dense_available and strict_capabilities:
+            raise RuntimeError(
+                "m2a_full strict mode requires dense embeddings, but the text embedder "
+                f"'{text_embedding_model}' is unavailable in the current environment."
+            )
         if use_dense_embeddings and not dense_available:
             import warnings
             warnings.warn(
@@ -708,8 +726,18 @@ def select_round_ids_for_qa_m2a_full(
             )
 
     if use_image_retrieval:
-        image_embedder = _get_image_embedder(image_embedding_model)
+        image_embedder = get_image_embedder(image_embedding_model)
         image_available = image_embedder is not None and image_embedder.is_available
+        capabilities["image_retrieval_enabled"] = image_available
+        if not image_available:
+            capabilities["image_fallback_reason"] = (
+                "image retrieval requested but unavailable in the current environment"
+            )
+        if use_image_retrieval and not image_available and strict_capabilities:
+            raise RuntimeError(
+                "m2a_full strict mode requires image retrieval, but the CLIP embedder "
+                f"'{image_embedding_model}' is unavailable in the current environment."
+            )
         if use_image_retrieval and not image_available:
             import warnings
             warnings.warn(
@@ -733,7 +761,7 @@ def select_round_ids_for_qa_m2a_full(
                 semantic_candidates_images.append((memory["memory_id"], image_paths))
 
     if not semantic_candidates_tokens:
-        return []
+        return finish([])
 
     selected_round_ids: List[str] = []
     query_state_tokens = list(query_tokens)
@@ -899,10 +927,10 @@ def select_round_ids_for_qa_m2a_full(
             query_state_text = f"{query_text} {expansion_summary}"
 
     if not selected_round_ids:
-        return []
+        return finish([])
 
     selected_round_ids = sorted(
         selected_round_ids,
         key=lambda rid: round_order.get(rid, 10**9),
     )
-    return _expand_with_neighbors(dataset, selected_round_ids, session_ids, neighbor_window)
+    return finish(_expand_with_neighbors(dataset, selected_round_ids, session_ids, neighbor_window))

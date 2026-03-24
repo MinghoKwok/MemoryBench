@@ -3,6 +3,7 @@ from typing import Any, Dict, List, Optional
 
 from .dataset import MemoryBenchmarkDataset, history_from_round_ids
 from .retrieval import (
+    get_last_m2a_capabilities,
     select_round_ids_for_qa,
     select_round_ids_for_qa_m2a_full,
     select_round_ids_for_qa_m2a_lite,
@@ -14,6 +15,7 @@ class HistoryMethod(ABC):
 
     def __init__(self, config: Optional[Dict[str, Any]] = None) -> None:
         self.config = config or {}
+        self.runtime_info: Dict[str, Any] = {}
 
     @abstractmethod
     def build_history(self, dataset: MemoryBenchmarkDataset, qa: Dict[str, Any]) -> List[Dict[str, Any]]:
@@ -86,6 +88,7 @@ class M2AFullMethod(HistoryMethod):
 
     def build_history(self, dataset: MemoryBenchmarkDataset, qa: Dict[str, Any]) -> List[Dict[str, Any]]:
         selected_round_ids = select_round_ids_for_qa_m2a_full(dataset, qa, self.config)
+        self.runtime_info = get_last_m2a_capabilities()
         if not selected_round_ids:
             return M2ALiteMethod(config=self.config).build_history(dataset, qa)
 
@@ -105,6 +108,7 @@ class M2AFullTunedMethod(HistoryMethod):
 
     def build_history(self, dataset: MemoryBenchmarkDataset, qa: Dict[str, Any]) -> List[Dict[str, Any]]:
         selected_round_ids = select_round_ids_for_qa_m2a_full(dataset, qa, self.config)
+        self.runtime_info = get_last_m2a_capabilities()
         if not selected_round_ids:
             return M2ALiteMethod(config=self.config).build_history(dataset, qa)
 
@@ -129,6 +133,7 @@ class M2ATfidfMethod(HistoryMethod):
         config["use_image_retrieval"] = False
 
         selected_round_ids = select_round_ids_for_qa_m2a_full(dataset, qa, config)
+        self.runtime_info = get_last_m2a_capabilities()
         if not selected_round_ids:
             return M2ALiteMethod(config=config).build_history(dataset, qa)
 

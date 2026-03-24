@@ -8,6 +8,7 @@ text_embedding_model: "all-MiniLM-L6-v2"  # 384-dim sentence embeddings
 use_image_retrieval: true
 image_embedding_model: "openai/clip-vit-base-patch32"  # 512-dim image embeddings
 image_weight: 0.15  # Weight for image retrieval in RRF fusion
+strict_capabilities: true
 
 # Retrieval parameters (tuned for precision over recall)
 # Reduced from original M2A to avoid over-retrieval noise
