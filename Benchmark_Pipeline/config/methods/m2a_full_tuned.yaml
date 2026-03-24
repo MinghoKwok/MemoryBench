@@ -1,0 +1,24 @@
+name: m2a_full_tuned
+
+# Dense embedding settings
+use_dense_embeddings: true
+text_embedding_model: "all-MiniLM-L6-v2"
+
+# Keep image retrieval for vision-centric benchmark
+use_image_retrieval: true
+image_embedding_model: "openai/clip-vit-base-patch32"
+image_weight: 0.15
+
+# Retrieval parameters - aligned with m2a_lite for precision
+semantic_top_k: 3      # was 8, now aligned with lite
+raw_top_k: 2           # was 6, now aligned with lite
+neighbor_window: 1
+max_iterations: 1      # was 2, disable iterative expansion
+rrf_k: 60
+min_round_words_for_memory: 3
+
+# Hybrid ranking weights - aligned with m2a_lite
+semantic_lexical_weight: 0.25   # was 0.35
+semantic_dense_weight: 0.75     # was 0.65
+raw_lexical_weight: 0.4         # was 0.35
+raw_dense_weight: 0.6           # was 0.65

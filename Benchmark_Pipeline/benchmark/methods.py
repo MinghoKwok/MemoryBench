@@ -99,6 +99,25 @@ class M2AFullMethod(HistoryMethod):
         return history
 
 
+class M2AFullTunedMethod(HistoryMethod):
+    """M2A Full with tuned parameters aligned with M2A Lite + image retrieval."""
+    name = "m2a_full_tuned"
+
+    def build_history(self, dataset: MemoryBenchmarkDataset, qa: Dict[str, Any]) -> List[Dict[str, Any]]:
+        selected_round_ids = select_round_ids_for_qa_m2a_full(dataset, qa, self.config)
+        if not selected_round_ids:
+            return M2ALiteMethod(config=self.config).build_history(dataset, qa)
+
+        history: List[Dict[str, Any]] = []
+        allowed_round_ids = set(selected_round_ids)
+        target_sessions = set(qa.get("session_id", []))
+        for sid in dataset.session_order():
+            if sid not in target_sessions:
+                continue
+            history.extend(history_from_round_ids(dataset.get_session(sid), dataset.rounds, allowed_round_ids))
+        return history
+
+
 class M2ATfidfMethod(HistoryMethod):
     """M2A method using TF-IDF only (baseline without dense embeddings)."""
     name = "m2a_tfidf"
@@ -129,6 +148,7 @@ def get_method(method_name: str, config: Optional[Dict[str, Any]] = None) -> His
         HybridRAGMethod.name: HybridRAGMethod,
         M2ALiteMethod.name: M2ALiteMethod,
         M2AFullMethod.name: M2AFullMethod,
+        M2AFullTunedMethod.name: M2AFullTunedMethod,
         M2ATfidfMethod.name: M2ATfidfMethod,
     }
     cls = registry.get(method_name)
