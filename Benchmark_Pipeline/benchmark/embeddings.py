@@ -304,6 +304,21 @@ class ImageEmbedder:
         """Return the embedding dimension (512 for CLIP ViT-B/32)."""
         return 512
 
+    def _extract_feature_tensor(self, outputs):
+        """Normalize transformer outputs to a tensor before L2 normalization."""
+        if outputs is None:
+            return None
+        if hasattr(outputs, "norm"):
+            return outputs
+        for attr in ("text_embeds", "image_embeds", "pooler_output"):
+            value = getattr(outputs, attr, None)
+            if value is not None:
+                return value
+        last_hidden_state = getattr(outputs, "last_hidden_state", None)
+        if last_hidden_state is not None:
+            return last_hidden_state[:, 0, :]
+        return None
+
     def embed_image(self, image_path: str) -> Optional[np.ndarray]:
         """Embed a single image from file path."""
         if not os.path.exists(image_path):
@@ -327,7 +342,9 @@ class ImageEmbedder:
             inputs = {k: v.to(_get_device()) for k, v in inputs.items()}
 
             with torch.no_grad():
-                image_features = self._model.get_image_features(**inputs)
+                image_features = self._extract_feature_tensor(self._model.get_image_features(**inputs))
+                if image_features is None:
+                    raise ValueError("CLIP image features could not be extracted as a tensor")
                 image_features = image_features / image_features.norm(dim=-1, keepdim=True)
 
             embedding = image_features.cpu().numpy().flatten()
@@ -358,7 +375,9 @@ class ImageEmbedder:
             inputs = {k: v.to(_get_device()) for k, v in inputs.items()}
 
             with torch.no_grad():
-                text_features = self._model.get_text_features(**inputs)
+                text_features = self._extract_feature_tensor(self._model.get_text_features(**inputs))
+                if text_features is None:
+                    raise ValueError("CLIP text features could not be extracted as a tensor")
                 text_features = text_features / text_features.norm(dim=-1, keepdim=True)
 
             embedding = text_features.cpu().numpy().flatten()

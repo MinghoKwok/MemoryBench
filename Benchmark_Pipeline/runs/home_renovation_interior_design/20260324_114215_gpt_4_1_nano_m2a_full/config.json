@@ -1,0 +1,66 @@
+{
+  "task": {
+    "name": "home_renovation_interior_design",
+    "dataset": {
+      "dialog_json": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/dialog/Home_Renovation_Interior_Design.json",
+      "image_root": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image"
+    },
+    "eval": {
+      "mode": "open",
+      "output_json": "output/results_home_renovation_interior_design.json",
+      "max_questions": 0
+    }
+  },
+  "dataset": {
+    "dialog_json": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/dialog/Home_Renovation_Interior_Design.json",
+    "image_root": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image"
+  },
+  "eval": {
+    "mode": "open",
+    "output_json": "output/results_home_renovation_interior_design.json",
+    "max_questions": 0
+  },
+  "model": {
+    "name": "gpt_4_1_nano",
+    "provider": "openai_api",
+    "model": "gpt-4.1-nano",
+    "api_key_env": "OPENAI_API_KEY",
+    "base_url": "https://api.openai.com/v1",
+    "max_new_tokens": 128,
+    "timeout": 90
+  },
+  "method": {
+    "name": "m2a_full",
+    "use_dense_embeddings": true,
+    "text_embedding_model": "all-MiniLM-L6-v2",
+    "use_image_retrieval": true,
+    "image_embedding_model": "openai/clip-vit-base-patch32",
+    "image_weight": 0.15,
+    "strict_capabilities": true,
+    "semantic_top_k": 3,
+    "raw_top_k": 2,
+    "neighbor_window": 1,
+    "max_iterations": 1,
+    "rrf_k": 60,
+    "min_round_words_for_memory": 3,
+    "semantic_lexical_weight": 0.25,
+    "semantic_dense_weight": 0.75,
+    "raw_lexical_weight": 0.4,
+    "raw_dense_weight": 0.6
+  },
+  "run": {
+    "output_root": "runs",
+    "method_runtime": {
+      "requested_dense_embeddings": true,
+      "requested_image_retrieval": true,
+      "dense_embeddings_enabled": true,
+      "image_retrieval_enabled": true,
+      "text_embedding_model": "all-MiniLM-L6-v2",
+      "image_embedding_model": "openai/clip-vit-base-patch32",
+      "strict_capabilities": true,
+      "dense_fallback_reason": "",
+      "image_fallback_reason": "",
+      "selected_round_count": 5
+    }
+  }
+}

@@ -16,17 +16,17 @@
       "dialogues": [
         {
           "round": "D1:1",
-          "user": "Memorize this comic page. Track who appears, where they are, and how their state changes across panels.",
-          "assistant": "Stored for later memory questions.",
+        "user": "I'm reading an Alley Oop comic for fun and want your help following it page by page. Here's the first page I'm looking at.",
+        "assistant": "Sounds good. I will follow along with you and keep this page in mind as the story continues.",
           "image_id": [
             "D1:IMG_001"
           ],
           "input_image": [
             "../Data/Alley_Oop/images/Alley_Oop_Page_1.jpg"
           ],
-          "image_caption": [
-            "Alley Oop page 1 with five panels, including a crowned character in water and later panels showing the same crowned character again."
-          ]
+        "image_caption": [
+          "A comic page from Alley Oop."
+        ]
         }
       ]
     },
@@ -36,17 +36,17 @@
       "dialogues": [
         {
           "round": "D2:1",
-          "user": "Memorize this comic page. Track repeated dinosaurs, collisions, and dialogue-linked actions across panels.",
-          "assistant": "Stored for later memory questions.",
+        "user": "Here's the next page. Help me keep track of the story as it develops.",
+        "assistant": "Okay. I'll keep this next page in context with the earlier one.",
           "image_id": [
             "D2:IMG_001"
           ],
           "input_image": [
             "../Data/Alley_Oop/images/Alley_Oop_Page_2.jpg"
           ],
-          "image_caption": [
-            "Alley Oop page 2 with five panels showing Dinny, a crash into a tree, and a later discussion about clumsiness and trade-ins."
-          ]
+        "image_caption": [
+          "Another comic page from Alley Oop."
+        ]
         }
       ]
     },
@@ -56,17 +56,17 @@
       "dialogues": [
         {
           "round": "D3:1",
-          "user": "Memorize this comic page. Track the dinosaurs on display, signage, and the relative size of different dinosaurs.",
-          "assistant": "Stored for later memory questions.",
+        "user": "I kept reading and got to this page. Please keep following the comic with me.",
+        "assistant": "Sure. I'll keep this page connected to the earlier parts of the comic.",
           "image_id": [
             "D3:IMG_001"
           ],
           "input_image": [
             "../Data/Alley_Oop/images/Alley_Oop_Page_3.jpg"
           ],
-          "image_caption": [
-            "Alley Oop page 3 with dinosaur dealership panels, including a cheap dinosaur, a today's special dinosaur, and a smaller newer dinosaur."
-          ]
+        "image_caption": [
+          "A later comic page from the same Alley Oop storyline."
+        ]
         }
       ]
     },
@@ -76,17 +76,17 @@
       "dialogues": [
         {
           "round": "D4:1",
-          "user": "Memorize this comic page. Track the rider, the smaller dinosaur, and visible state changes by the end of the page.",
-          "assistant": "Stored for later memory questions.",
+        "user": "Here's the next page in the same comic sequence. Help me stay oriented as I read through it.",
+        "assistant": "Will do. I'll keep this page in the running story context.",
           "image_id": [
             "D4:IMG_001"
           ],
           "input_image": [
             "../Data/Alley_Oop/images/Alley_Oop_Page_4.jpg"
           ],
-          "image_caption": [
-            "Alley Oop page 4 with six panels showing Alley riding a smaller dinosaur, a test drive, and the dinosaur shown drooling in the final panel."
-          ]
+        "image_caption": [
+          "Another page from the same Alley Oop comic sequence."
+        ]
         }
       ]
     },
@@ -96,17 +96,17 @@
       "dialogues": [
         {
           "round": "D27:1",
-          "user": "Memorize this comic page. Track the crowned character and his interactions with the shirtless man across the page.",
-          "assistant": "Stored for later memory questions.",
+        "user": "I jumped ahead to a later part of the same comic and want help following what's going on there too.",
+        "assistant": "Okay. I'll treat this as a later part of the same storyline and keep track of it with you.",
           "image_id": [
             "D27:IMG_001"
           ],
           "input_image": [
             "../Data/Alley_Oop/images/Alley_Oop_Page_27.jpg"
           ],
-          "image_caption": [
-            "Alley Oop page 27 with a crowned character appearing across multiple panels and a final physical confrontation with a shirtless man."
-          ]
+        "image_caption": [
+          "A later Alley Oop comic page from the same storyline."
+        ]
         }
       ]
     },
@@ -116,17 +116,17 @@
       "dialogues": [
         {
           "round": "D28:1",
-          "user": "Memorize this comic page. Track the crowned character, the temporary king, and the work he is forced to do later on the page.",
-          "assistant": "Stored for later memory questions.",
+        "user": "Here's another later page from that Alley Oop storyline. Help me keep the thread straight.",
+        "assistant": "Got it. I'll keep following the storyline with this page too.",
           "image_id": [
             "D28:IMG_001"
           ],
           "input_image": [
             "../Data/Alley_Oop/images/Alley_Oop_Page_28.jpg"
           ],
-          "image_caption": [
-            "Alley Oop page 28 with the crowned character giving instructions, a temporary king being pelted by the crowd, and later doing work inside a cave."
-          ]
+        "image_caption": [
+          "Another later comic page from the same Alley Oop sequence."
+        ]
         }
       ]
     },
@@ -136,17 +136,17 @@
       "dialogues": [
         {
           "round": "D29:1",
-          "user": "Memorize this comic page. Track the crowned character as he relaxes, gets punished, and later performs chores himself.",
-          "assistant": "Stored for later memory questions.",
+        "user": "This is one more page from the same reading session. Stay with me on the plot and characters here too.",
+        "assistant": "Will do. I'll keep this page aligned with the rest of the comic as we go.",
           "image_id": [
             "D29:IMG_001"
           ],
           "input_image": [
             "../Data/Alley_Oop/images/Alley_Oop_Page_29.jpg"
           ],
-          "image_caption": [
-            "Alley Oop page 29 with the crowned character relaxing with bon-bons, then being punished, then doing chores and running with a basin."
-          ]
+        "image_caption": [
+          "Another comic page from the same later Alley Oop storyline."
+        ]
         }
       ]
     }
@@ -581,6 +581,175 @@
           3,
           5
         ],
+        "task_family": "visual_state_change",
+        "difficulty_hint": "hard"
+      }
+    },
+    {
+      "question": "On page 3, is the dinosaur labeled today's special positioned between the dinosaurs labeled cheap and bargain? Reply with only yes or no in lowercase, with no punctuation.",
+      "answer": "yes",
+      "point": [
+        [
+          "X3",
+          "X4"
+        ],
+        [
+          "Y1"
+        ]
+      ],
+      "session_id": [
+        "D3"
+      ],
+      "clue": [
+        "D3:1"
+      ],
+      "meta": {
+        "page_number": 3,
+        "panel_refs": [
+          3
+        ],
+        "task_family": "spatial_continuity",
+        "difficulty_hint": "baseline"
+      }
+    },
+    {
+      "question": "Across pages 2 and 3, is the large dinosaur that crashes into the tree later the one being discussed for trade-in at the dealership? Reply with only yes or no in lowercase, with no punctuation.",
+      "answer": "yes",
+      "point": [
+        [
+          "X2"
+        ],
+        [
+          "Y2"
+        ]
+      ],
+      "session_id": [
+        "D2",
+        "D3"
+      ],
+      "clue": [
+        "D2:1",
+        "D3:1"
+      ],
+      "meta": {
+        "page_number": [
+          2,
+          3
+        ],
+        "panel_refs": {
+          "D2": [
+            2,
+            3,
+            4,
+            5
+          ],
+          "D3": [
+            1,
+            2
+          ]
+        },
+        "task_family": "character_tracking",
+        "difficulty_hint": "baseline"
+      }
+    },
+    {
+      "question": "Across pages 27 and 28, is the man proposed as a replacement ruler later shown wearing the crown while the crowd throws objects at him? Reply with only yes or no in lowercase, with no punctuation.",
+      "answer": "yes",
+      "point": [
+        [
+          "X2"
+        ],
+        [
+          "Y3"
+        ]
+      ],
+      "session_id": [
+        "D27",
+        "D28"
+      ],
+      "clue": [
+        "D27:1",
+        "D28:1"
+      ],
+      "meta": {
+        "page_number": [
+          27,
+          28
+        ],
+        "panel_refs": {
+          "D27": [
+            4
+          ],
+          "D28": [
+            1,
+            3
+          ]
+        },
+        "task_family": "visual_state_change",
+        "difficulty_hint": "hard"
+      }
+    },
+    {
+      "question": "On page 29, which panel shows the crowned character running with a basin on his head: panel 2, panel 5, or panel 6? Reply with only 2, 5, or 6.",
+      "answer": "5",
+      "point": [
+        [
+          "X3"
+        ],
+        [
+          "Y1"
+        ]
+      ],
+      "session_id": [
+        "D29"
+      ],
+      "clue": [
+        "D29:1"
+      ],
+      "meta": {
+        "page_number": 29,
+        "panel_refs": [
+          5
+        ],
+        "task_family": "spatial_continuity",
+        "difficulty_hint": "baseline"
+      }
+    },
+    {
+      "question": "Across pages 3 and 4, is the smaller dinosaur shown at the dealership later shown drooling by the final panel of the test-drive page? Reply with only yes or no in lowercase, with no punctuation.",
+      "answer": "yes",
+      "point": [
+        [
+          "X2",
+          "X4"
+        ],
+        [
+          "Y2"
+        ]
+      ],
+      "session_id": [
+        "D3",
+        "D4"
+      ],
+      "clue": [
+        "D3:1",
+        "D4:1"
+      ],
+      "meta": {
+        "page_number": [
+          3,
+          4
+        ],
+        "panel_refs": {
+          "D3": [
+            4,
+            5
+          ],
+          "D4": [
+            1,
+            6
+          ]
+        },
         "task_family": "visual_state_change",
         "difficulty_hint": "hard"
       }

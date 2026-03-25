@@ -12,6 +12,7 @@ The current focus is not story-summary evaluation. The current focus is turning 
 For the MemEye-oriented assessment and candidate task directions, see:
 
 - `Image_Generator/ComicScene/MemEye_ComicScene_Assessment.md`
+- `Image_Generator/ComicScene/ComicScene_Roadmap.md`
 
 Cross-generator task and image design rules are documented in:
 
@@ -59,6 +60,10 @@ For current MemEye work in this directory:
 4. write draft benchmark JSON under `drafts/`
 5. sync finalized dialog/image assets into the HF dataset repo `data/` tree
 6. benchmark the synced task through `Benchmark_Pipeline`
+
+For the staged upgrade path from a small continuity-focused draft to a fuller story-state benchmark family, see:
+
+- `Image_Generator/ComicScene/ComicScene_Roadmap.md`
 
 The current Alley Oop draft already follows this pattern:
 
