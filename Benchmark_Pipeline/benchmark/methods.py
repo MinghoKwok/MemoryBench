@@ -2,12 +2,7 @@ from abc import ABC, abstractmethod
 from typing import Any, Dict, List, Optional
 
 from .dataset import MemoryBenchmarkDataset, history_from_round_ids
-from .retrieval import (
-    get_last_m2a_capabilities,
-    select_round_ids_for_qa,
-    select_round_ids_for_qa_m2a_full,
-    select_round_ids_for_qa_m2a_lite,
-)
+from .retrieval import select_round_ids_for_qa
 
 
 class HistoryMethod(ABC):
@@ -65,98 +60,59 @@ class HybridRAGMethod(HistoryMethod):
         return history
 
 
-class M2ALiteMethod(HistoryMethod):
-    name = "m2a_lite"
+class M2AAgentMethod(HistoryMethod):
+    """
+    Faithful M2A (Multimodal Memory Agent) implementation.
+
+    Two-phase protocol (mirrors official eval_wrapper.py):
+      1. Chat phase  — process all sessions sequentially to build semantic memory
+                       (lazy-initialized on first call, once per dataset instance)
+      2. Question phase — query memory to answer each QA item
+
+    This method exposes answer(dataset, qa, question) → str so that the runner
+    bypasses the build_history + router.answer pipeline and calls the M2A system
+    end-to-end (agentic inference).
+    """
+
+    name = "m2a"
+
+    def __init__(self, config: Optional[Dict[str, Any]] = None) -> None:
+        super().__init__(config)
+        self._system: Optional[Any] = None
+        self._dataset_key: Optional[int] = None
+
+    def _ensure_initialized(self, dataset: MemoryBenchmarkDataset) -> None:
+        dataset_id = id(dataset)
+        if self._system is not None and self._dataset_key == dataset_id:
+            return
+
+        from .m2a import M2ASystem
+
+        self._system = M2ASystem(self.config)
+        sessions = dataset.session_order()
+        print(f"[M2A] Building memory from {len(sessions)} session(s)...")
+        self._system.process_all_sessions(dataset)
+        self._dataset_key = dataset_id
+        print(f"[M2A] Memory ready: {self._system.num_memories} semantic memories stored.")
+
+    def answer(self, dataset: MemoryBenchmarkDataset, qa: Dict[str, Any], question: str) -> str:
+        """End-to-end agentic inference. Called by runner instead of build_history."""
+        self._ensure_initialized(dataset)
+        assert self._system is not None
+        return self._system.answer_question(question)
 
     def build_history(self, dataset: MemoryBenchmarkDataset, qa: Dict[str, Any]) -> List[Dict[str, Any]]:
-        selected_round_ids = select_round_ids_for_qa_m2a_lite(dataset, qa, self.config)
-        if not selected_round_ids:
-            return HybridRAGMethod(config=self.config).build_history(dataset, qa)
-
-        history: List[Dict[str, Any]] = []
-        allowed_round_ids = set(selected_round_ids)
-        target_sessions = set(qa.get("session_id", []))
-        for sid in dataset.session_order():
-            if sid not in target_sessions:
-                continue
-            history.extend(history_from_round_ids(dataset.get_session(sid), dataset.rounds, allowed_round_ids))
-        return history
-
-
-class M2AFullMethod(HistoryMethod):
-    name = "m2a_full"
-
-    def build_history(self, dataset: MemoryBenchmarkDataset, qa: Dict[str, Any]) -> List[Dict[str, Any]]:
-        selected_round_ids = select_round_ids_for_qa_m2a_full(dataset, qa, self.config)
-        self.runtime_info = get_last_m2a_capabilities()
-        if not selected_round_ids:
-            return M2ALiteMethod(config=self.config).build_history(dataset, qa)
-
-        history: List[Dict[str, Any]] = []
-        allowed_round_ids = set(selected_round_ids)
-        target_sessions = set(qa.get("session_id", []))
-        for sid in dataset.session_order():
-            if sid not in target_sessions:
-                continue
-            history.extend(history_from_round_ids(dataset.get_session(sid), dataset.rounds, allowed_round_ids))
-        return history
-
-
-class M2AFullTunedMethod(HistoryMethod):
-    """M2A Full with tuned parameters aligned with M2A Lite + image retrieval."""
-    name = "m2a_full_tuned"
-
-    def build_history(self, dataset: MemoryBenchmarkDataset, qa: Dict[str, Any]) -> List[Dict[str, Any]]:
-        selected_round_ids = select_round_ids_for_qa_m2a_full(dataset, qa, self.config)
-        self.runtime_info = get_last_m2a_capabilities()
-        if not selected_round_ids:
-            return M2ALiteMethod(config=self.config).build_history(dataset, qa)
-
-        history: List[Dict[str, Any]] = []
-        allowed_round_ids = set(selected_round_ids)
-        target_sessions = set(qa.get("session_id", []))
-        for sid in dataset.session_order():
-            if sid not in target_sessions:
-                continue
-            history.extend(history_from_round_ids(dataset.get_session(sid), dataset.rounds, allowed_round_ids))
-        return history
-
-
-class M2ATfidfMethod(HistoryMethod):
-    """M2A method using TF-IDF only (baseline without dense embeddings)."""
-    name = "m2a_tfidf"
-
-    def build_history(self, dataset: MemoryBenchmarkDataset, qa: Dict[str, Any]) -> List[Dict[str, Any]]:
-        # Force TF-IDF mode by setting use_dense_embeddings to False
-        config = dict(self.config)
-        config["use_dense_embeddings"] = False
-        config["use_image_retrieval"] = False
-
-        selected_round_ids = select_round_ids_for_qa_m2a_full(dataset, qa, config)
-        self.runtime_info = get_last_m2a_capabilities()
-        if not selected_round_ids:
-            return M2ALiteMethod(config=config).build_history(dataset, qa)
-
-        history: List[Dict[str, Any]] = []
-        allowed_round_ids = set(selected_round_ids)
-        target_sessions = set(qa.get("session_id", []))
-        for sid in dataset.session_order():
-            if sid not in target_sessions:
-                continue
-            history.extend(history_from_round_ids(dataset.get_session(sid), dataset.rounds, allowed_round_ids))
-        return history
+        # Not used when runner detects answer() — included for interface completeness.
+        return []
 
 
 def get_method(method_name: str, config: Optional[Dict[str, Any]] = None) -> HistoryMethod:
     registry = {
         FullContextMethod.name: FullContextMethod,
         HybridRAGMethod.name: HybridRAGMethod,
-        M2ALiteMethod.name: M2ALiteMethod,
-        M2AFullMethod.name: M2AFullMethod,
-        M2AFullTunedMethod.name: M2AFullTunedMethod,
-        M2ATfidfMethod.name: M2ATfidfMethod,
+        M2AAgentMethod.name: M2AAgentMethod,
     }
     cls = registry.get(method_name)
     if cls is None:
-        raise ValueError(f"Unsupported method: {method_name}")
+        raise ValueError(f"Unsupported method: {method_name!r}")
     return cls(config=config)
