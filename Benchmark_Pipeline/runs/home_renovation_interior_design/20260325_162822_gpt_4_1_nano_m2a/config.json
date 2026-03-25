@@ -30,22 +30,18 @@
     "timeout": 90
   },
   "method": {
-    "name": "m2a_full",
-    "use_dense_embeddings": true,
+    "name": "m2a",
+    "llm_model": "gpt-4o-mini",
+    "llm_api_key": "",
+    "llm_api_key_env": "OPENAI_API_KEY",
+    "llm_base_url": "https://api.openai.com/v1",
     "text_embedding_model": "all-MiniLM-L6-v2",
-    "use_image_retrieval": true,
-    "image_embedding_model": "openai/clip-vit-base-patch32",
-    "image_weight": 0.15,
-    "semantic_top_k": 8,
-    "raw_top_k": 6,
-    "neighbor_window": 1,
-    "max_iterations": 2,
-    "rrf_k": 60,
-    "min_round_words_for_memory": 3,
-    "semantic_lexical_weight": 0.35,
-    "semantic_dense_weight": 0.65,
-    "raw_lexical_weight": 0.35,
-    "raw_dense_weight": 0.65
+    "multimodal_embedding_model": "siglip2-base-patch16-384",
+    "multimodal_embedding_url": "http://localhost:8050/v1",
+    "multimodal_embedding_api_key": "dummy",
+    "max_memory_iterations": 15,
+    "context_window": 5,
+    "max_query_iterations": 5
   },
   "run": {
     "output_root": "runs"

@@ -6,6 +6,7 @@ Faithful to official M2A agent/agents/memory_manager.py.
 from __future__ import annotations
 
 import json
+import time
 from typing import Any, Dict, List, Optional
 
 from .image_manager import ImageManager
@@ -393,13 +394,27 @@ class MemoryManager:
         parallel_tool_calls=False matches official bind_tools(parallel_tool_calls=False).
         """
         for _ in range(self._max_iter):
-            response = self._client.chat.completions.create(
-                model=self._model,
-                messages=messages,
-                tools=tools,
-                tool_choice="auto",
-                parallel_tool_calls=False,
-            )
+            # Retry with exponential backoff for rate limit errors
+            max_retries = 5
+            for attempt in range(max_retries):
+                try:
+                    response = self._client.chat.completions.create(
+                        model=self._model,
+                        messages=messages,
+                        tools=tools,
+                        tool_choice="auto",
+                        parallel_tool_calls=False,
+                    )
+                    break
+                except Exception as e:
+                    if "rate_limit" in str(e).lower() or "429" in str(e):
+                        wait_time = (2 ** attempt) + 1  # 2, 3, 5, 9, 17 seconds
+                        print(f"[M2A] Rate limit hit, waiting {wait_time}s (attempt {attempt + 1}/{max_retries})")
+                        time.sleep(wait_time)
+                        if attempt == max_retries - 1:
+                            raise
+                    else:
+                        raise
             msg = response.choices[0].message
 
             if not msg.tool_calls:

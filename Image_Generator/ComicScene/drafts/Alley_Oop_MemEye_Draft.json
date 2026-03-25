@@ -153,7 +153,7 @@
   ],
   "human-annotated QAs": [
     {
-      "question": "In panel 1 and panel 5 of page 1, is the crowned character in the water both times? Reply with only yes or no in lowercase, with no punctuation.",
+      "question": "On the first page, is the crowned character in the water both at the beginning and again by the end of the page? Reply with only yes or no in lowercase, with no punctuation.",
       "answer": "yes",
       "point": [
         [
@@ -181,7 +181,7 @@
       }
     },
     {
-      "question": "In panel 1 of page 1, is the character in the water wearing a crown? Reply with only yes or no in lowercase, with no punctuation.",
+      "question": "At the start of the first page, is the person in the water wearing a crown? Reply with only yes or no in lowercase, with no punctuation.",
       "answer": "yes",
       "point": [
         [
@@ -207,7 +207,7 @@
       }
     },
     {
-      "question": "On page 1, does the crowned character start in the water and end in the water by panel 5? Reply with only yes or no in lowercase, with no punctuation.",
+      "question": "On the first page, does the crowned character start in the water and still end the page in the water? Reply with only yes or no in lowercase, with no punctuation.",
       "answer": "yes",
       "point": [
         [
@@ -234,7 +234,7 @@
       }
     },
     {
-      "question": "On page 2, does Dinny run into a tree before the conversation about his clumsiness? Reply with only yes or no in lowercase, with no punctuation.",
+      "question": "On the next page, does Dinny hit a tree before the later conversation about him being clumsy? Reply with only yes or no in lowercase, with no punctuation.",
       "answer": "yes",
       "point": [
         [
@@ -262,7 +262,7 @@
       }
     },
     {
-      "question": "Across pages 2 and 3, is the dinosaur being considered for trade-in larger than the newer dinosaur shown at the dealership? Reply with only yes or no in lowercase, with no punctuation.",
+      "question": "Comparing the trade-in dinosaur with the newer one at the dealership, is the trade-in dinosaur larger? Reply with only yes or no in lowercase, with no punctuation.",
       "answer": "yes",
       "point": [
         [
@@ -303,7 +303,7 @@
       }
     },
     {
-      "question": "At the dealership, is the dinosaur labeled as today's special smaller than the dinosaur marked cheap? Reply with only yes or no in lowercase, with no punctuation.",
+      "question": "At the dealership, is the dinosaur labeled today's special smaller than the one marked cheap? Reply with only yes or no in lowercase, with no punctuation.",
       "answer": "yes",
       "point": [
         [
@@ -330,7 +330,7 @@
       }
     },
     {
-      "question": "On page 27, does the crowned character appear in more than one panel? Reply with only yes or no in lowercase, with no punctuation.",
+      "question": "On that later page where the king shows up again, does the crowned character appear more than once on the page? Reply with only yes or no in lowercase, with no punctuation.",
       "answer": "yes",
       "point": [
         [
@@ -359,7 +359,7 @@
       }
     },
     {
-      "question": "On page 27, is the crowned character physically confronted by the shirtless man by the final panel? Reply with only yes or no in lowercase, with no punctuation.",
+      "question": "By the end of that later king page, does the shirtless man physically confront the crowned character? Reply with only yes or no in lowercase, with no punctuation.",
       "answer": "yes",
       "point": [
         [
@@ -387,7 +387,7 @@
       }
     },
     {
-      "question": "On page 4, is Alley still riding the smaller dinosaur in both panel 1 and panel 5? Reply with only yes or no in lowercase, with no punctuation.",
+      "question": "On the test-drive page, is Alley still riding the smaller dinosaur both near the start and again later on the page? Reply with only yes or no in lowercase, with no punctuation.",
       "answer": "yes",
       "point": [
         [
@@ -414,7 +414,7 @@
       }
     },
     {
-      "question": "On page 4, by the final panel, is the dinosaur shown with drool coming from its mouth? Reply with only yes or no in lowercase, with no punctuation.",
+      "question": "By the end of the test-drive page, is the dinosaur shown drooling? Reply with only yes or no in lowercase, with no punctuation.",
       "answer": "yes",
       "point": [
         [
@@ -440,7 +440,7 @@
       }
     },
     {
-      "question": "On page 28, after the crowd throws objects at the temporary king, is he later shown doing work inside a cave? Reply with only yes or no in lowercase, with no punctuation.",
+      "question": "After the crowd throws things at the temporary king, is he later shown doing work inside a cave? Reply with only yes or no in lowercase, with no punctuation.",
       "answer": "yes",
       "point": [
         [
@@ -468,7 +468,7 @@
       }
     },
     {
-      "question": "On page 28, is the crowned character the one giving instructions in panel 2 rather than the shirtless man? Reply with only yes or no in lowercase, with no punctuation.",
+      "question": "On that later page, is the crowned character the one giving instructions rather than the shirtless man? Reply with only yes or no in lowercase, with no punctuation.",
       "answer": "yes",
       "point": [
         [
@@ -494,7 +494,7 @@
       }
     },
     {
-      "question": "Across pages 28 and 29, is the crowned character first shown relaxing and later shown doing chores himself? Reply with only yes or no in lowercase, with no punctuation.",
+      "question": "Across those two later pages, is the crowned character shown relaxing first and then later doing chores himself? Reply with only yes or no in lowercase, with no punctuation.",
       "answer": "yes",
       "point": [
         [
@@ -532,7 +532,7 @@
       }
     },
     {
-      "question": "On page 29, are bon-bons shown next to the reclining crowned character in the first panel? Reply with only yes or no in lowercase, with no punctuation.",
+      "question": "At the start of the next later page, are bon-bons shown next to the reclining crowned character? Reply with only yes or no in lowercase, with no punctuation.",
       "answer": "yes",
       "point": [
         [
@@ -558,7 +558,7 @@
       }
     },
     {
-      "question": "On page 29, does the crowned character get struck by another person before he is shown running with a basin on his head later in the page? Reply with only yes or no in lowercase, with no punctuation.",
+      "question": "On that same later page, does the crowned character get struck before he is shown running with a basin on his head? Reply with only yes or no in lowercase, with no punctuation.",
       "answer": "yes",
       "point": [
         [
@@ -586,7 +586,7 @@
       }
     },
     {
-      "question": "On page 3, is the dinosaur labeled today's special positioned between the dinosaurs labeled cheap and bargain? Reply with only yes or no in lowercase, with no punctuation.",
+      "question": "At the dealership, is the dinosaur labeled today's special positioned between the ones labeled cheap and bargain? Reply with only yes or no in lowercase, with no punctuation.",
       "answer": "yes",
       "point": [
         [
@@ -613,7 +613,7 @@
       }
     },
     {
-      "question": "Across pages 2 and 3, is the large dinosaur that crashes into the tree later the one being discussed for trade-in at the dealership? Reply with only yes or no in lowercase, with no punctuation.",
+      "question": "Is the large dinosaur that crashes into the tree later the same one being discussed for trade-in at the dealership? Reply with only yes or no in lowercase, with no punctuation.",
       "answer": "yes",
       "point": [
         [
@@ -653,7 +653,7 @@
       }
     },
     {
-      "question": "Across pages 27 and 28, is the man proposed as a replacement ruler later shown wearing the crown while the crowd throws objects at him? Reply with only yes or no in lowercase, with no punctuation.",
+      "question": "Is the man proposed as a replacement ruler later shown wearing the crown while the crowd throws things at him? Reply with only yes or no in lowercase, with no punctuation.",
       "answer": "yes",
       "point": [
         [
@@ -690,7 +690,7 @@
       }
     },
     {
-      "question": "On page 29, which panel shows the crowned character running with a basin on his head: panel 2, panel 5, or panel 6? Reply with only 2, 5, or 6.",
+      "question": "On that later page, which panel shows the crowned character running with a basin on his head: panel 2, panel 5, or panel 6? Reply with only 2, 5, or 6.",
       "answer": "5",
       "point": [
         [
@@ -716,7 +716,7 @@
       }
     },
     {
-      "question": "Across pages 3 and 4, is the smaller dinosaur shown at the dealership later shown drooling by the final panel of the test-drive page? Reply with only yes or no in lowercase, with no punctuation.",
+      "question": "Is the smaller dinosaur shown at the dealership later shown drooling by the end of the test-drive page? Reply with only yes or no in lowercase, with no punctuation.",
       "answer": "yes",
       "point": [
         [

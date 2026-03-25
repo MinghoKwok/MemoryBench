@@ -6,6 +6,7 @@ Faithful to official M2A agent/agents/chat_agent.py.
 from __future__ import annotations
 
 import json
+import time
 from typing import Any, Dict, List, Optional
 
 from .image_manager import ImageManager
@@ -233,7 +234,21 @@ class ChatAgent:
                 kwargs["tools"] = [_tool_query_memory()]
                 kwargs["tool_choice"] = "auto"
 
-            response = self._client.chat.completions.create(**kwargs)
+            # Retry with exponential backoff for rate limit errors
+            max_retries = 5
+            for attempt in range(max_retries):
+                try:
+                    response = self._client.chat.completions.create(**kwargs)
+                    break
+                except Exception as e:
+                    if "rate_limit" in str(e).lower() or "429" in str(e):
+                        wait_time = (2 ** attempt) + 1
+                        print(f"[M2A] Rate limit hit, waiting {wait_time}s (attempt {attempt + 1}/{max_retries})")
+                        time.sleep(wait_time)
+                        if attempt == max_retries - 1:
+                            raise
+                    else:
+                        raise
             msg = response.choices[0].message
 
             if not msg.tool_calls:

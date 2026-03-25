@@ -1,0 +1,118 @@
+{
+  "task_name": "visual_case_archive_assistant",
+  "model_name": "gpt_4_1_nano",
+  "model_path": "gpt-4.1-nano",
+  "method_name": "m2a",
+  "mode": "open",
+  "num_qas": 17,
+  "num_qas_run": 17,
+  "dialog_json": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/dialog/Visual_Case_Archive_Assistant.json",
+  "image_root": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image",
+  "run_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/visual_case_archive_assistant/20260325_171002_gpt_4_1_nano_m2a",
+  "git_commit": "9d902115b741da4c18d90a2947bff788eedfcbd4",
+  "summary": {
+    "open_count": 17,
+    "open_exact_rate": 0.0,
+    "open_contains_rate": 0.35294117647058826,
+    "open_f1_avg": 0.09411437454261211,
+    "open_bleu_1_avg": 0.06020783482083791,
+    "open_bleu_2_avg": 0.04491011503549695,
+    "point_metrics": {
+      "X2|Y1": {
+        "open_exact_rate": 0.0,
+        "open_contains_rate": 0.3333333333333333,
+        "open_f1_avg": 0.06504065040650407,
+        "open_bleu_1_avg": 0.023809523809523805,
+        "open_bleu_2_avg": 0.017144816662454654
+      },
+      "X2|Y2": {
+        "open_exact_rate": 0.0,
+        "open_contains_rate": 0.5,
+        "open_f1_avg": 0.048809523809523817,
+        "open_bleu_1_avg": 0.03365384615384615,
+        "open_bleu_2_avg": 0.022351691540811198
+      },
+      "X3|Y2": {
+        "open_exact_rate": 0.0,
+        "open_contains_rate": 0.0,
+        "open_f1_avg": 0.06666666666666667,
+        "open_bleu_1_avg": 0.039473684210526314,
+        "open_bleu_2_avg": 0.0230960638422895
+      },
+      "X4|Y1": {
+        "open_exact_rate": 0.0,
+        "open_contains_rate": 1.0,
+        "open_f1_avg": 0.5263157894736842,
+        "open_bleu_1_avg": 0.3571428571428572,
+        "open_bleu_2_avg": 0.33149677206589795
+      },
+      "X2|Y3": {
+        "open_exact_rate": 0.0,
+        "open_contains_rate": 0.0,
+        "open_f1_avg": 0.11940298507462685,
+        "open_bleu_1_avg": 0.08888888888888888,
+        "open_bleu_2_avg": 0.06356417261637283
+      },
+      "X0|Y2": {
+        "open_exact_rate": 0.0,
+        "open_contains_rate": 0.0,
+        "open_f1_avg": 0.11764705882352942,
+        "open_bleu_1_avg": 0.07894736842105261,
+        "open_bleu_2_avg": 0.045985450461372424
+      }
+    },
+    "x_metrics": {
+      "X2": {
+        "open_exact_rate": 0.0,
+        "open_contains_rate": 0.4166666666666667,
+        "open_f1_avg": 0.05875009389752747,
+        "open_bleu_1_avg": 0.03579568579568579,
+        "open_bleu_2_avg": 0.024484346244185533
+      },
+      "X3": {
+        "open_exact_rate": 0.0,
+        "open_contains_rate": 0.0,
+        "open_f1_avg": 0.06666666666666667,
+        "open_bleu_1_avg": 0.039473684210526314,
+        "open_bleu_2_avg": 0.0230960638422895
+      },
+      "X4": {
+        "open_exact_rate": 0.0,
+        "open_contains_rate": 1.0,
+        "open_f1_avg": 0.5263157894736842,
+        "open_bleu_1_avg": 0.3571428571428572,
+        "open_bleu_2_avg": 0.33149677206589795
+      },
+      "X0": {
+        "open_exact_rate": 0.0,
+        "open_contains_rate": 0.0,
+        "open_f1_avg": 0.11764705882352942,
+        "open_bleu_1_avg": 0.07894736842105261,
+        "open_bleu_2_avg": 0.045985450461372424
+      }
+    },
+    "y_metrics": {
+      "Y1": {
+        "open_exact_rate": 0.0,
+        "open_contains_rate": 0.5,
+        "open_f1_avg": 0.1803594351732991,
+        "open_bleu_1_avg": 0.10714285714285715,
+        "open_bleu_2_avg": 0.09573280551331548
+      },
+      "Y2": {
+        "open_exact_rate": 0.0,
+        "open_contains_rate": 0.3333333333333333,
+        "open_f1_avg": 0.06325863678804856,
+        "open_bleu_1_avg": 0.04217273954116058,
+        "open_bleu_2_avg": 0.02641471341115112
+      },
+      "Y3": {
+        "open_exact_rate": 0.0,
+        "open_contains_rate": 0.0,
+        "open_f1_avg": 0.11940298507462685,
+        "open_bleu_1_avg": 0.08888888888888888,
+        "open_bleu_2_avg": 0.06356417261637283
+      }
+    }
+  }
+}

@@ -167,15 +167,7 @@ python -m Benchmark_Pipeline.run_matrix \
   --method-config Benchmark_Pipeline/config/methods/m2a_full.yaml
 ```
 
-Representative `gpt-4.1-nano` results on five active MemEye tasks:
-
-| Task | Full Context | Hybrid RAG | M2A Lite | M2A Full |
-| --- | --- | --- | --- | --- |
-| `brand_memory_test` | EM `1.000`, F1 `1.000`, BLEU-1 `1.000`, BLEU-2 `0.829` | EM `1.000`, F1 `1.000`, BLEU-1 `1.000`, BLEU-2 `0.829` | EM `1.000`, F1 `1.000`, BLEU-1 `1.000`, BLEU-2 `0.829` | EM `0.500`, F1 `0.500`, BLEU-1 `0.500`, BLEU-2 `0.329` |
-| `chat_ui_memory_test` | EM `0.600`, F1 `0.744`, BLEU-1 `0.709`, BLEU-2 `0.238` | EM `0.600`, F1 `0.745`, BLEU-1 `0.708`, BLEU-2 `0.237` | EM `0.600`, F1 `0.745`, BLEU-1 `0.708`, BLEU-2 `0.237` | EM `0.600`, F1 `0.754`, BLEU-1 `0.715`, BLEU-2 `0.240` |
-| `comicscene_alley_oop_draft` | EM `0.933`, F1 `0.933`, BLEU-1 `0.933`, BLEU-2 `0.295` | EM `0.933`, F1 `0.933`, BLEU-1 `0.933`, BLEU-2 `0.295` | EM `0.933`, F1 `0.933`, BLEU-1 `0.933`, BLEU-2 `0.295` | EM `0.867`, F1 `0.867`, BLEU-1 `0.867`, BLEU-2 `0.274` |
-| `home_renovation_interior_design` | EM `0.080`, F1 `0.428`, BLEU-1 `0.296`, BLEU-2 `0.195` | EM `0.167`, F1 `0.481`, BLEU-1 `0.360`, BLEU-2 `0.297` | EM `0.200`, F1 `0.523`, BLEU-1 `0.388`, BLEU-2 `0.301` | EM `0.080`, F1 `0.438`, BLEU-1 `0.288`, BLEU-2 `0.200` |
-| `visual_case_archive_assistant` | EM `0.059`, F1 `0.251`, BLEU-1 `0.204`, BLEU-2 `0.102` | EM `0.059`, F1 `0.188`, BLEU-1 `0.176`, BLEU-2 `0.125` | EM `0.118`, F1 `0.289`, BLEU-1 `0.263`, BLEU-2 `0.132` | EM `0.059`, F1 `0.235`, BLEU-1 `0.192`, BLEU-2 `0.097` |
+Representative numeric results are intentionally omitted from this README while the benchmark is still evolving. Use `run_benchmark` or `run_matrix` to generate current local results.
 
 ## Config Structure
 
@@ -283,6 +275,12 @@ So the intended comparison in this benchmark is:
 - `m2a_full`: richer M2A-style iterative semantic-to-raw retrieval baseline (benchmark-oriented)
 
 It should not be described as "the full M2A method" in reports or comparisons.
+
+Current implementation note for the benchmark-facing `m2a` path:
+
+- The current `m2a` implementation does not yet pass a QA-time query image into the M2A question stage.
+- This means it is aligned with the official M2A flow only for text-only benchmark questions at answer time.
+- The official `eval_wrapper.py` supports `question(text, image)`, so future tasks that include a query image would require an additional alignment update here.
 
 ## Supported Data Format
 
