@@ -8,7 +8,7 @@ from nltk.stem import PorterStemmer
 from nltk.translate.bleu_score import SmoothingFunction, sentence_bleu
 
 _stemmer = PorterStemmer()
-_ARTICLES = re.compile(r"\b(a|an|the)\b")
+_ARTICLES = re.compile(r"\b(a|an|the)\s+(?=\w)")
 
 
 def to_mcq(question: str) -> str:

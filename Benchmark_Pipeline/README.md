@@ -174,7 +174,7 @@ Representative `gpt-4.1-nano` results on five active MemEye tasks:
 | `brand_memory_test` | EM `1.000`, F1 `1.000`, BLEU-1 `1.000`, BLEU-2 `0.829` | EM `1.000`, F1 `1.000`, BLEU-1 `1.000`, BLEU-2 `0.829` | EM `1.000`, F1 `1.000`, BLEU-1 `1.000`, BLEU-2 `0.829` | EM `0.500`, F1 `0.500`, BLEU-1 `0.500`, BLEU-2 `0.329` |
 | `chat_ui_memory_test` | EM `0.600`, F1 `0.744`, BLEU-1 `0.709`, BLEU-2 `0.238` | EM `0.600`, F1 `0.745`, BLEU-1 `0.708`, BLEU-2 `0.237` | EM `0.600`, F1 `0.745`, BLEU-1 `0.708`, BLEU-2 `0.237` | EM `0.600`, F1 `0.754`, BLEU-1 `0.715`, BLEU-2 `0.240` |
 | `comicscene_alley_oop_draft` | EM `0.933`, F1 `0.933`, BLEU-1 `0.933`, BLEU-2 `0.295` | EM `0.933`, F1 `0.933`, BLEU-1 `0.933`, BLEU-2 `0.295` | EM `0.933`, F1 `0.933`, BLEU-1 `0.933`, BLEU-2 `0.295` | EM `0.867`, F1 `0.867`, BLEU-1 `0.867`, BLEU-2 `0.274` |
-| `home_renovation_interior_design` | EM `0.080`, F1 `0.428`, BLEU-1 `0.296`, BLEU-2 `0.195` | EM `0.167`, F1 `0.481`, BLEU-1 `0.360`, BLEU-2 `0.297` | EM `0.200`, F1 `0.523`, BLEU-1 `0.388`, BLEU-2 `0.301` | EM `0.080`, F1 `0.438`, BLEU-1 `0.288`, BLEU-2 `0.200` |
+| `home_renovation_interior_design` | EM `0.174`, F1 `0.354`, BLEU-1 `0.252`, BLEU-2 `0.112` | EM `0.130`, F1 `0.298`, BLEU-1 `0.204`, BLEU-2 `0.087` | EM `0.130`, F1 `0.303`, BLEU-1 `0.199`, BLEU-2 `0.089` | EM `0.217`, F1 `0.381`, BLEU-1 `0.285`, BLEU-2 `0.118` |
 | `visual_case_archive_assistant` | EM `0.059`, F1 `0.251`, BLEU-1 `0.204`, BLEU-2 `0.102` | EM `0.059`, F1 `0.188`, BLEU-1 `0.176`, BLEU-2 `0.125` | EM `0.118`, F1 `0.289`, BLEU-1 `0.263`, BLEU-2 `0.132` | EM `0.059`, F1 `0.235`, BLEU-1 `0.192`, BLEU-2 `0.097` |
 
 ## Config Structure

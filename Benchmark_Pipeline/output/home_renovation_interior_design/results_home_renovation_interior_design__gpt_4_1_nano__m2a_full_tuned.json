@@ -7,9 +7,9 @@
     "open_count": 23,
     "open_exact_rate": 0.21739130434782608,
     "open_contains_rate": 0.21739130434782608,
-    "open_f1_avg": 0.37757230447993245,
-    "open_bleu_1_avg": 0.2856352764583569,
-    "open_bleu_2_avg": 0.11621024126799719,
+    "open_f1_avg": 0.3805005986909865,
+    "open_bleu_1_avg": 0.28536908681478523,
+    "open_bleu_2_avg": 0.117679142326098,
     "point_metrics": {
       "X4|Y1": {
         "open_exact_rate": 0.125,
@@ -28,9 +28,9 @@
       "X4|Y2": {
         "open_exact_rate": 0.14285714285714285,
         "open_contains_rate": 0.14285714285714285,
-        "open_f1_avg": 0.2747414017917862,
-        "open_bleu_1_avg": 0.17349635810628825,
-        "open_bleu_2_avg": 0.05812109034537522
+        "open_f1_avg": 0.28436293991382083,
+        "open_bleu_1_avg": 0.17262173499169572,
+        "open_bleu_2_avg": 0.06294747953627791
       },
       "X4|Y3": {
         "open_exact_rate": 0.0,
@@ -58,9 +58,9 @@
       "X4": {
         "open_exact_rate": 0.125,
         "open_contains_rate": 0.125,
-        "open_f1_avg": 0.30474686915494176,
-        "open_bleu_1_avg": 0.20018586682717823,
-        "open_bleu_2_avg": 0.09854961803062143
+        "open_f1_avg": 0.3089562920833319,
+        "open_bleu_1_avg": 0.19980321921454403,
+        "open_bleu_2_avg": 0.10066116330164135
       },
       "X3": {
         "open_exact_rate": 0.5,
@@ -88,9 +88,9 @@
       "Y2": {
         "open_exact_rate": 0.2222222222222222,
         "open_contains_rate": 0.2222222222222222,
-        "open_f1_avg": 0.37930620558648365,
-        "open_bleu_1_avg": 0.2867901844098994,
-        "open_bleu_2_avg": 0.0967148493641126
+        "open_f1_avg": 0.38678962412584394,
+        "open_bleu_1_avg": 0.2861099219874385,
+        "open_bleu_2_avg": 0.1004687076237036
       },
       "Y3": {
         "open_exact_rate": 0.0,
@@ -122,8 +122,8 @@
       "f1": 0.06666666666666667,
       "bleu_1": 1.1301647034905271e-06,
       "bleu_2": 5.054250205551425e-07,
-      "latency_ms": 473,
-      "method_name": "m2a_full",
+      "latency_ms": 520,
+      "method_name": "m2a_full_tuned",
       "history_turns": 10,
       "source_sessions": [
         "D2"
@@ -152,8 +152,8 @@
       "f1": 0.07407407407407407,
       "bleu_1": 1.3887943864964021e-11,
       "bleu_2": 4.391753462984823e-12,
-      "latency_ms": 1766,
-      "method_name": "m2a_full",
+      "latency_ms": 1963,
+      "method_name": "m2a_full_tuned",
       "history_turns": 8,
       "source_sessions": [
         "D3"
@@ -182,8 +182,8 @@
       "f1": 0.9333333333333333,
       "bleu_1": 0.8668778997501817,
       "bleu_2": 0.7913476338264609,
-      "latency_ms": 1509,
-      "method_name": "m2a_full",
+      "latency_ms": 1988,
+      "method_name": "m2a_full_tuned",
       "history_turns": 12,
       "source_sessions": [
         "D5"
@@ -212,8 +212,8 @@
       "f1": 0.13333333333333333,
       "bleu_1": 2.2603294069810542e-06,
       "bleu_2": 7.14778918831783e-07,
-      "latency_ms": 1761,
-      "method_name": "m2a_full",
+      "latency_ms": 1464,
+      "method_name": "m2a_full_tuned",
       "history_turns": 12,
       "source_sessions": [
         "D6"
@@ -242,8 +242,8 @@
       "f1": 0.1,
       "bleu_1": 1.522997974471263e-08,
       "bleu_2": 4.816142471152167e-09,
-      "latency_ms": 1492,
-      "method_name": "m2a_full",
+      "latency_ms": 1527,
+      "method_name": "m2a_full_tuned",
       "history_turns": 6,
       "source_sessions": [
         "D7"
@@ -272,8 +272,8 @@
       "f1": 0.14285714285714288,
       "bleu_1": 6.14421235332821e-06,
       "bleu_2": 1.9429705464260385e-06,
-      "latency_ms": 1351,
-      "method_name": "m2a_full",
+      "latency_ms": 1443,
+      "method_name": "m2a_full_tuned",
       "history_turns": 10,
       "source_sessions": [
         "D7"
@@ -302,8 +302,8 @@
       "f1": 0.11764705882352941,
       "bleu_1": 3.059023205018258e-07,
       "bleu_2": 9.673480743165915e-08,
-      "latency_ms": 1471,
-      "method_name": "m2a_full",
+      "latency_ms": 1589,
+      "method_name": "m2a_full_tuned",
       "history_turns": 10,
       "source_sessions": [
         "D9"
@@ -332,8 +332,8 @@
       "f1": 0.18181818181818182,
       "bleu_1": 0.00012340980408667956,
       "bleu_2": 0.00012340980408667956,
-      "latency_ms": 1877,
-      "method_name": "m2a_full",
+      "latency_ms": 1240,
+      "method_name": "m2a_full_tuned",
       "history_turns": 6,
       "source_sessions": [
         "D10"
@@ -362,8 +362,8 @@
       "f1": 0.11764705882352941,
       "bleu_1": 3.059023205018258e-07,
       "bleu_2": 9.673480743165915e-08,
-      "latency_ms": 2018,
-      "method_name": "m2a_full",
+      "latency_ms": 1881,
+      "method_name": "m2a_full_tuned",
       "history_turns": 6,
       "source_sessions": [
         "D4"
@@ -385,15 +385,15 @@
       "mode": "open",
       "question": "Comparing the original pre-renovation kitchen photo with the completed kitchen reveal photo, describe how the backsplash color changed.",
       "gt": "The original kitchen on March 1 had a beige/taupe-colored tile backsplash. The finished kitchen on June 18 replaced it with bright white subway tiles, giving the kitchen a clean, modern look.",
-      "pred": "The backsplash color changed from a darker shade to white with subtle gray veining.",
+      "pred": "The backsplash color changed from a darker shade to white subway tiles.",
       "exact_match": false,
       "em": 0.0,
       "contains_gt": false,
-      "f1": 0.2,
-      "bleu_1": 0.06589928452893168,
-      "bleu_2": 0.012566500491277444,
-      "latency_ms": 1856,
-      "method_name": "m2a_full",
+      "f1": 0.2631578947368421,
+      "bleu_1": 0.06611955528863463,
+      "bleu_2": 0.049282606755814244,
+      "latency_ms": 1975,
+      "method_name": "m2a_full_tuned",
       "history_turns": 12,
       "source_sessions": [
         "D1",
@@ -424,8 +424,8 @@
       "f1": 0.3018867924528302,
       "bleu_1": 0.11775152756901794,
       "bleu_2": 0.06500501898826481,
-      "latency_ms": 1868,
-      "method_name": "m2a_full",
+      "latency_ms": 1460,
+      "method_name": "m2a_full_tuned",
       "history_turns": 12,
       "source_sessions": [
         "D1",
@@ -456,8 +456,8 @@
       "f1": 0.30303030303030304,
       "bleu_1": 0.12148821231389349,
       "bleu_2": 0.062244186511245664,
-      "latency_ms": 2846,
-      "method_name": "m2a_full",
+      "latency_ms": 3241,
+      "method_name": "m2a_full_tuned",
       "history_turns": 8,
       "source_sessions": [
         "D3",
@@ -488,8 +488,8 @@
       "f1": 0.49056603773584906,
       "bleu_1": 0.3666371529450766,
       "bleu_2": 0.14735824584254895,
-      "latency_ms": 2110,
-      "method_name": "m2a_full",
+      "latency_ms": 2062,
+      "method_name": "m2a_full_tuned",
       "history_turns": 12,
       "source_sessions": [
         "D5",
@@ -520,8 +520,8 @@
       "f1": 0.046511627906976744,
       "bleu_1": 1.6991339097475355e-09,
       "bleu_2": 7.598757850140965e-10,
-      "latency_ms": 2643,
-      "method_name": "m2a_full",
+      "latency_ms": 2246,
+      "method_name": "m2a_full_tuned",
       "history_turns": 10,
       "source_sessions": [
         "D1",
@@ -554,8 +554,8 @@
       "f1": 0.1,
       "bleu_1": 1.522997974471263e-08,
       "bleu_2": 1.522997974471263e-08,
-      "latency_ms": 1476,
-      "method_name": "m2a_full",
+      "latency_ms": 1446,
+      "method_name": "m2a_full_tuned",
       "history_turns": 12,
       "source_sessions": [
         "D4",
@@ -588,8 +588,8 @@
       "f1": 0.04347826086956522,
       "bleu_1": 7.781132241133797e-20,
       "bleu_2": 2.4606100656953324e-20,
-      "latency_ms": 2389,
-      "method_name": "m2a_full",
+      "latency_ms": 1753,
+      "method_name": "m2a_full_tuned",
       "history_turns": 12,
       "source_sessions": [
         "D7",
@@ -613,15 +613,15 @@
       "mode": "open",
       "question": "Hannah shared a set of paint swatches on a white background and later shared a photo of her completed living room with an accent wall. Does the accent wall color visually match any of the swatches?",
       "gt": "Yes. The accent wall on August 10 shows a warm terracotta/clay-orange tone that closely matches the swatches from April 28, which all fall in the same terracotta/clay/rust-orange color family. The warm orange-red earth tone on the wall is visually consistent with the swatch range.",
-      "pred": "The accent wall color does not visually match any of the swatches shared.",
+      "pred": "The accent wall color does not visually match any of the swatches.",
       "exact_match": false,
       "em": 0.0,
       "contains_gt": false,
-      "f1": 0.22222222222222218,
-      "bleu_1": 0.02478421626247053,
-      "bleu_2": 0.011624827855236393,
-      "latency_ms": 2624,
-      "method_name": "m2a_full",
+      "f1": 0.22641509433962265,
+      "bleu_1": 0.018441583700620007,
+      "bleu_2": 0.008693445927018473,
+      "latency_ms": 1782,
+      "method_name": "m2a_full_tuned",
       "history_turns": 12,
       "source_sessions": [
         "D6",
@@ -652,8 +652,8 @@
       "f1": 0.1090909090909091,
       "bleu_1": 0.0060394766844637,
       "bleu_2": 0.0014235183061341097,
-      "latency_ms": 552,
-      "method_name": "m2a_full",
+      "latency_ms": 602,
+      "method_name": "m2a_full_tuned",
       "history_turns": 10,
       "source_sessions": [
         "D8",
@@ -684,8 +684,8 @@
       "f1": 1.0,
       "bleu_1": 1.0,
       "bleu_2": 0.316227766016838,
-      "latency_ms": 3629,
-      "method_name": "m2a_full",
+      "latency_ms": 4347,
+      "method_name": "m2a_full_tuned",
       "history_turns": 12,
       "source_sessions": [
         "D2"
@@ -714,8 +714,8 @@
       "f1": 1.0,
       "bleu_1": 1.0,
       "bleu_2": 0.316227766016838,
-      "latency_ms": 2681,
-      "method_name": "m2a_full",
+      "latency_ms": 2541,
+      "method_name": "m2a_full_tuned",
       "history_turns": 10,
       "source_sessions": [
         "D9"
@@ -745,8 +745,8 @@
       "f1": 1.0,
       "bleu_1": 1.0,
       "bleu_2": 0.316227766016838,
-      "latency_ms": 1389,
-      "method_name": "m2a_full",
+      "latency_ms": 1511,
+      "method_name": "m2a_full_tuned",
       "history_turns": 6,
       "source_sessions": [
         "D10"
@@ -775,8 +775,8 @@
       "f1": 1.0,
       "bleu_1": 1.0,
       "bleu_2": 0.316227766016838,
-      "latency_ms": 1620,
-      "method_name": "m2a_full",
+      "latency_ms": 1233,
+      "method_name": "m2a_full_tuned",
       "history_turns": 6,
       "source_sessions": [
         "D5",
@@ -807,8 +807,8 @@
       "f1": 1.0,
       "bleu_1": 1.0,
       "bleu_2": 0.316227766016838,
-      "latency_ms": 3015,
-      "method_name": "m2a_full",
+      "latency_ms": 2307,
+      "method_name": "m2a_full_tuned",
       "history_turns": 12,
       "source_sessions": [
         "D1",
@@ -820,7 +820,7 @@
       ]
     }
   ],
-  "method_name": "m2a_full",
-  "run_dir": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/runs/home_renovation_interior_design/20260325_111927_gpt_4_1_nano_m2a_full",
+  "method_name": "m2a_full_tuned",
+  "run_dir": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/runs/home_renovation_interior_design/20260325_112029_gpt_4_1_nano_m2a_full_tuned",
   "git_commit": "9d2e328c4714d06c005251530996057fd5dfa3bf"
 }

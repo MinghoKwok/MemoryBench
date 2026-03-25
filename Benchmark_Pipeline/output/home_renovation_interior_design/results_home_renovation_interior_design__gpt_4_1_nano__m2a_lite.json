@@ -1,159 +1,103 @@
 {
-  "dialog_json": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/dialog/Home_Renovation_Interior_Design.json",
+  "dialog_json": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/dialog/Home_Renovation_Interior_Design.json",
   "model_path": "gpt-4.1-nano",
   "mode": "open",
-  "num_qas": 30,
+  "num_qas": 23,
   "summary": {
-    "open_count": 30,
-    "open_exact_rate": 0.2,
-    "open_contains_rate": 0.26666666666666666,
-    "open_f1_avg": 0.5228142194335885,
-    "open_bleu_1_avg": 0.3877698371714528,
-    "open_bleu_2_avg": 0.3011474275697391,
+    "open_count": 23,
+    "open_exact_rate": 0.13043478260869565,
+    "open_contains_rate": 0.17391304347826086,
+    "open_f1_avg": 0.30289626941414927,
+    "open_bleu_1_avg": 0.19854642797485186,
+    "open_bleu_2_avg": 0.08922478580390698,
     "point_metrics": {
-      "X1|Y1": {
-        "open_exact_rate": 0.4444444444444444,
-        "open_contains_rate": 0.4444444444444444,
-        "open_f1_avg": 0.6151368760064412,
-        "open_bleu_1_avg": 0.5779125305005306,
-        "open_bleu_2_avg": 0.5382836416777319
-      },
-      "X3|Y2": {
+      "X4|Y1": {
         "open_exact_rate": 0.0,
         "open_contains_rate": 0.0,
-        "open_f1_avg": 0.2666666666666667,
-        "open_bleu_1_avg": 0.004086771438464067,
-        "open_bleu_2_avg": 0.004086771438464067
-      },
-      "X3+X4|Y2": {
-        "open_exact_rate": 0.0,
-        "open_contains_rate": 0.0,
-        "open_f1_avg": 0.33333333333333337,
-        "open_bleu_1_avg": 0.01831563888873418,
-        "open_bleu_2_avg": 0.01831563888873418
-      },
-      "X2|Y1": {
-        "open_exact_rate": 0.0,
-        "open_contains_rate": 0.0,
-        "open_f1_avg": 0.5333333333333333,
-        "open_bleu_1_avg": 0.20883325476965314,
-        "open_bleu_2_avg": 0.08306038110651597
+        "open_f1_avg": 0.20621622386328267,
+        "open_bleu_1_avg": 0.10837639377211757,
+        "open_bleu_2_avg": 0.09893428794302907
       },
       "X3|Y1": {
-        "open_exact_rate": 0.2,
-        "open_contains_rate": 0.4,
-        "open_f1_avg": 0.6228715728715729,
-        "open_bleu_1_avg": 0.47775734516099905,
-        "open_bleu_2_avg": 0.436134754695785
+        "open_exact_rate": 0.5,
+        "open_contains_rate": 0.5,
+        "open_f1_avg": 0.5770308123249299,
+        "open_bleu_1_avg": 0.5000509435678329,
+        "open_bleu_2_avg": 0.15816477428437353
       },
-      "X0|Y3": {
-        "open_exact_rate": 1.0,
-        "open_contains_rate": 1.0,
-        "open_f1_avg": 1.0,
-        "open_bleu_1_avg": 1.0,
-        "open_bleu_2_avg": 0.316227766016838
+      "X4|Y2": {
+        "open_exact_rate": 0.14285714285714285,
+        "open_contains_rate": 0.14285714285714285,
+        "open_f1_avg": 0.30055848632826976,
+        "open_bleu_1_avg": 0.16471202359305376,
+        "open_bleu_2_avg": 0.056948936252035356
       },
       "X4|Y3": {
         "open_exact_rate": 0.0,
+        "open_contains_rate": 0.0,
+        "open_f1_avg": 0.3142857142857143,
+        "open_bleu_1_avg": 0.17973158564688863,
+        "open_bleu_2_avg": 0.08203586979581053
+      },
+      "X0|Y2": {
+        "open_exact_rate": 0.0,
         "open_contains_rate": 0.5,
-        "open_f1_avg": 0.2969187675070028,
-        "open_bleu_1_avg": 0.23958333333333334,
-        "open_bleu_2_avg": 0.12552260826520723
+        "open_f1_avg": 0.24528301886792453,
+        "open_bleu_1_avg": 0.1833185764725383,
+        "open_bleu_2_avg": 0.07367912292127447
       },
-      "X1|Y2": {
+      "X0|Y3": {
         "open_exact_rate": 0.0,
         "open_contains_rate": 0.0,
-        "open_f1_avg": 0.3125,
-        "open_bleu_1_avg": 0.08458455202288294,
-        "open_bleu_2_avg": 0.07004266344407181
-      },
-      "X4|Y2": {
-        "open_exact_rate": 0.0,
-        "open_contains_rate": 0.0,
-        "open_f1_avg": 0.44828469022017403,
-        "open_bleu_1_avg": 0.2741483641610451,
-        "open_bleu_2_avg": 0.16805177852633468
-      },
-      "X3+X4|Y1": {
-        "open_exact_rate": 0.0,
-        "open_contains_rate": 0.0,
-        "open_f1_avg": 0.6,
-        "open_bleu_1_avg": 0.45489799478447507,
-        "open_bleu_2_avg": 0.19853376138890322
-      },
-      "X0+X4|Y3": {
-        "open_exact_rate": 0.0,
-        "open_contains_rate": 0.0,
-        "open_f1_avg": 0.4186433063791554,
-        "open_bleu_1_avg": 0.24221761005189257,
-        "open_bleu_2_avg": 0.15701595943991048
-      },
-      "X1|Y3": {
-        "open_exact_rate": 0.0,
-        "open_contains_rate": 0.0,
-        "open_f1_avg": 0.35416666666666663,
-        "open_bleu_1_avg": 0.15471396150775762,
-        "open_bleu_2_avg": 0.08883613161040171
+        "open_f1_avg": 0.1,
+        "open_bleu_1_avg": 1.522997974471263e-08,
+        "open_bleu_2_avg": 3.4055270005122335e-09
       }
     },
     "x_metrics": {
-      "X1": {
-        "open_exact_rate": 0.3333333333333333,
-        "open_contains_rate": 0.3333333333333333,
-        "open_f1_avg": 0.5464221014492753,
-        "open_bleu_1_avg": 0.46626877079526446,
-        "open_bleu_2_avg": 0.4243556418137053
+      "X4": {
+        "open_exact_rate": 0.0625,
+        "open_contains_rate": 0.0625,
+        "open_f1_avg": 0.2542453068431165,
+        "open_bleu_1_avg": 0.13748293131095035,
+        "open_bleu_2_avg": 0.07950954544401817
       },
       "X3": {
-        "open_exact_rate": 0.125,
-        "open_contains_rate": 0.25,
-        "open_f1_avg": 0.5392947330447331,
-        "open_bleu_1_avg": 0.3582608913645836,
-        "open_bleu_2_avg": 0.3002012431493783
-      },
-      "X4": {
-        "open_exact_rate": 0.0,
-        "open_contains_rate": 0.1111111111111111,
-        "open_f1_avg": 0.4088522408805726,
-        "open_bleu_1_avg": 0.24748109542418265,
-        "open_bleu_2_avg": 0.14167178357560586
-      },
-      "X2": {
-        "open_exact_rate": 0.0,
-        "open_contains_rate": 0.0,
-        "open_f1_avg": 0.5333333333333333,
-        "open_bleu_1_avg": 0.20883325476965314,
-        "open_bleu_2_avg": 0.08306038110651597
+        "open_exact_rate": 0.5,
+        "open_contains_rate": 0.5,
+        "open_f1_avg": 0.5770308123249299,
+        "open_bleu_1_avg": 0.5000509435678329,
+        "open_bleu_2_avg": 0.15816477428437353
       },
       "X0": {
-        "open_exact_rate": 0.25,
-        "open_contains_rate": 0.25,
-        "open_f1_avg": 0.5639824797843666,
-        "open_bleu_1_avg": 0.4316632075389194,
-        "open_bleu_2_avg": 0.19681891108414235
+        "open_exact_rate": 0.0,
+        "open_contains_rate": 0.3333333333333333,
+        "open_f1_avg": 0.19685534591194967,
+        "open_bleu_1_avg": 0.12221238939168544,
+        "open_bleu_2_avg": 0.04911941641602532
       }
     },
     "y_metrics": {
       "Y1": {
-        "open_exact_rate": 0.29411764705882354,
-        "open_contains_rate": 0.35294117647058826,
-        "open_f1_avg": 0.6068974361813236,
-        "open_bleu_1_avg": 0.497797882625503,
-        "open_bleu_2_avg": 0.4346988865988498
+        "open_exact_rate": 0.16666666666666666,
+        "open_contains_rate": 0.16666666666666666,
+        "open_f1_avg": 0.32982108668383175,
+        "open_bleu_1_avg": 0.23893457703735596,
+        "open_bleu_2_avg": 0.11867778339014388
       },
       "Y2": {
-        "open_exact_rate": 0.0,
-        "open_contains_rate": 0.0,
-        "open_f1_avg": 0.36181387608806964,
-        "open_bleu_1_avg": 0.13105673813443428,
-        "open_bleu_2_avg": 0.08570972616478789
+        "open_exact_rate": 0.1111111111111111,
+        "open_contains_rate": 0.2222222222222222,
+        "open_f1_avg": 0.2882750491148596,
+        "open_bleu_1_avg": 0.1688468131218281,
+        "open_bleu_2_avg": 0.060666755511866274
       },
       "Y3": {
-        "open_exact_rate": 0.125,
-        "open_contains_rate": 0.25,
-        "open_f1_avg": 0.4447625984356007,
-        "open_bleu_1_avg": 0.31440592747973245,
-        "open_bleu_2_avg": 0.1519991405109734
+        "open_exact_rate": 0.0,
+        "open_contains_rate": 0.0,
+        "open_f1_avg": 0.20714285714285713,
+        "open_bleu_1_avg": 0.08986580043843419,
+        "open_bleu_2_avg": 0.04101793660066876
       }
     }
   },
@@ -162,181 +106,180 @@
       "idx": 1,
       "point": [
         [
-          "X1"
+          "X4"
         ],
         [
           "Y1"
         ]
       ],
       "mode": "open",
-      "question": "What is Hannah's total renovation budget?",
-      "gt": "$30,000.",
-      "pred": "$30,000",
-      "exact_match": true,
-      "em": 1.0,
-      "contains_gt": true,
-      "f1": 1.0,
-      "bleu_1": 1.0,
-      "bleu_2": 1.0,
-      "latency_ms": 604,
+      "question": "Hannah shared four sofa options labeled A through D. Which option has a curved, arched back profile?",
+      "gt": "Option A. The sofa in Option A has a classic camelback curved arch along the top of the back — a smooth sweeping curve compared to the straight or modular backs of the other three options.",
+      "pred": "Option C",
+      "exact_match": false,
+      "em": 0.0,
+      "contains_gt": false,
+      "f1": 0.06666666666666667,
+      "bleu_1": 1.1301647034905271e-06,
+      "bleu_2": 5.054250205551425e-07,
+      "latency_ms": 350,
       "method_name": "m2a_lite",
       "history_turns": 8,
       "source_sessions": [
-        "D1"
+        "D2"
       ],
       "clue_rounds": [
-        "D1:14"
+        "D2:2"
       ]
     },
     {
       "idx": 2,
       "point": [
         [
-          "X1"
+          "X4"
         ],
         [
           "Y1"
         ]
       ],
       "mode": "open",
-      "question": "How many bedrooms does Hannah's apartment have?",
-      "gt": "Two bedrooms.",
-      "pred": "Two",
+      "question": "Hannah photographed a wall of paint swatches at a store. What color family do all the swatches in that photo belong to?",
+      "gt": "All swatches belong to the green/teal color family, ranging from bright aqua/teal at the top rows to muted sage and khaki-green tones in the lower rows.",
+      "pred": "Green",
       "exact_match": false,
       "em": 0.0,
       "contains_gt": false,
-      "f1": 0.6666666666666666,
-      "bleu_1": 0.36787944117144233,
-      "bleu_2": 0.11633369384516798,
-      "latency_ms": 583,
+      "f1": 0.07407407407407407,
+      "bleu_1": 1.3887943864964021e-11,
+      "bleu_2": 4.391753462984823e-12,
+      "latency_ms": 2311,
       "method_name": "m2a_lite",
       "history_turns": 8,
       "source_sessions": [
-        "D1"
+        "D3"
       ],
       "clue_rounds": [
-        "D1:1"
+        "D3:5"
       ]
     },
     {
       "idx": 3,
       "point": [
         [
-          "X1"
+          "X4"
         ],
         [
           "Y1"
         ]
       ],
       "mode": "open",
-      "question": "What is the total square footage of Hannah's apartment?",
-      "gt": "970 square feet.",
-      "pred": "970 square feet",
-      "exact_match": true,
-      "em": 1.0,
-      "contains_gt": true,
-      "f1": 1.0,
-      "bleu_1": 1.0,
-      "bleu_2": 1.0,
-      "latency_ms": 1519,
+      "question": "Hannah shared a photo of three cabinet finish sample cards laid out on a desk. What are the three finish names printed on those cards?",
+      "gt": "MATTE WHITE, NATURAL OAK, and PAINTED SAGE GREEN.",
+      "pred": "Matte White, Natural Oak, Painted Sage Green",
+      "exact_match": false,
+      "em": 0.0,
+      "contains_gt": false,
+      "f1": 0.9333333333333333,
+      "bleu_1": 0.8668778997501817,
+      "bleu_2": 0.7913476338264609,
+      "latency_ms": 1412,
       "method_name": "m2a_lite",
       "history_turns": 12,
       "source_sessions": [
-        "D1"
+        "D5"
       ],
       "clue_rounds": [
-        "D1:1"
+        "D5:3"
       ]
     },
     {
       "idx": 4,
       "point": [
         [
-          "X1"
+          "X4"
         ],
         [
           "Y1"
         ]
       ],
       "mode": "open",
-      "question": "How much did the kitchen renovation cost in total?",
-      "gt": "$9,200.",
-      "pred": "$9,200",
-      "exact_match": true,
-      "em": 1.0,
-      "contains_gt": true,
-      "f1": 1.0,
-      "bleu_1": 1.0,
-      "bleu_2": 1.0,
-      "latency_ms": 875,
+      "question": "Hannah shared a photo of paint swatches arranged side by side on a white background. How many individual swatches are shown in that photo?",
+      "gt": "Five (5) individual swatches are shown, all in a terracotta/clay/rust-orange color family.",
+      "pred": "Five",
+      "exact_match": false,
+      "em": 0.0,
+      "contains_gt": false,
+      "f1": 0.13333333333333333,
+      "bleu_1": 2.2603294069810542e-06,
+      "bleu_2": 7.14778918831783e-07,
+      "latency_ms": 1263,
       "method_name": "m2a_lite",
       "history_turns": 8,
       "source_sessions": [
-        "D8"
+        "D6"
       ],
       "clue_rounds": [
-        "D8:12"
+        "D6:6"
       ]
     },
     {
       "idx": 5,
       "point": [
         [
-          "X1"
+          "X3"
         ],
         [
           "Y1"
         ]
       ],
       "mode": "open",
-      "question": "What was the original flooring budget and what was the actual cost?",
-      "gt": "The original budget was $4,000, but the actual cost was $5,800.",
-      "pred": "The original flooring budget was $4,000, and the actual cost was $5,800.",
+      "question": "Hannah shared a photo of a folding screen used as a room divider. How many panels does it have?",
+      "gt": "Three panels. The folding screen has three equal-width panels with a natural wood frame and beige linen-like fabric infill.",
+      "pred": "Three panels",
       "exact_match": false,
       "em": 0.0,
       "contains_gt": false,
-      "f1": 0.8695652173913043,
-      "bleu_1": 0.8333333333333334,
-      "bleu_2": 0.7282190812544191,
-      "latency_ms": 2883,
+      "f1": 0.1904761904761905,
+      "bleu_1": 0.00020346836901064417,
+      "bleu_2": 0.00020346836901064417,
+      "latency_ms": 6535,
       "method_name": "m2a_lite",
-      "history_turns": 10,
+      "history_turns": 12,
       "source_sessions": [
-        "D4"
+        "D7"
       ],
       "clue_rounds": [
-        "D4:1",
-        "D4:2"
+        "D7:11"
       ]
     },
     {
       "idx": 6,
       "point": [
         [
-          "X1"
+          "X4"
         ],
         [
           "Y1"
         ]
       ],
       "mode": "open",
-      "question": "How much did Ryan contribute toward the renovation budget?",
-      "gt": "$4,000.",
-      "pred": "$4,000",
-      "exact_match": true,
-      "em": 1.0,
-      "contains_gt": true,
-      "f1": 1.0,
-      "bleu_1": 1.0,
-      "bleu_2": 1.0,
-      "latency_ms": 419,
+      "question": "Hannah shared a photo of an L-shaped desk as a workspace option. What color is the desk?",
+      "gt": "White. The L-shaped desk has a white tabletop surface and white metal frame legs.",
+      "pred": "White",
+      "exact_match": false,
+      "em": 0.0,
+      "contains_gt": false,
+      "f1": 0.14285714285714288,
+      "bleu_1": 6.14421235332821e-06,
+      "bleu_2": 1.9429705464260385e-06,
+      "latency_ms": 1703,
       "method_name": "m2a_lite",
-      "history_turns": 8,
+      "history_turns": 10,
       "source_sessions": [
         "D7"
       ],
       "clue_rounds": [
-        "D7:16"
+        "D7:5"
       ]
     },
     {
@@ -346,442 +289,33 @@
           "X3"
         ],
         [
-          "Y2"
+          "Y1"
         ]
       ],
       "mode": "open",
-      "question": "Where should Hannah put the coffee table in the living room?",
-      "gt": "In the empty center space in front of the sofa, as shown in the living room photo where the terracotta accent wall is visible and the center area is clearly empty.",
-      "pred": "In front of the sofa.",
+      "question": "Hannah shared a full bathroom photo showing the existing layout before choosing a vanity. What type of bathtub is visible — freestanding, alcove/tub-surround, or drop-in?",
+      "gt": "Freestanding. The bathroom contains a white oval freestanding bathtub that stands independently on the floor, separate from all walls.",
+      "pred": "Freestanding",
       "exact_match": false,
       "em": 0.0,
       "contains_gt": false,
-      "f1": 0.2666666666666667,
-      "bleu_1": 0.004086771438464067,
-      "bleu_2": 0.004086771438464067,
-      "latency_ms": 1899,
+      "f1": 0.11764705882352941,
+      "bleu_1": 3.059023205018258e-07,
+      "bleu_2": 9.673480743165915e-08,
+      "latency_ms": 1845,
       "method_name": "m2a_lite",
-      "history_turns": 8,
+      "history_turns": 12,
       "source_sessions": [
-        "D10"
+        "D9"
       ],
       "clue_rounds": [
-        "D10:2"
+        "D9:2"
       ]
     },
     {
       "idx": 8,
       "point": [
         [
-          "X3",
-          "X4"
-        ],
-        [
-          "Y2"
-        ]
-      ],
-      "mode": "open",
-      "question": "Which color in the color swatches match the paint chosen? Give the name.",
-      "gt": "Cavern Clay (SW 7701). It is the second swatch from the left.",
-      "pred": "Cavern Clay",
-      "exact_match": false,
-      "em": 0.0,
-      "contains_gt": false,
-      "f1": 0.33333333333333337,
-      "bleu_1": 0.01831563888873418,
-      "bleu_2": 0.01831563888873418,
-      "latency_ms": 1464,
-      "method_name": "m2a_lite",
-      "history_turns": 12,
-      "source_sessions": [
-        "D6"
-      ],
-      "clue_rounds": [
-        "D6:3",
-        "D6:7"
-      ]
-    },
-    {
-      "idx": 9,
-      "point": [
-        [
-          "X1"
-        ],
-        [
-          "Y1"
-        ]
-      ],
-      "mode": "open",
-      "question": "Which image shows the cabinet samples?",
-      "gt": "2025-04-15:IMG_001",
-      "pred": "The third image shows the cabinet samples.",
-      "exact_match": false,
-      "em": 0.0,
-      "contains_gt": false,
-      "f1": 0.0,
-      "bleu_1": 0.0,
-      "bleu_2": 0.0,
-      "latency_ms": 1713,
-      "method_name": "m2a_lite",
-      "history_turns": 12,
-      "source_sessions": [
-        "D5"
-      ],
-      "clue_rounds": [
-        "D5:6"
-      ]
-    },
-    {
-      "idx": 10,
-      "point": [
-        [
-          "X2"
-        ],
-        [
-          "Y1"
-        ]
-      ],
-      "mode": "open",
-      "question": "In the kitchen photo Hannah shared on day one, what color are the cabinets?",
-      "gt": "Flat gray.",
-      "pred": "Gray",
-      "exact_match": false,
-      "em": 0.0,
-      "contains_gt": false,
-      "f1": 0.6666666666666666,
-      "bleu_1": 0.36787944117144233,
-      "bleu_2": 0.11633369384516798,
-      "latency_ms": 1643,
-      "method_name": "m2a_lite",
-      "history_turns": 8,
-      "source_sessions": [
-        "D1"
-      ],
-      "clue_rounds": [
-        "D1:4"
-      ]
-    },
-    {
-      "idx": 11,
-      "point": [
-        [
-          "X3"
-        ],
-        [
-          "Y1"
-        ]
-      ],
-      "mode": "open",
-      "question": "How many cabinet doors did Hannah count in her original kitchen?",
-      "gt": "Eight cabinet doors total.",
-      "pred": "The conversation and images do not provide information about the number of cabinet doors Hannah counted in her original kitchen.",
-      "exact_match": false,
-      "em": 0.0,
-      "contains_gt": false,
-      "f1": 0.1818181818181818,
-      "bleu_1": 0.11111111111111109,
-      "bleu_2": 0.08084520834544433,
-      "latency_ms": 573,
-      "method_name": "m2a_lite",
-      "history_turns": 10,
-      "source_sessions": [
-        "D1"
-      ],
-      "clue_rounds": [
-        "D1:4"
-      ]
-    },
-    {
-      "idx": 12,
-      "point": [
-        [
-          "X2"
-        ],
-        [
-          "Y1"
-        ]
-      ],
-      "mode": "open",
-      "question": "What type of sink does Vanity Option A have?",
-      "gt": "A vessel sink that sits on top of the vanity.",
-      "pred": "A vessel sink.",
-      "exact_match": false,
-      "em": 0.0,
-      "contains_gt": false,
-      "f1": 0.4,
-      "bleu_1": 0.049787068367863944,
-      "bleu_2": 0.049787068367863944,
-      "latency_ms": 1448,
-      "method_name": "m2a_lite",
-      "history_turns": 12,
-      "source_sessions": [
-        "D9"
-      ],
-      "clue_rounds": [
-        "D9:4"
-      ]
-    },
-    {
-      "idx": 13,
-      "point": [
-        [
-          "X3"
-        ],
-        [
-          "Y1"
-        ]
-      ],
-      "mode": "open",
-      "question": "How many tiers does the pull-out pantry in Hannah's new kitchen have?",
-      "gt": "Three tiers of wire racks.",
-      "pred": "Three tiers",
-      "exact_match": false,
-      "em": 0.0,
-      "contains_gt": false,
-      "f1": 0.5714285714285715,
-      "bleu_1": 0.22313016014842982,
-      "bleu_2": 0.22313016014842982,
-      "latency_ms": 1380,
-      "method_name": "m2a_lite",
-      "history_turns": 12,
-      "source_sessions": [
-        "D8"
-      ],
-      "clue_rounds": [
-        "D8:7"
-      ]
-    },
-    {
-      "idx": 14,
-      "point": [
-        [
-          "X3"
-        ],
-        [
-          "Y1"
-        ]
-      ],
-      "mode": "open",
-      "question": "What items did Hannah organize on each tier of the pull-out pantry?",
-      "gt": "Dry goods on top, cans and sauces in the middle, oils and vinegars on the bottom.",
-      "pred": "Jars of spices and seasonings on the top tier, canned goods on the middle tier, and bottles of oils and sauces on the bottom tier.",
-      "exact_match": false,
-      "em": 0.0,
-      "contains_gt": false,
-      "f1": 0.6111111111111112,
-      "bleu_1": 0.45454545454545453,
-      "bleu_2": 0.32897584747988445,
-      "latency_ms": 1557,
-      "method_name": "m2a_lite",
-      "history_turns": 12,
-      "source_sessions": [
-        "D8"
-      ],
-      "clue_rounds": [
-        "D8:7"
-      ]
-    },
-    {
-      "idx": 15,
-      "point": [
-        [
-          "X3"
-        ],
-        [
-          "Y1"
-        ]
-      ],
-      "mode": "open",
-      "question": "How many shelf levels are visible in the bookshelf room divider Hannah considered?",
-      "gt": "Five shelf levels.",
-      "pred": "Five shelf levels are visible.",
-      "exact_match": false,
-      "em": 0.0,
-      "contains_gt": true,
-      "f1": 0.7499999999999999,
-      "bleu_1": 0.6,
-      "bleu_2": 0.5477225575051662,
-      "latency_ms": 1326,
-      "method_name": "m2a_lite",
-      "history_turns": 12,
-      "source_sessions": [
-        "D7"
-      ],
-      "clue_rounds": [
-        "D7:9"
-      ]
-    },
-    {
-      "idx": 16,
-      "point": [
-        [
-          "X0"
-        ],
-        [
-          "Y3"
-        ]
-      ],
-      "mode": "open",
-      "question": "Based on Hannah's established apartment design system, which material option in the attached image is the best match for a new living room furniture piece? Answer with the option letter only.",
-      "gt": "B",
-      "pred": "B",
-      "exact_match": true,
-      "em": 1.0,
-      "contains_gt": true,
-      "f1": 1.0,
-      "bleu_1": 1.0,
-      "bleu_2": 0.316227766016838,
-      "latency_ms": 1365,
-      "method_name": "m2a_lite",
-      "history_turns": 12,
-      "source_sessions": [
-        "D6",
-        "D10"
-      ],
-      "clue_rounds": [
-        "D6:15",
-        "D6:16",
-        "D10:8",
-        "D10:14"
-      ]
-    },
-    {
-      "idx": 17,
-      "point": [
-        [
-          "X4"
-        ],
-        [
-          "Y3"
-        ]
-      ],
-      "mode": "open",
-      "question": "Trace the evolution of Hannah's living room paint color choice across the sessions.",
-      "gt": "First, Hannah chose a sage green called 'Snipped Chive' for the accent wall. Then, she changed to warm terracotta tones (Cavern Clay SW 7701) after realizing cool green clashed with the warm oak cabinets and flooring she had chosen.",
-      "pred": "Hannah initially considered a sage green color, but changed her mind after testing samples and found it clashed with warm wood tones. She then shifted to warm earthy tones, selecting a terracotta shade for an accent wall, which she feels creates a warm, inviting atmosphere and enhances the room's natural oak cabinetry.",
-      "exact_match": false,
-      "em": 0.0,
-      "contains_gt": false,
-      "f1": 0.4761904761904762,
-      "bleu_1": 0.4166666666666667,
-      "bleu_2": 0.2306328020072213,
-      "latency_ms": 2535,
-      "method_name": "m2a_lite",
-      "history_turns": 12,
-      "source_sessions": [
-        "D3",
-        "D5",
-        "D6"
-      ],
-      "clue_rounds": [
-        "D3:8",
-        "D5:3",
-        "D6:2",
-        "D6:3"
-      ]
-    },
-    {
-      "idx": 18,
-      "point": [
-        [
-          "X1"
-        ],
-        [
-          "Y2"
-        ]
-      ],
-      "mode": "open",
-      "question": "Did the kitchen come in over or under the original estimate, and by how much?",
-      "gt": "The kitchen came in under budget. The estimate was $8,000-$10,000, and the actual cost was $9,200, which was under the $10,000 upper estimate.",
-      "pred": "The kitchen came in under the original estimate by $800.",
-      "exact_match": false,
-      "em": 0.0,
-      "contains_gt": false,
-      "f1": 0.3125,
-      "bleu_1": 0.08458455202288294,
-      "bleu_2": 0.07004266344407181,
-      "latency_ms": 2884,
-      "method_name": "m2a_lite",
-      "history_turns": 12,
-      "source_sessions": [
-        "D4",
-        "D8"
-      ],
-      "clue_rounds": [
-        "D4:5",
-        "D8:12"
-      ]
-    },
-    {
-      "idx": 19,
-      "point": [
-        [
-          "X4"
-        ],
-        [
-          "Y2"
-        ]
-      ],
-      "mode": "open",
-      "question": "Why did Hannah reject Vanity Option A for the bathroom, based on what she saw in the images?",
-      "gt": "Because Vanity Option A has matte black hardware (faucet, mirror frame, legs) visible in the photo, which would clash with the existing chrome fixtures in her bathroom shown in the reference image. Mixing matte black and chrome in a small bathroom would look disjointed.",
-      "pred": "Hannah rejected Vanity Option A because the hardware color (black faucet and legs) does not match the chrome finish in her bathroom, which would look mismatched.",
-      "exact_match": false,
-      "em": 0.0,
-      "contains_gt": false,
-      "f1": 0.4838709677419355,
-      "bleu_1": 0.32527113310584427,
-      "bleu_2": 0.192016024060457,
-      "latency_ms": 1797,
-      "method_name": "m2a_lite",
-      "history_turns": 8,
-      "source_sessions": [
-        "D9"
-      ],
-      "clue_rounds": [
-        "D9:2",
-        "D9:4",
-        "D9:5",
-        "D9:6"
-      ]
-    },
-    {
-      "idx": 20,
-      "point": [
-        [
-          "X4"
-        ],
-        [
-          "Y2"
-        ]
-      ],
-      "mode": "open",
-      "question": "Why did Hannah change her mind from sage green to terracotta paint after seeing the cabinet samples?",
-      "gt": "After choosing natural oak cabinets, she held the oak sample next to her warm-toned flooring and realized the cool sage green would visually clash with the warm wood tones. The warm terracotta better harmonized with the oak and flooring she could see together.",
-      "pred": "Hannah changed her mind because the sage green clashed with the warm wood tones of the cabinet samples, while the terracotta complemented the warm palette and created a cohesive system.",
-      "exact_match": false,
-      "em": 0.0,
-      "contains_gt": false,
-      "f1": 0.4126984126984126,
-      "bleu_1": 0.22302559521624596,
-      "bleu_2": 0.14408753299221239,
-      "latency_ms": 1087,
-      "method_name": "m2a_lite",
-      "history_turns": 12,
-      "source_sessions": [
-        "D5",
-        "D6"
-      ],
-      "clue_rounds": [
-        "D6:2",
-        "D6:3"
-      ]
-    },
-    {
-      "idx": 21,
-      "point": [
-        [
-          "X3",
           "X4"
         ],
         [
@@ -789,47 +323,16 @@
         ]
       ],
       "mode": "open",
-      "question": "What are the names of the color and finish of the cabinet samples from left to right?",
-      "gt": "From left to right: Matte White, Natural Oak, and Painted Sage Green.",
-      "pred": "White painted, oak natural finish, sage green painted",
+      "question": "Hannah shared three coffee table options labeled A, B, and C. Which option has a metallic gold/brass-colored base?",
+      "gt": "Option C. The third coffee table option has an oval white marble top supported by a brass/gold-tone cross-shaped pedestal base.",
+      "pred": "Option C",
       "exact_match": false,
       "em": 0.0,
       "contains_gt": false,
-      "f1": 0.6,
-      "bleu_1": 0.45489799478447507,
-      "bleu_2": 0.19853376138890322,
-      "latency_ms": 1788,
-      "method_name": "m2a_lite",
-      "history_turns": 12,
-      "source_sessions": [
-        "D5"
-      ],
-      "clue_rounds": [
-        "D5:3",
-        "D5:6"
-      ]
-    },
-    {
-      "idx": 22,
-      "point": [
-        [
-          "X3"
-        ],
-        [
-          "Y1"
-        ]
-      ],
-      "mode": "open",
-      "question": "Looking at the three coffee table options Hannah shared, which one has a storage shelf underneath?",
-      "gt": "Option B.",
-      "pred": "Option B",
-      "exact_match": true,
-      "em": 1.0,
-      "contains_gt": true,
-      "f1": 1.0,
-      "bleu_1": 1.0,
-      "bleu_2": 1.0,
-      "latency_ms": 926,
+      "f1": 0.18181818181818182,
+      "bleu_1": 0.00012340980408667956,
+      "bleu_2": 0.00012340980408667956,
+      "latency_ms": 1575,
       "method_name": "m2a_lite",
       "history_turns": 12,
       "source_sessions": [
@@ -840,152 +343,103 @@
       ]
     },
     {
-      "idx": 23,
+      "idx": 9,
       "point": [
         [
-          "X0",
           "X4"
         ],
         [
-          "Y3"
+          "Y1"
         ]
       ],
       "mode": "open",
-      "question": "Which coffee table option best matches the design language Hannah has established throughout her renovation? Explain why.",
-      "gt": "Option B. The oak matches the kitchen cabinets chosen in 2025-04-15 and installed in 2025-06-18. The black metal frame echoes the matte black bar handles on those same cabinets. This creates a cohesive 'oak + black metal' design language across the apartment.",
-      "pred": "Option B best matches the design language Hannah has established. It features oak wood that connects to the kitchen cabinets and a black metal frame that echoes the cabinet handles, creating a cohesive and intentional look.",
+      "question": "Hannah shared a photo of marble tile samples arranged on a wooden surface. What is the base color of the darkest tile sample visible?",
+      "gt": "Black. The darkest tile sample has a black/dark charcoal base with white veining running across its surface.",
+      "pred": "Black",
       "exact_match": false,
       "em": 0.0,
       "contains_gt": false,
-      "f1": 0.4857142857142857,
-      "bleu_1": 0.37381228493279406,
-      "bleu_2": 0.21938814804833334,
-      "latency_ms": 2047,
+      "f1": 0.11764705882352941,
+      "bleu_1": 3.059023205018258e-07,
+      "bleu_2": 9.673480743165915e-08,
+      "latency_ms": 7709,
       "method_name": "m2a_lite",
-      "history_turns": 8,
+      "history_turns": 12,
       "source_sessions": [
-        "D5",
-        "D8",
-        "D10"
+        "D4"
       ],
       "clue_rounds": [
-        "D5:3",
-        "D8:2",
-        "D8:10",
-        "D10:6",
-        "D10:8"
+        "D4:7"
       ]
     },
     {
-      "idx": 24,
+      "idx": 10,
       "point": [
         [
-          "X0",
           "X4"
         ],
         [
-          "Y3"
+          "Y2"
         ]
       ],
       "mode": "open",
-      "question": "What cabinet finish and handle combination did Hannah select for the kitchen, and how does this relate to her coffee table choice?",
-      "gt": "Hannah chose natural oak cabinets with matte black bar handles. Her coffee table choice (Option B in 2025-08-10) has an oak top with a black metal frame, deliberately echoing the same material combination.",
-      "pred": "Hannah selected a white cabinet finish with black handles for the kitchen, which relates to her coffee table choice of black metal, creating a cohesive design theme.",
+      "question": "Comparing the original pre-renovation kitchen photo with the completed kitchen reveal photo, describe how the backsplash color changed.",
+      "gt": "The original kitchen on March 1 had a beige/taupe-colored tile backsplash. The finished kitchen on June 18 replaced it with bright white subway tiles, giving the kitchen a clean, modern look.",
+      "pred": "The backsplash color changed from beige tiles to white subway tiles.",
       "exact_match": false,
       "em": 0.0,
       "contains_gt": false,
-      "f1": 0.39285714285714285,
-      "bleu_1": 0.29855471273907885,
-      "bleu_2": 0.21565058271522464,
-      "latency_ms": 694,
-      "method_name": "m2a_lite",
-      "history_turns": 12,
-      "source_sessions": [
-        "D5",
-        "D8",
-        "D10"
-      ],
-      "clue_rounds": [
-        "D5:3",
-        "D5:14",
-        "D8:2",
-        "D10:8",
-        "D10:14"
-      ]
-    },
-    {
-      "idx": 25,
-      "point": [
-        [
-          "X1"
-        ],
-        [
-          "Y3"
-        ]
-      ],
-      "mode": "open",
-      "question": "What is the total net budget impact of the flooring overrun and kitchen savings combined, and what is the current total budget?",
-      "gt": "The flooring was $1,800 over budget ($5,800 vs $4,000 planned). The kitchen was $800 under the upper estimate ($9,200 vs $10,000 estimate). Net impact: approximately $1,000 over budget on these two items. With Ryan's $4,000 contribution, the total budget increased from $30,000 to $34,000.",
-      "pred": "The net impact is $1,000 over the initial $30,000 budget. The current total budget is $31,000.",
-      "exact_match": false,
-      "em": 0.0,
-      "contains_gt": false,
-      "f1": 0.3333333333333333,
-      "bleu_1": 0.08211016568336973,
-      "bleu_2": 0.05717418068917994,
-      "latency_ms": 2716,
-      "method_name": "m2a_lite",
-      "history_turns": 12,
-      "source_sessions": [
-        "D4",
-        "D7",
-        "D8"
-      ],
-      "clue_rounds": [
-        "D4:1",
-        "D7:16",
-        "D8:12"
-      ]
-    },
-    {
-      "idx": 26,
-      "point": [
-        [
-          "X1"
-        ],
-        [
-          "Y3"
-        ]
-      ],
-      "mode": "open",
-      "question": "What is the current plan for bedroom 2, and how has it changed from the original?",
-      "gt": "Originally planned as Hannah's solo creative studio with a large drafting table. After Ryan announced he's moving in, it became a shared workspace requiring two compact desks and a room divider. Hannah gave up her 48-inch drafting table because it was too wide for the shared room.",
-      "pred": "The current plan is for Ryan to move into bedroom 2, requiring two workspaces. The original plan was for the room to be Hannah's studio. The change involves replacing the studio with two desks to accommodate both users.",
-      "exact_match": false,
-      "em": 0.0,
-      "contains_gt": false,
-      "f1": 0.375,
-      "bleu_1": 0.22731775733214554,
-      "bleu_2": 0.12049808253162347,
-      "latency_ms": 1336,
+      "f1": 0.3684210526315789,
+      "bleu_1": 0.08264944411079328,
+      "bleu_2": 0.05509962940719552,
+      "latency_ms": 2575,
       "method_name": "m2a_lite",
       "history_turns": 12,
       "source_sessions": [
         "D1",
-        "D7"
+        "D8"
       ],
       "clue_rounds": [
-        "D1:9",
-        "D1:11",
-        "D7:3",
-        "D7:7"
+        "D1:4",
+        "D8:2"
       ]
     },
     {
-      "idx": 27,
+      "idx": 11,
       "point": [
         [
-          "X0",
+          "X4"
+        ],
+        [
+          "Y2"
+        ]
+      ],
+      "mode": "open",
+      "question": "Comparing the cabinet handles visible in the original pre-renovation kitchen with the close-up of the finished kitchen cabinets, how did the handle finish color change?",
+      "gt": "The original kitchen on March 1 shows silver/chrome bar-style handles. The close-up on June 18 shows matte black bar-style handles. The bar pull style is similar but the finish changed from bright silver/chrome to matte black.",
+      "pred": "The handle finish color changed from silver to black.",
+      "exact_match": false,
+      "em": 0.0,
+      "contains_gt": false,
+      "f1": 0.3111111111111111,
+      "bleu_1": 0.019986823002266615,
+      "bleu_2": 0.008722964696149646,
+      "latency_ms": 2564,
+      "method_name": "m2a_lite",
+      "history_turns": 12,
+      "source_sessions": [
+        "D1",
+        "D8"
+      ],
+      "clue_rounds": [
+        "D1:4",
+        "D8:10"
+      ]
+    },
+    {
+      "idx": 12,
+      "point": [
+        [
           "X4"
         ],
         [
@@ -993,128 +447,380 @@
         ]
       ],
       "mode": "open",
-      "question": "Considering Hannah's complete renovation journey, what material palette has she established for the apartment?",
-      "gt": "Hannah built a warm-neutral material palette: natural oak wood (kitchen cabinets, coffee table), matte black metal accents (cabinet handles, coffee table frame), terracotta/clay wall color (Cavern Clay), tan leather (sofa), warm hardwood floors, white quartz countertops, and chrome fixtures in the bathroom.",
-      "pred": "Oak wood, terracotta, leather, warm hardwood floors, white and cream accents",
+      "question": "Hannah photographed two different sets of paint swatches — one was a wall of swatches at a store, and the other was a row of swatches on a white background. Describe the difference in color family between these two swatch photos.",
+      "gt": "The March 20 swatches are all greens and teals, ranging from bright aqua at the top to muted sage/khaki green at the bottom. The April 28 swatches are all terracotta, clay, and rust-orange tones. The color family shifted entirely from cool-to-neutral greens to warm earth tones.",
+      "pred": "The store swatches are in the green and blue-green color family, while the row of swatches on a white background are in the warm, earthy, reddish-orange color family.",
       "exact_match": false,
       "em": 0.0,
       "contains_gt": false,
-      "f1": 0.3773584905660377,
-      "bleu_1": 0.05428583248380478,
-      "bleu_2": 0.03600914755617348,
-      "latency_ms": 586,
+      "f1": 0.3142857142857143,
+      "bleu_1": 0.17973158564688863,
+      "bleu_2": 0.08203586979581053,
+      "latency_ms": 3573,
       "method_name": "m2a_lite",
-      "history_turns": 6,
+      "history_turns": 12,
       "source_sessions": [
-        "D2",
-        "D4",
+        "D3",
+        "D6"
+      ],
+      "clue_rounds": [
+        "D3:5",
+        "D6:6"
+      ]
+    },
+    {
+      "idx": 13,
+      "point": [
+        [
+          "X0"
+        ],
+        [
+          "Y2"
+        ]
+      ],
+      "mode": "open",
+      "question": "Hannah shared three cabinet door profile samples leaning against a wall, and later shared a close-up of the installed kitchen cabinets. Do the installed cabinets visually match one of the three door samples? Describe the shared visual characteristics.",
+      "gt": "Yes — the installed kitchen cabinets match the natural oak door sample from April 15. Both show the same warm amber/honey-toned wood with a prominent straight horizontal grain pattern and a natural matte surface treatment.",
+      "pred": "Yes, the installed cabinets visually match the natural oak sample. Both have a warm, light wood finish with a smooth, flat surface and minimal detailing.",
+      "exact_match": false,
+      "em": 0.0,
+      "contains_gt": false,
+      "f1": 0.49056603773584906,
+      "bleu_1": 0.3666371529450766,
+      "bleu_2": 0.14735824584254895,
+      "latency_ms": 1961,
+      "method_name": "m2a_lite",
+      "history_turns": 12,
+      "source_sessions": [
         "D5",
+        "D8"
+      ],
+      "clue_rounds": [
+        "D5:6",
+        "D8:10"
+      ]
+    },
+    {
+      "idx": 14,
+      "point": [
+        [
+          "X4"
+        ],
+        [
+          "Y2"
+        ]
+      ],
+      "mode": "open",
+      "question": "Hannah shared a photo of her existing bathroom and later shared two vanity options (A and B). Which vanity option has hardware whose finish color matches the fixtures already visible in the existing bathroom photo?",
+      "gt": "Option B. The original bathroom on March 1 shows silver/chrome-finished faucet and fixtures. Vanity Option B features a chrome/silver faucet that matches those existing chrome fixtures. Vanity Option A has matte black hardware (mirror frame, legs, knob) that does not match.",
+      "pred": "Option A",
+      "exact_match": false,
+      "em": 0.0,
+      "contains_gt": false,
+      "f1": 0.046511627906976744,
+      "bleu_1": 1.6991339097475355e-09,
+      "bleu_2": 7.598757850140965e-10,
+      "latency_ms": 2176,
+      "method_name": "m2a_lite",
+      "history_turns": 10,
+      "source_sessions": [
+        "D1",
+        "D9"
+      ],
+      "clue_rounds": [
+        "D1:12",
+        "D9:2",
+        "D9:4",
+        "D9:5"
+      ]
+    },
+    {
+      "idx": 15,
+      "point": [
+        [
+          "X0"
+        ],
+        [
+          "Y3"
+        ]
+      ],
+      "mode": "open",
+      "question": "Hannah shared a modern apartment inspiration photo with wood-grain cabinetry, a set of paint swatches on a white background, and a completed living room with an accent wall. What single visual color/tone theme appears consistently across all three images?",
+      "gt": "Warm earthy tones. The April 5 inspiration shows warm walnut/wood-grain cabinetry and beige/earth-tone furnishings. The April 28 swatches are all terracotta, clay, and rust-orange earth tones. The August 10 completed room has a warm terracotta/clay accent wall with warm wood floors and earthy furnishings. All three are unified by warm orange/brown/neutral earth tones.",
+      "pred": "Warm, neutral tones",
+      "exact_match": false,
+      "em": 0.0,
+      "contains_gt": false,
+      "f1": 0.1,
+      "bleu_1": 1.522997974471263e-08,
+      "bleu_2": 3.4055270005122335e-09,
+      "latency_ms": 2274,
+      "method_name": "m2a_lite",
+      "history_turns": 12,
+      "source_sessions": [
+        "D4",
         "D6",
-        "D8",
-        "D9",
         "D10"
       ],
       "clue_rounds": [
-        "D2:4",
-        "D5:3",
-        "D6:3",
-        "D8:2",
-        "D9:5",
-        "D10:14"
+        "D4:4",
+        "D6:6",
+        "D10:2"
       ]
     },
     {
-      "idx": 28,
+      "idx": 16,
       "point": [
         [
           "X4"
         ],
         [
-          "Y3"
+          "Y2"
         ]
       ],
       "mode": "open",
-      "question": "Please determine whether the following information conflicts with the dialogue memory: The final color of the living room accent wall is cool green.",
-      "gt": "Yes.",
-      "pred": "Yes, it conflicts. The final color of the living room accent wall is a warm terracotta, not cool green.",
+      "question": "Hannah shared a wall-mounted floating desk option and later shared a close-up of her completed kitchen cabinets. Do the desk surface and the kitchen cabinet doors share the same wood finish color and grain character?",
+      "gt": "Yes — both show the same warm natural oak/honey-toned wood. The wall-mounted desk on June 6 has a warm amber wood surface with straight horizontal grain, and the kitchen cabinet close-up on June 18 shows the same warm oak tone and identical straight horizontal grain pattern.",
+      "pred": "Yes.",
       "exact_match": false,
       "em": 0.0,
-      "contains_gt": true,
-      "f1": 0.11764705882352941,
-      "bleu_1": 0.0625,
-      "bleu_2": 0.02041241452319315,
-      "latency_ms": 1128,
+      "contains_gt": false,
+      "f1": 0.04347826086956522,
+      "bleu_1": 7.781132241133797e-20,
+      "bleu_2": 2.4606100656953324e-20,
+      "latency_ms": 1362,
       "method_name": "m2a_lite",
-      "history_turns": 10,
+      "history_turns": 12,
       "source_sessions": [
-        "D3",
-        "D6"
+        "D7",
+        "D8"
       ],
       "clue_rounds": [
-        "D3:8",
-        "D6:3",
-        "D6:7"
+        "D7:3",
+        "D8:10"
       ]
     },
     {
-      "idx": 29,
+      "idx": 17,
       "point": [
         [
-          "X1"
+          "X4"
         ],
         [
-          "Y1"
+          "Y2"
         ]
       ],
       "mode": "open",
-      "question": "What brand of refrigerator does Hannah have in her new kitchen?",
-      "gt": "Not mentioned.",
-      "pred": "Unknown",
+      "question": "Hannah shared a set of paint swatches on a white background and later shared a photo of her completed living room with an accent wall. Does the accent wall color visually match any of the swatches?",
+      "gt": "Yes. The accent wall on August 10 shows a warm terracotta/clay-orange tone that closely matches the swatches from April 28, which all fall in the same terracotta/clay/rust-orange color family. The warm orange-red earth tone on the wall is visually consistent with the swatch range.",
+      "pred": "The accent wall color visually matches the warm, earthy tone of the swatches Hannah shared.",
       "exact_match": false,
       "em": 0.0,
       "contains_gt": false,
-      "f1": 0.0,
-      "bleu_1": 0.0,
-      "bleu_2": 0.0,
-      "latency_ms": 1756,
+      "f1": 0.2909090909090909,
+      "bleu_1": 0.050347896339182505,
+      "bleu_2": 0.018592192884188587,
+      "latency_ms": 1785,
       "method_name": "m2a_lite",
-      "history_turns": 10,
+      "history_turns": 12,
       "source_sessions": [
-        "D8"
+        "D6",
+        "D10"
       ],
-      "clue_rounds": []
+      "clue_rounds": [
+        "D6:6",
+        "D10:2"
+      ]
     },
     {
-      "idx": 30,
+      "idx": 18,
       "point": [
         [
-          "X1"
+          "X4"
+        ],
+        [
+          "Y2"
+        ]
+      ],
+      "mode": "open",
+      "question": "Hannah shared a close-up of her completed kitchen cabinets and also shared Vanity Option A for her bathroom. Do the kitchen cabinet hardware and Vanity Option A's hardware share the same accent finish color?",
+      "gt": "Yes — both share a matte black hardware finish. The kitchen cabinet doors on June 18 feature matte black bar handles, and Vanity Option A on July 18 shows matte black mirror frame, leg hardware, and drawer knob. The matte black accent color is visually consistent across both spaces.",
+      "pred": "Yes.",
+      "exact_match": false,
+      "em": 0.0,
+      "contains_gt": false,
+      "f1": 0.04347826086956522,
+      "bleu_1": 7.781132241133797e-20,
+      "bleu_2": 2.4606100656953324e-20,
+      "latency_ms": 2466,
+      "method_name": "m2a_lite",
+      "history_turns": 12,
+      "source_sessions": [
+        "D8",
+        "D9"
+      ],
+      "clue_rounds": [
+        "D8:10",
+        "D9:4"
+      ]
+    },
+    {
+      "idx": 19,
+      "point": [
+        [
+          "X4"
         ],
         [
           "Y1"
         ]
       ],
       "mode": "open",
-      "question": "What color did Hannah paint the bedroom walls?",
-      "gt": "Not mentioned.",
-      "pred": "The bedroom walls are painted in Cavern Clay.",
+      "question": "Among Hannah's four sofa options (A through D), which option is upholstered in a sage or mint green fabric? Answer with only A, B, C, or D.",
+      "gt": "D",
+      "pred": "B",
       "exact_match": false,
       "em": 0.0,
       "contains_gt": false,
       "f1": 0.0,
       "bleu_1": 0.0,
       "bleu_2": 0.0,
-      "latency_ms": 3236,
+      "latency_ms": 2761,
       "method_name": "m2a_lite",
-      "history_turns": 10,
+      "history_turns": 8,
       "source_sessions": [
-        "D3",
-        "D6"
+        "D2"
       ],
-      "clue_rounds": []
+      "clue_rounds": [
+        "D2:5"
+      ]
+    },
+    {
+      "idx": 20,
+      "point": [
+        [
+          "X3"
+        ],
+        [
+          "Y1"
+        ]
+      ],
+      "mode": "open",
+      "question": "Between Vanity Option A and Vanity Option B that Hannah considered for her bathroom, which has a vessel sink that sits on top of the counter surface rather than being integrated flush into it? Answer with only A, B, C, or D.",
+      "gt": "A",
+      "pred": "A",
+      "exact_match": true,
+      "em": 1.0,
+      "contains_gt": true,
+      "f1": 1.0,
+      "bleu_1": 1.0,
+      "bleu_2": 0.316227766016838,
+      "latency_ms": 2253,
+      "method_name": "m2a_lite",
+      "history_turns": 8,
+      "source_sessions": [
+        "D9"
+      ],
+      "clue_rounds": [
+        "D9:4",
+        "D9:5"
+      ]
+    },
+    {
+      "idx": 21,
+      "point": [
+        [
+          "X3"
+        ],
+        [
+          "Y1"
+        ]
+      ],
+      "mode": "open",
+      "question": "Among Hannah's three coffee table options (A, B, and C), which has a round tabletop? Answer with only A, B, C, or D.",
+      "gt": "A",
+      "pred": "A",
+      "exact_match": true,
+      "em": 1.0,
+      "contains_gt": true,
+      "f1": 1.0,
+      "bleu_1": 1.0,
+      "bleu_2": 0.316227766016838,
+      "latency_ms": 2658,
+      "method_name": "m2a_lite",
+      "history_turns": 12,
+      "source_sessions": [
+        "D10"
+      ],
+      "clue_rounds": [
+        "D10:6"
+      ]
+    },
+    {
+      "idx": 22,
+      "point": [
+        [
+          "X0"
+        ],
+        [
+          "Y2"
+        ]
+      ],
+      "mode": "open",
+      "question": "Hannah shared three cabinet door profile samples leaning against a wall (left to right: A, B, C) and later a close-up of her completed kitchen cabinets. Which door sample matches the installed cabinets? Answer with only A, B, C, or D.",
+      "gt": "B",
+      "pred": "None of the options match the installed cabinets.",
+      "exact_match": false,
+      "em": 0.0,
+      "contains_gt": true,
+      "f1": 0.0,
+      "bleu_1": 0.0,
+      "bleu_2": 0.0,
+      "latency_ms": 2246,
+      "method_name": "m2a_lite",
+      "history_turns": 12,
+      "source_sessions": [
+        "D5",
+        "D8"
+      ],
+      "clue_rounds": [
+        "D5:6",
+        "D8:10"
+      ]
+    },
+    {
+      "idx": 23,
+      "point": [
+        [
+          "X4"
+        ],
+        [
+          "Y2"
+        ]
+      ],
+      "mode": "open",
+      "question": "Comparing the original pre-renovation kitchen with the completed kitchen close-up, how did the cabinet handle finish change? A) Stayed the same silver/chrome. B) Changed from silver/chrome to matte black. C) Changed from matte black to silver/chrome. D) Changed from silver/chrome to brushed gold. Answer with only A, B, C, or D.",
+      "gt": "B",
+      "pred": "B",
+      "exact_match": true,
+      "em": 1.0,
+      "contains_gt": true,
+      "f1": 1.0,
+      "bleu_1": 1.0,
+      "bleu_2": 0.316227766016838,
+      "latency_ms": 1633,
+      "method_name": "m2a_lite",
+      "history_turns": 12,
+      "source_sessions": [
+        "D1",
+        "D8"
+      ],
+      "clue_rounds": [
+        "D1:4",
+        "D8:10"
+      ]
     }
   ],
   "method_name": "m2a_lite",
-  "run_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/home_renovation_interior_design/20260322_222252_gpt_4_1_nano_m2a_lite",
-  "git_commit": "e73b45ce3934f16cdff09951c72a63718e3e5fc3"
+  "run_dir": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/runs/home_renovation_interior_design/20260325_111823_gpt_4_1_nano_m2a_lite",
+  "git_commit": "9d2e328c4714d06c005251530996057fd5dfa3bf"
 }
