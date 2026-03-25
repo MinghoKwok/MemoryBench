@@ -213,12 +213,21 @@ def run_benchmark(cfg: Dict[str, Any], config_dir: Path) -> Dict[str, Any]:
     )
     router = instantiate_router(cfg["model"], system_prompt=load_sys_prompt())
 
+    # Detect agentic methods (e.g. M2A) that handle end-to-end inference via answer().
+    # These bypass build_history() + router.answer() and call method.answer() directly.
+    is_agentic = hasattr(method, "answer") and callable(getattr(method, "answer"))
+
     qas = dataset.iter_qas(limit=max_questions)
     results: List[Dict[str, Any]] = []
     for i, qa in enumerate(qas, start=1):
         question = qa.get("question", "")
         gt = qa.get("answer", "")
-        history = method.build_history(dataset, qa)
+
+        if is_agentic:
+            history: List[Any] = []
+        else:
+            history = method.build_history(dataset, qa)
+
         print(
             f"[INFO] QA {i}/{len(qas)} point={qa.get('point')} "
             f"method={method.name} history_turns={len(history)}"
@@ -226,7 +235,10 @@ def run_benchmark(cfg: Dict[str, Any], config_dir: Path) -> Dict[str, Any]:
 
         if mode in {"open", "both"}:
             t0 = dt.datetime.now()
-            pred = router.answer(history, question)
+            if is_agentic:
+                pred = method.answer(dataset, qa, question)
+            else:
+                pred = router.answer(history, question)
             latency_ms = int((dt.datetime.now() - t0).total_seconds() * 1000)
             exact, contains = score_open(pred, gt)
             f1 = f1_score(pred, gt)
@@ -261,7 +273,10 @@ def run_benchmark(cfg: Dict[str, Any], config_dir: Path) -> Dict[str, Any]:
         if mode in {"mcq", "both"}:
             mcq_question = to_mcq(question)
             t0 = dt.datetime.now()
-            pred_raw = router.answer(history, mcq_question)
+            if is_agentic:
+                pred_raw = method.answer(dataset, qa, mcq_question)
+            else:
+                pred_raw = router.answer(history, mcq_question)
             latency_ms = int((dt.datetime.now() - t0).total_seconds() * 1000)
             choice = extract_choice(pred_raw)
             results.append(
