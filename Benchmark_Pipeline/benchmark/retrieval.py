@@ -151,14 +151,7 @@ def select_round_ids_for_qa(
     if not all_session_ids:
         return []
 
-    query_text = " ".join(
-        part
-        for part in [
-            str(qa.get("question", "")).strip(),
-            str(qa.get("point", "")).strip(),
-        ]
-        if part
-    )
+    query_text = str(qa.get("question", "")).strip()
     query_tokens = _tokenize(query_text)
     if not query_tokens:
         return []
