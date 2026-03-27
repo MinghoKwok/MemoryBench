@@ -1,124 +1,157 @@
-# Environment Setup for M2A Full (Dense Embeddings)
+# Environment Setup for Official M2A
 
-## Required Conda Environment
+This file documents the working setup for the official agentic `m2a` path in this repo.
 
-The `m2a_full` method requires `sentence-transformers` and `transformers` with working PyTorch to enable dense embeddings and CLIP image retrieval. The correct environment is:
+The current `m2a` runtime is a two-process setup:
+
+1. `memorybench` conda env runs the benchmark, local `all-MiniLM-L6-v2`, and the agentic M2A loop.
+2. `vllm` conda env serves `google/siglip2-base-patch16-384` at `http://127.0.0.1:8050/v1`.
+
+## Canonical Configs
+
+Use these configs together:
+
+- Method: `Benchmark_Pipeline/config/methods/m2a.yaml`
+- Model metadata: `Benchmark_Pipeline/config/models/gpt_4o_mini.yaml`
+- Example task: `Benchmark_Pipeline/config/tasks_external/home_renovation_interior_design.yaml`
+
+Important runtime fact:
+
+- The actual LLM used by agentic `m2a` is pinned inside `config/methods/m2a.yaml`.
+- In this repo that value is intentionally fixed to `gpt-4o-mini`.
+- `--model-config` still affects run metadata and output file naming, so it should match the same model to avoid misleading artifacts.
+
+## Verified Working Environments
+
+### `memorybench`
+
+Use:
 
 ```bash
-conda activate memorybench
+conda run -n memorybench ...
 ```
 
-### Environment Details
+Verified package versions in the working setup:
 
 | Package | Version |
 |---------|---------|
-| Python | 3.10.x |
-| PyTorch | 2.11.0+cu130 |
-| sentence-transformers | 5.3.0 |
-| transformers | 5.2.0 |
+| PyTorch | `2.9.0+cu128` |
+| sentence-transformers | `5.3.0` |
+| transformers | `5.2.0` |
+| PyYAML | `6.0.3` |
 
-### Interpreter Path
-
-**Correct:**
-```
-/common/users/mg1998/miniforge3/envs/memorybench/bin/python
-```
-
-**Incorrect (will fail):**
-```
-/common/users/mg1998/miniforge3/bin/python  # Base conda - has NCCL library conflict
-```
-
-## Running Benchmarks
-
-### Method 1: Direct conda run (Recommended)
+Expected check:
 
 ```bash
-cd /common/home/mg1998/MemoryBench/Benchmark_Pipeline
+conda run -n memorybench python -c "import torch; print(torch.__version__); print(torch.cuda.is_available())"
+```
 
-# Load API keys
-source ../.env.local
+This should print `2.9.0+cu128` and `True`.
 
-# Unset problematic HF token if set incorrectly
+### `vllm`
+
+Use:
+
+```bash
+conda run -n vllm ...
+```
+
+Verified package versions in the working setup:
+
+| Package | Version |
+|---------|---------|
+| vLLM | `0.11.2` |
+| PyTorch | `2.9.0+cu128` |
+
+## Start the SigLIP2 Service
+
+```bash
+/common/home/mg1998/MemoryBench/Benchmark_Pipeline/scripts/start_siglip2_vllm.sh
+```
+
+Health check:
+
+```bash
+curl -sS http://127.0.0.1:8050/v1/models
+```
+
+The returned model list must include `siglip2-base-patch16-384`.
+
+## Run Official M2A
+
+Generic wrapper:
+
+```bash
+/common/home/mg1998/MemoryBench/Benchmark_Pipeline/scripts/run_official_m2a.sh
+```
+
+The wrapper:
+
+- loads `/common/home/mg1998/MemoryBench/.env.local` if present
+- unsets `HUGGING_FACE_HUB_TOKEN`
+- checks that `OPENAI_API_KEY` is present
+- checks that `http://127.0.0.1:8050/v1/models` exposes `siglip2-base-patch16-384`
+- runs `Benchmark_Pipeline.run_benchmark` from the repo root
+
+Default target:
+
+- task: `home_renovation_interior_design`
+- model metadata: `gpt_4o_mini`
+- method: `m2a`
+
+Useful overrides:
+
+```bash
+MAX_QUESTIONS=1 /common/home/mg1998/MemoryBench/Benchmark_Pipeline/scripts/run_official_m2a.sh
+OUTPUT_ROOT=/tmp/m2a_runs /common/home/mg1998/MemoryBench/Benchmark_Pipeline/scripts/run_official_m2a.sh
+TASK_CONFIG=/abs/path/to/task.yaml /common/home/mg1998/MemoryBench/Benchmark_Pipeline/scripts/run_official_m2a.sh
+```
+
+## Known Pitfalls
+
+### Base conda is broken for this repo
+
+Symptom:
+
+```text
+libtorch_cuda.so: undefined symbol: ncclGroupSimulateEnd
+```
+
+Cause:
+
+- Using `/common/users/mg1998/miniforge3/bin/python`
+- This base environment has an incompatible NCCL/PyTorch combination for the repo
+
+Fix:
+
+- Do not use base conda
+- Use `conda run -n memorybench ...` for the benchmark
+- Use `conda run -n vllm ...` for the SigLIP2 service
+
+### `HUGGING_FACE_HUB_TOKEN` can break HF and httpx
+
+Symptom:
+
+- ASCII/header encoding errors during model loading or HTTP requests
+
+Cause:
+
+- A local shell placeholder value such as `你的token`
+
+Fix:
+
+```bash
 unset HUGGING_FACE_HUB_TOKEN
-
-# Run with conda environment
-conda run -n memorybench python run_benchmark.py \
-    --task visual_case_archive_assistant \
-    --model gpt-4.1-nano \
-    --method m2a_full
 ```
 
-### Method 2: Activate environment first
+The provided scripts already do this.
 
-```bash
-conda activate memorybench
-cd /common/home/mg1998/MemoryBench/Benchmark_Pipeline
-source ../.env.local
-unset HUGGING_FACE_HUB_TOKEN
-python run_benchmark.py --task visual_case_archive_assistant --model gpt-4.1-nano --method m2a_full
-```
+### The old `m2a_full + CLIP` documentation is obsolete
 
-## Verifying Dense Embeddings Work
+The active official path in this repo is:
 
-Run this test to confirm the environment supports dense embeddings:
+- `config/methods/m2a.yaml`
+- local `all-MiniLM-L6-v2`
+- remote local-service `SigLIP2` via `vLLM`
 
-```bash
-conda run -n memorybench python -c "
-import torch
-print('PyTorch:', torch.__version__)
-print('CUDA available:', torch.cuda.is_available())
-
-from sentence_transformers import SentenceTransformer
-model = SentenceTransformer('all-MiniLM-L6-v2')
-emb = model.encode('test sentence')
-print('Text embedding dim:', len(emb))
-
-from transformers import CLIPModel, CLIPProcessor
-clip = CLIPModel.from_pretrained('openai/clip-vit-base-patch32')
-print('CLIP loaded OK')
-print('All checks passed!')
-"
-```
-
-## Fallback Behavior
-
-If dense embeddings are unavailable (wrong environment, missing packages), `m2a_full` will automatically fallback to TF-IDF based retrieval. You will see these warnings:
-
-```
-WARNING - Dense embeddings will be disabled
-WARNING - Dense embeddings requested but unavailable. Falling back to TF-IDF based retrieval.
-WARNING - Image retrieval requested but unavailable. Disabling cross-modal search.
-```
-
-If you see these warnings, switch to the `memorybench` conda environment.
-
-## Common Issues
-
-### Issue: `libtorch_cuda.so: undefined symbol: ncclGroupSimulateEnd`
-
-**Cause:** Using base conda environment instead of memorybench
-
-**Fix:** `conda activate memorybench` or use `conda run -n memorybench`
-
-### Issue: `'ascii' codec can't encode characters`
-
-**Cause:** `HUGGING_FACE_HUB_TOKEN` environment variable contains non-ASCII characters
-
-**Fix:** `unset HUGGING_FACE_HUB_TOKEN`
-
-### Issue: Missing OpenAI API key
-
-**Cause:** API keys not loaded
-
-**Fix:** `source /common/home/mg1998/MemoryBench/.env.local`
-
-## Method Configurations
-
-| Method | Dense Embeddings | Image Retrieval | Config File |
-|--------|-----------------|-----------------|-------------|
-| `m2a_full` | Yes (all-MiniLM-L6-v2) | Yes (CLIP) | `config/methods/m2a_full.yaml` |
-| `m2a_lite` | Yes | No | `config/methods/m2a_lite.yaml` |
-| `m2a_tfidf` | No (baseline) | No | `config/methods/m2a_tfidf.yaml` |
-| `hybrid_rag` | No | No | `config/methods/hybrid_rag.yaml` |
-| `full_context` | N/A | N/A | `config/methods/full_context.yaml` |
+Do not follow older `m2a_full`, `CLIP`, or `cu130` instructions for current official M2A runs.

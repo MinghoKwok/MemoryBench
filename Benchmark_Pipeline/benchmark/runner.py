@@ -219,87 +219,157 @@ def run_benchmark(cfg: Dict[str, Any], config_dir: Path) -> Dict[str, Any]:
 
     qas = dataset.iter_qas(limit=max_questions)
     results: List[Dict[str, Any]] = []
-    for i, qa in enumerate(qas, start=1):
-        question = qa.get("question", "")
-        gt = qa.get("answer", "")
-
-        if is_agentic:
-            history: List[Any] = []
-        else:
-            history = method.build_history(dataset, qa)
-
-        print(
-            f"[INFO] QA {i}/{len(qas)} point={qa.get('point')} "
-            f"method={method.name} history_turns={len(history)}"
-        )
-
-        if mode in {"open", "both"}:
-            t0 = dt.datetime.now()
-            if is_agentic:
-                pred = method.answer(dataset, qa, question)
-            else:
-                pred = router.answer(history, question)
-            latency_ms = int((dt.datetime.now() - t0).total_seconds() * 1000)
-            exact, contains = score_open(pred, gt)
-            f1 = f1_score(pred, gt)
-            bleu_1 = bleu_score(pred, gt, weights=(1.0, 0.0, 0.0, 0.0))
-            bleu_2 = bleu_score(pred, gt, weights=(0.5, 0.5, 0.0, 0.0))
-            results.append(
-                {
-                    "idx": i,
-                    "point": qa.get("point"),
-                    "mode": "open",
-                    "question": question,
-                    "gt": gt,
-                    "pred": pred,
-                    "exact_match": exact,
-                    "em": 1.0 if exact else 0.0,
-                    "contains_gt": contains,
-                    "f1": f1,
-                    "bleu_1": bleu_1,
-                    "bleu_2": bleu_2,
-                    "latency_ms": latency_ms,
-                    "method_name": method.name,
-                    "history_turns": len(history),
-                    "source_sessions": qa.get("session_id", []),
-                    "clue_rounds": qa.get("clue", []),
-                }
-            )
-            print(
-                f"[OPEN][{i}] exact={exact} contains={contains} "
-                f"f1={f1:.3f} bleu_1={bleu_1:.3f} bleu_2={bleu_2:.3f} latency_ms={latency_ms}"
-            )
-
-        if mode in {"mcq", "both"}:
-            mcq_question = to_mcq(question)
-            t0 = dt.datetime.now()
-            if is_agentic:
-                pred_raw = method.answer(dataset, qa, mcq_question)
-            else:
-                pred_raw = router.answer(history, mcq_question)
-            latency_ms = int((dt.datetime.now() - t0).total_seconds() * 1000)
-            choice = extract_choice(pred_raw)
-            results.append(
-                {
-                    "idx": i,
-                    "point": qa.get("point"),
-                    "mode": "mcq",
-                    "question": mcq_question,
-                    "gt": gt,
-                    "pred_raw": pred_raw,
-                    "pred_choice": choice,
-                    "valid_choice": choice in {"A", "B", "C"},
-                    "latency_ms": latency_ms,
-                    "method_name": method.name,
-                    "history_turns": len(history),
-                    "source_sessions": qa.get("session_id", []),
-                    "clue_rounds": qa.get("clue", []),
-                }
-            )
-            print(f"[MCQ][{i}] choice={choice} latency_ms={latency_ms}")
-
     run_dir = default_run_dir(cfg, paths["output_root"])
     run_dir.mkdir(parents=True, exist_ok=True)
+
+    cfg_to_write = dict(cfg)
+    write_json(run_dir / "config.json", cfg_to_write)
+
+    def persist_progress(
+        status: str,
+        current_qa: int = 0,
+        current_mode: str = "",
+        note: str = "",
+        error: str = "",
+    ) -> None:
+        method_runtime = dict(getattr(method, "runtime_info", {}) or {})
+        payload = build_payload(cfg, paths, run_dir, dataset, results, method_runtime=method_runtime)
+        write_json(run_dir / "metrics.json", {k: payload[k] for k in payload if k != "results"})
+        write_jsonl(run_dir / "predictions.jsonl", results)
+        progress = {
+            "status": status,
+            "task_name": payload["task_name"],
+            "model_name": payload["model_name"],
+            "method_name": payload["method_name"],
+            "run_dir": str(run_dir),
+            "num_qas_total": len(qas),
+            "num_qas_completed": len({r["idx"] for r in results}),
+            "num_results_written": len(results),
+            "current_qa": current_qa,
+            "current_mode": current_mode,
+            "updated_at": dt.datetime.now().isoformat(),
+        }
+        if note:
+            progress["note"] = note
+        if error:
+            progress["error"] = error
+        if method_runtime:
+            progress["method_runtime"] = method_runtime
+        write_json(run_dir / "progress.json", progress)
+
+    persist_progress(status="starting", note="Benchmark initialized.")
+    try:
+        for i, qa in enumerate(qas, start=1):
+            question = qa.get("question", "")
+            gt = qa.get("answer", "")
+
+            if is_agentic:
+                history: List[Any] = []
+            else:
+                history = method.build_history(dataset, qa)
+
+            print(
+                f"[INFO] QA {i}/{len(qas)} point={qa.get('point')} "
+                f"method={method.name} history_turns={len(history)}"
+            )
+            persist_progress(
+                status="running",
+                current_qa=i,
+                note=f"Starting QA {i}/{len(qas)}.",
+            )
+
+            if mode in {"open", "both"}:
+                persist_progress(
+                    status="running",
+                    current_qa=i,
+                    current_mode="open",
+                    note=f"Running open evaluation for QA {i}/{len(qas)}.",
+                )
+                t0 = dt.datetime.now()
+                if is_agentic:
+                    pred = method.answer(dataset, qa, question)
+                else:
+                    pred = router.answer(history, question)
+                latency_ms = int((dt.datetime.now() - t0).total_seconds() * 1000)
+                exact, contains = score_open(pred, gt)
+                f1 = f1_score(pred, gt)
+                bleu_1 = bleu_score(pred, gt, weights=(1.0, 0.0, 0.0, 0.0))
+                bleu_2 = bleu_score(pred, gt, weights=(0.5, 0.5, 0.0, 0.0))
+                results.append(
+                    {
+                        "idx": i,
+                        "point": qa.get("point"),
+                        "mode": "open",
+                        "question": question,
+                        "gt": gt,
+                        "pred": pred,
+                        "exact_match": exact,
+                        "em": 1.0 if exact else 0.0,
+                        "contains_gt": contains,
+                        "f1": f1,
+                        "bleu_1": bleu_1,
+                        "bleu_2": bleu_2,
+                        "latency_ms": latency_ms,
+                        "method_name": method.name,
+                        "history_turns": len(history),
+                        "source_sessions": qa.get("session_id", []),
+                        "clue_rounds": qa.get("clue", []),
+                    }
+                )
+                persist_progress(
+                    status="running",
+                    current_qa=i,
+                    current_mode="open",
+                    note=f"Finished open evaluation for QA {i}/{len(qas)}.",
+                )
+                print(
+                    f"[OPEN][{i}] exact={exact} contains={contains} "
+                    f"f1={f1:.3f} bleu_1={bleu_1:.3f} bleu_2={bleu_2:.3f} latency_ms={latency_ms}"
+                )
+
+            if mode in {"mcq", "both"}:
+                persist_progress(
+                    status="running",
+                    current_qa=i,
+                    current_mode="mcq",
+                    note=f"Running MCQ evaluation for QA {i}/{len(qas)}.",
+                )
+                mcq_question = to_mcq(question)
+                t0 = dt.datetime.now()
+                if is_agentic:
+                    pred_raw = method.answer(dataset, qa, mcq_question)
+                else:
+                    pred_raw = router.answer(history, mcq_question)
+                latency_ms = int((dt.datetime.now() - t0).total_seconds() * 1000)
+                choice = extract_choice(pred_raw)
+                results.append(
+                    {
+                        "idx": i,
+                        "point": qa.get("point"),
+                        "mode": "mcq",
+                        "question": mcq_question,
+                        "gt": gt,
+                        "pred_raw": pred_raw,
+                        "pred_choice": choice,
+                        "valid_choice": choice in {"A", "B", "C"},
+                        "latency_ms": latency_ms,
+                        "method_name": method.name,
+                        "history_turns": len(history),
+                        "source_sessions": qa.get("session_id", []),
+                        "clue_rounds": qa.get("clue", []),
+                    }
+                )
+                persist_progress(
+                    status="running",
+                    current_qa=i,
+                    current_mode="mcq",
+                    note=f"Finished MCQ evaluation for QA {i}/{len(qas)}.",
+                )
+                print(f"[MCQ][{i}] choice={choice} latency_ms={latency_ms}")
+    except Exception as exc:
+        persist_progress(status="failed", error=str(exc))
+        raise
+
     method_runtime = dict(getattr(method, "runtime_info", {}) or {})
     payload = build_payload(cfg, paths, run_dir, dataset, results, method_runtime=method_runtime)
     cfg_to_write = dict(cfg)
@@ -328,6 +398,7 @@ def run_benchmark(cfg: Dict[str, Any], config_dir: Path) -> Dict[str, Any]:
         write_json(legacy_output_json, legacy_payload)
         print(f"[INFO] Saved legacy output: {legacy_output_json}")
 
+    persist_progress(status="completed", note="Benchmark finished successfully.")
     print(f"[INFO] Saved run artifacts: {run_dir}")
     return payload
 

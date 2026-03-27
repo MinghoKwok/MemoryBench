@@ -1,5 +1,7 @@
 # Benchmark Pipeline
 
+For the official agentic `m2a` setup and the short operational checklist, start with `Benchmark_Pipeline/RUNBOOK.md`.
+
 This directory is a small benchmark scaffold for multimodal memory experiments, not just a single inference script.
 
 The benchmark separates:
@@ -11,6 +13,7 @@ The benchmark separates:
 The benchmark supports local and API-backed model routers, plus multiple memory methods:
 - `full_context`
 - `hybrid_rag`
+- `m2a`
 - `m2a_lite`
 - `m2a_full`
 
@@ -71,6 +74,8 @@ set -a
 source .env.local
 set +a
 ```
+
+For the official agentic `m2a` path, use the dedicated setup in `Benchmark_Pipeline/ENVIRONMENT.md`. That path requires a local SigLIP2 `vLLM` service and uses `config/methods/m2a.yaml`, which pins the actual M2A LLM to `gpt-4o-mini`.
 
 If you maintain a machine-specific setup, keep those details in `README.local.md`, which is intended to stay untracked.
 
@@ -133,6 +138,13 @@ python -m Benchmark_Pipeline.run_benchmark \
   --task-config Benchmark_Pipeline/config/tasks_external/comicscene_alley_oop_draft.yaml \
   --model-config Benchmark_Pipeline/config/models/gpt_4_1_nano.yaml \
   --method-config Benchmark_Pipeline/config/methods/m2a_lite.yaml
+```
+
+Run the official agentic M2A flow:
+
+```bash
+Benchmark_Pipeline/scripts/start_siglip2_vllm.sh
+Benchmark_Pipeline/scripts/run_official_m2a.sh
 ```
 
 Limit to a quick smoke test:

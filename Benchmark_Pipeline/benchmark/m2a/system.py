@@ -12,7 +12,7 @@ import os
 from typing import Any, Dict, List, Optional
 
 from .chat_agent import QA_SYSTEM_PROMPT, ChatAgent
-from .embeddings import MultimodalEmbedder, TextEmbedder
+from .embeddings import TextEmbedder, get_multimodal_embedder
 from .image_manager import ImageManager
 from .memory_manager import MemoryManager
 from .stores import RawMessageStore, SemanticStore
@@ -27,6 +27,7 @@ class M2ASystem:
       llm_api_key                 : str  = "" (falls back to OPENAI_API_KEY env var)
       llm_api_key_env             : str  = "OPENAI_API_KEY"
       llm_base_url                : str  = "https://api.openai.com/v1"
+      llm_timeout                 : int  = 90
       text_embedding_model        : str  = "all-MiniLM-L6-v2"
       multimodal_embedding_model  : str  = "siglip2-base-patch16-384"
       multimodal_embedding_url    : str  = "http://localhost:8050/v1"
@@ -34,6 +35,11 @@ class M2ASystem:
       max_memory_iterations       : int  = 15
       context_window              : int  = 5
       max_query_iterations        : int  = 5
+
+    Image embedding fallback order:
+      1. vLLM + SigLIP2 (if server available at multimodal_embedding_url)
+      2. Local CLIP (openai/clip-vit-base-patch32 via transformers)
+      3. None (image retrieval disabled, text-only search)
     """
 
     def __init__(self, config: Optional[Dict[str, Any]] = None) -> None:
@@ -43,6 +49,7 @@ class M2ASystem:
         api_key = str(cfg.get("llm_api_key", ""))
         api_key_env = str(cfg.get("llm_api_key_env", "OPENAI_API_KEY"))
         base_url = str(cfg.get("llm_base_url", "https://api.openai.com/v1"))
+        llm_timeout = int(cfg.get("llm_timeout", 90))
 
         text_model = str(cfg.get("text_embedding_model", "all-MiniLM-L6-v2"))
         mm_model = str(cfg.get("multimodal_embedding_model", "siglip2-base-patch16-384"))
@@ -59,13 +66,18 @@ class M2ASystem:
 
         # OpenAI client for LLM calls
         import openai  # type: ignore
-        self._llm_client = openai.OpenAI(api_key=api_key, base_url=base_url)
+        self._llm_client = openai.OpenAI(api_key=api_key, base_url=base_url, timeout=llm_timeout)
         self._llm_model = llm_model
         self._max_q_iter = max_q_iter
 
         # Embedders
         self._text_embedder = TextEmbedder(text_model)
-        self._multimodal_embedder = MultimodalEmbedder(mm_model, mm_url, mm_api_key)
+        # Try vLLM first, fallback to local CLIP, or None if neither available
+        self._multimodal_embedder = get_multimodal_embedder(
+            vllm_model=mm_model,
+            vllm_url=mm_url,
+            vllm_api_key=mm_api_key,
+        )
 
         # Stores
         self._raw_store = RawMessageStore()
@@ -112,13 +124,19 @@ class M2ASystem:
           - user turn  → store in raw store + update memory
           - assistant turn → store in raw store + update memory
         """
-        for session_id in dataset.session_order():
+        session_ids = list(dataset.session_order())
+        for session_idx, session_id in enumerate(session_ids, start=1):
             session = dataset.get_session(session_id)
             date = str(session.get("date", "")).strip()
             if date and date not in self._session_dates:
                 self._session_dates.append(date)
 
-            for dialogue in session.get("dialogues", []):
+            dialogues = session.get("dialogues", [])
+            print(
+                f"[M2A] Session {session_idx}/{len(session_ids)} "
+                f"{session_id} date={date or 'unknown'} rounds={len(dialogues)}"
+            )
+            for round_idx, dialogue in enumerate(dialogues, start=1):
                 round_id = dialogue.get("round", "")
                 if not round_id:
                     continue
@@ -126,6 +144,11 @@ class M2ASystem:
                 user_text = str(round_payload.get("user", "")).strip()
                 assistant_text = str(round_payload.get("assistant", "")).strip()
                 images: List[str] = round_payload.get("images", []) or []
+                print(
+                    f"[M2A] Round {round_idx}/{len(dialogues)} {round_id} "
+                    f"user_images={len(images)} has_user={bool(user_text)} "
+                    f"has_assistant={bool(assistant_text)}"
+                )
 
                 # User turn
                 if user_text:

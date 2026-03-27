@@ -6,6 +6,7 @@ llm_model: "gpt-4o-mini"
 llm_api_key: ""                          # falls back to OPENAI_API_KEY env var
 llm_api_key_env: "OPENAI_API_KEY"
 llm_base_url: "https://api.openai.com/v1"
+llm_timeout: 90
 
 # Text embedding: all-MiniLM-L6-v2 (384-dim, local sentence-transformers)
 # Faithful to official M2A

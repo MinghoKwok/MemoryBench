@@ -6,6 +6,7 @@ Faithful to official M2A agent/agents/memory_manager.py.
 from __future__ import annotations
 
 import json
+import re
 import time
 from typing import Any, Dict, List, Optional
 
@@ -69,6 +70,55 @@ the memory).
 """
 
 MAX_ITERATIONS = 15
+
+
+def _retry_wait_seconds(exc: Exception, attempt: int) -> int:
+    """
+    Compute a bounded wait time for rate-limit retries.
+
+    OpenAI 429s may include a short "try again in" hint, but for long-running M2A
+    memory builds we need to survive full TPM windows, not just sub-second bursts.
+    """
+    default_wait = min((2 ** attempt) + 1, 60)
+    resp = getattr(exc, "response", None)
+    headers = getattr(resp, "headers", {}) or {}
+
+    retry_after_ms = headers.get("retry-after-ms")
+    if retry_after_ms:
+        try:
+            hinted = max(1, int(float(retry_after_ms) / 1000.0 + 0.999))
+            return max(default_wait, hinted)
+        except (TypeError, ValueError):
+            pass
+
+    retry_after = headers.get("retry-after")
+    if retry_after:
+        try:
+            hinted = max(1, int(float(retry_after)))
+            return max(default_wait, hinted)
+        except (TypeError, ValueError):
+            pass
+
+    match = re.search(r"try again in\s+([0-9.]+)\s*(ms|s)\b", str(exc), re.IGNORECASE)
+    if match:
+        value = float(match.group(1))
+        unit = match.group(2).lower()
+        hinted = max(1, int(value / 1000.0 + 0.999)) if unit == "ms" else max(1, int(value + 0.999))
+        return max(default_wait, hinted)
+
+    return default_wait
+
+
+def _is_retryable_error(exc: Exception) -> bool:
+    text = str(exc).lower()
+    return (
+        "rate_limit" in text
+        or "429" in text
+        or "timed out" in text
+        or "timeout" in text
+        or "connection error" in text
+        or "api connection" in text
+    )
 
 
 # ---------------------------------------------------------------------------
@@ -395,7 +445,7 @@ class MemoryManager:
         """
         for _ in range(self._max_iter):
             # Retry with exponential backoff for rate limit errors
-            max_retries = 5
+            max_retries = 12
             for attempt in range(max_retries):
                 try:
                     response = self._client.chat.completions.create(
@@ -407,9 +457,9 @@ class MemoryManager:
                     )
                     break
                 except Exception as e:
-                    if "rate_limit" in str(e).lower() or "429" in str(e):
-                        wait_time = (2 ** attempt) + 1  # 2, 3, 5, 9, 17 seconds
-                        print(f"[M2A] Rate limit hit, waiting {wait_time}s (attempt {attempt + 1}/{max_retries})")
+                    if _is_retryable_error(e):
+                        wait_time = _retry_wait_seconds(e, attempt)
+                        print(f"[M2A] Retryable LLM error, waiting {wait_time}s (attempt {attempt + 1}/{max_retries})")
                         time.sleep(wait_time)
                         if attempt == max_retries - 1:
                             raise
