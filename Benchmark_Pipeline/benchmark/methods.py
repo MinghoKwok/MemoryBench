@@ -42,18 +42,6 @@ class TargetSessionContextMethod(HistoryMethod):
         return history
 
 
-class _ClueRoundFallbackMethod(HistoryMethod):
-    def build_history(self, dataset: MemoryBenchmarkDataset, qa: Dict[str, Any]) -> List[Dict[str, Any]]:
-        history: List[Dict[str, Any]] = []
-        target_sessions = set(qa.get("session_id", []))
-        clue_rounds = set(qa.get("clue", []) or [])
-        for sid in dataset.session_order():
-            if sid not in target_sessions:
-                continue
-            history.extend(history_from_round_ids(dataset.get_session(sid), dataset.rounds, clue_rounds))
-        return history
-
-
 class HybridRAGMethod(HistoryMethod):
     name = "hybrid_rag"
 

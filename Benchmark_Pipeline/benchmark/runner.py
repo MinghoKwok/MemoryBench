@@ -169,10 +169,18 @@ def resolve_runtime_paths(cfg: Dict[str, Any], config_dir: Path) -> Dict[str, Pa
         output_root = output_root.resolve()
     else:
         output_root = (SCRIPT_DIR / "runs").resolve()
+    output_json_raw = str(eval_cfg.get("output_json", "")).strip()
+    if output_json_raw:
+        oj = Path(output_json_raw)
+        output_json: Optional[Path] = oj if oj.is_absolute() else (SCRIPT_DIR / oj).resolve()
+    else:
+        output_json = None
+
     return {
         "dialog_json": dialog_json,
         "image_root": image_root,
         "output_root": output_root,
+        "output_json": output_json,
     }
 
 
@@ -191,10 +199,11 @@ def build_payload(
     run_dir: Path,
     dataset: MemoryBenchmarkDataset,
     results: List[Dict[str, Any]],
+    method_runtime: Optional[Dict[str, Any]] = None,
 ) -> Dict[str, Any]:
     summary = summarize_results(results)
     model_ref = cfg["model"].get("model_path") or cfg["model"].get("model", "")
-    return {
+    payload = {
         "task_name": cfg.get("task", {}).get("name", "task"),
         "model_name": cfg.get("model", {}).get("name", "qwen_local"),
         "model_path": model_ref,
@@ -209,6 +218,9 @@ def build_payload(
         "summary": summary,
         "results": results,
     }
+    if method_runtime:
+        payload["method_runtime"] = method_runtime
+    return payload
 
 
 def run_benchmark(
@@ -229,6 +241,9 @@ def run_benchmark(
     )
     sys_prompt = load_sys_prompt()
     router = instantiate_router(cfg["model"], system_prompt=sys_prompt)
+    # Agentic methods (for example M2A) own end-to-end inference via answer().
+    # They bypass build_history() + router.answer() and may keep internal runtime state.
+    is_agentic = hasattr(method, "answer") and callable(getattr(method, "answer"))
 
     # Build LLM judge client once before the loop
     _judge_client = None
@@ -251,7 +266,11 @@ def run_benchmark(
     for i, qa in enumerate(qas, start=1):
         question = qa.get("question", "")
         gt = qa.get("answer", "")
-        history = method.build_history(dataset, qa)
+
+        if is_agentic:
+            history: List[Dict[str, Any]] = []
+        else:
+            history = method.build_history(dataset, qa)
         print(
             f"[INFO] QA {i}/{len(qas)} point={qa.get('point')} "
             f"method={method.name} history_turns={len(history)}"
@@ -259,7 +278,10 @@ def run_benchmark(
 
         if mode in {"open", "both"}:
             t0 = dt.datetime.now()
-            pred = router.answer(history, question)
+            if is_agentic:
+                pred = method.answer(dataset, qa, question)
+            else:
+                pred = router.answer(history, question)
             latency_ms = int((dt.datetime.now() - t0).total_seconds() * 1000)
 
             exact, contains = score_open(pred, gt)
@@ -320,7 +342,10 @@ def run_benchmark(
 
         if mode in {"mcq", "both"}:
             mcq_question = to_mcq(question)
-            pred_mcq = router.answer(history, mcq_question)
+            if is_agentic:
+                pred_mcq = method.answer(dataset, qa, mcq_question)
+            else:
+                pred_mcq = router.answer(history, mcq_question)
             choice = extract_choice(pred_mcq)
             results.append({
                 "idx": i,
@@ -340,13 +365,31 @@ def run_benchmark(
 
     run_dir = default_run_dir(cfg, paths["output_root"])
     run_dir.mkdir(parents=True, exist_ok=True)
-    payload = build_payload(cfg, paths, run_dir, dataset, results)
+    method_runtime = dict(getattr(method, "runtime_info", {}) or {})
+    payload = build_payload(cfg, paths, run_dir, dataset, results, method_runtime=method_runtime)
 
-    write_json(run_dir / "config.json", cfg)
+    cfg_to_write = dict(cfg)
+    run_cfg = dict(cfg_to_write.get("run", {}))
+    if method_runtime:
+        run_cfg["method_runtime"] = method_runtime
+    cfg_to_write["run"] = run_cfg
+
+    write_json(run_dir / "config.json", cfg_to_write)
     write_json(run_dir / "metrics.json", {k: payload[k] for k in payload if k != "results"})
     write_jsonl(run_dir / "predictions.jsonl", results)
-
     print(f"[INFO] Saved run artifacts: {run_dir}")
+
+    output_json = paths.get("output_json")
+    if output_json:
+        output_json.parent.mkdir(parents=True, exist_ok=True)
+        model_name = cfg.get("model", {}).get("name", "model")
+        method_name = cfg.get("method", {}).get("name", "method")
+        stem = output_json.stem
+        suffix = output_json.suffix or ".json"
+        tagged_path = output_json.parent / f"{stem}__{model_name}__{method_name}{suffix}"
+        write_json(tagged_path, {k: payload[k] for k in payload if k != "results"})
+        print(f"[INFO] Saved output summary: {tagged_path}")
+
     return payload
 
 

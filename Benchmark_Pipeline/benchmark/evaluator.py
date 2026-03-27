@@ -13,7 +13,10 @@ for _pkg in ("punkt", "punkt_tab"):
     try:
         nltk.data.find(f"tokenizers/{_pkg}")
     except LookupError:
-        nltk.download(_pkg, quiet=True)
+        try:
+            nltk.download(_pkg, quiet=True)
+        except Exception:
+            pass
 
 from nltk.stem import PorterStemmer
 from nltk.translate.bleu_score import SmoothingFunction, sentence_bleu
@@ -275,7 +278,7 @@ def parse_matrix_coords(point: Any) -> List[Tuple[str, str]]:
 # Result aggregation
 # ---------------------------------------------------------------------------
 
-_OPEN_METRICS = ("em", "f1", "bleu", "bleu_1", "bleu_2", "bert", "judge")
+_OPEN_METRICS = ("em", "contains_gt", "f1", "bleu", "bleu_1", "bleu_2", "bert", "judge")
 
 
 def _mean(vals: List[float]) -> float:

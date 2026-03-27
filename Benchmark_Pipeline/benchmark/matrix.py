@@ -17,6 +17,7 @@ def _summary_row(payload: Dict[str, Any]) -> Dict[str, Any]:
         "num_qas_run":    payload.get("num_qas_run", 0),
         "open_count":     summary.get("open_count", 0),
         "em":             overall.get("em", ""),
+        "contains_gt":    overall.get("contains_gt", ""),
         "f1":             overall.get("f1", ""),
         "bleu":           overall.get("bleu", ""),
         "bleu_1":         overall.get("bleu_1", ""),
@@ -35,7 +36,7 @@ def _render_markdown(rows: List[Dict[str, Any]]) -> str:
 
     headers = [
         "task_name", "model_name", "method_name", "mode",
-        "num_qas_run", "em", "f1", "bleu", "bleu_1", "bleu_2", "bert", "judge",
+        "num_qas_run", "em", "contains_gt", "f1", "bleu", "bleu_1", "bleu_2", "bert", "judge",
     ]
     lines = ["# Benchmark Summary", ""]
     lines.append("| " + " | ".join(headers) + " |")
