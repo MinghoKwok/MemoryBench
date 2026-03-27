@@ -127,9 +127,9 @@ Fix:
 /common/home/mg1998/MemoryBench/Benchmark_Pipeline/scripts/start_siglip2_vllm.sh
 ```
 
-### Old docs mention `m2a_full + CLIP`
+### Legacy setup notes are obsolete
 
-Ignore old `m2a_full`, `CLIP`, and `cu130` guidance for the official path.
+Ignore legacy `CLIP` and `cu130` guidance for the official path.
 
 Use:
 

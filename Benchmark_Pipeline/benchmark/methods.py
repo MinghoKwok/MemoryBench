@@ -21,6 +21,18 @@ class FullContextMethod(HistoryMethod):
     name = "full_context"
 
     def build_history(self, dataset: MemoryBenchmarkDataset, qa: Dict[str, Any]) -> List[Dict[str, Any]]:
+        """Build history from ALL sessions to stress context window."""
+        history: List[Dict[str, Any]] = []
+        # Include ALL sessions, not just target sessions
+        for sid in dataset.session_order():
+            history.extend(history_from_round_ids(dataset.get_session(sid), dataset.rounds))
+        return history
+
+
+class TargetSessionContextMethod(HistoryMethod):
+    name = "target_session_context"
+
+    def build_history(self, dataset: MemoryBenchmarkDataset, qa: Dict[str, Any]) -> List[Dict[str, Any]]:
         history: List[Dict[str, Any]] = []
         target_sessions = set(qa.get("session_id", []))
         for sid in dataset.session_order():
@@ -52,10 +64,7 @@ class HybridRAGMethod(HistoryMethod):
 
         history: List[Dict[str, Any]] = []
         allowed_round_ids = set(selected_round_ids)
-        target_sessions = set(qa.get("session_id", []))
         for sid in dataset.session_order():
-            if sid not in target_sessions:
-                continue
             history.extend(history_from_round_ids(dataset.get_session(sid), dataset.rounds, allowed_round_ids))
         return history
 
@@ -109,6 +118,7 @@ class M2AAgentMethod(HistoryMethod):
 def get_method(method_name: str, config: Optional[Dict[str, Any]] = None) -> HistoryMethod:
     registry = {
         FullContextMethod.name: FullContextMethod,
+        TargetSessionContextMethod.name: TargetSessionContextMethod,
         HybridRAGMethod.name: HybridRAGMethod,
         M2AAgentMethod.name: M2AAgentMethod,
     }

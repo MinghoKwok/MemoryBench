@@ -147,8 +147,8 @@ def select_round_ids_for_qa(
     lexical_weight = float(config.get("lexical_weight", 0.35))
     semantic_weight = float(config.get("semantic_weight", 0.65))
 
-    session_ids = [sid for sid in qa.get("session_id", []) if sid]
-    if not session_ids:
+    all_session_ids = dataset.session_order()
+    if not all_session_ids:
         return []
 
     query_text = " ".join(
@@ -164,7 +164,7 @@ def select_round_ids_for_qa(
         return []
 
     candidate_rows: List[Tuple[str, List[str]]] = []
-    for session_id in session_ids:
+    for session_id in all_session_ids:
         session = dataset.get_session(session_id)
         for dialogue in session.get("dialogues", []):
             round_id = dialogue.get("round", "")
@@ -182,4 +182,4 @@ def select_round_ids_for_qa(
         return []
 
     seed_round_ids = [round_id for _, round_id in scored[: max(1, top_k)]]
-    return _expand_with_neighbors(dataset, seed_round_ids, session_ids, neighbor_window)
+    return _expand_with_neighbors(dataset, seed_round_ids, all_session_ids, neighbor_window)

@@ -146,7 +146,7 @@ unset HUGGING_FACE_HUB_TOKEN
 
 The provided scripts already do this.
 
-### The old `m2a_full + CLIP` documentation is obsolete
+### Legacy setup documentation is obsolete
 
 The active official path in this repo is:
 
@@ -154,4 +154,4 @@ The active official path in this repo is:
 - local `all-MiniLM-L6-v2`
 - remote local-service `SigLIP2` via `vLLM`
 
-Do not follow older `m2a_full`, `CLIP`, or `cu130` instructions for current official M2A runs.
+Do not follow older `CLIP` or `cu130` instructions for current official M2A runs.

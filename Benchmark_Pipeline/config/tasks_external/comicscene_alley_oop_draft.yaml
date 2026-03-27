@@ -1,7 +1,7 @@
 name: comicscene_alley_oop_draft
 dataset:
-  dialog_json: /common/home/mg1998/.cache/memeye_hf/MemEye/data/dialog/ComicScene_Alley_Oop_Draft.json
-  image_root: /common/home/mg1998/.cache/memeye_hf/MemEye/data/image
+  dialog_json: /common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/dialog/ComicScene_Alley_Oop_Draft.json
+  image_root: /common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/image
 eval:
   mode: open
   output_json: output/results_comicscene_alley_oop_draft.json
