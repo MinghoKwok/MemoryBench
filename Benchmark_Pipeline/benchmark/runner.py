@@ -239,11 +239,13 @@ def run_benchmark(
         str(cfg.get("method", {}).get("name", "full_context")),
         config=dict(cfg.get("method", {})),
     )
-    sys_prompt = load_sys_prompt()
-    router = instantiate_router(cfg["model"], system_prompt=sys_prompt)
     # Agentic methods (for example M2A) own end-to-end inference via answer().
     # They bypass build_history() + router.answer() and may keep internal runtime state.
     is_agentic = hasattr(method, "answer") and callable(getattr(method, "answer"))
+    router = None
+    if not is_agentic:
+        sys_prompt = load_sys_prompt()
+        router = instantiate_router(cfg["model"], system_prompt=sys_prompt)
 
     # Build LLM judge client once before the loop
     _judge_client = None

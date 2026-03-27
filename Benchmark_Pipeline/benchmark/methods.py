@@ -48,7 +48,7 @@ class HybridRAGMethod(HistoryMethod):
     def build_history(self, dataset: MemoryBenchmarkDataset, qa: Dict[str, Any]) -> List[Dict[str, Any]]:
         selected_round_ids = select_round_ids_for_qa(dataset, qa, self.config)
         if not selected_round_ids:
-            return FullContextMethod().build_history(dataset, qa)
+            return []
 
         history: List[Dict[str, Any]] = []
         allowed_round_ids = set(selected_round_ids)
