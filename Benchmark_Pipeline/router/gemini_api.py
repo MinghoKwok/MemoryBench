@@ -20,10 +20,7 @@ class GeminiAPIRouter(BaseRouter):
         self.base_url = base_url.rstrip("/")
         self.max_new_tokens = max_new_tokens
         self.timeout = timeout
-        self.system_prompt = system_prompt.strip() or (
-            "You answer questions about a prior multimodal conversation. "
-            "Use only the provided messages and images. Be concise and factual."
-        )
+        self.system_prompt = system_prompt
 
     def _to_contents(self, history_messages: List[Dict[str, Any]], question: str) -> List[Dict[str, Any]]:
         contents: List[Dict[str, Any]] = []
@@ -58,11 +55,7 @@ class GeminiAPIRouter(BaseRouter):
     def answer(self, history_messages: List[Dict[str, Any]], question: str) -> str:
         payload = {
             "systemInstruction": {
-                "parts": [
-                    {
-                        "text": self.system_prompt
-                    }
-                ]
+                "parts": [{"text": self.system_prompt}]
             },
             "contents": self._to_contents(history_messages, question),
             "generationConfig": {

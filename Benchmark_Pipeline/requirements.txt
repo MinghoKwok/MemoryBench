@@ -3,6 +3,5 @@ transformers
 qwen-vl-utils
 pyyaml
 nltk
-sentence-transformers
-Pillow
-numpy
+bert-score
+openai

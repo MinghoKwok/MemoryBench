@@ -14,8 +14,14 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--model-config", dest="model_configs", action="append", required=True)
     parser.add_argument("--method-config", dest="method_configs", action="append", required=True)
     parser.add_argument("--output-root", type=str, default="runs")
-    parser.add_argument("--mode", type=str, choices=["open", "mcq", "both"], default="")
     parser.add_argument("--max-questions", type=int, default=0)
+    parser.add_argument(
+        "--mode",
+        type=str,
+        default="",
+        choices=["", "open", "mcq", "both"],
+        help="Override eval mode for all runs. Leave empty to use task config default.",
+    )
     return parser.parse_args()
 
 

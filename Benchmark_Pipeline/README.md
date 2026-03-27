@@ -1,7 +1,5 @@
 # Benchmark Pipeline
 
-For the official agentic `m2a` setup and the short operational checklist, start with `Benchmark_Pipeline/RUNBOOK.md`.
-
 This directory is a small benchmark scaffold for multimodal memory experiments, not just a single inference script.
 
 The benchmark separates:
@@ -10,46 +8,30 @@ The benchmark separates:
 - memory method selection
 - run artifact storage
 
-The benchmark supports local and API-backed model routers, plus multiple memory methods:
+The current sample task is `brand_memory_test`. The benchmark supports local and API-backed model routers, plus multiple memory methods:
 - `full_context`
+- `clue_only`
 - `hybrid_rag`
-- `m2a`
 - `m2a_lite`
-- `m2a_full`
-
-Current representative tasks in active use include:
-- `brand_memory_test`
-- `chat_ui_memory_test`
-- `comicscene_alley_oop_draft`
-- `home_renovation_interior_design`
-
-The main open-answer metrics now emphasized in this repo are:
-- `EM`
-- `F1`
-- `BLEU-1`
-- `BLEU-2`
 
 For MemEye task design and `point` annotation rules, read:
 
 - `Benchmark_Pipeline/MemEye_Annotation_Guide.md`
-- `Benchmark_Pipeline/benchmark/prompt/README.md`
 
 ## Layout
 
 - `run_benchmark.py`: modular benchmark entrypoint
 - `run_matrix.py`: model x method matrix runner
 - `run_legacy_benchmark.py`: generic legacy-compatible single-config entrypoint
-- `run_pittads.py`: legacy compatibility shim for older commands
+- `run_pittads.py`: compatibility shim for older commands
 - `benchmark/`: dataset loading, method selection, evaluation, run orchestration
-- `benchmark/prompt/`: MemEye benchmark prompt templates and task-family prompt building blocks
 - `router/`: model router implementations
 - `config/tasks/`: task configs
-- `config/tasks_external/`: generated task configs that point to external or HF-synced datasets
 - `config/models/`: model configs
 - `config/methods/`: method configs
-- `data/`: local synced working copy of benchmark dialogue/images from the HF dataset repo
+- `data/`: example dialogue and images
 - `runs/`: per-run artifacts
-- `output/`: optional legacy-style summary JSON outputs
+- `output/results_brand_memory_test.json`: optional legacy output file for the sample task
 
 ## Requirements
 
@@ -75,8 +57,6 @@ source .env.local
 set +a
 ```
 
-For the official agentic `m2a` path, use the dedicated setup in `Benchmark_Pipeline/ENVIRONMENT.md`. That path requires a local SigLIP2 `vLLM` service and uses `config/methods/m2a.yaml`, which pins the actual M2A LLM to `gpt-4o-mini`.
-
 If you maintain a machine-specific setup, keep those details in `README.local.md`, which is intended to stay untracked.
 
 ## Benchmark Model
@@ -99,7 +79,7 @@ Run the modular benchmark from the repo root:
 
 ```bash
 python -m Benchmark_Pipeline.run_benchmark \
-  --task-config Benchmark_Pipeline/config/tasks_external/brand_memory_test.yaml \
+  --task-config Benchmark_Pipeline/config/tasks/brand_memory_test.yaml \
   --model-config Benchmark_Pipeline/config/models/qwen_local_default.yaml \
   --method-config Benchmark_Pipeline/config/methods/full_context.yaml
 ```
@@ -108,25 +88,39 @@ Script execution still works if you prefer it:
 
 ```bash
 python Benchmark_Pipeline/run_benchmark.py \
-  --task-config Benchmark_Pipeline/config/tasks_external/brand_memory_test.yaml \
+  --task-config Benchmark_Pipeline/config/tasks/brand_memory_test.yaml \
   --model-config Benchmark_Pipeline/config/models/qwen_local_default.yaml \
   --method-config Benchmark_Pipeline/config/methods/full_context.yaml
 ```
 
-Representative current task configs:
+The generic legacy command still works:
 
-- `Benchmark_Pipeline/config/tasks_external/brand_memory_test.yaml`
-- `Benchmark_Pipeline/config/tasks_external/chat_ui_memory_test.yaml`
-- `Benchmark_Pipeline/config/tasks_external/comicscene_alley_oop_draft.yaml`
-- `Benchmark_Pipeline/config/tasks_external/home_renovation_interior_design.yaml`
+```bash
+python -m Benchmark_Pipeline.run_legacy_benchmark --config Benchmark_Pipeline/config/default.yaml
+```
+
+The older task-specific entrypoint still exists for compatibility:
+
+```bash
+python Benchmark_Pipeline/run_pittads.py --config Benchmark_Pipeline/config/default.yaml
+```
 
 ## Common Experiments
+
+Switch method:
+
+```bash
+python -m Benchmark_Pipeline.run_benchmark \
+  --task-config Benchmark_Pipeline/config/tasks/brand_memory_test.yaml \
+  --model-config Benchmark_Pipeline/config/models/qwen_local_default.yaml \
+  --method-config Benchmark_Pipeline/config/methods/clue_only.yaml
+```
 
 Run the lightweight retrieval baseline:
 
 ```bash
 python -m Benchmark_Pipeline.run_benchmark \
-  --task-config Benchmark_Pipeline/config/tasks_external/home_renovation_interior_design.yaml \
+  --task-config Benchmark_Pipeline/config/tasks/brand_memory_test.yaml \
   --model-config Benchmark_Pipeline/config/models/gpt_4_1_nano.yaml \
   --method-config Benchmark_Pipeline/config/methods/hybrid_rag.yaml
 ```
@@ -135,23 +129,16 @@ Run the lightweight M2A-style baseline:
 
 ```bash
 python -m Benchmark_Pipeline.run_benchmark \
-  --task-config Benchmark_Pipeline/config/tasks_external/comicscene_alley_oop_draft.yaml \
+  --task-config Benchmark_Pipeline/config/tasks/brand_memory_test.yaml \
   --model-config Benchmark_Pipeline/config/models/gpt_4_1_nano.yaml \
   --method-config Benchmark_Pipeline/config/methods/m2a_lite.yaml
-```
-
-Run the official agentic M2A flow:
-
-```bash
-Benchmark_Pipeline/scripts/start_siglip2_vllm.sh
-Benchmark_Pipeline/scripts/run_official_m2a.sh
 ```
 
 Limit to a quick smoke test:
 
 ```bash
 python -m Benchmark_Pipeline.run_benchmark \
-  --task-config Benchmark_Pipeline/config/tasks_external/chat_ui_memory_test.yaml \
+  --task-config Benchmark_Pipeline/config/tasks/brand_memory_test.yaml \
   --model-config Benchmark_Pipeline/config/models/qwen_local_default.yaml \
   --method-config Benchmark_Pipeline/config/methods/full_context.yaml \
   --max-questions 1
@@ -161,25 +148,37 @@ Override evaluation mode:
 
 ```bash
 python -m Benchmark_Pipeline.run_benchmark \
-  --task-config Benchmark_Pipeline/config/tasks_external/brand_memory_test.yaml \
+  --task-config Benchmark_Pipeline/config/tasks/brand_memory_test.yaml \
   --model-config Benchmark_Pipeline/config/models/qwen_local_default.yaml \
   --method-config Benchmark_Pipeline/config/methods/full_context.yaml \
   --mode both
+```
+
+Enable rich evaluation metrics (F1, BLEU, BERTScore, LLM judge):
+
+```bash
+python -m Benchmark_Pipeline.run_benchmark \
+  --task-config Benchmark_Pipeline/config/tasks/brand_memory_test.yaml \
+  --model-config Benchmark_Pipeline/config/models/gpt_4_1_nano.yaml \
+  --method-config Benchmark_Pipeline/config/methods/full_context.yaml \
+  --enable-bert-score \
+  --enable-llm-judge \
+  --judge-model gpt-4.1-nano \
+  --judge-max-retries 3 \
+  --judge-timeout 60
 ```
 
 Run a model x method matrix:
 
 ```bash
 python -m Benchmark_Pipeline.run_matrix \
-  --task-config Benchmark_Pipeline/config/tasks_external/chat_ui_memory_test.yaml \
+  --task-config Benchmark_Pipeline/config/tasks/brand_memory_test.yaml \
   --model-config Benchmark_Pipeline/config/models/gpt_4_1_nano.yaml \
   --method-config Benchmark_Pipeline/config/methods/full_context.yaml \
+  --method-config Benchmark_Pipeline/config/methods/clue_only.yaml \
   --method-config Benchmark_Pipeline/config/methods/hybrid_rag.yaml \
-  --method-config Benchmark_Pipeline/config/methods/m2a_lite.yaml \
-  --method-config Benchmark_Pipeline/config/methods/m2a_full.yaml
+  --method-config Benchmark_Pipeline/config/methods/m2a_lite.yaml
 ```
-
-Representative numeric results are intentionally omitted from this README while the benchmark is still evolving. Use `run_benchmark` or `run_matrix` to generate current local results.
 
 ## Config Structure
 
@@ -236,32 +235,14 @@ raw_lexical_weight: 0.4
 raw_dense_weight: 0.6
 ```
 
-`m2a_full` uses a fuller M2A-style retrieval pipeline:
-
-```yaml
-name: m2a_full
-semantic_top_k: 8
-raw_top_k: 6
-neighbor_window: 1
-max_iterations: 2
-rrf_k: 60
-min_round_words_for_memory: 3
-semantic_lexical_weight: 0.35
-semantic_dense_weight: 0.65
-raw_lexical_weight: 0.35
-raw_dense_weight: 0.65
-```
-
-The default `config/default.yaml` composes the same pieces in one file. Legacy single-file configs still exist for compatibility, but new work should prefer task/model/method configs plus `config/tasks_external/`.
+The default `config/default.yaml` composes the same pieces in one file. The older `config/tasks/pittads.yaml` remains as a legacy alias for backward compatibility.
 
 ## Memory Methods
 
 - `full_context`: feeds all rounds from the target session set.
+- `clue_only`: feeds only annotated clue rounds.
 - `hybrid_rag`: retrieves round-level evidence with a lightweight lexical + TF-IDF scoring pass, then expands local neighbors.
 - `m2a_lite`: builds a simple two-layer memory over session summaries and round summaries, retrieves semantic memory first, then resolves back to raw rounds.
-- `m2a_full`: builds multi-granularity semantic memories (turn/round/session), fuses dense and lexical ranks with RRF, then iteratively refines semantic-to-raw evidence retrieval.
-
-When `hybrid_rag` retrieves no evidence, it falls back internally to the QA's annotated clue rounds. This fallback is an implementation detail, not a separately exposed benchmark method.
 
 ## M2A Note
 
@@ -284,15 +265,8 @@ So the intended comparison in this benchmark is:
 
 - `hybrid_rag`: direct retrieval over raw rounds
 - `m2a_lite`: lightweight two-stage memory retrieval inspired by M2A
-- `m2a_full`: richer M2A-style iterative semantic-to-raw retrieval baseline (benchmark-oriented)
 
 It should not be described as "the full M2A method" in reports or comparisons.
-
-Current implementation note for the benchmark-facing `m2a` path:
-
-- The current `m2a` implementation does not yet pass a QA-time query image into the M2A question stage.
-- This means it is aligned with the official M2A flow only for text-only benchmark questions at answer time.
-- The official `eval_wrapper.py` supports `question(text, image)`, so future tasks that include a query image would require an additional alignment update here.
 
 ## Supported Data Format
 
@@ -341,14 +315,21 @@ Also accepted for the QA list:
 
 ## Adding A New Task
 
-For new MemEye datasets, the recommended workflow is:
+If another partner wants to add a new dataset with the same format, the recommended workflow is:
 
-1. Add or update the dataset under the HF dataset repo `data/` tree.
-2. Pull that dataset into your local synced working copy with `sync_hf_data.py pull`, or work directly from an external local clone.
-3. Generate a task config that points to the dataset JSON and image root.
-4. Validate with `run_benchmark`.
+1. Put the dialogue JSON under `data/dialog/`, for example:
 
-For a task that already lives under local `Benchmark_Pipeline/data/`, a minimal task config still looks like:
+```bash
+Benchmark_Pipeline/data/dialog/My_Task.json
+```
+
+2. Put the corresponding images under `data/image/<task_name>/`, for example:
+
+```bash
+Benchmark_Pipeline/data/image/My_Task/...
+```
+
+3. Add a task config under `config/tasks/`, for example:
 
 ```yaml
 name: my_task
@@ -362,8 +343,6 @@ eval:
   output_json: output/results_my_task.json
   max_questions: 0
 ```
-
-Use this only for a synced local working copy. The long-term source of truth should remain the HF dataset repo.
 
 ## Using An External Data Repo
 
@@ -399,14 +378,8 @@ Then run any generated task config normally, for example:
 python -m Benchmark_Pipeline.run_benchmark \
   --task-config Benchmark_Pipeline/config/tasks_external/chat_ui_memory_test.yaml \
   --model-config Benchmark_Pipeline/config/models/gpt_4_1_nano.yaml \
-  --method-config Benchmark_Pipeline/config/methods/full_context.yaml
+  --method-config Benchmark_Pipeline/config/methods/clue_only.yaml
 ```
-
-Current generated external task configs commonly used in this repo are:
-- `Benchmark_Pipeline/config/tasks_external/brand_memory_test.yaml`
-- `Benchmark_Pipeline/config/tasks_external/chat_ui_memory_test.yaml`
-- `Benchmark_Pipeline/config/tasks_external/comicscene_alley_oop_draft.yaml`
-- `Benchmark_Pipeline/config/tasks_external/home_renovation_interior_design.yaml`
 
 ## Recommended HF Dataset Workflow
 
@@ -467,16 +440,16 @@ By default the HF repo working copy lives at:
 ~/.cache/memeye_hf/MemEye
 ```
 
-To benchmark against a synced local task config, run for example:
+4. Run the benchmark against the new task config:
 
 ```bash
 python -m Benchmark_Pipeline.run_benchmark \
-  --task-config Benchmark_Pipeline/config/tasks_external/chat_ui_memory_test.yaml \
+  --task-config Benchmark_Pipeline/config/tasks/my_task.yaml \
   --model-config Benchmark_Pipeline/config/models/gpt_4_1_nano.yaml \
   --method-config Benchmark_Pipeline/config/methods/full_context.yaml
 ```
 
-This lets each partner add a task instance without changing framework code while keeping benchmark data canonical in the HF dataset repo.
+This lets each partner add a task instance without changing framework code.
 
 ## Package Usage
 
@@ -495,7 +468,7 @@ Compatibility script entrypoints still work:
 ```bash
 python Benchmark_Pipeline/run_benchmark.py ...
 python Benchmark_Pipeline/run_matrix.py ...
-python -m Benchmark_Pipeline.run_legacy_benchmark ...
+python Benchmark_Pipeline/run_pittads.py ...
 ```
 
 ## Output
@@ -515,16 +488,16 @@ If `eval.output_json` is set, the benchmark also writes a legacy summary JSON fo
 For `open` mode, each result includes:
 - predicted answer
 - ground truth
-- exact-match / contains-GT flags
-- `EM`
-- `F1`
-- `BLEU-1`
-- `BLEU-2`
+- exact-match (`em`) and contains-GT flags
+- token-level F1 (`f1`) with Porter stemming
+- BLEU-4 / BLEU-1 / BLEU-2 (`bleu`, `bleu_1`, `bleu_2`) via NLTK smoothing
+- BERTScore F1 (`bert`) — enabled with `--enable-bert-score`; downloads roberta-large (~440 MB) on first use
+- LLM-as-a-judge score (`judge`) ∈ {0, 0.25, 0.5, 0.75, 1.0} — enabled with `--enable-llm-judge`
 - latency
 
 For `mcq` mode, each result includes:
 - raw model output
-- extracted choice
+- extracted choice (`A`, `B`, or `C`)
 - valid-choice flag
 - latency
 
@@ -534,11 +507,52 @@ Each row also records benchmark metadata such as:
 - `source_sessions`
 - `clue_rounds`
 
+## Rich Evaluation Metrics
+
+By default the pipeline computes exact-match, contains-GT, F1, and BLEU on every open-ended QA. Two additional metric families can be enabled at runtime:
+
+### BERTScore
+
+Enable with `--enable-bert-score`. Uses `roberta-large` (rescaled). Downloads ~440 MB on first use; subsequent runs use the cached model.
+
+```bash
+python -m Benchmark_Pipeline.run_benchmark \
+  --task-config ... --model-config ... --method-config ... \
+  --enable-bert-score
+```
+
+### LLM-as-a-judge
+
+Enable with `--enable-llm-judge`. Scores each prediction on a 5-point scale (0 / 0.25 / 0.5 / 0.75 / 1.0) using a judge model. Defaults to `gpt-4.1-nano` via the `OPENAI_API_KEY` environment variable.
+
+```bash
+python -m Benchmark_Pipeline.run_benchmark \
+  --task-config ... --model-config ... --method-config ... \
+  --enable-llm-judge \
+  --judge-model gpt-4.1-nano \
+  --judge-api-key <key>        # optional; falls back to OPENAI_API_KEY
+  --judge-base-url <url>       # optional; defaults to OpenAI endpoint
+  --judge-max-retries 3        # optional; default 3
+  --judge-timeout 60           # optional; default 60 seconds
+```
+
+### Aggregation in `metrics.json`
+
+When either flag is used, `metrics.json` includes a `summary` block with per-metric averages broken down along the MemEye Matrix axes:
+
+```json
+"summary": {
+  "overall":  { "em": 0.10, "f1": 0.42, "bleu": 0.18, "bert": 0.61, "judge": 0.55 },
+  "by_x":     { "X1": { "f1": 0.50 }, "X3": { "f1": 0.30 } },
+  "by_y":     { "Y1": { "f1": 0.55 }, "Y2": { "f1": 0.38 } },
+  "by_cell":  { "X1_Y1": { "f1": 0.60 }, "X3_Y2": { "f1": 0.28 } }
+}
+```
+
 ## Notes
 
-- The code repository is still named `MemoryBench`, but the current benchmark identity and taxonomy are `MemEye`.
 - The current methods are intentionally lightweight baselines, intended to make cross-model and cross-method comparison easy.
-- The current scoring emphasis for open-answer tasks is `EM/F1/BLEU-1/BLEU-2`.
+- The current scoring is still lightweight and heuristic, not a final benchmark spec.
 - `mode=mcq` still checks output validity rather than gold-option accuracy.
 - Large models and long histories can be slow or memory-intensive.
-- `hybrid_rag`, `m2a_lite`, and `m2a_full` currently use local token-based retrieval only; they do not require an external embedding service.
+- `hybrid_rag` and `m2a_lite` currently use local token-based retrieval only; they do not require an external embedding service.

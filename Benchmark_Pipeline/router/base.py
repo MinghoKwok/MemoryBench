@@ -3,6 +3,8 @@ from typing import Any, Dict, List
 
 
 class BaseRouter(ABC):
+    system_prompt: str = ""
+
     @abstractmethod
     def answer(self, history_messages: List[Dict[str, Any]], question: str) -> str:
         """

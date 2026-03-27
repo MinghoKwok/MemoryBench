@@ -13,10 +13,7 @@ class QwenLocalRouter(BaseRouter):
 
         self.max_new_tokens = max_new_tokens
         self.model_path = model_path
-        self.system_prompt = system_prompt.strip() or (
-            "You answer questions about a prior multimodal conversation. "
-            "Use only the provided messages and images. Be concise and factual."
-        )
+        self.system_prompt = system_prompt
 
         AutoConfig = self.transformers.AutoConfig
         cfg = AutoConfig.from_pretrained(model_path)
@@ -55,12 +52,9 @@ class QwenLocalRouter(BaseRouter):
                     setattr(self.model.generation_config, attr, None)
 
     def _to_qwen_messages(self, history_messages: List[Dict[str, Any]], question: str) -> List[Dict[str, Any]]:
-        messages: List[Dict[str, Any]] = [
-            {
-                "role": "system",
-                "content": [{"type": "text", "text": self.system_prompt}],
-            }
-        ]
+        messages: List[Dict[str, Any]] = []
+        if self.system_prompt:
+            messages.append({"role": "system", "content": [{"type": "text", "text": self.system_prompt}]})
         for msg in history_messages:
             content: List[Dict[str, str]] = []
             for img in msg.get("images", []) or []:

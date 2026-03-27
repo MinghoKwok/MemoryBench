@@ -8,21 +8,24 @@ from .runner import run_modular_benchmark
 
 def _summary_row(payload: Dict[str, Any]) -> Dict[str, Any]:
     summary = payload.get("summary", {})
+    overall = summary.get("overall", {})
     return {
-        "task_name": payload.get("task_name", ""),
-        "model_name": payload.get("model_name", ""),
-        "method_name": payload.get("method_name", ""),
-        "mode": payload.get("mode", ""),
-        "num_qas_run": payload.get("num_qas_run", 0),
-        "open_count": summary.get("open_count", 0),
-        "open_exact_rate": summary.get("open_exact_rate", ""),
-        "open_contains_rate": summary.get("open_contains_rate", ""),
-        "open_f1_avg": summary.get("open_f1_avg", ""),
-        "open_bleu_1_avg": summary.get("open_bleu_1_avg", ""),
-        "open_bleu_2_avg": summary.get("open_bleu_2_avg", ""),
-        "mcq_count": summary.get("mcq_count", 0),
+        "task_name":      payload.get("task_name", ""),
+        "model_name":     payload.get("model_name", ""),
+        "method_name":    payload.get("method_name", ""),
+        "mode":           payload.get("mode", ""),
+        "num_qas_run":    payload.get("num_qas_run", 0),
+        "open_count":     summary.get("open_count", 0),
+        "em":             overall.get("em", ""),
+        "f1":             overall.get("f1", ""),
+        "bleu":           overall.get("bleu", ""),
+        "bleu_1":         overall.get("bleu_1", ""),
+        "bleu_2":         overall.get("bleu_2", ""),
+        "bert":           overall.get("bert", ""),
+        "judge":          overall.get("judge", ""),
+        "mcq_count":      summary.get("mcq_count", 0),
         "mcq_valid_rate": summary.get("mcq_valid_rate", ""),
-        "run_dir": payload.get("run_dir", ""),
+        "run_dir":        payload.get("run_dir", ""),
     }
 
 
@@ -31,17 +34,8 @@ def _render_markdown(rows: List[Dict[str, Any]]) -> str:
         return "# Benchmark Summary\n\nNo runs were executed.\n"
 
     headers = [
-        "task_name",
-        "model_name",
-        "method_name",
-        "mode",
-        "num_qas_run",
-        "open_exact_rate",
-        "open_contains_rate",
-        "open_f1_avg",
-        "open_bleu_1_avg",
-        "open_bleu_2_avg",
-        "mcq_valid_rate",
+        "task_name", "model_name", "method_name", "mode",
+        "num_qas_run", "em", "f1", "bleu", "bleu_1", "bleu_2", "bert", "judge",
     ]
     lines = ["# Benchmark Summary", ""]
     lines.append("| " + " | ".join(headers) + " |")
@@ -60,6 +54,9 @@ def run_benchmark_matrix(
     output_root: str = "",
     mode: str = "",
     max_questions: int = 0,
+    enable_bert_score: bool = False,
+    enable_llm_judge: bool = False,
+    judge_config: Dict[str, Any] = None,
 ) -> Dict[str, Any]:
     if not model_config_paths:
         raise ValueError("model_config_paths must not be empty")
@@ -80,6 +77,9 @@ def run_benchmark_matrix(
                 output_root=output_root,
                 mode=mode,
                 max_questions=max_questions,
+                enable_bert_score=enable_bert_score,
+                enable_llm_judge=enable_llm_judge,
+                judge_config=judge_config,
             )
             payloads.append(payload)
             rows.append(_summary_row(payload))
@@ -100,20 +100,9 @@ def run_benchmark_matrix(
         matrix_dir / "summary.csv",
         rows,
         fieldnames=[
-            "task_name",
-            "model_name",
-            "method_name",
-            "mode",
-            "num_qas_run",
-            "open_count",
-            "open_exact_rate",
-            "open_contains_rate",
-            "open_f1_avg",
-            "open_bleu_1_avg",
-            "open_bleu_2_avg",
-            "mcq_count",
-            "mcq_valid_rate",
-            "run_dir",
+            "task_name", "model_name", "method_name", "mode", "num_qas_run",
+            "open_count", "em", "f1", "bleu", "bleu_1", "bleu_2", "bert", "judge",
+            "mcq_count", "mcq_valid_rate", "run_dir",
         ],
     )
     write_text(matrix_dir / "summary.md", _render_markdown(rows))

@@ -1,15 +1,52 @@
-import math
+import json
 import re
+import statistics as _stats
 import string
+import time
 from collections import Counter
-from typing import Any, Dict, List, Tuple
+from itertools import product as _product
+from typing import Any, Dict, List, Optional, Tuple
+
+import nltk
+
+for _pkg in ("punkt", "punkt_tab"):
+    try:
+        nltk.data.find(f"tokenizers/{_pkg}")
+    except LookupError:
+        nltk.download(_pkg, quiet=True)
 
 from nltk.stem import PorterStemmer
 from nltk.translate.bleu_score import SmoothingFunction, sentence_bleu
 
 _stemmer = PorterStemmer()
-_ARTICLES = re.compile(r"\b(a|an|the)\b")
+_ARTICLES = re.compile(r"\b(a|an|the)\s+(?=\w)")
 
+
+# ---------------------------------------------------------------------------
+# Text normalisation
+# ---------------------------------------------------------------------------
+
+def normalize(s: str) -> str:
+    """Exact port of Mem-Gallery's normalize_answer_universal.
+
+    Uses fixed-length lookbehind (?<=\\d) which re supports, so no extra
+    spaces are inserted around the placeholders.
+    """
+    s = str(s).lower()
+    # Protect decimal points: lookbehind/lookahead leave the digits in place
+    s = re.sub(r"(?<=\d)\.(?=\d)", "DOTPLACEHOLDER", s)
+    # Protect underscores (no surrounding spaces)
+    s = s.replace("_", "UNDERSCOREPLACEHOLDER")
+    s = _ARTICLES.sub(" ", s)
+    # Replace each punctuation character with a space (char-by-char, same as Mem-Gallery)
+    s = "".join(ch if ch not in string.punctuation else " " for ch in s)
+    s = s.replace("DOTPLACEHOLDER", ".").replace("UNDERSCOREPLACEHOLDER", "_")
+    return " ".join(s.split())
+
+
+# ---------------------------------------------------------------------------
+# MCQ helpers (unchanged)
+# ---------------------------------------------------------------------------
 
 def to_mcq(question: str) -> str:
     return (
@@ -30,19 +67,9 @@ def extract_choice(text: str) -> str:
     return match.group(1) if match else "INVALID"
 
 
-def normalize(s: str) -> str:
-    text = str(s).lower()
-    text = re.sub(r"(?<=\d)\.(?=\d)", "DOTPLACEHOLDER", text)
-    text = text.replace("_", "UNDERSCOREPLACEHOLDER")
-    text = _ARTICLES.sub(" ", text)
-    text = "".join(ch if ch not in string.punctuation else " " for ch in text)
-    text = text.replace("DOTPLACEHOLDER", ".").replace("UNDERSCOREPLACEHOLDER", "_")
-    return " ".join(text.split())
-
-
-def normalized_tokens(s: str) -> List[str]:
-    return normalize(s).split()
-
+# ---------------------------------------------------------------------------
+# Open-mode exact / contains scoring
+# ---------------------------------------------------------------------------
 
 def score_open(pred: str, gt: str) -> Tuple[bool, bool]:
     p = normalize(pred)
@@ -52,135 +79,260 @@ def score_open(pred: str, gt: str) -> Tuple[bool, bool]:
     return exact, contains
 
 
-def f1_score(pred: str, gt: str) -> float:
-    pred_tokens = [_stemmer.stem(tok) for tok in normalized_tokens(pred)]
-    gt_tokens = [_stemmer.stem(tok) for tok in normalized_tokens(gt)]
-    if not pred_tokens or not gt_tokens:
-        return 0.0
-    overlap = Counter(pred_tokens) & Counter(gt_tokens)
-    num_same = sum(overlap.values())
+# ---------------------------------------------------------------------------
+# F1 (token-level with Porter stemming)
+# ---------------------------------------------------------------------------
+
+def f1_score(prediction: str, ground_truth: str) -> float:
+    """Token-level F1 with Porter stemming (Mem-Gallery formula)."""
+    p_tokens = [_stemmer.stem(w) for w in normalize(prediction).split()]
+    g_tokens = [_stemmer.stem(w) for w in normalize(ground_truth).split()]
+    common = Counter(p_tokens) & Counter(g_tokens)
+    num_same = sum(common.values())
     if num_same == 0:
         return 0.0
-    precision = num_same / len(pred_tokens)
-    recall = num_same / len(gt_tokens)
+    precision = num_same / len(p_tokens)
+    recall = num_same / len(g_tokens)
     return (2 * precision * recall) / (precision + recall)
 
 
-def _ngram_counts(tokens: List[str], n: int) -> Counter:
-    if len(tokens) < n:
-        return Counter()
-    return Counter(tuple(tokens[i : i + n]) for i in range(len(tokens) - n + 1))
+# ---------------------------------------------------------------------------
+# BLEU (NLTK, smoothing method 1)
+# ---------------------------------------------------------------------------
 
-
-def bleu_score(pred: str, gt: str, weights: Tuple[float, ...] = (0.25, 0.25, 0.25, 0.25)) -> float:
-    pred_tokens = normalized_tokens(pred)
-    gt_tokens = normalized_tokens(gt)
-    if not pred_tokens or not gt_tokens:
+def bleu_score(
+    prediction: str,
+    ground_truth: str,
+    weights: Tuple[float, ...] = (0.25, 0.25, 0.25, 0.25),
+) -> float:
+    """BLEU with NLTK smoothing method 1. Pass weights=(1,0,0,0) for BLEU-1."""
+    pred_tokens = normalize(prediction).split()
+    ref_tokens = normalize(ground_truth).split()
+    if not pred_tokens or not ref_tokens:
         return 0.0
-    return float(
-        sentence_bleu(
-            [gt_tokens],
-            pred_tokens,
-            weights=weights,
-            smoothing_function=SmoothingFunction().method1,
-        )
+    return sentence_bleu(
+        [ref_tokens],
+        pred_tokens,
+        weights=weights,
+        smoothing_function=SmoothingFunction().method1,
     )
 
 
-def point_axes(point: Any) -> Tuple[List[str], List[str]]:
-    if isinstance(point, list) and len(point) >= 2:
-        x_axis = [str(v) for v in point[0] if str(v).strip()]
-        y_axis = [str(v) for v in point[1] if str(v).strip()]
-        return x_axis, y_axis
-    if isinstance(point, str) and point.strip():
-        return [point.strip()], []
-    return [], []
+# ---------------------------------------------------------------------------
+# BERT Score — module-level cached scorer (loads roberta-large once per run)
+# ---------------------------------------------------------------------------
+
+_bert_scorer = None  # BERTScorer instance, initialised on first call
 
 
-def point_signature(point: Any) -> str:
-    x_axis, y_axis = point_axes(point)
-    if not x_axis and not y_axis:
-        return "UNK"
-    if x_axis and y_axis:
-        return f"{'+'.join(x_axis)}|{'+'.join(y_axis)}"
-    if x_axis:
-        return "+".join(x_axis)
-    return "+".join(y_axis)
+def bert_score_metric(prediction: str, ground_truth: str) -> float:
+    """Semantic similarity via BERTScore F1, rescaled. Returns 0.0 on error.
+
+    roberta-large is loaded once and reused for all subsequent calls.
+    """
+    global _bert_scorer
+    try:
+        if _bert_scorer is None:
+            from bert_score import BERTScorer
+            _bert_scorer = BERTScorer(lang="en", rescale_with_baseline=True)
+        p = normalize(prediction)
+        g = normalize(ground_truth)
+        _, _, F1 = _bert_scorer.score([p], [g])
+        return max(0.0, float(F1[0].item()))
+    except Exception:
+        return 0.0
+
+
+# ---------------------------------------------------------------------------
+# LLM Judge
+# ---------------------------------------------------------------------------
+
+_VALID_JUDGE_SCORES = {0.0, 0.25, 0.5, 0.75, 1.0}
+
+
+def _nearest_valid_score(score: float) -> float:
+    """Snap to the nearest discrete rubric value in {0, 0.25, 0.5, 0.75, 1}."""
+    return min(_VALID_JUDGE_SCORES, key=lambda v: abs(v - score))
+
+
+def parse_judge_response(response_text: str) -> Optional[Dict[str, Any]]:
+    """
+    Extract {'score': float, 'reasoning': str} from LLM judge output.
+    Tries JSON extraction first, then regex fallback.
+    Returns None if both fail.
+    """
+    # Primary: find a JSON object containing "score"
+    json_pattern = r'\{[^{}]*(?:\{[^{}]*\}[^{}]*)*"score"[^{}]*(?:\{[^{}]*\}[^{}]*)*\}'
+    match = re.search(json_pattern, response_text, re.DOTALL)
+    if match:
+        try:
+            result = json.loads(match.group())
+            raw = float(result.get("score", -1))
+            if 0.0 <= raw <= 1.0:
+                result["score"] = _nearest_valid_score(raw)
+                result.setdefault("reasoning", "")
+                return result
+        except (json.JSONDecodeError, ValueError):
+            pass
+
+    # Fallback: regex score extraction
+    for pattern in (r'"score"\s*:\s*([0-9.]+)', r'[Ss]core\s*:\s*([0-9.]+)'):
+        m = re.search(pattern, response_text)
+        if m:
+            try:
+                raw = float(m.group(1))
+                if 0.0 <= raw <= 1.0:
+                    return {
+                        "score": _nearest_valid_score(raw),
+                        "reasoning": response_text[:200],
+                    }
+            except ValueError:
+                continue
+
+    return None
+
+
+def llm_judge_score(
+    question: str,
+    ground_truth: str,
+    model_output: str,
+    client: Any,           # openai.OpenAI instance
+    model_name: str,
+    prompt_template: str,
+    max_retries: int = 3,
+    timeout: int = 60,
+    delay_base: float = 1.0,
+) -> Dict[str, Any]:
+    """
+    Call LLM judge with exponential-backoff retries.
+
+    Args:
+        client: An openai.OpenAI (or compatible) client instance.
+        model_name: Judge model, e.g. 'gpt-4.1-nano'.
+        prompt_template: Contents of llm_judge.txt.
+        max_retries: Retry attempts on parse failure or API error.
+
+    Returns:
+        {'score': float in {0,0.25,0.5,0.75,1}, 'reasoning': str}
+
+    Raises:
+        RuntimeError: If all retries are exhausted.
+    """
+    prompt = (
+        prompt_template
+        .replace("{{question}}", question)
+        .replace("{{ground_truth}}", ground_truth)
+        .replace("{{model_output}}", model_output)
+    )
+    last_err: Optional[Exception] = None
+    for attempt in range(max_retries):
+        try:
+            response = client.chat.completions.create(
+                model=model_name,
+                messages=[{"role": "user", "content": prompt}],
+                temperature=0,
+                timeout=timeout,
+            )
+            text = response.choices[0].message.content.strip()
+            result = parse_judge_response(text)
+            if result is not None:
+                return result
+            last_err = ValueError(f"Unparseable judge response: {text[:120]}")
+        except Exception as exc:
+            last_err = exc
+            if attempt < max_retries - 1:
+                # Parse retry-after from 429 body if available
+                exc_str = str(exc)
+                m = re.search(r"try again in ([\d.]+)s", exc_str)
+                wait = (float(m.group(1)) + 0.5) if m else (delay_base * (2 ** attempt))
+                if "429" in exc_str or "rate_limit" in exc_str:
+                    print(f"[WARN] Judge 429 rate limit — waiting {wait:.1f}s (attempt {attempt + 1}/{max_retries})")
+                time.sleep(wait)
+    raise RuntimeError(
+        f"LLM judge failed after {max_retries} attempts: {last_err}"
+    )
+
+
+# ---------------------------------------------------------------------------
+# MemEye matrix coordinate parsing
+# ---------------------------------------------------------------------------
+
+def parse_matrix_coords(point: Any) -> List[Tuple[str, str]]:
+    """
+    Parse MemEye point field → list of (Xi, Yj) cell tuples.
+    Input: [["X1", "X3"], ["Y1"]] → [("X1","Y1"), ("X3","Y1")]
+    Returns [] for unrecognised formats.
+    """
+    if not isinstance(point, list) or len(point) != 2:
+        return []
+    xs, ys = point[0], point[1]
+    if not isinstance(xs, list) or not isinstance(ys, list):
+        return []
+    return list(_product(xs, ys))
+
+
+# ---------------------------------------------------------------------------
+# Result aggregation
+# ---------------------------------------------------------------------------
+
+_OPEN_METRICS = ("em", "f1", "bleu", "bleu_1", "bleu_2", "bert", "judge")
+
+
+def _mean(vals: List[float]) -> float:
+    return _stats.mean(vals) if vals else 0.0
 
 
 def summarize_results(results: List[Dict[str, Any]]) -> Dict[str, Any]:
-    summary: Dict[str, Any] = {}
-    point_counter: Dict[str, Dict[str, float]] = {}
-    x_counter: Dict[str, Dict[str, float]] = {}
-    y_counter: Dict[str, Dict[str, float]] = {}
+    """
+    Aggregate open-mode metrics overall, by X, by Y, and by (Xi,Yj) cell.
+    Metrics missing from a row (e.g. bert=None when disabled) are skipped.
+    """
     open_rows = [r for r in results if r.get("mode") == "open"]
-    mcq_rows = [r for r in results if r.get("mode") == "mcq"]
+    mcq_rows  = [r for r in results if r.get("mode") == "mcq"]
 
-    def _metric_bucket() -> Dict[str, float]:
-        return {
-            "n": 0.0,
-            "em_sum": 0.0,
-            "contains_sum": 0.0,
-            "f1_sum": 0.0,
-            "bleu_1_sum": 0.0,
-            "bleu_2_sum": 0.0,
-        }
+    overall: Dict[str, List[float]] = {m: [] for m in _OPEN_METRICS}
+    by_x:    Dict[str, Dict[str, List[float]]] = {}
+    by_y:    Dict[str, Dict[str, List[float]]] = {}
+    by_cell: Dict[str, Dict[str, List[float]]] = {}
 
-    def _bucket_metrics(bucket: Dict[str, float]) -> Dict[str, float]:
-        n = bucket["n"]
-        if not n:
-            return {}
-        return {
-            "open_exact_rate": bucket["em_sum"] / n,
-            "open_contains_rate": bucket["contains_sum"] / n,
-            "open_f1_avg": bucket["f1_sum"] / n,
-            "open_bleu_1_avg": bucket["bleu_1_sum"] / n,
-            "open_bleu_2_avg": bucket["bleu_2_sum"] / n,
-        }
+    def _add_to(bucket: Dict[str, Dict[str, List[float]]], key: str, row: Dict) -> None:
+        b = bucket.setdefault(key, {m: [] for m in _OPEN_METRICS})
+        for m in _OPEN_METRICS:
+            val = row.get(m)
+            if val is not None:
+                b[m].append(float(val))
 
-    if open_rows:
-        summary["open_count"] = len(open_rows)
-        summary["open_exact_rate"] = sum(1 for r in open_rows if r["exact_match"]) / len(open_rows)
-        summary["open_contains_rate"] = sum(1 for r in open_rows if r["contains_gt"]) / len(open_rows)
-        summary["open_f1_avg"] = sum(float(r.get("f1", 0.0)) for r in open_rows) / len(open_rows)
-        summary["open_bleu_1_avg"] = sum(float(r.get("bleu_1", 0.0)) for r in open_rows) / len(open_rows)
-        summary["open_bleu_2_avg"] = sum(float(r.get("bleu_2", 0.0)) for r in open_rows) / len(open_rows)
-        for row in open_rows:
-            point = row.get("point")
-            bucket = point_counter.setdefault(point_signature(point), _metric_bucket())
-            bucket["n"] += 1
-            bucket["em_sum"] += 1.0 if row.get("exact_match") else 0.0
-            bucket["contains_sum"] += 1.0 if row.get("contains_gt") else 0.0
-            bucket["f1_sum"] += float(row.get("f1", 0.0))
-            bucket["bleu_1_sum"] += float(row.get("bleu_1", 0.0))
-            bucket["bleu_2_sum"] += float(row.get("bleu_2", 0.0))
-            x_axis, y_axis = point_axes(point)
-            for x_label in x_axis:
-                x_bucket = x_counter.setdefault(x_label, _metric_bucket())
-                x_bucket["n"] += 1
-                x_bucket["em_sum"] += 1.0 if row.get("exact_match") else 0.0
-                x_bucket["contains_sum"] += 1.0 if row.get("contains_gt") else 0.0
-                x_bucket["f1_sum"] += float(row.get("f1", 0.0))
-                x_bucket["bleu_1_sum"] += float(row.get("bleu_1", 0.0))
-                x_bucket["bleu_2_sum"] += float(row.get("bleu_2", 0.0))
-            for y_label in y_axis:
-                y_bucket = y_counter.setdefault(y_label, _metric_bucket())
-                y_bucket["n"] += 1
-                y_bucket["em_sum"] += 1.0 if row.get("exact_match") else 0.0
-                y_bucket["contains_sum"] += 1.0 if row.get("contains_gt") else 0.0
-                y_bucket["f1_sum"] += float(row.get("f1", 0.0))
-                y_bucket["bleu_1_sum"] += float(row.get("bleu_1", 0.0))
-                y_bucket["bleu_2_sum"] += float(row.get("bleu_2", 0.0))
+    for row in open_rows:
+        for m in _OPEN_METRICS:
+            val = row.get(m)
+            if val is not None:
+                overall[m].append(float(val))
 
+        cells = parse_matrix_coords(row.get("point"))
+        seen_x: set = set()
+        seen_y: set = set()
+        for (xi, yj) in cells:
+            if xi not in seen_x:
+                _add_to(by_x, xi, row)
+                seen_x.add(xi)
+            if yj not in seen_y:
+                _add_to(by_y, yj, row)
+                seen_y.add(yj)
+            _add_to(by_cell, f"{xi}_{yj}", row)
+
+    def _collapse(bucket: Dict) -> Dict:
+        return {k: {m: _mean(vs) for m, vs in mv.items() if vs} for k, mv in bucket.items()}
+
+    summary: Dict[str, Any] = {
+        "open_count": len(open_rows),
+        "overall":    {m: _mean(vs) for m, vs in overall.items() if vs},
+        "by_x":       _collapse(by_x),
+        "by_y":       _collapse(by_y),
+        "by_cell":    _collapse(by_cell),
+    }
     if mcq_rows:
         summary["mcq_count"] = len(mcq_rows)
-        summary["mcq_valid_rate"] = sum(1 for r in mcq_rows if r["valid_choice"]) / len(mcq_rows)
-
-    if point_counter:
-        summary["point_metrics"] = {point: _bucket_metrics(bucket) for point, bucket in point_counter.items()}
-    if x_counter:
-        summary["x_metrics"] = {label: _bucket_metrics(bucket) for label, bucket in x_counter.items()}
-    if y_counter:
-        summary["y_metrics"] = {label: _bucket_metrics(bucket) for label, bucket in y_counter.items()}
-
+        summary["mcq_valid_rate"] = (
+            sum(1 for r in mcq_rows if r.get("valid_choice")) / len(mcq_rows)
+        )
     return summary
