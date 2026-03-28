@@ -57,6 +57,27 @@ class HybridRAGMethod(HistoryMethod):
         return history
 
 
+class _StrictRAGMethod(HistoryMethod):
+    def build_history(self, dataset: MemoryBenchmarkDataset, qa: Dict[str, Any]) -> List[Dict[str, Any]]:
+        selected_round_ids = select_round_ids_for_qa(dataset, qa, self.config)
+        if not selected_round_ids:
+            return []
+
+        history: List[Dict[str, Any]] = []
+        allowed_round_ids = set(selected_round_ids)
+        for sid in dataset.session_order():
+            history.extend(history_from_round_ids(dataset.get_session(sid), dataset.rounds, allowed_round_ids))
+        return history
+
+
+class LexicalRAGMethod(_StrictRAGMethod):
+    name = "lexical_rag"
+
+
+class SemanticRAGMethod(_StrictRAGMethod):
+    name = "semantic_rag"
+
+
 class M2AAgentMethod(HistoryMethod):
     """
     Faithful M2A (Multimodal Memory Agent) implementation.
@@ -108,6 +129,8 @@ def get_method(method_name: str, config: Optional[Dict[str, Any]] = None) -> His
         FullContextMethod.name: FullContextMethod,
         TargetSessionContextMethod.name: TargetSessionContextMethod,
         HybridRAGMethod.name: HybridRAGMethod,
+        LexicalRAGMethod.name: LexicalRAGMethod,
+        SemanticRAGMethod.name: SemanticRAGMethod,
         M2AAgentMethod.name: M2AAgentMethod,
     }
     cls = registry.get(method_name)
