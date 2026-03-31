@@ -1,8 +1,8 @@
 name: m2a
 
 # LLM for ChatAgent and MemoryManager ReAct loops
-# Faithful to official M2A: gpt-4o-mini
-llm_model: "gpt-4o-mini"
+# Must match the model used by other methods for fair comparison
+llm_model: "gpt-4.1-nano"
 llm_api_key: ""                          # falls back to OPENAI_API_KEY env var
 llm_api_key_env: "OPENAI_API_KEY"
 llm_base_url: "https://api.openai.com/v1"
