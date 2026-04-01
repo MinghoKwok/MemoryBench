@@ -9,11 +9,29 @@ from __future__ import annotations
 
 import base64
 import json
+import os
 import warnings
+from contextlib import contextmanager
 from pathlib import Path
 from typing import List, Optional, Union
 from urllib import error as urllib_error
 from urllib import request as urllib_request
+
+
+
+
+@contextmanager
+def _sanitized_hf_token_env():
+    # NOTE: not thread-safe — modifies os.environ globally.
+    original = os.environ.get("HUGGING_FACE_HUB_TOKEN")
+    if original is not None and any(ord(ch) > 127 for ch in original):
+        os.environ.pop("HUGGING_FACE_HUB_TOKEN", None)
+        try:
+            yield
+        finally:
+            os.environ["HUGGING_FACE_HUB_TOKEN"] = original
+    else:
+        yield
 
 
 class TextEmbedder:
@@ -31,7 +49,10 @@ class TextEmbedder:
     def _load(self) -> None:
         if self._model is None:
             from sentence_transformers import SentenceTransformer  # type: ignore
-            self._model = SentenceTransformer(self._model_name)
+
+            cache_folder = os.environ.get("HF_HOME") or os.environ.get("TRANSFORMERS_CACHE")
+            with _sanitized_hf_token_env():
+                self._model = SentenceTransformer(self._model_name, cache_folder=cache_folder)
 
     @property
     def is_available(self) -> bool:
@@ -163,8 +184,10 @@ class LocalCLIPEmbedder:
             import torch
             from transformers import CLIPModel, CLIPProcessor  # type: ignore
 
-            self._processor = CLIPProcessor.from_pretrained(self._model_name)
-            self._model = CLIPModel.from_pretrained(self._model_name)
+            cache_dir = os.environ.get("HF_HOME") or os.environ.get("TRANSFORMERS_CACHE")
+            with _sanitized_hf_token_env():
+                self._processor = CLIPProcessor.from_pretrained(self._model_name, cache_dir=cache_dir)
+                self._model = CLIPModel.from_pretrained(self._model_name, cache_dir=cache_dir)
 
             # Use GPU if available
             if torch.cuda.is_available():

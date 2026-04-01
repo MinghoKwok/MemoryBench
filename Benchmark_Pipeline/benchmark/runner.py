@@ -102,6 +102,7 @@ def instantiate_router(model_cfg: Dict[str, Any], system_prompt: str = ""):
             model_path=str(model_cfg["model_path"]),
             max_new_tokens=int(model_cfg.get("max_new_tokens", 128)),
             system_prompt=system_prompt,
+            max_time=model_cfg.get("max_time", 25),
         )
     if provider == "openai_api":
         return OpenAIAPIRouter(
@@ -273,6 +274,7 @@ def run_benchmark(
             history: List[Dict[str, Any]] = []
         else:
             history = method.build_history(dataset, qa)
+        current_method_runtime = dict(getattr(method, "runtime_info", {}) or {})
         print(
             f"[INFO] QA {i}/{len(qas)} point={qa.get('point')} "
             f"method={method.name} history_turns={len(history)}"
@@ -312,7 +314,7 @@ def run_benchmark(
                 except RuntimeError as exc:
                     print(f"[WARN] LLM judge failed for QA {i}: {exc}")
 
-            results.append({
+            open_result = {
                 "idx": i,
                 "point": qa.get("point"),
                 "mode": "open",
@@ -334,7 +336,10 @@ def run_benchmark(
                 "history_turns": len(history),
                 "source_sessions": qa.get("session_id", []),
                 "clue_rounds": qa.get("clue", []),
-            })
+            }
+            if current_method_runtime:
+                open_result["method_runtime"] = current_method_runtime
+            results.append(open_result)
             print(
                 f"[OPEN][{i}] em={exact} f1={_f1:.3f} bleu={_bleu:.3f}"
                 + (f" bert={_bert:.3f}" if _bert is not None else "")
@@ -349,7 +354,7 @@ def run_benchmark(
             else:
                 pred_mcq = router.answer(history, mcq_question)
             choice = extract_choice(pred_mcq)
-            results.append({
+            mcq_result = {
                 "idx": i,
                 "point": qa.get("point"),
                 "mode": "mcq",
@@ -362,7 +367,10 @@ def run_benchmark(
                 "history_turns": len(history),
                 "source_sessions": qa.get("session_id", []),
                 "clue_rounds": qa.get("clue", []),
-            })
+            }
+            if current_method_runtime:
+                mcq_result["method_runtime"] = current_method_runtime
+            results.append(mcq_result)
             print(f"[MCQ][{i}] choice={choice} valid={choice in {'A', 'B', 'C'}}")
 
     run_dir = default_run_dir(cfg, paths["output_root"])

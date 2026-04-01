@@ -20,12 +20,31 @@ def require_api_key(api_key: str = "", api_key_env: str = "") -> str:
     raise RuntimeError("Missing API key configuration.")
 
 
-def encode_image_data_url(image_path: str) -> str:
+def encode_image_data_url(image_path: str, max_long_edge: int = 768) -> str:
     path = Path(image_path)
     mime_type, _ = mimetypes.guess_type(path.name)
     if not mime_type:
         mime_type = "application/octet-stream"
-    data = base64.b64encode(path.read_bytes()).decode("ascii")
+
+    raw = path.read_bytes()
+
+    # Resize large images to keep total payload under API limits
+    try:
+        from PIL import Image
+        import io
+        img = Image.open(io.BytesIO(raw))
+        w, h = img.size
+        if max(w, h) > max_long_edge:
+            scale = max_long_edge / max(w, h)
+            img = img.resize((int(w * scale), int(h * scale)), Image.LANCZOS)
+            buf = io.BytesIO()
+            img.save(buf, format="JPEG", quality=80)
+            raw = buf.getvalue()
+            mime_type = "image/jpeg"
+    except Exception:
+        pass  # fall back to original bytes if PIL unavailable
+
+    data = base64.b64encode(raw).decode("ascii")
     return f"data:{mime_type};base64,{data}"
 
 
@@ -49,7 +68,7 @@ def post_json(
     headers: Dict[str, str],
     payload: Dict[str, Any],
     timeout: int = 60,
-    max_retries: int = 5,
+    max_retries: int = 10,
 ) -> Dict[str, Any]:
     body = json.dumps(payload).encode("utf-8")
     last_err: Optional[Exception] = None
@@ -66,7 +85,7 @@ def post_json(
         except error.HTTPError as exc:
             details = exc.read().decode("utf-8", errors="replace")
             if exc.code == 429 and attempt < max_retries - 1:
-                wait = (_parse_retry_after(details) or (2 ** attempt)) + 0.5
+                wait = (_parse_retry_after(details) or (2 ** attempt)) + 2.0
                 print(f"[WARN] 429 rate limit — waiting {wait:.1f}s (attempt {attempt + 1}/{max_retries})")
                 time.sleep(wait)
                 last_err = exc

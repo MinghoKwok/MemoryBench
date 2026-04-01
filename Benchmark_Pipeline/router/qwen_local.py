@@ -1,10 +1,16 @@
-from typing import Any, Dict, List
+from typing import Any, Dict, List, Optional
 
 from .base import BaseRouter
 
 
 class QwenLocalRouter(BaseRouter):
-    def __init__(self, model_path: str, max_new_tokens: int = 128, system_prompt: str = "") -> None:
+    def __init__(
+        self,
+        model_path: str,
+        max_new_tokens: int = 128,
+        system_prompt: str = "",
+        max_time: Optional[float] = 25,
+    ) -> None:
         import importlib
 
         self.torch = importlib.import_module("torch")
@@ -14,6 +20,7 @@ class QwenLocalRouter(BaseRouter):
         self.max_new_tokens = max_new_tokens
         self.model_path = model_path
         self.system_prompt = system_prompt
+        self.max_time = max_time
 
         AutoConfig = self.transformers.AutoConfig
         cfg = AutoConfig.from_pretrained(model_path)
@@ -86,27 +93,34 @@ class QwenLocalRouter(BaseRouter):
         messages = self._to_qwen_messages(history_messages, question)
         text = self.processor.apply_chat_template(messages, tokenize=False, add_generation_prompt=True)
         image_inputs, video_inputs = self.process_vision_info(messages)
-        inputs = self.processor(
-            text=[text],
-            images=image_inputs,
-            videos=video_inputs,
-            padding=True,
-            return_tensors="pt",
-        )
+        if image_inputs or video_inputs:
+            processor_kwargs: Dict[str, Any] = dict(
+                text=[text],
+                padding=True,
+                return_tensors="pt",
+            )
+            if image_inputs:
+                processor_kwargs["images"] = image_inputs
+            if video_inputs:
+                processor_kwargs["videos"] = video_inputs
+            inputs = self.processor(**processor_kwargs)
+        else:
+            inputs = self.processor.tokenizer([text], padding=True, return_tensors="pt")
         if self.use_cuda:
             inputs = inputs.to("cuda")
 
         eos_token_id = getattr(self.processor.tokenizer, "eos_token_id", None)
         pad_token_id = getattr(self.processor.tokenizer, "pad_token_id", None)
+        generate_kwargs: Dict[str, Any] = dict(
+            max_new_tokens=self.max_new_tokens,
+            do_sample=False,
+            eos_token_id=eos_token_id,
+            pad_token_id=pad_token_id,
+        )
+        if self.max_time is not None:
+            generate_kwargs["max_time"] = self.max_time
         with self.torch.inference_mode():
-            generated = self.model.generate(
-                **inputs,
-                max_new_tokens=self.max_new_tokens,
-                do_sample=False,
-                max_time=25,
-                eos_token_id=eos_token_id,
-                pad_token_id=pad_token_id,
-            )
+            generated = self.model.generate(**inputs, **generate_kwargs)
         trimmed = [out_ids[len(in_ids) :] for in_ids, out_ids in zip(inputs.input_ids, generated)]
         out = self.processor.batch_decode(
             trimmed, skip_special_tokens=True, clean_up_tokenization_spaces=False

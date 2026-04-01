@@ -11,7 +11,9 @@ The benchmark separates:
 The current sample task is `brand_memory_test`. The benchmark supports local and API-backed model routers, plus multiple memory methods:
 - `full_context`
 - `clue_only`
-- `hybrid_rag`
+- `lexical_rag`
+- `semantic_rag`
+- `semantic_rag_multimodal`
 - `m2a_lite`
 
 For MemEye task design and `point` annotation rules, read:
@@ -116,13 +118,13 @@ python -m Benchmark_Pipeline.run_benchmark \
   --method-config Benchmark_Pipeline/config/methods/clue_only.yaml
 ```
 
-Run the lightweight retrieval baseline:
+Run the dense retrieval baseline:
 
 ```bash
 python -m Benchmark_Pipeline.run_benchmark \
   --task-config Benchmark_Pipeline/config/tasks/brand_memory_test.yaml \
   --model-config Benchmark_Pipeline/config/models/gpt_4_1_nano.yaml \
-  --method-config Benchmark_Pipeline/config/methods/hybrid_rag.yaml
+  --method-config Benchmark_Pipeline/config/methods/semantic_rag.yaml
 ```
 
 Run the lightweight M2A-style baseline:
@@ -176,7 +178,7 @@ python -m Benchmark_Pipeline.run_matrix \
   --model-config Benchmark_Pipeline/config/models/gpt_4_1_nano.yaml \
   --method-config Benchmark_Pipeline/config/methods/full_context.yaml \
   --method-config Benchmark_Pipeline/config/methods/clue_only.yaml \
-  --method-config Benchmark_Pipeline/config/methods/hybrid_rag.yaml \
+  --method-config Benchmark_Pipeline/config/methods/semantic_rag.yaml \
   --method-config Benchmark_Pipeline/config/methods/m2a_lite.yaml
 ```
 
@@ -212,14 +214,14 @@ Example method config:
 name: full_context
 ```
 
-`hybrid_rag` accepts retrieval-specific parameters:
+`semantic_rag` accepts retrieval-specific parameters:
 
 ```yaml
-name: hybrid_rag
-top_k: 2
-neighbor_window: 1
-lexical_weight: 0.35
-semantic_weight: 0.65
+name: semantic_rag
+retrieval_backend: dense_text
+top_k: 1
+neighbor_window: 0
+text_embedding_model: all-MiniLM-L6-v2
 ```
 
 `m2a_lite` uses a simple two-stage memory lookup:
@@ -241,7 +243,9 @@ The default `config/default.yaml` composes the same pieces in one file. The olde
 
 - `full_context`: feeds all rounds from the target session set.
 - `clue_only`: feeds only annotated clue rounds.
-- `hybrid_rag`: retrieves round-level evidence with a lightweight lexical + TF-IDF scoring pass, then expands local neighbors.
+- `lexical_rag`: retrieves round-level evidence with a lightweight lexical + TF-IDF scoring pass, then expands local neighbors.
+- `semantic_rag`: dense text retrieval using all-MiniLM-L6-v2 embeddings.
+- `semantic_rag_multimodal`: dense retrieval fusing text and image embeddings (text via all-MiniLM-L6-v2, image via SigLIP2 or local CLIP fallback).
 - `m2a_lite`: builds a simple two-layer memory over session summaries and round summaries, retrieves semantic memory first, then resolves back to raw rounds.
 
 ## M2A Note
@@ -263,7 +267,7 @@ It does not currently implement the full M2A stack such as:
 
 So the intended comparison in this benchmark is:
 
-- `hybrid_rag`: direct retrieval over raw rounds
+- `lexical_rag` / `semantic_rag`: direct retrieval over raw rounds
 - `m2a_lite`: lightweight two-stage memory retrieval inspired by M2A
 
 It should not be described as "the full M2A method" in reports or comparisons.
@@ -555,4 +559,4 @@ When either flag is used, `metrics.json` includes a `summary` block with per-met
 - The current scoring is still lightweight and heuristic, not a final benchmark spec.
 - `mode=mcq` still checks output validity rather than gold-option accuracy.
 - Large models and long histories can be slow or memory-intensive.
-- `hybrid_rag` and `m2a_lite` currently use local token-based retrieval only; they do not require an external embedding service.
+- `lexical_rag` uses local token-based retrieval only and does not require an external embedding service. `semantic_rag` and `semantic_rag_multimodal` require sentence-transformers; `semantic_rag_multimodal` additionally requires a vLLM SigLIP2 server or local CLIP.

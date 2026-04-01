@@ -39,7 +39,7 @@ class OpenAIAPIRouter(BaseRouter):
                 content.append(
                     {
                         "type": "image_url",
-                        "image_url": {"url": encode_image_data_url(image_path)},
+                        "image_url": {"url": encode_image_data_url(image_path), "detail": "low"},
                     }
                 )
             if content:

@@ -23,7 +23,6 @@ class FullContextMethod(HistoryMethod):
     def build_history(self, dataset: MemoryBenchmarkDataset, qa: Dict[str, Any]) -> List[Dict[str, Any]]:
         """Build history from ALL sessions to stress context window."""
         history: List[Dict[str, Any]] = []
-        # Include ALL sessions, not just target sessions
         for sid in dataset.session_order():
             history.extend(history_from_round_ids(dataset.get_session(sid), dataset.rounds))
         return history
@@ -42,11 +41,9 @@ class TargetSessionContextMethod(HistoryMethod):
         return history
 
 
-class HybridRAGMethod(HistoryMethod):
-    name = "hybrid_rag"
-
+class _RetrievalHistoryMethod(HistoryMethod):
     def build_history(self, dataset: MemoryBenchmarkDataset, qa: Dict[str, Any]) -> List[Dict[str, Any]]:
-        selected_round_ids = select_round_ids_for_qa(dataset, qa, self.config)
+        selected_round_ids = select_round_ids_for_qa(dataset, qa, self.config, runtime_info=self.runtime_info)
         if not selected_round_ids:
             return []
 
@@ -57,41 +54,19 @@ class HybridRAGMethod(HistoryMethod):
         return history
 
 
-class _StrictRAGMethod(HistoryMethod):
-    def build_history(self, dataset: MemoryBenchmarkDataset, qa: Dict[str, Any]) -> List[Dict[str, Any]]:
-        selected_round_ids = select_round_ids_for_qa(dataset, qa, self.config)
-        if not selected_round_ids:
-            return []
-
-        history: List[Dict[str, Any]] = []
-        allowed_round_ids = set(selected_round_ids)
-        for sid in dataset.session_order():
-            history.extend(history_from_round_ids(dataset.get_session(sid), dataset.rounds, allowed_round_ids))
-        return history
-
-
-class LexicalRAGMethod(_StrictRAGMethod):
+class LexicalRAGMethod(_RetrievalHistoryMethod):
     name = "lexical_rag"
 
 
-class SemanticRAGMethod(_StrictRAGMethod):
+class SemanticRAGMethod(_RetrievalHistoryMethod):
     name = "semantic_rag"
 
 
+class SemanticRAGMultimodalMethod(_RetrievalHistoryMethod):
+    name = "semantic_rag_multimodal"
+
+
 class M2AAgentMethod(HistoryMethod):
-    """
-    Faithful M2A (Multimodal Memory Agent) implementation.
-
-    Two-phase protocol (mirrors official eval_wrapper.py):
-      1. Chat phase  — process all sessions sequentially to build semantic memory
-                       (lazy-initialized on first call, once per dataset instance)
-      2. Question phase — query memory to answer each QA item
-
-    This method exposes answer(dataset, qa, question) → str so that the runner
-    bypasses the build_history + router.answer pipeline and calls the M2A system
-    end-to-end (agentic inference).
-    """
-
     name = "m2a"
 
     def __init__(self, config: Optional[Dict[str, Any]] = None) -> None:
@@ -114,13 +89,11 @@ class M2AAgentMethod(HistoryMethod):
         print(f"[M2A] Memory ready: {self._system.num_memories} semantic memories stored.")
 
     def answer(self, dataset: MemoryBenchmarkDataset, qa: Dict[str, Any], question: str) -> str:
-        """End-to-end agentic inference. Called by runner instead of build_history."""
         self._ensure_initialized(dataset)
         assert self._system is not None
         return self._system.answer_question(question)
 
     def build_history(self, dataset: MemoryBenchmarkDataset, qa: Dict[str, Any]) -> List[Dict[str, Any]]:
-        # Not used when runner detects answer() — included for interface completeness.
         return []
 
 
@@ -128,9 +101,9 @@ def get_method(method_name: str, config: Optional[Dict[str, Any]] = None) -> His
     registry = {
         FullContextMethod.name: FullContextMethod,
         TargetSessionContextMethod.name: TargetSessionContextMethod,
-        HybridRAGMethod.name: HybridRAGMethod,
         LexicalRAGMethod.name: LexicalRAGMethod,
         SemanticRAGMethod.name: SemanticRAGMethod,
+        SemanticRAGMultimodalMethod.name: SemanticRAGMultimodalMethod,
         M2AAgentMethod.name: M2AAgentMethod,
     }
     cls = registry.get(method_name)

@@ -66,7 +66,7 @@ The `Benchmark_Pipeline` directory is the main benchmark scaffold in active use.
 
 - modular task / model / method configs
 - benchmark runs and matrix runs
-- current memory methods including `full_context`, `hybrid_rag`, and `m2a`
+- current memory methods including `full_context`, `lexical_rag`, `semantic_rag`, `semantic_rag_multimodal`, and `m2a`
 - partner-added tasks that reuse the same dialogue/image format
 - task data that is canonically stored in the Hugging Face dataset repo and synced locally when needed
 - representative active tasks including `brand_memory_test`, `chat_ui_memory_test`, `comicscene_alley_oop_draft`, and `home_renovation_interior_design`
@@ -109,7 +109,7 @@ python -m Benchmark_Pipeline.run_matrix \
   --task-config Benchmark_Pipeline/config/tasks_external/chat_ui_memory_test.yaml \
   --model-config Benchmark_Pipeline/config/models/gpt_4_1_nano.yaml \
   --method-config Benchmark_Pipeline/config/methods/full_context.yaml \
-  --method-config Benchmark_Pipeline/config/methods/hybrid_rag.yaml \
+  --method-config Benchmark_Pipeline/config/methods/semantic_rag.yaml \
   --method-config Benchmark_Pipeline/config/methods/m2a.yaml
 ```
 

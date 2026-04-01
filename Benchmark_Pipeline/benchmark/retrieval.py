@@ -1,7 +1,7 @@
 import math
 import re
 from collections import Counter
-from typing import Any, Dict, List, Tuple
+from typing import Any, Dict, List, Optional, Tuple
 
 from .dataset import MemoryBenchmarkDataset
 
@@ -15,6 +15,8 @@ STOPWORDS = {
     "we", "were", "what", "when", "where", "which", "who", "why", "with",
     "you", "your",
 }
+
+_RETRIEVER_CACHE: Dict[Tuple[Any, ...], "_BaseRetriever"] = {}
 
 
 def _tokenize(text: str) -> List[str]:
@@ -30,17 +32,6 @@ def _round_text(round_payload: Dict[str, Any]) -> str:
         " ".join(str(item).strip() for item in captions if str(item).strip()),
     ]
     return " ".join(part for part in parts if part)
-
-
-def _unique_preserve_order(values: List[str]) -> List[str]:
-    ordered: List[str] = []
-    seen: set = set()
-    for value in values:
-        if value in seen:
-            continue
-        seen.add(value)
-        ordered.append(value)
-    return ordered
 
 
 def _idf(documents: List[List[str]]) -> Dict[str, float]:
@@ -72,35 +63,21 @@ def _cosine_similarity(left: Dict[str, float], right: Dict[str, float]) -> float
     return dot / (left_norm * right_norm)
 
 
+def _dense_cosine(left: List[float], right: List[float]) -> float:
+    if not left or not right or len(left) != len(right):
+        return 0.0
+    dot = sum(a * b for a, b in zip(left, right))
+    left_norm = math.sqrt(sum(v * v for v in left))
+    right_norm = math.sqrt(sum(v * v for v in right))
+    if left_norm == 0.0 or right_norm == 0.0:
+        return 0.0
+    return dot / (left_norm * right_norm)
+
+
 def _keyword_overlap(query_tokens: List[str], doc_tokens: List[str]) -> float:
     if not query_tokens:
         return 0.0
     return len(set(query_tokens) & set(doc_tokens)) / len(set(query_tokens))
-
-
-def _rank_texts(
-    query_tokens: List[str],
-    candidates: List[Tuple[str, List[str]]],
-    lexical_weight: float,
-    semantic_weight: float,
-) -> List[Tuple[float, str]]:
-    if not query_tokens or not candidates:
-        return []
-
-    documents = [tokens for _, tokens in candidates]
-    idf = _idf(documents + [query_tokens])
-    query_vector = _tfidf_vector(query_tokens, idf)
-
-    scored: List[Tuple[float, str]] = []
-    for candidate_id, tokens in candidates:
-        doc_vector = _tfidf_vector(tokens, idf)
-        lexical_score = _keyword_overlap(query_tokens, tokens)
-        semantic_score = _cosine_similarity(query_vector, doc_vector)
-        score = (lexical_weight * lexical_score) + (semantic_weight * semantic_score)
-        if score > 0:
-            scored.append((score, candidate_id))
-    scored.sort(key=lambda item: (-item[0], item[1]))
-    return scored
 
 
 def _expand_with_neighbors(
@@ -137,42 +114,315 @@ def _expand_with_neighbors(
     return ordered
 
 
+class _BaseRetriever:
+    def __init__(self, dataset: MemoryBenchmarkDataset, config: Dict[str, Any]) -> None:
+        self.dataset = dataset
+        self.config = config
+        self.top_k = int(config.get("top_k", 2))
+        self.neighbor_window = int(config.get("neighbor_window", 1))
+        self.session_ids = dataset.session_order()
+
+    def _build_debug_info(
+        self,
+        qa: Dict[str, Any],
+        seed_round_ids: List[str],
+        selected_round_ids: List[str],
+        top_candidates: List[Dict[str, Any]],
+    ) -> Dict[str, Any]:
+        clue_rounds = list(qa.get("clue", []) or [])
+        return {
+            "retrieval_backend": self.config.get("retrieval_backend", "legacy_sparse"),
+            "top_k": self.top_k,
+            "neighbor_window": self.neighbor_window,
+            "seed_round_ids": seed_round_ids,
+            "selected_round_ids": selected_round_ids,
+            "top_candidates": top_candidates,
+            "clue_hit_count": sum(1 for rid in selected_round_ids if rid in clue_rounds),
+        }
+
+    def select(self, qa: Dict[str, Any]) -> Tuple[List[str], Dict[str, Any]]:
+        raise NotImplementedError
+
+
+class _SparseRetriever(_BaseRetriever):
+    def __init__(self, dataset: MemoryBenchmarkDataset, config: Dict[str, Any]) -> None:
+        super().__init__(dataset, config)
+        self.lexical_weight = float(config.get("lexical_weight", 0.35))
+        self.semantic_weight = float(config.get("semantic_weight", 0.65))
+        self.candidate_rows: List[Tuple[str, List[str]]] = []
+        for session_id in self.session_ids:
+            session = dataset.get_session(session_id)
+            for dialogue in session.get("dialogues", []):
+                round_id = dialogue.get("round", "")
+                round_payload = dataset.rounds.get(round_id, {})
+                tokens = _tokenize(_round_text(round_payload))
+                if tokens:
+                    self.candidate_rows.append((round_id, tokens))
+
+    def select(self, qa: Dict[str, Any]) -> Tuple[List[str], Dict[str, Any]]:
+        query_text = str(qa.get("question", "")).strip()
+        query_tokens = _tokenize(query_text)
+        if not query_tokens or not self.candidate_rows:
+            return [], self._build_debug_info(qa, [], [], [])
+
+        documents = [tokens for _, tokens in self.candidate_rows]
+        idf = _idf(documents)
+        query_vector = _tfidf_vector(query_tokens, idf)
+
+        scored: List[Tuple[float, str, Dict[str, Any]]] = []
+        for round_id, tokens in self.candidate_rows:
+            doc_vector = _tfidf_vector(tokens, idf)
+            lexical_score = _keyword_overlap(query_tokens, tokens)
+            semantic_score = _cosine_similarity(query_vector, doc_vector)
+            score = (self.lexical_weight * lexical_score) + (self.semantic_weight * semantic_score)
+            if score <= 0:
+                continue
+            scored.append(
+                (
+                    score,
+                    round_id,
+                    {
+                        "round_id": round_id,
+                        "score": score,
+                        "lexical_score": lexical_score,
+                        "semantic_score": semantic_score,
+                    },
+                )
+            )
+        scored.sort(key=lambda item: (-item[0], item[1]))
+        if not scored:
+            return [], self._build_debug_info(qa, [], [], [])
+
+        seed_round_ids = [round_id for _, round_id, _ in scored[: max(1, self.top_k)]]
+        selected_round_ids = _expand_with_neighbors(
+            self.dataset, seed_round_ids, self.session_ids, self.neighbor_window
+        )
+        return selected_round_ids, self._build_debug_info(
+            qa,
+            seed_round_ids,
+            selected_round_ids,
+            [row for _, _, row in scored[:5]],
+        )
+
+
+class _DenseTextRetriever(_BaseRetriever):
+    def __init__(self, dataset: MemoryBenchmarkDataset, config: Dict[str, Any]) -> None:
+        super().__init__(dataset, config)
+        from .m2a.embeddings import TextEmbedder
+
+        self.text_embedding_model = str(config.get("text_embedding_model", TextEmbedder.DEFAULT_MODEL))
+        self.text_embedder = TextEmbedder(self.text_embedding_model)
+        self.round_texts: List[Tuple[str, str]] = []
+        texts: List[str] = []
+        for session_id in self.session_ids:
+            session = dataset.get_session(session_id)
+            for dialogue in session.get("dialogues", []):
+                round_id = dialogue.get("round", "")
+                round_payload = dataset.rounds.get(round_id, {})
+                round_text = _round_text(round_payload)
+                if not round_text:
+                    continue
+                self.round_texts.append((round_id, round_text))
+                texts.append(round_text)
+        self.round_vectors = self.text_embedder.embed_batch(texts) if texts else []
+
+    def select(self, qa: Dict[str, Any]) -> Tuple[List[str], Dict[str, Any]]:
+        query_text = str(qa.get("question", "")).strip()
+        if not query_text or not self.round_texts:
+            return [], self._build_debug_info(qa, [], [], [])
+
+        query_vec = self.text_embedder.embed_query(query_text)
+        scored: List[Tuple[float, str, Dict[str, Any]]] = []
+        for (round_id, _), round_vec in zip(self.round_texts, self.round_vectors):
+            score = _dense_cosine(query_vec, round_vec)
+            scored.append(
+                (
+                    score,
+                    round_id,
+                    {
+                        "round_id": round_id,
+                        "score": score,
+                        "text_dense_score": score,
+                    },
+                )
+            )
+        scored.sort(key=lambda item: (-item[0], item[1]))
+        seed_round_ids = [round_id for _, round_id, _ in scored[: max(1, self.top_k)]]
+        selected_round_ids = _expand_with_neighbors(
+            self.dataset, seed_round_ids, self.session_ids, self.neighbor_window
+        )
+        debug = self._build_debug_info(
+            qa,
+            seed_round_ids,
+            selected_round_ids,
+            [row for _, _, row in scored[:5]],
+        )
+        debug["text_embedding_model"] = self.text_embedding_model
+        return selected_round_ids, debug
+
+
+class _DenseMultimodalRetriever(_BaseRetriever):
+    def __init__(self, dataset: MemoryBenchmarkDataset, config: Dict[str, Any]) -> None:
+        super().__init__(dataset, config)
+        from .m2a.embeddings import TextEmbedder, get_multimodal_embedder
+
+        self.text_embedding_model = str(config.get("text_embedding_model", TextEmbedder.DEFAULT_MODEL))
+        self.text_dense_weight = float(config.get("text_dense_weight", 1.0))
+        self.image_dense_weight = float(config.get("image_dense_weight", 0.0))
+        self.text_embedder = TextEmbedder(self.text_embedding_model)
+        self.mm_model = str(config.get("multimodal_embedding_model", "siglip2-base-patch16-384"))
+        self.mm_url = str(config.get("multimodal_embedding_url", "http://localhost:8050/v1"))
+        self.mm_api_key = str(config.get("multimodal_embedding_api_key", "dummy"))
+        self.mm_embedder = get_multimodal_embedder(self.mm_model, self.mm_url, self.mm_api_key)
+        if self.mm_embedder is None:
+            raise RuntimeError(
+                "semantic_rag dense_multimodal requires a working multimodal embedder; "
+                "neither vLLM SigLIP2 nor local CLIP is available."
+            )
+
+        self.round_rows: List[Tuple[str, Optional[List[float]], Optional[List[float]]]] = []
+        text_batch_round_ids: List[str] = []
+        text_batch_texts: List[str] = []
+        image_jobs: List[Tuple[str, str]] = []
+        for session_id in self.session_ids:
+            session = dataset.get_session(session_id)
+            for dialogue in session.get("dialogues", []):
+                round_id = dialogue.get("round", "")
+                round_payload = dataset.rounds.get(round_id, {})
+                round_text = _round_text(round_payload)
+                images = list(round_payload.get("images", []) or [])
+                if not round_text and not images:
+                    continue
+                self.round_rows.append((round_id, None, None))
+                if round_text:
+                    text_batch_round_ids.append(round_id)
+                    text_batch_texts.append(round_text)
+                if images:
+                    # Only embed the first image per round to keep index size manageable.
+                    image_jobs.append((round_id, images[0]))
+
+        text_vectors_by_round: Dict[str, List[float]] = {}
+        if text_batch_texts:
+            for round_id, vec in zip(text_batch_round_ids, self.text_embedder.embed_batch(text_batch_texts)):
+                text_vectors_by_round[round_id] = vec
+
+        image_vectors_by_round: Dict[str, List[float]] = {}
+        for round_id, image_path in image_jobs:
+            image_vectors_by_round[round_id] = self.mm_embedder.embed_image(image_path)
+
+        self.round_rows = [
+            (round_id, text_vectors_by_round.get(round_id), image_vectors_by_round.get(round_id))
+            for round_id, _, _ in self.round_rows
+        ]
+
+    def select(self, qa: Dict[str, Any]) -> Tuple[List[str], Dict[str, Any]]:
+        query_text = str(qa.get("question", "")).strip()
+        if not query_text or not self.round_rows:
+            return [], self._build_debug_info(qa, [], [], [])
+
+        text_query_vec: Optional[List[float]] = None
+        image_query_vec: Optional[List[float]] = None
+        if self.text_dense_weight > 0:
+            text_query_vec = self.text_embedder.embed_query(query_text)
+        if self.image_dense_weight > 0:
+            image_query_vec = self.mm_embedder.embed_text(query_text)
+
+        scored: List[Tuple[float, str, Dict[str, Any]]] = []
+        for round_id, text_vec, image_vec in self.round_rows:
+            text_score = _dense_cosine(text_query_vec or [], text_vec or [])
+            image_score = _dense_cosine(image_query_vec or [], image_vec or [])
+            score = (self.text_dense_weight * text_score) + (self.image_dense_weight * image_score)
+            scored.append(
+                (
+                    score,
+                    round_id,
+                    {
+                        "round_id": round_id,
+                        "score": score,
+                        "text_dense_score": text_score,
+                        "image_dense_score": image_score,
+                    },
+                )
+            )
+        scored.sort(key=lambda item: (-item[0], item[1]))
+        seed_round_ids = [round_id for _, round_id, _ in scored[: max(1, self.top_k)]]
+        selected_round_ids = _expand_with_neighbors(
+            self.dataset, seed_round_ids, self.session_ids, self.neighbor_window
+        )
+        debug = self._build_debug_info(
+            qa,
+            seed_round_ids,
+            selected_round_ids,
+            [row for _, _, row in scored[:5]],
+        )
+        debug["text_embedding_model"] = self.text_embedding_model
+        debug["multimodal_embedding_model"] = self.mm_model
+        debug["text_dense_weight"] = self.text_dense_weight
+        debug["image_dense_weight"] = self.image_dense_weight
+        return selected_round_ids, debug
+
+
+def _normalize_backend(config: Dict[str, Any]) -> str:
+    backend = str(config.get("retrieval_backend", "")).strip().lower()
+    if backend:
+        return backend
+    method_name = str(config.get("name", "")).strip().lower()
+    if method_name == "semantic_rag":
+        return "dense_text"
+    return "legacy_sparse"
+
+
+def _cache_key(dataset: MemoryBenchmarkDataset, config: Dict[str, Any]) -> Tuple[Any, ...]:
+    backend = _normalize_backend(config)
+    relevant_keys = [
+        "name",
+        "top_k",
+        "neighbor_window",
+        "lexical_weight",
+        "semantic_weight",
+        "text_embedding_model",
+        "multimodal_embedding_model",
+        "multimodal_embedding_url",
+        "multimodal_embedding_api_key",
+        "text_dense_weight",
+        "image_dense_weight",
+        "retrieval_backend",
+    ]
+    dataset_key = (str(dataset.dialog_json_path), str(dataset.image_root))
+    return (dataset_key, backend) + tuple((key, config.get(key)) for key in relevant_keys)
+
+
+def _get_retriever(dataset: MemoryBenchmarkDataset, config: Dict[str, Any]) -> _BaseRetriever:
+    key = _cache_key(dataset, config)
+    retriever = _RETRIEVER_CACHE.get(key)
+    if retriever is not None:
+        return retriever
+
+    backend = _normalize_backend(config)
+    if backend == "dense_text":
+        retriever = _DenseTextRetriever(dataset, config)
+    elif backend == "dense_multimodal":
+        retriever = _DenseMultimodalRetriever(dataset, config)
+    else:
+        retriever = _SparseRetriever(dataset, config)
+    _RETRIEVER_CACHE[key] = retriever
+    return retriever
+
+
+def clear_retriever_cache() -> None:
+    """Release all cached retrievers and their embedding vectors."""
+    _RETRIEVER_CACHE.clear()
+
+
 def select_round_ids_for_qa(
     dataset: MemoryBenchmarkDataset,
     qa: Dict[str, Any],
     config: Dict[str, Any],
+    runtime_info: Optional[Dict[str, Any]] = None,
 ) -> List[str]:
-    top_k = int(config.get("top_k", 2))
-    neighbor_window = int(config.get("neighbor_window", 1))
-    lexical_weight = float(config.get("lexical_weight", 0.35))
-    semantic_weight = float(config.get("semantic_weight", 0.65))
-
-    all_session_ids = dataset.session_order()
-    if not all_session_ids:
-        return []
-
-    query_text = str(qa.get("question", "")).strip()
-    query_tokens = _tokenize(query_text)
-    if not query_tokens:
-        return []
-
-    candidate_rows: List[Tuple[str, List[str]]] = []
-    for session_id in all_session_ids:
-        session = dataset.get_session(session_id)
-        for dialogue in session.get("dialogues", []):
-            round_id = dialogue.get("round", "")
-            round_payload = dataset.rounds.get(round_id, {})
-            tokens = _tokenize(_round_text(round_payload))
-            if not tokens:
-                continue
-            candidate_rows.append((round_id, tokens))
-
-    if not candidate_rows:
-        return []
-
-    scored = _rank_texts(query_tokens, candidate_rows, lexical_weight, semantic_weight)
-    if not scored:
-        return []
-
-    seed_round_ids = [round_id for _, round_id in scored[: max(1, top_k)]]
-    return _expand_with_neighbors(dataset, seed_round_ids, all_session_ids, neighbor_window)
+    retriever = _get_retriever(dataset, config)
+    selected_round_ids, debug = retriever.select(qa)
+    if runtime_info is not None:
+        runtime_info.clear()
+        runtime_info.update(debug)
+    return selected_round_ids
