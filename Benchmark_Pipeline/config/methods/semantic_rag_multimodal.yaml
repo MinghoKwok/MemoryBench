@@ -1,6 +1,7 @@
 name: semantic_rag_multimodal
 retrieval_backend: dense_multimodal
-top_k: 1
+# Following Mem-Gallery (Bei et al., 2025): default retrieval size K=10
+top_k: 10
 neighbor_window: 0
 text_embedding_model: all-MiniLM-L6-v2
 multimodal_embedding_model: siglip2-base-patch16-384

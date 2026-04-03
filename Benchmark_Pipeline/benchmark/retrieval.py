@@ -218,7 +218,7 @@ class _BaseRetriever:
     def __init__(self, dataset: MemoryBenchmarkDataset, config: Dict[str, Any]) -> None:
         self.dataset = dataset
         self.config = config
-        self.top_k = int(config.get("top_k", 2))
+        self.top_k = int(config.get("top_k", 10))
         self.neighbor_window = int(config.get("neighbor_window", 1))
         self.session_ids = dataset.session_order()
         self.corpus_rows, self.corpus_meta = _build_corpus_rows(dataset, config)
