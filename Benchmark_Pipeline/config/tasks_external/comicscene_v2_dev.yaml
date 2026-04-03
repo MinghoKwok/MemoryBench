@@ -1,0 +1,8 @@
+name: comicscene_v2_dev
+dataset:
+  dialog_json: /common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/dialog/ComicScene_Alley_Oop_V2_Dev.json
+  image_root: /common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/image
+eval:
+  mode: open
+  output_json: output/results_comicscene_v2_dev.json
+  max_questions: 0

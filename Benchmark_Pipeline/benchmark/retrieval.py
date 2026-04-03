@@ -1,6 +1,8 @@
+import json
 import math
 import re
 from collections import Counter
+from pathlib import Path
 from typing import Any, Dict, List, Optional, Tuple
 
 from .dataset import MemoryBenchmarkDataset
@@ -80,6 +82,104 @@ def _keyword_overlap(query_tokens: List[str], doc_tokens: List[str]) -> float:
     return len(set(query_tokens) & set(doc_tokens)) / len(set(query_tokens))
 
 
+def _normalize_backend(config: Dict[str, Any]) -> str:
+    backend = str(config.get("retrieval_backend", "")).strip().lower()
+    if backend:
+        return backend
+    method_name = str(config.get("name", "")).strip().lower()
+    if method_name == "semantic_rag":
+        return "dense_text"
+    return "legacy_sparse"
+
+
+def _normalize_corpus(config: Dict[str, Any]) -> str:
+    corpus = str(config.get("retrieval_corpus", "round_text")).strip().lower()
+    return corpus or "round_text"
+
+
+def _dataset_round_order(dataset: MemoryBenchmarkDataset) -> List[str]:
+    ordered: List[str] = []
+    for session_id in dataset.session_order():
+        session = dataset.get_session(session_id)
+        for dialogue in session.get("dialogues", []):
+            round_id = dialogue.get("round", "")
+            if round_id:
+                ordered.append(round_id)
+    return ordered
+
+
+def _resolve_notes_path(dataset: MemoryBenchmarkDataset, config: Dict[str, Any]) -> Path:
+    configured = str(config.get("retrieval_notes_json", "")).strip()
+    if configured:
+        path = Path(configured)
+        if not path.is_absolute():
+            path = (dataset.dialog_json_path.parent / path).resolve()
+        return path
+    return dataset.dialog_json_path.with_name(f"{dataset.dialog_json_path.stem}_notes.json")
+
+
+def _load_note_texts(dataset: MemoryBenchmarkDataset, config: Dict[str, Any]) -> Tuple[Dict[str, str], Path]:
+    notes_path = _resolve_notes_path(dataset, config)
+    if not notes_path.exists():
+        raise FileNotFoundError(
+            f"retrieval_corpus=notes requires a notes file at '{notes_path}'."
+        )
+    with notes_path.open("r", encoding="utf-8") as f:
+        payload = json.load(f)
+
+    raw_entries: List[Dict[str, Any]] = []
+    if isinstance(payload, dict):
+        notes_value = payload.get("notes", payload.get("entries", []))
+        if isinstance(notes_value, dict):
+            raw_entries = [
+                {"round_id": round_id, "text": text}
+                for round_id, text in notes_value.items()
+            ]
+        elif isinstance(notes_value, list):
+            raw_entries = [entry for entry in notes_value if isinstance(entry, dict)]
+    elif isinstance(payload, list):
+        raw_entries = [entry for entry in payload if isinstance(entry, dict)]
+
+    note_text_by_round: Dict[str, str] = {}
+    for entry in raw_entries:
+        round_id = str(entry.get("round_id", "")).strip()
+        text = str(entry.get("text", "")).strip()
+        if not round_id or not text or round_id not in dataset.rounds:
+            continue
+        note_text_by_round[round_id] = text
+    return note_text_by_round, notes_path
+
+
+def _build_corpus_rows(
+    dataset: MemoryBenchmarkDataset,
+    config: Dict[str, Any],
+) -> Tuple[List[Tuple[str, str]], Dict[str, Any]]:
+    corpus = _normalize_corpus(config)
+    if corpus == "notes":
+        note_text_by_round, notes_path = _load_note_texts(dataset, config)
+        rows = [
+            (round_id, note_text_by_round[round_id])
+            for round_id in _dataset_round_order(dataset)
+            if round_id in note_text_by_round
+        ]
+        return rows, {
+            "retrieval_corpus": "notes",
+            "retrieval_notes_json": str(notes_path),
+            "corpus_entry_count": len(rows),
+        }
+
+    rows: List[Tuple[str, str]] = []
+    for round_id in _dataset_round_order(dataset):
+        round_payload = dataset.rounds.get(round_id, {})
+        text = _round_text(round_payload)
+        if text:
+            rows.append((round_id, text))
+    return rows, {
+        "retrieval_corpus": "round_text",
+        "corpus_entry_count": len(rows),
+    }
+
+
 def _expand_with_neighbors(
     dataset: MemoryBenchmarkDataset,
     seed_round_ids: List[str],
@@ -121,6 +221,7 @@ class _BaseRetriever:
         self.top_k = int(config.get("top_k", 2))
         self.neighbor_window = int(config.get("neighbor_window", 1))
         self.session_ids = dataset.session_order()
+        self.corpus_rows, self.corpus_meta = _build_corpus_rows(dataset, config)
 
     def _build_debug_info(
         self,
@@ -130,15 +231,21 @@ class _BaseRetriever:
         top_candidates: List[Dict[str, Any]],
     ) -> Dict[str, Any]:
         clue_rounds = list(qa.get("clue", []) or [])
-        return {
+        debug: Dict[str, Any] = {
             "retrieval_backend": self.config.get("retrieval_backend", "legacy_sparse"),
+            "retrieval_corpus": self.corpus_meta.get("retrieval_corpus", "round_text"),
             "top_k": self.top_k,
             "neighbor_window": self.neighbor_window,
             "seed_round_ids": seed_round_ids,
             "selected_round_ids": selected_round_ids,
             "top_candidates": top_candidates,
             "clue_hit_count": sum(1 for rid in selected_round_ids if rid in clue_rounds),
+            "corpus_entry_count": self.corpus_meta.get("corpus_entry_count", 0),
         }
+        notes_path = self.corpus_meta.get("retrieval_notes_json")
+        if notes_path:
+            debug["retrieval_notes_json"] = notes_path
+        return debug
 
     def select(self, qa: Dict[str, Any]) -> Tuple[List[str], Dict[str, Any]]:
         raise NotImplementedError
@@ -150,14 +257,10 @@ class _SparseRetriever(_BaseRetriever):
         self.lexical_weight = float(config.get("lexical_weight", 0.35))
         self.semantic_weight = float(config.get("semantic_weight", 0.65))
         self.candidate_rows: List[Tuple[str, List[str]]] = []
-        for session_id in self.session_ids:
-            session = dataset.get_session(session_id)
-            for dialogue in session.get("dialogues", []):
-                round_id = dialogue.get("round", "")
-                round_payload = dataset.rounds.get(round_id, {})
-                tokens = _tokenize(_round_text(round_payload))
-                if tokens:
-                    self.candidate_rows.append((round_id, tokens))
+        for round_id, text in self.corpus_rows:
+            tokens = _tokenize(text)
+            if tokens:
+                self.candidate_rows.append((round_id, tokens))
 
     def select(self, qa: Dict[str, Any]) -> Tuple[List[str], Dict[str, Any]]:
         query_text = str(qa.get("question", "")).strip()
@@ -212,18 +315,8 @@ class _DenseTextRetriever(_BaseRetriever):
 
         self.text_embedding_model = str(config.get("text_embedding_model", TextEmbedder.DEFAULT_MODEL))
         self.text_embedder = TextEmbedder(self.text_embedding_model)
-        self.round_texts: List[Tuple[str, str]] = []
-        texts: List[str] = []
-        for session_id in self.session_ids:
-            session = dataset.get_session(session_id)
-            for dialogue in session.get("dialogues", []):
-                round_id = dialogue.get("round", "")
-                round_payload = dataset.rounds.get(round_id, {})
-                round_text = _round_text(round_payload)
-                if not round_text:
-                    continue
-                self.round_texts.append((round_id, round_text))
-                texts.append(round_text)
+        self.round_texts: List[Tuple[str, str]] = list(self.corpus_rows)
+        texts = [text for _, text in self.round_texts]
         self.round_vectors = self.text_embedder.embed_batch(texts) if texts else []
 
     def select(self, qa: Dict[str, Any]) -> Tuple[List[str], Dict[str, Any]]:
@@ -284,22 +377,18 @@ class _DenseMultimodalRetriever(_BaseRetriever):
         text_batch_round_ids: List[str] = []
         text_batch_texts: List[str] = []
         image_jobs: List[Tuple[str, str]] = []
-        for session_id in self.session_ids:
-            session = dataset.get_session(session_id)
-            for dialogue in session.get("dialogues", []):
-                round_id = dialogue.get("round", "")
-                round_payload = dataset.rounds.get(round_id, {})
-                round_text = _round_text(round_payload)
-                images = list(round_payload.get("images", []) or [])
-                if not round_text and not images:
-                    continue
-                self.round_rows.append((round_id, None, None))
-                if round_text:
-                    text_batch_round_ids.append(round_id)
-                    text_batch_texts.append(round_text)
-                if images:
-                    # Only embed the first image per round to keep index size manageable.
-                    image_jobs.append((round_id, images[0]))
+        for round_id, corpus_text in self.corpus_rows:
+            round_payload = dataset.rounds.get(round_id, {})
+            images = list(round_payload.get("images", []) or [])
+            if not corpus_text and not images:
+                continue
+            self.round_rows.append((round_id, None, None))
+            if corpus_text:
+                text_batch_round_ids.append(round_id)
+                text_batch_texts.append(corpus_text)
+            if images:
+                # Only embed the first image per round to keep index size manageable.
+                image_jobs.append((round_id, images[0]))
 
         text_vectors_by_round: Dict[str, List[float]] = {}
         if text_batch_texts:
@@ -362,18 +451,9 @@ class _DenseMultimodalRetriever(_BaseRetriever):
         return selected_round_ids, debug
 
 
-def _normalize_backend(config: Dict[str, Any]) -> str:
-    backend = str(config.get("retrieval_backend", "")).strip().lower()
-    if backend:
-        return backend
-    method_name = str(config.get("name", "")).strip().lower()
-    if method_name == "semantic_rag":
-        return "dense_text"
-    return "legacy_sparse"
-
-
 def _cache_key(dataset: MemoryBenchmarkDataset, config: Dict[str, Any]) -> Tuple[Any, ...]:
     backend = _normalize_backend(config)
+    corpus = _normalize_corpus(config)
     relevant_keys = [
         "name",
         "top_k",
@@ -387,9 +467,20 @@ def _cache_key(dataset: MemoryBenchmarkDataset, config: Dict[str, Any]) -> Tuple
         "text_dense_weight",
         "image_dense_weight",
         "retrieval_backend",
+        "retrieval_corpus",
+        "retrieval_notes_json",
     ]
-    dataset_key = (str(dataset.dialog_json_path), str(dataset.image_root))
-    return (dataset_key, backend) + tuple((key, config.get(key)) for key in relevant_keys)
+    dialog_mtime = dataset.dialog_json_path.stat().st_mtime_ns if dataset.dialog_json_path.exists() else None
+    notes_path = _resolve_notes_path(dataset, config) if corpus == "notes" or config.get("retrieval_notes_json") else None
+    notes_mtime = notes_path.stat().st_mtime_ns if notes_path is not None and notes_path.exists() else None
+    dataset_key = (
+        str(dataset.dialog_json_path),
+        str(dataset.image_root),
+        dialog_mtime,
+        str(notes_path) if notes_path is not None else "",
+        notes_mtime,
+    )
+    return (dataset_key, backend, corpus) + tuple((key, config.get(key)) for key in relevant_keys)
 
 
 def _get_retriever(dataset: MemoryBenchmarkDataset, config: Dict[str, Any]) -> _BaseRetriever:

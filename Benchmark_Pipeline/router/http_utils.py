@@ -68,7 +68,7 @@ def post_json(
     headers: Dict[str, str],
     payload: Dict[str, Any],
     timeout: int = 60,
-    max_retries: int = 10,
+    max_retries: int = 20,
 ) -> Dict[str, Any]:
     body = json.dumps(payload).encode("utf-8")
     last_err: Optional[Exception] = None
