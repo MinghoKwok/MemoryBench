@@ -224,6 +224,24 @@ def build_payload(
     return payload
 
 
+def format_question(qa: Dict[str, Any]) -> str:
+    """Build the final question string.
+
+    If the QA has an ``options`` dict (e.g. {"A": "...", "B": "..."}),
+    append the options and an instruction to pick one letter.
+    """
+    question = qa.get("question", "")
+    options = qa.get("options")
+    if options and isinstance(options, dict):
+        lines = [question, ""]
+        for key in sorted(options.keys()):
+            lines.append(f"{key}. {options[key]}")
+        lines.append("")
+        lines.append("Answer with only the option letter (e.g. A, B, C, or D).")
+        return "\n".join(lines)
+    return question
+
+
 def run_benchmark(
     cfg: Dict[str, Any],
     config_dir: Path,
@@ -267,7 +285,7 @@ def run_benchmark(
     qas = dataset.iter_qas(limit=max_questions)
     results: List[Dict[str, Any]] = []
     for i, qa in enumerate(qas, start=1):
-        question = qa.get("question", "")
+        question = format_question(qa)
         gt = qa.get("answer", "")
 
         if is_agentic:
