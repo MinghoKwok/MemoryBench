@@ -1,4 +1,4 @@
-from typing import Any, Dict, List
+from typing import Any, Dict, List, Optional
 
 from .base import BaseRouter
 from .http_utils import encode_image_data_url, post_json, require_api_key
@@ -20,13 +20,21 @@ class OpenAIAPIRouter(BaseRouter):
         self.base_url = base_url.rstrip("/")
         self.max_new_tokens = max_new_tokens
         self.timeout = timeout
-        self.system_prompt = system_prompt
+        self.system_prompt = system_prompt.strip() or (
+            "You answer questions about a prior multimodal conversation. "
+            "Use only the provided messages and images. Be concise and factual."
+        )
 
-    def _to_messages(self, history_messages: List[Dict[str, Any]], question: str) -> List[Dict[str, Any]]:
+    def _to_messages(
+        self,
+        history_messages: List[Dict[str, Any]],
+        question: str,
+        system_prompt: Optional[str] = None,
+    ) -> List[Dict[str, Any]]:
         messages: List[Dict[str, Any]] = [
             {
                 "role": "system",
-                "content": self.system_prompt,
+                "content": system_prompt or self.system_prompt,
             }
         ]
 
@@ -39,7 +47,7 @@ class OpenAIAPIRouter(BaseRouter):
                 content.append(
                     {
                         "type": "image_url",
-                        "image_url": {"url": encode_image_data_url(image_path), "detail": "low"},
+                        "image_url": {"url": encode_image_data_url(image_path)},
                     }
                 )
             if content:
@@ -62,10 +70,15 @@ class OpenAIAPIRouter(BaseRouter):
         )
         return messages
 
-    def answer(self, history_messages: List[Dict[str, Any]], question: str) -> str:
+    def answer(
+        self,
+        history_messages: List[Dict[str, Any]],
+        question: str,
+        system_prompt: Optional[str] = None,
+    ) -> str:
         payload = {
             "model": self.model,
-            "messages": self._to_messages(history_messages, question),
+            "messages": self._to_messages(history_messages, question, system_prompt),
             "max_tokens": self.max_new_tokens,
             "temperature": 0,
         }

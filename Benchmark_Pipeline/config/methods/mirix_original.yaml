@@ -1,0 +1,40 @@
+name: mirix_original
+
+# MIRIX with faithful retrieval architecture and prompt construction.
+# Matches official public_evaluation branch in:
+#   - system prompt injection (not chat turns)
+#   - per-type embedding search with official field mapping
+#   - official XML prompt format with keywords
+#   - text-embedding-3-small (OpenAI API)
+# Extraction uses incremental MIRIX-style agentic ingestion over the dialog chronology.
+
+memory_cache_dir: "mirix_cache"
+extraction_mode: "incremental_llm"
+
+incremental_extraction:
+  model: "gpt-4.1-mini"
+  meta_model: "gpt-4.1-mini"
+  agent_model: "gpt-4.1-mini"
+  api_key_env: "OPENAI_API_KEY"
+  base_url: "https://api.openai.com/v1"
+  timeout: 120
+  temperature: 0.0
+  max_tokens: 1800
+  meta_max_tokens: 800
+  agent_max_tokens: 1400
+  history_size: 2
+  direct_image_ingestion: true
+  use_dataset_image_captions: false
+
+per_type_limit: 10
+image_limit: 0
+
+use_dense_embeddings: true
+text_embedding_model: "text-embedding-3-small"
+
+procedural_search_field: "summary"
+resource_search_field: "summary"
+knowledge_vault_search_field: "caption"
+
+use_image_retrieval: false
+faithful_prompt_format: true

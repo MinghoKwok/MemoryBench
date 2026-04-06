@@ -60,6 +60,9 @@ class HistoryMethod(ABC):
     def build_history(self, dataset: MemoryBenchmarkDataset, qa: Dict[str, Any]) -> List[Dict[str, Any]]:
         raise NotImplementedError
 
+    def get_system_prompt(self, base_prompt: str, dataset: MemoryBenchmarkDataset, qa: Dict[str, Any]) -> str:
+        return base_prompt
+
 
 class FullContextMethod(HistoryMethod):
     name = "full_context"
@@ -164,5 +167,7 @@ def get_method(method_name: str, config: Optional[Dict[str, Any]] = None) -> His
     }
     cls = registry.get(method_name)
     if cls is None:
-        raise ValueError(f"Unsupported method: {method_name!r}")
+        from .mirix import get_mirix_method
+
+        return get_mirix_method(method_name, config=config)
     return cls(config=config)

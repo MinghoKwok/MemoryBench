@@ -1,0 +1,10 @@
+name: multi_scene_visual_case_archive_assistant
+
+dataset:
+  dialog_json: data/dialog/Multi-Scene_Visual_Case_Archive_Assistant.json
+  image_root: data/image
+
+eval:
+  mode: open
+  output_json: output/results_multi_scene_visual_case_archive_assistant.json
+  max_questions: 0

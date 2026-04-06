@@ -1,4 +1,5 @@
 import datetime as dt
+import time
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Any, Dict, List, Optional
@@ -252,6 +253,7 @@ def run_benchmark(
     paths = resolve_runtime_paths(cfg, config_dir)
     mode = str(cfg.get("eval", {}).get("mode", "open"))
     max_questions = int(cfg.get("eval", {}).get("max_questions", 0))
+    provider = str(cfg.get("model", {}).get("provider", ""))
 
     dataset = MemoryBenchmarkDataset(paths["dialog_json"], paths["image_root"])
     method = get_method(
@@ -284,14 +286,25 @@ def run_benchmark(
 
     qas = dataset.iter_qas(limit=max_questions)
     results: List[Dict[str, Any]] = []
+    cooldown_seconds = cfg.get("run", {}).get("request_cooldown_seconds")
+    if cooldown_seconds is None:
+        cooldown_seconds = cfg.get("model", {}).get("request_cooldown_seconds")
+    if cooldown_seconds is None and provider in {"openai_api", "gemini_api"}:
+        cooldown_seconds = 2.0
+    cooldown_seconds = max(0.0, float(cooldown_seconds or 0.0))
+    if cooldown_seconds:
+        print(f"[INFO] Request cooldown enabled: {cooldown_seconds:.2f}s between questions")
     for i, qa in enumerate(qas, start=1):
         question = format_question(qa)
         gt = qa.get("answer", "")
 
         if is_agentic:
             history: List[Dict[str, Any]] = []
+            sys_override = None
         else:
             history = method.build_history(dataset, qa)
+            qa_system_prompt = method.get_system_prompt(sys_prompt, dataset, qa)
+            sys_override = qa_system_prompt if qa_system_prompt != sys_prompt else None
         current_method_runtime = dict(getattr(method, "runtime_info", {}) or {})
         print(
             f"[INFO] QA {i}/{len(qas)} point={qa.get('point')} "
@@ -303,7 +316,7 @@ def run_benchmark(
             if is_agentic:
                 pred = method.answer(dataset, qa, question)
             else:
-                pred = router.answer(history, question)
+                pred = router.answer(history, question, system_prompt=sys_override)
             latency_ms = int((dt.datetime.now() - t0).total_seconds() * 1000)
 
             exact, contains = score_open(pred, gt)
@@ -370,7 +383,7 @@ def run_benchmark(
             if is_agentic:
                 pred_mcq = method.answer(dataset, qa, mcq_question)
             else:
-                pred_mcq = router.answer(history, mcq_question)
+                pred_mcq = router.answer(history, mcq_question, system_prompt=sys_override)
             choice = extract_choice(pred_mcq)
             mcq_result = {
                 "idx": i,
@@ -390,6 +403,10 @@ def run_benchmark(
                 mcq_result["method_runtime"] = current_method_runtime
             results.append(mcq_result)
             print(f"[MCQ][{i}] choice={choice} valid={choice in {'A', 'B', 'C'}}")
+
+        if cooldown_seconds and i < len(qas):
+            print(f"[INFO] Cooling down for {cooldown_seconds:.2f}s before next question")
+            time.sleep(cooldown_seconds)
 
     run_dir = default_run_dir(cfg, paths["output_root"])
     run_dir.mkdir(parents=True, exist_ok=True)

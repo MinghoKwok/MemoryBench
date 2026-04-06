@@ -6,6 +6,7 @@ from pathlib import Path
 from typing import Any, Dict, List, Optional, Tuple
 
 from .dataset import MemoryBenchmarkDataset
+from .embeddings import cosine_similarity, cosine_similarity_batch
 
 
 TOKEN_RE = re.compile(r"[a-z0-9]+")
@@ -74,6 +75,68 @@ def _dense_cosine(left: List[float], right: List[float]) -> float:
     if left_norm == 0.0 or right_norm == 0.0:
         return 0.0
     return dot / (left_norm * right_norm)
+
+
+def _dense_embedding_rank(
+    query_text: str,
+    candidates: List[Tuple[str, str]],
+    text_embedder: Any,
+) -> List[Tuple[float, str]]:
+    """Rank text candidates by dense embedding similarity."""
+    if not query_text.strip() or not candidates:
+        return []
+    if text_embedder is None or not getattr(text_embedder, "is_available", False):
+        return []
+
+    query_embedding = text_embedder.embed(query_text)
+    if query_embedding is None:
+        return []
+
+    candidate_texts = [text for _, text in candidates]
+    candidate_embeddings = text_embedder.embed_batch(candidate_texts)
+    if candidate_embeddings is None or len(candidate_embeddings) != len(candidates):
+        return []
+
+    similarities = cosine_similarity_batch(query_embedding, candidate_embeddings)
+    scored = [
+        (float(similarities[idx]), candidate_id)
+        for idx, (candidate_id, _) in enumerate(candidates)
+        if float(similarities[idx]) > 0.0
+    ]
+    scored.sort(key=lambda item: (-item[0], item[1]))
+    return scored
+
+
+def _image_embedding_rank(
+    query_text: str,
+    candidates: List[Tuple[str, List[str]]],
+    image_embedder: Any,
+) -> List[Tuple[float, str]]:
+    """Rank image candidates by CLIP/SigLIP cross-modal similarity."""
+    if not query_text.strip() or not candidates:
+        return []
+    if image_embedder is None or not getattr(image_embedder, "is_available", False):
+        return []
+
+    query_embedding = image_embedder.embed_text_for_image_search(query_text)
+    if query_embedding is None:
+        return []
+
+    scored: List[Tuple[float, str]] = []
+    for candidate_id, image_paths in candidates:
+        if not image_paths:
+            continue
+        best_score = 0.0
+        for image_path in image_paths:
+            image_embedding = image_embedder.embed_image(image_path)
+            if image_embedding is None:
+                continue
+            best_score = max(best_score, float(cosine_similarity(query_embedding, image_embedding)))
+        if best_score > 0.0:
+            scored.append((best_score, candidate_id))
+
+    scored.sort(key=lambda item: (-item[0], item[1]))
+    return scored
 
 
 def _keyword_overlap(query_tokens: List[str], doc_tokens: List[str]) -> float:

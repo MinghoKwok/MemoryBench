@@ -10,6 +10,7 @@ PittAds_Pipeline/runs/
 ComicScene_Pipeline/
 Benchmark_Pipeline/data/dialog/*.json
 Benchmark_Pipeline/data/image/
+Benchmark_Pipeline/data/mirix_cache
 overleaf_paper/*.aux
 overleaf_paper/*.fdb_latexmk
 overleaf_paper/*.fls
