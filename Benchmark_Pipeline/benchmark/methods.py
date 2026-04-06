@@ -153,6 +153,41 @@ class M2AAgentMethod(HistoryMethod):
         return []
 
 
+class MMAAgentMethod(HistoryMethod):
+    """Confidence-aware multimodal memory agent (adapted from MMA)."""
+
+    name = "mma"
+
+    def __init__(self, config: Optional[Dict[str, Any]] = None) -> None:
+        super().__init__(config)
+        self._system: Optional[Any] = None
+        self._dataset_key: Optional[int] = None
+
+    def _ensure_initialized(self, dataset: MemoryBenchmarkDataset) -> None:
+        dataset_id = id(dataset)
+        if self._system is not None and self._dataset_key == dataset_id:
+            return
+
+        from .mma import MMASystem
+
+        self._system = MMASystem(self.config)
+        sessions = dataset.session_order()
+        print(f"[MMA] Building memory from {len(sessions)} session(s)...")
+        self._system.process_all_sessions(dataset)
+        self._dataset_key = dataset_id
+
+    def answer(self, dataset: MemoryBenchmarkDataset, qa: Dict[str, Any], question: str) -> str:
+        self._ensure_initialized(dataset)
+        assert self._system is not None
+        # Pass QA-level images only if the question itself carries them
+        # (e.g. "question_images" field). Never use "clue" — that's gold evidence.
+        qa_images = qa.get("question_images") or None
+        return self._system.answer_question(question, image_paths=qa_images)
+
+    def build_history(self, dataset: MemoryBenchmarkDataset, qa: Dict[str, Any]) -> List[Dict[str, Any]]:
+        return []
+
+
 def get_method(method_name: str, config: Optional[Dict[str, Any]] = None) -> HistoryMethod:
     registry = {
         FullContextMethod.name: FullContextMethod,
@@ -161,6 +196,7 @@ def get_method(method_name: str, config: Optional[Dict[str, Any]] = None) -> His
         SemanticRAGMethod.name: SemanticRAGMethod,
         SemanticRAGMultimodalMethod.name: SemanticRAGMultimodalMethod,
         M2AAgentMethod.name: M2AAgentMethod,
+        MMAAgentMethod.name: MMAAgentMethod,
     }
     cls = registry.get(method_name)
     if cls is None:
