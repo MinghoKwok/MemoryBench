@@ -349,3 +349,27 @@ Before merging a new task, verify:
 - grep the dialogue for keywords in the answer
 - verify assistant responses are minimal (e.g., "Stored for later memory questions")
 - confirm image_caption does not contain answer-relevant details
+
+**Method implementation — `clue` field usage (critical):**
+
+The `clue` field in each QA item is **annotation-level gold evidence** — it records which dialogue rounds contain the visual evidence needed to answer the question. It exists for evaluation analysis (e.g., retrieval recall), NOT for use at inference time.
+
+- **NEVER** pass `clue` round IDs or their images to a method's `answer()` function. Doing so leaks oracle visual evidence and inflates scores.
+- Agentic methods (M2A, MMA, etc.) must retrieve their own evidence from the memory store. The only images an agentic method may receive at inference time are those attached to the **question itself** (via a `question_images` field), not clue-derived images.
+- If a method needs query-side images, use `qa.get("question_images")`, never `qa.get("clue")`.
+- This was a real bug in an earlier MMA implementation that inflated EM by ~27% before being caught and fixed.
+
+Example of **wrong** implementation:
+```python
+# BAD — leaks gold evidence
+clue_rounds = qa.get("clue", [])
+images = [dataset.rounds[r]["images"] for r in clue_rounds]
+system.answer_question(question, image_paths=images)
+```
+
+Example of **correct** implementation:
+```python
+# GOOD — no oracle information
+qa_images = qa.get("question_images") or None
+system.answer_question(question, image_paths=qa_images)
+```
