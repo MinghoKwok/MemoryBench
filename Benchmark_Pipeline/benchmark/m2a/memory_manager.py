@@ -6,6 +6,7 @@ Faithful to official M2A agent/agents/memory_manager.py.
 from __future__ import annotations
 
 import json
+import os
 import re
 import time
 from typing import Any, Dict, List, Optional
@@ -317,9 +318,9 @@ class MemoryManager:
     # ---- tool execution ----
 
     def _exec_search(self, args: Dict[str, Any]) -> str:
-        query_text = args.get("query_text") or ""
-        query_image_token = args.get("query_image") or ""
-        top_k = int(args.get("top_k", 5))
+        query_text = args.get("query_text") or args.get("query") or args.get("text") or args.get("search_query") or ""
+        query_image_token = args.get("query_image") or args.get("image") or args.get("image_token") or ""
+        top_k = int(args.get("top_k", args.get("k", 5)))
 
         query_image_path: Optional[str] = None
         if query_image_token:
@@ -347,8 +348,12 @@ class MemoryManager:
 
     def _exec_fetch_raw(self, args: Dict[str, Any]) -> str:
         try:
-            id_ranges = json.loads(args["id_ranges"])
-        except (KeyError, json.JSONDecodeError, TypeError):
+            raw = args.get("id_ranges") or args.get("ids") or args.get("message_ids") or args.get("range") or "[]"
+            id_ranges = json.loads(raw) if isinstance(raw, str) else raw
+            # Accept flat pair [1, 5] as [[1, 5]]
+            if id_ranges and isinstance(id_ranges, list) and not isinstance(id_ranges[0], list):
+                id_ranges = [id_ranges]
+        except (json.JSONDecodeError, TypeError):
             return "Error: invalid id_ranges. Expected JSON like [[1, 5]]."
 
         messages = self._raw.fetch_by_ids(id_ranges)[: self.MAX_RAW_MESSAGES]
@@ -385,11 +390,33 @@ class MemoryManager:
             )
         return "\n".join(lines)
 
+    @staticmethod
+    def _fuzzy_get(args: Dict[str, Any], canonical: str, aliases: tuple, default: str = "") -> str:
+        """Get a value by canonical key, falling back to aliases for weaker models."""
+        val = args.get(canonical)
+        if val is not None:
+            return str(val)
+        for alias in aliases:
+            val = args.get(alias)
+            if val is not None:
+                return str(val)
+        # Last resort: if there's only one string-valued arg, use it
+        if canonical == "text" and not default:
+            str_vals = [str(v) for k, v in args.items() if isinstance(v, str) and len(str(v)) > 5]
+            if len(str_vals) == 1:
+                return str_vals[0]
+        return default
+
     def _exec_add_memory(self, args: Dict[str, Any]) -> str:
-        text = args.get("text", "")
-        image_token = args.get("image", "")
-        image_caption = args.get("image_caption", "")
-        evidence_ids_raw = args.get("evidence_ids", "[]")
+        text = self._fuzzy_get(args, "text", (
+            "content", "memory_text", "memory_content", "message", "user_message",
+            "description", "summary", "note", "observation", "memory",
+        ))
+        image_token = self._fuzzy_get(args, "image", ("image_token", "img", "image_id"))
+        image_caption = self._fuzzy_get(args, "image_caption", ("caption", "image_description"))
+        evidence_ids_raw = self._fuzzy_get(args, "evidence_ids", (
+            "evidence", "source_ids", "msg_ids", "message_ids", "ids",
+        ), default="[]")
 
         try:
             evidence_ids = json.loads(evidence_ids_raw)
@@ -410,7 +437,7 @@ class MemoryManager:
         return f"Memory added with id={mem_id}."
 
     def _exec_delete_memory(self, args: Dict[str, Any]) -> str:
-        mem_id = int(args.get("memory_id", -1))
+        mem_id = int(args.get("memory_id") or args.get("id") or args.get("mem_id") or -1)
         self._semantic.delete(mem_id)
         return f"Memory id={mem_id} deleted."
 
@@ -422,7 +449,26 @@ class MemoryManager:
             "add_memory": self._exec_add_memory,
             "delete_memory": self._exec_delete_memory,
         }
-        fn = dispatch.get(tool_name)
+        # Normalize tool name for weaker models that hallucinate names
+        _name_aliases = {
+            "create": "add_memory", "CREATE": "add_memory",
+            "create_memory": "add_memory", "CREATE_MEMORY": "add_memory",
+            "save_memory": "add_memory", "store_memory": "add_memory",
+            "update_memory": "add_memory",  # treat update as add (upsert)
+            "delete": "delete_memory", "DELETE": "delete_memory",
+            "remove_memory": "delete_memory",
+            "search": "search_semantic_memories", "SEARCH": "search_semantic_memories",
+            "query_memory": "search_semantic_memories",
+            "fetch_raw": "fetch_raw_messages",
+            "fetch_by_time": "fetch_raw_messages_by_time",
+            "NONE": None, "None": None, "noop": None, "no_op": None,
+        }
+        resolved = tool_name
+        if tool_name not in dispatch:
+            resolved = _name_aliases.get(tool_name, tool_name)
+        if resolved is None:
+            return "No action taken."
+        fn = dispatch.get(resolved)
         if fn is None:
             return f"Unknown tool: {tool_name}"
         try:
@@ -477,6 +523,8 @@ class MemoryManager:
             for tc in msg.tool_calls:
                 args = json.loads(tc.function.arguments or "{}")
                 result = self._execute_tool(tc.function.name, args)
+                if os.environ.get("M2A_DEBUG"):
+                    print(f"[M2A-DBG] tool={tc.function.name} args={tc.function.arguments[:200]} result={result[:120]}")
                 messages.append(
                     {
                         "role": "tool",

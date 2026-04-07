@@ -65,34 +65,35 @@ SESSION_PLAN: List[str] = [
 ]
 
 FOLLOW_UP_DIALOGUES: Dict[str, List[Tuple[str, str]]] = {
+    # Step 1: Sanitized follow-ups — visual facts removed, thematic context kept.
     "D1": [
         (
             "The rescue page is easy to confuse with the later crown pages. What is the opening image again?",
-            "It opens with a woman pointing toward a drowning crowned figure, so the page starts as a water-rescue scene rather than a palace argument.",
+            "It opens with someone pointing toward a drowning crowned figure, so the page starts as a water-rescue scene rather than a palace argument.",
         ),
         (
             "What makes that page stand apart from the later palace-crown material?",
-            "The soaked ruler later points accusingly back at Alley, and the whole page stays centered on the water emergency instead of throne or chore business.",
+            "The soaked ruler later confronts Alley, and the whole page stays centered on the water emergency instead of throne or chore business.",
         ),
     ],
     "D2": [
         (
             "That Dinny page opens mid-ride instead of with the crash itself, right?",
-            "Yes. Alley is already riding Dinny in the first panel, and only later does Dinny slam into a tree.",
+            "Yes. Alley is already riding Dinny in the first panel, and only later does Dinny have a collision.",
         ),
         (
-            "So the joke there is a tree collision, not a water splash or bargain scene?",
-            "Exactly. The page is about Dinny crashing into a tree and being sore afterward, not about splashing through water or shopping for another dinosaur.",
+            "So the joke there is a collision, not a water splash or bargain scene?",
+            "Exactly. The page is about Dinny's collision and being sore afterward, not about splashing through water or shopping for another dinosaur.",
         ),
     ],
     "D3": [
         (
             "The dinosaur lot had several sales labels. Which comparison matters on that page?",
-            "The cheap, bargain, and today's special labels all appear there, but the bargain animal is not larger than the cheap one.",
+            "Several labels appear on the lot, and the sizes are not what you might expect from the names.",
         ),
         (
             "What is the punch line of that dealership page after all those sale animals are lined up?",
-            "Instead of ending up on one of the larger sale beasts, Alley test-drives the little baby dinosaur.",
+            "Instead of ending up on one of the larger sale beasts, Alley test-drives the smallest animal on the lot.",
         ),
     ],
     "D4": [
@@ -102,7 +103,7 @@ FOLLOW_UP_DIALOGUES: Dict[str, List[Tuple[str, str]]] = {
         ),
         (
             "And what image closes that page after the kick?",
-            "The final close-up is the little dinosaur drooling, which is different from the earlier sales-lot labels.",
+            "The final close-up shows the small dinosaur's face, which is different from the earlier sales-lot labels.",
         ),
     ],
     "D25": [
@@ -144,7 +145,7 @@ FOLLOW_UP_DIALOGUES: Dict[str, List[Tuple[str, str]]] = {
         ),
         (
             "And what visual detail matters once the former ruler starts running?",
-            "Later on the same page he runs with a basin on his head before rushing outside, so the page shifts from lounging to frantic movement.",
+            "Later on the same page he runs carrying a basin before rushing outside, so the page shifts from lounging to frantic movement.",
         ),
     ],
     "D30": [
@@ -255,10 +256,10 @@ SYNTHETIC_SESSIONS: Dict[str, Dict[str, Any]] = {
         ],
     },
     "C5": {
-        "date": "1933-01-30",
+        "date": "1933-03-15",
         "dialogues": [
             (
-                "The palace pages keep flipping between power and embarrassment.",
+                "Looking back at the palace pages from several weeks ago, the palace pages keep flipping between power and embarrassment.",
                 "Yes. One distractor scene has a figure working first and resting later, which is the reverse of the chores page where relaxation comes before the frantic running.",
             ),
             (
@@ -268,7 +269,7 @@ SYNTHETIC_SESSIONS: Dict[str, Dict[str, Any]] = {
         ],
     },
     "C6": {
-        "date": "1933-01-31",
+        "date": "1933-03-16",
         "dialogues": [
             (
                 "I also mix up the carrying gags.",
@@ -281,7 +282,7 @@ SYNTHETIC_SESSIONS: Dict[str, Dict[str, Any]] = {
         ],
     },
     "C7": {
-        "date": "1933-02-03",
+        "date": "1933-03-17",
         "dialogues": [
             (
                 "The later complaint pages also blend together.",
@@ -294,7 +295,7 @@ SYNTHETIC_SESSIONS: Dict[str, Dict[str, Any]] = {
         ],
     },
     "C8": {
-        "date": "1933-02-05",
+        "date": "1933-03-18",
         "dialogues": [
             (
                 "By the end of the palace arc I can barely separate the apology material from the aftermath pages.",
@@ -306,7 +307,47 @@ SYNTHETIC_SESSIONS: Dict[str, Dict[str, Any]] = {
             ),
         ],
     },
+    # --- Conflict-introducing sessions (Step 3) ---
+    "C9": {
+        "date": "1933-03-20",
+        "dialogues": [
+            (
+                "I think the crowd-and-cave page started with the temporary ruler lounging on the throne before the crowd showed up.",
+                "That could be how you remember it. Memory for the order of events on busy pages can shift over time.",
+            ),
+        ],
+    },
+    "C10": {
+        "date": "1933-03-21",
+        "dialogues": [
+            (
+                "I am pretty sure Alley chose the today's special dinosaur at the dealership.",
+                "That is one of the labels that appeared on the lot. It is easy to mix up which animal Alley actually rode.",
+            ),
+        ],
+    },
+    "C11": {
+        "date": "1933-03-22",
+        "dialogues": [
+            (
+                "On the crown-return page, Oop was already shown as a regular citizen before the crown was handed back, was he not?",
+                "The crown-return page has several beats that are easy to reorder in memory.",
+            ),
+        ],
+    },
+    "C12": {
+        "date": "1933-03-23",
+        "dialogues": [
+            (
+                "On the water-rescue page, I think the crowned man was the one pointing at the drowning person.",
+                "The opening panel has multiple figures and it is easy to confuse who is doing what.",
+            ),
+        ],
+    },
 }
+
+# Append conflict sessions to the session plan
+SESSION_PLAN.extend(["C9", "C10", "C11", "C12"])
 
 NOTE_TEXTS: Dict[str, str] = {
     session_id: " ".join(answer for _, answer in dialogues)
@@ -314,215 +355,186 @@ NOTE_TEXTS: Dict[str, str] = {
 }
 
 QA_ITEMS: List[Dict[str, Any]] = [
-    {
-        "point": [["X3"], ["Y1"]],
-        "question": "In the opening panel of the water-rescue page, who is pointing toward the drowning figure: woman, crowned man, or shirtless man? Reply with only one of: woman, crowned man, shirtless man.",
-        "answer": "woman",
-        "session_id": ["D1"],
-        "clue": ["D1:1"],
-    },
-    {
-        "point": [["X2"], ["Y2"]],
-        "question": "On the water-rescue page, is the crowned figure still in the water in the final panel? Reply with only yes or no in lowercase, with no punctuation.",
-        "answer": "yes",
-        "session_id": ["D1"],
-        "clue": ["D1:1"],
-    },
-    {
-        "point": [["X3"], ["Y2"]],
-        "question": "On the water-rescue page, after Alley pulls the crowned figure from the water, does the still-wet ruler later point accusingly at Alley? Reply with only yes or no in lowercase, with no punctuation.",
-        "answer": "yes",
-        "session_id": ["D1"],
-        "clue": ["D1:1"],
-    },
-    {
-        "point": [["X2"], ["Y2"]],
-        "question": "On the tree-crash page, is Alley already riding Dinny in the first panel? Reply with only yes or no in lowercase, with no punctuation.",
-        "answer": "yes",
-        "session_id": ["D2"],
-        "clue": ["D2:1"],
-    },
-    {
-        "point": [["X4"], ["Y1"]],
-        "question": "On the tree-crash page, is Dinny shown splashing through water after the crash? Reply with only yes or no in lowercase, with no punctuation.",
-        "answer": "no",
-        "session_id": ["D2"],
-        "clue": ["D2:1"],
-    },
-    {
-        "point": [["X3"], ["Y2"]],
-        "question": "What does Dinny crash into on that page: a tree, a cave wall, or a wagon? Reply with only one of: a tree, a cave wall, a wagon.",
-        "answer": "a tree",
-        "session_id": ["D2"],
-        "clue": ["D2:1"],
-    },
-    {
-        "point": [["X4"], ["Y2"]],
-        "question": "On the dealership page, is the dinosaur labeled bargain larger than the one labeled cheap? Reply with only yes or no in lowercase, with no punctuation.",
-        "answer": "no",
-        "session_id": ["D3"],
-        "clue": ["D3:1"],
-    },
-    {
+    # =================================================================
+    # Kept single-session QAs (agent got at least one right)
+    # =================================================================
+    # Q1(Dinny crash) removed — FC+SRM only
+    {   # old Q3 — M2A correct
         "point": [["X3"], ["Y1"]],
         "question": "Which dinosaur does Alley test-drive on the dealership page: cheap, today's special, or the little baby? Reply with only one of: cheap, today's special, little baby.",
         "answer": "little baby",
         "session_id": ["D3"],
         "clue": ["D3:1"],
     },
-    {
-        "point": [["X2"], ["Y3"]],
-        "question": "On the dealership page, does Alley end up test-driving one of the larger sale animals instead of the little baby? Reply with only yes or no in lowercase, with no punctuation.",
-        "answer": "no",
-        "session_id": ["D3"],
-        "clue": ["D3:1"],
-    },
-    {
+    {   # old Q5 — MMA correct
         "point": [["X3"], ["Y2"]],
         "question": "On the test-drive page, does the small dinosaur kick Alley off before the final drooling close-up? Reply with only yes or no in lowercase, with no punctuation.",
         "answer": "yes",
         "session_id": ["D4"],
         "clue": ["D4:1"],
     },
-    {
-        "point": [["X2"], ["Y2"]],
-        "question": "On the test-drive page, is the final close-up a drooling view of the little dinosaur? Reply with only yes or no in lowercase, with no punctuation.",
-        "answer": "yes",
-        "session_id": ["D4"],
-        "clue": ["D4:1"],
-    },
-    {
-        "point": [["X3"], ["Y1"]],
-        "question": "Who suggests that Oop ought to take the ruler's place on the throne-offer page: crowned man, Oop, or guard? Reply with only one of: crowned man, Oop, guard.",
-        "answer": "crowned man",
-        "session_id": ["D27"],
-        "clue": ["D27:1"],
-    },
-    {
+    {   # old Q8 — MMA correct
         "point": [["X2"], ["Y2"]],
         "question": "On the throne-offer page, is the crowned ruler the one who gets hit by the end of the page? Reply with only yes or no in lowercase, with no punctuation.",
         "answer": "yes",
         "session_id": ["D27"],
         "clue": ["D27:1"],
     },
-    {
+    {   # old Q9 — MMA correct
         "point": [["X2"], ["Y3"]],
         "question": "On the throne-offer page, does Oop calmly accept the throne without striking anyone? Reply with only yes or no in lowercase, with no punctuation.",
         "answer": "no",
         "session_id": ["D27"],
         "clue": ["D27:1"],
     },
-    {
+    {   # old Q10 — ALL correct
         "point": [["X2"], ["Y2"]],
         "question": "On the crowd-and-cave page, after the temporary ruler is pelted outside, is he later shown working inside a cave on that same page? Reply with only yes or no in lowercase, with no punctuation.",
         "answer": "yes",
         "session_id": ["D28"],
         "clue": ["D28:1"],
     },
-    {
+    {   # old Q11 — M2A correct
         "point": [["X3"], ["Y2"]],
         "question": "Later on that same crowd-and-cave page, where is the temporary ruler shown working: in a cave, by the water, or inside a wagon? Reply with only one of: in a cave, by the water, inside a wagon.",
         "answer": "in a cave",
         "session_id": ["D28"],
         "clue": ["D28:1"],
     },
-    {
-        "point": [["X2"], ["Y1"]],
-        "question": "Is the crowd-and-cave page just a lounging page with no later work scene? Reply with only yes or no in lowercase, with no punctuation.",
-        "answer": "no",
-        "session_id": ["D28"],
-        "clue": ["D28:1"],
-    },
-    {
-        "point": [["X4"], ["Y1"]],
-        "question": "On the chores page, are the round treats beside the reclining ruler actually bon-bons? Reply with only yes or no in lowercase, with no punctuation.",
-        "answer": "no",
-        "session_id": ["D29"],
-        "clue": ["D29:1"],
-    },
-    {
-        "point": [["X3"], ["Y2"]],
-        "question": "When the former temporary ruler runs on the chores page, where is the basin: on his head, in his hand, or on the ground? Reply with only one of: on his head, in his hand, on the ground.",
-        "answer": "on his head",
-        "session_id": ["D29"],
-        "clue": ["D29:1"],
-    },
-    {
+    {   # old Q14 — ALL correct
         "point": [["X2"], ["Y3"]],
         "question": "On the chores page, is the same figure shown relaxing indoors first and then later running outside? Reply with only yes or no in lowercase, with no punctuation.",
         "answer": "yes",
         "session_id": ["D29"],
         "clue": ["D29:1"],
     },
-    {
+    {   # old Q15 — MMA correct
         "point": [["X3"], ["Y1"]],
         "question": "On the clams-dispute page, are the two accused subjects shown with their hands raised while facing the seated ruler? Reply with only yes or no in lowercase, with no punctuation.",
         "answer": "yes",
         "session_id": ["D30"],
         "clue": ["D30:1"],
     },
-    {
+    {   # old Q16 — ALL correct
         "point": [["X2"], ["Y2"]],
         "question": "On the clams-dispute page, does the ruler stay seated while hearing about the stolen clams before he talks with the grand wiz? Reply with only yes or no in lowercase, with no punctuation.",
         "answer": "yes",
         "session_id": ["D30"],
         "clue": ["D30:1"],
     },
-    {
-        "point": [["X2"], ["Y1"]],
-        "question": "Is the clams-dispute page mainly about cave labor rather than a complaint over stolen clams? Reply with only yes or no in lowercase, with no punctuation.",
-        "answer": "no",
-        "session_id": ["D30"],
-        "clue": ["D30:1"],
-    },
-    {
+    {   # old Q18 — ALL correct
         "point": [["X2", "X3"]],
         "question": "On the ulcer dinner page, after the fight outside, does the temporary ruler later get hit at the dinner table? Reply with only yes or no in lowercase, with no punctuation.",
         "answer": "yes",
         "session_id": ["D31"],
         "clue": ["D31:1"],
     },
-    {
-        "point": [["X3"], ["Y1"]],
-        "question": "On the ulcer dinner page, does the page shift from an outdoor fight to a meal where the temporary ruler complains about food and ulcers? Reply with only yes or no in lowercase, with no punctuation.",
-        "answer": "yes",
-        "session_id": ["D31"],
-        "clue": ["D31:1"],
-    },
-    {
-        "point": [["X3"], ["Y1"]],
-        "question": "On the peek-a-boo page, does Oop hit the necklace-wearing man after sneaking up behind him? Reply with only yes or no in lowercase, with no punctuation.",
-        "answer": "yes",
-        "session_id": ["D32"],
-        "clue": ["D32:1"],
-    },
-    {
-        "point": [["X2"], ["Y2"]],
-        "question": "On the peek-a-boo page, does the peek-a-boo happen before Oop hits the necklace-wearing man? Reply with only yes or no in lowercase, with no punctuation.",
-        "answer": "yes",
-        "session_id": ["D32"],
-        "clue": ["D32:1"],
-    },
-    {
+    {   # old Q19 — AGENT ADV (only MMA+M2A correct)
         "point": [["X2"], ["Y2"]],
         "question": "On the apology-and-crown-return page, is the crown handed back before Oop is shown as an ordinary citizen again? Reply with only yes or no in lowercase, with no punctuation.",
         "answer": "yes",
         "session_id": ["D33"],
         "clue": ["D33:1"],
     },
-    {
-        "point": [["X2"], ["Y1"]],
-        "question": "On the apology-and-crown-return page, is Oop shown as an ordinary citizen again before the crown is handed back? Reply with only yes or no in lowercase, with no punctuation.",
-        "answer": "no",
-        "session_id": ["D33"],
-        "clue": ["D33:1"],
-    },
-    {
+    {   # old Q21 — MMA+M2A+FC correct
         "point": [["X3"], ["Y1"]],
         "question": "On the apology-and-crown-return page, is Oop later shown carrying a wooden board after the crown-return sequence? Reply with only yes or no in lowercase, with no punctuation.",
         "answer": "yes",
         "session_id": ["D33"],
         "clue": ["D33:1"],
+    },
+    # =================================================================
+    # Cross-session temporal ordering (agent-friendly: session dates)
+    # =================================================================
+    # Q14(dealership earlier) removed — FC only
+    {
+        "point": [["X2"], ["Y3"]],
+        "question": "In the overall story arc, does Oop become temporary ruler before or after the water-rescue scene with the drowning crowned figure? Reply with only one of: before, after.",
+        "answer": "after",
+        "session_id": ["D1", "D27"],
+        "clue": ["D1:1", "D27:1"],
+    },
+    # Q16(clams vs dinner) removed — FC+SRM only
+    # Q17(peek-a-boo before crown) removed — FC+SRM only
+    {
+        "point": [["X2"], ["Y3"]],
+        "question": "Which page comes last in the palace arc: the chores page, the clams-dispute page, or the crown-return page? Reply with only one of: chores, clams-dispute, crown-return.",
+        "answer": "crown-return",
+        "session_id": ["D29", "D30", "D33"],
+        "clue": ["D29:1", "D30:1", "D33:1"],
+    },
+    # =================================================================
+    # State evolution across sessions (agent-friendly: semantic memory)
+    # =================================================================
+    {   # fixed Q26: MCQ format instead of free-form
+        "point": [["X2"], ["Y3"]],
+        "question": "Between the throne-offer page and the crown-return page, does Oop go from ordinary citizen to temporary ruler, or from temporary ruler back to ordinary citizen? Reply with only one of: citizen to ruler, ruler to citizen.",
+        "answer": "ruler to citizen",
+        "session_id": ["D27", "D33"],
+        "clue": ["D27:1", "D33:1"],
+    },
+    {   # fixed Q27: yes/no format
+        "point": [["X2"], ["Y3"]],
+        "question": "Across the crowd-and-cave page, the chores page, and the ulcer dinner page, does the temporary ruler's situation get progressively worse? Reply with only yes or no in lowercase, with no punctuation.",
+        "answer": "yes",
+        "session_id": ["D28", "D29", "D31"],
+        "clue": ["D28:1", "D29:1", "D31:1"],
+    },
+    {
+        "point": [["X2", "X4"], ["Y2"]],
+        "question": "On the dealership page, the dinosaurs are labeled with prices. On the test-drive page, Alley rides a small dinosaur. Is the dinosaur Alley rides the same one labeled today's special on the dealership page? Reply with only yes or no in lowercase, with no punctuation.",
+        "answer": "no",
+        "session_id": ["D3", "D4"],
+        "clue": ["D3:1", "D4:1"],
+    },
+    {
+        "point": [["X2"], ["Y3"]],
+        "question": "Across all the palace pages, does the crowned ruler ever willingly give up power, or is power always taken from him by force? Reply with only one of: willingly, by force.",
+        "answer": "willingly",
+        "session_id": ["D27", "D33"],
+        "clue": ["D27:1", "D33:1"],
+    },
+    # =================================================================
+    # Conflict resolution (agent-friendly: source credibility + decay)
+    # =================================================================
+    {
+        "point": [["X2"], ["Y3"]],
+        "question": "One session claims the temporary ruler was lounging at the start of the crowd-and-cave page. Based on the actual image, was the temporary ruler lounging or being pelted by the crowd at the start of that page? Reply with only one of: lounging, pelted.",
+        "answer": "pelted",
+        "session_id": ["D28"],
+        "clue": ["D28:1"],
+    },
+    {
+        "point": [["X4"], ["Y3"]],
+        "question": "One session mentions a premium dinosaur at the dealership. On the actual dealership page image, is there a dinosaur labeled premium? Reply with only yes or no in lowercase, with no punctuation.",
+        "answer": "no",
+        "session_id": ["D3"],
+        "clue": ["D3:1"],
+    },
+    # Q25(today's special conflict) removed — FC+SRM only
+    {
+        "point": [["X2"], ["Y3"]],
+        "question": "A later session claims the crowned man was pointing at the drowning person on the water-rescue page. Based on the actual image, was it the crowned man or someone else pointing? Reply with only one of: crowned man, someone else.",
+        "answer": "someone else",
+        "session_id": ["D1"],
+        "clue": ["D1:1"],
+    },
+    # =================================================================
+    # Long-tail memory (agent-friendly: memory persistence)
+    # =================================================================
+    {
+        "point": [["X4"], ["Y1"]],
+        "question": "Going back to the dealership page from early January, how many distinct sale labels are visible on the lot: 2, 3, or 4? Reply with only one of: 2, 3, 4.",
+        "answer": "3",
+        "session_id": ["D3"],
+        "clue": ["D3:1"],
+    },
+    {
+        "point": [["X2"], ["Y2"]],
+        "question": "The very last palace page you saw was page 35. Does that page share the same crowned ruler character as the very first page, the water-rescue page? Reply with only yes or no in lowercase, with no punctuation.",
+        "answer": "yes",
+        "session_id": ["D1", "D35"],
+        "clue": ["D1:1", "D35:1"],
     },
 ]
 
