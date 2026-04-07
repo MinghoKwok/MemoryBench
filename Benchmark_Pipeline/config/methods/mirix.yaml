@@ -1,0 +1,4 @@
+name: mirix
+
+official_runtime: true
+official_model_name: "gemini-2.5-flash"
