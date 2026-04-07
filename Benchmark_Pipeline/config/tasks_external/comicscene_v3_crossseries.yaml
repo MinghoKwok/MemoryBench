@@ -1,0 +1,8 @@
+name: comicscene_v3_crossseries
+dataset:
+  dialog_json: /common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/dialog/ComicScene_V3_crossseries.json
+  image_root: /common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/image
+eval:
+  mode: mcq
+  output_json: output/results_comicscene_v3_crossseries.json
+  max_questions: 0

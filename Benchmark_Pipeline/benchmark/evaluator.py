@@ -62,12 +62,38 @@ def to_mcq(question: str) -> str:
     )
 
 
-def extract_choice(text: str) -> str:
+def extract_choice(text: str, valid_keys: Optional[set] = None) -> str:
+    """Extract a single option letter from model output.
+
+    Matching priority:
+      1. Entire output is a single valid key (e.g. "B")
+      2. Output starts with a valid key followed by punctuation (e.g. "B. ...")
+      3. "answer is X" or "answer: X" pattern anywhere
+      4. First standalone valid key in the text
+
+    Args:
+        text: Raw model prediction.
+        valid_keys: Set of valid option letters (e.g. {"A","B","C","D"}).
+                    Defaults to all uppercase letters if not provided.
+    """
     t = text.strip().upper()
-    if t in {"A", "B", "C"}:
+    if valid_keys is None:
+        valid_keys = set(string.ascii_uppercase)
+    # 1. Exact single letter
+    if t in valid_keys:
         return t
-    match = re.search(r"\b([ABC])\b", t)
-    return match.group(1) if match else "INVALID"
+    keys_pattern = "|".join(re.escape(k) for k in sorted(valid_keys))
+    # 2. Starts with option letter + punctuation/space (e.g. "B." "B)" "B ")
+    m = re.match(rf"^({keys_pattern})[\.\)\:\s,]", t)
+    if m:
+        return m.group(1)
+    # 3. "answer is B" / "answer: B" pattern
+    m = re.search(rf"(?:answer|choice)\s*(?:is|:)\s*({keys_pattern})\b", t)
+    if m:
+        return m.group(1)
+    # 4. First standalone valid key (word boundary)
+    m = re.search(rf"\b({keys_pattern})\b", t)
+    return m.group(1) if m else "INVALID"
 
 
 # ---------------------------------------------------------------------------
@@ -290,7 +316,9 @@ def summarize_results(results: List[Dict[str, Any]]) -> Dict[str, Any]:
     Aggregate open-mode metrics overall, by X, by Y, and by (Xi,Yj) cell.
     Metrics missing from a row (e.g. bert=None when disabled) are skipped.
     """
-    open_rows = [r for r in results if r.get("mode") == "open"]
+    # Aggregate all rows (open + mcq) uniformly. MCQ rows have em/f1 but
+    # bleu/bert/judge are None — _mean() skips None values via the filter.
+    open_rows = list(results)
     mcq_rows  = [r for r in results if r.get("mode") == "mcq"]
 
     overall: Dict[str, List[float]] = {m: [] for m in _OPEN_METRICS}

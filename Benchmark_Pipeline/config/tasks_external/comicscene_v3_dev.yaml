@@ -3,6 +3,6 @@ dataset:
   dialog_json: /common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/dialog/ComicScene_Alley_Oop_V3_Dev.json
   image_root: /common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/image
 eval:
-  mode: open
+  mode: mcq
   output_json: output/results_comicscene_v3_dev.json
   max_questions: 0

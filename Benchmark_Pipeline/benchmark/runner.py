@@ -89,10 +89,18 @@ def merge_legacy_config(opts: LegacyRunOptions) -> Dict[str, Any]:
 
 
 
-def load_sys_prompt() -> str:
-    """Load MemEye system prompt from benchmark/prompt/sys_prompt.txt."""
-    prompt_path = Path(__file__).parent / "prompt" / "sys_prompt.txt"
-    return prompt_path.read_text(encoding="utf-8").strip()
+def load_sys_prompt(mode: str = "open") -> str:
+    """Load MemEye system prompt for the given evaluation mode.
+
+    Uses sys_prompt_mcq.txt for MCQ mode, sys_prompt_open.txt for open mode.
+    Falls back to sys_prompt.txt if the mode-specific file is missing.
+    """
+    prompt_dir = Path(__file__).parent / "prompt"
+    mode_file = prompt_dir / f"sys_prompt_{mode}.txt"
+    if mode_file.exists():
+        return mode_file.read_text(encoding="utf-8").strip()
+    fallback = prompt_dir / "sys_prompt.txt"
+    return fallback.read_text(encoding="utf-8").strip()
 
 
 def instantiate_router(model_cfg: Dict[str, Any], system_prompt: str = ""):
@@ -237,7 +245,8 @@ def format_question(qa: Dict[str, Any]) -> str:
         for key in sorted(options.keys()):
             lines.append(f"{key}. {options[key]}")
         lines.append("")
-        lines.append("Answer with only the option letter (e.g. A, B, C, or D).")
+        valid = ", ".join(sorted(options.keys()))
+        lines.append(f"Answer with ONLY the option letter ({valid}). Do not explain.")
         return "\n".join(lines)
     return question
 
@@ -265,7 +274,7 @@ def run_benchmark(
     is_agentic = hasattr(method, "answer") and callable(getattr(method, "answer"))
     router = None
     if not is_agentic:
-        sys_prompt = load_sys_prompt()
+        sys_prompt = load_sys_prompt(mode)
         router = instantiate_router(cfg["model"], system_prompt=sys_prompt)
 
     # Build LLM judge client once before the loop
@@ -289,6 +298,12 @@ def run_benchmark(
     for i, qa in enumerate(qas, start=1):
         question = format_question(qa)
         gt = qa.get("answer", "")
+        has_options = isinstance(qa.get("options"), dict)
+
+        # Determine effective mode for this QA:
+        # - QA with options → always mcq scoring
+        # - QA without options → use config mode
+        qa_mode = "mcq" if has_options else mode
 
         if is_agentic:
             history: List[Dict[str, Any]] = []
@@ -297,24 +312,54 @@ def run_benchmark(
         current_method_runtime = dict(getattr(method, "runtime_info", {}) or {})
         print(
             f"[INFO] QA {i}/{len(qas)} point={qa.get('point')} "
-            f"method={method.name} history_turns={len(history)}"
+            f"method={method.name} mode={qa_mode} history_turns={len(history)}"
         )
 
-        if mode in {"open", "both"}:
-            t0 = dt.datetime.now()
-            if is_agentic:
-                pred = method.answer(dataset, qa, question)
-            else:
-                pred = router.answer(history, question)
-            latency_ms = int((dt.datetime.now() - t0).total_seconds() * 1000)
+        # --- Single inference path ---
+        t0 = dt.datetime.now()
+        if is_agentic:
+            pred = method.answer(dataset, qa, question)
+        else:
+            pred = router.answer(history, question)
+        latency_ms = int((dt.datetime.now() - t0).total_seconds() * 1000)
 
+        # --- Scoring ---
+        if qa_mode == "mcq":
+            valid_keys = set(qa.get("options", {}).keys()) if has_options else None
+            choice = extract_choice(pred, valid_keys=valid_keys)
+            em = 1.0 if choice == gt.strip().upper() else 0.0
+            result = {
+                "idx": i,
+                "point": qa.get("point"),
+                "mode": "mcq",
+                "question": question,
+                "gt": gt,
+                "pred": pred,
+                "choice": choice,
+                "exact_match": em == 1.0,
+                "em": em,
+                "contains_gt": choice == gt.strip().upper(),
+                "f1": em,  # MCQ: F1 equals EM (binary)
+                "bleu": None,
+                "bleu_1": None,
+                "bleu_2": None,
+                "bert": None,
+                "judge": None,
+                "judge_reasoning": None,
+                "latency_ms": latency_ms,
+                "method_name": method.name,
+                "history_turns": len(history),
+                "source_sessions": qa.get("session_id", []),
+                "clue_rounds": qa.get("clue", []),
+            }
+            print(f"[MCQ][{i}] choice={choice} gt={gt} em={em} latency_ms={latency_ms}")
+        else:
             exact, contains = score_open(pred, gt)
             _f1    = f1_score(pred, gt)
             _bleu  = bleu_score(pred, gt)
             _bleu1 = bleu_score(pred, gt, weights=(1, 0, 0, 0))
             _bleu2 = bleu_score(pred, gt, weights=(0.5, 0.5, 0, 0))
             _bert  = bert_score_metric(pred, gt) if enable_bert_score else None
-
             _judge: Optional[float] = None
             _judge_reasoning: Optional[str] = None
             if enable_llm_judge and _judge_client is not None:
@@ -333,8 +378,7 @@ def run_benchmark(
                     _judge_reasoning = jr.get("reasoning", "")
                 except RuntimeError as exc:
                     print(f"[WARN] LLM judge failed for QA {i}: {exc}")
-
-            open_result = {
+            result = {
                 "idx": i,
                 "point": qa.get("point"),
                 "mode": "open",
@@ -357,9 +401,6 @@ def run_benchmark(
                 "source_sessions": qa.get("session_id", []),
                 "clue_rounds": qa.get("clue", []),
             }
-            if current_method_runtime:
-                open_result["method_runtime"] = current_method_runtime
-            results.append(open_result)
             print(
                 f"[OPEN][{i}] em={exact} f1={_f1:.3f} bleu={_bleu:.3f}"
                 + (f" bert={_bert:.3f}" if _bert is not None else "")
@@ -367,31 +408,9 @@ def run_benchmark(
                 + f" latency_ms={latency_ms}"
             )
 
-        if mode in {"mcq", "both"}:
-            mcq_question = to_mcq(question)
-            if is_agentic:
-                pred_mcq = method.answer(dataset, qa, mcq_question)
-            else:
-                pred_mcq = router.answer(history, mcq_question)
-            choice = extract_choice(pred_mcq)
-            mcq_result = {
-                "idx": i,
-                "point": qa.get("point"),
-                "mode": "mcq",
-                "question": question,
-                "gt": gt,
-                "pred": pred_mcq,
-                "choice": choice,
-                "valid_choice": choice in {"A", "B", "C"},
-                "method_name": method.name,
-                "history_turns": len(history),
-                "source_sessions": qa.get("session_id", []),
-                "clue_rounds": qa.get("clue", []),
-            }
-            if current_method_runtime:
-                mcq_result["method_runtime"] = current_method_runtime
-            results.append(mcq_result)
-            print(f"[MCQ][{i}] choice={choice} valid={choice in {'A', 'B', 'C'}}")
+        if current_method_runtime:
+            result["method_runtime"] = current_method_runtime
+        results.append(result)
 
     run_dir = default_run_dir(cfg, paths["output_root"])
     run_dir.mkdir(parents=True, exist_ok=True)

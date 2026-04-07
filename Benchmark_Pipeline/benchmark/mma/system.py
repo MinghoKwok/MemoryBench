@@ -14,7 +14,9 @@ from __future__ import annotations
 
 import datetime as dt
 import os
+import re
 from dataclasses import dataclass
+from pathlib import Path
 from typing import Any, Dict, List, Optional, Tuple
 
 import numpy as np
@@ -54,11 +56,17 @@ class MMAConfig:
         return cls(**{k: v for k, v in d.items() if k in cls.__dataclass_fields__})
 
 
-QA_SYSTEM_PROMPT = """You are a memory-augmented assistant. You have access to a memory store built from past conversations with the user. When answering questions, rely on the retrieved memory entries ranked by confidence. Higher-confidence entries are more reliable.
-
-Current time: {current_datetime}
-
-Answer concisely and factually based on the provided memory context."""
+def _load_shared_sys_prompt(question: str) -> str:
+    """Load the shared MemEye system prompt, choosing open vs mcq based on question."""
+    import re as _re
+    prompt_dir = Path(__file__).resolve().parent.parent / "prompt"
+    # Detect MCQ by option pattern in question (e.g. "A. ...")
+    is_mcq = bool(_re.search(r"\n[A-Z]\.\s", question))
+    fname = "sys_prompt_mcq.txt" if is_mcq else "sys_prompt_open.txt"
+    path = prompt_dir / fname
+    if not path.exists():
+        path = prompt_dir / "sys_prompt.txt"
+    return path.read_text(encoding="utf-8").strip()
 
 
 def _parse_session_date(date_str: str, session_idx: int) -> dt.datetime:
@@ -361,16 +369,14 @@ class MMASystem:
         self, question: str, context: str, image_paths: Optional[List[str]] = None
     ) -> List[Dict[str, Any]]:
         """Build chat messages with optional image content."""
-        current_time = dt.datetime.now().strftime("%Y-%m-%d %H:%M")
-        sys_prompt = QA_SYSTEM_PROMPT.format(current_datetime=current_time)
+        sys_prompt = _load_shared_sys_prompt(question)
 
         user_content: List[Dict[str, Any]] = [
             {
                 "type": "text",
                 "text": (
                     f"Memory context (ranked by confidence):\n{context}\n\n"
-                    f"Question: {question}\n"
-                    f"Answer based on the memory context above. Be concise and factual."
+                    f"Question: {question}"
                 ),
             }
         ]
