@@ -254,9 +254,11 @@ def run_benchmark(
     max_questions = int(cfg.get("eval", {}).get("max_questions", 0))
 
     dataset = MemoryBenchmarkDataset(paths["dialog_json"], paths["image_root"])
+    method_cfg = dict(cfg.get("method", {}))
+    method_cfg["_model_cfg"] = dict(cfg.get("model", {}))
     method = get_method(
-        str(cfg.get("method", {}).get("name", "full_context")),
-        config=dict(cfg.get("method", {})),
+        str(method_cfg.get("name", "full_context")),
+        config=method_cfg,
     )
     # Agentic methods (for example M2A) own end-to-end inference via answer().
     # They bypass build_history() + router.answer() and may keep internal runtime state.

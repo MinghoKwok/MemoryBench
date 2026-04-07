@@ -200,5 +200,11 @@ def get_method(method_name: str, config: Optional[Dict[str, Any]] = None) -> His
     }
     cls = registry.get(method_name)
     if cls is None:
-        raise ValueError(f"Unsupported method: {method_name!r}")
+        if method_name == "a_mem":
+            from .a_mem import AMemMethod
+
+            return AMemMethod(config=config)
+        from .mirix import get_mirix_method
+
+        return get_mirix_method(method_name, config=config)
     return cls(config=config)

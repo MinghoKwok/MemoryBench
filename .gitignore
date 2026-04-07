@@ -18,3 +18,11 @@ overleaf_paper/*.out
 overleaf_paper/*.pdf
 .claude
 CLAUDE.md
+Benchmark_Pipeline/benchmark/a-mem/A-mem/.git/
+Benchmark_Pipeline/benchmark/a-mem/**/__pycache__/
+Benchmark_Pipeline/benchmark/mirix/upstream/.git/
+Benchmark_Pipeline/benchmark/mirix/**/__pycache__/
+Benchmark_Pipeline/data/
+Benchmark_Pipeline/output/
+Benchmark_Pipeline/runs/
+/output/
