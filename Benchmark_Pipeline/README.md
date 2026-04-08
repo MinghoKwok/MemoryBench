@@ -111,13 +111,6 @@ python Benchmark_Pipeline/run_pittads.py --config Benchmark_Pipeline/config/defa
 
 Switch method:
 
-```bash
-python -m Benchmark_Pipeline.run_benchmark \
-  --task-config Benchmark_Pipeline/config/tasks/brand_memory_test.yaml \
-  --model-config Benchmark_Pipeline/config/models/qwen_local_default.yaml \
-  --method-config Benchmark_Pipeline/config/methods/clue_only.yaml
-```
-
 Run the dense retrieval baseline:
 
 ```bash
@@ -125,15 +118,6 @@ python -m Benchmark_Pipeline.run_benchmark \
   --task-config Benchmark_Pipeline/config/tasks/brand_memory_test.yaml \
   --model-config Benchmark_Pipeline/config/models/gpt_4_1_nano.yaml \
   --method-config Benchmark_Pipeline/config/methods/semantic_rag_text_only.yaml
-```
-
-Run the lightweight M2A-style baseline:
-
-```bash
-python -m Benchmark_Pipeline.run_benchmark \
-  --task-config Benchmark_Pipeline/config/tasks/brand_memory_test.yaml \
-  --model-config Benchmark_Pipeline/config/models/gpt_4_1_nano.yaml \
-  --method-config Benchmark_Pipeline/config/methods/m2a_lite.yaml
 ```
 
 Limit to a quick smoke test:
@@ -177,9 +161,8 @@ python -m Benchmark_Pipeline.run_matrix \
   --task-config Benchmark_Pipeline/config/tasks/brand_memory_test.yaml \
   --model-config Benchmark_Pipeline/config/models/gpt_4_1_nano.yaml \
   --method-config Benchmark_Pipeline/config/methods/full_context_multimodal.yaml \
-  --method-config Benchmark_Pipeline/config/methods/clue_only.yaml \
-  --method-config Benchmark_Pipeline/config/methods/semantic_rag_text_only.yaml \
-  --method-config Benchmark_Pipeline/config/methods/m2a_lite.yaml
+  --method-config Benchmark_Pipeline/config/methods/semantic_rag_multimodal.yaml \
+  --method-config Benchmark_Pipeline/config/methods/m2a.yaml
 ```
 
 ## Config Structure
@@ -224,19 +207,6 @@ neighbor_window: 0
 text_embedding_model: all-MiniLM-L6-v2
 ```
 
-`m2a_lite` uses a simple two-stage memory lookup:
-
-```yaml
-name: m2a_lite
-semantic_top_k: 3
-raw_top_k: 2
-neighbor_window: 1
-semantic_lexical_weight: 0.25
-semantic_dense_weight: 0.75
-raw_lexical_weight: 0.4
-raw_dense_weight: 0.6
-```
-
 The default `config/default.yaml` composes the same pieces in one file. The older `config/tasks/pittads.yaml` remains as a legacy alias for backward compatibility.
 
 ## Memory Methods
@@ -248,27 +218,12 @@ The default `config/default.yaml` composes the same pieces in one file. The olde
 - `m2a`: two-phase agentic memory — builds semantic memory store from sessions, then answers via ReAct loop.
 - `mma`: confidence-aware multimodal memory agent with source/temporal/consensus scoring.
 
-## M2A Note
+## Method Comparison
 
-`m2a_lite` is not a full reproduction of the M2A paper/system.
-
-In this repo, `m2a_lite` should be understood as an M2A-inspired benchmark baseline that keeps only the core high-level idea:
-
-- a lightweight semantic memory layer
-- a raw evidence layer
-- retrieval from semantic memory first, then back-linking to raw rounds
-
-It does not currently implement the full M2A stack such as:
-
-- a complete memory manager / agent loop
-- continuous memory writing and update policies
-- a full multimodal retrieval pipeline with separate external embedding services
-- the original system's full orchestration and component design
-
-So the intended comparison in this benchmark is:
+The intended baseline comparison in this benchmark:
 
 - `semantic_rag_text_only` / `semantic_rag_multimodal`: direct retrieval over raw rounds
-- `m2a`: full agentic memory with ReAct loop
+- `m2a` / `mma`: agentic memory with ReAct loop and confidence scoring
 
 ## Supported Data Format
 
@@ -380,7 +335,7 @@ Then run any generated task config normally, for example:
 python -m Benchmark_Pipeline.run_benchmark \
   --task-config Benchmark_Pipeline/config/tasks_external/chat_ui_memory_test.yaml \
   --model-config Benchmark_Pipeline/config/models/gpt_4_1_nano.yaml \
-  --method-config Benchmark_Pipeline/config/methods/clue_only.yaml
+  --method-config Benchmark_Pipeline/config/methods/full_context_multimodal.yaml
 ```
 
 ## Recommended HF Dataset Workflow
