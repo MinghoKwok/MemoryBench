@@ -1,4 +1,5 @@
 name: semantic_rag
+modality: text_only
 retrieval_backend: dense_text
 # Following Mem-Gallery (Bei et al., 2025): default retrieval size K=10
 top_k: 10

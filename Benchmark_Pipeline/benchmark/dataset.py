@@ -72,6 +72,87 @@ def build_rounds(
     return rounds
 
 
+def _string_list(values: Any) -> List[str]:
+    if not isinstance(values, list):
+        return []
+    return [str(value).strip() for value in values if str(value).strip()]
+
+
+def round_image_captions(round_payload: Dict[str, Any]) -> List[str]:
+    raw = round_payload.get("raw", {}) or {}
+    return _string_list(raw.get("image_caption", []) or [])
+
+
+def round_image_ids(round_payload: Dict[str, Any]) -> List[str]:
+    raw = round_payload.get("raw", {}) or {}
+    if not isinstance(raw.get("image_id", []), list):
+        return []
+    image_ids = raw.get("image_id", []) or []
+    return [str(value).strip() for value in image_ids]
+
+
+def build_caption_text(round_payload: Dict[str, Any]) -> str:
+    captions = round_image_captions(round_payload)
+    if not captions:
+        return ""
+
+    image_ids = round_image_ids(round_payload)
+    lines: List[str] = []
+    for idx, caption in enumerate(captions):
+        image_id = image_ids[idx] if idx < len(image_ids) else ""
+        lines.extend(
+            [
+                "image:",
+                f"image_id: {image_id}",
+                f"image_caption: {caption}",
+            ]
+        )
+    return "\n".join(lines).strip()
+
+
+def build_round_retrieval_text(round_payload: Dict[str, Any], modality: str) -> str:
+    parts = [
+        str(round_payload.get("user", "")).strip(),
+        str(round_payload.get("assistant", "")).strip(),
+    ]
+    if modality == "text_only":
+        caption_text = " ".join(round_image_captions(round_payload))
+        if caption_text:
+            parts.append(caption_text)
+    return " ".join(part for part in parts if part)
+
+
+def validate_text_only_captions(rounds: Dict[str, Dict[str, Any]]) -> Dict[str, Any]:
+    invalid_rounds: List[str] = []
+    validated_rounds = 0
+    for round_id, payload in rounds.items():
+        raw = payload.get("raw", {}) or {}
+        images = raw.get("input_image", []) or []
+        if not images:
+            continue
+        validated_rounds += 1
+        captions = round_image_captions(payload)
+        if len(captions) != len(images):
+            invalid_rounds.append(round_id)
+            continue
+        if any(not caption for caption in captions):
+            invalid_rounds.append(round_id)
+
+    if invalid_rounds:
+        raise ValueError(
+            "Text-only methods require Mem-Gallery-style image captions. "
+            "Add valid image_caption entries for image-bearing rounds before running. "
+            "Missing/invalid image_caption for rounds: "
+            + ", ".join(invalid_rounds[:10])
+            + ("..." if len(invalid_rounds) > 10 else "")
+        )
+
+    return {
+        "caption_validation_passed": True,
+        "caption_validation_round_count": validated_rounds,
+    }
+
+
 def session_order(dialog_data: Dict[str, Any]) -> List[str]:
     return [s.get("session_id", "") for s in dialog_data.get("multi_session_dialogues", [])]
 
@@ -85,7 +166,10 @@ def get_qas(data: Dict[str, Any]) -> List[Dict[str, Any]]:
 
 
 def history_from_round_ids(
-    session: Dict[str, Any], rounds: Dict[str, Dict[str, Any]], allowed_round_ids: Optional[set[str]] = None
+    session: Dict[str, Any],
+    rounds: Dict[str, Dict[str, Any]],
+    allowed_round_ids: Optional[set[str]] = None,
+    modality: str = "multimodal",
 ) -> List[Dict[str, Any]]:
     history: List[Dict[str, Any]] = []
     for d in session.get("dialogues", []):
@@ -95,8 +179,18 @@ def history_from_round_ids(
         r = rounds.get(rid, {})
         user_text = r.get("user", "")
         assistant_text = r.get("assistant", "")
-        images = r.get("images", [])
-        if user_text:
+        images = list(r.get("images", []) or [])
+        if modality == "text_only":
+            caption_text = build_caption_text(r)
+            if caption_text:
+                user_text = f"{user_text}\n{caption_text}".strip() if user_text else caption_text
+            images = []
+        elif modality == "multimodal":
+            images = images
+        else:
+            raise ValueError(f"Unsupported history modality: {modality}")
+
+        if user_text or images:
             history.append({"role": "user", "text": user_text, "images": images, "round_id": rid})
         if assistant_text:
             history.append({"role": "assistant", "text": assistant_text, "images": [], "round_id": rid})

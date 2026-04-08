@@ -1,4 +1,5 @@
 name: semantic_rag
+modality: text_only
 retrieval_backend: dense_text
 top_k: 1
 neighbor_window: 2
