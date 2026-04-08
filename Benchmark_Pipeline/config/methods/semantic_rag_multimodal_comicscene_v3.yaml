@@ -1,4 +1,5 @@
 name: semantic_rag_multimodal
+modality: multimodal
 retrieval_backend: dense_multimodal
 top_k: 1
 neighbor_window: 2

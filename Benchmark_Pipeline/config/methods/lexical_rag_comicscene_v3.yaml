@@ -1,5 +1,0 @@
-name: lexical_rag
-top_k: 1
-neighbor_window: 2
-lexical_weight: 1.0
-semantic_weight: 0.0

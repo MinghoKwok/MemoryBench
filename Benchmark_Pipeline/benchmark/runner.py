@@ -83,19 +83,36 @@ def merge_legacy_config(opts: LegacyRunOptions) -> Dict[str, Any]:
         "dataset": dataset,
         "eval": eval_cfg,
         "model": model,
-        "method": base.get("method", {"name": "full_context"}),
+        "method": base.get("method", {"name": "full_context_multimodal"}),
         "run": run_cfg,
     }
 
 
 
-def load_sys_prompt(mode: str = "open") -> str:
-    """Load MemEye system prompt for the given evaluation mode.
+def _effective_method_name(method_cfg: Dict[str, Any]) -> str:
+    method_name = str(method_cfg.get("name", "method")).strip() or "method"
+    if method_name in {"full_context_multimodal", "full_context_text_only",
+                       "semantic_rag_multimodal", "semantic_rag_text_only"}:
+        return method_name
+    modality = str(method_cfg.get("modality", "")).strip().lower()
+    if modality in {"text_only", "multimodal"}:
+        return f"{method_name}__{modality}"
+    return method_name
+
+
+def load_sys_prompt(mode: str = "open", method_cfg: Optional[Dict[str, Any]] = None) -> str:
+    """Load MemEye system prompt for the given evaluation mode and modality.
 
     Uses sys_prompt_mcq.txt for MCQ mode, sys_prompt_open.txt for open mode.
+    For text_only modality, uses sys_prompt_text_only.txt if it exists.
     Falls back to sys_prompt.txt if the mode-specific file is missing.
     """
     prompt_dir = Path(__file__).parent / "prompt"
+    modality = str((method_cfg or {}).get("modality", "")).strip().lower()
+    if modality == "text_only":
+        text_only_file = prompt_dir / "sys_prompt_text_only.txt"
+        if text_only_file.exists():
+            return text_only_file.read_text(encoding="utf-8").strip()
     mode_file = prompt_dir / f"sys_prompt_{mode}.txt"
     if mode_file.exists():
         return mode_file.read_text(encoding="utf-8").strip()
@@ -167,6 +184,7 @@ def compose_modular_config(
 def resolve_runtime_paths(cfg: Dict[str, Any], config_dir: Path) -> Dict[str, Path]:
     dataset_cfg = cfg.get("dataset", {})
     eval_cfg = cfg.get("eval", {})
+    task_name = str(cfg.get("task", {}).get("name", "task")).strip() or "task"
     dialog_json = resolve_dataset_path(str(dataset_cfg["dialog_json"]), config_dir)
     image_root_raw = str(dataset_cfg.get("image_root", "")).strip()
     image_root = resolve_dataset_path(image_root_raw, config_dir) if image_root_raw else None
@@ -181,7 +199,13 @@ def resolve_runtime_paths(cfg: Dict[str, Any], config_dir: Path) -> Dict[str, Pa
     output_json_raw = str(eval_cfg.get("output_json", "")).strip()
     if output_json_raw:
         oj = Path(output_json_raw)
-        output_json: Optional[Path] = oj if oj.is_absolute() else (SCRIPT_DIR / oj).resolve()
+        if oj.is_absolute():
+            output_json = oj
+        else:
+            output_json = (SCRIPT_DIR / oj).resolve()
+            output_root_dir = (SCRIPT_DIR / "output").resolve()
+            if output_json.parent == output_root_dir:
+                output_json = output_root_dir / task_name / output_json.name
     else:
         output_json = None
 
@@ -196,7 +220,7 @@ def resolve_runtime_paths(cfg: Dict[str, Any], config_dir: Path) -> Dict[str, Pa
 def default_run_dir(cfg: Dict[str, Any], output_root: Path) -> Path:
     task_name = str(cfg.get("task", {}).get("name", "task"))
     model_name = str(cfg.get("model", {}).get("name", "model"))
-    method_name = str(cfg.get("method", {}).get("name", "method"))
+    method_name = _effective_method_name(cfg.get("method", {}))
     ts = dt.datetime.now().strftime("%Y%m%d_%H%M%S")
     return output_root / task_name / f"{ts}_{model_name}_{method_name}"
 
@@ -216,7 +240,9 @@ def build_payload(
         "task_name": cfg.get("task", {}).get("name", "task"),
         "model_name": cfg.get("model", {}).get("name", "qwen_local"),
         "model_path": model_ref,
-        "method_name": cfg.get("method", {}).get("name", "full_context"),
+        "method_name": _effective_method_name(cfg.get("method", {})),
+        "base_method_name": cfg.get("method", {}).get("name", "full_context_multimodal"),
+        "method_modality": cfg.get("method", {}).get("modality", ""),
         "mode": cfg["eval"].get("mode", "open"),
         "num_qas": len(dataset.qas),
         "num_qas_run": len({r["idx"] for r in results}),
@@ -266,7 +292,7 @@ def run_benchmark(
     method_cfg = dict(cfg.get("method", {}))
     method_cfg["_model_cfg"] = dict(cfg.get("model", {}))
     method = get_method(
-        str(method_cfg.get("name", "full_context")),
+        str(method_cfg.get("name", "full_context_multimodal")),
         config=method_cfg,
     )
     # Agentic methods (for example M2A) own end-to-end inference via answer().
@@ -274,7 +300,7 @@ def run_benchmark(
     is_agentic = hasattr(method, "answer") and callable(getattr(method, "answer"))
     router = None
     if not is_agentic:
-        sys_prompt = load_sys_prompt(mode)
+        sys_prompt = load_sys_prompt(mode, method_cfg)
         router = instantiate_router(cfg["model"], system_prompt=sys_prompt)
 
     # Build LLM judge client once before the loop
@@ -336,6 +362,7 @@ def run_benchmark(
                 "gt": gt,
                 "pred": pred,
                 "choice": choice,
+                "valid_choice": choice != "INVALID",
                 "exact_match": em == 1.0,
                 "em": em,
                 "contains_gt": choice == gt.strip().upper(),
@@ -348,6 +375,8 @@ def run_benchmark(
                 "judge_reasoning": None,
                 "latency_ms": latency_ms,
                 "method_name": method.name,
+                "effective_method_name": _effective_method_name(method_cfg),
+                "method_modality": getattr(method, "modality", method_cfg.get("modality", "")),
                 "history_turns": len(history),
                 "source_sessions": qa.get("session_id", []),
                 "clue_rounds": qa.get("clue", []),
@@ -355,11 +384,12 @@ def run_benchmark(
             print(f"[MCQ][{i}] choice={choice} gt={gt} em={em} latency_ms={latency_ms}")
         else:
             exact, contains = score_open(pred, gt)
-            _f1    = f1_score(pred, gt)
-            _bleu  = bleu_score(pred, gt)
+            _f1 = f1_score(pred, gt)
+            _bleu = bleu_score(pred, gt)
             _bleu1 = bleu_score(pred, gt, weights=(1, 0, 0, 0))
             _bleu2 = bleu_score(pred, gt, weights=(0.5, 0.5, 0, 0))
             _bert  = bert_score_metric(pred, gt) if enable_bert_score else None
+
             _judge: Optional[float] = None
             _judge_reasoning: Optional[str] = None
             if enable_llm_judge and _judge_client is not None:
@@ -397,6 +427,8 @@ def run_benchmark(
                 "judge_reasoning": _judge_reasoning,
                 "latency_ms": latency_ms,
                 "method_name": method.name,
+                "effective_method_name": _effective_method_name(method_cfg),
+                "method_modality": getattr(method, "modality", method_cfg.get("modality", "")),
                 "history_turns": len(history),
                 "source_sessions": qa.get("session_id", []),
                 "clue_rounds": qa.get("clue", []),
@@ -432,7 +464,7 @@ def run_benchmark(
     if output_json:
         output_json.parent.mkdir(parents=True, exist_ok=True)
         model_name = cfg.get("model", {}).get("name", "model")
-        method_name = cfg.get("method", {}).get("name", "method")
+        method_name = _effective_method_name(cfg.get("method", {}))
         stem = output_json.stem
         suffix = output_json.suffix or ".json"
         tagged_path = output_json.parent / f"{stem}__{model_name}__{method_name}{suffix}"

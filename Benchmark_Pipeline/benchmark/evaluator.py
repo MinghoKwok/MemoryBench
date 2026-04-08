@@ -320,11 +320,13 @@ def summarize_results(results: List[Dict[str, Any]]) -> Dict[str, Any]:
     # bleu/bert/judge are None — _mean() skips None values via the filter.
     open_rows = list(results)
     mcq_rows  = [r for r in results if r.get("mode") == "mcq"]
+    metric_rows = [r for r in results if any(r.get(m) is not None for m in _OPEN_METRICS)]
 
     overall: Dict[str, List[float]] = {m: [] for m in _OPEN_METRICS}
     by_x:    Dict[str, Dict[str, List[float]]] = {}
     by_y:    Dict[str, Dict[str, List[float]]] = {}
     by_cell: Dict[str, Dict[str, List[float]]] = {}
+    mcq_overall: Dict[str, List[float]] = {m: [] for m in _OPEN_METRICS}
 
     def _add_to(bucket: Dict[str, Dict[str, List[float]]], key: str, row: Dict) -> None:
         b = bucket.setdefault(key, {m: [] for m in _OPEN_METRICS})
@@ -333,7 +335,7 @@ def summarize_results(results: List[Dict[str, Any]]) -> Dict[str, Any]:
             if val is not None:
                 b[m].append(float(val))
 
-    for row in open_rows:
+    for row in metric_rows:
         for m in _OPEN_METRICS:
             val = row.get(m)
             if val is not None:
@@ -366,4 +368,10 @@ def summarize_results(results: List[Dict[str, Any]]) -> Dict[str, Any]:
         summary["mcq_valid_rate"] = (
             sum(1 for r in mcq_rows if r.get("valid_choice")) / len(mcq_rows)
         )
+        for row in mcq_rows:
+            for m in _OPEN_METRICS:
+                val = row.get(m)
+                if val is not None:
+                    mcq_overall[m].append(float(val))
+        summary["mcq_overall"] = {m: _mean(vs) for m, vs in mcq_overall.items() if vs}
     return summary

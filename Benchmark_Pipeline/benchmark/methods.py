@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
 from typing import Any, Dict, List, Optional
 
-from .dataset import MemoryBenchmarkDataset, history_from_round_ids
+from .dataset import MemoryBenchmarkDataset, history_from_round_ids, validate_text_only_captions
 from .retrieval import select_round_ids_for_qa
 
 
@@ -14,6 +14,17 @@ _CHARS_PER_TOKEN = 4
 
 # Estimated token cost per image, following Mem-Gallery (predefined token cost)
 _IMAGE_TOKEN_COST = 765
+
+
+def _normalize_modality(config: Dict[str, Any], method_name: str) -> str:
+    raw = str(config.get("modality", "")).strip().lower()
+    if raw in {"text_only", "multimodal"}:
+        return raw
+    if method_name in {"semantic_rag_multimodal", "full_context_multimodal"}:
+        return "multimodal"
+    if method_name in {"full_context_text_only", "semantic_rag_text_only"}:
+        return "text_only"
+    return "text_only"
 
 
 def _estimate_turn_tokens(turn: Dict[str, Any]) -> int:
@@ -51,54 +62,113 @@ def _truncate_history(history: List[Dict[str, Any]], max_tokens: int) -> List[Di
 
 class HistoryMethod(ABC):
     name = "base"
+    fixed_modality: Optional[str] = None
 
     def __init__(self, config: Optional[Dict[str, Any]] = None) -> None:
         self.config = config or {}
         self.runtime_info: Dict[str, Any] = {}
+        self.modality = self.fixed_modality or _normalize_modality(self.config, self.name)
 
     @abstractmethod
     def build_history(self, dataset: MemoryBenchmarkDataset, qa: Dict[str, Any]) -> List[Dict[str, Any]]:
         raise NotImplementedError
 
 
-class FullContextMethod(HistoryMethod):
-    name = "full_context"
+class _MemGalleryHistoryMethod(HistoryMethod):
+    history_source = "history"
+
+    def _validate_modality_inputs(self, dataset: MemoryBenchmarkDataset) -> None:
+        if self.modality != "text_only":
+            return
+        self.runtime_info.update(validate_text_only_captions(dataset.rounds))
+
+    def _update_history_runtime(
+        self,
+        history: List[Dict[str, Any]],
+        *,
+        history_before_truncation: Optional[int] = None,
+    ) -> None:
+        existing = dict(self.runtime_info)
+        self.runtime_info.clear()
+        self.runtime_info.update(existing)
+        self.runtime_info.update(
+            {
+                "method_modality": self.modality,
+                "history_source": self.history_source,
+                "captions_loaded": self.modality == "text_only",
+                "images_loaded": self.modality == "multimodal",
+                "history_turns_after_truncation": len(history),
+            }
+        )
+        if history_before_truncation is not None:
+            self.runtime_info["history_turns_before_truncation"] = history_before_truncation
+
+
+class _MemGalleryFullContextMethod(_MemGalleryHistoryMethod):
+    history_source = "full_context"
 
     def build_history(self, dataset: MemoryBenchmarkDataset, qa: Dict[str, Any]) -> List[Dict[str, Any]]:
-        """Build history from ALL sessions, truncated to fit context window.
-
-        Following Mem-Gallery (Bei et al., 2025): include all memory information
-        as context and truncate according to the context token limit.  Oldest
-        turns are removed first (keep most recent).
-
-        Config keys:
-          context_token_limit: int  (default 128000, matching GPT-4.1 family)
-        """
+        """Mem-Gallery-style full-context memory, split into text and multimodal variants."""
+        self._validate_modality_inputs(dataset)
         history: List[Dict[str, Any]] = []
         for sid in dataset.session_order():
-            history.extend(history_from_round_ids(dataset.get_session(sid), dataset.rounds))
+            history.extend(
+                history_from_round_ids(
+                    dataset.get_session(sid),
+                    dataset.rounds,
+                    modality=self.modality,
+                )
+            )
 
         max_tokens = int(self.config.get("context_token_limit", 128_000))
         # Reserve tokens for system prompt (~500) + question (~200) + answer generation
         reserved = int(self.config.get("reserved_tokens", 1_000))
-        return _truncate_history(history, max_tokens - reserved)
+        truncated = _truncate_history(history, max_tokens - reserved)
+        self._update_history_runtime(truncated, history_before_truncation=len(history))
+        return truncated
 
 
-class TargetSessionContextMethod(HistoryMethod):
+class FullContextTextMethod(_MemGalleryFullContextMethod):
+    """Local equivalent of Mem-Gallery FUMemory (text + captions, no images)."""
+
+    name = "full_context_text_only"
+    fixed_modality = "text_only"
+
+
+class FullContextMultimodalMethod(_MemGalleryFullContextMethod):
+    """Local equivalent of Mem-Gallery MMFUMemory."""
+
+    name = "full_context_multimodal"
+    fixed_modality = "multimodal"
+
+
+class TargetSessionContextMethod(_MemGalleryHistoryMethod):
     name = "target_session_context"
+    history_source = "target_session_context"
 
     def build_history(self, dataset: MemoryBenchmarkDataset, qa: Dict[str, Any]) -> List[Dict[str, Any]]:
+        self._validate_modality_inputs(dataset)
         history: List[Dict[str, Any]] = []
         target_sessions = set(qa.get("session_id", []))
         for sid in dataset.session_order():
             if sid not in target_sessions:
                 continue
-            history.extend(history_from_round_ids(dataset.get_session(sid), dataset.rounds))
+            history.extend(
+                history_from_round_ids(
+                    dataset.get_session(sid),
+                    dataset.rounds,
+                    modality=self.modality,
+                )
+            )
+        self._update_history_runtime(history)
         return history
 
 
-class _RetrievalHistoryMethod(HistoryMethod):
+class _RetrievalHistoryMethod(_MemGalleryHistoryMethod):
+    history_source = "retrieval"
+
     def build_history(self, dataset: MemoryBenchmarkDataset, qa: Dict[str, Any]) -> List[Dict[str, Any]]:
+        self._validate_modality_inputs(dataset)
         selected_round_ids = select_round_ids_for_qa(dataset, qa, self.config, runtime_info=self.runtime_info)
         if not selected_round_ids:
             return []
@@ -106,20 +176,35 @@ class _RetrievalHistoryMethod(HistoryMethod):
         history: List[Dict[str, Any]] = []
         allowed_round_ids = set(selected_round_ids)
         for sid in dataset.session_order():
-            history.extend(history_from_round_ids(dataset.get_session(sid), dataset.rounds, allowed_round_ids))
+            history.extend(
+                history_from_round_ids(
+                    dataset.get_session(sid),
+                    dataset.rounds,
+                    allowed_round_ids,
+                    modality=self.modality,
+                )
+            )
+        self.runtime_info.update(
+            {
+                "method_modality": self.modality,
+                "history_source": self.history_source,
+                "captions_loaded": self.modality == "text_only",
+                "images_loaded": self.modality == "multimodal",
+                "history_turns_after_truncation": len(history),
+            }
+        )
         return history
 
 
-class LexicalRAGMethod(_RetrievalHistoryMethod):
-    name = "lexical_rag"
-
-
-class SemanticRAGMethod(_RetrievalHistoryMethod):
-    name = "semantic_rag"
+class SemanticRAGTextMethod(_RetrievalHistoryMethod):
+    name = "semantic_rag_text_only"
+    fixed_modality = "text_only"
 
 
 class SemanticRAGMultimodalMethod(_RetrievalHistoryMethod):
     name = "semantic_rag_multimodal"
+    fixed_modality = "multimodal"
+
 
 
 class M2AAgentMethod(HistoryMethod):
@@ -189,11 +274,12 @@ class MMAAgentMethod(HistoryMethod):
 
 
 def get_method(method_name: str, config: Optional[Dict[str, Any]] = None) -> HistoryMethod:
+    config = config or {}
     registry = {
-        FullContextMethod.name: FullContextMethod,
+        FullContextTextMethod.name: FullContextTextMethod,
+        FullContextMultimodalMethod.name: FullContextMultimodalMethod,
         TargetSessionContextMethod.name: TargetSessionContextMethod,
-        LexicalRAGMethod.name: LexicalRAGMethod,
-        SemanticRAGMethod.name: SemanticRAGMethod,
+        SemanticRAGTextMethod.name: SemanticRAGTextMethod,
         SemanticRAGMultimodalMethod.name: SemanticRAGMultimodalMethod,
         M2AAgentMethod.name: M2AAgentMethod,
         MMAAgentMethod.name: MMAAgentMethod,

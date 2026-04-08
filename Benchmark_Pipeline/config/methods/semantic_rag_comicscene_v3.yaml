@@ -1,7 +1,0 @@
-name: semantic_rag
-retrieval_backend: dense_text
-top_k: 1
-neighbor_window: 2
-text_embedding_model: all-MiniLM-L6-v2
-text_dense_weight: 1.0
-image_dense_weight: 0.0

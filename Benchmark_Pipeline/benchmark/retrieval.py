@@ -5,7 +5,7 @@ from collections import Counter
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Tuple
 
-from .dataset import MemoryBenchmarkDataset
+from .dataset import MemoryBenchmarkDataset, build_round_retrieval_text
 
 
 TOKEN_RE = re.compile(r"[a-z0-9]+")
@@ -25,15 +25,15 @@ def _tokenize(text: str) -> List[str]:
     return TOKEN_RE.findall(text.lower())
 
 
-def _round_text(round_payload: Dict[str, Any]) -> str:
-    raw = round_payload.get("raw", {})
-    captions = raw.get("image_caption", []) or []
-    parts = [
-        str(round_payload.get("user", "")).strip(),
-        str(round_payload.get("assistant", "")).strip(),
-        " ".join(str(item).strip() for item in captions if str(item).strip()),
-    ]
-    return " ".join(part for part in parts if part)
+def _normalize_modality(config: Dict[str, Any]) -> str:
+    raw = str(config.get("modality", "")).strip().lower()
+    if raw in {"text_only", "multimodal"}:
+        return raw
+
+    method_name = str(config.get("name", "")).strip().lower()
+    if method_name == "semantic_rag_multimodal":
+        return "multimodal"
+    return "text_only"
 
 
 def _idf(documents: List[List[str]]) -> Dict[str, float]:
@@ -94,7 +94,13 @@ def _normalize_backend(config: Dict[str, Any]) -> str:
 
 def _normalize_corpus(config: Dict[str, Any]) -> str:
     corpus = str(config.get("retrieval_corpus", "round_text")).strip().lower()
-    return corpus or "round_text"
+    corpus = corpus or "round_text"
+    if corpus != "round_text":
+        raise ValueError(
+            "Only retrieval_corpus=round_text is supported for the current benchmark methods. "
+            f"Unsupported retrieval_corpus: {corpus}"
+        )
+    return corpus
 
 
 def _dataset_round_order(dataset: MemoryBenchmarkDataset) -> List[str]:
@@ -155,28 +161,18 @@ def _build_corpus_rows(
     config: Dict[str, Any],
 ) -> Tuple[List[Tuple[str, str]], Dict[str, Any]]:
     corpus = _normalize_corpus(config)
-    if corpus == "notes":
-        note_text_by_round, notes_path = _load_note_texts(dataset, config)
-        rows = [
-            (round_id, note_text_by_round[round_id])
-            for round_id in _dataset_round_order(dataset)
-            if round_id in note_text_by_round
-        ]
-        return rows, {
-            "retrieval_corpus": "notes",
-            "retrieval_notes_json": str(notes_path),
-            "corpus_entry_count": len(rows),
-        }
+    modality = _normalize_modality(config)
 
     rows: List[Tuple[str, str]] = []
     for round_id in _dataset_round_order(dataset):
         round_payload = dataset.rounds.get(round_id, {})
-        text = _round_text(round_payload)
+        text = build_round_retrieval_text(round_payload, modality=modality)
         if text:
             rows.append((round_id, text))
     return rows, {
         "retrieval_corpus": "round_text",
         "corpus_entry_count": len(rows),
+        "modality": modality,
     }
 
 
@@ -234,6 +230,7 @@ class _BaseRetriever:
         debug: Dict[str, Any] = {
             "retrieval_backend": self.config.get("retrieval_backend", "legacy_sparse"),
             "retrieval_corpus": self.corpus_meta.get("retrieval_corpus", "round_text"),
+            "method_modality": self.corpus_meta.get("modality", _normalize_modality(self.config)),
             "top_k": self.top_k,
             "neighbor_window": self.neighbor_window,
             "seed_round_ids": seed_round_ids,
@@ -351,6 +348,8 @@ class _DenseTextRetriever(_BaseRetriever):
             [row for _, _, row in scored[:5]],
         )
         debug["text_embedding_model"] = self.text_embedding_model
+        debug["caption_text_included"] = self.corpus_meta.get("modality") == "text_only"
+        debug["image_embeddings_built"] = False
         return selected_round_ids, debug
 
 
@@ -373,7 +372,7 @@ class _DenseMultimodalRetriever(_BaseRetriever):
                 "neither vLLM SigLIP2 nor local CLIP is available."
             )
 
-        self.round_rows: List[Tuple[str, Optional[List[float]], Optional[List[float]]]] = []
+        self.round_rows: List[Tuple[str, Optional[List[float]], List[Tuple[str, List[float]]]]] = []
         text_batch_round_ids: List[str] = []
         text_batch_texts: List[str] = []
         image_jobs: List[Tuple[str, str]] = []
@@ -382,25 +381,27 @@ class _DenseMultimodalRetriever(_BaseRetriever):
             images = list(round_payload.get("images", []) or [])
             if not corpus_text and not images:
                 continue
-            self.round_rows.append((round_id, None, None))
+            self.round_rows.append((round_id, None, []))
             if corpus_text:
                 text_batch_round_ids.append(round_id)
                 text_batch_texts.append(corpus_text)
             if images:
-                # Only embed the first image per round to keep index size manageable.
-                image_jobs.append((round_id, images[0]))
+                for image_path in images:
+                    image_jobs.append((round_id, image_path))
 
         text_vectors_by_round: Dict[str, List[float]] = {}
         if text_batch_texts:
             for round_id, vec in zip(text_batch_round_ids, self.text_embedder.embed_batch(text_batch_texts)):
                 text_vectors_by_round[round_id] = vec
 
-        image_vectors_by_round: Dict[str, List[float]] = {}
+        image_vectors_by_round: Dict[str, List[Tuple[str, List[float]]]] = {}
         for round_id, image_path in image_jobs:
-            image_vectors_by_round[round_id] = self.mm_embedder.embed_image(image_path)
+            image_vectors_by_round.setdefault(round_id, []).append(
+                (image_path, self.mm_embedder.embed_image(image_path))
+            )
 
         self.round_rows = [
-            (round_id, text_vectors_by_round.get(round_id), image_vectors_by_round.get(round_id))
+            (round_id, text_vectors_by_round.get(round_id), image_vectors_by_round.get(round_id, []))
             for round_id, _, _ in self.round_rows
         ]
 
@@ -417,9 +418,17 @@ class _DenseMultimodalRetriever(_BaseRetriever):
             image_query_vec = self.mm_embedder.embed_text(query_text)
 
         scored: List[Tuple[float, str, Dict[str, Any]]] = []
-        for round_id, text_vec, image_vec in self.round_rows:
+        total_indexed_images = 0
+        for round_id, text_vec, image_items in self.round_rows:
             text_score = _dense_cosine(text_query_vec or [], text_vec or [])
-            image_score = _dense_cosine(image_query_vec or [], image_vec or [])
+            total_indexed_images += len(image_items)
+            best_image_path = ""
+            image_score = 0.0
+            for image_path, image_vec in image_items:
+                score = _dense_cosine(image_query_vec or [], image_vec or [])
+                if score >= image_score:
+                    image_score = score
+                    best_image_path = image_path
             score = (self.text_dense_weight * text_score) + (self.image_dense_weight * image_score)
             scored.append(
                 (
@@ -430,6 +439,8 @@ class _DenseMultimodalRetriever(_BaseRetriever):
                         "score": score,
                         "text_dense_score": text_score,
                         "image_dense_score": image_score,
+                        "indexed_image_count": len(image_items),
+                        "best_image_path": best_image_path,
                     },
                 )
             )
@@ -448,6 +459,10 @@ class _DenseMultimodalRetriever(_BaseRetriever):
         debug["multimodal_embedding_model"] = self.mm_model
         debug["text_dense_weight"] = self.text_dense_weight
         debug["image_dense_weight"] = self.image_dense_weight
+        debug["caption_text_included"] = False
+        debug["image_embeddings_built"] = total_indexed_images > 0
+        debug["multi_image_indexing_enabled"] = True
+        debug["indexed_image_count"] = total_indexed_images
         return selected_round_ids, debug
 
 
@@ -471,8 +486,8 @@ def _cache_key(dataset: MemoryBenchmarkDataset, config: Dict[str, Any]) -> Tuple
         "retrieval_notes_json",
     ]
     dialog_mtime = dataset.dialog_json_path.stat().st_mtime_ns if dataset.dialog_json_path.exists() else None
-    notes_path = _resolve_notes_path(dataset, config) if corpus == "notes" or config.get("retrieval_notes_json") else None
-    notes_mtime = notes_path.stat().st_mtime_ns if notes_path is not None and notes_path.exists() else None
+    notes_path = None
+    notes_mtime = None
     dataset_key = (
         str(dataset.dialog_json_path),
         str(dataset.image_root),
