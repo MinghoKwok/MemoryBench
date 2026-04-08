@@ -14,7 +14,7 @@ def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Run modular multimodal memory benchmark experiments.")
     parser.add_argument("--task-config", type=str, default="config/tasks/brand_memory_test.yaml")
     parser.add_argument("--model-config", type=str, default="config/models/qwen_local_default.yaml")
-    parser.add_argument("--method-config", type=str, default="config/methods/full_context.yaml")
+    parser.add_argument("--method-config", type=str, default="config/methods/full_context_multimodal.yaml")
     parser.add_argument("--output-root", type=str, default="runs")
     parser.add_argument("--max-questions", type=int, default=0)
     parser.add_argument(

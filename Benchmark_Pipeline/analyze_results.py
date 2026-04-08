@@ -55,7 +55,7 @@ def main():
     print("1. OVERALL METRICS BY TASK × METHOD (F1 / EM / contains_gt)")
     print("=" * 100)
 
-    METHODS_ORDER = ["full_context", "lexical_rag", "semantic_rag", "semantic_rag_multimodal", "m2a"]
+    METHODS_ORDER = ["full_context_multimodal", "full_context_text_only", "semantic_rag_text_only", "semantic_rag_multimodal", "m2a", "mma"]
 
     for task_name in sorted(tasks.keys()):
         methods = tasks[task_name]
@@ -282,7 +282,7 @@ def main():
 
     for task_name in sorted(tasks.keys()):
         methods = tasks[task_name]
-        for m_name in ["lexical_rag", "semantic_rag", "semantic_rag_multimodal"]:
+        for m_name in ["semantic_rag_text_only", "semantic_rag_multimodal"]:
             if m_name not in methods:
                 continue
             preds = load_predictions(methods[m_name]["pred_path"])

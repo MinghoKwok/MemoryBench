@@ -8,7 +8,7 @@ model:
   max_new_tokens: 128
 
 method:
-  name: full_context
+  name: full_context_multimodal
 
 dataset:
   dialog_json: data/dialog/Brand_Memory_Test.json

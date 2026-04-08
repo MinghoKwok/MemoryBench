@@ -87,7 +87,7 @@ def _normalize_backend(config: Dict[str, Any]) -> str:
     if backend:
         return backend
     method_name = str(config.get("name", "")).strip().lower()
-    if method_name == "semantic_rag":
+    if method_name in {"semantic_rag_text_only", "semantic_rag_multimodal"}:
         return "dense_text"
     return "legacy_sparse"
 
