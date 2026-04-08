@@ -22,6 +22,8 @@ def _normalize_modality(config: Dict[str, Any], method_name: str) -> str:
         return raw
     if method_name in {"semantic_rag_multimodal", "full_context_multimodal"}:
         return "multimodal"
+    if method_name in {"full_context_text_only", "semantic_rag_text_only"}:
+        return "text_only"
     return "text_only"
 
 
@@ -127,9 +129,9 @@ class _MemGalleryFullContextMethod(_MemGalleryHistoryMethod):
 
 
 class FullContextTextMethod(_MemGalleryFullContextMethod):
-    """Local equivalent of Mem-Gallery FUMemory."""
+    """Local equivalent of Mem-Gallery FUMemory (text + captions, no images)."""
 
-    name = "full_context"
+    name = "full_context_text_only"
     fixed_modality = "text_only"
 
 
@@ -194,12 +196,8 @@ class _RetrievalHistoryMethod(_MemGalleryHistoryMethod):
         return history
 
 
-class LexicalRAGMethod(_RetrievalHistoryMethod):
-    name = "lexical_rag"
-
-
 class SemanticRAGTextMethod(_RetrievalHistoryMethod):
-    name = "semantic_rag"
+    name = "semantic_rag_text_only"
     fixed_modality = "text_only"
 
 
@@ -207,10 +205,6 @@ class SemanticRAGMultimodalMethod(_RetrievalHistoryMethod):
     name = "semantic_rag_multimodal"
     fixed_modality = "multimodal"
 
-
-# Backward-compatible aliases for existing imports.
-FullContextMethod = FullContextTextMethod
-SemanticRAGMethod = SemanticRAGTextMethod
 
 
 class M2AAgentMethod(HistoryMethod):
@@ -281,17 +275,10 @@ class MMAAgentMethod(HistoryMethod):
 
 def get_method(method_name: str, config: Optional[Dict[str, Any]] = None) -> HistoryMethod:
     config = config or {}
-    normalized_modality = _normalize_modality(config, method_name)
-    if method_name == "full_context" and normalized_modality == "multimodal":
-        method_name = FullContextMultimodalMethod.name
-    elif method_name == "semantic_rag" and normalized_modality == "multimodal":
-        method_name = SemanticRAGMultimodalMethod.name
-
     registry = {
         FullContextTextMethod.name: FullContextTextMethod,
         FullContextMultimodalMethod.name: FullContextMultimodalMethod,
         TargetSessionContextMethod.name: TargetSessionContextMethod,
-        LexicalRAGMethod.name: LexicalRAGMethod,
         SemanticRAGTextMethod.name: SemanticRAGTextMethod,
         SemanticRAGMultimodalMethod.name: SemanticRAGMultimodalMethod,
         M2AAgentMethod.name: M2AAgentMethod,

@@ -83,7 +83,7 @@ def merge_legacy_config(opts: LegacyRunOptions) -> Dict[str, Any]:
         "dataset": dataset,
         "eval": eval_cfg,
         "model": model,
-        "method": base.get("method", {"name": "full_context"}),
+        "method": base.get("method", {"name": "full_context_multimodal"}),
         "run": run_cfg,
     }
 
@@ -91,13 +91,10 @@ def merge_legacy_config(opts: LegacyRunOptions) -> Dict[str, Any]:
 
 def _effective_method_name(method_cfg: Dict[str, Any]) -> str:
     method_name = str(method_cfg.get("name", "method")).strip() or "method"
+    if method_name in {"full_context_multimodal", "full_context_text_only",
+                       "semantic_rag_multimodal", "semantic_rag_text_only"}:
+        return method_name
     modality = str(method_cfg.get("modality", "")).strip().lower()
-    if method_name in {"full_context_multimodal", "semantic_rag_multimodal"}:
-        return method_name
-    if modality == "text_only" and method_name in {"full_context", "semantic_rag", "lexical_rag"}:
-        return method_name
-    if modality == "multimodal" and method_name == "full_context":
-        return "full_context_multimodal"
     if modality in {"text_only", "multimodal"}:
         return f"{method_name}__{modality}"
     return method_name
@@ -244,7 +241,7 @@ def build_payload(
         "model_name": cfg.get("model", {}).get("name", "qwen_local"),
         "model_path": model_ref,
         "method_name": _effective_method_name(cfg.get("method", {})),
-        "base_method_name": cfg.get("method", {}).get("name", "full_context"),
+        "base_method_name": cfg.get("method", {}).get("name", "full_context_multimodal"),
         "method_modality": cfg.get("method", {}).get("modality", ""),
         "mode": cfg["eval"].get("mode", "open"),
         "num_qas": len(dataset.qas),
@@ -295,7 +292,7 @@ def run_benchmark(
     method_cfg = dict(cfg.get("method", {}))
     method_cfg["_model_cfg"] = dict(cfg.get("model", {}))
     method = get_method(
-        str(method_cfg.get("name", "full_context")),
+        str(method_cfg.get("name", "full_context_multimodal")),
         config=method_cfg,
     )
     # Agentic methods (for example M2A) own end-to-end inference via answer().

@@ -1,6 +1,0 @@
-name: lexical_rag
-# Following Mem-Gallery (Bei et al., 2025): default retrieval size K=10
-top_k: 10
-neighbor_window: 0
-lexical_weight: 1.0
-semantic_weight: 0.0

@@ -1,8 +1,0 @@
-name: full_context
-modality: text_only
-
-# Maximum context window in tokens.  Oldest turns are dropped first.
-# Following Mem-Gallery (Bei et al., 2025): include all memory and
-# truncate according to the context token limit.
-# Default 128000 matches GPT-4.1 / GPT-4o family.
-context_token_limit: 128000
