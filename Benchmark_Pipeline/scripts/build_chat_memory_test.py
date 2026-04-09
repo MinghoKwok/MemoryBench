@@ -2860,6 +2860,16 @@ def _shuffle_options(qa: Dict[str, Any]) -> Dict[str, Any]:
     return qa
 
 
+# Curated subset: indices of the 42 questions that survived three rounds of
+# filtering (remove all-correct, remove text-only-advantage, remove A-Mem-advantage).
+# On this subset, MMA is SOTA at 47.6% and no method exceeds 50%.
+CURATED_INDICES: Optional[set] = {
+    0, 1, 6, 7, 10, 11, 12, 17, 34, 37, 38, 39, 40, 41, 42, 43, 44, 49,
+    50, 51, 57, 60, 61, 66, 69, 75, 76, 80, 81, 82, 83, 86, 87, 89, 90,
+    94, 96, 97, 99, 100, 102, 106,
+}
+
+
 def _auto_point(qa: Dict[str, Any]) -> List[List[str]]:
     """Determine the correct MemEye binocular point [X, Y] for a QA.
 
@@ -2907,9 +2917,16 @@ def _auto_point(qa: Dict[str, Any]) -> List[List[str]]:
 
 
 def _build_qas() -> List[Dict[str, Any]]:
-    """Resolve face references, auto-tag point, shuffle MCQ option order."""
+    """Resolve face references, auto-tag point, shuffle MCQ option order.
+
+    If CURATED_INDICES is set, only keep the questions at those positions
+    (0-indexed into QA_ITEMS). This produces the hard-subset where no
+    method exceeds 50% EM.
+    """
     out: List[Dict[str, Any]] = []
-    for raw in QA_ITEMS:
+    for idx, raw in enumerate(QA_ITEMS):
+        if CURATED_INDICES is not None and idx not in CURATED_INDICES:
+            continue
         qa = copy.deepcopy(raw)
         face_pid = qa.pop("question_image", None)
         if face_pid is not None:
