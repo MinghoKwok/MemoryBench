@@ -926,6 +926,172 @@ SESSIONS: Dict[str, Dict[str, Any]] = {
             },
         ],
     },
+
+    # ============================================================
+    # ===== STATE-EVOLUTION sessions (Y3 reasoning support) =====
+    # ============================================================
+    # Each of these sessions deliberately overrides or updates a fact
+    # established in an earlier session. Y3 questions about the FINAL
+    # state cannot be answered correctly by recalling only the original
+    # fact — the model has to detect the override.
+
+    "F3b": {
+        # OVERRIDES F3: Helen reverses her "wait until summer" stance
+        "date": "2026-03-25",
+        "title": "Driving Lessons (Update)",
+        "subtitle": "family · 1:1",
+        "network": "FAM",
+        "screenshots": [
+            {
+                "messages": [
+                    msg("P05", "Tomas — I changed my mind on driving lessons."),
+                    msg("P04", "wait what??"),
+                    msg("P05", "If your grades stay solid, you can start in April. First lesson Saturday the 4th."),
+                    msg("P04", "OMG THANK YOU"),
+                ],
+                "user": "Helen reversing her earlier stance on Tomas's driving lessons, March 25.",
+                "assistant": (
+                    "Stored. IMPORTANT STATE UPDATE: Helen has REVERSED her February 14 decision. "
+                    "She originally said 'wait until summer, not before' for driving lessons (F3); "
+                    "now she's allowing Tomas to start lessons on April 4 instead, conditional on "
+                    "his grades. The current truth is APRIL, not summer. Future questions about "
+                    "Helen's decision should reference this update, not F3."
+                ),
+            },
+        ],
+    },
+
+    "B5b": {
+        # OVERRIDES B5: Priya's PTO is canceled
+        "date": "2026-04-12",
+        "title": "PTO Canceled",
+        "subtitle": "work · 1:1",
+        "network": "BOSS",
+        "screenshots": [
+            {
+                "messages": [
+                    msg("P02", "Marcus, quick update on the May trip — flights canceled, family rescheduled to August."),
+                    msg("P01", "Oh no, sorry to hear. So no PTO May 18-22 anymore?"),
+                    msg("P02", "Right, withdrawing the request. I'll re-submit for August later."),
+                    msg("P01", "Got it, no problem."),
+                ],
+                "user": "Priya canceling her May PTO request, April 12.",
+                "assistant": (
+                    "Stored. IMPORTANT STATE UPDATE: Priya has CANCELED her PTO. The original B5 "
+                    "PTO request (May 18-22, family trip) is no longer active — flights got "
+                    "canceled and the family rescheduled to August. Marcus has acknowledged. "
+                    "Current state: Priya is NOT taking PTO in May. Future questions about the "
+                    "May vacation should answer 'canceled' or 'no longer happening', not 'May 18-22'."
+                ),
+            },
+        ],
+    },
+
+    "B6b": {
+        # OVERRIDES the Daniel-mentor relationship from B1 (sort of)
+        "date": "2026-03-30",
+        "title": "Mentor Switch",
+        "subtitle": "work · 1:1",
+        "network": "BOSS",
+        "screenshots": [
+            {
+                "messages": [
+                    msg("P01", "Daniel — heads up, since the marketing project is heating up I'm asking Jordan to take over your weekly 1:1s for now."),
+                    msg("P03", "Is Priya not going to mentor me anymore?"),
+                    msg("P01", "She still mentors you informally on engineering, but for the project Jordan's your primary check-in."),
+                    msg("P03", "Got it. Thanks for the heads up."),
+                ],
+                "user": "Marcus reassigning Daniel's primary 1:1 from Priya to Jordan, March 30.",
+                "assistant": (
+                    "Stored. IMPORTANT STATE UPDATE: Daniel's PRIMARY 1:1 mentor for the marketing "
+                    "project has been switched from Priya (originally assigned in B1 on Jan 12) to "
+                    "Jordan. Priya still mentors Daniel informally on engineering, but Jordan is "
+                    "now Daniel's primary weekly check-in for the project. Future questions about "
+                    "'who runs Daniel's weekly 1:1s' or 'who is Daniel's project mentor' should "
+                    "answer Jordan, not Priya. The original B1 mentorship is overridden."
+                ),
+            },
+        ],
+    },
+
+    "R3b": {
+        # OVERRIDES R3: Sara's gallery is rescheduled
+        "date": "2026-03-19",
+        "title": "Gallery Rescheduled",
+        "subtitle": "apartment · 1:1",
+        "network": "ROOM",
+        "screenshots": [
+            {
+                "messages": [
+                    msg("P07", "Bad news on the gallery — venue had a flood, opening pushed to April 4."),
+                    msg("P02", "Oh no. Same time, just different date?"),
+                    msg("P07", "Yeah — 6pm Hayes Valley still, just April 4 not the original Saturday."),
+                    msg("P02", "Got it, updated my calendar."),
+                ],
+                "user": "Sara updating Priya about the gallery date change, March 19.",
+                "assistant": (
+                    "Stored. IMPORTANT STATE UPDATE: Sara's gallery opening is RESCHEDULED. The "
+                    "original R3 chat (March 15) said 'next Saturday' (which would be March 21). "
+                    "Now the gallery is moved to April 4 due to a venue flood. Same venue (Hayes "
+                    "Valley) and time (6pm), but the new date is April 4. Future questions about "
+                    "'when is Sara's gallery opening' should answer April 4, not March 21."
+                ),
+            },
+        ],
+    },
+
+    "B7b": {
+        # OVERRIDES B7: marketing project status changes from "good pace" to delayed
+        "date": "2026-04-09",
+        "title": "Project Delay",
+        "subtitle": "work · group",
+        "network": "BOSS",
+        "screenshots": [
+            {
+                "messages": [
+                    msg("P03", "Marcus, Jordan — bad news. Critical bug surfaced in the component library."),
+                    msg("P06", "Confirming. The hero section can't ship next week as planned."),
+                    msg("P01", "Damage estimate?"),
+                    msg("P03", "Realistically two extra weeks. New ship date May 15."),
+                ],
+                "user": "Project status update — marketing refresh hit a bug, delayed.",
+                "assistant": (
+                    "Stored. IMPORTANT STATE UPDATE: The marketing site refresh project has been "
+                    "DELAYED. In B7 (April 2), Marcus said 'good pace, no blockers, hero section "
+                    "ships next week'. Now (April 9) Daniel and Jordan report a critical bug in "
+                    "the component library; new ship date is May 15. Future questions about "
+                    "project status should reflect this delay, not the optimistic April 2 status."
+                ),
+            },
+        ],
+    },
+
+    "R4b": {
+        # RESOLVES R4's open question: Priya decides to stay
+        "date": "2026-04-26",
+        "title": "Lease Renewed",
+        "subtitle": "apartment · 1:1",
+        "network": "ROOM",
+        "screenshots": [
+            {
+                "messages": [
+                    msg("P02", "OK Sara — I've decided. Let's renew."),
+                    msg("P07", "Wait really??"),
+                    msg("P02", "Yeah, the apartment hunt was depressing and I like living with you."),
+                    msg("P07", "YAY 🎉 sending the lease tonight"),
+                ],
+                "user": "Priya decides to stay and renew the lease with Sara, April 26.",
+                "assistant": (
+                    "Stored. IMPORTANT STATE UPDATE / RESOLUTION: Priya has DECIDED to renew the "
+                    "lease and continue living with Sara. In R4 (April 19), she was unsure and "
+                    "considering moving out. Now she's confirmed she wants to stay. Sara is "
+                    "thrilled. Future questions about 'is Priya moving out' or 'will Priya and "
+                    "Sara still be roommates' should answer that they're staying together — the "
+                    "earlier uncertainty has been resolved positively."
+                ),
+            },
+        ],
+    },
 }
 
 
@@ -1041,16 +1207,22 @@ SESSION_PLAN: List[str] = [
     "CX5",  # 2026-03-13
     "R3",   # 2026-03-15
     "B6",   # 2026-03-18
+    "R3b",  # 2026-03-19  ← STATE UPDATE: gallery rescheduled
     "CX6",  # 2026-03-22
+    "F3b",  # 2026-03-25  ← STATE UPDATE: Helen reverses driving lessons stance
     "T5",   # 2026-03-29
+    "B6b",  # 2026-03-30  ← STATE UPDATE: Daniel mentor switched to Jordan
     "B7",   # 2026-04-02
     "CX7",  # 2026-04-05
+    "B7b",  # 2026-04-09  ← STATE UPDATE: marketing project delayed
     "F5",   # 2026-04-10
+    "B5b",  # 2026-04-12  ← STATE UPDATE: Priya cancels PTO
     "CX8",  # 2026-04-13
     "B8",   # 2026-04-15
     "R4",   # 2026-04-19
     "T6",   # 2026-04-22
     "CX9",  # 2026-04-23
+    "R4b",  # 2026-04-26  ← STATE RESOLUTION: Priya decides to renew lease
     "CX10", # 2026-04-28
 ]
 
@@ -1782,6 +1954,781 @@ QA_ITEMS: List[Dict[str, Any]] = [
         "session_id": ["B5"],
         "clue": ["B5:1"],
     },
+
+    # ============================================================
+    # ===== Y3: State-Evolving Synthesis =====
+    # ============================================================
+    # Each Y3 question depends on a STATE UPDATE that overrides an
+    # earlier fact. Correct answers require the model to recognize the
+    # override and report the FINAL state. The wrong options include
+    # the OLD state that a naive retrieval would return.
+
+    {
+        "point": [["X2"], ["Y3"]],
+        "question": "Is Priya still going on her May vacation? She mentioned a trip earlier.",
+        "options": {
+            "A": "Yes — May 18-22 for a family trip, Marcus approved it",
+            "B": "No — she canceled because flights were canceled; family rescheduled to August",
+            "C": "Yes but she moved it to June",
+            "D": "She never requested PTO",
+        },
+        "answer": "B",
+        "session_id": ["B5", "B5b"],
+        "clue": ["B5b:1"],
+    },
+    {
+        "point": [["X2"], ["Y3"]],
+        "question": "What did Helen ultimately decide about Tomas's driving lessons? I remember she was on the fence.",
+        "options": {
+            "A": "She said summer — no lessons until June or later",
+            "B": "She changed her mind and let him start in April, first lesson April 4",
+            "C": "She still hasn't decided",
+            "D": "She said no entirely",
+        },
+        "answer": "B",
+        "session_id": ["F3", "F3b"],
+        "clue": ["F3b:1"],
+    },
+    {
+        "point": [["X2"], ["Y3"]],
+        "question": "Who's currently doing the weekly 1:1 check-ins with Daniel on the marketing project?",
+        "options": {
+            "A": "Priya — she was assigned as his mentor on Jan 12",
+            "B": "Marcus — he does all the check-ins himself",
+            "C": "Jordan — Marcus switched Daniel's primary project 1:1 to her because the project was heating up",
+            "D": "Daniel doesn't have a weekly 1:1",
+        },
+        "answer": "C",
+        "session_id": ["B1", "B6b"],
+        "clue": ["B6b:1"],
+    },
+    {
+        "point": [["X2"], ["Y3"]],
+        "question": "When is Sara's gallery opening? I need to put it on my calendar.",
+        "options": {
+            "A": "Next Saturday after March 15 — she said 6pm Hayes Valley",
+            "B": "It was rescheduled to April 4 due to a venue flood — still 6pm Hayes Valley",
+            "C": "It was canceled entirely",
+            "D": "It already happened and I missed it",
+        },
+        "answer": "B",
+        "session_id": ["R3", "R3b"],
+        "clue": ["R3b:1"],
+    },
+    {
+        "point": [["X2"], ["Y3"]],
+        "question": "Is the marketing site refresh still on track? Last I heard it was going well.",
+        "options": {
+            "A": "Yes — 'good pace, no blockers,' hero section shipping next week",
+            "B": "No — a critical bug pushed the ship date to May 15",
+            "C": "The project was canceled",
+            "D": "It shipped already",
+        },
+        "answer": "B",
+        "session_id": ["B7", "B7b"],
+        "clue": ["B7b:1"],
+    },
+    {
+        "point": [["X2"], ["Y3"]],
+        "question": "Did Priya end up renewing the lease with Sara? She was going back and forth.",
+        "options": {
+            "A": "She's still undecided — asked for until end of month",
+            "B": "She moved out",
+            "C": "Yes — she decided to stay and they're renewing together",
+            "D": "Sara decided to leave instead",
+        },
+        "answer": "C",
+        "session_id": ["R4", "R4b"],
+        "clue": ["R4b:1"],
+    },
+    {
+        "point": [["X2"], ["Y3"]],
+        "question": "Priya was supposed to be out of office in May so Daniel could solo the sprint. Is that still the plan?",
+        "options": {
+            "A": "Yes — she's on PTO May 18-22 and Daniel will solo it",
+            "B": "No — Priya canceled her May PTO, so she'll be around after all",
+            "C": "Daniel is the one going on PTO now",
+            "D": "The sprint was canceled",
+        },
+        "answer": "B",
+        "session_id": ["B5", "B5b"],
+        "clue": ["B5b:1"],
+    },
+    {
+        "point": [["X2"], ["Y3"]],
+        "question": "Tomas wanted driving lessons and his mom kept saying summer. Did she ever budge on that or is he still waiting?",
+        "options": {
+            "A": "Still waiting — she was firm about summer",
+            "B": "She relented and said April was fine if grades stay up",
+            "C": "She said spring after the learner's permit",
+            "D": "Tomas gave up asking",
+        },
+        "answer": "B",
+        "session_id": ["F3", "F3b", "F5"],
+        "clue": ["F3b:1"],
+    },
+    {
+        "point": [["X2"], ["Y3"]],
+        "question": "Daniel told me Priya used to do his weekly 1:1s. Did anything change there?",
+        "options": {
+            "A": "No change — Priya still does his weekly check-ins",
+            "B": "Yes — Marcus moved his primary project 1:1 to Jordan because the project was ramping up. Priya still informally mentors him on engineering.",
+            "C": "Yes — Daniel no longer has any 1:1s",
+            "D": "Marcus took over all mentorship directly",
+        },
+        "answer": "B",
+        "session_id": ["B1", "B6b"],
+        "clue": ["B6b:1"],
+    },
+    {
+        "point": [["X2"], ["Y3"]],
+        "question": "Sara said her gallery was 'next Saturday' but then there was some issue — is it still happening? When exactly?",
+        "options": {
+            "A": "It's happening on the original date",
+            "B": "It was postponed to April 4 because of a venue flood — same time and place otherwise",
+            "C": "She moved it to a different venue",
+            "D": "It was canceled after the flood",
+        },
+        "answer": "B",
+        "session_id": ["R3", "R3b"],
+        "clue": ["R3b:1"],
+    },
+    {
+        "point": [["X2"], ["Y3"]],
+        "question": "Last time we checked in on the marketing project, Daniel said the component library was 60% done and the hero section was about to ship. Any updates since then?",
+        "options": {
+            "A": "Hero section shipped as planned",
+            "B": "It hit a critical bug — hero section can't ship, new timeline is May 15",
+            "C": "The project was scrapped entirely",
+            "D": "No updates — still 60% and on track",
+        },
+        "answer": "B",
+        "session_id": ["B7", "B7b"],
+        "clue": ["B7b:1"],
+    },
+    {
+        "point": [["X2"], ["Y3"]],
+        "question": "Priya was thinking about getting her own place when the lease came up. What ended up happening?",
+        "options": {
+            "A": "She moved out and Sara found a new roommate",
+            "B": "She decided to renew after all — said the apartment hunt was depressing and she likes living with Sara",
+            "C": "They're still undecided",
+            "D": "Sara kicked her out",
+        },
+        "answer": "B",
+        "session_id": ["R4", "R4b"],
+        "clue": ["R4b:1"],
+    },
+
+    # ============================================================
+    # ===== HARD QUESTIONS — natural everyday phrasing =====
+    # ============================================================
+    # These questions are intentionally HARD for the standard methods
+    # but phrased the way Sam (the curator) would actually ask their
+    # memory assistant in everyday use — no benchmark math, no
+    # explicit "across all 33 sessions" framing. Difficulty comes from:
+    #   - Vague references that need disambiguation
+    #   - Specific recall of details buried in long context
+    #   - Implicit reasoning across multiple chats
+    #   - Knowing what's NOT in the chats vs. what is
+
+    # ----- Conversational face-lookup -----
+    {
+        "point": [["X2"], ["Y3"]],
+        "question_image": "P02",  # Priya
+        "question": "Hey, the woman in this picture — I remember she said something to her boss about a vacation request. Do you know what she said about her teammate while she was at it?",
+        "options": {
+            "A": "She said her teammate could solo the new feature that week",
+            "B": "She said her teammate needed more onboarding before she left",
+            "C": "She didn't mention any teammate",
+            "D": "She said her teammate would also be on PTO",
+        },
+        "answer": "A",
+        "session_id": ["B5"],
+        "clue": ["B5:1"],
+    },
+    {
+        "point": [["X2"], ["Y3"]],
+        "question_image": "P06",  # Jordan
+        "question": "This person reached out to apologize to someone. After saying sorry, what did she suggest about how they should act if they bumped into each other socially?",
+        "options": {
+            "A": "She suggested they avoid each other",
+            "B": "She suggested they should just be normal in social settings",
+            "C": "She suggested she'd block them on social media",
+            "D": "She didn't bring it up",
+        },
+        "answer": "B",
+        "session_id": ["T4"],
+        "clue": ["T4:2"],
+    },
+    {
+        "point": [["X2"], ["Y3"]],
+        "question_image": "P05",  # Helen
+        "question": "She had a family chat with both her kids about Saturday plans. Do you remember what condition she gave her son for sleeping over at his friend's place?",
+        "options": {
+            "A": "Only if he finished his homework first",
+            "B": "Only if his friend's parents were going to be home",
+            "C": "Only if he was back by Sunday morning",
+            "D": "She said no to the sleepover",
+        },
+        "answer": "B",
+        "session_id": ["F4"],
+        "clue": ["F4:1"],
+    },
+    {
+        "point": [["X2"], ["Y3"]],
+        "question_image": "P10",  # Ryan
+        "question": "This guy in the photo — I want to message him about a birthday party. Across all the chats I've seen him in, who else has actually talked TO him directly (in the same screenshot)?",
+        "options": {
+            "A": "Only his current partner",
+            "B": "His current partner and his ex (the designer)",
+            "C": "His current partner, his ex, and someone from her family",
+            "D": "Nobody — he's only in 1:1 chats with one person",
+        },
+        "answer": "B",
+        "session_id": ["T1", "T2", "T3", "T6"],
+        "clue": ["T6:1"],
+    },
+    {
+        "point": [["X2"], ["Y3"]],
+        "question_image": "P12",  # Elena
+        "question": "I want to ask her how things are going with her boyfriend. There was a time she was upset about him texting his ex — at what time of night did she catch the texts?",
+        "options": {
+            "A": "Around 9 PM",
+            "B": "Around 11 PM",
+            "C": "Around 1 AM",
+            "D": "Around 4 AM",
+        },
+        "answer": "C",
+        "session_id": ["T2"],
+        "clue": ["T2:1"],
+    },
+    {
+        "point": [["X2"], ["Y3"]],
+        "question_image": "P04",  # Tomas
+        "question": "Is this kid old enough to drive yet? I keep losing track. What's his actual situation right now based on what we know?",
+        "options": {
+            "A": "He has a full driver's license",
+            "B": "He just got his learner's permit but his mom said no driving until he takes lessons in summer",
+            "C": "He failed the permit test",
+            "D": "He hasn't started the process yet",
+        },
+        "answer": "B",
+        "session_id": ["F3", "F5"],
+        "clue": ["F3:1", "F5:1"],
+    },
+
+    # ----- Conversational relationship / role -----
+    {
+        "point": [["X2"], ["Y3"]],
+        "question": "Sara invited Priya to that art thing of hers — where was it again? I want to look up directions.",
+        "options": {
+            "A": "SoMa",
+            "B": "Hayes Valley",
+            "C": "The Mission",
+            "D": "She didn't say where",
+        },
+        "answer": "B",
+        "session_id": ["R3"],
+        "clue": ["R3:1"],
+    },
+    {
+        "point": [["X2"], ["Y3"]],
+        "question": "Wait, who actually lives with Priya, and what does that person do for work? I keep mixing it up with my other friends' situations.",
+        "options": {
+            "A": "Sara, who is a freelance illustrator",
+            "B": "Sara, who works at the same office as Priya",
+            "C": "A coworker named Helen",
+            "D": "Priya lives alone",
+        },
+        "answer": "A",
+        "session_id": ["R1", "R2"],
+        "clue": ["R1:1"],
+    },
+    {
+        "point": [["X2"], ["Y3"]],
+        "question": "I'm trying to figure out which of my friends are in the same circle as my work people. Is there any actual overlap between Marcus's team and Helen's family?",
+        "options": {
+            "A": "Yes, Helen's son works with Marcus",
+            "B": "Yes, Marcus and Helen are siblings",
+            "C": "No, those two groups don't overlap in any of my chats",
+            "D": "Yes, Helen's daughter is engaged to Daniel",
+        },
+        "answer": "C",
+        "session_id": [],
+        "clue": [],
+    },
+    {
+        "point": [["X2"], ["Y3"]],
+        "question": "Of Helen, Mia, and Sara — they're all women I have chats with. Who among them is actually a mom (not just a daughter or single)?",
+        "options": {
+            "A": "Just Helen",
+            "B": "Helen and Mia (Mia has a child too)",
+            "C": "All three",
+            "D": "None of them",
+        },
+        "answer": "A",
+        "session_id": ["F1", "F2", "F4"],
+        "clue": ["F4:1"],
+    },
+
+    # ----- Conversational false-memory -----
+    {
+        "point": [["X2"], ["Y3"]],
+        "question": "Wait, didn't Priya book May 15-19 off for a wedding? I want to make sure I have the dates right before I plan around her.",
+        "options": {
+            "A": "Yes, May 15-19, wedding",
+            "B": "No — it was May 18-22 for a family trip, not a wedding",
+            "C": "Yes on the dates but it was a funeral",
+            "D": "No — she canceled the PTO",
+        },
+        "answer": "B",
+        "session_id": ["B5"],
+        "clue": ["B5:1"],
+    },
+    {
+        "point": [["X2"], ["Y3"]],
+        "question": "Daniel and Jordan have a recurring sync for that marketing thing, right? I want to add it to my calendar — it's Tuesdays?",
+        "options": {
+            "A": "Yes, Tuesdays",
+            "B": "No — they agreed on Mondays",
+            "C": "No — they meet every other Friday",
+            "D": "No, they don't have a recurring sync",
+        },
+        "answer": "B",
+        "session_id": ["B6"],
+        "clue": ["B6:2"],
+    },
+    {
+        "point": [["X2"], ["Y3"]],
+        "question": "Remind me — Ryan and Jordan dated for like 6 months before they broke up, right?",
+        "options": {
+            "A": "Yes, about 6 months",
+            "B": "We don't actually know how long they dated; the chats only say they've been broken up for over a year now",
+            "C": "Yes, exactly 8 months",
+            "D": "No, they never dated",
+        },
+        "answer": "B",
+        "session_id": ["T2"],
+        "clue": ["T2:2"],
+    },
+    {
+        "point": [["X2"], ["Y3"]],
+        "question": "Sara works at the same design agency as Jordan, doesn't she? I was going to ask her to introduce me.",
+        "options": {
+            "A": "Yes, same agency",
+            "B": "No — Sara is a freelance illustrator, she doesn't share an employer with Jordan",
+            "C": "Yes, but different team",
+            "D": "Yes, but Sara is leaving soon",
+        },
+        "answer": "B",
+        "session_id": ["R1", "R3"],
+        "clue": ["R1:1"],
+    },
+
+    # ----- Conversational temporal -----
+    {
+        "point": [["X2"], ["Y3"]],
+        "question": "Roughly how long ago did I first start texting with Helen about her family stuff? I'm curious how the timeline lines up with everything else.",
+        "options": {
+            "A": "About a week before any of the other contacts",
+            "B": "Around the same time as everything else",
+            "C": "Long after most other chats started",
+            "D": "Helen was actually my most recent new contact",
+        },
+        "answer": "A",
+        "session_id": ["F1"],
+        "clue": ["F1:1"],
+    },
+    {
+        "point": [["X2"], ["Y3"]],
+        "question": "Did Sara invite Priya to the gallery before or after Daniel and Jordan started working together on the marketing project?",
+        "options": {
+            "A": "Before — by a few days",
+            "B": "After, by about a week",
+            "C": "On the same day",
+            "D": "Months apart",
+        },
+        "answer": "A",
+        "session_id": ["R3", "B6"],
+        "clue": ["R3:1", "B6:1"],
+    },
+    {
+        "point": [["X2"], ["Y3"]],
+        "question": "If I'm trying to put it on a timeline: which of these came LAST? Marcus's first sprint planning, Tomas's permit, Sara's gallery invite, or the three-way birthday group chat?",
+        "options": {
+            "A": "Marcus's sprint planning",
+            "B": "Sara's gallery invite",
+            "C": "Tomas's permit",
+            "D": "The three-way birthday group chat",
+        },
+        "answer": "D",
+        "session_id": ["B1", "F5", "T6", "R3"],
+        "clue": ["B1:1", "R3:1", "F5:1", "T6:1"],
+    },
+    {
+        "point": [["X2"], ["Y3"]],
+        "question": "How long ago was the family chat where Helen's daughter was promised ice cream? Just rough — like a week ago, a month, longer?",
+        "options": {
+            "A": "Only a few days ago",
+            "B": "About a month ago",
+            "C": "Around 4-6 weeks ago",
+            "D": "Several months ago",
+        },
+        "answer": "C",
+        "session_id": ["F4"],
+        "clue": ["F4:1"],
+    },
+
+    # ----- Conversational aggregation -----
+    {
+        "point": [["X2"], ["Y3"]],
+        "question": "I want to get a sense of how active Priya has been in my chats overall. Is she more active in our work conversations or in the apartment-life stuff with Sara?",
+        "options": {
+            "A": "More in work conversations (BOSS network)",
+            "B": "More in apartment chats (ROOM network)",
+            "C": "About equally split between the two",
+            "D": "Almost nothing in either",
+        },
+        "answer": "A",
+        "session_id": [],
+        "clue": [],
+    },
+    {
+        "point": [["X2"], ["Y3"]],
+        "question": "Has anyone outside Helen's immediate family ever been mentioned by name in their family chats? Like a friend or a teacher?",
+        "options": {
+            "A": "No, only family members are named",
+            "B": "Yes — Tomas's friend Marco came up once",
+            "C": "Yes — a teacher named Mrs. Thompson",
+            "D": "Yes — multiple friends and teachers",
+        },
+        "answer": "B",
+        "session_id": ["F4"],
+        "clue": ["F4:1"],
+    },
+    {
+        "point": [["X2"], ["Y3"]],
+        "question": "Across all the chats with Marcus, has Daniel ever been in one without Marcus directly being there too?",
+        "options": {
+            "A": "No, every Daniel chat includes Marcus",
+            "B": "Yes — Daniel and Priya have 1:1 chats without Marcus",
+            "C": "Yes — Daniel has 1:1 chats with Jordan that Marcus is not in",
+            "D": "Both B and C are true",
+        },
+        "answer": "D",
+        "session_id": ["B3", "B6", "B8"],
+        "clue": ["B3:1", "B6:1", "B8:1"],
+    },
+    {
+        "point": [["X2"], ["Y3"]],
+        "question": "I'm looking at how many different people I've actually been chatting with across all my conversations — not counting any names that only came up secondhand or in correction chats. About how many real distinct people is that?",
+        "options": {
+            "A": "Around 6",
+            "B": "Around 10",
+            "C": "Around 14",
+            "D": "Around 20",
+        },
+        "answer": "B",
+        "session_id": [],
+        "clue": [],
+    },
+    {
+        "point": [["X2"], ["Y3"]],
+        "question": "Sara complained to Priya about something at home — what was it specifically, and what was Priya's reaction?",
+        "options": {
+            "A": "Dishes piling up; Priya promised to clean",
+            "B": "Late-night Slack notifications keeping her awake; Priya promised to mute after 10pm",
+            "C": "Loud music; Priya promised to use headphones",
+            "D": "Sara never complained about anything",
+        },
+        "answer": "B",
+        "session_id": ["R2"],
+        "clue": ["R2:1"],
+    },
+
+    # ----- Conversational cross-network -----
+    {
+        "point": [["X2"], ["Y3"]],
+        "question": "It hit me the other day that Jordan from work is actually Ryan's ex. Does Elena know about this overlap, or did I just figure it out myself?",
+        "options": {
+            "A": "Elena doesn't know yet",
+            "B": "Elena knows — she actually mentioned it to Ryan herself, calling it a 'small world' moment",
+            "C": "Elena knows but is upset about it",
+            "D": "Ryan told Elena privately and she hasn't reacted",
+        },
+        "answer": "B",
+        "session_id": ["T5"],
+        "clue": ["T5:1"],
+    },
+    {
+        "point": [["X2"], ["Y3"]],
+        "question": "Of all my friends, who connects the most different parts of my life — like work, home, family, dating circles?",
+        "options": {
+            "A": "Marcus — he knows everyone",
+            "B": "Priya — she's the bridge between work and my apartment life",
+            "C": "Helen — she connects family and work",
+            "D": "Nobody really crosses circles",
+        },
+        "answer": "B",
+        "session_id": [],
+        "clue": [],
+    },
+    {
+        "point": [["X2"], ["Y3"]],
+        "question": "Has there ever been a single chat where someone from my work circle and someone from my dating drama (Elena/Ryan/Jordan) actually talk to each other?",
+        "options": {
+            "A": "No, work and dating circles never overlap in my chats",
+            "B": "Yes — the project kickoff between Daniel (work) and Jordan (Ryan's ex)",
+            "C": "Yes — Marcus and Elena once",
+            "D": "Yes — Priya and Ryan worked together briefly",
+        },
+        "answer": "B",
+        "session_id": ["B6"],
+        "clue": ["B6:1"],
+    },
+
+    # ----- Conversational anomaly / one-of -----
+    {
+        "point": [["X2"], ["Y3"]],
+        "question": "I keep hearing 'Owen' come up in my own messages but I can't picture him. Have I actually had a real chat with someone named Owen or am I making that up?",
+        "options": {
+            "A": "Yes, Owen is one of Daniel's coworkers — he's in the project chats",
+            "B": "Owen has only ever come up when I was second-guessing my memory in a follow-up chat — he's never in any actual chat I've had",
+            "C": "Owen is Marcus's boss",
+            "D": "Owen is Helen's brother",
+        },
+        "answer": "B",
+        "session_id": [],
+        "clue": [],
+    },
+    {
+        "point": [["X2"], ["Y3"]],
+        "question": "What about Kai? Is he my gym friend or someone's tutor? I remember the name but not where from.",
+        "options": {
+            "A": "Kai is Tomas's tutor — he comes up in the family chats",
+            "B": "Kai is my gym friend who occasionally trains with me",
+            "C": "Kai has never appeared in any actual chat — he was only mentioned by me in a correction conversation",
+            "D": "Kai is Marcus's gym buddy",
+        },
+        "answer": "C",
+        "session_id": [],
+        "clue": [],
+    },
+    {
+        "point": [["X2"], ["Y3"]],
+        "question": "Looking at the work chats — was there one where Marcus wasn't actually in the chat himself, even though it was about his team?",
+        "options": {
+            "A": "No, Marcus is in every BOSS chat",
+            "B": "Yes — there are at least 3 chats just between Priya and Daniel without Marcus",
+            "C": "Yes, but only one such chat",
+            "D": "Marcus isn't in any of the work chats",
+        },
+        "answer": "B",
+        "session_id": ["B3", "B8"],
+        "clue": ["B3:1", "B8:1"],
+    },
+    {
+        "point": [["X2"], ["Y3"]],
+        "question": "Out of Elena, Ryan, and Jordan — was there ever a chat with all three of them in the same conversation, or have they only talked in pairs?",
+        "options": {
+            "A": "Only in pairs — never all three at once",
+            "B": "Yes — all three were in a group chat for a friend's birthday party",
+            "C": "Yes — they had a group therapy session once",
+            "D": "Jordan was never in any chat with Elena",
+        },
+        "answer": "B",
+        "session_id": ["T6"],
+        "clue": ["T6:1"],
+    },
+
+    # ============================================================
+    # ===== X1: Scene Gist — "what kind of chat is this?" =====
+    # ============================================================
+    # Uses question_image pointing to a SCREENSHOT (not a face).
+    # Model must classify the chat type from visual gist alone.
+
+    {
+        "x_tag": "X1", "y_tag": "Y1",
+        "point": [["X1"], ["Y1"]],
+        "question_image": f"../image/{IMG_SUBDIR}/screenshots/B2_1.png",
+        "question": "Look at this chat screenshot. Is this a work conversation, a family chat, or a personal / relationship chat?",
+        "options": {
+            "A": "Work conversation",
+            "B": "Family chat",
+            "C": "Personal / relationship",
+            "D": "Apartment / roommate chat",
+        },
+        "answer": "A",
+        "session_id": ["B2"],
+        "clue": ["B2:1"],
+    },
+    {
+        "x_tag": "X1", "y_tag": "Y1",
+        "point": [["X1"], ["Y1"]],
+        "question_image": f"../image/{IMG_SUBDIR}/screenshots/F4_1.png",
+        "question": "What kind of conversation does this screenshot show?",
+        "options": {
+            "A": "A work team discussing sprint planning",
+            "B": "Friends planning a birthday party",
+            "C": "A family with a parent and children discussing weekend plans",
+            "D": "Roommates discussing rent",
+        },
+        "answer": "C",
+        "session_id": ["F4"],
+        "clue": ["F4:1"],
+    },
+    {
+        "x_tag": "X1", "y_tag": "Y1",
+        "point": [["X1"], ["Y1"]],
+        "question_image": f"../image/{IMG_SUBDIR}/screenshots/T6_1.png",
+        "question": "Looking at this group chat screenshot, how many distinct speakers appear?",
+        "options": {
+            "A": "2",
+            "B": "3",
+            "C": "4",
+            "D": "5 or more",
+        },
+        "answer": "B",
+        "session_id": ["T6"],
+        "clue": ["T6:1"],
+    },
+    {
+        "x_tag": "X1", "y_tag": "Y2",
+        "point": [["X1"], ["Y2"]],
+        "question": "Across all the chat screenshots I've saved, roughly how many are work-related conversations vs personal / family ones?",
+        "options": {
+            "A": "About half and half",
+            "B": "More work-related than personal",
+            "C": "More personal than work-related",
+            "D": "Almost all are work-related",
+        },
+        "answer": "A",
+        "session_id": [],
+        "clue": [],
+    },
+
+    # ============================================================
+    # ===== X3: Spatial Grounding — layout and position =====
+    # ============================================================
+
+    {
+        "x_tag": "X3", "y_tag": "Y1",
+        "point": [["X3"], ["Y1"]],
+        "question": "In the sprint planning chat between Marcus and Priya, are Marcus's message bubbles on the left side or the right side?",
+        "options": {
+            "A": "Left side",
+            "B": "Right side",
+            "C": "They alternate sides",
+            "D": "Marcus doesn't appear in that chat",
+        },
+        "answer": "A",
+        "session_id": ["B1"],
+        "clue": ["B1:1"],
+    },
+    {
+        "x_tag": "X3", "y_tag": "Y1",
+        "point": [["X3"], ["Y1"]],
+        "question": "In the family weekend plans group chat, whose message appears FIRST (topmost) in the screenshot?",
+        "options": {
+            "A": "Tomas",
+            "B": "Mia",
+            "C": "Helen",
+            "D": "Marcus",
+        },
+        "answer": "C",
+        "session_id": ["F4"],
+        "clue": ["F4:1"],
+    },
+    {
+        "x_tag": "X3", "y_tag": "Y2",
+        "point": [["X3"], ["Y2"]],
+        "question": "Looking across all chats Priya appears in — is she always on the same side (left or right), or does she switch sides in different conversations?",
+        "options": {
+            "A": "Always on the left",
+            "B": "Always on the right",
+            "C": "She switches sides depending on the chat",
+            "D": "Priya only appears in one chat",
+        },
+        "answer": "B",
+        "session_id": ["B1", "B2", "R1"],
+        "clue": ["B1:1", "R1:1"],
+    },
+    {
+        "x_tag": "X3", "y_tag": "Y2",
+        "point": [["X3"], ["Y2"]],
+        "question": "In the love-triangle chats, Elena's messages are on which side? And when Jordan chats with Ryan (the boundary chat), is Jordan on the same side as Elena or opposite?",
+        "options": {
+            "A": "Elena is right, Jordan is left — they're on opposite sides",
+            "B": "Both Elena and Jordan are on the right",
+            "C": "Both are on the left",
+            "D": "Their side varies per chat",
+        },
+        "answer": "A",
+        "session_id": ["T2", "T3"],
+        "clue": ["T2:1", "T3:1"],
+    },
+
+    # ============================================================
+    # ===== X4: Micro-Attribute — fine-grained visual detail =====
+    # ============================================================
+
+    {
+        "x_tag": "X4", "y_tag": "Y1",
+        "point": [["X4"], ["Y1"]],
+        "question": "What does the chat header (title) say in the first sprint planning screenshot?",
+        "options": {
+            "A": "Sprint Planning",
+            "B": "Team Meeting",
+            "C": "Welcome Daniel",
+            "D": "Project Review",
+        },
+        "answer": "A",
+        "session_id": ["B1"],
+        "clue": ["B1:1"],
+    },
+    {
+        "x_tag": "X4", "y_tag": "Y1",
+        "point": [["X4"], ["Y1"]],
+        "question": "In the chat screenshots, messages on the LEFT side use what bubble color, and messages on the RIGHT side use what color?",
+        "options": {
+            "A": "Left = light gray, Right = light blue",
+            "B": "Left = light blue, Right = light gray",
+            "C": "Both sides use the same white color",
+            "D": "Left = green, Right = white",
+        },
+        "answer": "A",
+        "session_id": ["B1"],
+        "clue": ["B1:1"],
+    },
+    {
+        "x_tag": "X4", "y_tag": "Y2",
+        "point": [["X4"], ["Y2"]],
+        "question": "Do the chat screenshots for the sprint planning (B1) and the PTO request (B5) share the same subtitle style, or do they have different subtitles?",
+        "options": {
+            "A": "Both say 'work · 1:1'",
+            "B": "B1 says 'work · 1:1' and B5 says 'work · group'",
+            "C": "Both have no subtitle",
+            "D": "B1 says 'Sprint Planning' and B5 says 'PTO Request'",
+        },
+        "answer": "A",
+        "session_id": ["B1", "B5"],
+        "clue": ["B1:1", "B5:1"],
+    },
+    {
+        "x_tag": "X4", "y_tag": "Y2",
+        "point": [["X4"], ["Y2"]],
+        "question": "Across the birthday party group chat (T6) and the family weekend plans (F4), both are group chats. Do they have the same or different subtitle labels?",
+        "options": {
+            "A": "Same — both say 'group'",
+            "B": "Different — T6 says 'personal · group' and F4 says 'family · group'",
+            "C": "Neither has a subtitle",
+            "D": "Same — both say 'family · group'",
+        },
+        "answer": "B",
+        "session_id": ["T6", "F4"],
+        "clue": ["T6:1", "F4:1"],
+    },
 ]
 
 
@@ -1913,18 +2860,68 @@ def _shuffle_options(qa: Dict[str, Any]) -> Dict[str, Any]:
     return qa
 
 
+def _auto_point(qa: Dict[str, Any]) -> List[List[str]]:
+    """Determine the correct MemEye binocular point [X, Y] for a QA.
+
+    Heuristics:
+    - X axis:
+        X1 if qa has x_tag="X1" (scene gist)
+        X3 if qa has x_tag="X3" or question mentions spatial keywords
+        X4 if qa has x_tag="X4" or question mentions micro-detail keywords
+        X2 otherwise (default: entity instance retrieval)
+    - Y axis:
+        Y3 if any session_id ends in "b" (state-update sessions)
+           or qa has y_tag="Y3"
+        Y1 if len(session_id) <= 1 and no cross-session linking needed
+        Y2 otherwise (cross-session linking)
+    """
+    q_text = qa.get("question", "").lower()
+    sids = qa.get("session_id", [])
+
+    # --- X axis ---
+    x_tag = qa.get("x_tag")
+    if x_tag:
+        x = [x_tag]
+    elif any(kw in q_text for kw in ["left or right", "which side", "left side", "right side",
+                                      "bubble position", "appears first"]):
+        x = ["X3"]
+    elif any(kw in q_text for kw in ["header text", "chat title", "bubble color",
+                                      "exact text", "subtitle"]):
+        x = ["X4"]
+    else:
+        x = ["X2"]
+
+    # --- Y axis ---
+    y_tag = qa.get("y_tag")
+    if y_tag:
+        y = [y_tag]
+    elif any(sid.endswith("b") for sid in sids):
+        # References a state-update session → Y3
+        y = ["Y3"]
+    elif len(sids) <= 1:
+        y = ["Y1"]
+    else:
+        y = ["Y2"]
+
+    return [x, y]
+
+
 def _build_qas() -> List[Dict[str, Any]]:
-    """Resolve any V-category face references and shuffle MCQ option order."""
+    """Resolve face references, auto-tag point, shuffle MCQ option order."""
     out: List[Dict[str, Any]] = []
     for raw in QA_ITEMS:
         qa = copy.deepcopy(raw)
         face_pid = qa.pop("question_image", None)
         if face_pid is not None:
-            # Could be a persona id ("P01") or already a path string
             if isinstance(face_pid, str) and face_pid in PERSONAS:
                 qa["question_image"] = avatar_rel(face_pid)
             else:
                 qa["question_image"] = face_pid
+        # Auto-tag point (overrides the placeholder in QA_ITEMS)
+        qa["point"] = _auto_point(qa)
+        # Remove internal-only tags that shouldn't appear in output
+        qa.pop("x_tag", None)
+        qa.pop("y_tag", None)
         qa = _shuffle_options(qa)
         out.append(qa)
     return out

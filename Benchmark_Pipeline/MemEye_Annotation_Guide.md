@@ -119,35 +119,38 @@ Use `X4` for:
 
 ## Y-Axis Rules
 
-### `Y1`: Atomic Retrieval
+### `Y1`: Direct Retrieval
 
-Use `Y1` when the answer can be recovered from one local memory fragment without cross-session synthesis.
+This is the lowest reasoning level. The model only needs to retrieve a single fact from a single session, without linking information across sessions or resolving ambiguity. It mainly tests whether the model can access stored memory at all.
 
 Use `Y1` for:
 
 - one-session lookup
 - one-image lookup
 - one fact tied to one clearly relevant clue span
+- no cross-session linking needed
 
-### `Y2`: Relational Association
+### `Y2`: Compositional Linking
 
-Use `Y2` when the answer requires linking distributed evidence across screenshots, modalities, or sessions.
+At this level, the model must connect information across sessions, modalities, or references. The answer is not contained in one isolated memory fragment, but can still be obtained by combining consistent evidence. Importantly, this level remains **monotonic**: later information does not overwrite or invalidate earlier information.
 
 Use `Y2` for:
 
 - “the person who said A later said what?”
 - linking a name or instance to later evidence
 - verifying whether an entity did or did not satisfy some condition after checking multiple pieces of evidence
+- cross-session or cross-modal reference resolution where evidence is consistent
 
-### `Y3`: Evolutionary Synthesis
+### `Y3`: State-Evolving Synthesis
 
-Use `Y3` when the answer requires state revision, multi-constraint integration, or non-monotonic update over time.
+This is the highest reasoning level. The model must reason over evolving states, where later evidence may update, override, or conflict with earlier memory. Solving these tasks requires **non-monotonic reasoning**, conflict detection, and coherent world-model revision rather than simple retrieval or linking.
 
 Use `Y3` for:
 
+- inferring the **current** state after several updates (e.g., a decision is made, then reversed)
 - planning under changing constraints
-- inferring the current state after several updates
 - reconciling conflicting evidence
+- questions where the naive (first-seen) answer is wrong because it was later overridden
 
 ## Partner Rules
 
