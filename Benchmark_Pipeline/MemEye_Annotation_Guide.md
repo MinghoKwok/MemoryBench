@@ -41,29 +41,13 @@ Rules:
 
 - `point[0]` is the `X` axis list.
 - `point[1]` is the `Y` axis list.
-- Every `X` label must be one of `X0`, `X1`, `X2`, `X3`, `X4`.
+- Every `X` label must be one of `X1`, `X2`, `X3`, `X4`.
 - Every `Y` label must be one of `Y1`, `Y2`, `Y3`.
 - Prefer one `X` label and one `Y` label.
 - Use multiple `X` labels only when the question truly combines multiple visual demands.
 - Use multiple `Y` labels only in rare cases. In most cases, choose the highest reasoning level that best characterizes the item.
 
 ## X-Axis Rules
-
-### `X0`: Inter-Image Pattern Induction
-
-Use `X0` when the model must infer a latent visual rule across multiple prior images, rather than retrieve a single visible fact from one image.
-
-Use `X0` for:
-
-- brand-family or design-language induction across several examples
-- identifying a new candidate by matching an inferred visual style
-- questions whose answer depends on a pattern that is never explicitly verbalized
-
-Do not use `X0` for:
-
-- a single-image recognition question
-- a single-image color or object lookup
-- a question that is fully answerable from one clearly named visual instance
 
 ### `X1`: Global Scene Gist
 

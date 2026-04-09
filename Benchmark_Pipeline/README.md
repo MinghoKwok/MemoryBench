@@ -8,13 +8,14 @@ The benchmark separates:
 - memory method selection
 - run artifact storage
 
-The current sample task is `brand_memory_test`. The benchmark supports local and API-backed model routers, plus multiple memory methods:
+Current tasks include `brand_memory_test` and `chat_memory_test`. The benchmark supports local and API-backed model routers, plus multiple memory methods:
 - `full_context_multimodal`
 - `full_context_text_only`
 - `semantic_rag_multimodal`
 - `semantic_rag_text_only`
 - `m2a`
 - `mma`
+- `a_mem`
 
 For MemEye task design and `point` annotation rules, read:
 
@@ -263,7 +264,9 @@ Also accepted for the QA list:
 - `qas`
 
 - `point` should use MemEye binocular coordinates, for example `[['X2'], ['Y1']]`
-- multiple labels are allowed when justified, for example `[['X0', 'X4'], ['Y3']]`
+- X labels: `X1` (Scene Gist), `X2` (Entity Instance), `X3` (Spatial Grounding), `X4` (Micro-Attribute)
+- Y labels: `Y1` (Direct Retrieval), `Y2` (Compositional Linking), `Y3` (State-Evolving Synthesis)
+- multiple labels are allowed when justified, for example `[['X2', 'X4'], ['Y3']]`
 - `input_image` may use relative paths such as `../image/...`, `./image/...`, `image/...`, or `data/image/...`
 - absolute image paths are supported
 - `file://...` image paths are supported
