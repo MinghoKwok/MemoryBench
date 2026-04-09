@@ -342,11 +342,19 @@ def run_benchmark(
         )
 
         # --- Single inference path ---
+        # Resolve any QA-level question images (e.g. a face crop the model
+        # must identify against avatars seen in past chat screenshots).
+        # Text-only methods are deliberately blind to images on the question
+        # turn too, so face-lookup tasks correctly fail on text-only methods.
+        question_image_paths = dataset.resolve_question_images(qa)
+        if getattr(method, "modality", "") == "text_only":
+            question_image_paths = []
+
         t0 = dt.datetime.now()
         if is_agentic:
             pred = method.answer(dataset, qa, question)
         else:
-            pred = router.answer(history, question)
+            pred = router.answer(history, question, question_images=question_image_paths)
         latency_ms = int((dt.datetime.now() - t0).total_seconds() * 1000)
 
         # --- Scoring ---

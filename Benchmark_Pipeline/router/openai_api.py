@@ -1,4 +1,4 @@
-from typing import Any, Dict, List
+from typing import Any, Dict, List, Optional
 
 from .base import BaseRouter
 from .http_utils import encode_image_data_url, post_json, require_api_key
@@ -22,7 +22,12 @@ class OpenAIAPIRouter(BaseRouter):
         self.timeout = timeout
         self.system_prompt = system_prompt
 
-    def _to_messages(self, history_messages: List[Dict[str, Any]], question: str) -> List[Dict[str, Any]]:
+    def _to_messages(
+        self,
+        history_messages: List[Dict[str, Any]],
+        question: str,
+        question_images: Optional[List[str]] = None,
+    ) -> List[Dict[str, Any]]:
         messages: List[Dict[str, Any]] = [
             {
                 "role": "system",
@@ -39,33 +44,41 @@ class OpenAIAPIRouter(BaseRouter):
                 content.append(
                     {
                         "type": "image_url",
-                        "image_url": {"url": encode_image_data_url(image_path), "detail": "low"},
+                        "image_url": {"url": encode_image_data_url(image_path), "detail": "high"},
                     }
                 )
             if content:
                 messages.append({"role": msg.get("role", "user"), "content": content})
 
-        messages.append(
+        final_content: List[Dict[str, Any]] = [
             {
-                "role": "user",
-                "content": [
-                    {
-                        "type": "text",
-                        "text": (
-                            "Answer based on the conversation and images above. "
-                            "Be concise and factual.\n"
-                            f"Question: {question}"
-                        ),
-                    }
-                ],
+                "type": "text",
+                "text": (
+                    "Answer based on the conversation and images above. "
+                    "Be concise and factual.\n"
+                    f"Question: {question}"
+                ),
             }
-        )
+        ]
+        for image_path in question_images or []:
+            final_content.append(
+                {
+                    "type": "image_url",
+                    "image_url": {"url": encode_image_data_url(image_path), "detail": "high"},
+                }
+            )
+        messages.append({"role": "user", "content": final_content})
         return messages
 
-    def answer(self, history_messages: List[Dict[str, Any]], question: str) -> str:
+    def answer(
+        self,
+        history_messages: List[Dict[str, Any]],
+        question: str,
+        question_images: Optional[List[str]] = None,
+    ) -> str:
         payload = {
             "model": self.model,
-            "messages": self._to_messages(history_messages, question),
+            "messages": self._to_messages(history_messages, question, question_images),
             "max_tokens": self.max_new_tokens,
             "temperature": 0,
         }
