@@ -1,6 +1,16 @@
 #!/usr/bin/env python3
 """Build the Chat Memory Test dataset.
 
+Face avatar source / attribution
+--------------------------------
+The persona avatars are synthetic AI-generated faces from
+``javi22/this-person-does-not-exist-10k`` on HuggingFace
+(MIT licensed, StyleGAN-family generator). They do NOT depict any real
+person. Run ``Image_Generator/chatUI/fetch_faces.py`` once to download
+the 12 fixed faces. See ``Image_Generator/chatUI/FACE_DATA_NOTICE.md``
+for the full attribution / licensing notice (also copied next to the
+downloaded faces at fetch time).
+
 Design philosophy (mirrors build_brand_memory_test.py):
 - The user (Sam) is a "memory secretary" who screenshots chat threads and asks
   the chatbot to remember them. Each chat session shows real personas with
