@@ -58,7 +58,12 @@ class QwenLocalRouter(BaseRouter):
                 if hasattr(self.model.generation_config, attr):
                     setattr(self.model.generation_config, attr, None)
 
-    def _to_qwen_messages(self, history_messages: List[Dict[str, Any]], question: str) -> List[Dict[str, Any]]:
+    def _to_qwen_messages(
+        self,
+        history_messages: List[Dict[str, Any]],
+        question: str,
+        question_images: Optional[List[str]] = None,
+    ) -> List[Dict[str, Any]]:
         messages: List[Dict[str, Any]] = []
         if self.system_prompt:
             messages.append({"role": "system", "content": [{"type": "text", "text": self.system_prompt}]})
@@ -72,25 +77,28 @@ class QwenLocalRouter(BaseRouter):
             if content:
                 messages.append({"role": msg.get("role", "user"), "content": content})
 
-        messages.append(
+        final_content: List[Dict[str, Any]] = [
             {
-                "role": "user",
-                "content": [
-                    {
-                        "type": "text",
-                        "text": (
-                            "Answer based on the conversation and images above. "
-                            "Be concise and factual.\n"
-                            f"Question: {question}"
-                        ),
-                    }
-                ],
+                "type": "text",
+                "text": (
+                    "Answer based on the conversation and images above. "
+                    "Be concise and factual.\n"
+                    f"Question: {question}"
+                ),
             }
-        )
+        ]
+        for img in question_images or []:
+            final_content.append({"type": "image", "image": f"file://{img}"})
+        messages.append({"role": "user", "content": final_content})
         return messages
 
-    def answer(self, history_messages: List[Dict[str, Any]], question: str) -> str:
-        messages = self._to_qwen_messages(history_messages, question)
+    def answer(
+        self,
+        history_messages: List[Dict[str, Any]],
+        question: str,
+        question_images: Optional[List[str]] = None,
+    ) -> str:
+        messages = self._to_qwen_messages(history_messages, question, question_images)
         text = self.processor.apply_chat_template(messages, tokenize=False, add_generation_prompt=True)
         image_inputs, video_inputs = self.process_vision_info(messages)
         if image_inputs or video_inputs:

@@ -1,4 +1,4 @@
-from typing import Any, Dict, List
+from typing import Any, Dict, List, Optional
 
 from .base import BaseRouter
 from .http_utils import encode_image_inline, post_json, require_api_key
@@ -22,7 +22,12 @@ class GeminiAPIRouter(BaseRouter):
         self.timeout = timeout
         self.system_prompt = system_prompt
 
-    def _to_contents(self, history_messages: List[Dict[str, Any]], question: str) -> List[Dict[str, Any]]:
+    def _to_contents(
+        self,
+        history_messages: List[Dict[str, Any]],
+        question: str,
+        question_images: Optional[List[str]] = None,
+    ) -> List[Dict[str, Any]]:
         contents: List[Dict[str, Any]] = []
         for msg in history_messages:
             parts: List[Dict[str, Any]] = []
@@ -36,28 +41,31 @@ class GeminiAPIRouter(BaseRouter):
             role = "model" if msg.get("role") == "assistant" else "user"
             contents.append({"role": role, "parts": parts})
 
-        contents.append(
+        final_parts: List[Dict[str, Any]] = [
             {
-                "role": "user",
-                "parts": [
-                    {
-                        "text": (
-                            "Answer based on the conversation and images above. "
-                            "Be concise and factual.\n"
-                            f"Question: {question}"
-                        )
-                    }
-                ],
+                "text": (
+                    "Answer based on the conversation and images above. "
+                    "Be concise and factual.\n"
+                    f"Question: {question}"
+                )
             }
-        )
+        ]
+        for image_path in question_images or []:
+            final_parts.append({"inline_data": encode_image_inline(image_path)})
+        contents.append({"role": "user", "parts": final_parts})
         return contents
 
-    def answer(self, history_messages: List[Dict[str, Any]], question: str) -> str:
+    def answer(
+        self,
+        history_messages: List[Dict[str, Any]],
+        question: str,
+        question_images: Optional[List[str]] = None,
+    ) -> str:
         payload = {
             "systemInstruction": {
                 "parts": [{"text": self.system_prompt}]
             },
-            "contents": self._to_contents(history_messages, question),
+            "contents": self._to_contents(history_messages, question, question_images),
             "generationConfig": {
                 "temperature": 0,
                 "maxOutputTokens": self.max_new_tokens,

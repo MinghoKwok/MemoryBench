@@ -217,6 +217,29 @@ class MemoryBenchmarkDataset:
             return self.qas[:limit]
         return self.qas
 
+    def resolve_question_images(self, qa: Dict[str, Any]) -> List[str]:
+        """Resolve QA-level image paths (face lookups, etc.) to absolute paths.
+
+        Tasks that don't use question-level images return an empty list, so
+        this is a no-op for legacy QAs. Accepts both ``question_image`` (str
+        or list) and ``question_images`` (list) for forward-compat.
+        """
+        raw: List[str] = []
+        single = qa.get("question_image")
+        if isinstance(single, str) and single.strip():
+            raw.append(single.strip())
+        elif isinstance(single, list):
+            raw.extend([str(p).strip() for p in single if str(p).strip()])
+        plural = qa.get("question_images")
+        if isinstance(plural, list):
+            raw.extend([str(p).strip() for p in plural if str(p).strip()])
+        if not raw:
+            return []
+        resolved: List[str] = []
+        for path in raw:
+            resolved.append(resolve_image_path(path, self.dialog_json_path, self.image_root))
+        return resolved
+
 
 # Backward-compatible alias for older imports.
 PittAdsDataset = MemoryBenchmarkDataset
