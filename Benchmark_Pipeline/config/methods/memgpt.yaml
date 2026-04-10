@@ -1,0 +1,6 @@
+name: memgpt
+
+conda_env: memgptbench
+persona: memgpt_doc
+human: basic
+agent_name: memorybench_memgpt
