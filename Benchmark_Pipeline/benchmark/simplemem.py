@@ -170,7 +170,16 @@ def _question_with_image_caption(qa: Dict[str, Any], question: str) -> str:
 
 
 class SimpleMemMethod(HistoryMethod):
-    """Omni-SimpleMem as a MemoryBench HistoryMethod (caption-based ingestion)."""
+    """Omni-SimpleMem as a MemoryBench HistoryMethod.
+
+    Supports two modalities via the ``modality`` config key:
+
+    - ``text_only`` (default): caption-based ingestion.  Images are replaced
+      by their ``image_caption`` text.  Requires ``caption_preprocessed: true``.
+    - ``multimodal``: text MAUs carry a ``raw_pointer`` to the original image
+      and a ``vision_on_demand`` tag so the orchestrator loads them at answer
+      time and passes them to the VLM alongside the retrieved text context.
+    """
 
     name = "simplemem"
 
@@ -185,12 +194,15 @@ class SimpleMemMethod(HistoryMethod):
         self._debug_rows: List[Dict[str, Any]] = []
         self._top_k: int = max(1, int(self.config.get("retrieve_k", 20)))
         self._data_dir: Optional[Path] = None
+        self._multimodal: bool = str(self.config.get("modality", "text_only")).strip().lower() == "multimodal"
 
     # ------------------------------------------------------------------
     # Lifecycle
     # ------------------------------------------------------------------
 
     def _ensure_caption_preprocessed(self, dataset: MemoryBenchmarkDataset) -> None:
+        if self._multimodal:
+            return  # multimodal mode uses raw images, not captions
         if not bool(self.config.get("caption_preprocessed", True)):
             return
         missing_rounds: List[str] = []
@@ -323,6 +335,13 @@ class SimpleMemMethod(HistoryMethod):
                     )
                     continue
                 stored = getattr(result, "success", False) and getattr(result, "mau", None) is not None
+                # Multimodal: attach raw image pointer so the orchestrator
+                # can load it on-demand at answer time (vision_on_demand flow).
+                if stored and self._multimodal:
+                    round_images = list(round_payload.get("images", []) or [])
+                    if round_images and round_images[0]:
+                        result.mau.raw_pointer = str(round_images[0])
+                        result.mau.add_tag("vision_on_demand")
                 self._debug_rows.append(
                     {
                         "type": "stored_memory" if stored else "ingest_rejected",
@@ -343,9 +362,10 @@ class SimpleMemMethod(HistoryMethod):
         self._ensure_caption_preprocessed(dataset)
         self._debug_rows = []
         self._build_orchestrator(dataset)
+        mode_label = "multimodal" if self._multimodal else "text-only"
         print(
             f"[SimpleMem] Ingesting dataset into Omni-SimpleMem "
-            f"(model={_resolve_model_name(self.config, dict(self.config.get('_model_cfg', {})))} top_k={self._top_k})..."
+            f"(mode={mode_label} model={_resolve_model_name(self.config, dict(self.config.get('_model_cfg', {})))} top_k={self._top_k})..."
         )
         self._ingest_dataset(dataset)
         self._dataset_key = dataset_id
