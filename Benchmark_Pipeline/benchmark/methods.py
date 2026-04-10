@@ -290,6 +290,10 @@ def get_method(method_name: str, config: Optional[Dict[str, Any]] = None) -> His
             from .a_mem import AMemMethod
 
             return AMemMethod(config=config)
+        if method_name == "simplemem":
+            from .simplemem import SimpleMemMethod
+
+            return SimpleMemMethod(config=config)
         from .mirix import get_mirix_method
 
         return get_mirix_method(method_name, config=config)
