@@ -267,34 +267,37 @@ def unpack_inner_thoughts_from_kwargs(choice: Choice, inner_thoughts_key: str) -
     rewritten_choice = choice  # inner thoughts unpacked out of the function
 
     if message.role == "assistant" and message.tool_calls and len(message.tool_calls) >= 1:
-        if len(message.tool_calls) > 1:
-            warnings.warn(f"Unpacking inner thoughts from more than one tool call ({len(message.tool_calls)}) is not supported")
-        # TODO support multiple tool calls
-        tool_call = message.tool_calls[0]
-
         try:
-            # Sadly we need to parse the JSON since args are in string format
-            func_args = dict(json.loads(tool_call.function.arguments))
-            if inner_thoughts_key in func_args:
-                # extract the inner thoughts
-                inner_thoughts = func_args.pop(inner_thoughts_key)
+            combined_inner_thoughts = []
+            new_choice = choice.model_copy(deep=True)
 
-                # replace the kwargs
+            for idx, tool_call in enumerate(new_choice.message.tool_calls):
+                # Sadly we need to parse the JSON since args are in string format
+                func_args = dict(json.loads(tool_call.function.arguments))
+                if inner_thoughts_key in func_args:
+                    inner_thoughts = func_args.pop(inner_thoughts_key)
+                    if inner_thoughts:
+                        combined_inner_thoughts.append(str(inner_thoughts))
+                    tool_call.function.arguments = json_dumps(func_args)
+
+            if combined_inner_thoughts:
                 new_choice = choice.model_copy(deep=True)
-                new_choice.message.tool_calls[0].function.arguments = json_dumps(func_args)
-                # also replace the message content
+                for idx, tool_call in enumerate(choice.message.tool_calls):
+                    func_args = dict(json.loads(tool_call.function.arguments))
+                    if inner_thoughts_key in func_args:
+                        func_args.pop(inner_thoughts_key)
+                    new_choice.message.tool_calls[idx].function.arguments = json_dumps(func_args)
                 if new_choice.message.content is not None:
-                    warnings.warn(f"Overwriting existing inner monologue ({new_choice.message.content}) with kwarg ({inner_thoughts})")
-                new_choice.message.content = inner_thoughts
-
-                # update the choice object
+                    warnings.warn(
+                        f"Overwriting existing inner monologue ({new_choice.message.content}) "
+                        f"with kwarg ({combined_inner_thoughts[0]})"
+                    )
+                new_choice.message.content = "\n".join(combined_inner_thoughts)
                 rewritten_choice = new_choice
             else:
-                warnings.warn(f"Did not find inner thoughts in tool call: {str(tool_call)}")
-
+                warnings.warn(f"Did not find inner thoughts in tool calls: {str(message.tool_calls)}")
         except json.JSONDecodeError as e:
-            warnings.warn(f"Failed to strip inner thoughts from kwargs: {e}")
-            raise e
+            raise ValueError(f"Failed to strip inner thoughts from kwargs: {e}") from e
     else:
         warnings.warn(f"Did not find tool call in message: {str(message)}")
 

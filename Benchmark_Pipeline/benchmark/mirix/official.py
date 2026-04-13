@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import json
 import os
+import re
 import socket
 import sys
 import tempfile
@@ -17,6 +18,7 @@ from ..methods import HistoryMethod
 
 
 _MIRIX_UPSTREAM_ROOT = (Path(__file__).resolve().parent / "upstream").resolve()
+_PROMPT_DIR = (REPO_ROOT / "Benchmark_Pipeline" / "benchmark" / "prompt").resolve()
 _OFFICIAL_PERSONA = (
     "Is a helpful assistant that answers questions with extreme conciseness.\n"
     "Is persistent and tries to find the answerr using different queries and different "
@@ -64,7 +66,18 @@ def _redact_secrets(value: Any) -> Any:
         redacted: Dict[str, Any] = {}
         for key, item in value.items():
             lowered = str(key).lower()
-            if any(token in lowered for token in ("key", "token", "secret", "password")):
+            is_sensitive = lowered in {
+                "api_key",
+                "openai_api_key",
+                "gemini_api_key",
+                "access_token",
+                "refresh_token",
+                "id_token",
+                "secret",
+                "client_secret",
+                "password",
+            } or lowered.endswith(("_api_key", "_token", "_secret", "_password"))
+            if is_sensitive:
                 redacted[str(key)] = "***"
             else:
                 redacted[str(key)] = _redact_secrets(item)
@@ -210,6 +223,19 @@ def _round_user_message(round_payload: Dict[str, Any]) -> Optional[str]:
 def _round_assistant_message(round_payload: Dict[str, Any]) -> Optional[str]:
     text = str(round_payload.get("assistant", "")).strip()
     return text or None
+
+
+def _load_shared_answer_prompt(question: str) -> str:
+    is_mcq = bool(re.search(r"\n[A-Z]\.\s", question))
+    prompt_path = _PROMPT_DIR / ("sys_prompt_mcq.txt" if is_mcq else "sys_prompt_open.txt")
+    if not prompt_path.exists():
+        prompt_path = _PROMPT_DIR / "sys_prompt.txt"
+    return prompt_path.read_text(encoding="utf-8").strip()
+
+
+def _format_benchmark_question(question: str) -> str:
+    shared_prompt = _load_shared_answer_prompt(question)
+    return f"{shared_prompt}\n\nQuestion:\n{question}".strip()
 
 
 class _OfficialMIRIXAgent:
@@ -562,13 +588,15 @@ class OfficialMIRIXMethod(HistoryMethod):
     ) -> str:
         self._ensure_initialized(dataset)
         assert self._agent is not None
-        prediction = self._agent.answer(question, question_images=question_images)
+        benchmark_question = _format_benchmark_question(question)
+        prediction = self._agent.answer(benchmark_question, question_images=question_images)
         self._debug_rows.append(
             {
                 "type": "qa",
                 "question_id": qa.get("question_id", ""),
                 "question": question,
                 "question_images": list(question_images or []),
+                "answer_prompt": benchmark_question,
                 "prediction": prediction,
             }
         )

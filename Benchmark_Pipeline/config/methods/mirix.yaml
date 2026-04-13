@@ -1,4 +1,4 @@
 name: mirix
 
 official_runtime: true
-official_model_name: "gemini-2.5-flash"
+official_model_name: "gpt-4.1-nano"
