@@ -18,6 +18,7 @@ overleaf_paper/*.out
 overleaf_paper/*.pdf
 .claude
 CLAUDE.md
+AGENTS.md
 Benchmark_Pipeline/benchmark/a-mem/A-mem/.git/
 Benchmark_Pipeline/benchmark/a-mem/**/__pycache__/
 Benchmark_Pipeline/benchmark/mirix/upstream/.git/
