@@ -286,6 +286,10 @@ def get_method(method_name: str, config: Optional[Dict[str, Any]] = None) -> His
     }
     cls = registry.get(method_name)
     if cls is None:
+        if method_name == "evermemos":
+            from .evermemos_method import EverMemOSMethod
+
+            return EverMemOSMethod(config=config)
         if method_name == "a_mem":
             from .a_mem import AMemMethod
 
