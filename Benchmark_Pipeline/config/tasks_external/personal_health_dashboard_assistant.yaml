@@ -1,8 +1,0 @@
-name: personal_health_dashboard_assistant
-dataset:
-  dialog_json: /Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/dialog/Personal_Health_Dashboard_Assistant.json
-  image_root: /Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image
-eval:
-  mode: open
-  output_json: output/results_personal_health_dashboard_assistant.json
-  max_questions: 0
