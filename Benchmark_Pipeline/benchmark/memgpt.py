@@ -759,18 +759,26 @@ class MemGPTMethod(HistoryMethod):
 
     def _spawn_worker(self, dataset: MemoryBenchmarkDataset) -> None:
         model_config = dict(self.config.get("_model_cfg", {}))
-        env_name = str(self.config.get("conda_env", "memorybench")).strip() or "memorybench"
-        cmd = [
-            "conda",
-            "run",
-            "--no-capture-output",
-            "-n",
-            env_name,
-            "python",
-            "-m",
-            "Benchmark_Pipeline.benchmark.memgpt",
-            "--worker",
-        ]
+        env_name = str(self.config.get("conda_env", "")).strip()
+        if env_name:
+            cmd = [
+                "conda",
+                "run",
+                "--no-capture-output",
+                "-n",
+                env_name,
+                "python",
+                "-m",
+                "Benchmark_Pipeline.benchmark.memgpt",
+                "--worker",
+            ]
+        else:
+            cmd = [
+                sys.executable,
+                "-m",
+                "Benchmark_Pipeline.benchmark.memgpt",
+                "--worker",
+            ]
         self._worker = subprocess.Popen(
             cmd,
             cwd=str(REPO_ROOT),
