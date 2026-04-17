@@ -298,6 +298,10 @@ def get_method(method_name: str, config: Optional[Dict[str, Any]] = None) -> His
             from .gen_agents import GAMethod
 
             return GAMethod(config=config)
+        if method_name == "evermemos":
+            from .evermemos import EverMemOSMethod
+
+            return EverMemOSMethod(config=config)
         if method_name == "reflexion":
             from .reflexion_method import ReflexionMethod
 

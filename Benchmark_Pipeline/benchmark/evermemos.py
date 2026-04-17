@@ -1,0 +1,469 @@
+import asyncio
+import os
+import re
+import sys
+from datetime import datetime, timedelta
+from pathlib import Path
+from typing import Any, Dict, List, Optional
+
+from dotenv import load_dotenv
+from openai import OpenAI
+
+from .common import REPO_ROOT, write_json
+from .dataset import MemoryBenchmarkDataset
+from .methods import HistoryMethod
+
+
+_EVERMEMOS_ROOT = (
+    Path(__file__).resolve().parent
+    / "evermemos"
+    / "upstream"
+).resolve()
+_EVERMEMOS_SRC = (_EVERMEMOS_ROOT / "src").resolve()
+
+for _path in (_EVERMEMOS_ROOT, _EVERMEMOS_SRC):
+    if str(_path) not in sys.path:
+        sys.path.insert(0, str(_path))
+
+_ENV_LOCAL = (REPO_ROOT / "Benchmark_Pipeline" / ".env.local").resolve()
+if _ENV_LOCAL.exists():
+    load_dotenv(_ENV_LOCAL, override=False)
+
+
+def _seed_evermemos_service_env() -> None:
+    vectorize_fallback_key = os.getenv("VECTORIZE_FALLBACK_API_KEY", "").strip()
+    if vectorize_fallback_key and not os.getenv("VECTORIZE_PROVIDER", "").strip():
+        os.environ["VECTORIZE_PROVIDER"] = "deepinfra"
+    if vectorize_fallback_key and not os.getenv("VECTORIZE_API_KEY", "").strip():
+        os.environ["VECTORIZE_API_KEY"] = vectorize_fallback_key
+    if os.getenv("VECTORIZE_PROVIDER", "").strip().lower() == "deepinfra" and not os.getenv(
+        "VECTORIZE_BASE_URL", ""
+    ).strip():
+        os.environ["VECTORIZE_BASE_URL"] = "https://api.deepinfra.com/v1/openai"
+
+    rerank_key = (
+        os.getenv("RERANK_API_KEY", "").strip()
+        or os.getenv("RERANK_FALLBACK_API_KEY", "").strip()
+        or vectorize_fallback_key
+    )
+    if rerank_key and not os.getenv("RERANK_PROVIDER", "").strip():
+        os.environ["RERANK_PROVIDER"] = "deepinfra"
+    if rerank_key and not os.getenv("RERANK_API_KEY", "").strip():
+        os.environ["RERANK_API_KEY"] = rerank_key
+    if os.getenv("RERANK_PROVIDER", "").strip().lower() == "deepinfra" and not os.getenv(
+        "RERANK_BASE_URL", ""
+    ).strip():
+        os.environ["RERANK_BASE_URL"] = "https://api.deepinfra.com/v1/inference"
+
+
+_seed_evermemos_service_env()
+
+def _run_async(coro: Any) -> Any:
+    try:
+        return asyncio.run(coro)
+    except RuntimeError as exc:
+        if "asyncio.run() cannot be called from a running event loop" not in str(exc):
+            raise
+    loop = asyncio.new_event_loop()
+    try:
+        return loop.run_until_complete(coro)
+    finally:
+        loop.close()
+
+
+def _resolve_secret(
+    primary_value: str,
+    env_name: str,
+) -> Optional[str]:
+    raw = str(primary_value).strip()
+    if raw:
+        return raw
+    env_key = str(env_name).strip()
+    if env_key:
+        value = os.getenv(env_key, "").strip()
+        if value:
+            return value
+    return None
+
+
+def _load_evermemos_components() -> Dict[str, Any]:
+    try:
+        from evaluation.src.adapters.evermemos_adapter import EverMemOSAdapter  # type: ignore
+        from evaluation.src.adapters.evermemos import stage4_response  # type: ignore
+        from evaluation.src.core.data_models import Conversation, Message  # type: ignore
+        from memory_layer.llm.llm_provider import LLMProvider  # type: ignore
+    except ModuleNotFoundError as exc:
+        raise ModuleNotFoundError(
+            "EverMemOS dependencies are not fully installed in the active environment. "
+            f"Missing module: {exc.name}. Install the dependencies required by the vendored "
+            f"EverMemOS runtime in the active 'memorybench' conda env."
+        ) from exc
+    return {
+        "EverMemOSAdapter": EverMemOSAdapter,
+        "stage4_response": stage4_response,
+        "Conversation": Conversation,
+        "Message": Message,
+        "LLMProvider": LLMProvider,
+    }
+
+
+def _dialogue_text(round_payload: Dict[str, Any], speaker_a: str, speaker_b: str) -> str:
+    parts: List[str] = []
+    user_text = str(round_payload.get("user", "")).strip()
+    assistant_text = str(round_payload.get("assistant", "")).strip()
+    if user_text:
+        parts.append(f"{speaker_a}: {user_text}")
+    if assistant_text:
+        parts.append(f"{speaker_b}: {assistant_text}")
+    return "\n".join(parts).strip()
+
+
+def _round_image_blocks(raw_dialogue: Dict[str, Any]) -> List[str]:
+    input_images = raw_dialogue.get("input_image", []) or []
+    captions = raw_dialogue.get("image_caption", []) or []
+    if len(captions) != len(input_images):
+        raise ValueError(
+            "EverMemOS text-only adaptation requires Mem-Gallery-style image captions "
+            "for every image-bearing round."
+        )
+    lines: List[str] = []
+    for caption in captions:
+        caption_text = str(caption).strip()
+        if not caption_text:
+            raise ValueError(
+                "EverMemOS text-only adaptation requires non-empty image_caption values."
+            )
+        lines.extend(["image:", f"image_caption: {caption_text}"])
+    return lines
+
+
+def build_evermemos_turn_text(
+    round_payload: Dict[str, Any],
+    speaker_a: str,
+    speaker_b: str,
+) -> str:
+    raw_dialogue = round_payload.get("raw", {}) or {}
+    text = _dialogue_text(round_payload, speaker_a, speaker_b)
+    lines: List[str] = [text] if text else []
+    lines.extend(_round_image_blocks(raw_dialogue))
+    return "\n".join(lines).strip()
+
+
+def _question_with_image_caption(qa: Dict[str, Any], question: str) -> str:
+    query = question.strip()
+    question_caption = qa.get("image_caption")
+    question_image = qa.get("question_image")
+    question_images = qa.get("question_images")
+    has_question_image = bool(question_image) or bool(question_images)
+    if not has_question_image or not question_caption:
+        return query
+
+    if isinstance(question_caption, list):
+        caption_text = " ".join(
+            str(item).strip() for item in question_caption if str(item).strip()
+        )
+    else:
+        caption_text = str(question_caption).strip()
+    if not caption_text:
+        return query
+    return f"{query}\nimage:\nimage_caption: {caption_text}"
+
+
+def _safe_task_name(dataset: MemoryBenchmarkDataset) -> str:
+    task_name = str(dataset.data.get("task_name", "")).strip() or dataset.dialog_json_path.stem
+    safe = re.sub(r"[^a-z0-9]+", "_", task_name.lower())
+    return safe.strip("_") or dataset.dialog_json_path.stem.lower()
+
+
+class EverMemOSMethod(HistoryMethod):
+    name = "evermemos"
+    fixed_modality = "text_only"
+
+    def __init__(self, config: Optional[Dict[str, Any]] = None) -> None:
+        super().__init__(config=config)
+        self._dataset_key: Optional[int] = None
+        self._adapter: Any = None
+        self._answer_llm: Any = None
+        self._answer_client: Optional[OpenAI] = None
+        self._conversation: Any = None
+        self._index_metadata: Optional[Dict[str, Any]] = None
+        self._debug_rows: List[Dict[str, Any]] = []
+        self._speaker_a: str = "user"
+        self._speaker_b: str = "assistant"
+        self._components: Optional[Dict[str, Any]] = None
+        self._answer_model_name: str = str(self.config.get("answer_model", "gpt-4.1-nano")).strip() or "gpt-4.1-nano"
+
+    def _debug_dir(self, dataset: MemoryBenchmarkDataset) -> Path:
+        return (REPO_ROOT / "Benchmark_Pipeline" / "output" / _safe_task_name(dataset) / "evermemos").resolve()
+
+    def _runtime_dir(self, dataset: MemoryBenchmarkDataset) -> Path:
+        return (REPO_ROOT / "Benchmark_Pipeline" / "runs" / _safe_task_name(dataset) / "evermemos").resolve()
+
+    def _flush_debug(self, dataset: MemoryBenchmarkDataset) -> None:
+        if not self._debug_rows:
+            return
+        payload = {"dataset_path": str(dataset.dialog_json_path), "rows": self._debug_rows}
+        write_json(self._debug_dir(dataset) / "debug_trace.json", payload)
+
+    def _build_internal_llm_config(self) -> Dict[str, Any]:
+        llm_model = str(self.config.get("internal_llm_model", "gpt-4.1-mini")).strip() or "gpt-4.1-mini"
+        api_key = _resolve_secret(
+            str(self.config.get("internal_llm_api_key", "")),
+            str(self.config.get("internal_llm_api_key_env", "OPENAI_API_KEY")),
+        )
+        if not api_key:
+            raise ValueError(
+                "Missing EverMemOS internal LLM API key. Set OPENAI_API_KEY or internal_llm_api_key."
+            )
+        base_url = (
+            str(self.config.get("internal_llm_base_url", "")).strip()
+            or os.getenv("LLM_BASE_URL", "").strip()
+            or "https://api.openai.com/v1"
+        )
+        return {
+            "provider": "openai",
+            "model": llm_model,
+            "api_key": api_key,
+            "base_url": base_url,
+            "temperature": float(self.config.get("internal_llm_temperature", 0.3)),
+            "max_tokens": int(self.config.get("internal_llm_max_tokens", 16384)),
+        }
+
+    def _load_components(self) -> Dict[str, Any]:
+        if self._components is None:
+            self._components = _load_evermemos_components()
+        return self._components
+
+    def _build_answer_llm(self) -> Any:
+        llm_provider_cls = self._load_components()["LLMProvider"]
+        model_config = dict(self.config.get("_model_cfg", {}))
+        api_key = _resolve_secret(
+            str(model_config.get("api_key", "")),
+            str(model_config.get("api_key_env", "OPENAI_API_KEY")),
+        )
+        if not api_key:
+            raise ValueError(
+                "Missing API key for EverMemOS benchmark QA model. "
+                "Set OPENAI_API_KEY or provide api_key/api_key_env in the model config."
+            )
+        base_url = str(model_config.get("base_url", "https://api.openai.com/v1")).strip() or "https://api.openai.com/v1"
+        return llm_provider_cls(
+            provider_type="openai",
+            model=self._answer_model_name,
+            api_key=api_key,
+            base_url=base_url,
+            temperature=0.0,
+            max_tokens=int(model_config.get("max_new_tokens", 128) or 128),
+        )
+
+    def _build_answer_client(self) -> OpenAI:
+        model_config = dict(self.config.get("_model_cfg", {}))
+        api_key = _resolve_secret(
+            str(model_config.get("api_key", "")),
+            str(model_config.get("api_key_env", "OPENAI_API_KEY")),
+        )
+        if not api_key:
+            raise ValueError(
+                "Missing API key for EverMemOS benchmark QA model. "
+                "Set OPENAI_API_KEY or provide api_key/api_key_env in the model config."
+            )
+        base_url = str(model_config.get("base_url", "https://api.openai.com/v1")).strip() or "https://api.openai.com/v1"
+        timeout = int(model_config.get("timeout", 90) or 90)
+        return OpenAI(api_key=api_key, base_url=base_url, timeout=timeout)
+
+    def _answer_mcq(self, question: str, context: str, options: Dict[str, Any]) -> str:
+        assert self._answer_client is not None
+        option_keys = sorted(str(key).strip().upper() for key in options.keys())
+        enum_values = option_keys if option_keys else ["A", "B", "C", "D"]
+        user_prompt = (
+            "Choose the single best option using only the retrieved context.\n\n"
+            f"Context:\n{context}\n\n"
+            f"Question:\n{question}\n"
+        )
+        response = self._answer_client.chat.completions.create(
+            model=self._answer_model_name,
+            messages=[
+                {
+                    "role": "system",
+                    "content": (
+                        "Answer the multiple-choice question with exactly one option letter. "
+                        "Do not explain your reasoning."
+                    ),
+                },
+                {"role": "user", "content": user_prompt},
+            ],
+            response_format={
+                "type": "json_schema",
+                "json_schema": {
+                    "name": "mcq_response",
+                    "schema": {
+                        "type": "object",
+                        "properties": {
+                            "answer": {
+                                "type": "string",
+                                "enum": enum_values,
+                            }
+                        },
+                        "required": ["answer"],
+                        "additionalProperties": False,
+                    },
+                    "strict": True,
+                },
+            },
+            temperature=0.0,
+        )
+        raw = response.choices[0].message.content or ""
+        for option in enum_values:
+            if f'"{option}"' in raw or raw.strip() == option:
+                return option
+        return raw.strip()
+
+    def _build_conversation(self, dataset: MemoryBenchmarkDataset) -> Any:
+        components = self._load_components()
+        conversation_cls = components["Conversation"]
+        message_cls = components["Message"]
+        character_profile = dataset.data.get("character_profile", {}) or {}
+        speaker_name = str(character_profile.get("name", "")).strip()
+        self._speaker_a = f"user ({speaker_name})" if speaker_name else "user"
+        self._speaker_b = "assistant"
+
+        messages: List[Any] = []
+        base_dt = datetime(2025, 1, 1, 0, 0, 0)
+        message_index = 0
+        for session_id in dataset.session_order():
+            session = dataset.get_session(session_id)
+            session_date = str(session.get("date", "")).strip()
+            session_base = base_dt
+            if session_date:
+                try:
+                    session_base = datetime.strptime(session_date, "%Y-%m-%d")
+                except ValueError:
+                    session_base = base_dt
+            for dialogue in session.get("dialogues", []):
+                round_id = str(dialogue.get("round", "")).strip()
+                if not round_id:
+                    continue
+                round_payload = dataset.rounds.get(round_id)
+                if not round_payload:
+                    continue
+                content = build_evermemos_turn_text(round_payload, self._speaker_a, self._speaker_b)
+                if not content:
+                    continue
+                timestamp = session_base + timedelta(seconds=message_index * 30)
+                message_index += 1
+                messages.append(
+                    message_cls(
+                        sender_id="benchmark_user",
+                        sender_name=self._speaker_a,
+                        content=content,
+                        timestamp=timestamp,
+                        metadata={"session_id": session_id, "round_id": round_id},
+                    )
+                )
+                self._debug_rows.append(
+                    {
+                        "type": "stored_memory",
+                        "session_id": session_id,
+                        "round_id": round_id,
+                        "timestamp": timestamp.isoformat(),
+                        "text": content,
+                    }
+                )
+
+        return conversation_cls(
+            conversation_id="0",
+            messages=messages,
+            metadata={"speaker_a": self._speaker_a, "speaker_b": self._speaker_b},
+        )
+
+    def _ensure_initialized(self, dataset: MemoryBenchmarkDataset) -> None:
+        dataset_id = id(dataset)
+        if self._adapter is not None and self._dataset_key == dataset_id:
+            return
+
+        self._debug_rows = []
+        adapter_cls = self._load_components()["EverMemOSAdapter"]
+        adapter_config = {
+            "llm": self._build_internal_llm_config(),
+            "search": {
+                "mode": str(self.config.get("search_mode", "agentic")).strip() or "agentic",
+                "lightweight_search_mode": str(
+                    self.config.get("lightweight_search_mode", "bm25_only")
+                ).strip()
+                or "bm25_only",
+                "use_hybrid_search": bool(self.config.get("use_hybrid_search", True)),
+                "hybrid_emb_candidates": int(self.config.get("hybrid_emb_candidates", 50)),
+                "hybrid_bm25_candidates": int(self.config.get("hybrid_bm25_candidates", 50)),
+                "hybrid_rrf_k": int(self.config.get("hybrid_rrf_k", 40)),
+            },
+        }
+
+        runtime_dir = self._runtime_dir(dataset)
+        runtime_dir.mkdir(parents=True, exist_ok=True)
+        self._adapter = adapter_cls(adapter_config, output_dir=runtime_dir)
+        self._answer_llm = self._build_answer_llm()
+        self._answer_client = self._build_answer_client()
+        self._conversation = self._build_conversation(dataset)
+        self._index_metadata = _run_async(self._adapter.add([self._conversation], output_dir=runtime_dir))
+        self._dataset_key = dataset_id
+        self.runtime_info.update(
+            {
+                "method_modality": self.modality,
+                "num_memories": len(self._conversation.messages),
+                "debug_dir": str(self._debug_dir(dataset)),
+                "runtime_dir": str(runtime_dir),
+                "internal_llm_model": adapter_config["llm"]["model"],
+                "answer_model": str(self.config.get("answer_model", "gpt-4.1-nano")).strip()
+                or "gpt-4.1-nano",
+            }
+        )
+        self._flush_debug(dataset)
+
+    def answer(self, dataset: MemoryBenchmarkDataset, qa: Dict[str, Any], question: str) -> str:
+        self._ensure_initialized(dataset)
+        assert self._adapter is not None
+        assert self._answer_llm is not None
+        assert self._conversation is not None
+        assert self._index_metadata is not None
+        stage4 = self._load_components()["stage4_response"]
+
+        query = _question_with_image_caption(qa, question)
+        search_result = _run_async(
+            self._adapter.search(
+                query=query,
+                conversation_id=self._conversation.conversation_id,
+                index=self._index_metadata,
+                conversation=self._conversation,
+            )
+        )
+        formatted_context = str(
+            search_result.retrieval_metadata.get("formatted_context", "")
+        ).strip()
+        if isinstance(qa.get("options"), dict):
+            prediction = self._answer_mcq(question, formatted_context, qa["options"])
+        else:
+            prediction = _run_async(
+                stage4.locomo_response(
+                    llm_provider=self._answer_llm,
+                    context=formatted_context,
+                    question=query,
+                    experiment_config=self._adapter._convert_config_to_experiment_config(),
+                )
+            )
+
+        self._debug_rows.append(
+            {
+                "type": "qa",
+                "question_id": qa.get("question_id", ""),
+                "question": question,
+                "recall_query": query,
+                "retrieved_memories": search_result.results,
+                "retrieved_context": formatted_context,
+                "prediction": prediction,
+            }
+        )
+        self._flush_debug(dataset)
+        return prediction
+
+    def build_history(self, dataset: MemoryBenchmarkDataset, qa: Dict[str, Any]) -> List[Dict[str, Any]]:
+        return []
