@@ -422,7 +422,7 @@ class MemoryNote:
             
         except Exception as e:
             print(f"Error analyzing content: {str(e)}")
-            print(f"Raw response: {response}")
+            print(f"Raw response: {response if 'response' in dir() else '(no response)'}")
             return {
                 "keywords": [],
                 "context": "General",
