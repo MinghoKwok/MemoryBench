@@ -44,17 +44,36 @@ class ValidationException(Exception):
         self.details = details or {}
 
 
-# Long Job System Errors - Long job system error classes
-from core.longjob.longjob_error import (
-    FatalError,
-    BusinessLogicError,
-    LongJobError,
-    JobNotFoundError,
-    JobAlreadyExistsError,
-    JobStateError,
-    ManagerShutdownError,
-    MaxConcurrentJobsError,
-)
+class FatalError(Exception):
+    """Fatal error that should not be retried."""
+
+
+class BusinessLogicError(Exception):
+    """Business logic error that may be resolved by retrying."""
+
+
+class LongJobError(Exception):
+    """Base class for long-job related errors."""
+
+
+class JobNotFoundError(LongJobError):
+    """Job not found error."""
+
+
+class JobAlreadyExistsError(LongJobError):
+    """Job already exists error."""
+
+
+class JobStateError(LongJobError):
+    """Invalid job state error."""
+
+
+class ManagerShutdownError(LongJobError):
+    """Long-job manager has been shut down."""
+
+
+class MaxConcurrentJobsError(LongJobError):
+    """Exceeded maximum number of concurrent jobs."""
 
 # Export long job system error classes
 __all__ = [
