@@ -7,10 +7,9 @@ cd "$(dirname "$0")/.."
 source ../.env.local
 unset HUGGING_FACE_HUB_TOKEN
 
-# Redirect OpenAI SDK to Gemini
-export OPENAI_API_KEY="AIzaSyASDfC2SxN2-aT2Swcr_pdQoR8ZcEm-xvQ"
+# Redirect OpenAI SDK to Gemini (keys loaded from ../.env.local above)
+export OPENAI_API_KEY="${GEMINI_API_KEY}"
 export OPENAI_BASE_URL="https://generativelanguage.googleapis.com/v1beta/openai/"
-export GEMINI_API_KEY="AIzaSyASDfC2SxN2-aT2Swcr_pdQoR8ZcEm-xvQ"
 
 MODEL=config/models/gemini_2_5_flash_lite.yaml
 
