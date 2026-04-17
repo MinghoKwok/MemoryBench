@@ -294,6 +294,10 @@ def get_method(method_name: str, config: Optional[Dict[str, Any]] = None) -> His
             from .memgpt import MemGPTMethod
 
             return MemGPTMethod(config=config)
+        if method_name == "gen_agents":
+            from .gen_agents import GAMethod
+
+            return GAMethod(config=config)
         if method_name == "reflexion":
             from .reflexion_method import ReflexionMethod
 
