@@ -290,6 +290,10 @@ def get_method(method_name: str, config: Optional[Dict[str, Any]] = None) -> His
             from .a_mem import AMemMethod
 
             return AMemMethod(config=config)
+        if method_name == "evermemos":
+            from .evermemos import EverMemOSMethod
+
+            return EverMemOSMethod(config=config)
         if method_name == "reflexion":
             from .reflexion_method import ReflexionMethod
 
