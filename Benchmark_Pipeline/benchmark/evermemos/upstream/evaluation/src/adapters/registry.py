@@ -11,20 +11,7 @@ _ADAPTER_REGISTRY: Dict[str, Type[BaseAdapter]] = {}
 
 # Adapter module mapping (for lazy loading)
 _ADAPTER_MODULES = {
-    # Local systems
     "evermemos": "evaluation.src.adapters.evermemos_adapter",
-    
-    # Online API systems
-    "mem0": "evaluation.src.adapters.mem0_adapter",
-    "memos": "evaluation.src.adapters.memos_adapter",
-    "memu": "evaluation.src.adapters.memu_adapter",
-    "zep": "evaluation.src.adapters.zep_adapter",
-    "evermemos_api": "evaluation.src.adapters.evermemos_api_adapter",
-    "memobase": "evaluation.src.adapters.memobase_adapter",
-    "supermemory": "evaluation.src.adapters.supermemory_adapter",
-    
-    # Future systems:
-    # "nemori": "evaluation.src.adapters.nemori_adapter",
 }
 
 
