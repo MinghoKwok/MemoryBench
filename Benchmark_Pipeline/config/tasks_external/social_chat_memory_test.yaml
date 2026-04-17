@@ -1,0 +1,8 @@
+name: social_chat_memory_test
+dataset:
+  dialog_json: /common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/dialog/Social_Chat_Memory_Test.json
+  image_root: /common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/image
+eval:
+  mode: open
+  output_json: output/results_social_chat_memory_test.json
+  max_questions: 0

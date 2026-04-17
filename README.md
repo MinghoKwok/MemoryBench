@@ -3,122 +3,143 @@
 Code repository name: `MemoryBench`
 Current benchmark name: `MemEye`
 
-This repository currently contains several multimodal memory workstreams:
+This repository contains:
 
-- `Benchmark_Pipeline`
-- `Image_Generator`
-- `overleaf_paper`
+- `Benchmark_Pipeline` — Main benchmark scaffold (tasks, methods, evaluation)
+- `Image_Generator` — Image/data generation tools
+- `overleaf_paper` — LaTeX paper source
 
-## Unified Persona & Life-Scenario Design
+## Quick Start
 
-MemEye tasks are designed to form a coherent life scenario for a single persona, so that different tasks naturally represent different facets of one person's daily life. This ensures cross-task ecological validity: a memory system must handle the same user across social, domestic, professional, and leisure contexts.
+```bash
+# 1. Activate environment
+conda activate memorybench
 
-### Persona: Hannah Brooks
+# 2. Load API keys
+source .env.local
+unset HUGGING_FACE_HUB_TOKEN
 
-- **Age:** 32
-- **Occupation:** Freelance graphic designer / remote worker
-- **Personality:** Visually perceptive, meticulous, occasionally indecisive, budget-conscious
-- **Living situation:** Recently purchased a 970 sq ft two-bedroom apartment; undergoing full renovation
+# 3. Run a benchmark
+cd Benchmark_Pipeline
+bash run_all.sh --method full_context_multimodal --model gemini_2_5_flash_lite
+```
 
-### Life-Scenario Task Mapping
+## Running Experiments
 
-| Life Facet | Task | What Hannah Is Doing |
-|-----------|------|---------------------|
-| **Home** | `home_renovation_interior_design` | Documenting and planning her apartment renovation with an AI assistant — choosing furniture, paint colors, layouts |
-| **Work (Screen)** | `work_screen_memory` *(planned)* | Sharing computer screenshots during design work — IDE, documents, dashboards, emails — and discussing them with AI |
-| **Social** | `chat_ui_memory_test` | Reviewing chat conversations with friends; the AI helps her recall who said what |
-| **Organization** | `visual_case_archive_assistant` | Tracking objects and room states in her apartment/office as she reorganizes during renovation |
-| **Leisure** | `comicscene_alley_oop_draft` | Reading comics in her downtime; the AI helps her remember plot and character details |
-| **Work (Analysis)** | `brand_memory_test` | Analyzing brand advertisements for client projects as a graphic designer |
+### `run_all.sh` — Run a method × model across all datasets
 
-### Planned: Work Screen Memory
+```bash
+# Full sweep: one method × one model × all 9 datasets
+bash run_all.sh --method full_context_multimodal --model gemini_2_5_flash_lite
 
-Inspired by ScreenshotVQA (MIRIX, Wang & Chen 2025), this task captures Hannah's computer work sessions. Key design principles:
+# Specific datasets only
+bash run_all.sh --method m2a_gemini --model gemini_2_5_flash_lite \
+  --datasets "card_playlog_test,brand_memory_test"
 
-- **Screenshots with memory value:** IDE with code review, document version diffs, data dashboards, email threads — not random browsing
-- **Queries require image grounding:** File paths, variable names, chart values, UI element positions are only visible in screenshots
-- **Cross-session state tracking:** The same document or project evolves across sessions, requiring the agent to track changes
-- **MemEye coverage:** Fills X4 (OCR/micro-attribute) + Y2/Y3 (cross-session version tracking) coordinates that are under-represented in current tasks
+# Quick smoke test (5 questions per dataset)
+bash run_all.sh --method mma --model gpt_4_1_nano --max-questions 5
 
-### Design Principles
+# List all available methods, models, and datasets
+bash run_all.sh --list
+```
 
-1. **Visual necessity:** Every query must require seeing the original image — text dialogue alone never leaks the answer
-2. **Cross-task coherence:** Sessions across tasks share a consistent timeline and persona context
-3. **Complementary memory demands:** Each task stresses a different combination of visual granularity (X-axis) and reasoning complexity (Y-axis)
-
-## What To Focus On
-
-For current MemEye benchmark work, treat `Benchmark_Pipeline` as the active benchmark scaffold.
-
-If you are a collaborator joining this repo for the first time, start with:
+### Single benchmark run
 
 ```bash
 cd Benchmark_Pipeline
+python run_benchmark.py \
+  --task-config config/tasks_external/brand_memory_test.yaml \
+  --model-config config/models/gemini_2_5_flash_lite.yaml \
+  --method-config config/methods/full_context_multimodal.yaml
 ```
 
-and read:
+### Available Models
 
-- `Benchmark_Pipeline/README.md`
-- `Benchmark_Pipeline/MemEye_Annotation_Guide.md`
-- `Image_Generator/Generation_Guidelines.md`
+| Model | Config | API Key Env |
+|-------|--------|-------------|
+| Gemini 2.5 Flash Lite | `gemini_2_5_flash_lite` | `GEMINI_API_KEY` |
+| GPT-4.1 Nano | `gpt_4_1_nano` | `OPENAI_API_KEY` |
+| GPT-4o Mini | `gpt_4o_mini` | `OPENAI_API_KEY` |
+| Qwen2.5-VL-7B (local) | `qwen2_5_vl_7b_local` | — |
 
-The `Benchmark_Pipeline` directory is the main benchmark scaffold in active use. It supports:
+### Available Methods
 
-- modular task / model / method configs
-- benchmark runs and matrix runs
-- current memory methods including `full_context_multimodal`, `full_context_text_only`, `semantic_rag_multimodal`, `semantic_rag_text_only`, `m2a`, and `mma`
-- partner-added tasks that reuse the same dialogue/image format
-- task data that is canonically stored in the Hugging Face dataset repo and synced locally when needed
-- representative active tasks including `brand_memory_test`, `chat_ui_memory_test`, `comicscene_alley_oop_draft`, and `home_renovation_interior_design`
-- open-answer evaluation centered on `EM/F1/BLEU-1/BLEU-2`
+| Method | Config | Type | Notes |
+|--------|--------|------|-------|
+| Full Context (V) | `full_context_multimodal` | Baseline | Full history with images |
+| Full Context (T) | `full_context_text_only` | Baseline | Full history, captions replace images |
+| Semantic RAG (V) | `semantic_rag_multimodal` | RAG | Dense retrieval + images |
+| Semantic RAG (T) | `semantic_rag_text_only` | RAG | Dense retrieval, text-only |
+| A-MEM | `a_mem` / `a_mem_gemini` | Agentic | Autonomous memory agent |
+| Reflexion | `reflexion` / `reflexion_gemini` | Agentic | Self-reflection loop |
+| SimpleMem | `simplemem` / `simplemem_gemini` | Summarize | Omni-SimpleMem (text) |
+| SimpleMem (V) | `simplemem_multimodal` / `simplemem_multimodal_gemini` | Summarize | Omni-SimpleMem + images |
+| MemoryOS | `memoryos` / `memoryos_gemini` | Agentic | MemoryOS baseline |
+| MIRIX | `mirix` / `mirix_gemini` | Agentic | MIRIX baseline |
+| M2A | `m2a` / `m2a_gemini` | Agentic | Multimodal agentic; uses CLIP |
+| MMA | `mma` / `mma_gemini` | Agentic | Confidence-aware; uses CLIP |
 
-For current generator work, the active entry points are:
+**`*_gemini` variants** automatically redirect the OpenAI SDK to Gemini's OpenAI-compatible endpoint. Use these on machines without OpenAI API access.
 
-- `Image_Generator/chatUI`
-- `Image_Generator/ComicScene`
+### Available Datasets (9 tasks, 465 QAs)
 
-## What To Ignore For Now
+| Dataset | Config | QAs | Domain |
+|---------|--------|-----|--------|
+| Animation Viewing Companion | `animation_viewing_companion` | 61 | Animation episode analysis |
+| Brand Memory Test | `brand_memory_test` | 33 | Ad campaign comparison |
+| Card Playlog Test | `card_playlog_test` | 48 | Card game state tracking |
+| Comic Reading Companion | `comic_reading_companion` | 52 | Comic narrative memory |
+| Home Renovation Interior Design | `home_renovation_interior_design` | 65 | Renovation planning |
+| Multi-Scene VCAA | `multi_scene_visual_case_archive_assistant` | 59 | Multi-room object tracking |
+| Outdoor Navigation | `outdoor_navigation_route_memory_assistant` | 40 | Route memory |
+| Personal Health Dashboard | `personal_health_dashboard_assistant` | 63 | Health metric tracking |
+| Social Chat Memory Test | `social_chat_memory_test` | 44 | Chat screenshot memory |
 
-`ComicScene_Pipeline` is an older comic-memory demo and is not the current focus of benchmark development.
+### Output
 
-Unless you are explicitly working on legacy comic demo code, you can ignore `ComicScene_Pipeline` for now.
-Current comic-task generation work lives under `Image_Generator/ComicScene`.
+Results are saved to `Benchmark_Pipeline/output/<dataset>/results_<dataset>__<model>__<method>.json`. Each result file contains:
 
-## Recommended Entry Points
+- `summary.overall` — aggregate EM / F1 / BLEU
+- `summary.by_x` — accuracy broken down by X-axis level
+- `summary.by_y` — accuracy broken down by Y-axis level
+- `summary.by_cell` — accuracy per (X, Y) matrix cell
 
-Current representative benchmark tasks:
+## MemEye Taxonomy
 
-- `Benchmark_Pipeline/config/tasks_external/brand_memory_test.yaml`
-- `Benchmark_Pipeline/config/tasks_external/chat_ui_memory_test.yaml`
-- `Benchmark_Pipeline/config/tasks_external/comicscene_alley_oop_draft.yaml`
-- `Benchmark_Pipeline/config/tasks_external/home_renovation_interior_design.yaml`
+MemEye evaluates multimodal agent memory along two orthogonal axes:
 
-Single benchmark run:
+**X-axis (Visual Granularity):**
+- `X1` Global Scene Gist — scene-level understanding
+- `X2` Entity Instance Retrieval — cross-session entity tracking
+- `X3` Spatial Grounding — layout and relative positions
+- `X4` Micro-attribute Reasoning — color, OCR, fine details
+
+**Y-axis (Reasoning Complexity):**
+- `Y1` Direct Retrieval — single-session fact lookup (RAG-solvable)
+- `Y2` Compositional Linking — cross-session monotonic integration (RAG-solvable)
+- `Y3` State-Evolving Synthesis — temporal logic required, later evidence overrides earlier
+
+Each QA is assigned a single `(X_i, Y_j)` coordinate following the **Highest-Bottleneck Rule**: the label reflects the highest level whose absence would prevent a correct answer.
+
+## Data
+
+Dataset files are stored on HuggingFace (`MemEyeBench/MemEye`) and synced locally:
 
 ```bash
-python -m Benchmark_Pipeline.run_benchmark \
-  --task-config Benchmark_Pipeline/config/tasks_external/brand_memory_test.yaml \
-  --model-config Benchmark_Pipeline/config/models/gpt_4_1_nano.yaml \
-  --method-config Benchmark_Pipeline/config/methods/full_context_multimodal.yaml
+cd Benchmark_Pipeline
+
+# Pull from HuggingFace
+export HF_TOKEN=<token>
+python sync_hf_data.py pull
+
+# Push local changes
+python sync_hf_data.py push --push
 ```
 
-Method comparison matrix:
+## Environment Setup
 
 ```bash
-python -m Benchmark_Pipeline.run_matrix \
-  --task-config Benchmark_Pipeline/config/tasks_external/chat_ui_memory_test.yaml \
-  --model-config Benchmark_Pipeline/config/models/gpt_4_1_nano.yaml \
-  --method-config Benchmark_Pipeline/config/methods/full_context_multimodal.yaml \
-  --method-config Benchmark_Pipeline/config/methods/semantic_rag_multimodal.yaml \
-  --method-config Benchmark_Pipeline/config/methods/m2a.yaml
+conda activate memorybench
 ```
 
-Representative experimental results are intentionally omitted from the repository README while the benchmark and task suite are still changing. Run the commands above to generate current results locally.
-
-If you use API-backed models, load local credentials first:
-
-```bash
-set -a
-source .env.local
-set +a
-```
+See `CLAUDE.md` for detailed environment setup, common issues, and package versions.
