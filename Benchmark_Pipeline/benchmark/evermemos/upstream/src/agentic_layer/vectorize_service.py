@@ -20,8 +20,6 @@ import numpy as np
 
 from core.observation.stage_timer import timed
 
-from core.di.decorators import service
-
 from agentic_layer.vectorize_interface import (
     VectorizeServiceInterface,
     VectorizeError,
@@ -533,8 +531,6 @@ def get_hybrid_service() -> HybridVectorizeService:
     return _service_instance
 
 
-# Main entry point - registered with DI container
-@service(name="vectorize_service", primary=True)
 def get_vectorize_service() -> VectorizeServiceInterface:
     """
     Get the vectorization service (main entry point)

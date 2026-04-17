@@ -1,6 +1,6 @@
 import os
 from dotenv import load_dotenv
-from api_specs.memory_types import ScenarioType
+from benchmark_runtime.models import ScenarioType
 
 load_dotenv()
 

@@ -16,8 +16,7 @@ from agentic_layer.vectorize_interface import (
     VectorizeError,
     UsageInfo,
 )
-from core.di.utils import get_bean_by_type
-from core.component.token_usage_collector import TokenUsageCollector
+from benchmark_runtime.services import get_token_usage_collector
 
 logger = logging.getLogger(__name__)
 
@@ -121,7 +120,7 @@ class BaseVectorizeService(VectorizeServiceInterface):
 
                     # Report embedding call to token usage collector
                     try:
-                        collector = get_bean_by_type(TokenUsageCollector)
+                        collector = get_token_usage_collector()
                         prompt_tokens = (
                             getattr(response.usage, 'prompt_tokens', 0) or 0
                             if response.usage

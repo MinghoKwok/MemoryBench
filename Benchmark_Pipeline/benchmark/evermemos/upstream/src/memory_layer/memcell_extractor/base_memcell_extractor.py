@@ -8,9 +8,8 @@ boundaries in various types of content (conversations, emails, notes, etc.).
 from abc import ABC, abstractmethod
 from dataclasses import dataclass
 from typing import List, Dict, Any, Optional
+from benchmark_runtime.models import BaseMemory, MemCell, RawData, RawDataType
 from memory_layer.llm.llm_provider import LLMProvider
-from api_specs.memory_types import RawDataType, BaseMemory, MemCell
-from api_specs.dtos import RawData
 
 
 @dataclass

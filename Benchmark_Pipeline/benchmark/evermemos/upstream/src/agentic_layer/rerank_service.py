@@ -17,11 +17,8 @@ import time
 from typing import Optional, Any, List, Dict
 from dataclasses import dataclass, field
 
+from benchmark_runtime.services import TokenizerFactory, get_tokenizer_factory
 from core.observation.stage_timer import timed
-
-from core.di import service
-from core.di.utils import get_bean_by_type
-from core.component.llm.tokenizer.tokenizer_factory import TokenizerFactory
 
 from agentic_layer.rerank_interface import (
     RerankServiceInterface,
@@ -257,7 +254,7 @@ class HybridRerankService(RerankServiceInterface):
         try:
             texts = [extract_text_from_hit(hit) for hit in hits]
             all_text = query + " " + " ".join(texts)
-            tokenizer = get_bean_by_type(TokenizerFactory).get_tokenizer_from_tiktoken(
+            tokenizer = get_tokenizer_factory().get_tokenizer_from_tiktoken(
                 "o200k_base"
             )
             total_tokens = len(tokenizer.encode(all_text))
@@ -541,8 +538,6 @@ def get_hybrid_service() -> HybridRerankService:
     return _service_instance
 
 
-# Main entry point - registered with DI container
-@service(name="rerank_service", primary=True)
 def get_rerank_service() -> RerankServiceInterface:
     """
     Get the reranking service (main entry point)

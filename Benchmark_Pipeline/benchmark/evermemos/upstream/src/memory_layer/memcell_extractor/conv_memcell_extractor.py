@@ -9,21 +9,18 @@ from typing import Dict, Any, Optional, List
 from datetime import datetime
 from dataclasses import dataclass, field
 import json, re, os
-from core.di.utils import get_bean_by_type
-from core.component.llm.tokenizer.tokenizer_factory import TokenizerFactory
+from benchmark_runtime.models import MessageSenderRole, RawDataType, get_text_from_content_items
+from benchmark_runtime.services import TokenizerFactory, get_tokenizer_factory
 from common_utils.datetime_utils import from_iso_format as dt_from_iso_format
 from memory_layer.llm.llm_provider import LLMProvider
-from api_specs.memory_types import RawDataType
-from api_specs.memory_models import MessageSenderRole
 
-from memory_layer.prompts import get_prompt_by
+from memory_layer.prompts.en.conv_prompts import CONV_BATCH_BOUNDARY_DETECTION_PROMPT
 from memory_layer.memcell_extractor.base_memcell_extractor import (
     MemCellExtractor,
     MemCell,
     StatusResult,
     MemCellExtractRequest,
 )
-from api_specs.memory_types import get_text_from_content_items
 from core.observation.logger import get_logger
 from core.observation.stage_timer import timed
 from agentic_layer.metrics.memorize_metrics import (
@@ -74,7 +71,7 @@ class ConvMemCellExtractor(MemCellExtractor):
     @classmethod
     def _get_tokenizer(cls):
         """Get the shared tokenizer from tokenizer factory (with caching)."""
-        tokenizer_factory: TokenizerFactory = get_bean_by_type(TokenizerFactory)
+        tokenizer_factory: TokenizerFactory = get_tokenizer_factory()
         return tokenizer_factory.get_tokenizer_from_tiktoken("o200k_base")
 
     def __init__(
@@ -93,8 +90,7 @@ class ConvMemCellExtractor(MemCellExtractor):
 
         # Use custom prompt or get default via PromptManager
         self.conv_batch_boundary_detection_prompt = (
-            boundary_detection_prompt
-            or get_prompt_by("CONV_BATCH_BOUNDARY_DETECTION_PROMPT")
+            boundary_detection_prompt or CONV_BATCH_BOUNDARY_DETECTION_PROMPT
         )
 
     def shutdown(self) -> None:

@@ -12,8 +12,7 @@ import time
 
 import aiohttp
 
-from core.component.token_usage_collector import TokenUsageCollector
-from core.di.utils import get_bean_by_type
+from benchmark_runtime.services import get_token_usage_collector
 from core.observation.logger import get_logger
 from memory_layer.llm.api_key_rotator import ApiKeyRotator
 from memory_layer.llm.llm_metrics import record_llm_request
@@ -149,7 +148,7 @@ class OpenAIProvider(LLMProvider):
     def _report_token_usage(self, prompt_tokens: int, completion_tokens: int) -> None:
         """Report token usage to the global TokenUsageCollector (best-effort)."""
         try:
-            collector = get_bean_by_type(TokenUsageCollector)
+            collector = get_token_usage_collector()
             collector.add(self.model, prompt_tokens, completion_tokens, call_type="llm")
         except Exception:
             pass

@@ -8,7 +8,7 @@ from abc import ABC, abstractmethod
 from typing import List, Dict, Any, Optional
 from dataclasses import dataclass, field
 
-from api_specs.memory_models import MemoryType
+from benchmark_runtime.models import MemoryType
 
 
 class RerankError(Exception):

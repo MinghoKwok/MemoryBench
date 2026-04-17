@@ -8,7 +8,7 @@ import logging
 from dataclasses import dataclass
 import os
 
-from api_specs.memory_types import ParentType
+from benchmark_runtime.models import ParentType
 
 logger = logging.getLogger(__name__)
 

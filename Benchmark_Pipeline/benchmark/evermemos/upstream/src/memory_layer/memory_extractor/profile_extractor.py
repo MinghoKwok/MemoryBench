@@ -16,6 +16,13 @@ from datetime import datetime
 from enum import Enum
 from typing import Any, Dict, List, Optional
 
+from benchmark_runtime.models import (
+    MemCell,
+    MemoryType,
+    ProfileMemory,
+    ScenarioType,
+    get_text_from_content_items,
+)
 from common_utils.datetime_utils import get_now_with_timezone
 from core.observation.logger import get_logger
 from memory_layer.llm.llm_provider import LLMProvider
@@ -23,8 +30,11 @@ from memory_layer.memory_extractor.base_memory_extractor import (
     MemoryExtractor,
     MemoryExtractRequest,
 )
-from memory_layer.prompts import get_prompt_by
-from api_specs.memory_types import MemCell, MemoryType, ProfileMemory, ScenarioType, get_text_from_content_items
+from memory_layer.prompts.en.profile_prompts import (
+    PROFILE_COMPACT_PROMPT,
+    PROFILE_UPDATE_PROMPT,
+    TEAM_PROFILE_UPDATE_PROMPT,
+)
 
 logger = get_logger(__name__)
 
@@ -247,15 +257,13 @@ class ProfileExtractor(MemoryExtractor):
         empty_conv = "(No conversations)"
 
         if scene == ScenarioType.TEAM and target_user_name:
-            prompt_template = get_prompt_by("TEAM_PROFILE_UPDATE_PROMPT")
-            prompt = prompt_template.format(
+            prompt = TEAM_PROFILE_UPDATE_PROMPT.format(
                 target_user=target_user_name,
                 current_profile=profile_text or empty_profile,
                 conversations=conversations_text or empty_conv,
             )
         else:
-            prompt_template = get_prompt_by("PROFILE_UPDATE_PROMPT")
-            prompt = prompt_template.format(
+            prompt = PROFILE_UPDATE_PROMPT.format(
                 current_profile=profile_text or empty_profile,
                 conversations=conversations_text or empty_conv,
             )
@@ -398,8 +406,7 @@ class ProfileExtractor(MemoryExtractor):
         profile_text = self._format_profile_for_llm(profile_short)
         total = profile.total_items()
 
-        prompt_template = get_prompt_by("PROFILE_COMPACT_PROMPT")
-        prompt = prompt_template.format(
+        prompt = PROFILE_COMPACT_PROMPT.format(
             total_items=total, max_items=max_items, profile_text=profile_text
         )
 

@@ -5,6 +5,7 @@ import sys
 import uuid
 import asyncio
 import time
+from bson.objectid import ObjectId
 from rich.progress import (
     Progress,
     SpinnerColumn,
@@ -24,8 +25,8 @@ from common_utils.datetime_utils import (
     from_timestamp,
     get_now_with_timezone,
 )
+from benchmark_runtime.models import MemCell, RawData, RawDataType, ScenarioType
 from memory_layer.llm.llm_provider import LLMProvider
-from memory_layer.memcell_extractor.base_memcell_extractor import RawData, MemCell
 from memory_layer.memcell_extractor.conv_memcell_extractor import (
     ConvMemCellExtractor,
     ConversationMemCellExtractRequest,
@@ -42,19 +43,12 @@ from memory_layer.prompts.en.episode_mem_prompts import (
 from memory_layer.memory_extractor.base_memory_extractor import MemoryExtractRequest
 from memory_layer.memory_extractor.atomic_fact_extractor import AtomicFactExtractor
 from memory_layer.memory_extractor.foresight_extractor import ForesightExtractor
-from api_specs.memory_types import RawDataType
 
 # Clustering and Profile management components
-from memory_layer.cluster_manager import (
-    ClusterManager,
-    ClusterManagerConfig,
-    MemSceneState,
-)
-from memory_layer.profile_manager import (
-    ProfileManager,
-    ProfileManagerConfig,
-    ScenarioType,
-)
+from memory_layer.cluster_manager.config import ClusterManagerConfig
+from memory_layer.cluster_manager.manager import ClusterManager, MemSceneState
+from memory_layer.profile_manager.config import ProfileManagerConfig
+from memory_layer.profile_manager.manager import ProfileManager
 
 # In-memory storage implementations for evaluation
 from evaluation.src.adapters.evermemos.tools import (
@@ -63,7 +57,6 @@ from evaluation.src.adapters.evermemos.tools import (
 )
 
 from evaluation.src.adapters.evermemos.config import ExperimentConfig
-from core.oxm.mongo.mongo_utils import generate_object_id_str
 from datetime import datetime, timedelta
 from pathlib import Path
 
@@ -73,6 +66,11 @@ def parse_locomo_timestamp(timestamp_str: str) -> datetime:
     timestamp_str = timestamp_str.replace("\\s+", " ").strip()
     dt = datetime.strptime(timestamp_str, "%I:%M %p on %d %B, %Y")
     return dt
+
+
+def _generate_event_id() -> str:
+    """Generate a stable Mongo-style hex id without depending on vendored Mongo ODM code."""
+    return str(ObjectId())
 
 
 def raw_data_load(locomo_data_path: str) -> Dict[str, List[RawData]]:
@@ -278,7 +276,7 @@ async def memcell_extraction_from_conversation(
             for memcell_result in extracted_memcells:
                 # [Evaluation Only] Generate event_id (in production, MongoDB generates it)
                 if memcell_result.event_id is None:
-                    memcell_result.event_id = generate_object_id_str()
+                    memcell_result.event_id = _generate_event_id()
 
                 # ✅ Serial extraction: detect boundary, immediately extract all memories for this MemCell
                 # This allows Clustering and Profile to immediately use the complete MemCell
@@ -325,7 +323,7 @@ async def memcell_extraction_from_conversation(
             timestamp=last_timestamp,
         )
         # [Evaluation Only] Generate event_id (in production, MongoDB generates it)
-        memcell.event_id = generate_object_id_str()
+        memcell.event_id = _generate_event_id()
 
         original_messages = [
             raw_data.content

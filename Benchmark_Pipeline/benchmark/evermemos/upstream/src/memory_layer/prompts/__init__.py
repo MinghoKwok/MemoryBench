@@ -19,14 +19,6 @@ _PROMPT_REGISTRY = {
     "PROFILE_COMPACT_PROMPT": ("memory_layer.prompts.en.profile_prompts", False),
     "FORESIGHT_GENERATION_PROMPT": ("memory_layer.prompts.en.foresight_prompts", False),
     "ATOMIC_FACT_PROMPT": ("memory_layer.prompts.en.atomic_fact_prompts", False),
-    "AGENT_TOOL_PRE_COMPRESS_PROMPT": ("memory_layer.prompts.en.agent_prompts", False),
-    "AGENT_CASE_FILTER_PROMPT": ("memory_layer.prompts.en.agent_prompts", False),
-    "AGENT_CASE_COMPRESS_PROMPT": ("memory_layer.prompts.en.agent_prompts", False),
-    "AGENT_SKILL_SUCCESS_EXTRACT_PROMPT": ("memory_layer.prompts.en.agent_prompts", False),
-    "AGENT_SKILL_FAILURE_EXTRACT_PROMPT": ("memory_layer.prompts.en.agent_prompts", False),
-    "AGENT_SKILL_RELEVANCE_VERIFY_PROMPT": ("memory_layer.prompts.en.agent_prompts", False),
-    "AGENT_SKILL_MATURITY_SCORE_PROMPT": ("memory_layer.prompts.en.agent_prompts", False),
-    "AGENT_CLUSTER_LLM_ASSIGN_PROMPT": ("memory_layer.prompts.en.agent_prompts", False),
 }
 
 

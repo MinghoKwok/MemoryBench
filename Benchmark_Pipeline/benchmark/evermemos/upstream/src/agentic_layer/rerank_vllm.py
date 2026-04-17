@@ -15,8 +15,7 @@ from agentic_layer.rerank_interface import (
     RerankError,
     extract_text_from_hit,
 )
-from core.di.utils import get_bean_by_type
-from core.component.token_usage_collector import TokenUsageCollector
+from benchmark_runtime.services import get_token_usage_collector
 
 logger = logging.getLogger(__name__)
 
@@ -202,7 +201,7 @@ class VllmRerankService(RerankServiceInterface):
 
         # Report rerank call to token usage collector
         try:
-            collector = get_bean_by_type(TokenUsageCollector)
+            collector = get_token_usage_collector()
             collector.add(self.config.model, 0, 0, call_type="rerank")
         except Exception:
             pass

@@ -11,22 +11,25 @@ from datetime import datetime
 import re, json, asyncio, uuid
 
 
-from memory_layer.prompts import get_prompt_by
+from benchmark_runtime.models import (
+    EpisodeMemory,
+    MemCell,
+    MemoryType,
+    ParentType,
+    RawDataType,
+    get_text_from_content_items,
+)
 from memory_layer.llm.llm_provider import LLMProvider
+from memory_layer.prompts.en.episode_mem_prompts import (
+    DEFAULT_CUSTOM_INSTRUCTIONS,
+    EPISODE_GENERATION_PROMPT,
+    GROUP_EPISODE_GENERATION_PROMPT,
+)
 
 from memory_layer.memory_extractor.base_memory_extractor import (
     MemoryExtractor,
     MemoryExtractRequest,
 )
-from api_specs.memory_types import (
-    MemoryType,
-    EpisodeMemory,
-    RawDataType,
-    MemCell,
-    ParentType,
-    get_text_from_content_items,
-)
-
 from common_utils.datetime_utils import get_now_with_timezone
 from agentic_layer.vectorize_service import get_vectorize_service
 from biz_layer.memorize_config import DEFAULT_MEMORIZE_CONFIG
@@ -77,15 +80,12 @@ class EpisodeMemoryExtractor(MemoryExtractor):
         self.llm_provider = llm_provider
         self.default_parent_type = DEFAULT_MEMORIZE_CONFIG.default_episode_parent_type
 
-        # Use custom prompts or get default via PromptManager
-        self.episode_generation_prompt = episode_prompt or get_prompt_by(
-            "EPISODE_GENERATION_PROMPT"
+        self.episode_generation_prompt = episode_prompt or EPISODE_GENERATION_PROMPT
+        self.group_episode_generation_prompt = (
+            group_episode_prompt or GROUP_EPISODE_GENERATION_PROMPT
         )
-        self.group_episode_generation_prompt = group_episode_prompt or get_prompt_by(
-            "GROUP_EPISODE_GENERATION_PROMPT"
-        )
-        self.default_custom_instructions = custom_instructions or get_prompt_by(
-            "DEFAULT_CUSTOM_INSTRUCTIONS"
+        self.default_custom_instructions = (
+            custom_instructions or DEFAULT_CUSTOM_INSTRUCTIONS
         )
 
     def _parse_timestamp(self, timestamp) -> datetime:

@@ -7,17 +7,17 @@ import json
 from typing import List, Dict, Any, Optional
 from datetime import datetime, timedelta
 
-from memory_layer.prompts import get_prompt_by
+from benchmark_runtime.models import BaseMemory, Foresight, MemCell, MemoryType
 from memory_layer.llm.llm_provider import LLMProvider
 from memory_layer.memory_extractor.base_memory_extractor import (
     MemoryExtractor,
     MemoryExtractRequest,
 )
-from api_specs.memory_types import MemoryType, MemCell, Foresight, BaseMemory
 from agentic_layer.vectorize_service import get_vectorize_service
 from core.observation.logger import get_logger
 from core.observation.stage_timer import timed
 from common_utils.datetime_utils import get_now_with_timezone
+from memory_layer.prompts.en.foresight_prompts import FORESIGHT_GENERATION_PROMPT
 
 logger = get_logger(__name__)
 
@@ -105,8 +105,7 @@ class ForesightExtractor(MemoryExtractor):
                         )
 
                     # Build prompt (static prompt template via PromptManager)
-                    prompt_template = get_prompt_by("FORESIGHT_GENERATION_PROMPT")
-                    prompt = prompt_template.format(
+                    prompt = FORESIGHT_GENERATION_PROMPT.format(
                         USER_ID=user_id,
                         USER_NAME=user_name,
                         CONVERSATION_TEXT=conversation_text,

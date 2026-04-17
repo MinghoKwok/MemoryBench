@@ -13,8 +13,8 @@ Design:
 import asyncio
 from typing import Any, Dict, List, Optional
 
+from benchmark_runtime.models import ProfileMemory, ScenarioType
 from memory_layer.llm.llm_provider import LLMProvider
-from api_specs.memory_types import ProfileMemory, ScenarioType
 from memory_layer.memory_extractor.profile_extractor import (
     ProfileExtractor,
     ProfileExtractRequest,

@@ -10,15 +10,10 @@ from datetime import datetime
 import json
 import re
 
-from memory_layer.prompts import get_prompt_by
+from benchmark_runtime.models import AtomicFact, MemCell, MemoryType, get_text_from_content_items
 from memory_layer.llm.llm_provider import LLMProvider
 from common_utils.datetime_utils import get_now_with_timezone, from_iso_format
-from api_specs.memory_types import (
-    AtomicFact,
-    MemoryType,
-    MemCell,
-    get_text_from_content_items,
-)
+from memory_layer.prompts.en.atomic_fact_prompts import ATOMIC_FACT_PROMPT
 
 from core.observation.logger import get_logger
 from core.observation.stage_timer import timed
@@ -47,10 +42,7 @@ class AtomicFactExtractor:
         """
         self.llm_provider = llm_provider
 
-        # Use custom prompt or get default via PromptManager
-        self.atomic_fact_prompt = atomic_fact_prompt or get_prompt_by(
-            "ATOMIC_FACT_PROMPT"
-        )
+        self.atomic_fact_prompt = atomic_fact_prompt or ATOMIC_FACT_PROMPT
 
     def _parse_timestamp(self, timestamp) -> datetime:
         """
