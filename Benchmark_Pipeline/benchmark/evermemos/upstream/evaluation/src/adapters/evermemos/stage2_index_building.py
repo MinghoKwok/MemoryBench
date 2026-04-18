@@ -16,6 +16,38 @@ from evaluation.src.adapters.evermemos.config import ExperimentConfig
 from agentic_layer.vectorize_service import get_vectorize_service
 
 
+def _original_message_text(message: dict) -> str:
+    if not isinstance(message, dict):
+        return ""
+    content = message.get("content")
+    if isinstance(content, str):
+        return content.strip()
+    if not isinstance(content, list):
+        return ""
+    parts = []
+    for item in content:
+        if not isinstance(item, dict):
+            continue
+        if item.get("type") == "text":
+            text = str(item.get("text") or item.get("content") or "").strip()
+            if text:
+                parts.append(text)
+    return " ".join(parts).strip()
+
+
+def _original_data_text(doc: dict) -> str:
+    original_data = doc.get("original_data") or []
+    parts = []
+    for item in original_data:
+        if not isinstance(item, dict):
+            continue
+        message = item.get("message", item)
+        text = _original_message_text(message)
+        if text:
+            parts.append(text)
+    return "\n".join(parts).strip()
+
+
 def ensure_nltk_data():
     """Ensure required NLTK data is downloaded."""
     try:
@@ -90,6 +122,10 @@ def build_searchable_text(doc: dict) -> str:
     if doc.get("episode"):
         parts.append(doc["episode"])
 
+    original_text = _original_data_text(doc)
+    if original_text:
+        parts.append(original_text)
+
     return " ".join(str(part) for part in parts if part)
 
 
@@ -141,14 +177,16 @@ def build_bm25_index(
             data = json.load(f)
 
             for doc in data:
-                original_docs.append(doc)
                 searchable_text = build_searchable_text(doc)
                 tokenized_text = tokenize(searchable_text, stemmer, stop_words)
+                if not tokenized_text:
+                    continue
+                original_docs.append(doc)
                 corpus.append(tokenized_text)
 
-        if not corpus:
+        if not corpus or not original_docs:
             print(
-                f"Warning: No documents found in {file_path.name}. Skipping index creation."
+                f"Warning: No tokenizable documents found in {file_path.name}. Skipping index creation."
             )
             continue
 
@@ -233,6 +271,11 @@ async def build_emb_index(config: ExperimentConfig, data_dir: Path, emb_save_dir
                 if text := doc.get(field):
                     texts_to_embed.append(text)
                     doc_field_map.append((doc_idx, field))
+
+            original_text = _original_data_text(doc)
+            if original_text:
+                texts_to_embed.append(original_text)
+                doc_field_map.append((doc_idx, "original_data"))
 
         if not texts_to_embed:
             print(

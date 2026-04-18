@@ -126,9 +126,10 @@ class ConvMemCellExtractor(MemCellExtractor):
         self, chat_raw_data_list: List[Dict[str, Any]]
     ) -> List[str]:
         """
-        Extract user participant IDs from chat_raw_data_list
+        Extract participant IDs from chat_raw_data_list.
 
-        Retrieves sender_id only from messages with role='user'.
+        For benchmark conversation data, both user and assistant speaker identities
+        are meaningful memory participants. Tool/intermediate steps are excluded.
 
         Args:
             chat_raw_data_list: List of raw chat data
@@ -139,7 +140,8 @@ class ConvMemCellExtractor(MemCellExtractor):
         participant_ids = set()
 
         for raw_data in chat_raw_data_list:
-            if raw_data.get('role') == MessageSenderRole.USER.value and raw_data.get(
+            role = raw_data.get('role')
+            if role in {MessageSenderRole.USER.value, MessageSenderRole.ASSISTANT.value} and raw_data.get(
                 'sender_id'
             ):
                 participant_ids.add(raw_data['sender_id'])

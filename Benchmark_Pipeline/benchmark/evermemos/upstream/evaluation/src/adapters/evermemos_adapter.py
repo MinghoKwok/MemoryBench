@@ -4,6 +4,7 @@ EverMemOS Adapter - connects evaluation framework with EverMemOS implementation.
 
 import asyncio
 import json
+import os
 import pickle
 import time
 from pathlib import Path
@@ -39,6 +40,84 @@ from memory_layer.llm.llm_provider import LLMProvider
 from memory_layer.memory_extractor.atomic_fact_extractor import AtomicFactExtractor
 
 
+def _message_text(content: Any) -> str:
+    if isinstance(content, str):
+        return content.strip()
+    if not isinstance(content, list):
+        return ""
+    parts: List[str] = []
+    for item in content:
+        if not isinstance(item, dict):
+            continue
+        if item.get("type") == "text":
+            text = str(item.get("text") or item.get("content") or "").strip()
+            if text:
+                parts.append(text)
+    return " ".join(parts).strip()
+
+
+def _doc_original_data_text(doc: Dict[str, Any]) -> str:
+    original_data = doc.get("original_data") or []
+    parts: List[str] = []
+    for item in original_data:
+        if not isinstance(item, dict):
+            continue
+        message = item.get("message", item)
+        if not isinstance(message, dict):
+            continue
+        sender = str(message.get("sender_name", "") or "").strip()
+        text = _message_text(message.get("content"))
+        if text:
+            parts.append(f"{sender}: {text}" if sender else text)
+    return "\n".join(parts).strip()
+
+
+def _strip_sender_prefix(text: str) -> str:
+    raw = str(text or "").strip()
+    if not raw:
+        return ""
+    first_line = raw.splitlines()[0].strip()
+    if ": " in first_line:
+        return first_line.split(": ", 1)[1].strip()
+    return first_line
+
+
+def _provider_env_name(provider_type: str, suffix: str) -> str:
+    provider = str(provider_type or "openai").strip().upper() or "OPENAI"
+    return f"{provider}_{suffix}"
+
+
+def _resolve_provider_value(
+    primary_value: Any,
+    explicit_env_name: str,
+    provider_type: str,
+    *,
+    provider_suffix: str,
+    legacy_env_name: str,
+    default: str = "",
+) -> str:
+    raw = str(primary_value or "").strip()
+    if raw:
+        return raw
+
+    explicit_env = str(explicit_env_name or "").strip()
+    if explicit_env:
+        env_value = str(os.getenv(explicit_env, "")).strip()
+        if env_value:
+            return env_value
+
+    provider_env = _provider_env_name(provider_type, provider_suffix)
+    env_value = str(os.getenv(provider_env, "")).strip()
+    if env_value:
+        return env_value
+
+    legacy_value = str(os.getenv(legacy_env_name, "")).strip()
+    if legacy_value:
+        return legacy_value
+
+    return default
+
+
 def _doc_atomic_fact_text(doc: Dict[str, Any]) -> str:
     atomic_fact = doc.get("atomic_fact")
     if not isinstance(atomic_fact, dict):
@@ -61,7 +140,10 @@ def _doc_episode_text(doc: Dict[str, Any]) -> str:
     episode = str(doc.get("episode", "") or "").strip()
     if episode:
         return episode
-    return _doc_atomic_fact_text(doc)
+    atomic_text = _doc_atomic_fact_text(doc)
+    if atomic_text:
+        return atomic_text
+    return _doc_original_data_text(doc)
 
 
 def _doc_subject_text(doc: Dict[str, Any]) -> str:
@@ -69,10 +151,25 @@ def _doc_subject_text(doc: Dict[str, Any]) -> str:
     if subject:
         return subject
     atomic_text = _doc_atomic_fact_text(doc)
-    if not atomic_text:
+    if atomic_text:
+        first_line = atomic_text.splitlines()[0].strip()
+        return first_line[:120] if first_line else "N/A"
+    original_text = _doc_original_data_text(doc)
+    if not original_text:
         return "N/A"
-    first_line = atomic_text.splitlines()[0].strip()
+    first_line = _strip_sender_prefix(original_text)
     return first_line[:120] if first_line else "N/A"
+
+
+def _doc_context_text(doc: Dict[str, Any]) -> str:
+    episode = _doc_episode_text(doc) or "N/A"
+    has_structured_episode = bool(str(doc.get("episode", "") or "").strip())
+    has_atomic_facts = bool(_doc_atomic_fact_text(doc))
+    if not has_structured_episode and not has_atomic_facts:
+        return f"{episode}\n---"
+
+    subject = _doc_subject_text(doc)
+    return f"{subject}: {episode}\n---"
 
 
 @register_adapter("evermemos")
@@ -222,6 +319,7 @@ class EverMemOSAdapter(BaseAdapter):
                     "sender_name": msg.sender_name or msg.sender_id,
                     "content": msg.content,
                     "timestamp": timestamp_str,
+                    "role": str(msg.metadata.get("role", "")).strip(),
                 }
 
                 # Add optional fields
@@ -593,10 +691,7 @@ class EverMemOSAdapter(BaseAdapter):
             # Build context using response_top_k
             retrieved_docs_text = []
             for doc, score in top_results[:response_top_k]:
-                subject = _doc_subject_text(doc)
-                episode = _doc_episode_text(doc) or "N/A"
-                doc_text = f"{subject}: {episode}\n---"
-                retrieved_docs_text.append(doc_text)
+                retrieved_docs_text.append(_doc_context_text(doc))
 
             speaker_memories = "\n\n".join(retrieved_docs_text)
 
@@ -652,8 +747,6 @@ class EverMemOSAdapter(BaseAdapter):
         Convert evaluation framework config to ExperimentConfig format.
         """
         from evaluation.src.adapters.evermemos.config import ExperimentConfig
-        import os
-
         exp_config = ExperimentConfig()
 
         # Map LLM configuration: convert YAML llm to ExperimentConfig llm_config format
@@ -665,9 +758,21 @@ class EverMemOSAdapter(BaseAdapter):
             provider: {
                 "llm_provider": provider,
                 "model": llm_cfg.get("model", "gpt-4o-mini"),
-                "api_key": llm_cfg.get("api_key") or os.getenv("LLM_API_KEY", ""),
-                "base_url": llm_cfg.get("base_url")
-                or os.getenv("LLM_BASE_URL", "https://api.openai.com/v1"),
+                "api_key": _resolve_provider_value(
+                    llm_cfg.get("api_key"),
+                    llm_cfg.get("api_key_env", ""),
+                    provider,
+                    provider_suffix="API_KEY",
+                    legacy_env_name="LLM_API_KEY",
+                ),
+                "base_url": _resolve_provider_value(
+                    llm_cfg.get("base_url"),
+                    llm_cfg.get("base_url_env", ""),
+                    provider,
+                    provider_suffix="BASE_URL",
+                    legacy_env_name="LLM_BASE_URL",
+                    default="https://api.openai.com/v1",
+                ),
                 "temperature": llm_cfg.get("temperature", 0.3),
                 "max_tokens": llm_cfg.get("max_tokens", 32768),
             }

@@ -288,10 +288,17 @@ def run_benchmark(
     paths = resolve_runtime_paths(cfg, config_dir)
     mode = str(cfg.get("eval", {}).get("mode", "open"))
     max_questions = int(cfg.get("eval", {}).get("max_questions", 0))
+    run_dir = default_run_dir(cfg, paths["output_root"])
+    run_dir.mkdir(parents=True, exist_ok=True)
 
     dataset = MemoryBenchmarkDataset(paths["dialog_json"], paths["image_root"])
     method_cfg = dict(cfg.get("method", {}))
     method_cfg["_model_cfg"] = dict(cfg.get("model", {}))
+    method_cfg["_runtime_paths"] = {
+        "output_root": str(paths["output_root"]),
+        "output_json": str(paths.get("output_json") or ""),
+        "run_dir": str(run_dir),
+    }
     method = get_method(
         str(method_cfg.get("name", "full_context_multimodal")),
         config=method_cfg,
@@ -460,8 +467,6 @@ def run_benchmark(
             result["method_runtime"] = current_method_runtime
         results.append(result)
 
-    run_dir = default_run_dir(cfg, paths["output_root"])
-    run_dir.mkdir(parents=True, exist_ok=True)
     method_runtime = dict(getattr(method, "runtime_info", {}) or {})
     payload = build_payload(cfg, paths, run_dir, dataset, results, method_runtime=method_runtime)
 
