@@ -73,6 +73,41 @@ def _generate_event_id() -> str:
     return str(ObjectId())
 
 
+def _recover_participants_from_original_data(original_data: List[dict]) -> List[str]:
+    participant_ids = []
+    seen = set()
+    for item in original_data or []:
+        if not isinstance(item, dict):
+            continue
+        message = item.get("message", item)
+        if not isinstance(message, dict):
+            continue
+        role = str(message.get("role", "")).strip()
+        sender_id = str(message.get("sender_id", "")).strip()
+        if role not in {"user", "assistant"} or not sender_id or sender_id in seen:
+            continue
+        seen.add(sender_id)
+        participant_ids.append(sender_id)
+    return participant_ids
+
+
+def _normalize_memcell_participants(memcell: MemCell) -> None:
+    participants = list(memcell.participants or [])
+    sender_ids = list(memcell.sender_ids or [])
+    if not participants or not sender_ids:
+        recovered = _recover_participants_from_original_data(memcell.original_data)
+        if recovered:
+            if not participants:
+                memcell.participants = recovered
+            if not sender_ids:
+                memcell.sender_ids = recovered
+    if hasattr(memcell, "atomic_fact") and memcell.atomic_fact:
+        if not getattr(memcell.atomic_fact, "participants", None):
+            memcell.atomic_fact.participants = memcell.participants
+        if not getattr(memcell.atomic_fact, "sender_ids", None):
+            memcell.atomic_fact.sender_ids = memcell.sender_ids
+
+
 def raw_data_load(locomo_data_path: str) -> Dict[str, List[RawData]]:
     with open(locomo_data_path, "r") as f:
         data = json.load(f)
@@ -495,6 +530,7 @@ async def process_single_conversation(
     # Save single conversation results
     memcell_dicts = []
     for memcell in memcell_list:
+        _normalize_memcell_participants(memcell)
         memcell_dict = memcell.to_dict()
         if hasattr(memcell, 'atomic_fact') and memcell.atomic_fact:
             memcell_dict['atomic_fact'] = memcell.atomic_fact.to_dict()
@@ -509,6 +545,7 @@ async def process_single_conversation(
     if cluster_mgr and mem_scene_state:
         group_id = f"conv_{conv_id}"
         for memcell in memcell_list:
+            _normalize_memcell_participants(memcell)
             memcell_dict = memcell.to_dict() if hasattr(memcell, 'to_dict') else memcell
             cluster_id, mem_scene_state = await cluster_mgr.cluster_memcell(
                 memcell_dict, mem_scene_state

@@ -2,6 +2,7 @@ import argparse
 import asyncio
 import json
 import os
+import re
 import sys
 from pathlib import Path
 from time import time
@@ -161,29 +162,45 @@ async def locomo_response(
         Generated answer
     """
     prompt = ANSWER_PROMPT.format(context=context, question=question)
+    last_nonempty_result = ""
+    last_error = None
 
     for i in range(experiment_config.max_retries):
         try:
             result = await llm_provider.generate(prompt=prompt, temperature=0)
+            candidate = (result or "").strip()
+            if candidate:
+                last_nonempty_result = candidate
 
-            # Safe parse FINAL ANSWER (avoid index out of range)
-            if "FINAL ANSWER:" in result:
-                parts = result.split("FINAL ANSWER:")
-                if len(parts) > 1:
-                    result = parts[1].strip()
-                else:
-                    # Split failed, use original result
-                    result = result.strip()
+            if "FINAL ANSWER:" in candidate:
+                parts = candidate.split("FINAL ANSWER:")
+                result = parts[-1].strip() if parts else candidate
             else:
-                # No FINAL ANSWER marker, use original result
-                result = result.strip()
+                final_line_match = re.findall(
+                    r"(?im)^(?:##\s*)?FINAL ANSWER[:\-\s]*(.+)$",
+                    candidate,
+                )
+                if final_line_match:
+                    result = final_line_match[-1].strip()
+                else:
+                    nonempty_lines = [line.strip() for line in candidate.splitlines() if line.strip()]
+                    result = nonempty_lines[-1] if nonempty_lines else ""
 
             if result == "":
                 continue
             break
         except Exception as e:
+            last_error = e
             print(f"Error: {e}")
             continue
+    else:
+        if last_nonempty_result:
+            nonempty_lines = [line.strip() for line in last_nonempty_result.splitlines() if line.strip()]
+            if nonempty_lines:
+                return nonempty_lines[-1]
+        if last_error is not None:
+            return f"ERROR: {last_error}"
+        return ""
 
     return result
 

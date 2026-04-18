@@ -109,17 +109,6 @@ def _load_evermemos_components() -> Dict[str, Any]:
     }
 
 
-def _dialogue_text(round_payload: Dict[str, Any], speaker_a: str, speaker_b: str) -> str:
-    parts: List[str] = []
-    user_text = str(round_payload.get("user", "")).strip()
-    assistant_text = str(round_payload.get("assistant", "")).strip()
-    if user_text:
-        parts.append(f"{speaker_a}: {user_text}")
-    if assistant_text:
-        parts.append(f"{speaker_b}: {assistant_text}")
-    return "\n".join(parts).strip()
-
-
 def _round_image_blocks(raw_dialogue: Dict[str, Any]) -> List[str]:
     input_images = raw_dialogue.get("input_image", []) or []
     captions = raw_dialogue.get("image_caption", []) or []
@@ -139,16 +128,44 @@ def _round_image_blocks(raw_dialogue: Dict[str, Any]) -> List[str]:
     return lines
 
 
-def build_evermemos_turn_text(
+def _message_text(text: str, *, image_blocks: Optional[List[str]] = None) -> str:
+    body = str(text).strip()
+    lines: List[str] = [body] if body else []
+    if image_blocks:
+        lines.extend(image_blocks)
+    return "\n".join(lines).strip()
+
+
+def _round_messages(
     round_payload: Dict[str, Any],
     speaker_a: str,
     speaker_b: str,
-) -> str:
+) -> List[Dict[str, str]]:
     raw_dialogue = round_payload.get("raw", {}) or {}
-    text = _dialogue_text(round_payload, speaker_a, speaker_b)
-    lines: List[str] = [text] if text else []
-    lines.extend(_round_image_blocks(raw_dialogue))
-    return "\n".join(lines).strip()
+    image_blocks = _round_image_blocks(raw_dialogue)
+    user_text = _message_text(str(round_payload.get("user", "")), image_blocks=image_blocks)
+    assistant_text = _message_text(str(round_payload.get("assistant", "")))
+
+    messages: List[Dict[str, str]] = []
+    if user_text:
+        messages.append(
+            {
+                "sender_id": "benchmark_user",
+                "sender_name": speaker_a,
+                "role": "user",
+                "content": user_text,
+            }
+        )
+    if assistant_text:
+        messages.append(
+            {
+                "sender_id": "benchmark_assistant",
+                "sender_name": speaker_b,
+                "role": "assistant",
+                "content": assistant_text,
+            }
+        )
+    return messages
 
 
 def _question_with_image_caption(qa: Dict[str, Any], question: str) -> str:
@@ -171,10 +188,26 @@ def _question_with_image_caption(qa: Dict[str, Any], question: str) -> str:
     return f"{query}\nimage:\nimage_caption: {caption_text}"
 
 
+def _raw_question_text(qa: Dict[str, Any], fallback_question: str) -> str:
+    raw_question = str(qa.get("question", "") or "").strip()
+    return raw_question or str(fallback_question).strip()
+
+
 def _safe_task_name(dataset: MemoryBenchmarkDataset) -> str:
     task_name = str(dataset.data.get("task_name", "")).strip() or dataset.dialog_json_path.stem
     safe = re.sub(r"[^a-z0-9]+", "_", task_name.lower())
     return safe.strip("_") or dataset.dialog_json_path.stem.lower()
+
+
+def _parse_session_base(session_date: str, session_index: int) -> datetime:
+    session_date = str(session_date).strip()
+    base_dt = datetime(2025, 1, 1, 0, 0, 0)
+    if not session_date:
+        return base_dt + timedelta(days=session_index)
+    try:
+        return datetime.strptime(session_date, "%Y-%m-%d")
+    except ValueError:
+        return base_dt + timedelta(days=session_index)
 
 
 def _redact_secrets(value: Any) -> Any:
@@ -191,6 +224,67 @@ def _redact_secrets(value: Any) -> Any:
     if isinstance(value, tuple):
         return [_redact_secrets(item) for item in value]
     return value
+
+
+def _provider_env_name(provider_type: str, suffix: str) -> str:
+    provider = str(provider_type or "openai").strip().upper() or "OPENAI"
+    return f"{provider}_{suffix}"
+
+
+def _resolve_provider_secret(
+    primary_value: str,
+    env_name: str,
+    provider_type: str,
+    *,
+    legacy_env_name: str,
+) -> Optional[str]:
+    raw = str(primary_value).strip()
+    if raw:
+        return raw
+
+    explicit_env = str(env_name).strip()
+    if explicit_env:
+        value = os.getenv(explicit_env, "").strip()
+        if value:
+            return value
+
+    provider_env = _provider_env_name(provider_type, "API_KEY")
+    value = os.getenv(provider_env, "").strip()
+    if value:
+        return value
+
+    legacy_value = os.getenv(legacy_env_name, "").strip()
+    return legacy_value or None
+
+
+def _resolve_provider_base_url(
+    primary_value: str,
+    env_name: str,
+    provider_type: str,
+    *,
+    legacy_env_name: str,
+    default: str,
+) -> str:
+    raw = str(primary_value).strip()
+    if raw:
+        return raw
+
+    explicit_env = str(env_name).strip()
+    if explicit_env:
+        value = os.getenv(explicit_env, "").strip()
+        if value:
+            return value
+
+    provider_env = _provider_env_name(provider_type, "BASE_URL")
+    value = os.getenv(provider_env, "").strip()
+    if value:
+        return value
+
+    legacy_value = os.getenv(legacy_env_name, "").strip()
+    if legacy_value:
+        return legacy_value
+
+    return default
 
 
 class EverMemOSMethod(HistoryMethod):
@@ -214,14 +308,7 @@ class EverMemOSMethod(HistoryMethod):
         self._runtime_signature_cache: Dict[int, str] = {}
 
     def _debug_dir(self, dataset: MemoryBenchmarkDataset) -> Path:
-        return (
-            REPO_ROOT
-            / "Benchmark_Pipeline"
-            / "output"
-            / _safe_task_name(dataset)
-            / "evermemos"
-            / self._runtime_signature(dataset)
-        ).resolve()
+        return self._runtime_dir(dataset)
 
     def _runtime_dir(self, dataset: MemoryBenchmarkDataset) -> Path:
         return (
@@ -229,7 +316,7 @@ class EverMemOSMethod(HistoryMethod):
             / "Benchmark_Pipeline"
             / "runs"
             / _safe_task_name(dataset)
-            / "evermemos"
+            / self.name
             / self._runtime_signature(dataset)
         ).resolve()
 
@@ -253,7 +340,7 @@ class EverMemOSMethod(HistoryMethod):
             "method_name": self.name,
             "method_config": method_config,
             "model_config": model_cfg,
-            "code_version": 3,
+            "code_version": 11,
         }
         self._runtime_signature_payload_cache[dataset_id] = payload
         return payload
@@ -280,22 +367,27 @@ class EverMemOSMethod(HistoryMethod):
         write_json(self._debug_dir(dataset) / "debug_trace.json", payload)
 
     def _build_internal_llm_config(self) -> Dict[str, Any]:
+        llm_provider = str(self.config.get("internal_llm_provider", "openai")).strip() or "openai"
         llm_model = str(self.config.get("internal_llm_model", "gpt-4.1-mini")).strip() or "gpt-4.1-mini"
-        api_key = _resolve_secret(
+        api_key = _resolve_provider_secret(
             str(self.config.get("internal_llm_api_key", "")),
             str(self.config.get("internal_llm_api_key_env", "OPENAI_API_KEY")),
+            llm_provider,
+            legacy_env_name="LLM_API_KEY",
         )
         if not api_key:
             raise ValueError(
                 "Missing EverMemOS internal LLM API key. Set OPENAI_API_KEY or internal_llm_api_key."
             )
-        base_url = (
-            str(self.config.get("internal_llm_base_url", "")).strip()
-            or os.getenv("LLM_BASE_URL", "").strip()
-            or "https://api.openai.com/v1"
+        base_url = _resolve_provider_base_url(
+            str(self.config.get("internal_llm_base_url", "")),
+            str(self.config.get("internal_llm_base_url_env", "OPENAI_BASE_URL")),
+            llm_provider,
+            legacy_env_name="LLM_BASE_URL",
+            default="https://api.openai.com/v1",
         )
         return {
-            "provider": "openai",
+            "provider": llm_provider,
             "model": llm_model,
             "api_key": api_key,
             "base_url": base_url,
@@ -311,18 +403,27 @@ class EverMemOSMethod(HistoryMethod):
     def _build_answer_llm(self) -> Any:
         llm_provider_cls = self._load_components()["LLMProvider"]
         model_config = dict(self.config.get("_model_cfg", {}))
-        api_key = _resolve_secret(
+        provider_type = str(model_config.get("provider", "openai")).strip() or "openai"
+        api_key = _resolve_provider_secret(
             str(model_config.get("api_key", "")),
             str(model_config.get("api_key_env", "OPENAI_API_KEY")),
+            provider_type,
+            legacy_env_name="LLM_API_KEY",
         )
         if not api_key:
             raise ValueError(
                 "Missing API key for EverMemOS benchmark QA model. "
                 "Set OPENAI_API_KEY or provide api_key/api_key_env in the model config."
             )
-        base_url = str(model_config.get("base_url", "https://api.openai.com/v1")).strip() or "https://api.openai.com/v1"
+        base_url = _resolve_provider_base_url(
+            str(model_config.get("base_url", "")),
+            str(model_config.get("base_url_env", "OPENAI_BASE_URL")),
+            provider_type,
+            legacy_env_name="LLM_BASE_URL",
+            default="https://api.openai.com/v1",
+        )
         return llm_provider_cls(
-            provider_type="openai",
+            provider_type=provider_type,
             model=self._answer_model_name,
             api_key=api_key,
             base_url=base_url,
@@ -332,20 +433,29 @@ class EverMemOSMethod(HistoryMethod):
 
     def _build_answer_client(self) -> OpenAI:
         model_config = dict(self.config.get("_model_cfg", {}))
-        api_key = _resolve_secret(
+        provider_type = str(model_config.get("provider", "openai")).strip() or "openai"
+        api_key = _resolve_provider_secret(
             str(model_config.get("api_key", "")),
             str(model_config.get("api_key_env", "OPENAI_API_KEY")),
+            provider_type,
+            legacy_env_name="LLM_API_KEY",
         )
         if not api_key:
             raise ValueError(
                 "Missing API key for EverMemOS benchmark QA model. "
                 "Set OPENAI_API_KEY or provide api_key/api_key_env in the model config."
             )
-        base_url = str(model_config.get("base_url", "https://api.openai.com/v1")).strip() or "https://api.openai.com/v1"
+        base_url = _resolve_provider_base_url(
+            str(model_config.get("base_url", "")),
+            str(model_config.get("base_url_env", "OPENAI_BASE_URL")),
+            provider_type,
+            legacy_env_name="LLM_BASE_URL",
+            default="https://api.openai.com/v1",
+        )
         timeout = int(model_config.get("timeout", 90) or 90)
         return OpenAI(api_key=api_key, base_url=base_url, timeout=timeout)
 
-    def _answer_mcq(self, question: str, context: str, options: Dict[str, Any]) -> str:
+    def _answer_mcq(self, query: str, context: str, options: Dict[str, Any]) -> str:
         assert self._answer_client is not None
         normalized_options: List[tuple[str, str]] = []
         for raw_key, raw_value in options.items():
@@ -362,7 +472,7 @@ class EverMemOSMethod(HistoryMethod):
         user_prompt = (
             "Choose the single best option using only the retrieved context.\n\n"
             f"Context:\n{context}\n\n"
-            f"Question:\n{question}\n\n"
+            f"Question:\n{query}\n\n"
             f"Options:\n{options_block}\n"
         )
         response = self._answer_client.chat.completions.create(
@@ -413,17 +523,10 @@ class EverMemOSMethod(HistoryMethod):
         self._speaker_b = "assistant"
 
         messages: List[Any] = []
-        base_dt = datetime(2025, 1, 1, 0, 0, 0)
         message_index = 0
-        for session_id in dataset.session_order():
+        for session_index, session_id in enumerate(dataset.session_order()):
             session = dataset.get_session(session_id)
-            session_date = str(session.get("date", "")).strip()
-            session_base = base_dt
-            if session_date:
-                try:
-                    session_base = datetime.strptime(session_date, "%Y-%m-%d")
-                except ValueError:
-                    session_base = base_dt
+            session_base = _parse_session_base(session.get("date", ""), session_index)
             for dialogue in session.get("dialogues", []):
                 round_id = str(dialogue.get("round", "")).strip()
                 if not round_id:
@@ -431,29 +534,39 @@ class EverMemOSMethod(HistoryMethod):
                 round_payload = dataset.rounds.get(round_id)
                 if not round_payload:
                     continue
-                content = build_evermemos_turn_text(round_payload, self._speaker_a, self._speaker_b)
-                if not content:
-                    continue
-                timestamp = session_base + timedelta(seconds=message_index * 30)
-                message_index += 1
-                messages.append(
-                    message_cls(
-                        sender_id="benchmark_user",
-                        sender_name=self._speaker_a,
-                        content=content,
-                        timestamp=timestamp,
-                        metadata={"session_id": session_id, "round_id": round_id},
+                round_messages = _round_messages(round_payload, self._speaker_a, self._speaker_b)
+                for round_message in round_messages:
+                    content = round_message["content"]
+                    if not content:
+                        continue
+                    timestamp = session_base + timedelta(seconds=message_index * 30)
+                    message_index += 1
+                    role = round_message["role"]
+                    messages.append(
+                        message_cls(
+                            sender_id=round_message["sender_id"],
+                            sender_name=round_message["sender_name"],
+                            content=content,
+                            timestamp=timestamp,
+                            metadata={
+                                "session_id": session_id,
+                                "round_id": round_id,
+                                "role": role,
+                            },
+                        )
                     )
-                )
-                self._debug_rows.append(
-                    {
-                        "type": "stored_memory",
-                        "session_id": session_id,
-                        "round_id": round_id,
-                        "timestamp": timestamp.isoformat(),
-                        "text": content,
-                    }
-                )
+                    self._debug_rows.append(
+                        {
+                            "type": "stored_memory",
+                            "session_id": session_id,
+                            "round_id": round_id,
+                            "role": role,
+                            "sender_id": round_message["sender_id"],
+                            "sender_name": round_message["sender_name"],
+                            "timestamp": timestamp.isoformat(),
+                            "text": content,
+                        }
+                    )
 
         return conversation_cls(
             conversation_id="0",
@@ -523,7 +636,8 @@ class EverMemOSMethod(HistoryMethod):
         assert self._index_metadata is not None
         stage4 = self._load_components()["stage4_response"]
 
-        query = _question_with_image_caption(qa, question)
+        raw_question = _raw_question_text(qa, question)
+        query = _question_with_image_caption(qa, raw_question)
         search_result = _run_async(
             self._adapter.search(
                 query=query,
@@ -536,7 +650,7 @@ class EverMemOSMethod(HistoryMethod):
             search_result.retrieval_metadata.get("formatted_context", "")
         ).strip()
         if isinstance(qa.get("options"), dict):
-            prediction = self._answer_mcq(question, formatted_context, qa["options"])
+            prediction = self._answer_mcq(query, formatted_context, qa["options"])
         else:
             prediction = _run_async(
                 stage4.locomo_response(
@@ -552,6 +666,7 @@ class EverMemOSMethod(HistoryMethod):
                 "type": "qa",
                 "question_id": qa.get("question_id", ""),
                 "question": question,
+                "raw_question": raw_question,
                 "recall_query": query,
                 "retrieved_memories": search_result.results,
                 "retrieved_context": formatted_context,
