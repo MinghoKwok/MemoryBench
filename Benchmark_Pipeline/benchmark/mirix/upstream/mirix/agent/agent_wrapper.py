@@ -136,7 +136,7 @@ class AgentWrapper():
                 
                 # Set the agent state on the appropriate attribute
                 setattr(self.agent_states, config['attr_name'], agent_state)
-            
+
         # for agent_state in all_agent_states:
         #     messages = self.client.server.agent_manager.get_in_context_messages(agent_id=agent_state.id, actor=self.client.user)
         #     print(agent_state.name, len(messages))
@@ -1768,10 +1768,9 @@ class AgentWrapper():
                     row['summary_embedding'] = json.dumps(getattr(memory, 'summary_embedding', None))
                 
                 memories.append(row)
-            
+
             return memories, len(resource_memories)
-            
+
         except Exception as e:
             self.logger.error(f"Error exporting resource memories: {e}")
             return [], 0
-            

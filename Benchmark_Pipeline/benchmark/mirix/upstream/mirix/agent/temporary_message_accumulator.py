@@ -716,9 +716,9 @@ class TemporaryMessageAccumulator:
         summary = {
             'total_messages': len(self.temporary_messages),
         }
-        
+
         # Get upload manager status if available
         if self.upload_manager and hasattr(self.upload_manager, 'get_upload_status_summary'):
             summary['upload_manager_status'] = self.upload_manager.get_upload_status_summary()
-        
-        return summary 
+
+        return summary

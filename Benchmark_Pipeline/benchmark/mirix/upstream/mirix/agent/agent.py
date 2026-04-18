@@ -696,10 +696,13 @@ class Agent(BaseAgent):
                         # send intermediate message to the user
                         display_intermediate_message("internal_monologue", response_message.content)
 
-                    function_response = self.execute_tool_and_persist_state(function_name, function_args, 
-                                                                            target_mirix_tool, 
-                                                                            terminal_tools=terminal_tools,
-                                                                            display_intermediate_message=display_intermediate_message)
+                    function_response = self.execute_tool_and_persist_state(
+                        function_name,
+                        function_args,
+                        target_mirix_tool,
+                        terminal_tools=terminal_tools,
+                        display_intermediate_message=display_intermediate_message,
+                    )
 
                     if tool_call_idx == len(response_message.tool_calls) - 1:
                         if function_name == 'send_message':
