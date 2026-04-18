@@ -699,6 +699,32 @@ class EverMemOSAdapter(BaseAdapter):
                 "lightweight_search_mode"
             ]
 
+        if "use_hybrid_search" in search_config:
+            exp_config.use_hybrid_search = bool(search_config["use_hybrid_search"])
+        if "hybrid_emb_candidates" in search_config:
+            exp_config.hybrid_emb_candidates = int(
+                search_config["hybrid_emb_candidates"]
+            )
+        if "hybrid_bm25_candidates" in search_config:
+            exp_config.hybrid_bm25_candidates = int(
+                search_config["hybrid_bm25_candidates"]
+            )
+        if "hybrid_rrf_k" in search_config:
+            exp_config.hybrid_rrf_k = int(search_config["hybrid_rrf_k"])
+
+        if "response_top_k" in self.config:
+            exp_config.response_top_k = int(self.config["response_top_k"])
+        if "use_reranker" in self.config:
+            exp_config.use_reranker = bool(self.config["use_reranker"])
+        if "use_multi_query" in self.config:
+            exp_config.use_multi_query = bool(self.config["use_multi_query"])
+
+        if exp_config.retrieval_mode == "agentic" and not exp_config.use_hybrid_search:
+            raise ValueError(
+                "EverMemOS agentic retrieval currently requires use_hybrid_search=true. "
+                "Enable hybrid search or switch to lightweight mode."
+            )
+
         return exp_config
 
     def build_lazy_index(
@@ -724,6 +750,8 @@ class EverMemOSAdapter(BaseAdapter):
             "bm25_index_dir": str(output_dir / "bm25_index"),
             "emb_index_dir": str(output_dir / "vectors"),
             "conversation_ids": [conv.conversation_id for conv in conversations],
-            "use_hybrid_search": True,
+            "use_hybrid_search": bool(
+                self.config.get("search", {}).get("use_hybrid_search", True)
+            ),
             "total_conversations": len(conversations),
         }

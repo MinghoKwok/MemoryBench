@@ -1,4 +1,6 @@
 import asyncio
+import hashlib
+import json
 import os
 import re
 import sys
@@ -175,6 +177,22 @@ def _safe_task_name(dataset: MemoryBenchmarkDataset) -> str:
     return safe.strip("_") or dataset.dialog_json_path.stem.lower()
 
 
+def _redact_secrets(value: Any) -> Any:
+    if isinstance(value, dict):
+        redacted: Dict[str, Any] = {}
+        for key, item in value.items():
+            key_text = str(key).lower()
+            if "api_key" in key_text or "token" in key_text or "secret" in key_text:
+                continue
+            redacted[str(key)] = _redact_secrets(item)
+        return redacted
+    if isinstance(value, list):
+        return [_redact_secrets(item) for item in value]
+    if isinstance(value, tuple):
+        return [_redact_secrets(item) for item in value]
+    return value
+
+
 class EverMemOSMethod(HistoryMethod):
     name = "evermemos"
     fixed_modality = "text_only"
@@ -192,17 +210,73 @@ class EverMemOSMethod(HistoryMethod):
         self._speaker_b: str = "assistant"
         self._components: Optional[Dict[str, Any]] = None
         self._answer_model_name: str = str(self.config.get("answer_model", "gpt-4.1-nano")).strip() or "gpt-4.1-nano"
+        self._runtime_signature_payload_cache: Dict[int, Dict[str, Any]] = {}
+        self._runtime_signature_cache: Dict[int, str] = {}
 
     def _debug_dir(self, dataset: MemoryBenchmarkDataset) -> Path:
-        return (REPO_ROOT / "Benchmark_Pipeline" / "output" / _safe_task_name(dataset) / "evermemos").resolve()
+        return (
+            REPO_ROOT
+            / "Benchmark_Pipeline"
+            / "output"
+            / _safe_task_name(dataset)
+            / "evermemos"
+            / self._runtime_signature(dataset)
+        ).resolve()
 
     def _runtime_dir(self, dataset: MemoryBenchmarkDataset) -> Path:
-        return (REPO_ROOT / "Benchmark_Pipeline" / "runs" / _safe_task_name(dataset) / "evermemos").resolve()
+        return (
+            REPO_ROOT
+            / "Benchmark_Pipeline"
+            / "runs"
+            / _safe_task_name(dataset)
+            / "evermemos"
+            / self._runtime_signature(dataset)
+        ).resolve()
+
+    def _runtime_signature_payload(self, dataset: MemoryBenchmarkDataset) -> Dict[str, Any]:
+        dataset_id = id(dataset)
+        cached = self._runtime_signature_payload_cache.get(dataset_id)
+        if cached is not None:
+            return cached
+        dialog_path = dataset.dialog_json_path.resolve()
+        try:
+            dialog_sha256 = hashlib.sha256(dialog_path.read_bytes()).hexdigest()
+        except OSError:
+            dialog_sha256 = "unavailable"
+
+        method_config = _redact_secrets(dict(self.config))
+        model_cfg = _redact_secrets(dict(self.config.get("_model_cfg", {})))
+        payload = {
+            "task_name": str(dataset.data.get("task_name", "")).strip() or dataset.dialog_json_path.stem,
+            "dialog_json_path": str(dialog_path),
+            "dialog_sha256": dialog_sha256,
+            "method_name": self.name,
+            "method_config": method_config,
+            "model_config": model_cfg,
+            "code_version": 3,
+        }
+        self._runtime_signature_payload_cache[dataset_id] = payload
+        return payload
+
+    def _runtime_signature(self, dataset: MemoryBenchmarkDataset) -> str:
+        dataset_id = id(dataset)
+        cached = self._runtime_signature_cache.get(dataset_id)
+        if cached is not None:
+            return cached
+        payload = self._runtime_signature_payload(dataset)
+        serialized = json.dumps(payload, ensure_ascii=True, sort_keys=True, separators=(",", ":"))
+        digest = hashlib.sha256(serialized.encode("utf-8")).hexdigest()[:16]
+        self._runtime_signature_cache[dataset_id] = digest
+        return digest
 
     def _flush_debug(self, dataset: MemoryBenchmarkDataset) -> None:
         if not self._debug_rows:
             return
-        payload = {"dataset_path": str(dataset.dialog_json_path), "rows": self._debug_rows}
+        payload = {
+            "dataset_path": str(dataset.dialog_json_path),
+            "runtime_signature": self._runtime_signature(dataset),
+            "rows": self._debug_rows,
+        }
         write_json(self._debug_dir(dataset) / "debug_trace.json", payload)
 
     def _build_internal_llm_config(self) -> Dict[str, Any]:
@@ -273,12 +347,23 @@ class EverMemOSMethod(HistoryMethod):
 
     def _answer_mcq(self, question: str, context: str, options: Dict[str, Any]) -> str:
         assert self._answer_client is not None
-        option_keys = sorted(str(key).strip().upper() for key in options.keys())
-        enum_values = option_keys if option_keys else ["A", "B", "C", "D"]
+        normalized_options: List[tuple[str, str]] = []
+        for raw_key, raw_value in options.items():
+            option_key = str(raw_key).strip().upper()
+            if not option_key:
+                continue
+            normalized_options.append((option_key, str(raw_value).strip()))
+
+        normalized_options.sort(key=lambda item: item[0])
+        enum_values = [key for key, _ in normalized_options] or ["A", "B", "C", "D"]
+        options_block = "\n".join(
+            f"{key}. {value}" for key, value in normalized_options
+        ).strip()
         user_prompt = (
             "Choose the single best option using only the retrieved context.\n\n"
             f"Context:\n{context}\n\n"
-            f"Question:\n{question}\n"
+            f"Question:\n{question}\n\n"
+            f"Options:\n{options_block}\n"
         )
         response = self._answer_client.chat.completions.create(
             model=self._answer_model_name,
@@ -397,9 +482,19 @@ class EverMemOSMethod(HistoryMethod):
                 "hybrid_rrf_k": int(self.config.get("hybrid_rrf_k", 40)),
             },
         }
+        for optional_key in ("response_top_k", "use_reranker", "use_multi_query"):
+            if optional_key in self.config:
+                adapter_config[optional_key] = self.config[optional_key]
 
         runtime_dir = self._runtime_dir(dataset)
         runtime_dir.mkdir(parents=True, exist_ok=True)
+        write_json(
+            runtime_dir / "signature.json",
+            {
+                "runtime_signature": self._runtime_signature(dataset),
+                "signature_payload": self._runtime_signature_payload(dataset),
+            },
+        )
         self._adapter = adapter_cls(adapter_config, output_dir=runtime_dir)
         self._answer_llm = self._build_answer_llm()
         self._answer_client = self._build_answer_client()
@@ -412,6 +507,7 @@ class EverMemOSMethod(HistoryMethod):
                 "num_memories": len(self._conversation.messages),
                 "debug_dir": str(self._debug_dir(dataset)),
                 "runtime_dir": str(runtime_dir),
+                "runtime_signature": self._runtime_signature(dataset),
                 "internal_llm_model": adapter_config["llm"]["model"],
                 "answer_model": str(self.config.get("answer_model", "gpt-4.1-nano")).strip()
                 or "gpt-4.1-nano",
