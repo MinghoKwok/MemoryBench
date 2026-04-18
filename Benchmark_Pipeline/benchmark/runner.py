@@ -299,6 +299,7 @@ def run_benchmark(
         "output_json": str(paths.get("output_json") or ""),
         "run_dir": str(run_dir),
     }
+    method_cfg["_eval_cfg"] = dict(cfg.get("eval", {}))
     method = get_method(
         str(method_cfg.get("name", "full_context_multimodal")),
         config=method_cfg,

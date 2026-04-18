@@ -2,15 +2,13 @@ from __future__ import annotations
 
 import json
 import os
-import re
 import socket
 import sys
-import tempfile
 from contextlib import contextmanager
 from datetime import datetime, timedelta
 import hashlib
 from pathlib import Path
-from typing import Any, Dict, Generator, List, Optional
+from typing import Any, Dict, Generator, List, Optional, Tuple
 
 from ..common import REPO_ROOT, load_json, write_json
 from ..dataset import MemoryBenchmarkDataset
@@ -225,17 +223,95 @@ def _round_assistant_message(round_payload: Dict[str, Any]) -> Optional[str]:
     return text or None
 
 
-def _load_shared_answer_prompt(question: str) -> str:
-    is_mcq = bool(re.search(r"\n[A-Z]\.\s", question))
+def _load_shared_answer_prompt(qa: Dict[str, Any]) -> str:
+    is_mcq = isinstance(qa.get("options"), dict)
     prompt_path = _PROMPT_DIR / ("sys_prompt_mcq.txt" if is_mcq else "sys_prompt_open.txt")
     if not prompt_path.exists():
         prompt_path = _PROMPT_DIR / "sys_prompt.txt"
     return prompt_path.read_text(encoding="utf-8").strip()
 
 
-def _format_benchmark_question(question: str) -> str:
-    shared_prompt = _load_shared_answer_prompt(question)
-    return f"{shared_prompt}\n\nQuestion:\n{question}".strip()
+def _benchmark_persona(qa: Dict[str, Any]) -> str:
+    shared_prompt = _load_shared_answer_prompt(qa)
+    return f"{_OFFICIAL_PERSONA}\n\n{shared_prompt}".strip()
+
+
+class _StrictMCQFormatter:
+    def __init__(self, method_config: Dict[str, Any]) -> None:
+        model_config = dict(method_config.get("_model_cfg", {}))
+        self.provider = str(model_config.get("provider", "")).strip().lower() or "openai_api"
+        if self.provider != "openai_api":
+            raise ValueError(
+                "Mirix strict MCQ formatting currently requires an OpenAI-compatible benchmark model config."
+            )
+
+        try:
+            from openai import OpenAI
+        except ModuleNotFoundError as exc:
+            raise ModuleNotFoundError(
+                "OpenAI client is required for Mirix strict MCQ formatting."
+            ) from exc
+
+        self.model_name = _resolve_model_name(method_config, model_config)
+        self.api_key = _resolve_secret(model_config, "api_key", "api_key_env", "OPENAI_API_KEY") or _resolve_secret(
+            method_config, "api_key", "api_key_env", "OPENAI_API_KEY"
+        )
+        if not self.api_key:
+            self.api_key = _read_local_env().get("OPENAI_API_KEY", "").strip()
+        if not self.api_key:
+            raise ValueError("OpenAI API key not found for Mirix strict MCQ formatting.")
+
+        self.base_url = (
+            str(model_config.get("base_url", "")).strip()
+            or str(method_config.get("final_answer_base_url", "")).strip()
+            or "https://api.openai.com/v1"
+        )
+        self.timeout = int(model_config.get("timeout", method_config.get("final_answer_timeout", 90)) or 90)
+        self.client = OpenAI(api_key=self.api_key, base_url=self.base_url, timeout=self.timeout)
+
+    def format_answer(self, question: str, qa: Dict[str, Any], draft_answer: str) -> Tuple[str, str]:
+        options = qa.get("options")
+        if not isinstance(options, dict):
+            return draft_answer, ""
+
+        valid_options = sorted(str(key).strip() for key in options.keys() if str(key).strip())
+        option_lines = [f"{key}. {options[key]}" for key in valid_options]
+        user_prompt = (
+            "You are producing the final benchmark answer.\n"
+            "Use the benchmark multiple-choice question and the Mirix draft answer below.\n"
+            f"Select exactly one option letter from: {', '.join(valid_options)}.\n"
+            "Return the best final option even if the draft answer is verbose.\n\n"
+            f"Benchmark question:\n{question}\n\n"
+            f"Options:\n" + "\n".join(option_lines) + "\n\n"
+            f"Mirix draft answer:\n{draft_answer or '[empty]'}"
+        )
+        response = self.client.chat.completions.create(
+            model=self.model_name,
+            messages=[
+                {"role": "system", "content": "You must respond with a JSON object."},
+                {"role": "user", "content": user_prompt},
+            ],
+            response_format={
+                "type": "json_schema",
+                "json_schema": {
+                    "name": "response",
+                    "schema": {
+                        "type": "object",
+                        "properties": {"answer": {"type": "string", "enum": valid_options}},
+                        "required": ["answer"],
+                        "additionalProperties": False,
+                    },
+                    "strict": True,
+                },
+            },
+            temperature=0.0,
+        )
+        raw_response = response.choices[0].message.content
+        payload = json.loads(raw_response)
+        answer = str(payload.get("answer", "")).strip()
+        if answer not in valid_options:
+            raise ValueError(f"Invalid Mirix MCQ formatter answer: {answer!r}")
+        return answer, user_prompt
 
 
 class _OfficialMIRIXAgent:
@@ -272,18 +348,18 @@ class _OfficialMIRIXAgent:
                 specific_timestamps=[timestamp] if timestamp else None,
             )
 
-    def answer(self, question: str, question_images: Optional[List[str]] = None) -> str:
-        message: Any = question
-        if question_images:
-            content: List[Dict[str, Any]] = [{"type": "text", "text": question}]
-            for image_path in question_images:
-                if str(image_path).strip():
-                    content.append({"type": "file_uri", "file_uri": str(image_path).strip()})
-            if len(content) > 1:
-                message = content
+    def answer(
+        self,
+        question: str,
+        *,
+        system_prompt: str,
+        question_images: Optional[List[str]] = None,
+    ) -> str:
         with _temporary_env(self.runtime_env):
+            self.agent.update_core_memory_persona(system_prompt)
             response = self.agent.send_message(
-                message=message,
+                message=question,
+                image_uris=question_images or None,
                 memorizing=False,
                 delete_after_upload=False,
             )
@@ -292,11 +368,17 @@ class _OfficialMIRIXAgent:
 
 class OfficialMIRIXMethod(HistoryMethod):
     name = "mirix"
+    fixed_modality = "multimodal"
 
     def __init__(self, config: Optional[Dict[str, Any]] = None) -> None:
         super().__init__(config=config)
         self._dataset_key: Optional[int] = None
         self._agent: Optional[_OfficialMIRIXAgent] = None
+        model_config = dict(self.config.get("_model_cfg", {}))
+        provider = str(model_config.get("provider", "")).strip().lower() or "openai_api"
+        self._mcq_formatter: Optional[_StrictMCQFormatter] = (
+            _StrictMCQFormatter(self.config) if provider == "openai_api" else None
+        )
         self._debug_rows: List[Dict[str, Any]] = []
         self._runtime_home: Optional[Path] = None
         self._runtime_signature_payload_cache: Dict[int, Dict[str, Any]] = {}
@@ -305,6 +387,7 @@ class OfficialMIRIXMethod(HistoryMethod):
     def _debug_dir(self, dataset: MemoryBenchmarkDataset) -> Path:
         path = (
             REPO_ROOT
+            / "Benchmark_Pipeline"
             / "output"
             / _safe_task_name(dataset)
             / "mirix"
@@ -313,6 +396,31 @@ class OfficialMIRIXMethod(HistoryMethod):
         path.mkdir(parents=True, exist_ok=True)
         return path
 
+    def _runtime_dir(self, dataset: MemoryBenchmarkDataset) -> Path:
+        path = (
+            REPO_ROOT
+            / "Benchmark_Pipeline"
+            / "runs"
+            / _safe_task_name(dataset)
+            / self.name
+            / self._runtime_signature(dataset)
+        ).resolve()
+        path.mkdir(parents=True, exist_ok=True)
+        return path
+
+    def _runtime_home_dir(self, dataset: MemoryBenchmarkDataset) -> Path:
+        path = (self._runtime_dir(dataset) / "runtime_home").resolve()
+        path.mkdir(parents=True, exist_ok=True)
+        return path
+
+    def _write_runtime_signature(self, dataset: MemoryBenchmarkDataset) -> None:
+        write_json(
+            self._runtime_dir(dataset) / "signature.json",
+            {
+                "runtime_signature": self._runtime_signature(dataset),
+                "signature_payload": self._runtime_signature_payload(dataset),
+            },
+        )
     def _runtime_signature_payload(self, dataset: MemoryBenchmarkDataset) -> Dict[str, Any]:
         dataset_id = id(dataset)
         cached = self._runtime_signature_payload_cache.get(dataset_id)
@@ -325,6 +433,7 @@ class OfficialMIRIXMethod(HistoryMethod):
             dialog_sha256 = "unavailable"
         method_config = _redact_secrets(dict(self.config))
         model_cfg = _redact_secrets(dict(self.config.get("_model_cfg", {})))
+        eval_cfg = dict(self.config.get("_eval_cfg", {}))
         payload = {
             "task_name": str(dataset.data.get("task_name", "")).strip() or dataset.dialog_json_path.stem,
             "dialog_json_path": str(dialog_path),
@@ -332,7 +441,8 @@ class OfficialMIRIXMethod(HistoryMethod):
             "method_name": self.name,
             "method_config": method_config,
             "model_config": model_cfg,
-            "code_version": 2,
+            "eval_mode": str(eval_cfg.get("mode", "")).strip(),
+            "code_version": 3,
         }
         self._runtime_signature_payload_cache[dataset_id] = payload
         return payload
@@ -396,6 +506,8 @@ class OfficialMIRIXMethod(HistoryMethod):
             payload = load_json(trace_path)
         except Exception:
             return []
+        if str(payload.get("runtime_signature", "")) != str(self._runtime_signature(dataset)):
+            return []
         if str(payload.get("runtime_home", "")) != str(runtime_home):
             return []
         rows = payload.get("rows", [])
@@ -444,12 +556,7 @@ class OfficialMIRIXMethod(HistoryMethod):
         if resume_state is not None:
             self._runtime_home = Path(str(resume_state["runtime_home"])).resolve()
         else:
-            self._runtime_home = Path(
-                tempfile.mkdtemp(
-                    prefix="mirix_official_",
-                    dir=str(self._debug_dir(dataset)),
-                )
-            ).resolve()
+            self._runtime_home = self._runtime_home_dir(dataset)
         self._debug_rows = self._load_existing_debug_rows(dataset, self._runtime_home)
         config_path = self._write_official_config(model_name, self._runtime_home)
         self._agent = _OfficialMIRIXAgent(self.config, model_config, self._runtime_home, config_path)
@@ -471,10 +578,12 @@ class OfficialMIRIXMethod(HistoryMethod):
             "official_model_name": model_name,
             "ingested_turns": int(state.get("ingest_count", 0)),
             "runtime_signature": runtime_signature,
+            "runtime_dir": str(self._runtime_dir(dataset)),
             "runtime_home": str(self._runtime_home),
             "debug_dir": str(self._debug_dir(dataset)),
             "resumed": resume_state is not None,
         }
+        self._write_runtime_signature(dataset)
         write_json(
             self._debug_dir(dataset) / "signature.json",
             {
@@ -588,15 +697,29 @@ class OfficialMIRIXMethod(HistoryMethod):
     ) -> str:
         self._ensure_initialized(dataset)
         assert self._agent is not None
-        benchmark_question = _format_benchmark_question(question)
-        prediction = self._agent.answer(benchmark_question, question_images=question_images)
+        benchmark_persona = _benchmark_persona(qa)
+        draft_prediction = self._agent.answer(
+            question,
+            system_prompt=benchmark_persona,
+            question_images=question_images,
+        )
+        prediction = draft_prediction
+        formatter_prompt = ""
+        if isinstance(qa.get("options"), dict):
+            if self._mcq_formatter is None:
+                raise ValueError(
+                    "Mirix MCQ final-answer formatting requires an OpenAI-compatible benchmark model config."
+                )
+            prediction, formatter_prompt = self._mcq_formatter.format_answer(question, qa, draft_prediction)
         self._debug_rows.append(
             {
                 "type": "qa",
                 "question_id": qa.get("question_id", ""),
                 "question": question,
                 "question_images": list(question_images or []),
-                "answer_prompt": benchmark_question,
+                "answer_prompt": benchmark_persona,
+                "draft_prediction": draft_prediction,
+                "final_answer_prompt": formatter_prompt,
                 "prediction": prediction,
             }
         )
