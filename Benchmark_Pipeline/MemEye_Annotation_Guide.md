@@ -15,13 +15,20 @@ Instead, every QA item should be annotated with a binocular coordinate:
 The first list is the visual axis.
 The second list is the reasoning axis.
 
-Multiple labels are allowed on either axis when a question genuinely requires more than one kind of visual demand or reasoning demand:
+Although `point` is stored as a two-list JSON field for schema stability, the current benchmark policy is **single-label on each axis**: one `X` label and one `Y` label per question.
 
-```json
-"point": [["X0", "X4"], ["Y3"]]
-```
+## Highest-Bottleneck Rule
 
-Use multiple labels sparingly. Do not add a second label unless the item would be mischaracterized by a single label.
+MemEye now uses a single-label **Highest-Bottleneck Rule**.
+
+Visual perception and reasoning are inclusive: a question that depends on a tiny OCR token (`X4`) also depends on broader scene understanding (`X1`) and usually instance binding (`X2`). If we assigned every involved level, per-cell counts in the `(X, Y)` matrix would become uninterpretable and errors would be hard to attribute. Therefore, each question receives exactly one `X_i` and one `Y_j`: the highest level whose absence would prevent a correct answer.
+
+Operationally:
+
+- Walk up the `X` axis and ask whether the question would still be answerable using only that level of visual perception.
+- Assign the highest `X` level that is strictly required, equivalently the lowest level at which the answer becomes recoverable.
+- Apply the same rule on the `Y` axis and assign the highest reasoning level without which the answer would fail.
+- If one drafted question mixes two separable demands, split it into two questions rather than attaching multiple labels.
 
 ## Formal Schema
 
@@ -31,7 +38,7 @@ Each QA item should follow this structure:
 {
   "question": "...",
   "answer": "...",
-  "point": [["X_i", "..."], ["Y_j", "..."]],
+  "point": [["X_i"], ["Y_j"]],
   "session_id": ["D1", "D7"],
   "clue": ["D1:9", "D7:3"]
 }
@@ -39,13 +46,12 @@ Each QA item should follow this structure:
 
 Rules:
 
-- `point[0]` is the `X` axis list.
-- `point[1]` is the `Y` axis list.
-- Every `X` label must be one of `X1`, `X2`, `X3`, `X4`.
-- Every `Y` label must be one of `Y1`, `Y2`, `Y3`.
-- Prefer one `X` label and one `Y` label.
-- Use multiple `X` labels only when the question truly combines multiple visual demands.
-- Use multiple `Y` labels only in rare cases. In most cases, choose the highest reasoning level that best characterizes the item.
+- `point[0]` is the `X` axis list and must contain exactly one label.
+- `point[1]` is the `Y` axis list and must contain exactly one label.
+- The only valid `X` labels are `X1`, `X2`, `X3`, `X4`.
+- The only valid `Y` labels are `Y1`, `Y2`, `Y3`.
+- Do not use `X0`.
+- Do not attach multiple labels to represent everything a question "involves"; assign only the bottleneck coordinate.
 
 ## X-Axis Rules
 
@@ -142,7 +148,7 @@ Partners should follow these rules when creating new tasks.
 
 ### 1. Annotate the minimum sufficient coordinate
 
-Choose the lowest-complexity coordinate that still accurately describes the task.
+Choose the single bottleneck coordinate that still accurately describes the task.
 
 Good:
 
@@ -151,6 +157,7 @@ Good:
 Bad:
 
 - `[['X2', 'X3', 'X4'], ['Y1', 'Y2']]` when only identity retrieval is needed
+- `[['X1'], ['Y2']]` when the question actually fails without instance binding and should be `[['X2'], ['Y2']]`
 
 ### 2. Do not encode hidden generator metadata in the answer
 
@@ -260,14 +267,6 @@ Before finalizing a QA, verify:
 - [ ] Removing the image would make the question unanswerable
 - [ ] The answer is NOT "Not mentioned" or similar negative responses
 
-### 5. Use `X0` carefully
-
-`X0` is not “cross-image” by itself.
-It is specifically inter-image pattern induction.
-
-Do not assign `X0` just because a question references multiple sessions.
-Use `X0` only when the answer depends on inferring a latent visual family or rule across examples.
-
 ## Current Task Audit
 
 This section records the current recommended mapping for the benchmark tasks already in the repo.
@@ -285,12 +284,12 @@ Recommended mappings:
   - rationale: fine-grained visual attribute recall
 
 - “Across the two advertisements, which brand relied on a solid red background as its visual anchor? Answer with the brand name only.”
-  - `[['X0'], ['Y2']]`
-  - rationale: cross-session visual pattern comparison with relational association
+  - `[['X1'], ['Y2']]`
+  - rationale: cross-session comparison of coarse visual gist under monotonic evidence
 
 - “Which brand showed its featured drink next to a donut and sandwich rather than in a person's hand?”
-  - `[['X2', 'X3'], ['Y2']]`
-  - rationale: cross-session visual comparison over entity presentation and local spatial arrangement
+  - `[['X3'], ['Y2']]`
+  - rationale: the decisive evidence is local spatial arrangement, compared across sessions under monotonic evidence
 
 ### `Chat_UI_Memory_Test`
 
@@ -309,8 +308,8 @@ Recommended mappings:
   - `[['X2'], ['Y2']]`
 
 - “Who sent a message followed by a photo card?”
-  - `[['X2', 'X3'], ['Y1']]`
-  - rationale: identity binding plus local structural layout
+  - `[['X3'], ['Y1']]`
+  - rationale: the bottleneck is recognizing the ordered layout pattern in a single screenshot
 
 ## Review Checklist
 
@@ -319,9 +318,9 @@ Before merging a new task, verify:
 **Annotation quality:**
 - the answer is recoverable from visible inputs
 - the question does not depend on hidden metadata
-- the `X` label describes the minimal necessary visual demand
-- the `Y` label describes the minimal necessary reasoning demand
-- multi-label `point` is used only when justified
+- the `X` label describes the highest visual bottleneck that is strictly required
+- the `Y` label describes the highest reasoning bottleneck that is strictly required
+- `point` contains exactly one `X` label and one `Y` label
 - the clue list actually supports the annotated reasoning path
 - the answer format is as controlled as possible without weakening the underlying visual or reasoning demand
 

@@ -103,10 +103,16 @@ if [[ -f "../.env.local" ]]; then
 fi
 unset HUGGING_FACE_HUB_TOKEN 2>/dev/null
 
-# For *_gemini methods, also redirect OpenAI SDK to Gemini endpoint
+# For *_gemini methods, redirect OpenAI SDK to Gemini endpoint
 if [[ "$METHOD" == *"gemini"* ]] || [[ "$MODEL" == *"gemini"* ]]; then
   export OPENAI_API_KEY="${GEMINI_API_KEY:-$OPENAI_API_KEY}"
   export OPENAI_BASE_URL="https://generativelanguage.googleapis.com/v1beta/openai/"
+fi
+
+# For *_openrouter methods or openrouter models, redirect OpenAI SDK to OpenRouter
+if [[ "$METHOD" == *"openrouter"* ]] || [[ "$MODEL" == *"openrouter"* ]]; then
+  export OPENAI_API_KEY="${OPENROUTER_API_KEY:-$OPENAI_API_KEY}"
+  export OPENAI_BASE_URL="https://openrouter.ai/api/v1"
 fi
 
 # ---- Resolve dataset list ----
@@ -154,6 +160,7 @@ for i in "${!DS_ARRAY[@]}"; do
     env OPENAI_API_KEY="${OPENAI_API_KEY:-}" \
         OPENAI_BASE_URL="${OPENAI_BASE_URL:-}" \
         GEMINI_API_KEY="${GEMINI_API_KEY:-}" \
+        OPENROUTER_API_KEY="${OPENROUTER_API_KEY:-}" \
         HF_TOKEN="${HF_TOKEN:-}" \
     python run_benchmark.py \
       --task-config "$TASK_CFG" \

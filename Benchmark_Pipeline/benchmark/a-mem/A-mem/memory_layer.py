@@ -913,15 +913,19 @@ class AgenticMemorySystem:
         # indices = self.retriever.retrieve(query_note.content, k)
         indices = self.retriever.search(query, k)
         
-        # Convert to list of memories
+        # Convert to list of memories; also keep dict for neighbor lookup
         all_memories = list(self.memories.values())
+        memories_by_id = dict(self.memories)
         memory_str = ""
         for i in indices:
             j = 0
             memory_str +=  "talk start time:" + all_memories[i].timestamp + "memory content: " + all_memories[i].content + "memory context: " + all_memories[i].context + "memory keywords: " + str(all_memories[i].keywords) + "memory tags: " + str(all_memories[i].tags) + "\n"
             neighborhood = all_memories[i].links
             for neighbor in neighborhood:
-                memory_str += "talk start time:" + all_memories[neighbor].timestamp + "memory content: " + all_memories[neighbor].content + "memory context: " + all_memories[neighbor].context + "memory keywords: " + str(all_memories[neighbor].keywords) + "memory tags: " + str(all_memories[neighbor].tags) + "\n"
+                nbr = memories_by_id.get(neighbor) if isinstance(neighbor, str) else (all_memories[neighbor] if isinstance(neighbor, int) and neighbor < len(all_memories) else None)
+                if nbr is None:
+                    continue
+                memory_str += "talk start time:" + nbr.timestamp + "memory content: " + nbr.content + "memory context: " + nbr.context + "memory keywords: " + str(nbr.keywords) + "memory tags: " + str(nbr.tags) + "\n"
                 if j >=k:
                     break
                 j += 1

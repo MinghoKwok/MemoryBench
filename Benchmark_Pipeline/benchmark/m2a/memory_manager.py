@@ -521,7 +521,17 @@ class MemoryManager:
 
             # Execute tools and append results
             for tc in msg.tool_calls:
-                args = json.loads(tc.function.arguments or "{}")
+                raw_args = tc.function.arguments or "{}"
+                try:
+                    args = json.loads(raw_args)
+                except json.JSONDecodeError:
+                    # Small models sometimes emit malformed JSON; try to
+                    # salvage by decoding only the first JSON object.
+                    decoder = json.JSONDecoder()
+                    try:
+                        args, _ = decoder.raw_decode(raw_args.strip())
+                    except json.JSONDecodeError:
+                        args = {}
                 result = self._execute_tool(tc.function.name, args)
                 if os.environ.get("M2A_DEBUG"):
                     print(f"[M2A-DBG] tool={tc.function.name} args={tc.function.arguments[:200]} result={result[:120]}")
