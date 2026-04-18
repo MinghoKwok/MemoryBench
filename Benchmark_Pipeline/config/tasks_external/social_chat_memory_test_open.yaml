@@ -1,0 +1,8 @@
+name: social_chat_memory_test_open
+dataset:
+  dialog_json: /common/home/mg1998/.cache/memeye_hf/MemEye/data/dialog/Social_Chat_Memory_Test_Open.json
+  image_root: /common/home/mg1998/.cache/memeye_hf/MemEye/data/image
+eval:
+  mode: open
+  output_json: output/results_social_chat_memory_test_open.json
+  max_questions: 0

@@ -1,0 +1,8 @@
+name: outdoor_navigation_route_memory_assistant_open
+dataset:
+  dialog_json: /common/home/mg1998/.cache/memeye_hf/MemEye/data/dialog/Outdoor_Navigation_Route_Memory_Assistant_Open.json
+  image_root: /common/home/mg1998/.cache/memeye_hf/MemEye/data/image
+eval:
+  mode: open
+  output_json: output/results_outdoor_navigation_route_memory_assistant_open.json
+  max_questions: 0

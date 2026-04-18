@@ -1,0 +1,8 @@
+name: personal_health_dashboard_assistant_open
+dataset:
+  dialog_json: /common/home/mg1998/.cache/memeye_hf/MemEye/data/dialog/Personal_Health_Dashboard_Assistant_Open.json
+  image_root: /common/home/mg1998/.cache/memeye_hf/MemEye/data/image
+eval:
+  mode: open
+  output_json: output/results_personal_health_dashboard_assistant_open.json
+  max_questions: 0

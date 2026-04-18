@@ -8,7 +8,7 @@ The benchmark separates:
 - memory method selection
 - run artifact storage
 
-Current tasks include `brand_memory_test` and `chat_memory_test`. The benchmark supports local and API-backed model routers, plus multiple memory methods:
+Current tasks include `brand_memory_test`, `chat_memory_test`, and more. Each task has both an MCQ variant (multiple-choice) and an Open variant (open-ended QA). The benchmark supports local and API-backed model routers, plus multiple memory methods:
 - `full_context_multimodal`
 - `full_context_text_only`
 - `semantic_rag_multimodal`
@@ -29,7 +29,8 @@ For MemEye task design and `point` annotation rules, read:
 - `run_pittads.py`: compatibility shim for older commands
 - `benchmark/`: dataset loading, method selection, evaluation, run orchestration
 - `router/`: model router implementations
-- `config/tasks/`: task configs
+- `config/tasks/`: task configs (bundled sample tasks)
+- `config/tasks_external/`: task configs pointing to external data (e.g. HF cache); includes `*_open.yaml` for open-ended variants
 - `config/models/`: model configs
 - `config/methods/`: method configs
 - `data/`: example dialogue and images
@@ -467,6 +468,36 @@ Each row also records benchmark metadata such as:
 - `source_sessions`
 - `clue_rounds`
 
+## MCQ vs Open-Ended Evaluation
+
+Each MemEye task ships two dialog JSON files:
+
+| Variant | File pattern | QA format | Scoring |
+|---------|-------------|-----------|---------|
+| MCQ | `Task_Name.json` | `options` + single-letter `answer` | Exact match on extracted choice |
+| Open | `Task_Name_Open.json` | Free-text `answer`, no `options` | F1, BLEU-1, LLM-as-a-judge |
+
+The runner auto-detects the variant: if a QA has an `options` dict it uses MCQ scoring; otherwise it uses open-ended scoring. Task configs for all open-ended variants are under `config/tasks_external/*_open.yaml`.
+
+Example — run an open-ended task:
+
+```bash
+python -m Benchmark_Pipeline.run_benchmark \
+  --task-config Benchmark_Pipeline/config/tasks_external/brand_memory_test_open.yaml \
+  --model-config Benchmark_Pipeline/config/models/gpt_4_1_nano.yaml \
+  --method-config Benchmark_Pipeline/config/methods/full_context_text_only.yaml \
+  --enable-llm-judge
+```
+
+Open-ended metrics produced per QA:
+- **F1**: token-level F1 with Porter stemming
+- **BLEU-1 / BLEU-2 / BLEU-4**: n-gram overlap via NLTK smoothing
+- **EM**: exact match (after normalization) — recorded but not the primary metric
+- **contains_gt**: whether the normalized GT is a substring of the prediction
+- **LLM-as-a-judge** (optional, `--enable-llm-judge`): 5-point semantic score {0, 0.25, 0.5, 0.75, 1.0}
+
+LLM-as-a-judge is the recommended primary metric for open-ended evaluation, since token-overlap metrics (F1, BLEU) penalize verbose but correct answers and cannot handle semantic equivalence.
+
 ## Rich Evaluation Metrics
 
 By default the pipeline computes exact-match, contains-GT, F1, and BLEU on every open-ended QA. Two additional metric families can be enabled at runtime:
@@ -512,7 +543,7 @@ When either flag is used, `metrics.json` includes a `summary` block with per-met
 ## Notes
 
 - The current methods are intentionally lightweight baselines, intended to make cross-model and cross-method comparison easy.
-- The current scoring is still lightweight and heuristic, not a final benchmark spec.
-- `mode=mcq` still checks output validity rather than gold-option accuracy.
+- MCQ scoring uses exact-match on the extracted choice letter. Open-ended scoring uses F1, BLEU, and optionally LLM-as-a-judge.
+- For open-ended tasks, LLM-as-a-judge is the recommended primary metric. The judge prompt handles numeric, negation+correction, and identity questions with type-specific rubrics.
 - Large models and long histories can be slow or memory-intensive.
 - `semantic_rag_text_only` and `semantic_rag_multimodal` require sentence-transformers; `semantic_rag_multimodal` additionally requires a vLLM SigLIP2 server or local CLIP.
