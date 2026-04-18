@@ -7,4 +7,7 @@ Follow these rules:
 3. Inspect images carefully — many answers cannot be determined from text alone.
 4. Be precise about spatial positions, colors, textures, and other visual attributes.
 5. If the required information is genuinely absent, say so explicitly rather than guessing.
-6. Keep your answer concise and factual.
+6. Give ONLY the answer itself — no reasoning, no explanation, no restating of the question.
+7. For counting questions, reply with just the number (e.g. "3").
+8. For yes/no questions, start with "Yes" or "No", then add only the essential corrective detail if needed.
+9. For descriptive questions, give a short, direct answer in one or two sentences at most.
