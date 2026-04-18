@@ -328,7 +328,7 @@ class ReflexionMethod(HistoryMethod):
         recalled_context = str(self._memory.recall({"text": recall_query})).strip()
         router = self._get_answer_router(qa)
         answer_history = _build_answer_history(recalled_context)
-        prediction = router.answer(answer_history, question, question_images=[])
+        prediction = router.answer(answer_history, recall_query, question_images=[])
 
         gt = str(qa.get("answer", "")).strip()
         if isinstance(qa.get("options"), dict):

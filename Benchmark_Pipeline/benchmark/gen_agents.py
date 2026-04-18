@@ -576,7 +576,7 @@ class GAMethod(HistoryMethod):
                 "Use only the retrieved context below to answer the multiple-choice question.\n"
                 "If the context is insufficient, still choose the single best option.\n\n"
                 f"Retrieved context:\n{recall_text_value or self._empty_memory_text}\n\n"
-                f"Question:\n{question}\n\n"
+                f"Question:\n{recall_query}\n\n"
                 f"Return only one option letter from: {', '.join(option_keys)}."
             )
             response = self._answer_client.chat.completions.create(
@@ -605,7 +605,7 @@ class GAMethod(HistoryMethod):
                 "Use only the retrieved context below to answer the question.\n"
                 "Answer concisely and factually.\n\n"
                 f"Retrieved context:\n{recall_text_value or self._empty_memory_text}\n\n"
-                f"Question:\n{question}"
+                f"Question:\n{recall_query}"
             )
             response = self._answer_client.chat.completions.create(
                 model=self._answer_model,
