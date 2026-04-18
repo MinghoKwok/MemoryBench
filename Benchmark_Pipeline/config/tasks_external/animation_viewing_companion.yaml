@@ -1,7 +1,7 @@
 name: animation_viewing_companion
 dataset:
-  dialog_json: /common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/dialog/Animation_Viewing_Companion.json
-  image_root: /common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/image
+  dialog_json: data/dialog/Animation_Viewing_Companion.json
+  image_root: data/image
 eval:
   mode: open
   output_json: output/results_animation_viewing_companion.json

@@ -329,7 +329,9 @@ class TemporaryMessageAccumulator:
                                     # Already uploaded file reference
                                     processed_image_uris.append(file_ref)
                             else:
-                                raise NotImplementedError("Non-GEMINI models do not support file uploads")
+                                # Non-GEMINI: pass local file path as-is
+                                # The agent's LLM interface will handle base64 encoding
+                                processed_image_uris.append(file_ref)
                         
                         if has_pending_uploads:
                             # Keep for next cycle if any uploads are still pending
@@ -492,10 +494,23 @@ class TemporaryMessageAccumulator:
                 
                 # Add each image
                 for file_ref in file_refs:
-                    message_parts.append({
-                        'type': 'google_cloud_file_uri',
-                        'google_cloud_file_uri': file_ref.uri
-                    })
+                    if hasattr(file_ref, 'uri'):
+                        # Gemini cloud file reference
+                        message_parts.append({
+                            'type': 'google_cloud_file_uri',
+                            'google_cloud_file_uri': file_ref.uri
+                        })
+                    elif isinstance(file_ref, str) and os.path.isfile(file_ref):
+                        # Local file path — encode as base64 for OpenAI-compatible API
+                        import base64
+                        ext = os.path.splitext(file_ref)[1].lower()
+                        mime = {'.jpg': 'image/jpeg', '.jpeg': 'image/jpeg', '.png': 'image/png', '.gif': 'image/gif', '.webp': 'image/webp'}.get(ext, 'image/jpeg')
+                        with open(file_ref, 'rb') as img_f:
+                            b64 = base64.b64encode(img_f.read()).decode()
+                        message_parts.append({
+                            'type': 'image_url',
+                            'image_url': {'url': f'data:{mime};base64,{b64}'}
+                        })
         
         # Add voice transcription if any
         if voice_transcription:

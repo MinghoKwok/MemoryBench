@@ -1,3 +1,4 @@
+import os
 from typing import Literal, Optional
 
 from pydantic import BaseModel, ConfigDict, Field, model_validator
@@ -157,7 +158,15 @@ class LLMConfig(BaseModel):
                 context_window=8192,
             )
         else:
-            raise ValueError(f"Model {model_name} not supported.")
+            # Fallback: treat any unknown model as OpenAI-compatible
+            # (works with OpenRouter, Gemini compat endpoint, etc.)
+            return cls(
+                model=model_name,
+                model_endpoint_type="openai",
+                model_endpoint=os.environ.get("OPENAI_BASE_URL", "https://api.openai.com/v1"),
+                model_wrapper=None,
+                context_window=128000,
+            )
 
     def pretty_print(self) -> str:
         return (

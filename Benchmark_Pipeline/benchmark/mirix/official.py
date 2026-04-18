@@ -93,7 +93,7 @@ def _build_runtime_env(
     runtime_model = str(runtime_model_name).strip().lower()
 
     openai_key = ""
-    if provider in {"", "openai_api"} or runtime_model.startswith(("gpt-", "o4-", "o3-", "o1-")):
+    if provider in {"", "openai_api"} or runtime_model.startswith(("gpt-", "o4-", "o3-", "o1-")) or not runtime_model.startswith("gemini-"):
         openai_key = _resolve_secret(model_config, "api_key", "api_key_env", "OPENAI_API_KEY") or _resolve_secret(
             method_config, "api_key", "api_key_env", "OPENAI_API_KEY"
         )

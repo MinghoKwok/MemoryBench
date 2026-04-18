@@ -84,9 +84,10 @@ def post_json(
                 return json.loads(resp.read().decode("utf-8"))
         except error.HTTPError as exc:
             details = exc.read().decode("utf-8", errors="replace")
-            if exc.code == 429 and attempt < max_retries - 1:
+            if exc.code in (429, 502, 503, 504) and attempt < max_retries - 1:
                 wait = (_parse_retry_after(details) or (2 ** attempt)) + 2.0
-                print(f"[WARN] 429 rate limit — waiting {wait:.1f}s (attempt {attempt + 1}/{max_retries})")
+                label = "rate limit" if exc.code == 429 else f"server error {exc.code}"
+                print(f"[WARN] {label} — waiting {wait:.1f}s (attempt {attempt + 1}/{max_retries})")
                 time.sleep(wait)
                 last_err = exc
                 continue

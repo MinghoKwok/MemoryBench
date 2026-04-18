@@ -1,7 +1,7 @@
 name: card_playlog_test
 dataset:
-  dialog_json: /common/home/mg1998/.cache/memeye_hf/MemEye/data/dialog/Card_Playlog_Test.json
-  image_root: /common/home/mg1998/.cache/memeye_hf/MemEye/data/image
+  dialog_json: data/dialog/Card_Playlog_Test.json
+  image_root: data/image
 eval:
   output_json: output/results_card_playlog_test.json
   mode: open

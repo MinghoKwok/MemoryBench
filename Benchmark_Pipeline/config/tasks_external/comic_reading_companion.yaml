@@ -1,7 +1,7 @@
 name: comic_reading_companion
 dataset:
-  dialog_json: /common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/dialog/Comic_Reading_Companion.json
-  image_root: /common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/image
+  dialog_json: data/dialog/Comic_Reading_Companion.json
+  image_root: data/image
 eval:
   mode: open
   output_json: output/results_comic_reading_companion.json

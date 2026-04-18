@@ -1,7 +1,7 @@
 name: personal_health_dashboard_assistant
 dataset:
-  dialog_json: /common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/dialog/Personal_Health_Dashboard_Assistant.json
-  image_root: /common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/image
+  dialog_json: data/dialog/Personal_Health_Dashboard_Assistant.json
+  image_root: data/image
 eval:
   mode: open
   output_json: output/results_personal_health_dashboard_assistant.json

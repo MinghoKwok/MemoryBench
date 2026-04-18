@@ -1,7 +1,7 @@
 name: outdoor_navigation_route_memory_assistant
 dataset:
-  dialog_json: /common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/dialog/Outdoor_Navigation_Route_Memory_Assistant.json
-  image_root: /common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/image
+  dialog_json: data/dialog/Outdoor_Navigation_Route_Memory_Assistant.json
+  image_root: data/image
 eval:
   mode: open
   output_json: output/results_outdoor_navigation_route_memory_assistant.json

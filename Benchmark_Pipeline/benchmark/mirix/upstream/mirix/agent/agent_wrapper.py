@@ -531,7 +531,14 @@ class AgentWrapper():
                     context_window=128000,
                 )
             else:
-                raise ValueError(f"Invalid memory model: {new_model}")
+                # Fallback: treat as OpenAI-compatible (OpenRouter, etc.)
+                llm_config = LLMConfig(
+                    model=new_model,
+                    model_endpoint_type="openai",
+                    model_endpoint=os.environ.get("OPENAI_BASE_URL", "https://api.openai.com/v1"),
+                    model_wrapper=None,
+                    context_window=128000,
+                )
         
         else:
             
