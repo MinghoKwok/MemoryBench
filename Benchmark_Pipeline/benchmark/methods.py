@@ -261,12 +261,18 @@ class MMAAgentMethod(HistoryMethod):
         self._system.process_all_sessions(dataset)
         self._dataset_key = dataset_id
 
-    def answer(self, dataset: MemoryBenchmarkDataset, qa: Dict[str, Any], question: str) -> str:
+    def answer(
+        self,
+        dataset: MemoryBenchmarkDataset,
+        qa: Dict[str, Any],
+        question: str,
+        question_images: Optional[List[str]] = None,
+    ) -> str:
         self._ensure_initialized(dataset)
         assert self._system is not None
-        # Pass QA-level images only if the question itself carries them
-        # (e.g. "question_images" field). Never use "clue" — that's gold evidence.
-        qa_images = qa.get("question_images") or None
+        qa_images = question_images
+        if qa_images is None:
+            qa_images = qa.get("question_images") or qa.get("question_image") or None
         return self._system.answer_question(question, image_paths=qa_images)
 
     def build_history(self, dataset: MemoryBenchmarkDataset, qa: Dict[str, Any]) -> List[Dict[str, Any]]:

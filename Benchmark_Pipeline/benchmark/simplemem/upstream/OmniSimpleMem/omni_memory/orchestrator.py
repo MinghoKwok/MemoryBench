@@ -10,6 +10,8 @@ The orchestrator manages:
 
 import logging
 import time
+import base64
+import mimetypes
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from typing import Optional, List, Dict, Any, Union, Tuple
 from pathlib import Path
@@ -69,6 +71,19 @@ except ImportError:
     pass
 
 logger = logging.getLogger(__name__)
+
+
+def _encode_local_image_as_data_url(image_path: str) -> Optional[str]:
+    try:
+        raw = Path(image_path).read_bytes()
+    except OSError:
+        logger.warning("Failed to read question image for multimodal answer: %s", image_path)
+        return None
+    mime_type, _ = mimetypes.guess_type(image_path)
+    if not mime_type or not mime_type.startswith("image/"):
+        mime_type = "image/png"
+    encoded = base64.b64encode(raw).decode("utf-8")
+    return f"data:{mime_type};base64,{encoded}"
 
 
 class OmniMemoryOrchestrator:
@@ -855,6 +870,7 @@ class OmniMemoryOrchestrator:
         tags_filter: Optional[List[str]] = None,
         time_range: Optional[Tuple[float, float]] = None,
         include_on_demand_images: bool = True,
+        question_images: Optional[List[str]] = None,
     ) -> Dict[str, Any]:
         """
         Answer a question using memory retrieval.
@@ -959,6 +975,15 @@ class OmniMemoryOrchestrator:
             f"Based on these memories:\n\n{context}\n\nAnswer this question: {question}"
         )
         content_parts = []
+        for question_image in question_images or []:
+            data_url = _encode_local_image_as_data_url(str(question_image))
+            if data_url:
+                content_parts.append(
+                    {
+                        "type": "image_url",
+                        "image_url": {"url": data_url},
+                    }
+                )
         for item in retrieval.items:
             raw = item.get("raw_content") or {}
             if raw.get("type") == "image" and raw.get("base64"):

@@ -386,13 +386,18 @@ class SimpleMemMethod(HistoryMethod):
         dataset: MemoryBenchmarkDataset,
         qa: Dict[str, Any],
         question: str,
+        question_images: Optional[List[str]] = None,
     ) -> str:
         self._ensure_initialized(dataset)
         assert self._orchestrator is not None
 
         query = _question_with_image_caption(qa, question)
         try:
-            result = self._orchestrator.answer(query, top_k=self._top_k)
+            result = self._orchestrator.answer(
+                query,
+                top_k=self._top_k,
+                question_images=question_images or None,
+            )
         except Exception as exc:
             self._debug_rows.append(
                 {
@@ -400,6 +405,7 @@ class SimpleMemMethod(HistoryMethod):
                     "question_id": qa.get("question_id", ""),
                     "question": question,
                     "recall_query": query,
+                    "question_images": list(question_images or []),
                     "error": str(exc),
                 }
             )
@@ -419,6 +425,7 @@ class SimpleMemMethod(HistoryMethod):
                 "question_id": qa.get("question_id", ""),
                 "question": question,
                 "recall_query": query,
+                "question_images": list(question_images or []),
                 "num_sources": len(sources) if isinstance(sources, list) else 0,
                 "prediction": answer_text,
             }

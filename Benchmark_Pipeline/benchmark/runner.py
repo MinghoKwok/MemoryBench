@@ -1,4 +1,5 @@
 import datetime as dt
+import inspect
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Any, Dict, List, Optional
@@ -352,7 +353,14 @@ def run_benchmark(
 
         t0 = dt.datetime.now()
         if is_agentic:
-            pred = method.answer(dataset, qa, question)
+            answer_kwargs: Dict[str, Any] = {}
+            try:
+                answer_signature = inspect.signature(method.answer)
+            except (TypeError, ValueError):
+                answer_signature = None
+            if answer_signature is not None and "question_images" in answer_signature.parameters:
+                answer_kwargs["question_images"] = question_image_paths
+            pred = method.answer(dataset, qa, question, **answer_kwargs)
         else:
             pred = router.answer(history, question, question_images=question_image_paths)
         latency_ms = int((dt.datetime.now() - t0).total_seconds() * 1000)

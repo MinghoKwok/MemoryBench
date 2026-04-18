@@ -1,11 +1,13 @@
 from __future__ import annotations
 
+import json
 import os
 import socket
 import sys
 import tempfile
 from contextlib import contextmanager
 from datetime import datetime, timedelta
+import hashlib
 from pathlib import Path
 from typing import Any, Dict, Generator, List, Optional
 
@@ -55,6 +57,21 @@ def _resolve_model_name(method_config: Dict[str, Any], model_config: Dict[str, A
     if explicit:
         return explicit
     return str(model_config.get("model", "")).strip() or "gpt-4o-mini"
+
+
+def _redact_secrets(value: Any) -> Any:
+    if isinstance(value, dict):
+        redacted: Dict[str, Any] = {}
+        for key, item in value.items():
+            lowered = str(key).lower()
+            if any(token in lowered for token in ("key", "token", "secret", "password")):
+                redacted[str(key)] = "***"
+            else:
+                redacted[str(key)] = _redact_secrets(item)
+        return redacted
+    if isinstance(value, list):
+        return [_redact_secrets(item) for item in value]
+    return value
 
 
 def _build_runtime_env(
@@ -229,10 +246,18 @@ class _OfficialMIRIXAgent:
                 specific_timestamps=[timestamp] if timestamp else None,
             )
 
-    def answer(self, question: str) -> str:
+    def answer(self, question: str, question_images: Optional[List[str]] = None) -> str:
+        message: Any = question
+        if question_images:
+            content: List[Dict[str, Any]] = [{"type": "text", "text": question}]
+            for image_path in question_images:
+                if str(image_path).strip():
+                    content.append({"type": "file_uri", "file_uri": str(image_path).strip()})
+            if len(content) > 1:
+                message = content
         with _temporary_env(self.runtime_env):
             response = self.agent.send_message(
-                message=question,
+                message=message,
                 memorizing=False,
                 delete_after_upload=False,
             )
@@ -248,19 +273,61 @@ class OfficialMIRIXMethod(HistoryMethod):
         self._agent: Optional[_OfficialMIRIXAgent] = None
         self._debug_rows: List[Dict[str, Any]] = []
         self._runtime_home: Optional[Path] = None
-        self._debug_dir_path: Optional[Path] = None
+        self._runtime_signature_payload_cache: Dict[int, Dict[str, Any]] = {}
+        self._runtime_signature_cache: Dict[int, str] = {}
 
     def _debug_dir(self, dataset: MemoryBenchmarkDataset) -> Path:
-        if self._debug_dir_path is None:
-            self._debug_dir_path = (REPO_ROOT / "output" / _safe_task_name(dataset) / "mirix").resolve()
-            self._debug_dir_path.mkdir(parents=True, exist_ok=True)
-        return self._debug_dir_path
+        path = (
+            REPO_ROOT
+            / "output"
+            / _safe_task_name(dataset)
+            / "mirix"
+            / self._runtime_signature(dataset)
+        ).resolve()
+        path.mkdir(parents=True, exist_ok=True)
+        return path
+
+    def _runtime_signature_payload(self, dataset: MemoryBenchmarkDataset) -> Dict[str, Any]:
+        dataset_id = id(dataset)
+        cached = self._runtime_signature_payload_cache.get(dataset_id)
+        if cached is not None:
+            return cached
+        dialog_path = dataset.dialog_json_path.resolve()
+        try:
+            dialog_sha256 = hashlib.sha256(dialog_path.read_bytes()).hexdigest()
+        except OSError:
+            dialog_sha256 = "unavailable"
+        method_config = _redact_secrets(dict(self.config))
+        model_cfg = _redact_secrets(dict(self.config.get("_model_cfg", {})))
+        payload = {
+            "task_name": str(dataset.data.get("task_name", "")).strip() or dataset.dialog_json_path.stem,
+            "dialog_json_path": str(dialog_path),
+            "dialog_sha256": dialog_sha256,
+            "method_name": self.name,
+            "method_config": method_config,
+            "model_config": model_cfg,
+            "code_version": 2,
+        }
+        self._runtime_signature_payload_cache[dataset_id] = payload
+        return payload
+
+    def _runtime_signature(self, dataset: MemoryBenchmarkDataset) -> str:
+        dataset_id = id(dataset)
+        cached = self._runtime_signature_cache.get(dataset_id)
+        if cached is not None:
+            return cached
+        payload = self._runtime_signature_payload(dataset)
+        serialized = json.dumps(payload, ensure_ascii=True, sort_keys=True, separators=(",", ":"))
+        digest = hashlib.sha256(serialized.encode("utf-8")).hexdigest()[:16]
+        self._runtime_signature_cache[dataset_id] = digest
+        return digest
 
     def _flush_debug(self, dataset: MemoryBenchmarkDataset) -> None:
         write_json(
             self._debug_dir(dataset) / "debug_trace.json",
             {
                 "dataset_path": str(dataset.dialog_json_path),
+                "runtime_signature": self._runtime_signature(dataset),
                 "runtime_home": str(self._runtime_home) if self._runtime_home else "",
                 "rows": self._debug_rows,
             },
@@ -269,7 +336,12 @@ class OfficialMIRIXMethod(HistoryMethod):
     def _resume_state_path(self, dataset: MemoryBenchmarkDataset) -> Path:
         return self._debug_dir(dataset) / "resume_state.json"
 
-    def _load_resume_state(self, dataset: MemoryBenchmarkDataset, model_name: str) -> Optional[Dict[str, Any]]:
+    def _load_resume_state(
+        self,
+        dataset: MemoryBenchmarkDataset,
+        model_name: str,
+        runtime_signature: str,
+    ) -> Optional[Dict[str, Any]]:
         state_path = self._resume_state_path(dataset)
         if not state_path.exists():
             return None
@@ -281,6 +353,7 @@ class OfficialMIRIXMethod(HistoryMethod):
         if (
             str(state.get("dataset_path", "")) != str(dataset.dialog_json_path)
             or str(state.get("model_name", "")) != model_name
+            or str(state.get("runtime_signature", "")) != runtime_signature
             or not runtime_home.exists()
         ):
             return None
@@ -340,7 +413,8 @@ class OfficialMIRIXMethod(HistoryMethod):
 
         model_config = dict(self.config.get("_model_cfg", {}))
         model_name = _resolve_model_name(self.config, model_config)
-        resume_state = self._load_resume_state(dataset, model_name)
+        runtime_signature = self._runtime_signature(dataset)
+        resume_state = self._load_resume_state(dataset, model_name, runtime_signature)
         if resume_state is not None:
             self._runtime_home = Path(str(resume_state["runtime_home"])).resolve()
         else:
@@ -357,6 +431,7 @@ class OfficialMIRIXMethod(HistoryMethod):
         state = resume_state or {
             "dataset_path": str(dataset.dialog_json_path),
             "model_name": model_name,
+            "runtime_signature": runtime_signature,
             "runtime_home": str(self._runtime_home),
             "next_session_idx": 0,
             "next_dialogue_idx": 0,
@@ -369,10 +444,18 @@ class OfficialMIRIXMethod(HistoryMethod):
             "official_mirix": True,
             "official_model_name": model_name,
             "ingested_turns": int(state.get("ingest_count", 0)),
+            "runtime_signature": runtime_signature,
             "runtime_home": str(self._runtime_home),
             "debug_dir": str(self._debug_dir(dataset)),
             "resumed": resume_state is not None,
         }
+        write_json(
+            self._debug_dir(dataset) / "signature.json",
+            {
+                "runtime_signature": runtime_signature,
+                "signature_payload": self._runtime_signature_payload(dataset),
+            },
+        )
         session_ids = dataset.session_order()
         for session_idx in range(int(state.get("next_session_idx", 0)), len(session_ids)):
             session_id = session_ids[session_idx]
@@ -470,15 +553,22 @@ class OfficialMIRIXMethod(HistoryMethod):
         self._save_resume_state(dataset, state)
         self._flush_debug(dataset)
 
-    def answer(self, dataset: MemoryBenchmarkDataset, qa: Dict[str, Any], question: str) -> str:
+    def answer(
+        self,
+        dataset: MemoryBenchmarkDataset,
+        qa: Dict[str, Any],
+        question: str,
+        question_images: Optional[List[str]] = None,
+    ) -> str:
         self._ensure_initialized(dataset)
         assert self._agent is not None
-        prediction = self._agent.answer(question)
+        prediction = self._agent.answer(question, question_images=question_images)
         self._debug_rows.append(
             {
                 "type": "qa",
                 "question_id": qa.get("question_id", ""),
                 "question": question,
+                "question_images": list(question_images or []),
                 "prediction": prediction,
             }
         )
