@@ -113,6 +113,7 @@ fi
 if [[ "$METHOD" == *"openrouter"* ]] || [[ "$MODEL" == *"openrouter"* ]]; then
   export OPENAI_API_KEY="${OPENROUTER_API_KEY:-$OPENAI_API_KEY}"
   export OPENAI_BASE_URL="https://openrouter.ai/api/v1"
+  export OPENAI_API_BASE="https://openrouter.ai/api/v1"
 fi
 
 # ---- Resolve dataset list ----
@@ -159,6 +160,7 @@ for i in "${!DS_ARRAY[@]}"; do
   conda run --no-capture-output -n memorybench \
     env OPENAI_API_KEY="${OPENAI_API_KEY:-}" \
         OPENAI_BASE_URL="${OPENAI_BASE_URL:-}" \
+        OPENAI_API_BASE="${OPENAI_API_BASE:-}" \
         GEMINI_API_KEY="${GEMINI_API_KEY:-}" \
         OPENROUTER_API_KEY="${OPENROUTER_API_KEY:-}" \
         HF_TOKEN="${HF_TOKEN:-}" \
