@@ -2,7 +2,6 @@ import json
 import os
 import subprocess
 import sys
-import hashlib
 from pathlib import Path
 from types import ModuleType
 from types import SimpleNamespace
@@ -114,21 +113,6 @@ def _load_openai_client_class() -> Any:
             "in the active memorybench environment."
         ) from exc
     return OpenAI
-
-
-def _redact_secrets(value: Any) -> Any:
-    if isinstance(value, dict):
-        redacted: Dict[str, Any] = {}
-        for key, item in value.items():
-            lowered = str(key).lower()
-            if any(token in lowered for token in ("key", "token", "secret", "password")):
-                redacted[str(key)] = "***"
-            else:
-                redacted[str(key)] = _redact_secrets(item)
-        return redacted
-    if isinstance(value, list):
-        return [_redact_secrets(item) for item in value]
-    return value
 
 
 class _CaptureInterface:
@@ -556,74 +540,22 @@ class _MemGPTBackendMethod(HistoryMethod):
         self._dataset_key: Optional[int] = None
         self._agent: Optional[MemGPTAgent] = None
         self._debug_rows: List[Dict[str, Any]] = []
-        self._runtime_signature_payload_cache: Dict[int, Dict[str, Any]] = {}
-        self._runtime_signature_cache: Dict[int, str] = {}
 
     def _safe_task_name(self, dataset: MemoryBenchmarkDataset) -> str:
         task_name = str(dataset.data.get("task_name", "")).strip() or dataset.dialog_json_path.stem
         return task_name.lower().replace(" ", "_").replace("/", "_")
 
     def _debug_dir(self, dataset: MemoryBenchmarkDataset) -> Path:
-        return (
-            REPO_ROOT
-            / "Benchmark_Pipeline"
-            / "output"
-            / self._safe_task_name(dataset)
-            / "memgpt"
-            / self._runtime_signature(dataset)
-        ).resolve()
+        return (REPO_ROOT / "Benchmark_Pipeline" / "output" / self._safe_task_name(dataset) / "memgpt").resolve()
 
     def _runtime_home(self, dataset: MemoryBenchmarkDataset) -> Path:
-        return (
-            REPO_ROOT
-            / "Benchmark_Pipeline"
-            / "runs"
-            / self._safe_task_name(dataset)
-            / "memgpt_home"
-            / self._runtime_signature(dataset)
-        ).resolve()
-
-    def _runtime_signature_payload(self, dataset: MemoryBenchmarkDataset) -> Dict[str, Any]:
-        dataset_id = id(dataset)
-        cached = self._runtime_signature_payload_cache.get(dataset_id)
-        if cached is not None:
-            return cached
-        dialog_path = dataset.dialog_json_path.resolve()
-        try:
-            dialog_sha256 = hashlib.sha256(dialog_path.read_bytes()).hexdigest()
-        except OSError:
-            dialog_sha256 = "unavailable"
-        method_config = _redact_secrets(dict(self.config))
-        model_cfg = _redact_secrets(dict(self.config.get("_model_cfg", {})))
-        payload = {
-            "task_name": str(dataset.data.get("task_name", "")).strip() or dataset.dialog_json_path.stem,
-            "dialog_json_path": str(dialog_path),
-            "dialog_sha256": dialog_sha256,
-            "method_name": self.name,
-            "method_config": method_config,
-            "model_config": model_cfg,
-            "code_version": 1,
-        }
-        self._runtime_signature_payload_cache[dataset_id] = payload
-        return payload
-
-    def _runtime_signature(self, dataset: MemoryBenchmarkDataset) -> str:
-        dataset_id = id(dataset)
-        cached = self._runtime_signature_cache.get(dataset_id)
-        if cached is not None:
-            return cached
-        payload = self._runtime_signature_payload(dataset)
-        serialized = json.dumps(payload, ensure_ascii=True, sort_keys=True, separators=(",", ":"))
-        digest = hashlib.sha256(serialized.encode("utf-8")).hexdigest()[:16]
-        self._runtime_signature_cache[dataset_id] = digest
-        return digest
+        return (REPO_ROOT / "Benchmark_Pipeline" / "runs" / self._safe_task_name(dataset) / "memgpt_home").resolve()
 
     def _flush_debug(self, dataset: MemoryBenchmarkDataset) -> None:
         if not self._debug_rows:
             return
         payload = {
             "dataset_path": str(dataset.dialog_json_path),
-            "runtime_signature": self._runtime_signature(dataset),
             "rows": self._debug_rows,
         }
         write_json(self._debug_dir(dataset) / "debug_trace.json", payload)
@@ -664,13 +596,6 @@ class _MemGPTBackendMethod(HistoryMethod):
         model_config = dict(self.config.get("_model_cfg", {}))
         runtime_home = self._runtime_home(dataset)
         runtime_home.mkdir(parents=True, exist_ok=True)
-        write_json(
-            runtime_home / "signature.json",
-            {
-                "runtime_signature": self._runtime_signature(dataset),
-                "signature_payload": self._runtime_signature_payload(dataset),
-            },
-        )
 
         archive_rows = self._build_archive_rows(dataset)
         agent = MemGPTAgent(self.config, model_config, runtime_home=runtime_home)
@@ -692,7 +617,6 @@ class _MemGPTBackendMethod(HistoryMethod):
         self.runtime_info["num_memories"] = len(archive_rows)
         self.runtime_info["debug_dir"] = str(self._debug_dir(dataset))
         self.runtime_info["memgpt_home"] = str(runtime_home)
-        self.runtime_info["runtime_signature"] = self._runtime_signature(dataset)
         self.runtime_info["model_name"] = agent.model_name
         self._flush_debug(dataset)
 

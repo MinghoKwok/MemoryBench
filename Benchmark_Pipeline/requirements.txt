@@ -25,6 +25,7 @@ scikit-learn
 # Image processing
 Pillow>=9.0.0
 scikit-image
+PyMuPDF
 
 # NLP evaluation
 nltk>=3.8.0
