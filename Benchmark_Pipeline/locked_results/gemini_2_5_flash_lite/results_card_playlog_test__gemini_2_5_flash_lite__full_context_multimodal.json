@@ -1,0 +1,69 @@
+{
+  "task_name": "card_playlog_test",
+  "model_name": "gemini_2_5_flash_lite",
+  "model_path": "gemini-2.5-flash-lite",
+  "method_name": "full_context_multimodal",
+  "base_method_name": "full_context_multimodal",
+  "method_modality": "",
+  "mode": "open",
+  "num_qas": 48,
+  "num_qas_run": 48,
+  "dialog_json": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/dialog/Card_Playlog_Test.json",
+  "image_root": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image",
+  "run_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/card_playlog_test/20260416_232326_gemini_2_5_flash_lite_full_context_multimodal",
+  "git_commit": "483ff1401e5ce04eb6a71f775bbe4e9835bb495c",
+  "summary": {
+    "open_count": 48,
+    "overall": {
+      "em": 0.3333333333333333,
+      "contains_gt": 0.3333333333333333,
+      "f1": 0.3333333333333333
+    },
+    "by_x": {
+      "X4": {
+        "em": 0.3333333333333333,
+        "contains_gt": 0.3333333333333333,
+        "f1": 0.3333333333333333
+      }
+    },
+    "by_y": {
+      "Y3": {
+        "em": 0.3157894736842105,
+        "contains_gt": 0.3157894736842105,
+        "f1": 0.3157894736842105
+      },
+      "Y2": {
+        "em": 0.3448275862068966,
+        "contains_gt": 0.3448275862068966,
+        "f1": 0.3448275862068966
+      }
+    },
+    "by_cell": {
+      "X4_Y3": {
+        "em": 0.3157894736842105,
+        "contains_gt": 0.3157894736842105,
+        "f1": 0.3157894736842105
+      },
+      "X4_Y2": {
+        "em": 0.3448275862068966,
+        "contains_gt": 0.3448275862068966,
+        "f1": 0.3448275862068966
+      }
+    },
+    "mcq_count": 48,
+    "mcq_valid_rate": 1.0,
+    "mcq_overall": {
+      "em": 0.3333333333333333,
+      "contains_gt": 0.3333333333333333,
+      "f1": 0.3333333333333333
+    }
+  },
+  "method_runtime": {
+    "method_modality": "multimodal",
+    "history_source": "full_context",
+    "captions_loaded": false,
+    "images_loaded": true,
+    "history_turns_after_truncation": 60,
+    "history_turns_before_truncation": 60
+  }
+}

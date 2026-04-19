@@ -1,0 +1,198 @@
+{
+  "task_name": "outdoor_navigation_route_memory_assistant",
+  "model_name": "gemini_2_5_flash_lite",
+  "model_path": "gemini-2.5-flash-lite",
+  "method_name": "semantic_rag_multimodal",
+  "base_method_name": "semantic_rag_multimodal",
+  "method_modality": "multimodal",
+  "mode": "open",
+  "num_qas": 40,
+  "num_qas_run": 40,
+  "dialog_json": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/dialog/Outdoor_Navigation_Route_Memory_Assistant.json",
+  "image_root": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/image",
+  "run_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/outdoor_navigation_route_memory_assistant/20260416_230843_gemini_2_5_flash_lite_semantic_rag_multimodal",
+  "git_commit": "483ff1401e5ce04eb6a71f775bbe4e9835bb495c",
+  "summary": {
+    "open_count": 40,
+    "overall": {
+      "em": 0.6,
+      "contains_gt": 0.6,
+      "f1": 0.6
+    },
+    "by_x": {
+      "X3": {
+        "em": 0.5925925925925926,
+        "contains_gt": 0.5925925925925926,
+        "f1": 0.5925925925925926
+      },
+      "X1": {
+        "em": 0.3333333333333333,
+        "contains_gt": 0.3333333333333333,
+        "f1": 0.3333333333333333
+      },
+      "X4": {
+        "em": 0.6,
+        "contains_gt": 0.6,
+        "f1": 0.6
+      },
+      "X2": {
+        "em": 0.8,
+        "contains_gt": 0.8,
+        "f1": 0.8
+      }
+    },
+    "by_y": {
+      "Y2": {
+        "em": 0.6153846153846154,
+        "contains_gt": 0.6153846153846154,
+        "f1": 0.6153846153846154
+      },
+      "Y1": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
+      },
+      "Y3": {
+        "em": 0.5384615384615384,
+        "contains_gt": 0.5384615384615384,
+        "f1": 0.5384615384615384
+      }
+    },
+    "by_cell": {
+      "X3_Y2": {
+        "em": 0.5909090909090909,
+        "contains_gt": 0.5909090909090909,
+        "f1": 0.5909090909090909
+      },
+      "X1_Y1": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
+      },
+      "X4_Y2": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
+      },
+      "X2_Y2": {
+        "em": 0.6666666666666666,
+        "contains_gt": 0.6666666666666666,
+        "f1": 0.6666666666666666
+      },
+      "X3_Y3": {
+        "em": 0.6,
+        "contains_gt": 0.6,
+        "f1": 0.6
+      },
+      "X4_Y3": {
+        "em": 0.5,
+        "contains_gt": 0.5,
+        "f1": 0.5
+      },
+      "X2_Y3": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
+      },
+      "X1_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0
+      }
+    },
+    "mcq_count": 40,
+    "mcq_valid_rate": 1.0,
+    "mcq_overall": {
+      "em": 0.6,
+      "contains_gt": 0.6,
+      "f1": 0.6
+    }
+  },
+  "method_runtime": {
+    "retrieval_backend": "dense_multimodal",
+    "retrieval_corpus": "round_text",
+    "method_modality": "multimodal",
+    "top_k": 10,
+    "neighbor_window": 0,
+    "seed_round_ids": [
+      "S7:R3",
+      "S8:R4",
+      "S9:R4",
+      "S2:R4",
+      "S5:R5",
+      "S4:R3",
+      "S1:R5",
+      "S4:R5",
+      "S8:R2",
+      "S5:R3"
+    ],
+    "selected_round_ids": [
+      "S7:R3",
+      "S8:R4",
+      "S9:R4",
+      "S2:R4",
+      "S5:R5",
+      "S4:R3",
+      "S1:R5",
+      "S4:R5",
+      "S8:R2",
+      "S5:R3"
+    ],
+    "top_candidates": [
+      {
+        "round_id": "S7:R3",
+        "score": 0.37328139271423455,
+        "text_dense_score": 0.5051583141121164,
+        "image_dense_score": 0.24140447131635273,
+        "indexed_image_count": 1,
+        "best_image_path": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/image/Outdoor_Navigation_Route_Memory_Assistant/S7_R3.jpg"
+      },
+      {
+        "round_id": "S8:R4",
+        "score": 0.3050603807939164,
+        "text_dense_score": 0.38239953576691893,
+        "image_dense_score": 0.2277212258209139,
+        "indexed_image_count": 1,
+        "best_image_path": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/image/Outdoor_Navigation_Route_Memory_Assistant/S8_R4.jpg"
+      },
+      {
+        "round_id": "S9:R4",
+        "score": 0.29616188659179754,
+        "text_dense_score": 0.3515910413086245,
+        "image_dense_score": 0.24073273187497063,
+        "indexed_image_count": 1,
+        "best_image_path": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/image/Outdoor_Navigation_Route_Memory_Assistant/S9_R4.jpg"
+      },
+      {
+        "round_id": "S2:R4",
+        "score": 0.2914981541074695,
+        "text_dense_score": 0.3215345778756141,
+        "image_dense_score": 0.2614617303393248,
+        "indexed_image_count": 1,
+        "best_image_path": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/image/Outdoor_Navigation_Route_Memory_Assistant/S2_R4.jpg"
+      },
+      {
+        "round_id": "S5:R5",
+        "score": 0.2863961611930829,
+        "text_dense_score": 0.341513919268781,
+        "image_dense_score": 0.23127840311738482,
+        "indexed_image_count": 1,
+        "best_image_path": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/image/Outdoor_Navigation_Route_Memory_Assistant/S5_R5.jpg"
+      }
+    ],
+    "clue_hit_count": 2,
+    "corpus_entry_count": 60,
+    "text_embedding_model": "all-MiniLM-L6-v2",
+    "multimodal_embedding_model": "siglip2-base-patch16-384",
+    "text_dense_weight": 0.5,
+    "image_dense_weight": 0.5,
+    "caption_text_included": false,
+    "image_embeddings_built": true,
+    "multi_image_indexing_enabled": true,
+    "indexed_image_count": 40,
+    "history_source": "retrieval",
+    "captions_loaded": false,
+    "images_loaded": true,
+    "history_turns_after_truncation": 20
+  }
+}
