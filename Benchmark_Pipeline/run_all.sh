@@ -103,6 +103,15 @@ if [[ -f "../.env.local" ]]; then
 fi
 unset HUGGING_FACE_HUB_TOKEN 2>/dev/null
 
+# ---- Sync latest data from HuggingFace ----
+if [[ -n "${HF_TOKEN:-}" ]]; then
+  echo "Syncing latest data from HuggingFace..."
+  conda run --no-capture-output -n memorybench \
+    env HF_TOKEN="$HF_TOKEN" \
+    python sync_hf_data.py pull 2>&1 | tail -3
+  echo ""
+fi
+
 # For *_gemini methods, redirect OpenAI SDK to Gemini endpoint
 if [[ "$METHOD" == *"gemini"* ]] || [[ "$MODEL" == *"gemini"* ]]; then
   export OPENAI_API_KEY="${GEMINI_API_KEY:-$OPENAI_API_KEY}"
