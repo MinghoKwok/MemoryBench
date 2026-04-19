@@ -161,11 +161,13 @@ class AMemAgent:
         self.answer_timeout = int(model_config.get("timeout", 90) or 90)
         self.retrieve_k = max(1, int(method_config.get("retrieve_k", 10)))
         self.temperature_c5 = float(method_config.get("temperature_c5", 0.5))
+        llm_base_url = str(method_config.get("llm_base_url", "")).strip() or None
         self.memory_system = agentic_memory_system_cls(
             model_name=embedding_model,
             llm_backend=backend,
             llm_model=model_name,
             api_key=api_key,
+            api_base=llm_base_url,
             sglang_host=_resolve_sglang_host(method_config),
             sglang_port=_resolve_sglang_port(method_config),
         )
@@ -173,6 +175,7 @@ class AMemAgent:
             backend=backend,
             model=model_name,
             api_key=api_key,
+            api_base=llm_base_url,
             sglang_host=_resolve_sglang_host(method_config),
             sglang_port=_resolve_sglang_port(method_config),
         )

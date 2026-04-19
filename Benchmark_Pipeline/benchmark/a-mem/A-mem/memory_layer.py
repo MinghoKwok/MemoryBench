@@ -39,7 +39,7 @@ class BaseLLMController(ABC):
         pass
 
 class OpenAIController(BaseLLMController):
-    def __init__(self, model: str = "gpt-4", api_key: Optional[str] = None):
+    def __init__(self, model: str = "gpt-4", api_key: Optional[str] = None, base_url: Optional[str] = None):
         try:
             from openai import OpenAI
             self.model = model
@@ -47,7 +47,10 @@ class OpenAIController(BaseLLMController):
                 api_key = os.getenv('OPENAI_API_KEY')
             if api_key is None:
                 raise ValueError("OpenAI API key not found. Set OPENAI_API_KEY environment variable.")
-            self.client = OpenAI(api_key=api_key)
+            kwargs: Dict[str, Any] = {"api_key": api_key}
+            if base_url:
+                kwargs["base_url"] = base_url
+            self.client = OpenAI(**kwargs)
         except ImportError:
             raise ImportError("OpenAI package not found. Install it with: pip install openai")
     
@@ -273,7 +276,7 @@ class LLMController:
                  sglang_host: str = "http://localhost",
                  sglang_port: int = 30000):
         if backend == "openai":
-            self.llm = OpenAIController(model, api_key)
+            self.llm = OpenAIController(model, api_key, base_url=api_base)
         elif backend == "ollama":
             # Use LiteLLM to control Ollama with JSON output
             ollama_model = f"ollama/{model}" if not model.startswith("ollama/") else model
