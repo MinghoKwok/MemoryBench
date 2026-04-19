@@ -1,0 +1,188 @@
+{
+  "task_name": "animation_viewing_companion",
+  "model_name": "qwen3_vl_8b_openrouter",
+  "model_path": "qwen/qwen3-vl-8b-instruct",
+  "method_name": "semantic_rag_text_only",
+  "base_method_name": "semantic_rag_text_only",
+  "method_modality": "",
+  "mode": "open",
+  "num_qas": 61,
+  "num_qas_run": 61,
+  "dialog_json": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/dialog/Animation_Viewing_Companion.json",
+  "image_root": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/image",
+  "run_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/animation_viewing_companion/20260419_125015_qwen3_vl_8b_openrouter_semantic_rag_text_only",
+  "git_commit": "1925dc9cdf0868770916907350c6c8c4a4cf6f60",
+  "summary": {
+    "open_count": 61,
+    "overall": {
+      "em": 0.6065573770491803,
+      "contains_gt": 0.6065573770491803,
+      "f1": 0.6065573770491803
+    },
+    "by_x": {
+      "X3": {
+        "em": 0.5217391304347826,
+        "contains_gt": 0.5217391304347826,
+        "f1": 0.5217391304347826
+      },
+      "X4": {
+        "em": 0.7142857142857143,
+        "contains_gt": 0.7142857142857143,
+        "f1": 0.7142857142857143
+      },
+      "X2": {
+        "em": 0.42857142857142855,
+        "contains_gt": 0.42857142857142855,
+        "f1": 0.42857142857142855
+      },
+      "X1": {
+        "em": 0.6666666666666666,
+        "contains_gt": 0.6666666666666666,
+        "f1": 0.6666666666666666
+      }
+    },
+    "by_y": {
+      "Y1": {
+        "em": 0.68,
+        "contains_gt": 0.68,
+        "f1": 0.68
+      },
+      "Y2": {
+        "em": 0.4666666666666667,
+        "contains_gt": 0.4666666666666667,
+        "f1": 0.4666666666666667
+      },
+      "Y3": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
+      }
+    },
+    "by_cell": {
+      "X3_Y1": {
+        "em": 0.5454545454545454,
+        "contains_gt": 0.5454545454545454,
+        "f1": 0.5454545454545454
+      },
+      "X4_Y2": {
+        "em": 0.5,
+        "contains_gt": 0.5,
+        "f1": 0.5
+      },
+      "X2_Y2": {
+        "em": 0.25,
+        "contains_gt": 0.25,
+        "f1": 0.25
+      },
+      "X3_Y2": {
+        "em": 0.5,
+        "contains_gt": 0.5,
+        "f1": 0.5
+      },
+      "X2_Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0
+      },
+      "X4_Y1": {
+        "em": 0.9090909090909091,
+        "contains_gt": 0.9090909090909091,
+        "f1": 0.9090909090909091
+      },
+      "X1_Y1": {
+        "em": 0.5,
+        "contains_gt": 0.5,
+        "f1": 0.5
+      },
+      "X4_Y3": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
+      },
+      "X2_Y3": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
+      },
+      "X1_Y3": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
+      }
+    },
+    "mcq_count": 61,
+    "mcq_valid_rate": 1.0,
+    "mcq_overall": {
+      "em": 0.6065573770491803,
+      "contains_gt": 0.6065573770491803,
+      "f1": 0.6065573770491803
+    }
+  },
+  "method_runtime": {
+    "retrieval_backend": "dense_text",
+    "retrieval_corpus": "round_text",
+    "method_modality": "text_only",
+    "top_k": 10,
+    "neighbor_window": 0,
+    "seed_round_ids": [
+      "S9:2",
+      "S6:9",
+      "S7:14",
+      "S7:4",
+      "S7:10",
+      "S12:11",
+      "S4:1",
+      "S9:6",
+      "S2:14",
+      "S7:12"
+    ],
+    "selected_round_ids": [
+      "S9:2",
+      "S6:9",
+      "S7:14",
+      "S7:4",
+      "S7:10",
+      "S12:11",
+      "S4:1",
+      "S9:6",
+      "S2:14",
+      "S7:12"
+    ],
+    "top_candidates": [
+      {
+        "round_id": "S9:2",
+        "score": 0.4730115639233469,
+        "text_dense_score": 0.4730115639233469
+      },
+      {
+        "round_id": "S6:9",
+        "score": 0.45218666257441603,
+        "text_dense_score": 0.45218666257441603
+      },
+      {
+        "round_id": "S7:14",
+        "score": 0.44151554259015874,
+        "text_dense_score": 0.44151554259015874
+      },
+      {
+        "round_id": "S7:4",
+        "score": 0.44123679087359613,
+        "text_dense_score": 0.44123679087359613
+      },
+      {
+        "round_id": "S7:10",
+        "score": 0.43906734171254735,
+        "text_dense_score": 0.43906734171254735
+      }
+    ],
+    "clue_hit_count": 1,
+    "corpus_entry_count": 190,
+    "text_embedding_model": "all-MiniLM-L6-v2",
+    "caption_text_included": true,
+    "image_embeddings_built": false,
+    "history_source": "retrieval",
+    "captions_loaded": true,
+    "images_loaded": false,
+    "history_turns_after_truncation": 20
+  }
+}
