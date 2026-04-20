@@ -1,0 +1,134 @@
+{
+  "task_name": "cartoon_entertainment_companion",
+  "model_name": "qwen3_vl_8b_openrouter",
+  "model_path": "qwen/qwen3-vl-8b-instruct",
+  "method_name": "memoryos",
+  "base_method_name": "memoryos",
+  "method_modality": "",
+  "mode": "mcq",
+  "num_qas": 112,
+  "num_qas_run": 112,
+  "dialog_json": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/dialog/Cartoon_Entertainment_Companion.json",
+  "image_root": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image",
+  "run_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/cartoon_entertainment_companion/20260420_141726_qwen3_vl_8b_openrouter_memoryos",
+  "git_commit": "5cb368b7bf8ce5c708c557c1d1970548552894c1",
+  "summary": {
+    "open_count": 112,
+    "overall": {
+      "em": 0.625,
+      "contains_gt": 0.625,
+      "f1": 0.625
+    },
+    "by_x": {
+      "X3": {
+        "em": 0.2962962962962963,
+        "contains_gt": 0.2962962962962963,
+        "f1": 0.2962962962962963
+      },
+      "X4": {
+        "em": 0.6388888888888888,
+        "contains_gt": 0.6388888888888888,
+        "f1": 0.6388888888888888
+      },
+      "X2": {
+        "em": 0.75,
+        "contains_gt": 0.75,
+        "f1": 0.75
+      },
+      "X1": {
+        "em": 0.8571428571428571,
+        "contains_gt": 0.8571428571428571,
+        "f1": 0.8571428571428571
+      }
+    },
+    "by_y": {
+      "Y1": {
+        "em": 0.627906976744186,
+        "contains_gt": 0.627906976744186,
+        "f1": 0.627906976744186
+      },
+      "Y2": {
+        "em": 0.5517241379310345,
+        "contains_gt": 0.5517241379310345,
+        "f1": 0.5517241379310345
+      },
+      "Y3": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
+      }
+    },
+    "by_cell": {
+      "X3_Y1": {
+        "em": 0.42857142857142855,
+        "contains_gt": 0.42857142857142855,
+        "f1": 0.42857142857142855
+      },
+      "X4_Y2": {
+        "em": 0.5384615384615384,
+        "contains_gt": 0.5384615384615384,
+        "f1": 0.5384615384615384
+      },
+      "X2_Y2": {
+        "em": 0.6842105263157895,
+        "contains_gt": 0.6842105263157895,
+        "f1": 0.6842105263157895
+      },
+      "X3_Y2": {
+        "em": 0.15384615384615385,
+        "contains_gt": 0.15384615384615385,
+        "f1": 0.15384615384615385
+      },
+      "X2_Y1": {
+        "em": 0.8571428571428571,
+        "contains_gt": 0.8571428571428571,
+        "f1": 0.8571428571428571
+      },
+      "X4_Y1": {
+        "em": 0.6111111111111112,
+        "contains_gt": 0.6111111111111112,
+        "f1": 0.6111111111111112
+      },
+      "X1_Y1": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
+      },
+      "X4_Y3": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
+      },
+      "X2_Y3": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
+      },
+      "X1_Y2": {
+        "em": 0.7692307692307693,
+        "contains_gt": 0.7692307692307693,
+        "f1": 0.7692307692307693
+      },
+      "X1_Y3": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
+      }
+    },
+    "mcq_count": 112,
+    "mcq_valid_rate": 1.0,
+    "mcq_overall": {
+      "em": 0.625,
+      "contains_gt": 0.625,
+      "f1": 0.625
+    }
+  },
+  "method_runtime": {
+    "caption_validation_passed": true,
+    "caption_validation_round_count": 87,
+    "num_memories": 299,
+    "debug_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/output/cartoon_entertainment_companion/memoryos/af8af75bf1d37099",
+    "data_storage_path": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/cartoon_entertainment_companion/memoryos_data/af8af75bf1d37099",
+    "runtime_signature": "af8af75bf1d37099"
+  }
+}

@@ -1,0 +1,147 @@
+{
+  "task_name": "cartoon_entertainment_companion",
+  "model_name": "qwen3_vl_8b_openrouter",
+  "model_path": "qwen/qwen3-vl-8b-instruct",
+  "method_name": "gen_agents__text_only",
+  "base_method_name": "gen_agents",
+  "method_modality": "text_only",
+  "mode": "mcq",
+  "num_qas": 112,
+  "num_qas_run": 112,
+  "dialog_json": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/dialog/Cartoon_Entertainment_Companion.json",
+  "image_root": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image",
+  "run_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/cartoon_entertainment_companion/20260420_140636_qwen3_vl_8b_openrouter_gen_agents__text_only",
+  "git_commit": "5cb368b7bf8ce5c708c557c1d1970548552894c1",
+  "summary": {
+    "open_count": 112,
+    "overall": {
+      "em": 0.5535714285714286,
+      "contains_gt": 0.5535714285714286,
+      "f1": 0.5535714285714286
+    },
+    "by_x": {
+      "X3": {
+        "em": 0.25925925925925924,
+        "contains_gt": 0.25925925925925924,
+        "f1": 0.25925925925925924
+      },
+      "X4": {
+        "em": 0.5833333333333334,
+        "contains_gt": 0.5833333333333334,
+        "f1": 0.5833333333333334
+      },
+      "X2": {
+        "em": 0.7142857142857143,
+        "contains_gt": 0.7142857142857143,
+        "f1": 0.7142857142857143
+      },
+      "X1": {
+        "em": 0.6666666666666666,
+        "contains_gt": 0.6666666666666666,
+        "f1": 0.6666666666666666
+      }
+    },
+    "by_y": {
+      "Y1": {
+        "em": 0.6046511627906976,
+        "contains_gt": 0.6046511627906976,
+        "f1": 0.6046511627906976
+      },
+      "Y2": {
+        "em": 0.46551724137931033,
+        "contains_gt": 0.46551724137931033,
+        "f1": 0.46551724137931033
+      },
+      "Y3": {
+        "em": 0.8181818181818182,
+        "contains_gt": 0.8181818181818182,
+        "f1": 0.8181818181818182
+      }
+    },
+    "by_cell": {
+      "X3_Y1": {
+        "em": 0.42857142857142855,
+        "contains_gt": 0.42857142857142855,
+        "f1": 0.42857142857142855
+      },
+      "X4_Y2": {
+        "em": 0.5384615384615384,
+        "contains_gt": 0.5384615384615384,
+        "f1": 0.5384615384615384
+      },
+      "X2_Y2": {
+        "em": 0.631578947368421,
+        "contains_gt": 0.631578947368421,
+        "f1": 0.631578947368421
+      },
+      "X3_Y2": {
+        "em": 0.07692307692307693,
+        "contains_gt": 0.07692307692307693,
+        "f1": 0.07692307692307693
+      },
+      "X2_Y1": {
+        "em": 0.8571428571428571,
+        "contains_gt": 0.8571428571428571,
+        "f1": 0.8571428571428571
+      },
+      "X4_Y1": {
+        "em": 0.5555555555555556,
+        "contains_gt": 0.5555555555555556,
+        "f1": 0.5555555555555556
+      },
+      "X1_Y1": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
+      },
+      "X4_Y3": {
+        "em": 0.8,
+        "contains_gt": 0.8,
+        "f1": 0.8
+      },
+      "X2_Y3": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
+      },
+      "X1_Y2": {
+        "em": 0.5384615384615384,
+        "contains_gt": 0.5384615384615384,
+        "f1": 0.5384615384615384
+      },
+      "X1_Y3": {
+        "em": 0.75,
+        "contains_gt": 0.75,
+        "f1": 0.75
+      }
+    },
+    "mcq_count": 112,
+    "mcq_valid_rate": 1.0,
+    "mcq_overall": {
+      "em": 0.5535714285714286,
+      "contains_gt": 0.5535714285714286,
+      "f1": 0.5535714285714286
+    }
+  },
+  "method_runtime": {
+    "caption_validation_passed": true,
+    "caption_validation_round_count": 87,
+    "method_modality": "text_only",
+    "history_source": "retrieval",
+    "captions_loaded": true,
+    "images_loaded": false,
+    "num_memories": 299,
+    "debug_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/output/cartoon_entertainment_companion/gen_agents",
+    "history_turns_after_truncation": 1,
+    "retrieved_round_ids": [
+      "C8:2",
+      "CX10:1",
+      "C1:1",
+      "C8:1",
+      "D34:2",
+      "D33:3",
+      "D33:2",
+      "C13:1"
+    ]
+  }
+}
