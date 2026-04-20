@@ -1,5 +1,5 @@
 {
-  "task_name": "visual_entertainment_companion_open",
+  "task_name": "cartoon_entertainment_companion_open",
   "model_name": "qwen3_vl_8b_openrouter",
   "model_path": "qwen/qwen3-vl-8b-instruct",
   "method_name": "full_context_text_only",
