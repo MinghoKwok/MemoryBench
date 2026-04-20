@@ -137,6 +137,12 @@ class OpenAIAPIRouter(BaseRouter):
             timeout=self.timeout,
         )
         try:
+            usage = response.get("usage", {})
+            self.last_usage = {
+                "prompt_tokens": usage.get("prompt_tokens", 0),
+                "completion_tokens": usage.get("completion_tokens", 0),
+                "total_tokens": usage.get("total_tokens", 0),
+            }
             return str(response["choices"][0]["message"]["content"]).strip()
         except Exception as exc:
             raise RuntimeError(f"Unexpected OpenAI response shape: {response}") from exc

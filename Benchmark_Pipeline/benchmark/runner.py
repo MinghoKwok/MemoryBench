@@ -329,6 +329,18 @@ def run_benchmark(
 
     qas = dataset.iter_qas(limit=max_questions)
     results: List[Dict[str, Any]] = []
+
+    # Cache history for non-agentic methods whose build_history is
+    # independent of the QA (e.g. full_context). Avoids rebuilding the
+    # same 500+ turn history for every question and allows API-level
+    # prompt-prefix caching to kick in.
+    _cached_history: Optional[List[Dict[str, Any]]] = None
+    _history_is_qa_independent = (
+        not is_agentic
+        and hasattr(method, "history_source")
+        and method.history_source in ("full_context",)
+    )
+
     for i, qa in enumerate(qas, start=1):
         question = format_question(qa)
         gt = qa.get("answer", "")
@@ -341,8 +353,12 @@ def run_benchmark(
 
         if is_agentic:
             history: List[Dict[str, Any]] = []
+        elif _history_is_qa_independent and _cached_history is not None:
+            history = _cached_history
         else:
             history = method.build_history(dataset, qa)
+            if _history_is_qa_independent:
+                _cached_history = history
         current_method_runtime = dict(getattr(method, "runtime_info", {}) or {})
         print(
             f"[INFO] QA {i}/{len(qas)} point={qa.get('point')} "

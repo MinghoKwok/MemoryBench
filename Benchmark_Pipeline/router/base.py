@@ -4,6 +4,7 @@ from typing import Any, Dict, List, Optional
 
 class BaseRouter(ABC):
     system_prompt: str = ""
+    last_usage: Dict[str, int] = {}  # populated after each answer() call
 
     @abstractmethod
     def answer(

@@ -172,6 +172,10 @@ print(f'Images loaded: {found}')  # must be > 0 for visual tasks
 
 `device_map="auto"` with multiple GPUs causes silent degenerate output (garbage tokens, ~100s per question). Always set `CUDA_VISIBLE_DEVICES=<single_gpu>` when running Qwen local. See memory notes for details.
 
+### MultimodalEmbedder text truncation
+
+SigLIP2's text encoder has a 64-token context limit. `MultimodalEmbedder.embed_text()` automatically truncates long text to fit (character heuristic, word-boundary aware). `LocalCLIPEmbedder` already handles this via the HuggingFace `truncation=True` flag. `TextEmbedder` (sentence-transformers) also truncates internally. No action needed from callers.
+
 ### M2A with weaker models (< 70B)
 
 M2A's ReAct loop requires strict tool calling compliance. Models like Qwen2.5-VL-7B hallucinate tool names (`CREATE` instead of `add_memory`) and parameter names (`content` instead of `text`). The `memory_manager.py` has fuzzy matching for both, but memory quality will still be low. For reliable M2A results, use GPT-4 class models or 70B+.

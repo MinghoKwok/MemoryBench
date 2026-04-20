@@ -82,16 +82,21 @@ class MultimodalEmbedder:
     DEFAULT_MODEL = "siglip2-base-patch16-384"
     DEFAULT_BASE_URL = "http://localhost:8050/v1"
     EMPTY_CHAT_TEMPLATE = "{% for message in messages %}{% endfor %}"
+    # SigLIP2 text encoder context is 64 tokens.  Approximate at ~3.5
+    # chars/token and leave 4-token headroom for special tokens.
+    DEFAULT_MAX_TEXT_TOKENS = 64
 
     def __init__(
         self,
         model: str = DEFAULT_MODEL,
         base_url: str = DEFAULT_BASE_URL,
         api_key: str = "dummy",
+        max_text_tokens: int = DEFAULT_MAX_TEXT_TOKENS,
     ) -> None:
         self._model = model
         self._base_url = base_url.rstrip("/")
         self._api_key = api_key
+        self._max_text_tokens = max_text_tokens
         self._client = None
 
     def _load(self) -> None:
@@ -133,9 +138,30 @@ class MultimodalEmbedder:
         except Exception:
             return False
 
+    def _truncate_text(self, text: str) -> str:
+        """Truncate text to fit within the model's token limit.
+
+        Uses a conservative character heuristic (~3.5 chars/token for
+        SentencePiece) minus headroom for special tokens.
+        """
+        max_chars = int(self._max_text_tokens * 3.5) - 14  # ~4 special tokens
+        if len(text) <= max_chars:
+            return text
+        # Truncate on a word boundary when possible.
+        truncated = text[:max_chars]
+        last_space = truncated.rfind(" ")
+        if last_space > max_chars // 2:
+            truncated = truncated[:last_space]
+        warnings.warn(
+            f"[MultimodalEmbedder] Text truncated from {len(text)} to "
+            f"{len(truncated)} chars to fit {self._max_text_tokens}-token limit"
+        )
+        return truncated
+
     def embed_text(self, text: str) -> List[float]:
         """Embed text for cross-modal text→image search."""
         self._load()
+        text = self._truncate_text(text)
         return self._post_embeddings({"model": self._model, "input": text})
 
     def embed_image(self, image_path: str) -> List[float]:
