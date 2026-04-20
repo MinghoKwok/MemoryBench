@@ -1,0 +1,71 @@
+{
+  "task_name": "card_playlog_test",
+  "model_name": "gemini_2_5_flash_lite",
+  "model_path": "gemini-2.5-flash-lite",
+  "method_name": "full_context_text_only",
+  "base_method_name": "full_context_text_only",
+  "method_modality": "",
+  "mode": "mcq",
+  "num_qas": 48,
+  "num_qas_run": 48,
+  "dialog_json": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/dialog/Card_Playlog_Test.json",
+  "image_root": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image",
+  "run_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/card_playlog_test/20260416_232403_gemini_2_5_flash_lite_full_context_text_only",
+  "git_commit": "483ff1401e5ce04eb6a71f775bbe4e9835bb495c",
+  "summary": {
+    "open_count": 48,
+    "overall": {
+      "em": 0.22916666666666666,
+      "contains_gt": 0.22916666666666666,
+      "f1": 0.22916666666666666
+    },
+    "by_x": {
+      "X4": {
+        "em": 0.22916666666666666,
+        "contains_gt": 0.22916666666666666,
+        "f1": 0.22916666666666666
+      }
+    },
+    "by_y": {
+      "Y3": {
+        "em": 0.05263157894736842,
+        "contains_gt": 0.05263157894736842,
+        "f1": 0.05263157894736842
+      },
+      "Y2": {
+        "em": 0.3448275862068966,
+        "contains_gt": 0.3448275862068966,
+        "f1": 0.3448275862068966
+      }
+    },
+    "by_cell": {
+      "X4_Y3": {
+        "em": 0.05263157894736842,
+        "contains_gt": 0.05263157894736842,
+        "f1": 0.05263157894736842
+      },
+      "X4_Y2": {
+        "em": 0.3448275862068966,
+        "contains_gt": 0.3448275862068966,
+        "f1": 0.3448275862068966
+      }
+    },
+    "mcq_count": 48,
+    "mcq_valid_rate": 0.9583333333333334,
+    "mcq_overall": {
+      "em": 0.22916666666666666,
+      "contains_gt": 0.22916666666666666,
+      "f1": 0.22916666666666666
+    }
+  },
+  "method_runtime": {
+    "caption_validation_passed": true,
+    "caption_validation_round_count": 30,
+    "method_modality": "text_only",
+    "history_source": "full_context",
+    "captions_loaded": true,
+    "images_loaded": false,
+    "history_turns_after_truncation": 60,
+    "history_turns_before_truncation": 60
+  }
+}

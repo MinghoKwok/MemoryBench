@@ -16,10 +16,9 @@ MODEL=config/models/gemini_2_5_flash_lite.yaml
 METHODS=(a_mem_gemini reflexion_gemini simplemem_gemini simplemem_multimodal_gemini memoryos_gemini mirix_gemini m2a_gemini mma_gemini)
 
 DATASETS=(
-  animation_viewing_companion
+  cartoon_entertainment_companion
   brand_memory_test
   card_playlog_test
-  comic_reading_companion
   home_renovation_interior_design
   multi_scene_visual_case_archive_assistant
   outdoor_navigation_route_memory_assistant

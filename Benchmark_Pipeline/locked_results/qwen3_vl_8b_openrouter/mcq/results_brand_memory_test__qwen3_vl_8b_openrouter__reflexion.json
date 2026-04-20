@@ -1,0 +1,95 @@
+{
+  "task_name": "brand_memory_test",
+  "model_name": "qwen3_vl_8b_openrouter",
+  "model_path": "qwen/qwen3-vl-8b-instruct",
+  "method_name": "reflexion",
+  "base_method_name": "reflexion",
+  "method_modality": "",
+  "mode": "mcq",
+  "num_qas": 33,
+  "num_qas_run": 33,
+  "dialog_json": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/dialog/Brand_Memory_Test.json",
+  "image_root": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image",
+  "run_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/brand_memory_test/20260418_045117_qwen3_vl_8b_openrouter_reflexion",
+  "git_commit": "098e1cd297db81f969cb6d0b30fdf861a1fe20aa",
+  "summary": {
+    "open_count": 33,
+    "overall": {
+      "em": 0.3939393939393939,
+      "contains_gt": 0.3939393939393939,
+      "f1": 0.3939393939393939
+    },
+    "by_x": {
+      "X2": {
+        "em": 0.4444444444444444,
+        "contains_gt": 0.4444444444444444,
+        "f1": 0.4444444444444444
+      },
+      "X4": {
+        "em": 0.5,
+        "contains_gt": 0.5,
+        "f1": 0.5
+      },
+      "X1": {
+        "em": 0.36363636363636365,
+        "contains_gt": 0.36363636363636365,
+        "f1": 0.36363636363636365
+      }
+    },
+    "by_y": {
+      "Y1": {
+        "em": 0.6666666666666666,
+        "contains_gt": 0.6666666666666666,
+        "f1": 0.6666666666666666
+      },
+      "Y2": {
+        "em": 0.36666666666666664,
+        "contains_gt": 0.36666666666666664,
+        "f1": 0.36666666666666664
+      }
+    },
+    "by_cell": {
+      "X2_Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0
+      },
+      "X4_Y1": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
+      },
+      "X2_Y2": {
+        "em": 0.5,
+        "contains_gt": 0.5,
+        "f1": 0.5
+      },
+      "X1_Y2": {
+        "em": 0.3333333333333333,
+        "contains_gt": 0.3333333333333333,
+        "f1": 0.3333333333333333
+      },
+      "X4_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0
+      },
+      "X1_Y1": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
+      }
+    },
+    "mcq_count": 33,
+    "mcq_valid_rate": 1.0,
+    "mcq_overall": {
+      "em": 0.3939393939393939,
+      "contains_gt": 0.3939393939393939,
+      "f1": 0.3939393939393939
+    }
+  },
+  "method_runtime": {
+    "num_memories": 72,
+    "debug_dir": "/common/home/mg1998/MemoryBench/output/brand_memory_test/reflexion"
+  }
+}

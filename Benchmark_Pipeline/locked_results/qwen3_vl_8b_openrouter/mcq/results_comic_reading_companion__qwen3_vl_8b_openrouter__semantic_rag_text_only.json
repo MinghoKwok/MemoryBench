@@ -1,0 +1,188 @@
+{
+  "task_name": "comic_reading_companion",
+  "model_name": "qwen3_vl_8b_openrouter",
+  "model_path": "qwen/qwen3-vl-8b-instruct",
+  "method_name": "semantic_rag_text_only",
+  "base_method_name": "semantic_rag_text_only",
+  "method_modality": "",
+  "mode": "mcq",
+  "num_qas": 52,
+  "num_qas_run": 52,
+  "dialog_json": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/dialog/Comic_Reading_Companion.json",
+  "image_root": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/image",
+  "run_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/comic_reading_companion/20260418_145321_qwen3_vl_8b_openrouter_semantic_rag_text_only",
+  "git_commit": "cd2e56c2640bfd72d223220b9d57a2098b3a4f9d",
+  "summary": {
+    "open_count": 52,
+    "overall": {
+      "em": 0.6923076923076923,
+      "contains_gt": 0.6923076923076923,
+      "f1": 0.6923076923076923
+    },
+    "by_x": {
+      "X1": {
+        "em": 0.6842105263157895,
+        "contains_gt": 0.6842105263157895,
+        "f1": 0.6842105263157895
+      },
+      "X4": {
+        "em": 0.6470588235294118,
+        "contains_gt": 0.6470588235294118,
+        "f1": 0.6470588235294118
+      },
+      "X2": {
+        "em": 0.8181818181818182,
+        "contains_gt": 0.8181818181818182,
+        "f1": 0.8181818181818182
+      },
+      "X3": {
+        "em": 0.6,
+        "contains_gt": 0.6,
+        "f1": 0.6
+      }
+    },
+    "by_y": {
+      "Y2": {
+        "em": 0.7407407407407407,
+        "contains_gt": 0.7407407407407407,
+        "f1": 0.7407407407407407
+      },
+      "Y1": {
+        "em": 0.6842105263157895,
+        "contains_gt": 0.6842105263157895,
+        "f1": 0.6842105263157895
+      },
+      "Y3": {
+        "em": 0.5,
+        "contains_gt": 0.5,
+        "f1": 0.5
+      }
+    },
+    "by_cell": {
+      "X1_Y2": {
+        "em": 0.6923076923076923,
+        "contains_gt": 0.6923076923076923,
+        "f1": 0.6923076923076923
+      },
+      "X4_Y2": {
+        "em": 0.7142857142857143,
+        "contains_gt": 0.7142857142857143,
+        "f1": 0.7142857142857143
+      },
+      "X4_Y1": {
+        "em": 0.625,
+        "contains_gt": 0.625,
+        "f1": 0.625
+      },
+      "X2_Y1": {
+        "em": 0.8,
+        "contains_gt": 0.8,
+        "f1": 0.8
+      },
+      "X1_Y1": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
+      },
+      "X1_Y3": {
+        "em": 0.5,
+        "contains_gt": 0.5,
+        "f1": 0.5
+      },
+      "X4_Y3": {
+        "em": 0.5,
+        "contains_gt": 0.5,
+        "f1": 0.5
+      },
+      "X2_Y2": {
+        "em": 0.8333333333333334,
+        "contains_gt": 0.8333333333333334,
+        "f1": 0.8333333333333334
+      },
+      "X3_Y1": {
+        "em": 0.5,
+        "contains_gt": 0.5,
+        "f1": 0.5
+      },
+      "X3_Y2": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
+      }
+    },
+    "mcq_count": 52,
+    "mcq_valid_rate": 1.0,
+    "mcq_overall": {
+      "em": 0.6923076923076923,
+      "contains_gt": 0.6923076923076923,
+      "f1": 0.6923076923076923
+    }
+  },
+  "method_runtime": {
+    "retrieval_backend": "dense_text",
+    "retrieval_corpus": "round_text",
+    "method_modality": "text_only",
+    "top_k": 10,
+    "neighbor_window": 0,
+    "seed_round_ids": [
+      "CX10:1",
+      "TC3:1",
+      "TC6:1",
+      "TC1:1",
+      "TC8:1",
+      "TC2:1",
+      "CX6:1",
+      "TC4:1",
+      "CX4:1",
+      "CX15:1"
+    ],
+    "selected_round_ids": [
+      "CX10:1",
+      "TC3:1",
+      "TC6:1",
+      "TC1:1",
+      "TC8:1",
+      "TC2:1",
+      "CX6:1",
+      "TC4:1",
+      "CX4:1",
+      "CX15:1"
+    ],
+    "top_candidates": [
+      {
+        "round_id": "CX10:1",
+        "score": 0.6603045057090277,
+        "text_dense_score": 0.6603045057090277
+      },
+      {
+        "round_id": "TC3:1",
+        "score": 0.5241155639140713,
+        "text_dense_score": 0.5241155639140713
+      },
+      {
+        "round_id": "TC6:1",
+        "score": 0.5226385524636485,
+        "text_dense_score": 0.5226385524636485
+      },
+      {
+        "round_id": "TC1:1",
+        "score": 0.49413229617031634,
+        "text_dense_score": 0.49413229617031634
+      },
+      {
+        "round_id": "TC8:1",
+        "score": 0.48609338837175137,
+        "text_dense_score": 0.48609338837175137
+      }
+    ],
+    "clue_hit_count": 2,
+    "corpus_entry_count": 109,
+    "text_embedding_model": "all-MiniLM-L6-v2",
+    "caption_text_included": true,
+    "image_embeddings_built": false,
+    "history_source": "retrieval",
+    "captions_loaded": true,
+    "images_loaded": false,
+    "history_turns_after_truncation": 20
+  }
+}

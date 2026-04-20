@@ -1,0 +1,203 @@
+{
+  "task_name": "social_chat_memory_test",
+  "model_name": "gemini_2_5_flash_lite",
+  "model_path": "gemini-2.5-flash-lite",
+  "method_name": "semantic_rag_multimodal",
+  "base_method_name": "semantic_rag_multimodal",
+  "method_modality": "multimodal",
+  "mode": "mcq",
+  "num_qas": 44,
+  "num_qas_run": 44,
+  "dialog_json": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/dialog/Social_Chat_Memory_Test.json",
+  "image_root": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/image",
+  "run_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/social_chat_memory_test/20260416_234657_gemini_2_5_flash_lite_semantic_rag_multimodal",
+  "git_commit": "483ff1401e5ce04eb6a71f775bbe4e9835bb495c",
+  "summary": {
+    "open_count": 44,
+    "overall": {
+      "em": 0.5909090909090909,
+      "contains_gt": 0.5909090909090909,
+      "f1": 0.5909090909090909
+    },
+    "by_x": {
+      "X2": {
+        "em": 0.5555555555555556,
+        "contains_gt": 0.5555555555555556,
+        "f1": 0.5555555555555556
+      },
+      "X1": {
+        "em": 0.8,
+        "contains_gt": 0.8,
+        "f1": 0.8
+      },
+      "X3": {
+        "em": 0.5,
+        "contains_gt": 0.5,
+        "f1": 0.5
+      },
+      "X4": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
+      }
+    },
+    "by_y": {
+      "Y2": {
+        "em": 0.5,
+        "contains_gt": 0.5,
+        "f1": 0.5
+      },
+      "Y3": {
+        "em": 0.875,
+        "contains_gt": 0.875,
+        "f1": 0.875
+      },
+      "Y1": {
+        "em": 0.6666666666666666,
+        "contains_gt": 0.6666666666666666,
+        "f1": 0.6666666666666666
+      }
+    },
+    "by_cell": {
+      "X2_Y2": {
+        "em": 0.5185185185185185,
+        "contains_gt": 0.5185185185185185,
+        "f1": 0.5185185185185185
+      },
+      "X2_Y3": {
+        "em": 0.8333333333333334,
+        "contains_gt": 0.8333333333333334,
+        "f1": 0.8333333333333334
+      },
+      "X2_Y1": {
+        "em": 0.3333333333333333,
+        "contains_gt": 0.3333333333333333,
+        "f1": 0.3333333333333333
+      },
+      "X1_Y1": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
+      },
+      "X1_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0
+      },
+      "X3_Y1": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
+      },
+      "X3_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0
+      },
+      "X4_Y2": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
+      },
+      "X1_Y3": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
+      }
+    },
+    "mcq_count": 44,
+    "mcq_valid_rate": 1.0,
+    "mcq_overall": {
+      "em": 0.5909090909090909,
+      "contains_gt": 0.5909090909090909,
+      "f1": 0.5909090909090909
+    }
+  },
+  "method_runtime": {
+    "retrieval_backend": "dense_multimodal",
+    "retrieval_corpus": "round_text",
+    "method_modality": "multimodal",
+    "top_k": 10,
+    "neighbor_window": 0,
+    "seed_round_ids": [
+      "R4b:1",
+      "R4:2",
+      "R1:1",
+      "R3:1",
+      "R4:1",
+      "R3b:1",
+      "R2:2",
+      "B1:2",
+      "B5:1",
+      "B1:1"
+    ],
+    "selected_round_ids": [
+      "R4b:1",
+      "R4:2",
+      "R1:1",
+      "R3:1",
+      "R4:1",
+      "R3b:1",
+      "R2:2",
+      "B1:2",
+      "B5:1",
+      "B1:1"
+    ],
+    "top_candidates": [
+      {
+        "round_id": "R4b:1",
+        "score": 0.42309994852461724,
+        "text_dense_score": 0.608652119982183,
+        "image_dense_score": 0.2375477770670514,
+        "indexed_image_count": 1,
+        "best_image_path": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/image/Social_Chat_Memory_Test/screenshots/R4b_1.png"
+      },
+      {
+        "round_id": "R4:2",
+        "score": 0.41186278869425613,
+        "text_dense_score": 0.5855264313559163,
+        "image_dense_score": 0.23819914603259598,
+        "indexed_image_count": 1,
+        "best_image_path": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/image/Social_Chat_Memory_Test/screenshots/R4_2.png"
+      },
+      {
+        "round_id": "R1:1",
+        "score": 0.3899943441728364,
+        "text_dense_score": 0.5496193498310636,
+        "image_dense_score": 0.23036933851460914,
+        "indexed_image_count": 1,
+        "best_image_path": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/image/Social_Chat_Memory_Test/screenshots/R1_1.png"
+      },
+      {
+        "round_id": "R3:1",
+        "score": 0.3696400250012446,
+        "text_dense_score": 0.5145235834208256,
+        "image_dense_score": 0.22475646658166354,
+        "indexed_image_count": 1,
+        "best_image_path": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/image/Social_Chat_Memory_Test/screenshots/R3_1.png"
+      },
+      {
+        "round_id": "R4:1",
+        "score": 0.3229704916882149,
+        "text_dense_score": 0.43013812373349924,
+        "image_dense_score": 0.21580285964293056,
+        "indexed_image_count": 1,
+        "best_image_path": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/image/Social_Chat_Memory_Test/screenshots/R4_1.png"
+      }
+    ],
+    "clue_hit_count": 3,
+    "corpus_entry_count": 53,
+    "text_embedding_model": "all-MiniLM-L6-v2",
+    "multimodal_embedding_model": "siglip2-base-patch16-384",
+    "text_dense_weight": 0.5,
+    "image_dense_weight": 0.5,
+    "caption_text_included": false,
+    "image_embeddings_built": true,
+    "multi_image_indexing_enabled": true,
+    "indexed_image_count": 43,
+    "history_source": "retrieval",
+    "captions_loaded": false,
+    "images_loaded": true,
+    "history_turns_after_truncation": 20
+  }
+}

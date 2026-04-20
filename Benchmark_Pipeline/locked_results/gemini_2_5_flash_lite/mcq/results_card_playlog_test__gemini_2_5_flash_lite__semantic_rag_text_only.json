@@ -1,0 +1,128 @@
+{
+  "task_name": "card_playlog_test",
+  "model_name": "gemini_2_5_flash_lite",
+  "model_path": "gemini-2.5-flash-lite",
+  "method_name": "semantic_rag_text_only",
+  "base_method_name": "semantic_rag_text_only",
+  "method_modality": "",
+  "mode": "mcq",
+  "num_qas": 48,
+  "num_qas_run": 48,
+  "dialog_json": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/dialog/Card_Playlog_Test.json",
+  "image_root": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image",
+  "run_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/card_playlog_test/20260417_000047_gemini_2_5_flash_lite_semantic_rag_text_only",
+  "git_commit": "19262b5fb5d5a815990401ec3935bf95c666c9d4",
+  "summary": {
+    "open_count": 48,
+    "overall": {
+      "em": 0.2708333333333333,
+      "contains_gt": 0.2708333333333333,
+      "f1": 0.2708333333333333
+    },
+    "by_x": {
+      "X4": {
+        "em": 0.2708333333333333,
+        "contains_gt": 0.2708333333333333,
+        "f1": 0.2708333333333333
+      }
+    },
+    "by_y": {
+      "Y3": {
+        "em": 0.10526315789473684,
+        "contains_gt": 0.10526315789473684,
+        "f1": 0.10526315789473684
+      },
+      "Y2": {
+        "em": 0.3793103448275862,
+        "contains_gt": 0.3793103448275862,
+        "f1": 0.3793103448275862
+      }
+    },
+    "by_cell": {
+      "X4_Y3": {
+        "em": 0.10526315789473684,
+        "contains_gt": 0.10526315789473684,
+        "f1": 0.10526315789473684
+      },
+      "X4_Y2": {
+        "em": 0.3793103448275862,
+        "contains_gt": 0.3793103448275862,
+        "f1": 0.3793103448275862
+      }
+    },
+    "mcq_count": 48,
+    "mcq_valid_rate": 0.8958333333333334,
+    "mcq_overall": {
+      "em": 0.2708333333333333,
+      "contains_gt": 0.2708333333333333,
+      "f1": 0.2708333333333333
+    }
+  },
+  "method_runtime": {
+    "retrieval_backend": "dense_text",
+    "retrieval_corpus": "round_text",
+    "method_modality": "text_only",
+    "top_k": 10,
+    "neighbor_window": 0,
+    "seed_round_ids": [
+      "uno_seed_44_p3_g0:1",
+      "uno_seed_44_p0_g0:1",
+      "uno_seed_44_p2_g0:1",
+      "uno_seed_44_p2_g0:3",
+      "uno_seed_44_p1_g0:1",
+      "uno_seed_44_p2_g0:6",
+      "uno_seed_44_p3_g0:6",
+      "uno_seed_44_p3_g0:7",
+      "uno_seed_44_p3_g0:3",
+      "uno_seed_44_p3_g0:4"
+    ],
+    "selected_round_ids": [
+      "uno_seed_44_p3_g0:1",
+      "uno_seed_44_p0_g0:1",
+      "uno_seed_44_p2_g0:1",
+      "uno_seed_44_p2_g0:3",
+      "uno_seed_44_p1_g0:1",
+      "uno_seed_44_p2_g0:6",
+      "uno_seed_44_p3_g0:6",
+      "uno_seed_44_p3_g0:7",
+      "uno_seed_44_p3_g0:3",
+      "uno_seed_44_p3_g0:4"
+    ],
+    "top_candidates": [
+      {
+        "round_id": "uno_seed_44_p3_g0:1",
+        "score": 0.5290760621901255,
+        "text_dense_score": 0.5290760621901255
+      },
+      {
+        "round_id": "uno_seed_44_p0_g0:1",
+        "score": 0.5282294169610163,
+        "text_dense_score": 0.5282294169610163
+      },
+      {
+        "round_id": "uno_seed_44_p2_g0:1",
+        "score": 0.5238403685380788,
+        "text_dense_score": 0.5238403685380788
+      },
+      {
+        "round_id": "uno_seed_44_p2_g0:3",
+        "score": 0.5189786326989828,
+        "text_dense_score": 0.5189786326989828
+      },
+      {
+        "round_id": "uno_seed_44_p1_g0:1",
+        "score": 0.5036247491865121,
+        "text_dense_score": 0.5036247491865121
+      }
+    ],
+    "clue_hit_count": 0,
+    "corpus_entry_count": 30,
+    "text_embedding_model": "all-MiniLM-L6-v2",
+    "caption_text_included": true,
+    "image_embeddings_built": false,
+    "history_source": "retrieval",
+    "captions_loaded": true,
+    "images_loaded": false,
+    "history_turns_after_truncation": 20
+  }
+}

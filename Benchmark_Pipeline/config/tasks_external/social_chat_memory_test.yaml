@@ -3,6 +3,6 @@ dataset:
   dialog_json: data/dialog/Social_Chat_Memory_Test.json
   image_root: data/image
 eval:
-  mode: open
+  mode: mcq
   output_json: output/results_social_chat_memory_test.json
   max_questions: 0

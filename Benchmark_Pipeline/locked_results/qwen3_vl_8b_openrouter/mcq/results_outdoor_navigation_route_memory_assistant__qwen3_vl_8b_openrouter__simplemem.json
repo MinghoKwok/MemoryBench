@@ -1,0 +1,116 @@
+{
+  "task_name": "outdoor_navigation_route_memory_assistant",
+  "model_name": "qwen3_vl_8b_openrouter",
+  "model_path": "qwen/qwen3-vl-8b-instruct",
+  "method_name": "simplemem",
+  "base_method_name": "simplemem",
+  "method_modality": "",
+  "mode": "mcq",
+  "num_qas": 40,
+  "num_qas_run": 40,
+  "dialog_json": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/dialog/Outdoor_Navigation_Route_Memory_Assistant.json",
+  "image_root": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/image",
+  "run_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/outdoor_navigation_route_memory_assistant/20260418_022430_qwen3_vl_8b_openrouter_simplemem",
+  "git_commit": "098e1cd297db81f969cb6d0b30fdf861a1fe20aa",
+  "summary": {
+    "open_count": 40,
+    "overall": {
+      "em": 0.45,
+      "contains_gt": 0.45,
+      "f1": 0.45
+    },
+    "by_x": {
+      "X3": {
+        "em": 0.5185185185185185,
+        "contains_gt": 0.5185185185185185,
+        "f1": 0.5185185185185185
+      },
+      "X1": {
+        "em": 0.3333333333333333,
+        "contains_gt": 0.3333333333333333,
+        "f1": 0.3333333333333333
+      },
+      "X4": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0
+      },
+      "X2": {
+        "em": 0.6,
+        "contains_gt": 0.6,
+        "f1": 0.6
+      }
+    },
+    "by_y": {
+      "Y2": {
+        "em": 0.5384615384615384,
+        "contains_gt": 0.5384615384615384,
+        "f1": 0.5384615384615384
+      },
+      "Y1": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
+      },
+      "Y3": {
+        "em": 0.23076923076923078,
+        "contains_gt": 0.23076923076923078,
+        "f1": 0.23076923076923078
+      }
+    },
+    "by_cell": {
+      "X3_Y2": {
+        "em": 0.5454545454545454,
+        "contains_gt": 0.5454545454545454,
+        "f1": 0.5454545454545454
+      },
+      "X1_Y1": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
+      },
+      "X4_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0
+      },
+      "X2_Y2": {
+        "em": 0.6666666666666666,
+        "contains_gt": 0.6666666666666666,
+        "f1": 0.6666666666666666
+      },
+      "X3_Y3": {
+        "em": 0.4,
+        "contains_gt": 0.4,
+        "f1": 0.4
+      },
+      "X4_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0
+      },
+      "X2_Y3": {
+        "em": 0.5,
+        "contains_gt": 0.5,
+        "f1": 0.5
+      },
+      "X1_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0
+      }
+    },
+    "mcq_count": 40,
+    "mcq_valid_rate": 0.775,
+    "mcq_overall": {
+      "em": 0.45,
+      "contains_gt": 0.45,
+      "f1": 0.45
+    }
+  },
+  "method_runtime": {
+    "num_memories": 60,
+    "debug_dir": "/common/home/mg1998/MemoryBench/output/outdoor_navigation_route_memory_assistant/simplemem",
+    "data_dir": "/common/home/mg1998/MemoryBench/runs/simplemem/outdoor_navigation_route_memory_assistant"
+  }
+}

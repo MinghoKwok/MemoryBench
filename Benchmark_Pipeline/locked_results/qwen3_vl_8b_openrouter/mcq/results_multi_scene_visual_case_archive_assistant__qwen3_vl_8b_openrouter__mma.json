@@ -1,0 +1,101 @@
+{
+  "task_name": "multi_scene_visual_case_archive_assistant",
+  "model_name": "qwen3_vl_8b_openrouter",
+  "model_path": "qwen/qwen3-vl-8b-instruct",
+  "method_name": "mma",
+  "base_method_name": "mma",
+  "method_modality": "",
+  "mode": "mcq",
+  "num_qas": 59,
+  "num_qas_run": 59,
+  "dialog_json": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/dialog/Multi-Scene_Visual_Case_Archive_Assistant.json",
+  "image_root": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/image",
+  "run_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/multi_scene_visual_case_archive_assistant/20260418_001530_qwen3_vl_8b_openrouter_mma",
+  "git_commit": "3e72cfbb2ad7b1177a0375324a70c69555d35ec9",
+  "summary": {
+    "open_count": 59,
+    "overall": {
+      "em": 0.288135593220339,
+      "contains_gt": 0.288135593220339,
+      "f1": 0.288135593220339
+    },
+    "by_x": {
+      "X4": {
+        "em": 0.5714285714285714,
+        "contains_gt": 0.5714285714285714,
+        "f1": 0.5714285714285714
+      },
+      "X2": {
+        "em": 0.4444444444444444,
+        "contains_gt": 0.4444444444444444,
+        "f1": 0.4444444444444444
+      },
+      "X3": {
+        "em": 0.20930232558139536,
+        "contains_gt": 0.20930232558139536,
+        "f1": 0.20930232558139536
+      }
+    },
+    "by_y": {
+      "Y2": {
+        "em": 0.4,
+        "contains_gt": 0.4,
+        "f1": 0.4
+      },
+      "Y3": {
+        "em": 0.6153846153846154,
+        "contains_gt": 0.6153846153846154,
+        "f1": 0.6153846153846154
+      },
+      "Y1": {
+        "em": 0.1388888888888889,
+        "contains_gt": 0.1388888888888889,
+        "f1": 0.1388888888888889
+      }
+    },
+    "by_cell": {
+      "X4_Y2": {
+        "em": 0.6,
+        "contains_gt": 0.6,
+        "f1": 0.6
+      },
+      "X2_Y2": {
+        "em": 0.3333333333333333,
+        "contains_gt": 0.3333333333333333,
+        "f1": 0.3333333333333333
+      },
+      "X3_Y3": {
+        "em": 0.8,
+        "contains_gt": 0.8,
+        "f1": 0.8
+      },
+      "X2_Y3": {
+        "em": 0.5,
+        "contains_gt": 0.5,
+        "f1": 0.5
+      },
+      "X3_Y1": {
+        "em": 0.1388888888888889,
+        "contains_gt": 0.1388888888888889,
+        "f1": 0.1388888888888889
+      },
+      "X3_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0
+      },
+      "X4_Y3": {
+        "em": 0.5,
+        "contains_gt": 0.5,
+        "f1": 0.5
+      }
+    },
+    "mcq_count": 59,
+    "mcq_valid_rate": 1.0,
+    "mcq_overall": {
+      "em": 0.288135593220339,
+      "contains_gt": 0.288135593220339,
+      "f1": 0.288135593220339
+    }
+  }
+}

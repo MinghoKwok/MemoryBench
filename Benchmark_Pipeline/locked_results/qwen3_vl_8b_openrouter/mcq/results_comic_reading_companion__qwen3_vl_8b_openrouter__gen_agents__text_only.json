@@ -1,0 +1,142 @@
+{
+  "task_name": "comic_reading_companion",
+  "model_name": "qwen3_vl_8b_openrouter",
+  "model_path": "qwen/qwen3-vl-8b-instruct",
+  "method_name": "gen_agents__text_only",
+  "base_method_name": "gen_agents",
+  "method_modality": "text_only",
+  "mode": "mcq",
+  "num_qas": 52,
+  "num_qas_run": 52,
+  "dialog_json": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/dialog/Comic_Reading_Companion.json",
+  "image_root": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/image",
+  "run_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/comic_reading_companion/20260418_104033_qwen3_vl_8b_openrouter_gen_agents__text_only",
+  "git_commit": "ab29078bb466a57d6f42c232453e41a9ebf0b118",
+  "summary": {
+    "open_count": 52,
+    "overall": {
+      "em": 0.6346153846153846,
+      "contains_gt": 0.6346153846153846,
+      "f1": 0.6346153846153846
+    },
+    "by_x": {
+      "X1": {
+        "em": 0.6842105263157895,
+        "contains_gt": 0.6842105263157895,
+        "f1": 0.6842105263157895
+      },
+      "X4": {
+        "em": 0.5882352941176471,
+        "contains_gt": 0.5882352941176471,
+        "f1": 0.5882352941176471
+      },
+      "X2": {
+        "em": 0.6363636363636364,
+        "contains_gt": 0.6363636363636364,
+        "f1": 0.6363636363636364
+      },
+      "X3": {
+        "em": 0.6,
+        "contains_gt": 0.6,
+        "f1": 0.6
+      }
+    },
+    "by_y": {
+      "Y2": {
+        "em": 0.7037037037037037,
+        "contains_gt": 0.7037037037037037,
+        "f1": 0.7037037037037037
+      },
+      "Y1": {
+        "em": 0.5263157894736842,
+        "contains_gt": 0.5263157894736842,
+        "f1": 0.5263157894736842
+      },
+      "Y3": {
+        "em": 0.6666666666666666,
+        "contains_gt": 0.6666666666666666,
+        "f1": 0.6666666666666666
+      }
+    },
+    "by_cell": {
+      "X1_Y2": {
+        "em": 0.6923076923076923,
+        "contains_gt": 0.6923076923076923,
+        "f1": 0.6923076923076923
+      },
+      "X4_Y2": {
+        "em": 0.5714285714285714,
+        "contains_gt": 0.5714285714285714,
+        "f1": 0.5714285714285714
+      },
+      "X4_Y1": {
+        "em": 0.625,
+        "contains_gt": 0.625,
+        "f1": 0.625
+      },
+      "X2_Y1": {
+        "em": 0.4,
+        "contains_gt": 0.4,
+        "f1": 0.4
+      },
+      "X1_Y1": {
+        "em": 0.5,
+        "contains_gt": 0.5,
+        "f1": 0.5
+      },
+      "X1_Y3": {
+        "em": 0.75,
+        "contains_gt": 0.75,
+        "f1": 0.75
+      },
+      "X4_Y3": {
+        "em": 0.5,
+        "contains_gt": 0.5,
+        "f1": 0.5
+      },
+      "X2_Y2": {
+        "em": 0.8333333333333334,
+        "contains_gt": 0.8333333333333334,
+        "f1": 0.8333333333333334
+      },
+      "X3_Y1": {
+        "em": 0.5,
+        "contains_gt": 0.5,
+        "f1": 0.5
+      },
+      "X3_Y2": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
+      }
+    },
+    "mcq_count": 52,
+    "mcq_valid_rate": 1.0,
+    "mcq_overall": {
+      "em": 0.6346153846153846,
+      "contains_gt": 0.6346153846153846,
+      "f1": 0.6346153846153846
+    }
+  },
+  "method_runtime": {
+    "caption_validation_passed": true,
+    "caption_validation_round_count": 43,
+    "method_modality": "text_only",
+    "history_source": "retrieval",
+    "captions_loaded": true,
+    "images_loaded": false,
+    "num_memories": 109,
+    "debug_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/output/comic_reading_companion/gen_agents",
+    "history_turns_after_truncation": 1,
+    "retrieved_round_ids": [
+      "D28:2",
+      "C8:2",
+      "CX10:1",
+      "C8:1",
+      "D34:2",
+      "D33:3",
+      "D33:2",
+      "C13:1"
+    ]
+  }
+}

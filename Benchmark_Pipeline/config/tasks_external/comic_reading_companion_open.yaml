@@ -1,8 +1,0 @@
-name: comic_reading_companion_open
-dataset:
-  dialog_json: /common/home/mg1998/.cache/memeye_hf/MemEye/data/dialog/Comic_Reading_Companion_Open.json
-  image_root: /common/home/mg1998/.cache/memeye_hf/MemEye/data/image
-eval:
-  mode: open
-  output_json: output/results_comic_reading_companion_open.json
-  max_questions: 0

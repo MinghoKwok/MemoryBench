@@ -81,14 +81,13 @@ python run_benchmark.py \
 
 **`*_gemini` variants** automatically redirect the OpenAI SDK to Gemini's OpenAI-compatible endpoint. Use these on machines without OpenAI API access.
 
-### Available Datasets (9 tasks, 465 QAs)
+### Available Datasets (8 tasks, 416 QAs)
 
 | Dataset | Config | QAs | Domain |
 |---------|--------|-----|--------|
-| Animation Viewing Companion | `animation_viewing_companion` | 61 | Animation episode analysis |
 | Brand Memory Test | `brand_memory_test` | 33 | Ad campaign comparison |
 | Card Playlog Test | `card_playlog_test` | 48 | Card game state tracking |
-| Comic Reading Companion | `comic_reading_companion` | 52 | Comic narrative memory |
+| Cartoon Entertainment Companion | `cartoon_entertainment_companion` | 112 | Animation + comic visual narrative |
 | Home Renovation Interior Design | `home_renovation_interior_design` | 65 | Renovation planning |
 | Multi-Scene VCAA | `multi_scene_visual_case_archive_assistant` | 59 | Multi-room object tracking |
 | Outdoor Navigation | `outdoor_navigation_route_memory_assistant` | 40 | Route memory |

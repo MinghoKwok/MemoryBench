@@ -33,10 +33,9 @@ EXTRA_ARGS=""
 
 # ---- All datasets ----
 ALL_DATASETS=(
-  animation_viewing_companion
   brand_memory_test
   card_playlog_test
-  comic_reading_companion
+  cartoon_entertainment_companion
   home_renovation_interior_design
   multi_scene_visual_case_archive_assistant
   outdoor_navigation_route_memory_assistant

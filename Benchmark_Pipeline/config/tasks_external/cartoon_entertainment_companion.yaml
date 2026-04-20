@@ -1,0 +1,8 @@
+name: cartoon_entertainment_companion
+dataset:
+  dialog_json: data/dialog/Cartoon_Entertainment_Companion.json
+  image_root: /common/home/mg1998/.cache/memeye_hf/MemEye/data/image
+eval:
+  mode: mcq
+  output_json: output/results_cartoon_entertainment_companion.json
+  max_questions: 0

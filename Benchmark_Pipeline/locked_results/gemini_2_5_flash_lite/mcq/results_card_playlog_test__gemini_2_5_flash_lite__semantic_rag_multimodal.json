@@ -1,0 +1,148 @@
+{
+  "task_name": "card_playlog_test",
+  "model_name": "gemini_2_5_flash_lite",
+  "model_path": "gemini-2.5-flash-lite",
+  "method_name": "semantic_rag_multimodal",
+  "base_method_name": "semantic_rag_multimodal",
+  "method_modality": "multimodal",
+  "mode": "mcq",
+  "num_qas": 48,
+  "num_qas_run": 48,
+  "dialog_json": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/dialog/Card_Playlog_Test.json",
+  "image_root": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image",
+  "run_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/card_playlog_test/20260416_233350_gemini_2_5_flash_lite_semantic_rag_multimodal",
+  "git_commit": "483ff1401e5ce04eb6a71f775bbe4e9835bb495c",
+  "summary": {
+    "open_count": 48,
+    "overall": {
+      "em": 0.22916666666666666,
+      "contains_gt": 0.22916666666666666,
+      "f1": 0.22916666666666666
+    },
+    "by_x": {
+      "X4": {
+        "em": 0.22916666666666666,
+        "contains_gt": 0.22916666666666666,
+        "f1": 0.22916666666666666
+      }
+    },
+    "by_y": {
+      "Y3": {
+        "em": 0.10526315789473684,
+        "contains_gt": 0.10526315789473684,
+        "f1": 0.10526315789473684
+      },
+      "Y2": {
+        "em": 0.3103448275862069,
+        "contains_gt": 0.3103448275862069,
+        "f1": 0.3103448275862069
+      }
+    },
+    "by_cell": {
+      "X4_Y3": {
+        "em": 0.10526315789473684,
+        "contains_gt": 0.10526315789473684,
+        "f1": 0.10526315789473684
+      },
+      "X4_Y2": {
+        "em": 0.3103448275862069,
+        "contains_gt": 0.3103448275862069,
+        "f1": 0.3103448275862069
+      }
+    },
+    "mcq_count": 48,
+    "mcq_valid_rate": 1.0,
+    "mcq_overall": {
+      "em": 0.22916666666666666,
+      "contains_gt": 0.22916666666666666,
+      "f1": 0.22916666666666666
+    }
+  },
+  "method_runtime": {
+    "retrieval_backend": "dense_multimodal",
+    "retrieval_corpus": "round_text",
+    "method_modality": "multimodal",
+    "top_k": 10,
+    "neighbor_window": 0,
+    "seed_round_ids": [
+      "uno_seed_44_p0_g0:1",
+      "uno_seed_44_p1_g0:1",
+      "uno_seed_44_p2_g0:1",
+      "uno_seed_44_p3_g0:1",
+      "uno_seed_44_p2_g0:3",
+      "uno_seed_44_p3_g0:6",
+      "uno_seed_44_p3_g0:3",
+      "uno_seed_44_p1_g0:3",
+      "uno_seed_44_p3_g0:5",
+      "uno_seed_44_p0_g0:3"
+    ],
+    "selected_round_ids": [
+      "uno_seed_44_p0_g0:1",
+      "uno_seed_44_p1_g0:1",
+      "uno_seed_44_p2_g0:1",
+      "uno_seed_44_p3_g0:1",
+      "uno_seed_44_p2_g0:3",
+      "uno_seed_44_p3_g0:6",
+      "uno_seed_44_p3_g0:3",
+      "uno_seed_44_p1_g0:3",
+      "uno_seed_44_p3_g0:5",
+      "uno_seed_44_p0_g0:3"
+    ],
+    "top_candidates": [
+      {
+        "round_id": "uno_seed_44_p0_g0:1",
+        "score": 0.42742509790924105,
+        "text_dense_score": 0.5804198527256741,
+        "image_dense_score": 0.274430343092808,
+        "indexed_image_count": 1,
+        "best_image_path": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image/Card_Playlog_Test/uno_44/state_0000.jpg"
+      },
+      {
+        "round_id": "uno_seed_44_p1_g0:1",
+        "score": 0.39963525217058304,
+        "text_dense_score": 0.54316493712328,
+        "image_dense_score": 0.2561055672178862,
+        "indexed_image_count": 1,
+        "best_image_path": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image/Card_Playlog_Test/uno_44/state_0001.jpg"
+      },
+      {
+        "round_id": "uno_seed_44_p2_g0:1",
+        "score": 0.39422543404634025,
+        "text_dense_score": 0.5513922019731881,
+        "image_dense_score": 0.23705866611949242,
+        "indexed_image_count": 1,
+        "best_image_path": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image/Card_Playlog_Test/uno_44/state_0002.jpg"
+      },
+      {
+        "round_id": "uno_seed_44_p3_g0:1",
+        "score": 0.3800661166978868,
+        "text_dense_score": 0.5212187972938951,
+        "image_dense_score": 0.23891343610187857,
+        "indexed_image_count": 1,
+        "best_image_path": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image/Card_Playlog_Test/uno_44/state_0003.jpg"
+      },
+      {
+        "round_id": "uno_seed_44_p2_g0:3",
+        "score": 0.37247337583426043,
+        "text_dense_score": 0.48129253295333124,
+        "image_dense_score": 0.2636542187151897,
+        "indexed_image_count": 1,
+        "best_image_path": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image/Card_Playlog_Test/uno_44/state_0010.jpg"
+      }
+    ],
+    "clue_hit_count": 1,
+    "corpus_entry_count": 30,
+    "text_embedding_model": "all-MiniLM-L6-v2",
+    "multimodal_embedding_model": "siglip2-base-patch16-384",
+    "text_dense_weight": 0.5,
+    "image_dense_weight": 0.5,
+    "caption_text_included": false,
+    "image_embeddings_built": true,
+    "multi_image_indexing_enabled": true,
+    "indexed_image_count": 30,
+    "history_source": "retrieval",
+    "captions_loaded": false,
+    "images_loaded": true,
+    "history_turns_after_truncation": 20
+  }
+}

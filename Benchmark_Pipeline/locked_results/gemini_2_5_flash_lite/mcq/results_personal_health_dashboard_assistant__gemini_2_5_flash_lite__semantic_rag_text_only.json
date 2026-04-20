@@ -1,0 +1,158 @@
+{
+  "task_name": "personal_health_dashboard_assistant",
+  "model_name": "gemini_2_5_flash_lite",
+  "model_path": "gemini-2.5-flash-lite",
+  "method_name": "semantic_rag_text_only",
+  "base_method_name": "semantic_rag_text_only",
+  "method_modality": "",
+  "mode": "mcq",
+  "num_qas": 63,
+  "num_qas_run": 63,
+  "dialog_json": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/dialog/Personal_Health_Dashboard_Assistant.json",
+  "image_root": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/image",
+  "run_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/personal_health_dashboard_assistant/20260416_233622_gemini_2_5_flash_lite_semantic_rag_text_only",
+  "git_commit": "483ff1401e5ce04eb6a71f775bbe4e9835bb495c",
+  "summary": {
+    "open_count": 63,
+    "overall": {
+      "em": 0.14285714285714285,
+      "contains_gt": 0.14285714285714285,
+      "f1": 0.14285714285714285
+    },
+    "by_x": {
+      "X4": {
+        "em": 0.14285714285714285,
+        "contains_gt": 0.14285714285714285,
+        "f1": 0.14285714285714285
+      },
+      "X3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0
+      },
+      "X1": {
+        "em": 0.3333333333333333,
+        "contains_gt": 0.3333333333333333,
+        "f1": 0.3333333333333333
+      }
+    },
+    "by_y": {
+      "Y2": {
+        "em": 0.09803921568627451,
+        "contains_gt": 0.09803921568627451,
+        "f1": 0.09803921568627451
+      },
+      "Y3": {
+        "em": 0.36363636363636365,
+        "contains_gt": 0.36363636363636365,
+        "f1": 0.36363636363636365
+      },
+      "Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0
+      }
+    },
+    "by_cell": {
+      "X4_Y2": {
+        "em": 0.10638297872340426,
+        "contains_gt": 0.10638297872340426,
+        "f1": 0.10638297872340426
+      },
+      "X4_Y3": {
+        "em": 0.3333333333333333,
+        "contains_gt": 0.3333333333333333,
+        "f1": 0.3333333333333333
+      },
+      "X3_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0
+      },
+      "X1_Y3": {
+        "em": 0.5,
+        "contains_gt": 0.5,
+        "f1": 0.5
+      },
+      "X1_Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0
+      }
+    },
+    "mcq_count": 63,
+    "mcq_valid_rate": 0.746031746031746,
+    "mcq_overall": {
+      "em": 0.14285714285714285,
+      "contains_gt": 0.14285714285714285,
+      "f1": 0.14285714285714285
+    }
+  },
+  "method_runtime": {
+    "retrieval_backend": "dense_text",
+    "retrieval_corpus": "round_text",
+    "method_modality": "text_only",
+    "top_k": 10,
+    "neighbor_window": 0,
+    "seed_round_ids": [
+      "D2:6",
+      "D1:0",
+      "D10:5",
+      "D6:1",
+      "D7:2",
+      "D11:6",
+      "D11:3",
+      "D2:2",
+      "D9:3",
+      "D2:1"
+    ],
+    "selected_round_ids": [
+      "D2:6",
+      "D1:0",
+      "D10:5",
+      "D6:1",
+      "D7:2",
+      "D11:6",
+      "D11:3",
+      "D2:2",
+      "D9:3",
+      "D2:1"
+    ],
+    "top_candidates": [
+      {
+        "round_id": "D2:6",
+        "score": 0.43049701879291535,
+        "text_dense_score": 0.43049701879291535
+      },
+      {
+        "round_id": "D1:0",
+        "score": 0.41694677439505223,
+        "text_dense_score": 0.41694677439505223
+      },
+      {
+        "round_id": "D10:5",
+        "score": 0.36520007861403553,
+        "text_dense_score": 0.36520007861403553
+      },
+      {
+        "round_id": "D6:1",
+        "score": 0.3334207499072463,
+        "text_dense_score": 0.3334207499072463
+      },
+      {
+        "round_id": "D7:2",
+        "score": 0.3224585980439038,
+        "text_dense_score": 0.3224585980439038
+      }
+    ],
+    "clue_hit_count": 0,
+    "corpus_entry_count": 97,
+    "text_embedding_model": "all-MiniLM-L6-v2",
+    "caption_text_included": true,
+    "image_embeddings_built": false,
+    "history_source": "retrieval",
+    "captions_loaded": true,
+    "images_loaded": false,
+    "history_turns_after_truncation": 20
+  }
+}

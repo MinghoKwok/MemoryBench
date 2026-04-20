@@ -1,8 +1,0 @@
-name: comic_reading_companion
-dataset:
-  dialog_json: data/dialog/Comic_Reading_Companion.json
-  image_root: data/image
-eval:
-  mode: open
-  output_json: output/results_comic_reading_companion.json
-  max_questions: 0

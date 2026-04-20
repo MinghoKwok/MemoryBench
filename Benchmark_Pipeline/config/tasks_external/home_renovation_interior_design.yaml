@@ -3,6 +3,6 @@ dataset:
   dialog_json: data/dialog/Home_Renovation_Interior_Design.json
   image_root: data/image
 eval:
-  mode: open
+  mode: mcq
   output_json: output/results_home_renovation_interior_design.json
   max_questions: 0

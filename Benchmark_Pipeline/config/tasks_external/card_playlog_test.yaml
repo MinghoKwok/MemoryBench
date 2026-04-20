@@ -4,5 +4,5 @@ dataset:
   image_root: data/image
 eval:
   output_json: output/results_card_playlog_test.json
-  mode: open
+  mode: mcq
   max_questions: 0

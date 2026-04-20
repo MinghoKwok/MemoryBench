@@ -1,0 +1,188 @@
+{
+  "task_name": "multi_scene_visual_case_archive_assistant",
+  "model_name": "gemini_2_5_flash_lite",
+  "model_path": "gemini-2.5-flash-lite",
+  "method_name": "semantic_rag_multimodal",
+  "base_method_name": "semantic_rag_multimodal",
+  "method_modality": "multimodal",
+  "mode": "mcq",
+  "num_qas": 59,
+  "num_qas_run": 59,
+  "dialog_json": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/dialog/Multi-Scene_Visual_Case_Archive_Assistant.json",
+  "image_root": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/image",
+  "run_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/multi_scene_visual_case_archive_assistant/20260417_002336_gemini_2_5_flash_lite_semantic_rag_multimodal",
+  "git_commit": "19262b5fb5d5a815990401ec3935bf95c666c9d4",
+  "summary": {
+    "open_count": 59,
+    "overall": {
+      "em": 0.22033898305084745,
+      "contains_gt": 0.22033898305084745,
+      "f1": 0.22033898305084745
+    },
+    "by_x": {
+      "X4": {
+        "em": 0.42857142857142855,
+        "contains_gt": 0.42857142857142855,
+        "f1": 0.42857142857142855
+      },
+      "X2": {
+        "em": 0.4444444444444444,
+        "contains_gt": 0.4444444444444444,
+        "f1": 0.4444444444444444
+      },
+      "X3": {
+        "em": 0.13953488372093023,
+        "contains_gt": 0.13953488372093023,
+        "f1": 0.13953488372093023
+      }
+    },
+    "by_y": {
+      "Y2": {
+        "em": 0.4,
+        "contains_gt": 0.4,
+        "f1": 0.4
+      },
+      "Y3": {
+        "em": 0.46153846153846156,
+        "contains_gt": 0.46153846153846156,
+        "f1": 0.46153846153846156
+      },
+      "Y1": {
+        "em": 0.08333333333333333,
+        "contains_gt": 0.08333333333333333,
+        "f1": 0.08333333333333333
+      }
+    },
+    "by_cell": {
+      "X4_Y2": {
+        "em": 0.6,
+        "contains_gt": 0.6,
+        "f1": 0.6
+      },
+      "X2_Y2": {
+        "em": 0.3333333333333333,
+        "contains_gt": 0.3333333333333333,
+        "f1": 0.3333333333333333
+      },
+      "X3_Y3": {
+        "em": 0.6,
+        "contains_gt": 0.6,
+        "f1": 0.6
+      },
+      "X2_Y3": {
+        "em": 0.5,
+        "contains_gt": 0.5,
+        "f1": 0.5
+      },
+      "X3_Y1": {
+        "em": 0.08333333333333333,
+        "contains_gt": 0.08333333333333333,
+        "f1": 0.08333333333333333
+      },
+      "X3_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0
+      },
+      "X4_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0
+      }
+    },
+    "mcq_count": 59,
+    "mcq_valid_rate": 1.0,
+    "mcq_overall": {
+      "em": 0.22033898305084745,
+      "contains_gt": 0.22033898305084745,
+      "f1": 0.22033898305084745
+    }
+  },
+  "method_runtime": {
+    "retrieval_backend": "dense_multimodal",
+    "retrieval_corpus": "round_text",
+    "method_modality": "multimodal",
+    "top_k": 10,
+    "neighbor_window": 0,
+    "seed_round_ids": [
+      "S2:R6",
+      "S2:R4",
+      "S5:R6",
+      "S3:R4",
+      "S1:R4",
+      "S1:R5",
+      "S11:R4",
+      "S3:R2",
+      "S1:R2",
+      "S8:R7"
+    ],
+    "selected_round_ids": [
+      "S2:R6",
+      "S2:R4",
+      "S5:R6",
+      "S3:R4",
+      "S1:R4",
+      "S1:R5",
+      "S11:R4",
+      "S3:R2",
+      "S1:R2",
+      "S8:R7"
+    ],
+    "top_candidates": [
+      {
+        "round_id": "S2:R6",
+        "score": 0.3909359814174258,
+        "text_dense_score": 0.4667632420160831,
+        "image_dense_score": 0.3151087208187685,
+        "indexed_image_count": 1,
+        "best_image_path": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/image/Multi-Scene_Visual_Case_Archive_Assistant/S2-IMG4.png"
+      },
+      {
+        "round_id": "S2:R4",
+        "score": 0.36244092026507596,
+        "text_dense_score": 0.4353519033633881,
+        "image_dense_score": 0.28952993716676384,
+        "indexed_image_count": 1,
+        "best_image_path": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/image/Multi-Scene_Visual_Case_Archive_Assistant/S2-IMG3.png"
+      },
+      {
+        "round_id": "S5:R6",
+        "score": 0.35550955280019003,
+        "text_dense_score": 0.42775227127582355,
+        "image_dense_score": 0.2832668343245565,
+        "indexed_image_count": 1,
+        "best_image_path": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/image/Multi-Scene_Visual_Case_Archive_Assistant/S5-IMG3.png"
+      },
+      {
+        "round_id": "S3:R4",
+        "score": 0.32006719059870015,
+        "text_dense_score": 0.3250367379341626,
+        "image_dense_score": 0.3150976432632377,
+        "indexed_image_count": 1,
+        "best_image_path": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/image/Multi-Scene_Visual_Case_Archive_Assistant/S3-IMG3.png"
+      },
+      {
+        "round_id": "S1:R4",
+        "score": 0.3120527223221187,
+        "text_dense_score": 0.3666407154964939,
+        "image_dense_score": 0.25746472914774354,
+        "indexed_image_count": 1,
+        "best_image_path": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/image/Multi-Scene_Visual_Case_Archive_Assistant/S1-IMG2.png"
+      }
+    ],
+    "clue_hit_count": 3,
+    "corpus_entry_count": 117,
+    "text_embedding_model": "all-MiniLM-L6-v2",
+    "multimodal_embedding_model": "siglip2-base-patch16-384",
+    "text_dense_weight": 0.5,
+    "image_dense_weight": 0.5,
+    "caption_text_included": false,
+    "image_embeddings_built": true,
+    "multi_image_indexing_enabled": true,
+    "indexed_image_count": 57,
+    "history_source": "retrieval",
+    "captions_loaded": false,
+    "images_loaded": true,
+    "history_turns_after_truncation": 20
+  }
+}

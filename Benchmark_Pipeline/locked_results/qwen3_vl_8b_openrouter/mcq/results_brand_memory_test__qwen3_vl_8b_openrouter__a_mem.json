@@ -1,0 +1,95 @@
+{
+  "task_name": "brand_memory_test",
+  "model_name": "qwen3_vl_8b_openrouter",
+  "model_path": "qwen/qwen3-vl-8b-instruct",
+  "method_name": "a_mem",
+  "base_method_name": "a_mem",
+  "method_modality": "",
+  "mode": "mcq",
+  "num_qas": 33,
+  "num_qas_run": 33,
+  "dialog_json": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/dialog/Brand_Memory_Test.json",
+  "image_root": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image",
+  "run_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/brand_memory_test/20260417_221547_qwen3_vl_8b_openrouter_a_mem",
+  "git_commit": "4b9aa08bb46682d4bb688bff02582038bacae9d9",
+  "summary": {
+    "open_count": 33,
+    "overall": {
+      "em": 0.42424242424242425,
+      "contains_gt": 0.42424242424242425,
+      "f1": 0.42424242424242425
+    },
+    "by_x": {
+      "X2": {
+        "em": 0.6666666666666666,
+        "contains_gt": 0.6666666666666666,
+        "f1": 0.6666666666666666
+      },
+      "X4": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
+      },
+      "X1": {
+        "em": 0.2727272727272727,
+        "contains_gt": 0.2727272727272727,
+        "f1": 0.2727272727272727
+      }
+    },
+    "by_y": {
+      "Y1": {
+        "em": 0.6666666666666666,
+        "contains_gt": 0.6666666666666666,
+        "f1": 0.6666666666666666
+      },
+      "Y2": {
+        "em": 0.4,
+        "contains_gt": 0.4,
+        "f1": 0.4
+      }
+    },
+    "by_cell": {
+      "X2_Y1": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
+      },
+      "X4_Y1": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
+      },
+      "X2_Y2": {
+        "em": 0.625,
+        "contains_gt": 0.625,
+        "f1": 0.625
+      },
+      "X1_Y2": {
+        "em": 0.2857142857142857,
+        "contains_gt": 0.2857142857142857,
+        "f1": 0.2857142857142857
+      },
+      "X4_Y2": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
+      },
+      "X1_Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0
+      }
+    },
+    "mcq_count": 33,
+    "mcq_valid_rate": 1.0,
+    "mcq_overall": {
+      "em": 0.42424242424242425,
+      "contains_gt": 0.42424242424242425,
+      "f1": 0.42424242424242425
+    }
+  },
+  "method_runtime": {
+    "num_memories": 72,
+    "debug_dir": "/common/home/mg1998/MemoryBench/output/brand_memory_test/a_mem"
+  }
+}

@@ -1,0 +1,99 @@
+{
+  "task_name": "brand_memory_test",
+  "model_name": "qwen3_vl_8b_openrouter",
+  "model_path": "qwen/qwen3-vl-8b-instruct",
+  "method_name": "memoryos",
+  "base_method_name": "memoryos",
+  "method_modality": "",
+  "mode": "mcq",
+  "num_qas": 33,
+  "num_qas_run": 33,
+  "dialog_json": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/dialog/Brand_Memory_Test.json",
+  "image_root": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/image",
+  "run_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/brand_memory_test/20260418_112047_qwen3_vl_8b_openrouter_memoryos",
+  "git_commit": "ab29078bb466a57d6f42c232453e41a9ebf0b118",
+  "summary": {
+    "open_count": 33,
+    "overall": {
+      "em": 0.3333333333333333,
+      "contains_gt": 0.3333333333333333,
+      "f1": 0.3333333333333333
+    },
+    "by_x": {
+      "X2": {
+        "em": 0.5555555555555556,
+        "contains_gt": 0.5555555555555556,
+        "f1": 0.5555555555555556
+      },
+      "X4": {
+        "em": 0.5,
+        "contains_gt": 0.5,
+        "f1": 0.5
+      },
+      "X1": {
+        "em": 0.22727272727272727,
+        "contains_gt": 0.22727272727272727,
+        "f1": 0.22727272727272727
+      }
+    },
+    "by_y": {
+      "Y1": {
+        "em": 0.6666666666666666,
+        "contains_gt": 0.6666666666666666,
+        "f1": 0.6666666666666666
+      },
+      "Y2": {
+        "em": 0.3,
+        "contains_gt": 0.3,
+        "f1": 0.3
+      }
+    },
+    "by_cell": {
+      "X2_Y1": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
+      },
+      "X4_Y1": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
+      },
+      "X2_Y2": {
+        "em": 0.5,
+        "contains_gt": 0.5,
+        "f1": 0.5
+      },
+      "X1_Y2": {
+        "em": 0.23809523809523808,
+        "contains_gt": 0.23809523809523808,
+        "f1": 0.23809523809523808
+      },
+      "X4_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0
+      },
+      "X1_Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0
+      }
+    },
+    "mcq_count": 33,
+    "mcq_valid_rate": 1.0,
+    "mcq_overall": {
+      "em": 0.3333333333333333,
+      "contains_gt": 0.3333333333333333,
+      "f1": 0.3333333333333333
+    }
+  },
+  "method_runtime": {
+    "caption_validation_passed": true,
+    "caption_validation_round_count": 30,
+    "num_memories": 72,
+    "debug_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/output/brand_memory_test/memoryos/da8b40d79a425476",
+    "data_storage_path": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/brand_memory_test/memoryos_data/da8b40d79a425476",
+    "runtime_signature": "da8b40d79a425476"
+  }
+}

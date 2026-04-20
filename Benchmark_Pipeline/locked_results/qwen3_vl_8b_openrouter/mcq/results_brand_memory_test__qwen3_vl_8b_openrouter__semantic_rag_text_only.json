@@ -1,0 +1,158 @@
+{
+  "task_name": "brand_memory_test",
+  "model_name": "qwen3_vl_8b_openrouter",
+  "model_path": "qwen/qwen3-vl-8b-instruct",
+  "method_name": "semantic_rag_text_only",
+  "base_method_name": "semantic_rag_text_only",
+  "method_modality": "",
+  "mode": "mcq",
+  "num_qas": 33,
+  "num_qas_run": 33,
+  "dialog_json": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/dialog/Brand_Memory_Test.json",
+  "image_root": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/image",
+  "run_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/brand_memory_test/20260418_145044_qwen3_vl_8b_openrouter_semantic_rag_text_only",
+  "git_commit": "cd2e56c2640bfd72d223220b9d57a2098b3a4f9d",
+  "summary": {
+    "open_count": 33,
+    "overall": {
+      "em": 0.5151515151515151,
+      "contains_gt": 0.5151515151515151,
+      "f1": 0.5151515151515151
+    },
+    "by_x": {
+      "X2": {
+        "em": 0.4444444444444444,
+        "contains_gt": 0.4444444444444444,
+        "f1": 0.4444444444444444
+      },
+      "X4": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
+      },
+      "X1": {
+        "em": 0.5,
+        "contains_gt": 0.5,
+        "f1": 0.5
+      }
+    },
+    "by_y": {
+      "Y1": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
+      },
+      "Y2": {
+        "em": 0.4666666666666667,
+        "contains_gt": 0.4666666666666667,
+        "f1": 0.4666666666666667
+      }
+    },
+    "by_cell": {
+      "X2_Y1": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
+      },
+      "X4_Y1": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
+      },
+      "X2_Y2": {
+        "em": 0.375,
+        "contains_gt": 0.375,
+        "f1": 0.375
+      },
+      "X1_Y2": {
+        "em": 0.47619047619047616,
+        "contains_gt": 0.47619047619047616,
+        "f1": 0.47619047619047616
+      },
+      "X4_Y2": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
+      },
+      "X1_Y1": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
+      }
+    },
+    "mcq_count": 33,
+    "mcq_valid_rate": 1.0,
+    "mcq_overall": {
+      "em": 0.5151515151515151,
+      "contains_gt": 0.5151515151515151,
+      "f1": 0.5151515151515151
+    }
+  },
+  "method_runtime": {
+    "retrieval_backend": "dense_text",
+    "retrieval_corpus": "round_text",
+    "method_modality": "text_only",
+    "top_k": 10,
+    "neighbor_window": 0,
+    "seed_round_ids": [
+      "P1:2",
+      "D1:1",
+      "S5:1",
+      "CX9:1",
+      "CX3:1",
+      "CX5:1",
+      "CC5:1",
+      "CC1:1",
+      "S3:2",
+      "M3:1"
+    ],
+    "selected_round_ids": [
+      "P1:2",
+      "D1:1",
+      "S5:1",
+      "CX9:1",
+      "CX3:1",
+      "CX5:1",
+      "CC5:1",
+      "CC1:1",
+      "S3:2",
+      "M3:1"
+    ],
+    "top_candidates": [
+      {
+        "round_id": "P1:2",
+        "score": 0.5951033420665186,
+        "text_dense_score": 0.5951033420665186
+      },
+      {
+        "round_id": "D1:1",
+        "score": 0.5860196952894381,
+        "text_dense_score": 0.5860196952894381
+      },
+      {
+        "round_id": "S5:1",
+        "score": 0.5502830381183522,
+        "text_dense_score": 0.5502830381183522
+      },
+      {
+        "round_id": "CX9:1",
+        "score": 0.4891448755573491,
+        "text_dense_score": 0.4891448755573491
+      },
+      {
+        "round_id": "CX3:1",
+        "score": 0.4886042575566219,
+        "text_dense_score": 0.4886042575566219
+      }
+    ],
+    "clue_hit_count": 1,
+    "corpus_entry_count": 72,
+    "text_embedding_model": "all-MiniLM-L6-v2",
+    "caption_text_included": true,
+    "image_embeddings_built": false,
+    "history_source": "retrieval",
+    "captions_loaded": true,
+    "images_loaded": false,
+    "history_turns_after_truncation": 20
+  }
+}

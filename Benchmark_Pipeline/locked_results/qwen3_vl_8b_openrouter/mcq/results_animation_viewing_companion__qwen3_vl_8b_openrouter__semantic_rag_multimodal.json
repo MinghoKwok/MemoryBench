@@ -1,0 +1,208 @@
+{
+  "task_name": "animation_viewing_companion",
+  "model_name": "qwen3_vl_8b_openrouter",
+  "model_path": "qwen/qwen3-vl-8b-instruct",
+  "method_name": "semantic_rag_multimodal",
+  "base_method_name": "semantic_rag_multimodal",
+  "method_modality": "multimodal",
+  "mode": "mcq",
+  "num_qas": 61,
+  "num_qas_run": 61,
+  "dialog_json": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/dialog/Animation_Viewing_Companion.json",
+  "image_root": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/image",
+  "run_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/animation_viewing_companion/20260419_124806_qwen3_vl_8b_openrouter_semantic_rag_multimodal",
+  "git_commit": "1925dc9cdf0868770916907350c6c8c4a4cf6f60",
+  "summary": {
+    "open_count": 61,
+    "overall": {
+      "em": 0.6885245901639344,
+      "contains_gt": 0.6885245901639344,
+      "f1": 0.6885245901639344
+    },
+    "by_x": {
+      "X3": {
+        "em": 0.5652173913043478,
+        "contains_gt": 0.5652173913043478,
+        "f1": 0.5652173913043478
+      },
+      "X4": {
+        "em": 0.8214285714285714,
+        "contains_gt": 0.8214285714285714,
+        "f1": 0.8214285714285714
+      },
+      "X2": {
+        "em": 0.5714285714285714,
+        "contains_gt": 0.5714285714285714,
+        "f1": 0.5714285714285714
+      },
+      "X1": {
+        "em": 0.6666666666666666,
+        "contains_gt": 0.6666666666666666,
+        "f1": 0.6666666666666666
+      }
+    },
+    "by_y": {
+      "Y1": {
+        "em": 0.72,
+        "contains_gt": 0.72,
+        "f1": 0.72
+      },
+      "Y2": {
+        "em": 0.6,
+        "contains_gt": 0.6,
+        "f1": 0.6
+      },
+      "Y3": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
+      }
+    },
+    "by_cell": {
+      "X3_Y1": {
+        "em": 0.6363636363636364,
+        "contains_gt": 0.6363636363636364,
+        "f1": 0.6363636363636364
+      },
+      "X4_Y2": {
+        "em": 0.7142857142857143,
+        "contains_gt": 0.7142857142857143,
+        "f1": 0.7142857142857143
+      },
+      "X2_Y2": {
+        "em": 0.5,
+        "contains_gt": 0.5,
+        "f1": 0.5
+      },
+      "X3_Y2": {
+        "em": 0.5,
+        "contains_gt": 0.5,
+        "f1": 0.5
+      },
+      "X2_Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0
+      },
+      "X4_Y1": {
+        "em": 0.9090909090909091,
+        "contains_gt": 0.9090909090909091,
+        "f1": 0.9090909090909091
+      },
+      "X1_Y1": {
+        "em": 0.5,
+        "contains_gt": 0.5,
+        "f1": 0.5
+      },
+      "X4_Y3": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
+      },
+      "X2_Y3": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
+      },
+      "X1_Y3": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
+      }
+    },
+    "mcq_count": 61,
+    "mcq_valid_rate": 1.0,
+    "mcq_overall": {
+      "em": 0.6885245901639344,
+      "contains_gt": 0.6885245901639344,
+      "f1": 0.6885245901639344
+    }
+  },
+  "method_runtime": {
+    "retrieval_backend": "dense_multimodal",
+    "retrieval_corpus": "round_text",
+    "method_modality": "multimodal",
+    "top_k": 10,
+    "neighbor_window": 0,
+    "seed_round_ids": [
+      "S8:6",
+      "S7:3",
+      "S5:7",
+      "S9:5",
+      "S1:7",
+      "S11:2",
+      "S8:8",
+      "S8:2",
+      "S12:4",
+      "S6:5"
+    ],
+    "selected_round_ids": [
+      "S8:6",
+      "S7:3",
+      "S5:7",
+      "S9:5",
+      "S1:7",
+      "S11:2",
+      "S8:8",
+      "S8:2",
+      "S12:4",
+      "S6:5"
+    ],
+    "top_candidates": [
+      {
+        "round_id": "S8:6",
+        "score": 0.33050071553855925,
+        "text_dense_score": 0.4449044363427386,
+        "image_dense_score": 0.21609699473437996,
+        "indexed_image_count": 1,
+        "best_image_path": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/image/Animation_Viewing_Companion/S8-IMG3.jpg"
+      },
+      {
+        "round_id": "S7:3",
+        "score": 0.32455556525507273,
+        "text_dense_score": 0.4226048210025463,
+        "image_dense_score": 0.22650630950759915,
+        "indexed_image_count": 1,
+        "best_image_path": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/image/Animation_Viewing_Companion/S7-IMG1.jpg"
+      },
+      {
+        "round_id": "S5:7",
+        "score": 0.32411150313934406,
+        "text_dense_score": 0.4236878699268281,
+        "image_dense_score": 0.22453513635186004,
+        "indexed_image_count": 1,
+        "best_image_path": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/image/Animation_Viewing_Companion/S5-IMG4.jpg"
+      },
+      {
+        "round_id": "S9:5",
+        "score": 0.3170054016497379,
+        "text_dense_score": 0.39819667626806515,
+        "image_dense_score": 0.23581412703141064,
+        "indexed_image_count": 1,
+        "best_image_path": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/image/Animation_Viewing_Companion/S9-IMG2.jpg"
+      },
+      {
+        "round_id": "S1:7",
+        "score": 0.3112340745530414,
+        "text_dense_score": 0.4117381264860842,
+        "image_dense_score": 0.21073002261999862,
+        "indexed_image_count": 1,
+        "best_image_path": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/image/Animation_Viewing_Companion/S1-IMG3.jpg"
+      }
+    ],
+    "clue_hit_count": 0,
+    "corpus_entry_count": 190,
+    "text_embedding_model": "all-MiniLM-L6-v2",
+    "multimodal_embedding_model": "siglip2-base-patch16-384",
+    "text_dense_weight": 0.5,
+    "image_dense_weight": 0.5,
+    "caption_text_included": false,
+    "image_embeddings_built": true,
+    "multi_image_indexing_enabled": true,
+    "indexed_image_count": 44,
+    "history_source": "retrieval",
+    "captions_loaded": false,
+    "images_loaded": true,
+    "history_turns_after_truncation": 20
+  }
+}

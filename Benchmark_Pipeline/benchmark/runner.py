@@ -244,7 +244,7 @@ def build_payload(
         "method_name": _effective_method_name(cfg.get("method", {})),
         "base_method_name": cfg.get("method", {}).get("name", "full_context_multimodal"),
         "method_modality": cfg.get("method", {}).get("modality", ""),
-        "mode": cfg["eval"].get("mode", "open"),
+        "mode": "mcq" if all(isinstance(q.get("options"), dict) for q in dataset.qas) else cfg["eval"].get("mode", "open"),
         "num_qas": len(dataset.qas),
         "num_qas_run": len({r["idx"] for r in results}),
         "dialog_json": str(paths["dialog_json"]),

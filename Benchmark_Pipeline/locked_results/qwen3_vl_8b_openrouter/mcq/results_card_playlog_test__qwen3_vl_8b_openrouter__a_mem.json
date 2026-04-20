@@ -1,0 +1,65 @@
+{
+  "task_name": "card_playlog_test",
+  "model_name": "qwen3_vl_8b_openrouter",
+  "model_path": "qwen/qwen3-vl-8b-instruct",
+  "method_name": "a_mem",
+  "base_method_name": "a_mem",
+  "method_modality": "",
+  "mode": "mcq",
+  "num_qas": 48,
+  "num_qas_run": 48,
+  "dialog_json": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/dialog/Card_Playlog_Test.json",
+  "image_root": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image",
+  "run_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/card_playlog_test/20260417_222305_qwen3_vl_8b_openrouter_a_mem",
+  "git_commit": "4b9aa08bb46682d4bb688bff02582038bacae9d9",
+  "summary": {
+    "open_count": 48,
+    "overall": {
+      "em": 0.4166666666666667,
+      "contains_gt": 0.4166666666666667,
+      "f1": 0.4166666666666667
+    },
+    "by_x": {
+      "X4": {
+        "em": 0.4166666666666667,
+        "contains_gt": 0.4166666666666667,
+        "f1": 0.4166666666666667
+      }
+    },
+    "by_y": {
+      "Y3": {
+        "em": 0.15789473684210525,
+        "contains_gt": 0.15789473684210525,
+        "f1": 0.15789473684210525
+      },
+      "Y2": {
+        "em": 0.5862068965517241,
+        "contains_gt": 0.5862068965517241,
+        "f1": 0.5862068965517241
+      }
+    },
+    "by_cell": {
+      "X4_Y3": {
+        "em": 0.15789473684210525,
+        "contains_gt": 0.15789473684210525,
+        "f1": 0.15789473684210525
+      },
+      "X4_Y2": {
+        "em": 0.5862068965517241,
+        "contains_gt": 0.5862068965517241,
+        "f1": 0.5862068965517241
+      }
+    },
+    "mcq_count": 48,
+    "mcq_valid_rate": 1.0,
+    "mcq_overall": {
+      "em": 0.4166666666666667,
+      "contains_gt": 0.4166666666666667,
+      "f1": 0.4166666666666667
+    }
+  },
+  "method_runtime": {
+    "num_memories": 30,
+    "debug_dir": "/common/home/mg1998/MemoryBench/output/card_playlog_test/a_mem"
+  }
+}
