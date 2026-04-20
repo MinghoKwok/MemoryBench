@@ -1,0 +1,120 @@
+{
+  "task_name": "personal_health_dashboard_assistant_open",
+  "model_name": "qwen3_vl_8b_openrouter",
+  "model_path": "qwen/qwen3-vl-8b-instruct",
+  "method_name": "m2a",
+  "base_method_name": "m2a",
+  "method_modality": "",
+  "mode": "open",
+  "num_qas": 63,
+  "num_qas_run": 63,
+  "dialog_json": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/dialog/Personal_Health_Dashboard_Assistant_Open.json",
+  "image_root": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image",
+  "run_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/personal_health_dashboard_assistant_open/20260419_173037_qwen3_vl_8b_openrouter_m2a",
+  "git_commit": "2ede73a357fc683261e8335004aafee97dabd948",
+  "summary": {
+    "open_count": 63,
+    "overall": {
+      "em": 0.015873015873015872,
+      "contains_gt": 0.1746031746031746,
+      "f1": 0.12001597500562064,
+      "bleu": 0.03844247462425234,
+      "bleu_1": 0.08383473174252072,
+      "bleu_2": 0.0605226557913297
+    },
+    "by_x": {
+      "X4": {
+        "em": 0.017857142857142856,
+        "contains_gt": 0.16071428571428573,
+        "f1": 0.1296098086160171,
+        "bleu": 0.04266063549239777,
+        "bleu_1": 0.09138765180565353,
+        "bleu_2": 0.06597478274794741
+      },
+      "X3": {
+        "em": 0.0,
+        "contains_gt": 0.5,
+        "f1": 0.07571428571428572,
+        "bleu": 0.008220078438405599,
+        "bleu_1": 0.04096989966555184,
+        "bleu_2": 0.029584870242179016
+      },
+      "X1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0,
+        "bleu": 0.0,
+        "bleu_1": 0.0,
+        "bleu_2": 0.0
+      }
+    },
+    "by_y": {
+      "Y2": {
+        "em": 0.0196078431372549,
+        "contains_gt": 0.19607843137254902,
+        "f1": 0.10849783193919153,
+        "bleu": 0.039143912539455025,
+        "bleu_1": 0.07519788337190132,
+        "bleu_2": 0.0578110748822319
+      },
+      "Y3": {
+        "em": 0.0,
+        "contains_gt": 0.09090909090909091,
+        "f1": 0.1843288178595757,
+        "bleu": 0.03868512380142649,
+        "bleu_1": 0.13149964071016704,
+        "bleu_2": 0.07859659053272218
+      },
+      "Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0,
+        "bleu": 0.0,
+        "bleu_1": 0.0,
+        "bleu_2": 0.0
+      }
+    },
+    "by_cell": {
+      "X4_Y2": {
+        "em": 0.02127659574468085,
+        "contains_gt": 0.1702127659574468,
+        "f1": 0.11128792097960905,
+        "bleu": 0.04177572820762944,
+        "bleu_1": 0.07811090326180341,
+        "bleu_2": 0.06021330506436406
+      },
+      "X4_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.1111111111111111,
+        "f1": 0.22529077738392586,
+        "bleu": 0.047281817979521266,
+        "bleu_1": 0.16072178309020416,
+        "bleu_2": 0.09606249953999377
+      },
+      "X3_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.5,
+        "f1": 0.07571428571428572,
+        "bleu": 0.008220078438405599,
+        "bleu_1": 0.04096989966555184,
+        "bleu_2": 0.029584870242179016
+      },
+      "X1_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0,
+        "bleu": 0.0,
+        "bleu_1": 0.0,
+        "bleu_2": 0.0
+      },
+      "X1_Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0,
+        "bleu": 0.0,
+        "bleu_1": 0.0,
+        "bleu_2": 0.0
+      }
+    }
+  }
+}

@@ -1,0 +1,76 @@
+{
+  "task_name": "card_playlog_test_open",
+  "model_name": "qwen3_vl_8b_openrouter",
+  "model_path": "qwen/qwen3-vl-8b-instruct",
+  "method_name": "reflexion",
+  "base_method_name": "reflexion",
+  "method_modality": "",
+  "mode": "open",
+  "num_qas": 48,
+  "num_qas_run": 48,
+  "dialog_json": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/dialog/Card_Playlog_Test_Open.json",
+  "image_root": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image",
+  "run_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/card_playlog_test_open/20260419_142505_qwen3_vl_8b_openrouter_reflexion",
+  "git_commit": "2ede73a357fc683261e8335004aafee97dabd948",
+  "summary": {
+    "open_count": 48,
+    "overall": {
+      "em": 0.22916666666666666,
+      "contains_gt": 0.22916666666666666,
+      "f1": 0.22916666666666666,
+      "bleu": 0.04075223648005865,
+      "bleu_1": 0.22916666666666666,
+      "bleu_2": 0.07246886304552537
+    },
+    "by_x": {
+      "X4": {
+        "em": 0.22916666666666666,
+        "contains_gt": 0.22916666666666666,
+        "f1": 0.22916666666666666,
+        "bleu": 0.04075223648005865,
+        "bleu_1": 0.22916666666666666,
+        "bleu_2": 0.07246886304552537
+      }
+    },
+    "by_y": {
+      "Y3": {
+        "em": 0.3157894736842105,
+        "contains_gt": 0.3157894736842105,
+        "f1": 0.3157894736842105,
+        "bleu": 0.05615619189596599,
+        "bleu_1": 0.3157894736842105,
+        "bleu_2": 0.09986139979479094
+      },
+      "Y2": {
+        "em": 0.1724137931034483,
+        "contains_gt": 0.1724137931034483,
+        "f1": 0.1724137931034483,
+        "bleu": 0.03065998982825729,
+        "bleu_1": 0.1724137931034483,
+        "bleu_2": 0.05452202862359276
+      }
+    },
+    "by_cell": {
+      "X4_Y3": {
+        "em": 0.3157894736842105,
+        "contains_gt": 0.3157894736842105,
+        "f1": 0.3157894736842105,
+        "bleu": 0.05615619189596599,
+        "bleu_1": 0.3157894736842105,
+        "bleu_2": 0.09986139979479094
+      },
+      "X4_Y2": {
+        "em": 0.1724137931034483,
+        "contains_gt": 0.1724137931034483,
+        "f1": 0.1724137931034483,
+        "bleu": 0.03065998982825729,
+        "bleu_1": 0.1724137931034483,
+        "bleu_2": 0.05452202862359276
+      }
+    }
+  },
+  "method_runtime": {
+    "num_memories": 30,
+    "debug_dir": "/common/home/mg1998/MemoryBench/output/card_playlog_test_open/reflexion"
+  }
+}

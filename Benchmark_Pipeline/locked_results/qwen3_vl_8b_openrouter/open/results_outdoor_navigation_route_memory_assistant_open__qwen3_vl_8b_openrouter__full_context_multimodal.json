@@ -1,0 +1,160 @@
+{
+  "task_name": "outdoor_navigation_route_memory_assistant_open",
+  "model_name": "qwen3_vl_8b_openrouter",
+  "model_path": "qwen/qwen3-vl-8b-instruct",
+  "method_name": "full_context_multimodal",
+  "base_method_name": "full_context_multimodal",
+  "method_modality": "",
+  "mode": "open",
+  "num_qas": 40,
+  "num_qas_run": 40,
+  "dialog_json": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/dialog/Outdoor_Navigation_Route_Memory_Assistant_Open.json",
+  "image_root": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image",
+  "run_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/outdoor_navigation_route_memory_assistant_open/20260418_142956_qwen3_vl_8b_openrouter_full_context_multimodal",
+  "git_commit": "cd2e56c2640bfd72d223220b9d57a2098b3a4f9d",
+  "summary": {
+    "open_count": 40,
+    "overall": {
+      "em": 0.05,
+      "contains_gt": 0.05,
+      "f1": 0.2169503653025587,
+      "bleu": 0.061270259410374915,
+      "bleu_1": 0.18022347752454135,
+      "bleu_2": 0.11481811938105382
+    },
+    "by_x": {
+      "X3": {
+        "em": 0.07407407407407407,
+        "contains_gt": 0.07407407407407407,
+        "f1": 0.25742423858359803,
+        "bleu": 0.07133749200724791,
+        "bleu_1": 0.2109805054209341,
+        "bleu_2": 0.13600198379838874
+      },
+      "X1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0,
+        "bleu": 0.0,
+        "bleu_1": 0.0,
+        "bleu_2": 0.0
+      },
+      "X4": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.08996019460415747,
+        "bleu": 0.010832567615587598,
+        "bleu_1": 0.07166666666666667,
+        "bleu_2": 0.01900855340835461
+      },
+      "X2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.2555518394648829,
+        "bleu": 0.09410705082827295,
+        "bleu_1": 0.23082642425662003,
+        "bleu_2": 0.16512568912877687
+      }
+    },
+    "by_y": {
+      "Y2": {
+        "em": 0.038461538461538464,
+        "contains_gt": 0.038461538461538464,
+        "f1": 0.17998650859936566,
+        "bleu": 0.028553940769260506,
+        "bleu_1": 0.13421133294373883,
+        "bleu_2": 0.07665104550371996
+      },
+      "Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0,
+        "bleu": 0.0,
+        "bleu_1": 0.0,
+        "bleu_2": 0.0
+      },
+      "Y3": {
+        "em": 0.07692307692307693,
+        "contains_gt": 0.07692307692307693,
+        "f1": 0.30756656834760315,
+        "bleu": 0.13141599357032488,
+        "bleu_1": 0.2861111111111111,
+        "bleu_2": 0.1999844301650334
+      }
+    },
+    "by_cell": {
+      "X3_Y2": {
+        "em": 0.045454545454545456,
+        "contains_gt": 0.045454545454545456,
+        "f1": 0.19184272326557347,
+        "bleu": 0.03060535493882708,
+        "bleu_1": 0.1410013273600353,
+        "bleu_2": 0.08545944653381554
+      },
+      "X1_Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0,
+        "bleu": 0.0,
+        "bleu_1": 0.0,
+        "bleu_2": 0.0
+      },
+      "X4_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.10526315789473685,
+        "bleu": 0.013217947626377298,
+        "bleu_1": 0.06666666666666667,
+        "bleu_2": 0.02182178902359924
+      },
+      "X2_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.11794871794871793,
+        "bleu": 0.018622234573400058,
+        "bleu_1": 0.10693292931658895,
+        "bleu_2": 0.030332523443059266
+      },
+      "X3_Y3": {
+        "em": 0.2,
+        "contains_gt": 0.2,
+        "f1": 0.545982905982906,
+        "bleu": 0.2505588951082996,
+        "bleu_1": 0.5188888888888888,
+        "bleu_2": 0.35838914776251074
+      },
+      "X4_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.08613445378151262,
+        "bleu": 0.010236222612890172,
+        "bleu_1": 0.07291666666666667,
+        "bleu_2": 0.018305244504543457
+      },
+      "X2_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.46195652173913043,
+        "bleu": 0.2073342752105823,
+        "bleu_1": 0.4166666666666667,
+        "bleu_2": 0.36731543765735325
+      },
+      "X1_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0,
+        "bleu": 0.0,
+        "bleu_1": 0.0,
+        "bleu_2": 0.0
+      }
+    }
+  },
+  "method_runtime": {
+    "method_modality": "multimodal",
+    "history_source": "full_context",
+    "captions_loaded": false,
+    "images_loaded": true,
+    "history_turns_after_truncation": 120,
+    "history_turns_before_truncation": 120
+  }
+}

@@ -1,0 +1,142 @@
+{
+  "task_name": "personal_health_dashboard_assistant_open",
+  "model_name": "qwen3_vl_8b_openrouter",
+  "model_path": "qwen/qwen3-vl-8b-instruct",
+  "method_name": "gen_agents__text_only",
+  "base_method_name": "gen_agents",
+  "method_modality": "text_only",
+  "mode": "open",
+  "num_qas": 63,
+  "num_qas_run": 63,
+  "dialog_json": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/dialog/Personal_Health_Dashboard_Assistant_Open.json",
+  "image_root": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image",
+  "run_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/personal_health_dashboard_assistant_open/20260419_150524_qwen3_vl_8b_openrouter_gen_agents__text_only",
+  "git_commit": "2ede73a357fc683261e8335004aafee97dabd948",
+  "summary": {
+    "open_count": 63,
+    "overall": {
+      "em": 0.07936507936507936,
+      "contains_gt": 0.14285714285714285,
+      "f1": 0.1900126599165864,
+      "bleu": 0.0855463696434691,
+      "bleu_1": 0.1577581572770601,
+      "bleu_2": 0.12636342674234163
+    },
+    "by_x": {
+      "X4": {
+        "em": 0.08928571428571429,
+        "contains_gt": 0.16071428571428573,
+        "f1": 0.19861272725464454,
+        "bleu": 0.09335750171958605,
+        "bleu_1": 0.16644851517198672,
+        "bleu_2": 0.13492526972376723
+      },
+      "X3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0,
+        "bleu": 0.0,
+        "bleu_1": 0.0,
+        "bleu_2": 0.0
+      },
+      "X1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.2828282828282828,
+        "bleu": 0.053800397080578,
+        "bleu_1": 0.20588235294117646,
+        "bleu_2": 0.13502692674551975
+      }
+    },
+    "by_y": {
+      "Y2": {
+        "em": 0.09803921568627451,
+        "contains_gt": 0.17647058823529413,
+        "f1": 0.16754276759436718,
+        "bleu": 0.09403280516038755,
+        "bleu_1": 0.1485572456424906,
+        "bleu_2": 0.1284564244668765
+      },
+      "Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.29493620414673044,
+        "bleu": 0.05273354838506059,
+        "bleu_1": 0.20406339289674874,
+        "bleu_2": 0.1256819936117718
+      },
+      "Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.1818181818181818,
+        "bleu": 0.013679192123121896,
+        "bleu_1": 0.11764705882352941,
+        "bleu_2": 0.027116307227332027
+      }
+    },
+    "by_cell": {
+      "X4_Y2": {
+        "em": 0.10638297872340426,
+        "contains_gt": 0.19148936170212766,
+        "f1": 0.18180172653856863,
+        "bleu": 0.10203559708893116,
+        "bleu_1": 0.1612004154844047,
+        "bleu_2": 0.13938888612363196
+      },
+      "X4_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.2864035087719298,
+        "bleu": 0.04803855923522827,
+        "bleu_1": 0.19385525798491512,
+        "bleu_2": 0.11161527296891807
+      },
+      "X3_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0,
+        "bleu": 0.0,
+        "bleu_1": 0.0,
+        "bleu_2": 0.0
+      },
+      "X1_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.3333333333333333,
+        "bleu": 0.07386099955930606,
+        "bleu_1": 0.25,
+        "bleu_2": 0.1889822365046136
+      },
+      "X1_Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.1818181818181818,
+        "bleu": 0.013679192123121896,
+        "bleu_1": 0.11764705882352941,
+        "bleu_2": 0.027116307227332027
+      }
+    }
+  },
+  "method_runtime": {
+    "caption_validation_passed": true,
+    "caption_validation_round_count": 62,
+    "method_modality": "text_only",
+    "history_source": "retrieval",
+    "captions_loaded": true,
+    "images_loaded": false,
+    "num_memories": 97,
+    "debug_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/output/personal_health_dashboard_assistant/gen_agents",
+    "history_turns_after_truncation": 1,
+    "retrieved_round_ids": [
+      "D10:5",
+      "D9:5",
+      "D8:6",
+      "D12:3",
+      "D11:6",
+      "D12:1",
+      "D12:6",
+      "D11:5",
+      "D12:5"
+    ]
+  }
+}

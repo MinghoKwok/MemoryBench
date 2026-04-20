@@ -1,0 +1,227 @@
+{
+  "task_name": "home_renovation_interior_design_open",
+  "model_name": "qwen3_vl_8b_openrouter",
+  "model_path": "qwen/qwen3-vl-8b-instruct",
+  "method_name": "semantic_rag_text_only",
+  "base_method_name": "semantic_rag_text_only",
+  "method_modality": "",
+  "mode": "open",
+  "num_qas": 65,
+  "num_qas_run": 65,
+  "dialog_json": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/dialog/Home_Renovation_Interior_Design_Open.json",
+  "image_root": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image",
+  "run_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/home_renovation_interior_design_open/20260418_145612_qwen3_vl_8b_openrouter_semantic_rag_text_only",
+  "git_commit": "cd2e56c2640bfd72d223220b9d57a2098b3a4f9d",
+  "summary": {
+    "open_count": 65,
+    "overall": {
+      "em": 0.046153846153846156,
+      "contains_gt": 0.06153846153846154,
+      "f1": 0.18055459861246953,
+      "bleu": 0.054986192020977875,
+      "bleu_1": 0.14320778987398464,
+      "bleu_2": 0.09142358060706786
+    },
+    "by_x": {
+      "X4": {
+        "em": 0.125,
+        "contains_gt": 0.125,
+        "f1": 0.1761642156862745,
+        "bleu": 0.04285151061049513,
+        "bleu_1": 0.14174107142857142,
+        "bleu_2": 0.13048159700876474
+      },
+      "X3": {
+        "em": 0.023255813953488372,
+        "contains_gt": 0.046511627906976744,
+        "f1": 0.16645583278890214,
+        "bleu": 0.048716763094191366,
+        "bleu_1": 0.13114517411962365,
+        "bleu_2": 0.07336127454928673
+      },
+      "X2": {
+        "em": 0.07692307692307693,
+        "contains_gt": 0.07692307692307693,
+        "f1": 0.19982352330530467,
+        "bleu": 0.06572839168107651,
+        "bleu_1": 0.1642565602489702,
+        "bleu_2": 0.10607667585383483
+      },
+      "X1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.5714285714285715,
+        "bleu": 0.28200049157537727,
+        "bleu_1": 0.4,
+        "bleu_2": 0.36514837167011077
+      }
+    },
+    "by_y": {
+      "Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.11906179475838918,
+        "bleu": 0.01614262538591657,
+        "bleu_1": 0.08215637186895496,
+        "bleu_2": 0.03660579672033312
+      },
+      "Y1": {
+        "em": 0.022222222222222223,
+        "contains_gt": 0.044444444444444446,
+        "f1": 0.16661615245206576,
+        "bleu": 0.05163620994077688,
+        "bleu_1": 0.12579269019049752,
+        "bleu_2": 0.07172756771245556
+      },
+      "Y3": {
+        "em": 0.5,
+        "contains_gt": 0.5,
+        "f1": 0.5833333333333334,
+        "bleu": 0.24804775696348424,
+        "bleu_1": 0.5833333333333334,
+        "bleu_2": 0.5322748612183952
+      }
+    },
+    "by_cell": {
+      "X4_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.08333333333333333,
+        "bleu": 0.006150343144231884,
+        "bleu_1": 0.03125,
+        "bleu_2": 0.010206207261596574
+      },
+      "X3_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.22899159663865548,
+        "bleu": 0.0341939702132002,
+        "bleu_1": 0.153111436094991,
+        "bleu_2": 0.08121320182176921
+      },
+      "X3_Y1": {
+        "em": 0.02702702702702703,
+        "contains_gt": 0.05405405405405406,
+        "f1": 0.15631489811056373,
+        "bleu": 0.05107181058840615,
+        "bleu_1": 0.12758307758307758,
+        "bleu_2": 0.07208798904564093
+      },
+      "X2_Y3": {
+        "em": 0.3333333333333333,
+        "contains_gt": 0.3333333333333333,
+        "f1": 0.4444444444444444,
+        "bleu": 0.225321087279033,
+        "bleu_1": 0.4444444444444444,
+        "bleu_2": 0.37636648162452685
+      },
+      "X2_Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.45,
+        "bleu": 0.06884416570494768,
+        "bleu_1": 0.234334308284973,
+        "bleu_2": 0.08594810957737532
+      },
+      "X2_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.04554655870445344,
+        "bleu": 0.0051021873258750225,
+        "bleu_1": 0.04166666666666667,
+        "bleu_2": 0.009750140258940193
+      },
+      "X4_Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.04852941176470588,
+        "bleu": 0.002856726515731858,
+        "bleu_1": 0.014285714285714282,
+        "bleu_2": 0.004688072309384955
+      },
+      "X4_Y3": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0,
+        "bleu": 0.316227766016838,
+        "bleu_1": 1.0,
+        "bleu_2": 1.0
+      },
+      "X1_Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.5714285714285715,
+        "bleu": 0.28200049157537727,
+        "bleu_1": 0.4,
+        "bleu_2": 0.36514837167011077
+      }
+    }
+  },
+  "method_runtime": {
+    "retrieval_backend": "dense_text",
+    "retrieval_corpus": "round_text",
+    "method_modality": "text_only",
+    "top_k": 10,
+    "neighbor_window": 0,
+    "seed_round_ids": [
+      "D9:4",
+      "D1:6",
+      "D1:1",
+      "D12:5",
+      "D1:10",
+      "D12:0",
+      "D1:4",
+      "D1:9",
+      "D13:5",
+      "D6:3"
+    ],
+    "selected_round_ids": [
+      "D9:4",
+      "D1:6",
+      "D1:1",
+      "D12:5",
+      "D1:10",
+      "D12:0",
+      "D1:4",
+      "D1:9",
+      "D13:5",
+      "D6:3"
+    ],
+    "top_candidates": [
+      {
+        "round_id": "D9:4",
+        "score": 0.3960441310487584,
+        "text_dense_score": 0.3960441310487584
+      },
+      {
+        "round_id": "D1:6",
+        "score": 0.3639484139273399,
+        "text_dense_score": 0.3639484139273399
+      },
+      {
+        "round_id": "D1:1",
+        "score": 0.3637125642954577,
+        "text_dense_score": 0.3637125642954577
+      },
+      {
+        "round_id": "D12:5",
+        "score": 0.36215911227716713,
+        "text_dense_score": 0.36215911227716713
+      },
+      {
+        "round_id": "D1:10",
+        "score": 0.35512573414973575,
+        "text_dense_score": 0.35512573414973575
+      }
+    ],
+    "clue_hit_count": 1,
+    "corpus_entry_count": 120,
+    "text_embedding_model": "all-MiniLM-L6-v2",
+    "caption_text_included": true,
+    "image_embeddings_built": false,
+    "history_source": "retrieval",
+    "captions_loaded": true,
+    "images_loaded": false,
+    "history_turns_after_truncation": 20
+  }
+}

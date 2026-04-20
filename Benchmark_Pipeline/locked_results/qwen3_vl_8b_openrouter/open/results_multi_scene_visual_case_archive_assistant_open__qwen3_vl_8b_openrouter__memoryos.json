@@ -1,0 +1,144 @@
+{
+  "task_name": "multi_scene_visual_case_archive_assistant_open",
+  "model_name": "qwen3_vl_8b_openrouter",
+  "model_path": "qwen/qwen3-vl-8b-instruct",
+  "method_name": "memoryos",
+  "base_method_name": "memoryos",
+  "method_modality": "",
+  "mode": "open",
+  "num_qas": 59,
+  "num_qas_run": 59,
+  "dialog_json": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/dialog/Multi-Scene_Visual_Case_Archive_Assistant_Open.json",
+  "image_root": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image",
+  "run_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/multi_scene_visual_case_archive_assistant_open/20260419_160243_qwen3_vl_8b_openrouter_memoryos",
+  "git_commit": "2ede73a357fc683261e8335004aafee97dabd948",
+  "summary": {
+    "open_count": 59,
+    "overall": {
+      "em": 0.03389830508474576,
+      "contains_gt": 0.03389830508474576,
+      "f1": 0.12465408356947748,
+      "bleu": 0.03852074412075407,
+      "bleu_1": 0.09708905987503948,
+      "bleu_2": 0.07242047403092686
+    },
+    "by_x": {
+      "X4": {
+        "em": 0.14285714285714285,
+        "contains_gt": 0.14285714285714285,
+        "f1": 0.17346938775510204,
+        "bleu": 0.03304158622536134,
+        "bleu_1": 0.16666666666666666,
+        "bleu_2": 0.06517939634566271
+      },
+      "X2": {
+        "em": 0.1111111111111111,
+        "contains_gt": 0.1111111111111111,
+        "f1": 0.2859903381642512,
+        "bleu": 0.11525866529456269,
+        "bleu_1": 0.2038147973562192,
+        "bleu_2": 0.18482316598927306
+      },
+      "X3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.08293935285663247,
+        "bleu": 0.02335127469525341,
+        "bleu_1": 0.06342452766871372,
+        "bleu_2": 0.0500731092907346
+      }
+    },
+    "by_y": {
+      "Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.03881987577639751,
+        "bleu": 0.007049634861127637,
+        "bleu_1": 0.025,
+        "bleu_2": 0.016755210253096002
+      },
+      "Y3": {
+        "em": 0.15384615384615385,
+        "contains_gt": 0.15384615384615385,
+        "f1": 0.30204483147879374,
+        "bleu": 0.09545475790221417,
+        "bleu_1": 0.23757691099020306,
+        "bleu_2": 0.15631720065586488
+      },
+      "Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.08443914898919104,
+        "bleu": 0.02670321393845638,
+        "bleu_1": 0.06638207471540805,
+        "bleu_2": 0.05758700713243003
+      }
+    },
+    "by_cell": {
+      "X4_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.04285714285714286,
+        "bleu": 0.010692632514727417,
+        "bleu_1": 0.03333333333333334,
+        "bleu_2": 0.0280056016805602
+      },
+      "X2_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.057971014492753624,
+        "bleu": 0.0056777286792130946,
+        "bleu_1": 0.027777777777777776,
+        "bleu_2": 0.009174698042719675
+      },
+      "X3_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.10531656184486375,
+        "bleu": 0.008557822022293386,
+        "bleu_1": 0.0675,
+        "bleu_2": 0.016002288546821338
+      },
+      "X2_Y3": {
+        "em": 0.16666666666666666,
+        "contains_gt": 0.16666666666666666,
+        "f1": 0.4,
+        "bleu": 0.1700491336022375,
+        "bleu_1": 0.2918333071454399,
+        "bleu_2": 0.2726473999625498
+      },
+      "X3_Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.08443914898919104,
+        "bleu": 0.02670321393845638,
+        "bleu_1": 0.06638207471540805,
+        "bleu_2": 0.05758700713243003
+      },
+      "X3_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0,
+        "bleu": 0.0,
+        "bleu_1": 0.0,
+        "bleu_2": 0.0
+      },
+      "X4_Y3": {
+        "em": 0.5,
+        "contains_gt": 0.5,
+        "f1": 0.5,
+        "bleu": 0.08891397050194615,
+        "bleu_1": 0.5,
+        "bleu_2": 0.158113883008419
+      }
+    }
+  },
+  "method_runtime": {
+    "caption_validation_passed": true,
+    "caption_validation_round_count": 57,
+    "num_memories": 117,
+    "debug_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/output/multi-scene_visual_case_archive_assistant/memoryos/a552f44bcc5c0a27",
+    "data_storage_path": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/multi-scene_visual_case_archive_assistant/memoryos_data/a552f44bcc5c0a27",
+    "runtime_signature": "a552f44bcc5c0a27"
+  }
+}

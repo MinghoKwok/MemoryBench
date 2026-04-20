@@ -1,0 +1,128 @@
+{
+  "task_name": "brand_memory_test_open",
+  "model_name": "qwen3_vl_8b_openrouter",
+  "model_path": "qwen/qwen3-vl-8b-instruct",
+  "method_name": "full_context_multimodal",
+  "base_method_name": "full_context_multimodal",
+  "method_modality": "",
+  "mode": "open",
+  "num_qas": 33,
+  "num_qas_run": 33,
+  "dialog_json": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/dialog/Brand_Memory_Test_Open.json",
+  "image_root": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image",
+  "run_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/brand_memory_test_open/20260418_134920_qwen3_vl_8b_openrouter_full_context_multimodal",
+  "git_commit": "cd2e56c2640bfd72d223220b9d57a2098b3a4f9d",
+  "summary": {
+    "open_count": 33,
+    "overall": {
+      "em": 0.30303030303030304,
+      "contains_gt": 0.30303030303030304,
+      "f1": 0.38960045802151066,
+      "bleu": 0.09818909055392543,
+      "bleu_1": 0.3402333156292589,
+      "bleu_2": 0.19239492921001414
+    },
+    "by_x": {
+      "X2": {
+        "em": 0.3333333333333333,
+        "contains_gt": 0.3333333333333333,
+        "f1": 0.48693957115009745,
+        "bleu": 0.09990936801209813,
+        "bleu_1": 0.39362961217103404,
+        "bleu_2": 0.2752414474142205
+      },
+      "X4": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.3333333333333333,
+        "bleu": 0.03270962178059006,
+        "bleu_1": 0.18393972058572117,
+        "bleu_2": 0.05816684692258399
+      },
+      "X1": {
+        "em": 0.3181818181818182,
+        "contains_gt": 0.3181818181818182,
+        "f1": 0.3548951048951049,
+        "bleu": 0.10343801966406707,
+        "bleu_1": 0.33259788477521796,
+        "bleu_2": 0.17070572469805972
+      }
+    },
+    "by_y": {
+      "Y1": {
+        "em": 0.3333333333333333,
+        "contains_gt": 0.3333333333333333,
+        "f1": 0.7222222222222222,
+        "bleu": 0.13523780144705452,
+        "bleu_1": 0.501071574802685,
+        "bleu_2": 0.3863768227087793
+      },
+      "Y2": {
+        "em": 0.3,
+        "contains_gt": 0.3,
+        "f1": 0.3563382816014395,
+        "bleu": 0.09448421946461251,
+        "bleu_1": 0.32414948971191626,
+        "bleu_2": 0.1729967398601376
+      }
+    },
+    "by_cell": {
+      "X2_Y1": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0,
+        "bleu": 0.316227766016838,
+        "bleu_1": 1.0,
+        "bleu_2": 1.0
+      },
+      "X4_Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.6666666666666666,
+        "bleu": 0.06541924356118012,
+        "bleu_1": 0.36787944117144233,
+        "bleu_2": 0.11633369384516798
+      },
+      "X2_Y2": {
+        "em": 0.25,
+        "contains_gt": 0.25,
+        "f1": 0.42280701754385963,
+        "bleu": 0.07286956826150565,
+        "bleu_1": 0.3178333136924133,
+        "bleu_2": 0.18464662834099807
+      },
+      "X1_Y2": {
+        "em": 0.3333333333333333,
+        "contains_gt": 0.3333333333333333,
+        "f1": 0.34798534798534797,
+        "bleu": 0.10721762084982525,
+        "bleu_1": 0.341991341991342,
+        "bleu_2": 0.17679662709886398
+      },
+      "X4_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0,
+        "bleu": 0.0,
+        "bleu_1": 0.0,
+        "bleu_2": 0.0
+      },
+      "X1_Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.5,
+        "bleu": 0.024066394763145416,
+        "bleu_1": 0.1353352832366127,
+        "bleu_2": 0.04279677428117006
+      }
+    }
+  },
+  "method_runtime": {
+    "method_modality": "multimodal",
+    "history_source": "full_context",
+    "captions_loaded": false,
+    "images_loaded": true,
+    "history_turns_after_truncation": 144,
+    "history_turns_before_truncation": 144
+  }
+}

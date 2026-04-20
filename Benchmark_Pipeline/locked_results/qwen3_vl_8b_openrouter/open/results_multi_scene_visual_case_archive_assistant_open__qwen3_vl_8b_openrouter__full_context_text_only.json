@@ -1,0 +1,146 @@
+{
+  "task_name": "multi_scene_visual_case_archive_assistant_open",
+  "model_name": "qwen3_vl_8b_openrouter",
+  "model_path": "qwen/qwen3-vl-8b-instruct",
+  "method_name": "full_context_text_only",
+  "base_method_name": "full_context_text_only",
+  "method_modality": "",
+  "mode": "open",
+  "num_qas": 59,
+  "num_qas_run": 59,
+  "dialog_json": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/dialog/Multi-Scene_Visual_Case_Archive_Assistant_Open.json",
+  "image_root": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image",
+  "run_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/multi_scene_visual_case_archive_assistant_open/20260418_012615_qwen3_vl_8b_openrouter_full_context_text_only",
+  "git_commit": "098e1cd297db81f969cb6d0b30fdf861a1fe20aa",
+  "summary": {
+    "open_count": 59,
+    "overall": {
+      "em": 0.05084745762711865,
+      "contains_gt": 0.06779661016949153,
+      "f1": 0.15071612860812636,
+      "bleu": 0.04890158247818817,
+      "bleu_1": 0.10878018516035101,
+      "bleu_2": 0.08430370743236645
+    },
+    "by_x": {
+      "X4": {
+        "em": 0.14285714285714285,
+        "contains_gt": 0.14285714285714285,
+        "f1": 0.23826511249661153,
+        "bleu": 0.05950997461343074,
+        "bleu_1": 0.21078551078551078,
+        "bleu_2": 0.18815839189201972
+      },
+      "X2": {
+        "em": 0.2222222222222222,
+        "contains_gt": 0.3333333333333333,
+        "f1": 0.4557060809841396,
+        "bleu": 0.22173433587847208,
+        "bleu_1": 0.3730622723345218,
+        "bleu_2": 0.3271116186364709
+      },
+      "X3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.07262886212897482,
+        "bleu": 0.011000337697972982,
+        "bleu_1": 0.03685981158026599,
+        "bleu_2": 0.01657687040784289
+      }
+    },
+    "by_y": {
+      "Y2": {
+        "em": 0.1,
+        "contains_gt": 0.1,
+        "f1": 0.2013592221584808,
+        "bleu": 0.04343885448834737,
+        "bleu_1": 0.1708453120953121,
+        "bleu_2": 0.13564144592444488
+      },
+      "Y3": {
+        "em": 0.15384615384615385,
+        "contains_gt": 0.23076923076923078,
+        "f1": 0.3429530998092871,
+        "bleu": 0.17168682178663466,
+        "bleu_1": 0.2776231909571563,
+        "bleu_2": 0.2482140063300646
+      },
+      "Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.06722969635483096,
+        "bleu": 0.006079892725093827,
+        "bleu_1": 0.030568786696237676,
+        "bleu_2": 0.010853394360398111
+      }
+    },
+    "by_cell": {
+      "X4_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.13357115749525617,
+        "bleu": 0.02006841125543543,
+        "bleu_1": 0.0950997150997151,
+        "bleu_2": 0.0634217486488276
+      },
+      "X2_Y2": {
+        "em": 0.3333333333333333,
+        "contains_gt": 0.3333333333333333,
+        "f1": 0.4263565891472868,
+        "bleu": 0.10845300427452663,
+        "bleu_1": 0.3958333333333333,
+        "bleu_2": 0.34153115628063274
+      },
+      "X3_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.1272210672210672,
+        "bleu": 0.049090181425348774,
+        "bleu_1": 0.08780820628646716,
+        "bleu_2": 0.061474196680899935
+      },
+      "X2_Y3": {
+        "em": 0.16666666666666666,
+        "contains_gt": 0.3333333333333333,
+        "f1": 0.47038082690256605,
+        "bleu": 0.2783750016804448,
+        "bleu_1": 0.3616767418351161,
+        "bleu_2": 0.31990184981439
+      },
+      "X3_Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.06722969635483096,
+        "bleu": 0.006079892725093827,
+        "bleu_1": 0.030568786696237676,
+        "bleu_2": 0.010853394360398111
+      },
+      "X3_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.03333333333333333,
+        "bleu": 0.004343737891358308,
+        "bleu_1": 0.02272727272727273,
+        "bleu_2": 0.007356123579206249
+      },
+      "X4_Y3": {
+        "em": 0.5,
+        "contains_gt": 0.5,
+        "f1": 0.5,
+        "bleu": 0.158113883008419,
+        "bleu_1": 0.5,
+        "bleu_2": 0.5
+      }
+    }
+  },
+  "method_runtime": {
+    "caption_validation_passed": true,
+    "caption_validation_round_count": 57,
+    "method_modality": "text_only",
+    "history_source": "full_context",
+    "captions_loaded": true,
+    "images_loaded": false,
+    "history_turns_after_truncation": 234,
+    "history_turns_before_truncation": 234
+  }
+}

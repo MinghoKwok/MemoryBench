@@ -1,0 +1,144 @@
+{
+  "task_name": "multi_scene_visual_case_archive_assistant_open",
+  "model_name": "qwen3_vl_8b_openrouter",
+  "model_path": "qwen/qwen3-vl-8b-instruct",
+  "method_name": "full_context_multimodal",
+  "base_method_name": "full_context_multimodal",
+  "method_modality": "",
+  "mode": "open",
+  "num_qas": 59,
+  "num_qas_run": 59,
+  "dialog_json": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/dialog/Multi-Scene_Visual_Case_Archive_Assistant_Open.json",
+  "image_root": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image",
+  "run_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/multi_scene_visual_case_archive_assistant_open/20260418_141737_qwen3_vl_8b_openrouter_full_context_multimodal",
+  "git_commit": "cd2e56c2640bfd72d223220b9d57a2098b3a4f9d",
+  "summary": {
+    "open_count": 59,
+    "overall": {
+      "em": 0.03389830508474576,
+      "contains_gt": 0.0847457627118644,
+      "f1": 0.13440498903182524,
+      "bleu": 0.05416405484123391,
+      "bleu_1": 0.10546225077385984,
+      "bleu_2": 0.08287662299089382
+    },
+    "by_x": {
+      "X4": {
+        "em": 0.14285714285714285,
+        "contains_gt": 0.14285714285714285,
+        "f1": 0.21487322201607917,
+        "bleu": 0.05433675721023604,
+        "bleu_1": 0.18764302059496568,
+        "bleu_2": 0.1722440033199998
+      },
+      "X2": {
+        "em": 0.1111111111111111,
+        "contains_gt": 0.4444444444444444,
+        "f1": 0.5088258471237195,
+        "bleu": 0.2930991868680548,
+        "bleu_1": 0.4278849895075501,
+        "bleu_2": 0.36508798549865484
+      },
+      "X3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.04293835289887581,
+        "bleu": 0.004126261705782683,
+        "bleu_1": 0.024600156881977215,
+        "bleu_2": 0.00926095031941496
+      }
+    },
+    "by_y": {
+      "Y2": {
+        "em": 0.0,
+        "contains_gt": 0.1,
+        "f1": 0.17168785115593627,
+        "bleu": 0.034532927247489575,
+        "bleu_1": 0.12696139968293366,
+        "bleu_2": 0.09025654985307385
+      },
+      "Y3": {
+        "em": 0.15384615384615385,
+        "contains_gt": 0.3076923076923077,
+        "f1": 0.3915983657919142,
+        "bleu": 0.2106984990387038,
+        "bleu_1": 0.34008993426130285,
+        "bleu_2": 0.2856216563360889
+      },
+      "Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.03117325238954007,
+        "bleu": 0.003090818768187653,
+        "bleu_1": 0.014763601484207144,
+        "bleu_2": 0.007613159043412255
+      }
+    },
+    "by_cell": {
+      "X4_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.10082251082251083,
+        "bleu": 0.012825906890962859,
+        "bleu_1": 0.06270022883295194,
+        "bleu_2": 0.04114160464799973
+      },
+      "X2_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.3333333333333333,
+        "f1": 0.4042553191489362,
+        "bleu": 0.09373324600669382,
+        "bleu_1": 0.3187042842215256,
+        "bleu_2": 0.23228582509691328
+      },
+      "X3_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.14482241772564353,
+        "bleu": 0.013231955538779969,
+        "bleu_1": 0.10526341849871261,
+        "bleu_2": 0.024829427634400415
+      },
+      "X2_Y3": {
+        "em": 0.16666666666666666,
+        "contains_gt": 0.5,
+        "f1": 0.5611111111111111,
+        "bleu": 0.3927821572987353,
+        "bleu_1": 0.48247534215056237,
+        "bleu_2": 0.4314890656995256
+      },
+      "X3_Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.03117325238954007,
+        "bleu": 0.003090818768187653,
+        "bleu_1": 0.014763601484207144,
+        "bleu_2": 0.007613159043412255
+      },
+      "X3_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0,
+        "bleu": 0.0,
+        "bleu_1": 0.0,
+        "bleu_2": 0.0
+      },
+      "X4_Y3": {
+        "em": 0.5,
+        "contains_gt": 0.5,
+        "f1": 0.5,
+        "bleu": 0.158113883008419,
+        "bleu_1": 0.5,
+        "bleu_2": 0.5
+      }
+    }
+  },
+  "method_runtime": {
+    "method_modality": "multimodal",
+    "history_source": "full_context",
+    "captions_loaded": false,
+    "images_loaded": true,
+    "history_turns_after_truncation": 234,
+    "history_turns_before_truncation": 234
+  }
+}

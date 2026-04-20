@@ -1,0 +1,219 @@
+{
+  "task_name": "outdoor_navigation_route_memory_assistant_open",
+  "model_name": "qwen3_vl_8b_openrouter",
+  "model_path": "qwen/qwen3-vl-8b-instruct",
+  "method_name": "semantic_rag_text_only",
+  "base_method_name": "semantic_rag_text_only",
+  "method_modality": "",
+  "mode": "open",
+  "num_qas": 40,
+  "num_qas_run": 40,
+  "dialog_json": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/dialog/Outdoor_Navigation_Route_Memory_Assistant_Open.json",
+  "image_root": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image",
+  "run_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/outdoor_navigation_route_memory_assistant_open/20260418_145951_qwen3_vl_8b_openrouter_semantic_rag_text_only",
+  "git_commit": "cd2e56c2640bfd72d223220b9d57a2098b3a4f9d",
+  "summary": {
+    "open_count": 40,
+    "overall": {
+      "em": 0.025,
+      "contains_gt": 0.025,
+      "f1": 0.12228833330557926,
+      "bleu": 0.0198066007527692,
+      "bleu_1": 0.08993967695419545,
+      "bleu_2": 0.051074215253077614
+    },
+    "by_x": {
+      "X3": {
+        "em": 0.037037037037037035,
+        "contains_gt": 0.037037037037037035,
+        "f1": 0.13744614687256787,
+        "bleu": 0.02274012981119075,
+        "bleu_1": 0.10328758478064803,
+        "bleu_2": 0.06148732719289644
+      },
+      "X1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.030303030303030307,
+        "bleu": 0.005179041897586783,
+        "bleu_1": 0.025641025641025644,
+        "bleu_2": 0.008439494725697222
+      },
+      "X4": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.10938624338624339,
+        "bleu": 0.02229944001221653,
+        "bleu_1": 0.08179773954549899,
+        "bleu_2": 0.032675266598458236
+      },
+      "X2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.10852941176470587,
+        "bleu": 0.01024923989095495,
+        "bleu_1": 0.06458210288794997,
+        "bleu_2": 0.038823191749103536
+      }
+    },
+    "by_y": {
+      "Y2": {
+        "em": 0.038461538461538464,
+        "contains_gt": 0.038461538461538464,
+        "f1": 0.11907425097861125,
+        "bleu": 0.021100397287737122,
+        "bleu_1": 0.08586298608599115,
+        "bleu_2": 0.05881265860526485
+      },
+      "Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0,
+        "bleu": 0.0,
+        "bleu_1": 0.0,
+        "bleu_2": 0.0
+      },
+      "Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.13812329282917518,
+        "bleu": 0.018742592356123296,
+        "bleu_1": 0.10501149537938835,
+        "bleu_2": 0.03952611433740143
+      }
+    },
+    "by_cell": {
+      "X3_Y2": {
+        "em": 0.045454545454545456,
+        "contains_gt": 0.045454545454545456,
+        "f1": 0.1084189199877094,
+        "bleu": 0.019283306250542375,
+        "bleu_1": 0.07791643702156009,
+        "bleu_2": 0.05711670043134733
+      },
+      "X1_Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0,
+        "bleu": 0.0,
+        "bleu_1": 0.0,
+        "bleu_2": 0.0
+      },
+      "X4_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.28571428571428575,
+        "bleu": 0.0814136751754278,
+        "bleu_1": 0.23884377019126307,
+        "bleu_2": 0.09250379442961536
+      },
+      "X2_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.14166666666666666,
+        "bleu": 0.01432130559793505,
+        "bleu_1": 0.09314408452339486,
+        "bleu_2": 0.060019306605876455
+      },
+      "X3_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.26516594516594516,
+        "bleu": 0.03795015347804361,
+        "bleu_1": 0.21492063492063493,
+        "bleu_2": 0.08071808494371255
+      },
+      "X4_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.06530423280423281,
+        "bleu": 0.007520881221413712,
+        "bleu_1": 0.04253623188405797,
+        "bleu_2": 0.01771813464066896
+      },
+      "X2_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0588235294117647,
+        "bleu": 0.004141141330484802,
+        "bleu_1": 0.021739130434782608,
+        "bleu_2": 0.007029019463944168
+      },
+      "X1_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.04545454545454546,
+        "bleu": 0.007768562846380175,
+        "bleu_1": 0.038461538461538464,
+        "bleu_2": 0.012659242088545831
+      }
+    }
+  },
+  "method_runtime": {
+    "retrieval_backend": "dense_text",
+    "retrieval_corpus": "round_text",
+    "method_modality": "text_only",
+    "top_k": 10,
+    "neighbor_window": 0,
+    "seed_round_ids": [
+      "S7:R3",
+      "S2:R4",
+      "S2:R2",
+      "S8:R4",
+      "S1:R5",
+      "S5:R3",
+      "S1:R1",
+      "S1:R2",
+      "S8:R2",
+      "S5:R5"
+    ],
+    "selected_round_ids": [
+      "S7:R3",
+      "S2:R4",
+      "S2:R2",
+      "S8:R4",
+      "S1:R5",
+      "S5:R3",
+      "S1:R1",
+      "S1:R2",
+      "S8:R2",
+      "S5:R5"
+    ],
+    "top_candidates": [
+      {
+        "round_id": "S7:R3",
+        "score": 0.564652516369942,
+        "text_dense_score": 0.564652516369942
+      },
+      {
+        "round_id": "S2:R4",
+        "score": 0.48296501451758866,
+        "text_dense_score": 0.48296501451758866
+      },
+      {
+        "round_id": "S2:R2",
+        "score": 0.43590567029815785,
+        "text_dense_score": 0.43590567029815785
+      },
+      {
+        "round_id": "S8:R4",
+        "score": 0.4328744331402166,
+        "text_dense_score": 0.4328744331402166
+      },
+      {
+        "round_id": "S1:R5",
+        "score": 0.4237068907021412,
+        "text_dense_score": 0.4237068907021412
+      }
+    ],
+    "clue_hit_count": 1,
+    "corpus_entry_count": 60,
+    "text_embedding_model": "all-MiniLM-L6-v2",
+    "caption_text_included": true,
+    "image_embeddings_built": false,
+    "history_source": "retrieval",
+    "captions_loaded": true,
+    "images_loaded": false,
+    "history_turns_after_truncation": 20
+  }
+}

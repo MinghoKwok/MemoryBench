@@ -1,0 +1,82 @@
+{
+  "task_name": "card_playlog_test_open",
+  "model_name": "qwen3_vl_8b_openrouter",
+  "model_path": "qwen/qwen3-vl-8b-instruct",
+  "method_name": "full_context_text_only",
+  "base_method_name": "full_context_text_only",
+  "method_modality": "",
+  "mode": "open",
+  "num_qas": 48,
+  "num_qas_run": 48,
+  "dialog_json": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/dialog/Card_Playlog_Test_Open.json",
+  "image_root": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image",
+  "run_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/card_playlog_test_open/20260418_011901_qwen3_vl_8b_openrouter_full_context_text_only",
+  "git_commit": "098e1cd297db81f969cb6d0b30fdf861a1fe20aa",
+  "summary": {
+    "open_count": 48,
+    "overall": {
+      "em": 0.3541666666666667,
+      "contains_gt": 0.3541666666666667,
+      "f1": 0.3541666666666667,
+      "bleu": 0.06298072910554518,
+      "bleu_1": 0.3541666666666667,
+      "bleu_2": 0.11199733379763012
+    },
+    "by_x": {
+      "X4": {
+        "em": 0.3541666666666667,
+        "contains_gt": 0.3541666666666667,
+        "f1": 0.3541666666666667,
+        "bleu": 0.06298072910554518,
+        "bleu_1": 0.3541666666666667,
+        "bleu_2": 0.11199733379763012
+      }
+    },
+    "by_y": {
+      "Y3": {
+        "em": 0.15789473684210525,
+        "contains_gt": 0.15789473684210525,
+        "f1": 0.15789473684210525,
+        "bleu": 0.028078095947982995,
+        "bleu_1": 0.15789473684210525,
+        "bleu_2": 0.04993069989739547
+      },
+      "Y2": {
+        "em": 0.4827586206896552,
+        "contains_gt": 0.4827586206896552,
+        "f1": 0.4827586206896552,
+        "bleu": 0.08584797151912042,
+        "bleu_1": 0.4827586206896552,
+        "bleu_2": 0.15266168014605971
+      }
+    },
+    "by_cell": {
+      "X4_Y3": {
+        "em": 0.15789473684210525,
+        "contains_gt": 0.15789473684210525,
+        "f1": 0.15789473684210525,
+        "bleu": 0.028078095947982995,
+        "bleu_1": 0.15789473684210525,
+        "bleu_2": 0.04993069989739547
+      },
+      "X4_Y2": {
+        "em": 0.4827586206896552,
+        "contains_gt": 0.4827586206896552,
+        "f1": 0.4827586206896552,
+        "bleu": 0.08584797151912042,
+        "bleu_1": 0.4827586206896552,
+        "bleu_2": 0.15266168014605971
+      }
+    }
+  },
+  "method_runtime": {
+    "caption_validation_passed": true,
+    "caption_validation_round_count": 30,
+    "method_modality": "text_only",
+    "history_source": "full_context",
+    "captions_loaded": true,
+    "images_loaded": false,
+    "history_turns_after_truncation": 60,
+    "history_turns_before_truncation": 60
+  }
+}

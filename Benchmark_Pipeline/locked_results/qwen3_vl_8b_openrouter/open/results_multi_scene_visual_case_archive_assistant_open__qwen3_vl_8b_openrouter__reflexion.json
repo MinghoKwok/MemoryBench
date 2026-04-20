@@ -1,0 +1,140 @@
+{
+  "task_name": "multi_scene_visual_case_archive_assistant_open",
+  "model_name": "qwen3_vl_8b_openrouter",
+  "model_path": "qwen/qwen3-vl-8b-instruct",
+  "method_name": "reflexion",
+  "base_method_name": "reflexion",
+  "method_modality": "",
+  "mode": "open",
+  "num_qas": 59,
+  "num_qas_run": 59,
+  "dialog_json": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/dialog/Multi-Scene_Visual_Case_Archive_Assistant_Open.json",
+  "image_root": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image",
+  "run_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/multi_scene_visual_case_archive_assistant_open/20260419_143229_qwen3_vl_8b_openrouter_reflexion",
+  "git_commit": "2ede73a357fc683261e8335004aafee97dabd948",
+  "summary": {
+    "open_count": 59,
+    "overall": {
+      "em": 0.03389830508474576,
+      "contains_gt": 0.05084745762711865,
+      "f1": 0.08428150281091458,
+      "bleu": 0.017273299019490203,
+      "bleu_1": 0.07077073924702049,
+      "bleu_2": 0.040264449069721264
+    },
+    "by_x": {
+      "X4": {
+        "em": 0.14285714285714285,
+        "contains_gt": 0.14285714285714285,
+        "f1": 0.22963893249607537,
+        "bleu": 0.03976563785309023,
+        "bleu_1": 0.20337301587301587,
+        "bleu_2": 0.08621365223454779
+      },
+      "X2": {
+        "em": 0.1111111111111111,
+        "contains_gt": 0.2222222222222222,
+        "f1": 0.26833828480887306,
+        "bleu": 0.07258734914963888,
+        "bleu_1": 0.23222970066909981,
+        "bleu_2": 0.18011802004248637
+      },
+      "X3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.022095152909106398,
+        "bleu": 0.0020343961588730327,
+        "bleu_1": 0.015390586010260443,
+        "bleu_2": 0.0035126685834730846
+      }
+    },
+    "by_y": {
+      "Y2": {
+        "em": 0.1,
+        "contains_gt": 0.1,
+        "f1": 0.17643352725705666,
+        "bleu": 0.042384693897362345,
+        "bleu_1": 0.15317192192192192,
+        "bleu_2": 0.1304596974455331
+      },
+      "Y3": {
+        "em": 0.07692307692307693,
+        "contains_gt": 0.15384615384615385,
+        "f1": 0.24679026102103024,
+        "bleu": 0.04579059255202296,
+        "bleu_1": 0.2033657227965376,
+        "bleu_2": 0.08238504005063257
+      },
+      "Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0,
+        "bleu": 0.0,
+        "bleu_1": 0.0,
+        "bleu_2": 0.0
+      }
+    },
+    "by_cell": {
+      "X4_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.1214945054945055,
+        "bleu": 0.020106304793547865,
+        "bleu_1": 0.08472222222222221,
+        "bleu_2": 0.0574535599249993
+      },
+      "X2_Y2": {
+        "em": 0.3333333333333333,
+        "contains_gt": 0.3333333333333333,
+        "f1": 0.38562091503267976,
+        "bleu": 0.10777180500196139,
+        "bleu_1": 0.36936936936936937,
+        "bleu_2": 0.3391097249434448
+      },
+      "X3_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.190018315018315,
+        "bleu": 0.01749580696630808,
+        "bleu_1": 0.1323590396882398,
+        "bleu_2": 0.03020894981786853
+      },
+      "X2_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.16666666666666666,
+        "f1": 0.20969696969696972,
+        "bleu": 0.05499512122347764,
+        "bleu_1": 0.163659866318965,
+        "bleu_2": 0.10062216759200712
+      },
+      "X3_Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0,
+        "bleu": 0.0,
+        "bleu_1": 0.0,
+        "bleu_2": 0.0
+      },
+      "X3_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0,
+        "bleu": 0.0,
+        "bleu_1": 0.0,
+        "bleu_2": 0.0
+      },
+      "X4_Y3": {
+        "em": 0.5,
+        "contains_gt": 0.5,
+        "f1": 0.5,
+        "bleu": 0.08891397050194615,
+        "bleu_1": 0.5,
+        "bleu_2": 0.158113883008419
+      }
+    }
+  },
+  "method_runtime": {
+    "num_memories": 117,
+    "debug_dir": "/common/home/mg1998/MemoryBench/output/multi-scene_visual_case_archive_assistant/reflexion"
+  }
+}

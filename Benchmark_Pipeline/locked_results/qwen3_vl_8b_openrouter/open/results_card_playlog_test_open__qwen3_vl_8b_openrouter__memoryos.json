@@ -1,0 +1,80 @@
+{
+  "task_name": "card_playlog_test_open",
+  "model_name": "qwen3_vl_8b_openrouter",
+  "model_path": "qwen/qwen3-vl-8b-instruct",
+  "method_name": "memoryos",
+  "base_method_name": "memoryos",
+  "method_modality": "",
+  "mode": "open",
+  "num_qas": 48,
+  "num_qas_run": 48,
+  "dialog_json": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/dialog/Card_Playlog_Test_Open.json",
+  "image_root": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image",
+  "run_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/card_playlog_test_open/20260419_153907_qwen3_vl_8b_openrouter_memoryos",
+  "git_commit": "2ede73a357fc683261e8335004aafee97dabd948",
+  "summary": {
+    "open_count": 48,
+    "overall": {
+      "em": 0.16666666666666666,
+      "contains_gt": 0.16666666666666666,
+      "f1": 0.16666666666666666,
+      "bleu": 0.029637990167315383,
+      "bleu_1": 0.16666666666666666,
+      "bleu_2": 0.052704627669473
+    },
+    "by_x": {
+      "X4": {
+        "em": 0.16666666666666666,
+        "contains_gt": 0.16666666666666666,
+        "f1": 0.16666666666666666,
+        "bleu": 0.029637990167315383,
+        "bleu_1": 0.16666666666666666,
+        "bleu_2": 0.052704627669473
+      }
+    },
+    "by_y": {
+      "Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0,
+        "bleu": 0.0,
+        "bleu_1": 0.0,
+        "bleu_2": 0.0
+      },
+      "Y2": {
+        "em": 0.27586206896551724,
+        "contains_gt": 0.27586206896551724,
+        "f1": 0.27586206896551724,
+        "bleu": 0.049055983725211666,
+        "bleu_1": 0.27586206896551724,
+        "bleu_2": 0.08723524579774841
+      }
+    },
+    "by_cell": {
+      "X4_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0,
+        "bleu": 0.0,
+        "bleu_1": 0.0,
+        "bleu_2": 0.0
+      },
+      "X4_Y2": {
+        "em": 0.27586206896551724,
+        "contains_gt": 0.27586206896551724,
+        "f1": 0.27586206896551724,
+        "bleu": 0.049055983725211666,
+        "bleu_1": 0.27586206896551724,
+        "bleu_2": 0.08723524579774841
+      }
+    }
+  },
+  "method_runtime": {
+    "caption_validation_passed": true,
+    "caption_validation_round_count": 30,
+    "num_memories": 30,
+    "debug_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/output/card_playlog_test_open/memoryos/35f1c0af010f9d5a",
+    "data_storage_path": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/card_playlog_test_open/memoryos_data/35f1c0af010f9d5a",
+    "runtime_signature": "35f1c0af010f9d5a"
+  }
+}

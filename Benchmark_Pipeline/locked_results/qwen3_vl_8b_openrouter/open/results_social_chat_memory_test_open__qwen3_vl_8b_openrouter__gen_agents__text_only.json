@@ -1,0 +1,182 @@
+{
+  "task_name": "social_chat_memory_test_open",
+  "model_name": "qwen3_vl_8b_openrouter",
+  "model_path": "qwen/qwen3-vl-8b-instruct",
+  "method_name": "gen_agents__text_only",
+  "base_method_name": "gen_agents",
+  "method_modality": "text_only",
+  "mode": "open",
+  "num_qas": 44,
+  "num_qas_run": 44,
+  "dialog_json": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/dialog/Social_Chat_Memory_Test_Open.json",
+  "image_root": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image",
+  "run_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/social_chat_memory_test_open/20260419_150845_qwen3_vl_8b_openrouter_gen_agents__text_only",
+  "git_commit": "2ede73a357fc683261e8335004aafee97dabd948",
+  "summary": {
+    "open_count": 44,
+    "overall": {
+      "em": 0.06818181818181818,
+      "contains_gt": 0.09090909090909091,
+      "f1": 0.22981027903360254,
+      "bleu": 0.06553296321366966,
+      "bleu_1": 0.17645348956530052,
+      "bleu_2": 0.09876733393770933
+    },
+    "by_x": {
+      "X2": {
+        "em": 0.08333333333333333,
+        "contains_gt": 0.1111111111111111,
+        "f1": 0.22069065307471514,
+        "bleu": 0.07023538956892672,
+        "bleu_1": 0.17248990513584528,
+        "bleu_2": 0.10110634244127294
+      },
+      "X1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.2778021978021978,
+        "bleu": 0.055267833146509175,
+        "bleu_1": 0.22395416962893666,
+        "bleu_2": 0.11355577650092342
+      },
+      "X3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.38888888888888884,
+        "bleu": 0.039318595593778705,
+        "bleu_1": 0.2172730539190545,
+        "bleu_2": 0.06907774143438361
+      },
+      "X4": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0,
+        "bleu": 0.0,
+        "bleu_1": 0.0,
+        "bleu_2": 0.0
+      }
+    },
+    "by_y": {
+      "Y2": {
+        "em": 0.1,
+        "contains_gt": 0.13333333333333333,
+        "f1": 0.1898578213094342,
+        "bleu": 0.06390887226724956,
+        "bleu_1": 0.15909639908332543,
+        "bleu_2": 0.09102026777085759
+      },
+      "Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.29607258615393783,
+        "bleu": 0.04810515098410585,
+        "bleu_1": 0.18282712011931654,
+        "bleu_2": 0.10491796388980176
+      },
+      "Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.34122282482733046,
+        "bleu": 0.09689050091852192,
+        "bleu_1": 0.25474076790315453,
+        "bleu_2": 0.12930182483584476
+      }
+    },
+    "by_cell": {
+      "X2_Y2": {
+        "em": 0.1111111111111111,
+        "contains_gt": 0.14814814814814814,
+        "f1": 0.20683790845081168,
+        "bleu": 0.07052030445892998,
+        "bleu_1": 0.17430464095678136,
+        "bleu_2": 0.10032541644822697
+      },
+      "X2_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.22992828337008564,
+        "bleu": 0.024364505630870854,
+        "bleu_1": 0.11906086878379735,
+        "bleu_2": 0.05747156385736595
+      },
+      "X2_Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.32689009409910535,
+        "bleu": 0.15941292343500907,
+        "bleu_1": 0.26301535545151666,
+        "bleu_2": 0.19540423354650066
+      },
+      "X1_Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.19999999999999998,
+        "bleu": 0.018842495822462092,
+        "bleu_1": 0.18575954994646748,
+        "bleu_2": 0.03663227726519933
+      },
+      "X1_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0,
+        "bleu": 0.0,
+        "bleu_1": 0.0,
+        "bleu_2": 0.0
+      },
+      "X3_Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.6666666666666666,
+        "bleu": 0.06541924356118012,
+        "bleu_1": 0.36787944117144233,
+        "bleu_2": 0.11633369384516798
+      },
+      "X3_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.1111111111111111,
+        "bleu": 0.013217947626377298,
+        "bleu_1": 0.06666666666666667,
+        "bleu_2": 0.02182178902359924
+      },
+      "X4_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0,
+        "bleu": 0.0,
+        "bleu_1": 0.0,
+        "bleu_2": 0.0
+      },
+      "X1_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.49450549450549447,
+        "bleu": 0.11932708704381084,
+        "bleu_1": 0.37412587412587417,
+        "bleu_2": 0.24725716398710923
+      }
+    }
+  },
+  "method_runtime": {
+    "caption_validation_passed": true,
+    "caption_validation_round_count": 43,
+    "method_modality": "text_only",
+    "history_source": "retrieval",
+    "captions_loaded": true,
+    "images_loaded": false,
+    "num_memories": 53,
+    "debug_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/output/social_chat_memory_test_open/gen_agents",
+    "history_turns_after_truncation": 1,
+    "retrieved_round_ids": [
+      "R4b:1",
+      "R4:1",
+      "R4:2",
+      "B5b:1",
+      "R3:1",
+      "R3b:1",
+      "R1:1",
+      "B6b:1",
+      "B1:1"
+    ]
+  }
+}
