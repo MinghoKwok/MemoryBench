@@ -37,7 +37,7 @@ class MMAConfig:
     text_embedding_model: str = "all-MiniLM-L6-v2"
 
     # Multimodal embedding (reuse M2A's CLIP/SigLIP infrastructure)
-    multimodal_embedding_model: str = "siglip2-base-patch16-384"
+    multimodal_embedding_model: str = "google/siglip-so400m-patch14-384"
     multimodal_embedding_url: str = "http://localhost:8050/v1"
     multimodal_embedding_api_key: str = "dummy"
     image_text_weight: float = 0.5  # blend weight: text vs image retrieval

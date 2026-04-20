@@ -267,30 +267,32 @@ def get_multimodal_embedder(
     Note: vllm_url/vllm_api_key params are kept for config compatibility
     but no longer used. SigLIP2 is loaded locally via transformers.
     """
-    # Try local SigLIP2 first
-    model_name = vllm_model
     # Map short names to HuggingFace model IDs
-    if model_name == "siglip2-base-patch16-384":
-        model_name = "google/siglip2-base-patch16-384"
+    SHORT_NAME_MAP = {
+        "siglip2-base-patch16-384": "google/siglip2-base-patch16-384",
+        "siglip-so400m-patch14-384": "google/siglip-so400m-patch14-384",
+    }
+    model_name = SHORT_NAME_MAP.get(vllm_model, vllm_model)
 
-    siglip_embedder = MultimodalEmbedder(model_name)
-    if siglip_embedder.is_available:
-        print("[M2A] Using local SigLIP2 for multimodal embeddings")
-        return siglip_embedder
+    # Try primary multimodal embedder (SigLIP2 or SigLIP v1)
+    mm_embedder = MultimodalEmbedder(model_name)
+    if mm_embedder.is_available:
+        print(f"[Embeddings] Using local {model_name} for multimodal embeddings")
+        return mm_embedder
 
     # Fallback to local CLIP
     warnings.warn(
-        f"[M2A] SigLIP2 ({model_name}) not available. "
+        f"[Embeddings] {model_name} not available. "
         "Falling back to local CLIP for image embeddings."
     )
     clip_embedder = LocalCLIPEmbedder(clip_model)
     if clip_embedder.is_available:
-        print("[M2A] Using local CLIP for multimodal embeddings")
+        print("[Embeddings] Using local CLIP for multimodal embeddings")
         return clip_embedder
 
     # Neither available
     warnings.warn(
-        "[M2A] Neither SigLIP2 nor local CLIP available. "
+        "[Embeddings] No multimodal embedder available. "
         "Image retrieval will be DISABLED."
     )
     return None

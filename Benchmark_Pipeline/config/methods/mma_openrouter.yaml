@@ -10,10 +10,8 @@ llm_timeout: 90
 # Text embedding (local sentence-transformers)
 text_embedding_model: all-MiniLM-L6-v2
 
-# Multimodal embedding: SigLIP2 via vLLM (no CLIP fallback)
-multimodal_embedding_model: siglip2-base-patch16-384
-multimodal_embedding_url: http://localhost:8050/v1
-multimodal_embedding_api_key: dummy
+# Multimodal embedding: SigLIP v1 so400m (faithful to original MMA)
+multimodal_embedding_model: google/siglip-so400m-patch14-384
 image_text_weight: 0.5
 
 # Retrieval
