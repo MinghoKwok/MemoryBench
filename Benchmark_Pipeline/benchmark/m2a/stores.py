@@ -363,16 +363,28 @@ class SemanticStore:
             text_res = _rrf([dense_ranked, bm25_ranked])
 
         # ---- image path ----
+        # Faithful to official M2A: supports both image→image (when query
+        # image provided) and text→image cross-modal retrieval (project
+        # text query into visual space via embed_text).
         image_res: List[Tuple[int, float]] = []
-        if query_image_path and self._image_dense and self._multimodal_embedder is not None:
+        if self._image_dense and self._multimodal_embedder is not None:
             try:
-                q_vec = self._multimodal_embedder.embed_image(query_image_path)
-                sims = [
-                    (mid, _cosine(q_vec, vec))
-                    for mid, vec in self._image_dense.items()
-                ]
-                sims.sort(key=lambda x: x[1], reverse=True)
-                image_res = sims[:3]  # matches official limit=3
+                if query_image_path:
+                    # image→image similarity
+                    q_vec = self._multimodal_embedder.embed_image(query_image_path)
+                elif query_text:
+                    # text→image cross-modal retrieval
+                    q_vec = self._multimodal_embedder.embed_text(query_text)
+                else:
+                    q_vec = None
+
+                if q_vec is not None:
+                    sims = [
+                        (mid, _cosine(q_vec, vec))
+                        for mid, vec in self._image_dense.items()
+                    ]
+                    sims.sort(key=lambda x: x[1], reverse=True)
+                    image_res = sims[:3]  # matches official limit=3
             except Exception:
                 pass
 
