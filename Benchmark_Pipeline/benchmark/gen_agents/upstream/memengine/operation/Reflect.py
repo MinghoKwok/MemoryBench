@@ -43,15 +43,14 @@ class GAReflect(BaseReflect):
             ref_ids = self.time_retrieval(self.storage.counter, topk = self.config.reflector.reflection_topk)
 
             ref_context = '\n'.join([self.storage.get_memory_text_by_mid(mid) for mid in ref_ids])
-            self.reflector.accmulated_importance = 0
-
-            self.accmulated_importance = 0
 
             # Generate several questions with self-asking.
             question_list = self.reflector.self_ask({
                 'information': ref_context,
                 'question_number': self.config.reflector.question_number
             })
+            if len(question_list) != self.config.reflector.question_number:
+                return []
 
             ret_context = ''
             ret_evidence_list = []
@@ -68,6 +67,10 @@ class GAReflect(BaseReflect):
                 'statements': ret_context,
                 'insight_number': self.config.reflector.insight_number
             })
+            if len(insight_list) != self.config.reflector.insight_number:
+                return []
+
+            self.reflector.accmulated_importance = 0
             
             # Generated insights need to include both timestamp and time fields (for consistency)
             current_counter = self.storage.counter
