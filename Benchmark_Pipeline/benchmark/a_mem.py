@@ -1,10 +1,11 @@
 import json
 import os
 import sys
+import time
 from pathlib import Path
 from typing import TYPE_CHECKING, Any, Dict, List, Optional, Tuple
 
-from openai import OpenAI
+from openai import APIConnectionError, APITimeoutError, InternalServerError, OpenAI, RateLimitError
 
 from .common import REPO_ROOT, write_json
 from .dataset import MemoryBenchmarkDataset
@@ -36,6 +37,21 @@ def _resolve_openai_api_key(method_config: Dict[str, Any]) -> Optional[str]:
         return raw
     env_name = str(method_config.get("llm_api_key_env", "OPENAI_API_KEY")).strip() or "OPENAI_API_KEY"
     return os.getenv(env_name)
+
+
+def _resolve_openai_base_url(method_config: Dict[str, Any], model_config: Dict[str, Any]) -> Optional[str]:
+    raw = str(method_config.get("llm_base_url", "")).strip()
+    if raw:
+        return raw
+    raw = str(model_config.get("base_url", "")).strip()
+    return raw or None
+
+
+def _resolve_openai_timeout(method_config: Dict[str, Any], model_config: Dict[str, Any]) -> int:
+    try:
+        return int(method_config.get("llm_timeout", model_config.get("timeout", 90)) or 90)
+    except Exception:
+        return 90
 
 
 def _resolve_model_api_key(model_config: Dict[str, Any]) -> Optional[str]:
@@ -154,6 +170,8 @@ class AMemAgent:
         backend = _normalize_backend(method_config, model_config)
         model_name = _resolve_model_name(method_config, model_config)
         api_key = _resolve_openai_api_key(method_config) if backend == "openai" else None
+        llm_base_url = _resolve_openai_base_url(method_config, model_config)
+        llm_timeout = _resolve_openai_timeout(method_config, model_config)
         self.answer_model = str(model_config.get("model", "")).strip() or "gpt-4.1-nano"
         self.answer_provider = str(model_config.get("provider", "")).strip().lower() or "openai_api"
         self.answer_api_key = _resolve_model_api_key(model_config)
@@ -161,13 +179,13 @@ class AMemAgent:
         self.answer_timeout = int(model_config.get("timeout", 90) or 90)
         self.retrieve_k = max(1, int(method_config.get("retrieve_k", 10)))
         self.temperature_c5 = float(method_config.get("temperature_c5", 0.5))
-        llm_base_url = str(method_config.get("llm_base_url", "")).strip() or None
         self.memory_system = agentic_memory_system_cls(
             model_name=embedding_model,
             llm_backend=backend,
             llm_model=model_name,
             api_key=api_key,
             api_base=llm_base_url,
+            api_timeout=llm_timeout,
             sglang_host=_resolve_sglang_host(method_config),
             sglang_port=_resolve_sglang_port(method_config),
         )
@@ -176,6 +194,7 @@ class AMemAgent:
             model=model_name,
             api_key=api_key,
             api_base=llm_base_url,
+            api_timeout=llm_timeout,
             sglang_host=_resolve_sglang_host(method_config),
             sglang_port=_resolve_sglang_port(method_config),
         )
@@ -184,6 +203,19 @@ class AMemAgent:
             if not self.answer_api_key:
                 raise ValueError("OpenAI API key not found for benchmark answer model.")
             self.answer_client = OpenAI(api_key=self.answer_api_key, base_url=self.answer_base_url, timeout=self.answer_timeout)
+        self._answer_retryable_errors = (APIConnectionError, APITimeoutError, RateLimitError, InternalServerError)
+
+    def _create_answer_with_retry(self, **kwargs: Any) -> Any:
+        if self.answer_client is None:
+            raise ValueError("OpenAI answer client is not initialized.")
+        max_retries = 4
+        for attempt in range(max_retries):
+            try:
+                return self.answer_client.chat.completions.create(**kwargs)
+            except self._answer_retryable_errors:
+                if attempt == max_retries - 1:
+                    raise
+                time.sleep(1.5 * (2 ** attempt))
 
     def add_memory(self, content: str, timestamp: Optional[str]) -> None:
         self.memory_system.add_note(content, time=timestamp)
@@ -230,7 +262,7 @@ Question: {question} Short answer:
                 f"Unsupported answer model provider for A-MEM benchmark QA: {self.answer_provider}. "
                 "Use an OpenAI API model config for final answer generation."
             )
-        response = self.answer_client.chat.completions.create(
+        response = self._create_answer_with_retry(
             model=self.answer_model,
             messages=[
                 {"role": "system", "content": "You must respond with a JSON object."},

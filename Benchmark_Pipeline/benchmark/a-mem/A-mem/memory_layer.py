@@ -39,20 +39,37 @@ class BaseLLMController(ABC):
         pass
 
 class OpenAIController(BaseLLMController):
-    def __init__(self, model: str = "gpt-4", api_key: Optional[str] = None, base_url: Optional[str] = None):
+    def __init__(
+        self,
+        model: str = "gpt-4",
+        api_key: Optional[str] = None,
+        base_url: Optional[str] = None,
+        timeout: float = 90.0,
+    ):
         try:
-            from openai import OpenAI
+            from openai import APIConnectionError, APITimeoutError, InternalServerError, OpenAI, RateLimitError
             self.model = model
             if api_key is None:
                 api_key = os.getenv('OPENAI_API_KEY')
             if api_key is None:
                 raise ValueError("OpenAI API key not found. Set OPENAI_API_KEY environment variable.")
-            kwargs: Dict[str, Any] = {"api_key": api_key}
+            kwargs: Dict[str, Any] = {"api_key": api_key, "timeout": timeout, "max_retries": 0}
             if base_url:
                 kwargs["base_url"] = base_url
             self.client = OpenAI(**kwargs)
+            self._retryable_errors = (APIConnectionError, APITimeoutError, RateLimitError, InternalServerError)
         except ImportError:
             raise ImportError("OpenAI package not found. Install it with: pip install openai")
+
+    def _create_with_retry(self, **kwargs: Any) -> Any:
+        max_retries = 4
+        for attempt in range(max_retries):
+            try:
+                return self.client.chat.completions.create(**kwargs)
+            except self._retryable_errors:
+                if attempt == max_retries - 1:
+                    raise
+                time.sleep(1.5 * (2 ** attempt))
     
     def get_completion(self, prompt: str, response_format: dict, temperature: float = 0.7) -> str:
         normalized_response_format = _normalize_response_format(response_format)
@@ -61,7 +78,7 @@ class OpenAIController(BaseLLMController):
             {"role": "user", "content": prompt},
         ]
         try:
-            response = self.client.chat.completions.create(
+            response = self._create_with_retry(
                 model=self.model,
                 messages=messages,
                 response_format=normalized_response_format,
@@ -74,7 +91,7 @@ class OpenAIController(BaseLLMController):
             if "could not parse the json body" not in message and "not valid json" not in message:
                 raise
             sanitized_prompt = _sanitize_prompt_text(prompt)
-            response = self.client.chat.completions.create(
+            response = self._create_with_retry(
                 model=self.model,
                 messages=[
                     {"role": "system", "content": "You must respond with a JSON object."},
@@ -273,10 +290,11 @@ class LLMController:
                  model: str = "gpt-4", 
                  api_key: Optional[str] = None,
                  api_base: Optional[str] = None,
+                 api_timeout: float = 90.0,
                  sglang_host: str = "http://localhost",
                  sglang_port: int = 30000):
         if backend == "openai":
-            self.llm = OpenAIController(model, api_key, base_url=api_base)
+            self.llm = OpenAIController(model, api_key, base_url=api_base, timeout=api_timeout)
         elif backend == "ollama":
             # Use LiteLLM to control Ollama with JSON output
             ollama_model = f"ollama/{model}" if not model.startswith("ollama/") else model
@@ -705,11 +723,20 @@ class AgenticMemorySystem:
                  evo_threshold: int = 100,
                  api_key: Optional[str] = None,
                  api_base: Optional[str] = None,
+                 api_timeout: float = 90.0,
                  sglang_host: str = "http://localhost",
                  sglang_port: int = 30000):
         self.memories = {}  # id -> MemoryNote
         self.retriever = SimpleEmbeddingRetriever(model_name)
-        self.llm_controller = LLMController(llm_backend, llm_model, api_key, api_base, sglang_host, sglang_port)
+        self.llm_controller = LLMController(
+            llm_backend,
+            llm_model,
+            api_key,
+            api_base,
+            api_timeout,
+            sglang_host,
+            sglang_port,
+        )
         self.evolution_system_prompt = '''
                                 You are an AI memory evolution agent responsible for managing and evolving a knowledge base.
                                 Analyze the the new memory note according to keywords and context, also with their several nearest neighbors memory.
