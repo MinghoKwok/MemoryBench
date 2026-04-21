@@ -1,0 +1,136 @@
+{
+  "task_name": "cartoon_entertainment_companion",
+  "model_name": "qwen2_5_vl_7b_local_bz",
+  "model_path": "/common/users/bz362/MMA-Memory/models/Qwen2.5-VL-7B-Instruct",
+  "method_name": "full_context_text_only",
+  "base_method_name": "full_context_text_only",
+  "method_modality": "",
+  "mode": "mcq",
+  "num_qas": 112,
+  "num_qas_run": 112,
+  "dialog_json": "/common/users/bz362/MMA-Memory/MemoryBench/Benchmark_Pipeline/data/dialog/Cartoon_Entertainment_Companion.json",
+  "image_root": "/common/users/bz362/MMA-Memory/MemoryBench/Benchmark_Pipeline/data/image",
+  "run_dir": "/common/users/bz362/MMA-Memory/MemoryBench/Benchmark_Pipeline/runs/cartoon_entertainment_companion/20260420_022034_qwen2_5_vl_7b_local_bz_full_context_text_only",
+  "git_commit": "12d35e8937eb650bda9ad099b8abcd27fad0edb6",
+  "summary": {
+    "open_count": 112,
+    "overall": {
+      "em": 0.6339285714285714,
+      "contains_gt": 0.6339285714285714,
+      "f1": 0.6339285714285714
+    },
+    "by_x": {
+      "X3": {
+        "em": 0.4444444444444444,
+        "contains_gt": 0.4444444444444444,
+        "f1": 0.4444444444444444
+      },
+      "X4": {
+        "em": 0.6944444444444444,
+        "contains_gt": 0.6944444444444444,
+        "f1": 0.6944444444444444
+      },
+      "X2": {
+        "em": 0.7142857142857143,
+        "contains_gt": 0.7142857142857143,
+        "f1": 0.7142857142857143
+      },
+      "X1": {
+        "em": 0.6666666666666666,
+        "contains_gt": 0.6666666666666666,
+        "f1": 0.6666666666666666
+      }
+    },
+    "by_y": {
+      "Y1": {
+        "em": 0.627906976744186,
+        "contains_gt": 0.627906976744186,
+        "f1": 0.627906976744186
+      },
+      "Y2": {
+        "em": 0.6206896551724138,
+        "contains_gt": 0.6206896551724138,
+        "f1": 0.6206896551724138
+      },
+      "Y3": {
+        "em": 0.7272727272727273,
+        "contains_gt": 0.7272727272727273,
+        "f1": 0.7272727272727273
+      }
+    },
+    "by_cell": {
+      "X3_Y1": {
+        "em": 0.5,
+        "contains_gt": 0.5,
+        "f1": 0.5
+      },
+      "X4_Y2": {
+        "em": 0.6923076923076923,
+        "contains_gt": 0.6923076923076923,
+        "f1": 0.6923076923076923
+      },
+      "X2_Y2": {
+        "em": 0.6842105263157895,
+        "contains_gt": 0.6842105263157895,
+        "f1": 0.6842105263157895
+      },
+      "X3_Y2": {
+        "em": 0.38461538461538464,
+        "contains_gt": 0.38461538461538464,
+        "f1": 0.38461538461538464
+      },
+      "X2_Y1": {
+        "em": 0.7142857142857143,
+        "contains_gt": 0.7142857142857143,
+        "f1": 0.7142857142857143
+      },
+      "X4_Y1": {
+        "em": 0.6666666666666666,
+        "contains_gt": 0.6666666666666666,
+        "f1": 0.6666666666666666
+      },
+      "X1_Y1": {
+        "em": 0.75,
+        "contains_gt": 0.75,
+        "f1": 0.75
+      },
+      "X4_Y3": {
+        "em": 0.8,
+        "contains_gt": 0.8,
+        "f1": 0.8
+      },
+      "X2_Y3": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
+      },
+      "X1_Y2": {
+        "em": 0.6923076923076923,
+        "contains_gt": 0.6923076923076923,
+        "f1": 0.6923076923076923
+      },
+      "X1_Y3": {
+        "em": 0.5,
+        "contains_gt": 0.5,
+        "f1": 0.5
+      }
+    },
+    "mcq_count": 112,
+    "mcq_valid_rate": 1.0,
+    "mcq_overall": {
+      "em": 0.6339285714285714,
+      "contains_gt": 0.6339285714285714,
+      "f1": 0.6339285714285714
+    }
+  },
+  "method_runtime": {
+    "caption_validation_passed": true,
+    "caption_validation_round_count": 87,
+    "method_modality": "text_only",
+    "history_source": "full_context",
+    "captions_loaded": true,
+    "images_loaded": false,
+    "history_turns_after_truncation": 598,
+    "history_turns_before_truncation": 598
+  }
+}
