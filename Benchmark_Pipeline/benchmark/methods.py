@@ -320,7 +320,4 @@ def get_method(method_name: str, config: Optional[Dict[str, Any]] = None) -> His
             from .memoryos import MemoryOSMethod
 
             return MemoryOSMethod(config=config)
-        from .mirix import get_mirix_method
-
-        return get_mirix_method(method_name, config=config)
     return cls(config=config)
