@@ -127,6 +127,17 @@ def _build_runtime_env(
     if gemini_key:
         env.setdefault("GEMINI_API_KEY", gemini_key)
 
+    # MIRIX embedding (text-embedding-3-small) always needs a real OpenAI key,
+    # even when the LLM is routed through OpenRouter or another provider.
+    # Prefer explicit MIRIX_EMBEDDING_API_KEY from method config or env.
+    embedding_key = (
+        str(method_config.get("embedding_api_key", "")).strip()
+        or os.environ.get("MIRIX_EMBEDDING_API_KEY", "").strip()
+        or local_env.get("OPENAI_API_KEY", "").strip()
+    )
+    if embedding_key:
+        env["MIRIX_EMBEDDING_API_KEY"] = embedding_key
+
     return env
 
 

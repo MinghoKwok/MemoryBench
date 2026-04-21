@@ -1,3 +1,4 @@
+import os
 import uuid
 from typing import Any, List, Optional
 
@@ -187,9 +188,14 @@ def embedding_model(config: EmbeddingConfig, user_id: Optional[uuid.UUID] = None
         from llama_index.embeddings.openai import OpenAIEmbedding
 
         additional_kwargs = {"user_id": user_id} if user_id else {}
+        # Prefer dedicated embedding key so LLM can use a different provider
+        embedding_api_key = (
+            os.environ.get("MIRIX_EMBEDDING_API_KEY")
+            or model_settings.openai_api_key
+        )
         model = OpenAIEmbedding(
             api_base=config.embedding_endpoint,
-            api_key=model_settings.openai_api_key,
+            api_key=embedding_api_key,
             additional_kwargs=additional_kwargs,
         )
         return model
