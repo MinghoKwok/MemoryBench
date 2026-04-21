@@ -65,7 +65,7 @@ api_key = os.environ["GEMINI_API_KEY"]  # never a string literal
 export GEMINI_API_KEY="AIzaSy..."  # will be detected and revoked
 ```
 
-## M2A Method Configuration
+## Method Configuration
 
 | Method | Dense Embeddings | Image Retrieval | Notes |
 |--------|-----------------|-----------------|-------|
@@ -75,6 +75,13 @@ export GEMINI_API_KEY="AIzaSy..."  # will be detected and revoked
 | `semantic_rag_text_only` | Yes (all-MiniLM-L6-v2) | No | Requires memorybench env |
 | `m2a` | Yes (all-MiniLM-L6-v2) | Yes (SigLIP2) | Agentic; requires memorybench env |
 | `mma` | Yes (all-MiniLM-L6-v2) | Yes (SigLIP v1 so400m) | Confidence-aware agentic; requires memorybench env |
+| `a_mem` | N/A | No | A-Mem text summarization agent |
+| `memgpt` | N/A | No | MemGPT tiered memory |
+| `gen_agents` | N/A | No | Generative Agents reflection |
+| `evermemos` | N/A | No | EverMemOS persistent memory |
+| `reflexion` | N/A | No | Reflexion self-critique |
+| `simplemem` | N/A | No | SimpleMem text summarization; `simplemem_multimodal` for V |
+| `memoryos` | N/A | No | MemoryOS hierarchical memory |
 
 **Important:** If you see these warnings, you're in the wrong environment:
 ```
@@ -99,9 +106,9 @@ Example:
 source ../.env.local
 unset HUGGING_FACE_HUB_TOKEN
 conda run -n memorybench python run_benchmark.py \
-  --task visual_case_archive_assistant \
-  --model gpt-4.1-nano \
-  --method m2a_full
+  --task multi_scene_visual_case_archive_assistant \
+  --model gpt_4_1_nano \
+  --method m2a
 ```
 
 ### Using config files
@@ -122,9 +129,9 @@ python sync_hf_data.py push --push
 
 - `Benchmark_Pipeline/` - Main benchmark code
 - `Benchmark_Pipeline/benchmark/` - Core benchmark modules
-  - `embeddings.py` - Dense embedding implementations
-  - `retrieval.py` - M2A retrieval logic
-  - `methods.py` - History construction methods
+  - `methods.py` - History construction methods and method registry
+  - `retrieval.py` - Retrieval logic (TF-IDF, dense)
+  - `m2a/embeddings.py` - Dense and multimodal embedding implementations (TextEmbedder, MultimodalEmbedder, LocalCLIPEmbedder)
 - `Benchmark_Pipeline/config/` - Configuration files
 - `Benchmark_Pipeline/runs/` - Experiment outputs
 - `Benchmark_Pipeline/output/` - Result JSON files
@@ -185,8 +192,8 @@ M2A's ReAct loop requires strict tool calling compliance. Models like Qwen2.5-VL
 | Package | Version |
 |---------|---------|
 | Python | 3.10.x |
-| PyTorch | 2.11.0+cu130 |
+| PyTorch | 2.10.0+cu128 |
 | sentence-transformers | 5.3.0 |
-| transformers | 5.2.0 |
+| transformers | 4.57.6 |
 
 Note: CUDA may show as unavailable due to driver version, but CPU inference works fine for embeddings.
