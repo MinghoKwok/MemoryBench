@@ -251,34 +251,62 @@ class _StrictMCQFormatter:
     def __init__(self, method_config: Dict[str, Any]) -> None:
         model_config = dict(method_config.get("_model_cfg", {}))
         self.provider = str(model_config.get("provider", "")).strip().lower() or "openai_api"
-        if self.provider != "openai_api":
+        if self.provider not in {"openai_api", "gemini_api"}:
             raise ValueError(
-                "Mirix strict MCQ formatting currently requires an OpenAI-compatible benchmark model config."
+                "Mirix strict MCQ formatting currently requires an OpenAI-compatible or Gemini benchmark model config."
             )
 
-        try:
-            from openai import OpenAI
-        except ModuleNotFoundError as exc:
-            raise ModuleNotFoundError(
-                "OpenAI client is required for Mirix strict MCQ formatting."
-            ) from exc
-
         self.model_name = _resolve_model_name(method_config, model_config)
-        self.api_key = _resolve_secret(model_config, "api_key", "api_key_env", "OPENAI_API_KEY") or _resolve_secret(
-            method_config, "api_key", "api_key_env", "OPENAI_API_KEY"
-        )
-        if not self.api_key:
-            self.api_key = _read_local_env().get("OPENAI_API_KEY", "").strip()
-        if not self.api_key:
-            raise ValueError("OpenAI API key not found for Mirix strict MCQ formatting.")
-
-        self.base_url = (
-            str(model_config.get("base_url", "")).strip()
-            or str(method_config.get("final_answer_base_url", "")).strip()
-            or "https://api.openai.com/v1"
-        )
         self.timeout = int(model_config.get("timeout", method_config.get("final_answer_timeout", 90)) or 90)
-        self.client = OpenAI(api_key=self.api_key, base_url=self.base_url, timeout=self.timeout)
+        if self.provider == "openai_api":
+            try:
+                from openai import OpenAI
+            except ModuleNotFoundError as exc:
+                raise ModuleNotFoundError(
+                    "OpenAI client is required for Mirix strict MCQ formatting."
+                ) from exc
+
+            self.api_key = _resolve_secret(model_config, "api_key", "api_key_env", "OPENAI_API_KEY") or _resolve_secret(
+                method_config, "api_key", "api_key_env", "OPENAI_API_KEY"
+            )
+            if not self.api_key:
+                self.api_key = _read_local_env().get("OPENAI_API_KEY", "").strip()
+            if not self.api_key:
+                raise ValueError("OpenAI API key not found for Mirix strict MCQ formatting.")
+
+            self.base_url = (
+                str(model_config.get("base_url", "")).strip()
+                or str(method_config.get("final_answer_base_url", "")).strip()
+                or "https://api.openai.com/v1"
+            )
+            self.client = OpenAI(api_key=self.api_key, base_url=self.base_url, timeout=self.timeout)
+        else:
+            try:
+                from google import genai
+                from google.genai import types as genai_types
+            except ModuleNotFoundError as exc:
+                raise ModuleNotFoundError(
+                    "Google GenAI client is required for Mirix Gemini strict MCQ formatting."
+                ) from exc
+
+            self.api_key = _resolve_secret(model_config, "api_key", "api_key_env", "GEMINI_API_KEY") or _resolve_secret(
+                method_config, "gemini_api_key", "gemini_api_key_env", "GEMINI_API_KEY"
+            )
+            if not self.api_key:
+                self.api_key = _read_local_env().get("GEMINI_API_KEY", "").strip()
+            if not self.api_key:
+                raise ValueError("GEMINI_API_KEY not found for Mirix strict MCQ formatting.")
+
+            self.base_url = (
+                str(model_config.get("base_url", "")).strip()
+                or str(method_config.get("final_answer_base_url", "")).strip()
+                or "https://generativelanguage.googleapis.com/v1beta"
+            )
+            self._gemini_types = genai_types
+            self.client = genai.Client(
+                api_key=self.api_key,
+                http_options=genai_types.HttpOptions(base_url=self.base_url, timeout=self.timeout),
+            )
 
     def format_answer(self, question: str, qa: Dict[str, Any], draft_answer: str) -> Tuple[str, str]:
         options = qa.get("options")
@@ -296,28 +324,46 @@ class _StrictMCQFormatter:
             f"Options:\n" + "\n".join(option_lines) + "\n\n"
             f"Mirix draft answer:\n{draft_answer or '[empty]'}"
         )
-        response = self.client.chat.completions.create(
-            model=self.model_name,
-            messages=[
-                {"role": "system", "content": "You must respond with a JSON object."},
-                {"role": "user", "content": user_prompt},
-            ],
-            response_format={
-                "type": "json_schema",
-                "json_schema": {
-                    "name": "response",
-                    "schema": {
+        if self.provider == "openai_api":
+            response = self.client.chat.completions.create(
+                model=self.model_name,
+                messages=[
+                    {"role": "system", "content": "You must respond with a JSON object."},
+                    {"role": "user", "content": user_prompt},
+                ],
+                response_format={
+                    "type": "json_schema",
+                    "json_schema": {
+                        "name": "response",
+                        "schema": {
+                            "type": "object",
+                            "properties": {"answer": {"type": "string", "enum": valid_options}},
+                            "required": ["answer"],
+                            "additionalProperties": False,
+                        },
+                        "strict": True,
+                    },
+                },
+                temperature=0.0,
+            )
+            raw_response = response.choices[0].message.content
+        else:
+            response = self.client.models.generate_content(
+                model=self.model_name,
+                contents=user_prompt,
+                config=self._gemini_types.GenerateContentConfig(
+                    system_instruction="You must respond with a JSON object.",
+                    response_mime_type="application/json",
+                    response_schema={
                         "type": "object",
                         "properties": {"answer": {"type": "string", "enum": valid_options}},
                         "required": ["answer"],
                         "additionalProperties": False,
                     },
-                    "strict": True,
-                },
-            },
-            temperature=0.0,
-        )
-        raw_response = response.choices[0].message.content
+                    temperature=0.0,
+                ),
+            )
+            raw_response = str(getattr(response, "text", "") or "").strip()
         payload = json.loads(raw_response)
         answer = str(payload.get("answer", "")).strip()
         if answer not in valid_options:
@@ -388,7 +434,7 @@ class OfficialMIRIXMethod(HistoryMethod):
         model_config = dict(self.config.get("_model_cfg", {}))
         provider = str(model_config.get("provider", "")).strip().lower() or "openai_api"
         self._mcq_formatter: Optional[_StrictMCQFormatter] = (
-            _StrictMCQFormatter(self.config) if provider == "openai_api" else None
+            _StrictMCQFormatter(self.config) if provider in {"openai_api", "gemini_api"} else None
         )
         self._debug_rows: List[Dict[str, Any]] = []
         self._runtime_home: Optional[Path] = None
