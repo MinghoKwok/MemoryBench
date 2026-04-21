@@ -1,0 +1,178 @@
+{
+  "task_name": "outdoor_navigation_route_memory_assistant",
+  "model_name": "gpt_4_1_nano",
+  "model_path": "gpt-4.1-nano",
+  "method_name": "semantic_rag_text_only",
+  "base_method_name": "semantic_rag_text_only",
+  "method_modality": "",
+  "mode": "open",
+  "num_qas": 40,
+  "num_qas_run": 40,
+  "dialog_json": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/dialog/Outdoor_Navigation_Route_Memory_Assistant.json",
+  "image_root": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image",
+  "run_dir": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/runs/outdoor_navigation_route_memory_assistant/20260419_203544_gpt_4_1_nano_semantic_rag_text_only",
+  "git_commit": "2ede73a357fc683261e8335004aafee97dabd948",
+  "summary": {
+    "open_count": 40,
+    "overall": {
+      "em": 0.6,
+      "contains_gt": 0.6,
+      "f1": 0.6
+    },
+    "by_x": {
+      "X3": {
+        "em": 0.7037037037037037,
+        "contains_gt": 0.7037037037037037,
+        "f1": 0.7037037037037037
+      },
+      "X1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0
+      },
+      "X4": {
+        "em": 0.2,
+        "contains_gt": 0.2,
+        "f1": 0.2
+      },
+      "X2": {
+        "em": 0.8,
+        "contains_gt": 0.8,
+        "f1": 0.8
+      }
+    },
+    "by_y": {
+      "Y2": {
+        "em": 0.7307692307692307,
+        "contains_gt": 0.7307692307692307,
+        "f1": 0.7307692307692307
+      },
+      "Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0
+      },
+      "Y3": {
+        "em": 0.38461538461538464,
+        "contains_gt": 0.38461538461538464,
+        "f1": 0.38461538461538464
+      }
+    },
+    "by_cell": {
+      "X3_Y2": {
+        "em": 0.7272727272727273,
+        "contains_gt": 0.7272727272727273,
+        "f1": 0.7272727272727273
+      },
+      "X1_Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0
+      },
+      "X4_Y2": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
+      },
+      "X2_Y2": {
+        "em": 0.6666666666666666,
+        "contains_gt": 0.6666666666666666,
+        "f1": 0.6666666666666666
+      },
+      "X3_Y3": {
+        "em": 0.6,
+        "contains_gt": 0.6,
+        "f1": 0.6
+      },
+      "X4_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0
+      },
+      "X2_Y3": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
+      },
+      "X1_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0
+      }
+    },
+    "mcq_count": 40,
+    "mcq_valid_rate": 1.0,
+    "mcq_overall": {
+      "em": 0.6,
+      "contains_gt": 0.6,
+      "f1": 0.6
+    }
+  },
+  "method_runtime": {
+    "retrieval_backend": "dense_text",
+    "retrieval_corpus": "round_text",
+    "method_modality": "text_only",
+    "top_k": 10,
+    "neighbor_window": 0,
+    "seed_round_ids": [
+      "S7:R3",
+      "S2:R4",
+      "S1:R1",
+      "S1:R5",
+      "S2:R2",
+      "S8:R4",
+      "S5:R3",
+      "S1:R2",
+      "S7:R2",
+      "S5:R5"
+    ],
+    "selected_round_ids": [
+      "S7:R3",
+      "S2:R4",
+      "S1:R1",
+      "S1:R5",
+      "S2:R2",
+      "S8:R4",
+      "S5:R3",
+      "S1:R2",
+      "S7:R2",
+      "S5:R5"
+    ],
+    "top_candidates": [
+      {
+        "round_id": "S7:R3",
+        "score": 0.5291049640498445,
+        "text_dense_score": 0.5291049640498445
+      },
+      {
+        "round_id": "S2:R4",
+        "score": 0.48753558129449953,
+        "text_dense_score": 0.48753558129449953
+      },
+      {
+        "round_id": "S1:R1",
+        "score": 0.4391745996758576,
+        "text_dense_score": 0.4391745996758576
+      },
+      {
+        "round_id": "S1:R5",
+        "score": 0.4268734597585078,
+        "text_dense_score": 0.4268734597585078
+      },
+      {
+        "round_id": "S2:R2",
+        "score": 0.41579579631173785,
+        "text_dense_score": 0.41579579631173785
+      }
+    ],
+    "clue_hit_count": 1,
+    "corpus_entry_count": 60,
+    "text_embedding_model": "all-MiniLM-L6-v2",
+    "caption_text_included": true,
+    "image_embeddings_built": false,
+    "history_source": "retrieval",
+    "captions_loaded": true,
+    "images_loaded": false,
+    "history_turns_after_truncation": 20
+  }
+}

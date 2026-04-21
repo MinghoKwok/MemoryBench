@@ -1,0 +1,138 @@
+{
+  "task_name": "cartoon_entertainment_companion",
+  "model_name": "gpt_4_1_nano",
+  "model_path": "gpt-4.1-nano",
+  "method_name": "memgpt",
+  "base_method_name": "memgpt",
+  "method_modality": "",
+  "mode": "mcq",
+  "num_qas": 112,
+  "num_qas_run": 112,
+  "dialog_json": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/dialog/Cartoon_Entertainment_Companion.json",
+  "image_root": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image",
+  "run_dir": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/runs/cartoon_entertainment_companion/20260420_143632_gpt_4_1_nano_memgpt",
+  "git_commit": "1f877fec7f6f1b343118433dbd5768a8ca8941e0",
+  "summary": {
+    "open_count": 112,
+    "overall": {
+      "em": 0.5803571428571429,
+      "contains_gt": 0.5803571428571429,
+      "f1": 0.5803571428571429
+    },
+    "by_x": {
+      "X3": {
+        "em": 0.37037037037037035,
+        "contains_gt": 0.37037037037037035,
+        "f1": 0.37037037037037035
+      },
+      "X4": {
+        "em": 0.6388888888888888,
+        "contains_gt": 0.6388888888888888,
+        "f1": 0.6388888888888888
+      },
+      "X2": {
+        "em": 0.7142857142857143,
+        "contains_gt": 0.7142857142857143,
+        "f1": 0.7142857142857143
+      },
+      "X1": {
+        "em": 0.5714285714285714,
+        "contains_gt": 0.5714285714285714,
+        "f1": 0.5714285714285714
+      }
+    },
+    "by_y": {
+      "Y1": {
+        "em": 0.627906976744186,
+        "contains_gt": 0.627906976744186,
+        "f1": 0.627906976744186
+      },
+      "Y2": {
+        "em": 0.5,
+        "contains_gt": 0.5,
+        "f1": 0.5
+      },
+      "Y3": {
+        "em": 0.8181818181818182,
+        "contains_gt": 0.8181818181818182,
+        "f1": 0.8181818181818182
+      }
+    },
+    "by_cell": {
+      "X3_Y1": {
+        "em": 0.35714285714285715,
+        "contains_gt": 0.35714285714285715,
+        "f1": 0.35714285714285715
+      },
+      "X4_Y2": {
+        "em": 0.46153846153846156,
+        "contains_gt": 0.46153846153846156,
+        "f1": 0.46153846153846156
+      },
+      "X2_Y2": {
+        "em": 0.5789473684210527,
+        "contains_gt": 0.5789473684210527,
+        "f1": 0.5789473684210527
+      },
+      "X3_Y2": {
+        "em": 0.38461538461538464,
+        "contains_gt": 0.38461538461538464,
+        "f1": 0.38461538461538464
+      },
+      "X2_Y1": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
+      },
+      "X4_Y1": {
+        "em": 0.7222222222222222,
+        "contains_gt": 0.7222222222222222,
+        "f1": 0.7222222222222222
+      },
+      "X1_Y1": {
+        "em": 0.5,
+        "contains_gt": 0.5,
+        "f1": 0.5
+      },
+      "X4_Y3": {
+        "em": 0.8,
+        "contains_gt": 0.8,
+        "f1": 0.8
+      },
+      "X2_Y3": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
+      },
+      "X1_Y2": {
+        "em": 0.5384615384615384,
+        "contains_gt": 0.5384615384615384,
+        "f1": 0.5384615384615384
+      },
+      "X1_Y3": {
+        "em": 0.75,
+        "contains_gt": 0.75,
+        "f1": 0.75
+      }
+    },
+    "mcq_count": 112,
+    "mcq_valid_rate": 1.0,
+    "mcq_overall": {
+      "em": 0.5803571428571429,
+      "contains_gt": 0.5803571428571429,
+      "f1": 0.5803571428571429
+    }
+  },
+  "method_runtime": {
+    "caption_validation_passed": true,
+    "caption_validation_round_count": 87,
+    "num_memories": 299,
+    "debug_dir": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/output/cartoon_entertainment_companion/memgpt",
+    "memgpt_home": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/runs/cartoon_entertainment_companion/memgpt_home",
+    "model_name": "gpt-4.1-nano",
+    "final_answer_formatter": "openai_json_schema",
+    "final_answer_model": "gpt-4.1-nano",
+    "last_memgpt_raw_prediction": "",
+    "last_final_answer_prompt": "You are producing the final benchmark answer.\nUse the benchmark question and the MemGPT draft answer below.\nSelect exactly one option letter from: A, B, C, D.\nReturn the best final option even if the draft answer is verbose.\n\nBenchmark question:\nThinking across ALL the Paul Bunyan pages, did he wear the red plaid shirt from the very beginning?\n\nA. He never wore a plaid shirt in the entire story\nB. The plaid shirt appeared only on the final page\nC. Yes, the plaid shirt was there from page 1\nD. No, he was shirtless on page 1 and the plaid shirt appeared later\n\nAnswer with ONLY the option letter (A, B, C, D). Do not explain.\n\nMemGPT draft answer:\n[empty]"
+  }
+}

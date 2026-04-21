@@ -1,0 +1,213 @@
+{
+  "task_name": "cartoon_entertainment_companion",
+  "model_name": "gpt_4_1_nano",
+  "model_path": "gpt-4.1-nano",
+  "method_name": "semantic_rag_multimodal",
+  "base_method_name": "semantic_rag_multimodal",
+  "method_modality": "multimodal",
+  "mode": "mcq",
+  "num_qas": 112,
+  "num_qas_run": 112,
+  "dialog_json": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/dialog/Cartoon_Entertainment_Companion.json",
+  "image_root": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image",
+  "run_dir": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/runs/cartoon_entertainment_companion/20260420_014212_gpt_4_1_nano_semantic_rag_multimodal",
+  "git_commit": "2ede73a357fc683261e8335004aafee97dabd948",
+  "summary": {
+    "open_count": 112,
+    "overall": {
+      "em": 0.5982142857142857,
+      "contains_gt": 0.5982142857142857,
+      "f1": 0.5982142857142857
+    },
+    "by_x": {
+      "X3": {
+        "em": 0.5555555555555556,
+        "contains_gt": 0.5555555555555556,
+        "f1": 0.5555555555555556
+      },
+      "X4": {
+        "em": 0.5555555555555556,
+        "contains_gt": 0.5555555555555556,
+        "f1": 0.5555555555555556
+      },
+      "X2": {
+        "em": 0.6785714285714286,
+        "contains_gt": 0.6785714285714286,
+        "f1": 0.6785714285714286
+      },
+      "X1": {
+        "em": 0.6190476190476191,
+        "contains_gt": 0.6190476190476191,
+        "f1": 0.6190476190476191
+      }
+    },
+    "by_y": {
+      "Y1": {
+        "em": 0.5581395348837209,
+        "contains_gt": 0.5581395348837209,
+        "f1": 0.5581395348837209
+      },
+      "Y2": {
+        "em": 0.6206896551724138,
+        "contains_gt": 0.6206896551724138,
+        "f1": 0.6206896551724138
+      },
+      "Y3": {
+        "em": 0.6363636363636364,
+        "contains_gt": 0.6363636363636364,
+        "f1": 0.6363636363636364
+      }
+    },
+    "by_cell": {
+      "X3_Y1": {
+        "em": 0.5714285714285714,
+        "contains_gt": 0.5714285714285714,
+        "f1": 0.5714285714285714
+      },
+      "X4_Y2": {
+        "em": 0.5384615384615384,
+        "contains_gt": 0.5384615384615384,
+        "f1": 0.5384615384615384
+      },
+      "X2_Y2": {
+        "em": 0.6842105263157895,
+        "contains_gt": 0.6842105263157895,
+        "f1": 0.6842105263157895
+      },
+      "X3_Y2": {
+        "em": 0.5384615384615384,
+        "contains_gt": 0.5384615384615384,
+        "f1": 0.5384615384615384
+      },
+      "X2_Y1": {
+        "em": 0.5714285714285714,
+        "contains_gt": 0.5714285714285714,
+        "f1": 0.5714285714285714
+      },
+      "X4_Y1": {
+        "em": 0.5555555555555556,
+        "contains_gt": 0.5555555555555556,
+        "f1": 0.5555555555555556
+      },
+      "X1_Y1": {
+        "em": 0.5,
+        "contains_gt": 0.5,
+        "f1": 0.5
+      },
+      "X4_Y3": {
+        "em": 0.6,
+        "contains_gt": 0.6,
+        "f1": 0.6
+      },
+      "X2_Y3": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
+      },
+      "X1_Y2": {
+        "em": 0.6923076923076923,
+        "contains_gt": 0.6923076923076923,
+        "f1": 0.6923076923076923
+      },
+      "X1_Y3": {
+        "em": 0.5,
+        "contains_gt": 0.5,
+        "f1": 0.5
+      }
+    },
+    "mcq_count": 112,
+    "mcq_valid_rate": 1.0,
+    "mcq_overall": {
+      "em": 0.5982142857142857,
+      "contains_gt": 0.5982142857142857,
+      "f1": 0.5982142857142857
+    }
+  },
+  "method_runtime": {
+    "retrieval_backend": "dense_multimodal",
+    "retrieval_corpus": "round_text",
+    "method_modality": "multimodal",
+    "top_k": 10,
+    "neighbor_window": 0,
+    "seed_round_ids": [
+      "TC3:1",
+      "TC1:1",
+      "TC8:1",
+      "TC2:1",
+      "TC6:1",
+      "CX10:1",
+      "TC9:1",
+      "WL1:1",
+      "WL9:1",
+      "WL6:1"
+    ],
+    "selected_round_ids": [
+      "TC3:1",
+      "TC1:1",
+      "TC8:1",
+      "TC2:1",
+      "TC6:1",
+      "CX10:1",
+      "TC9:1",
+      "WL1:1",
+      "WL9:1",
+      "WL6:1"
+    ],
+    "top_candidates": [
+      {
+        "round_id": "TC3:1",
+        "score": 0.4670067124574868,
+        "text_dense_score": 0.5756725602276191,
+        "image_dense_score": 0.3583408646873545,
+        "indexed_image_count": 1,
+        "best_image_path": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image/Cartoon_Entertainment_Companion/Treasure_Comics_Page_3.jpg"
+      },
+      {
+        "round_id": "TC1:1",
+        "score": 0.43967448562666334,
+        "text_dense_score": 0.5527309559193795,
+        "image_dense_score": 0.3266180153339472,
+        "indexed_image_count": 1,
+        "best_image_path": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image/Cartoon_Entertainment_Companion/Treasure_Comics_Page_1.jpg"
+      },
+      {
+        "round_id": "TC8:1",
+        "score": 0.40422021669616837,
+        "text_dense_score": 0.4832236610572137,
+        "image_dense_score": 0.3252167723351231,
+        "indexed_image_count": 1,
+        "best_image_path": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image/Cartoon_Entertainment_Companion/Treasure_Comics_Page_8.jpg"
+      },
+      {
+        "round_id": "TC2:1",
+        "score": 0.4015837946060197,
+        "text_dense_score": 0.5687063245748586,
+        "image_dense_score": 0.2344612646371808,
+        "indexed_image_count": 1,
+        "best_image_path": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image/Cartoon_Entertainment_Companion/Treasure_Comics_Page_2.jpg"
+      },
+      {
+        "round_id": "TC6:1",
+        "score": 0.3765496383325463,
+        "text_dense_score": 0.4695361839546247,
+        "image_dense_score": 0.2835630927104678,
+        "indexed_image_count": 1,
+        "best_image_path": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image/Cartoon_Entertainment_Companion/Treasure_Comics_Page_6.jpg"
+      }
+    ],
+    "clue_hit_count": 2,
+    "corpus_entry_count": 299,
+    "text_embedding_model": "all-MiniLM-L6-v2",
+    "multimodal_embedding_model": "siglip2-base-patch16-384",
+    "text_dense_weight": 0.5,
+    "image_dense_weight": 0.5,
+    "caption_text_included": false,
+    "image_embeddings_built": true,
+    "multi_image_indexing_enabled": true,
+    "indexed_image_count": 87,
+    "history_source": "retrieval",
+    "captions_loaded": false,
+    "images_loaded": true,
+    "history_turns_after_truncation": 20
+  }
+}

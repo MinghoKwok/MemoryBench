@@ -1,0 +1,110 @@
+{
+  "task_name": "personal_health_dashboard_assistant",
+  "model_name": "gpt_4_1_nano",
+  "model_path": "gpt-4.1-nano",
+  "method_name": "gen_agents__text_only",
+  "base_method_name": "gen_agents",
+  "method_modality": "text_only",
+  "mode": "mcq",
+  "num_qas": 63,
+  "num_qas_run": 63,
+  "dialog_json": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/dialog/Personal_Health_Dashboard_Assistant.json",
+  "image_root": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image",
+  "run_dir": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/runs/personal_health_dashboard_assistant/20260420_132554_gpt_4_1_nano_gen_agents__text_only",
+  "git_commit": "5cb368b7bf8ce5c708c557c1d1970548552894c1",
+  "summary": {
+    "open_count": 63,
+    "overall": {
+      "em": 0.3333333333333333,
+      "contains_gt": 0.3333333333333333,
+      "f1": 0.3333333333333333
+    },
+    "by_x": {
+      "X4": {
+        "em": 0.32142857142857145,
+        "contains_gt": 0.32142857142857145,
+        "f1": 0.32142857142857145
+      },
+      "X3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0
+      },
+      "X1": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
+      }
+    },
+    "by_y": {
+      "Y2": {
+        "em": 0.23529411764705882,
+        "contains_gt": 0.23529411764705882,
+        "f1": 0.23529411764705882
+      },
+      "Y3": {
+        "em": 0.7272727272727273,
+        "contains_gt": 0.7272727272727273,
+        "f1": 0.7272727272727273
+      },
+      "Y1": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
+      }
+    },
+    "by_cell": {
+      "X4_Y2": {
+        "em": 0.2553191489361702,
+        "contains_gt": 0.2553191489361702,
+        "f1": 0.2553191489361702
+      },
+      "X4_Y3": {
+        "em": 0.6666666666666666,
+        "contains_gt": 0.6666666666666666,
+        "f1": 0.6666666666666666
+      },
+      "X3_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0
+      },
+      "X1_Y3": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
+      },
+      "X1_Y1": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
+      }
+    },
+    "mcq_count": 63,
+    "mcq_valid_rate": 1.0,
+    "mcq_overall": {
+      "em": 0.3333333333333333,
+      "contains_gt": 0.3333333333333333,
+      "f1": 0.3333333333333333
+    }
+  },
+  "method_runtime": {
+    "caption_validation_passed": true,
+    "caption_validation_round_count": 62,
+    "method_modality": "text_only",
+    "history_source": "retrieval",
+    "captions_loaded": true,
+    "images_loaded": false,
+    "num_memories": 97,
+    "debug_dir": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/output/personal_health_dashboard_assistant/gen_agents",
+    "history_turns_after_truncation": 1,
+    "retrieved_round_ids": [
+      "D10:5",
+      "D6:6",
+      "D11:2",
+      "D12:3",
+      "D10:0",
+      "D8:4"
+    ]
+  }
+}

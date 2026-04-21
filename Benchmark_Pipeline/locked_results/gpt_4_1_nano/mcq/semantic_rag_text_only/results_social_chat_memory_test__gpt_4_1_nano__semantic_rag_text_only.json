@@ -1,0 +1,183 @@
+{
+  "task_name": "social_chat_memory_test",
+  "model_name": "gpt_4_1_nano",
+  "model_path": "gpt-4.1-nano",
+  "method_name": "semantic_rag_text_only",
+  "base_method_name": "semantic_rag_text_only",
+  "method_modality": "",
+  "mode": "open",
+  "num_qas": 44,
+  "num_qas_run": 44,
+  "dialog_json": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/dialog/Social_Chat_Memory_Test.json",
+  "image_root": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image",
+  "run_dir": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/runs/social_chat_memory_test/20260419_203643_gpt_4_1_nano_semantic_rag_text_only",
+  "git_commit": "2ede73a357fc683261e8335004aafee97dabd948",
+  "summary": {
+    "open_count": 44,
+    "overall": {
+      "em": 0.4318181818181818,
+      "contains_gt": 0.4318181818181818,
+      "f1": 0.4318181818181818
+    },
+    "by_x": {
+      "X2": {
+        "em": 0.4444444444444444,
+        "contains_gt": 0.4444444444444444,
+        "f1": 0.4444444444444444
+      },
+      "X1": {
+        "em": 0.4,
+        "contains_gt": 0.4,
+        "f1": 0.4
+      },
+      "X3": {
+        "em": 0.5,
+        "contains_gt": 0.5,
+        "f1": 0.5
+      },
+      "X4": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0
+      }
+    },
+    "by_y": {
+      "Y2": {
+        "em": 0.36666666666666664,
+        "contains_gt": 0.36666666666666664,
+        "f1": 0.36666666666666664
+      },
+      "Y3": {
+        "em": 0.75,
+        "contains_gt": 0.75,
+        "f1": 0.75
+      },
+      "Y1": {
+        "em": 0.3333333333333333,
+        "contains_gt": 0.3333333333333333,
+        "f1": 0.3333333333333333
+      }
+    },
+    "by_cell": {
+      "X2_Y2": {
+        "em": 0.4074074074074074,
+        "contains_gt": 0.4074074074074074,
+        "f1": 0.4074074074074074
+      },
+      "X2_Y3": {
+        "em": 0.6666666666666666,
+        "contains_gt": 0.6666666666666666,
+        "f1": 0.6666666666666666
+      },
+      "X2_Y1": {
+        "em": 0.3333333333333333,
+        "contains_gt": 0.3333333333333333,
+        "f1": 0.3333333333333333
+      },
+      "X1_Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0
+      },
+      "X1_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0
+      },
+      "X3_Y1": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
+      },
+      "X3_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0
+      },
+      "X4_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0
+      },
+      "X1_Y3": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
+      }
+    },
+    "mcq_count": 44,
+    "mcq_valid_rate": 1.0,
+    "mcq_overall": {
+      "em": 0.4318181818181818,
+      "contains_gt": 0.4318181818181818,
+      "f1": 0.4318181818181818
+    }
+  },
+  "method_runtime": {
+    "retrieval_backend": "dense_text",
+    "retrieval_corpus": "round_text",
+    "method_modality": "text_only",
+    "top_k": 10,
+    "neighbor_window": 0,
+    "seed_round_ids": [
+      "R4:2",
+      "R4b:1",
+      "CX4:1",
+      "R1:1",
+      "R3:1",
+      "R4:1",
+      "B5:1",
+      "R2:2",
+      "B1:2",
+      "B1:1"
+    ],
+    "selected_round_ids": [
+      "R4:2",
+      "R4b:1",
+      "CX4:1",
+      "R1:1",
+      "R3:1",
+      "R4:1",
+      "B5:1",
+      "R2:2",
+      "B1:2",
+      "B1:1"
+    ],
+    "top_candidates": [
+      {
+        "round_id": "R4:2",
+        "score": 0.597682763880402,
+        "text_dense_score": 0.597682763880402
+      },
+      {
+        "round_id": "R4b:1",
+        "score": 0.5786186657380586,
+        "text_dense_score": 0.5786186657380586
+      },
+      {
+        "round_id": "CX4:1",
+        "score": 0.5099045047360841,
+        "text_dense_score": 0.5099045047360841
+      },
+      {
+        "round_id": "R1:1",
+        "score": 0.5095677659353277,
+        "text_dense_score": 0.5095677659353277
+      },
+      {
+        "round_id": "R3:1",
+        "score": 0.49986811389641467,
+        "text_dense_score": 0.49986811389641467
+      }
+    ],
+    "clue_hit_count": 3,
+    "corpus_entry_count": 53,
+    "text_embedding_model": "all-MiniLM-L6-v2",
+    "caption_text_included": true,
+    "image_embeddings_built": false,
+    "history_source": "retrieval",
+    "captions_loaded": true,
+    "images_loaded": false,
+    "history_turns_after_truncation": 20
+  }
+}

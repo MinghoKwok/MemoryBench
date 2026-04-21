@@ -1,0 +1,73 @@
+{
+  "task_name": "card_playlog_test",
+  "model_name": "gpt_4_1_nano",
+  "model_path": "gpt-4.1-nano",
+  "method_name": "memgpt",
+  "base_method_name": "memgpt",
+  "method_modality": "",
+  "mode": "mcq",
+  "num_qas": 48,
+  "num_qas_run": 48,
+  "dialog_json": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/dialog/Card_Playlog_Test.json",
+  "image_root": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image",
+  "run_dir": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/runs/card_playlog_test/20260420_143429_gpt_4_1_nano_memgpt",
+  "git_commit": "1f877fec7f6f1b343118433dbd5768a8ca8941e0",
+  "summary": {
+    "open_count": 48,
+    "overall": {
+      "em": 0.1875,
+      "contains_gt": 0.1875,
+      "f1": 0.1875
+    },
+    "by_x": {
+      "X4": {
+        "em": 0.1875,
+        "contains_gt": 0.1875,
+        "f1": 0.1875
+      }
+    },
+    "by_y": {
+      "Y3": {
+        "em": 0.15789473684210525,
+        "contains_gt": 0.15789473684210525,
+        "f1": 0.15789473684210525
+      },
+      "Y2": {
+        "em": 0.20689655172413793,
+        "contains_gt": 0.20689655172413793,
+        "f1": 0.20689655172413793
+      }
+    },
+    "by_cell": {
+      "X4_Y3": {
+        "em": 0.15789473684210525,
+        "contains_gt": 0.15789473684210525,
+        "f1": 0.15789473684210525
+      },
+      "X4_Y2": {
+        "em": 0.20689655172413793,
+        "contains_gt": 0.20689655172413793,
+        "f1": 0.20689655172413793
+      }
+    },
+    "mcq_count": 48,
+    "mcq_valid_rate": 1.0,
+    "mcq_overall": {
+      "em": 0.1875,
+      "contains_gt": 0.1875,
+      "f1": 0.1875
+    }
+  },
+  "method_runtime": {
+    "caption_validation_passed": true,
+    "caption_validation_round_count": 30,
+    "num_memories": 30,
+    "debug_dir": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/output/card_playlog_test/memgpt",
+    "memgpt_home": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/runs/card_playlog_test/memgpt_home",
+    "model_name": "gpt-4.1-nano",
+    "final_answer_formatter": "openai_json_schema",
+    "final_answer_model": "gpt-4.1-nano",
+    "last_memgpt_raw_prediction": "",
+    "last_final_answer_prompt": "You are producing the final benchmark answer.\nUse the benchmark question and the MemGPT draft answer below.\nSelect exactly one option letter from: A, B, C, D.\nReturn the best final option even if the draft answer is verbose.\n\nBenchmark question:\nImmediately after public deck size changes from 79 to 77 for the 1st time, how many red cards does Player 3 hold?\n\nA. 4\nB. 3\nC. 1\nD. 2\n\nAnswer with ONLY the option letter (A, B, C, D). Do not explain.\n\nMemGPT draft answer:\n[empty]"
+  }
+}

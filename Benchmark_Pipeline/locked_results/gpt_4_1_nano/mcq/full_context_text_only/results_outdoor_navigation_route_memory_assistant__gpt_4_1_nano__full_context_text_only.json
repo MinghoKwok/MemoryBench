@@ -1,0 +1,121 @@
+{
+  "task_name": "outdoor_navigation_route_memory_assistant",
+  "model_name": "gpt_4_1_nano",
+  "model_path": "gpt-4.1-nano",
+  "method_name": "full_context_text_only",
+  "base_method_name": "full_context_text_only",
+  "method_modality": "",
+  "mode": "open",
+  "num_qas": 40,
+  "num_qas_run": 40,
+  "dialog_json": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/dialog/Outdoor_Navigation_Route_Memory_Assistant.json",
+  "image_root": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image",
+  "run_dir": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/runs/outdoor_navigation_route_memory_assistant/20260419_200413_gpt_4_1_nano_full_context_text_only",
+  "git_commit": "2ede73a357fc683261e8335004aafee97dabd948",
+  "summary": {
+    "open_count": 40,
+    "overall": {
+      "em": 0.525,
+      "contains_gt": 0.525,
+      "f1": 0.525
+    },
+    "by_x": {
+      "X3": {
+        "em": 0.5925925925925926,
+        "contains_gt": 0.5925925925925926,
+        "f1": 0.5925925925925926
+      },
+      "X1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0
+      },
+      "X4": {
+        "em": 0.2,
+        "contains_gt": 0.2,
+        "f1": 0.2
+      },
+      "X2": {
+        "em": 0.8,
+        "contains_gt": 0.8,
+        "f1": 0.8
+      }
+    },
+    "by_y": {
+      "Y2": {
+        "em": 0.6153846153846154,
+        "contains_gt": 0.6153846153846154,
+        "f1": 0.6153846153846154
+      },
+      "Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0
+      },
+      "Y3": {
+        "em": 0.38461538461538464,
+        "contains_gt": 0.38461538461538464,
+        "f1": 0.38461538461538464
+      }
+    },
+    "by_cell": {
+      "X3_Y2": {
+        "em": 0.5909090909090909,
+        "contains_gt": 0.5909090909090909,
+        "f1": 0.5909090909090909
+      },
+      "X1_Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0
+      },
+      "X4_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0
+      },
+      "X2_Y2": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
+      },
+      "X3_Y3": {
+        "em": 0.6,
+        "contains_gt": 0.6,
+        "f1": 0.6
+      },
+      "X4_Y3": {
+        "em": 0.25,
+        "contains_gt": 0.25,
+        "f1": 0.25
+      },
+      "X2_Y3": {
+        "em": 0.5,
+        "contains_gt": 0.5,
+        "f1": 0.5
+      },
+      "X1_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0
+      }
+    },
+    "mcq_count": 40,
+    "mcq_valid_rate": 1.0,
+    "mcq_overall": {
+      "em": 0.525,
+      "contains_gt": 0.525,
+      "f1": 0.525
+    }
+  },
+  "method_runtime": {
+    "caption_validation_passed": true,
+    "caption_validation_round_count": 40,
+    "method_modality": "text_only",
+    "history_source": "full_context",
+    "captions_loaded": true,
+    "images_loaded": false,
+    "history_turns_after_truncation": 120,
+    "history_turns_before_truncation": 120
+  }
+}

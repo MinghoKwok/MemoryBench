@@ -1,0 +1,119 @@
+{
+  "task_name": "outdoor_navigation_route_memory_assistant",
+  "model_name": "gpt_4_1_nano",
+  "model_path": "gpt-4.1-nano",
+  "method_name": "full_context_multimodal",
+  "base_method_name": "full_context_multimodal",
+  "method_modality": "",
+  "mode": "open",
+  "num_qas": 40,
+  "num_qas_run": 40,
+  "dialog_json": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/dialog/Outdoor_Navigation_Route_Memory_Assistant.json",
+  "image_root": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image",
+  "run_dir": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/runs/outdoor_navigation_route_memory_assistant/20260419_202446_gpt_4_1_nano_full_context_multimodal",
+  "git_commit": "2ede73a357fc683261e8335004aafee97dabd948",
+  "summary": {
+    "open_count": 40,
+    "overall": {
+      "em": 0.65,
+      "contains_gt": 0.65,
+      "f1": 0.65
+    },
+    "by_x": {
+      "X3": {
+        "em": 0.7407407407407407,
+        "contains_gt": 0.7407407407407407,
+        "f1": 0.7407407407407407
+      },
+      "X1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0
+      },
+      "X4": {
+        "em": 0.2,
+        "contains_gt": 0.2,
+        "f1": 0.2
+      },
+      "X2": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
+      }
+    },
+    "by_y": {
+      "Y2": {
+        "em": 0.7692307692307693,
+        "contains_gt": 0.7692307692307693,
+        "f1": 0.7692307692307693
+      },
+      "Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0
+      },
+      "Y3": {
+        "em": 0.46153846153846156,
+        "contains_gt": 0.46153846153846156,
+        "f1": 0.46153846153846156
+      }
+    },
+    "by_cell": {
+      "X3_Y2": {
+        "em": 0.7272727272727273,
+        "contains_gt": 0.7272727272727273,
+        "f1": 0.7272727272727273
+      },
+      "X1_Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0
+      },
+      "X4_Y2": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
+      },
+      "X2_Y2": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
+      },
+      "X3_Y3": {
+        "em": 0.8,
+        "contains_gt": 0.8,
+        "f1": 0.8
+      },
+      "X4_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0
+      },
+      "X2_Y3": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
+      },
+      "X1_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0
+      }
+    },
+    "mcq_count": 40,
+    "mcq_valid_rate": 1.0,
+    "mcq_overall": {
+      "em": 0.65,
+      "contains_gt": 0.65,
+      "f1": 0.65
+    }
+  },
+  "method_runtime": {
+    "method_modality": "multimodal",
+    "history_source": "full_context",
+    "captions_loaded": false,
+    "images_loaded": true,
+    "history_turns_after_truncation": 120,
+    "history_turns_before_truncation": 120
+  }
+}

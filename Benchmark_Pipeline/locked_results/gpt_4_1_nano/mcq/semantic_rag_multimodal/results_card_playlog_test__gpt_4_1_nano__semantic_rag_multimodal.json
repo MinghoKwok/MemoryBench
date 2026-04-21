@@ -1,0 +1,148 @@
+{
+  "task_name": "card_playlog_test",
+  "model_name": "gpt_4_1_nano",
+  "model_path": "gpt-4.1-nano",
+  "method_name": "semantic_rag_multimodal",
+  "base_method_name": "semantic_rag_multimodal",
+  "method_modality": "multimodal",
+  "mode": "open",
+  "num_qas": 48,
+  "num_qas_run": 48,
+  "dialog_json": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/dialog/Card_Playlog_Test.json",
+  "image_root": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image",
+  "run_dir": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/runs/card_playlog_test/20260419_204040_gpt_4_1_nano_semantic_rag_multimodal",
+  "git_commit": "2ede73a357fc683261e8335004aafee97dabd948",
+  "summary": {
+    "open_count": 48,
+    "overall": {
+      "em": 0.20833333333333334,
+      "contains_gt": 0.20833333333333334,
+      "f1": 0.20833333333333334
+    },
+    "by_x": {
+      "X4": {
+        "em": 0.20833333333333334,
+        "contains_gt": 0.20833333333333334,
+        "f1": 0.20833333333333334
+      }
+    },
+    "by_y": {
+      "Y3": {
+        "em": 0.10526315789473684,
+        "contains_gt": 0.10526315789473684,
+        "f1": 0.10526315789473684
+      },
+      "Y2": {
+        "em": 0.27586206896551724,
+        "contains_gt": 0.27586206896551724,
+        "f1": 0.27586206896551724
+      }
+    },
+    "by_cell": {
+      "X4_Y3": {
+        "em": 0.10526315789473684,
+        "contains_gt": 0.10526315789473684,
+        "f1": 0.10526315789473684
+      },
+      "X4_Y2": {
+        "em": 0.27586206896551724,
+        "contains_gt": 0.27586206896551724,
+        "f1": 0.27586206896551724
+      }
+    },
+    "mcq_count": 48,
+    "mcq_valid_rate": 1.0,
+    "mcq_overall": {
+      "em": 0.20833333333333334,
+      "contains_gt": 0.20833333333333334,
+      "f1": 0.20833333333333334
+    }
+  },
+  "method_runtime": {
+    "retrieval_backend": "dense_multimodal",
+    "retrieval_corpus": "round_text",
+    "method_modality": "multimodal",
+    "top_k": 10,
+    "neighbor_window": 0,
+    "seed_round_ids": [
+      "uno_seed_44_p0_g0:1",
+      "uno_seed_44_p1_g0:1",
+      "uno_seed_44_p2_g0:1",
+      "uno_seed_44_p3_g0:1",
+      "uno_seed_44_p2_g0:3",
+      "uno_seed_44_p3_g0:6",
+      "uno_seed_44_p3_g0:3",
+      "uno_seed_44_p1_g0:3",
+      "uno_seed_44_p3_g0:5",
+      "uno_seed_44_p0_g0:3"
+    ],
+    "selected_round_ids": [
+      "uno_seed_44_p0_g0:1",
+      "uno_seed_44_p1_g0:1",
+      "uno_seed_44_p2_g0:1",
+      "uno_seed_44_p3_g0:1",
+      "uno_seed_44_p2_g0:3",
+      "uno_seed_44_p3_g0:6",
+      "uno_seed_44_p3_g0:3",
+      "uno_seed_44_p1_g0:3",
+      "uno_seed_44_p3_g0:5",
+      "uno_seed_44_p0_g0:3"
+    ],
+    "top_candidates": [
+      {
+        "round_id": "uno_seed_44_p0_g0:1",
+        "score": 0.42742515844182527,
+        "text_dense_score": 0.5804199306938046,
+        "image_dense_score": 0.2744303861898459,
+        "indexed_image_count": 1,
+        "best_image_path": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image/Card_Playlog_Test/uno_44/state_0000.jpg"
+      },
+      {
+        "round_id": "uno_seed_44_p1_g0:1",
+        "score": 0.399635278211206,
+        "text_dense_score": 0.5431649007827428,
+        "image_dense_score": 0.25610565563966914,
+        "indexed_image_count": 1,
+        "best_image_path": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image/Card_Playlog_Test/uno_44/state_0001.jpg"
+      },
+      {
+        "round_id": "uno_seed_44_p2_g0:1",
+        "score": 0.39422547440035416,
+        "text_dense_score": 0.5513922318256589,
+        "image_dense_score": 0.23705871697504943,
+        "indexed_image_count": 1,
+        "best_image_path": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image/Card_Playlog_Test/uno_44/state_0002.jpg"
+      },
+      {
+        "round_id": "uno_seed_44_p3_g0:1",
+        "score": 0.3800660299691814,
+        "text_dense_score": 0.5212187261575336,
+        "image_dense_score": 0.23891333378082918,
+        "indexed_image_count": 1,
+        "best_image_path": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image/Card_Playlog_Test/uno_44/state_0003.jpg"
+      },
+      {
+        "round_id": "uno_seed_44_p2_g0:3",
+        "score": 0.3724734197456444,
+        "text_dense_score": 0.48129261820785096,
+        "image_dense_score": 0.26365422128343785,
+        "indexed_image_count": 1,
+        "best_image_path": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image/Card_Playlog_Test/uno_44/state_0010.jpg"
+      }
+    ],
+    "clue_hit_count": 1,
+    "corpus_entry_count": 30,
+    "text_embedding_model": "all-MiniLM-L6-v2",
+    "multimodal_embedding_model": "siglip2-base-patch16-384",
+    "text_dense_weight": 0.5,
+    "image_dense_weight": 0.5,
+    "caption_text_included": false,
+    "image_embeddings_built": true,
+    "multi_image_indexing_enabled": true,
+    "indexed_image_count": 30,
+    "history_source": "retrieval",
+    "captions_loaded": false,
+    "images_loaded": true,
+    "history_turns_after_truncation": 20
+  }
+}
