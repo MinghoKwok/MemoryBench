@@ -1,0 +1,178 @@
+{
+  "task_name": "personal_health_dashboard_assistant",
+  "model_name": "gpt_4_1_nano",
+  "model_path": "gpt-4.1-nano",
+  "method_name": "semantic_rag_multimodal",
+  "base_method_name": "semantic_rag_multimodal",
+  "method_modality": "multimodal",
+  "mode": "open",
+  "num_qas": 63,
+  "num_qas_run": 63,
+  "dialog_json": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/dialog/Personal_Health_Dashboard_Assistant.json",
+  "image_root": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image",
+  "run_dir": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/runs/personal_health_dashboard_assistant/20260419_205136_gpt_4_1_nano_semantic_rag_multimodal",
+  "git_commit": "2ede73a357fc683261e8335004aafee97dabd948",
+  "summary": {
+    "open_count": 63,
+    "overall": {
+      "em": 0.31746031746031744,
+      "contains_gt": 0.31746031746031744,
+      "f1": 0.31746031746031744
+    },
+    "by_x": {
+      "X4": {
+        "em": 0.32142857142857145,
+        "contains_gt": 0.32142857142857145,
+        "f1": 0.32142857142857145
+      },
+      "X3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0
+      },
+      "X1": {
+        "em": 0.6666666666666666,
+        "contains_gt": 0.6666666666666666,
+        "f1": 0.6666666666666666
+      }
+    },
+    "by_y": {
+      "Y2": {
+        "em": 0.2549019607843137,
+        "contains_gt": 0.2549019607843137,
+        "f1": 0.2549019607843137
+      },
+      "Y3": {
+        "em": 0.5454545454545454,
+        "contains_gt": 0.5454545454545454,
+        "f1": 0.5454545454545454
+      },
+      "Y1": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
+      }
+    },
+    "by_cell": {
+      "X4_Y2": {
+        "em": 0.2765957446808511,
+        "contains_gt": 0.2765957446808511,
+        "f1": 0.2765957446808511
+      },
+      "X4_Y3": {
+        "em": 0.5555555555555556,
+        "contains_gt": 0.5555555555555556,
+        "f1": 0.5555555555555556
+      },
+      "X3_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0
+      },
+      "X1_Y3": {
+        "em": 0.5,
+        "contains_gt": 0.5,
+        "f1": 0.5
+      },
+      "X1_Y1": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
+      }
+    },
+    "mcq_count": 63,
+    "mcq_valid_rate": 1.0,
+    "mcq_overall": {
+      "em": 0.31746031746031744,
+      "contains_gt": 0.31746031746031744,
+      "f1": 0.31746031746031744
+    }
+  },
+  "method_runtime": {
+    "retrieval_backend": "dense_multimodal",
+    "retrieval_corpus": "round_text",
+    "method_modality": "multimodal",
+    "top_k": 10,
+    "neighbor_window": 0,
+    "seed_round_ids": [
+      "D6:1",
+      "D12:6",
+      "D3:1",
+      "D11:6",
+      "D2:6",
+      "D9:1",
+      "D5:6",
+      "D3:6",
+      "D11:5",
+      "D1:4"
+    ],
+    "selected_round_ids": [
+      "D6:1",
+      "D12:6",
+      "D3:1",
+      "D11:6",
+      "D2:6",
+      "D9:1",
+      "D5:6",
+      "D3:6",
+      "D11:5",
+      "D1:4"
+    ],
+    "top_candidates": [
+      {
+        "round_id": "D6:1",
+        "score": 0.2880587174261593,
+        "text_dense_score": 0.37432334728419664,
+        "image_dense_score": 0.20179408756812198,
+        "indexed_image_count": 1,
+        "best_image_path": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image/Personal_Health_Dashboard_Assistant/D6_IMG_001.jpg"
+      },
+      {
+        "round_id": "D12:6",
+        "score": 0.2814639266989279,
+        "text_dense_score": 0.309768161003054,
+        "image_dense_score": 0.2531596923948018,
+        "indexed_image_count": 1,
+        "best_image_path": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image/Personal_Health_Dashboard_Assistant/D12_IMG_005.jpg"
+      },
+      {
+        "round_id": "D3:1",
+        "score": 0.2807912949480509,
+        "text_dense_score": 0.3548883390019224,
+        "image_dense_score": 0.20669425089417937,
+        "indexed_image_count": 1,
+        "best_image_path": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image/Personal_Health_Dashboard_Assistant/D3_IMG_001.jpg"
+      },
+      {
+        "round_id": "D11:6",
+        "score": 0.27930770577438346,
+        "text_dense_score": 0.30931119163437415,
+        "image_dense_score": 0.24930421991439283,
+        "indexed_image_count": 1,
+        "best_image_path": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image/Personal_Health_Dashboard_Assistant/D11_IMG_005.jpg"
+      },
+      {
+        "round_id": "D2:6",
+        "score": 0.27445323547536976,
+        "text_dense_score": 0.2971884600662901,
+        "image_dense_score": 0.2517180108844494,
+        "indexed_image_count": 1,
+        "best_image_path": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image/Personal_Health_Dashboard_Assistant/D2_IMG_005.jpg"
+      }
+    ],
+    "clue_hit_count": 1,
+    "corpus_entry_count": 97,
+    "text_embedding_model": "all-MiniLM-L6-v2",
+    "multimodal_embedding_model": "siglip2-base-patch16-384",
+    "text_dense_weight": 0.5,
+    "image_dense_weight": 0.5,
+    "caption_text_included": false,
+    "image_embeddings_built": true,
+    "multi_image_indexing_enabled": true,
+    "indexed_image_count": 62,
+    "history_source": "retrieval",
+    "captions_loaded": false,
+    "images_loaded": true,
+    "history_turns_after_truncation": 20
+  }
+}

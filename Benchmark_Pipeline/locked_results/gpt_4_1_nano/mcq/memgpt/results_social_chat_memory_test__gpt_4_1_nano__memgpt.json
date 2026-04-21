@@ -1,0 +1,128 @@
+{
+  "task_name": "social_chat_memory_test",
+  "model_name": "gpt_4_1_nano",
+  "model_path": "gpt-4.1-nano",
+  "method_name": "memgpt",
+  "base_method_name": "memgpt",
+  "method_modality": "",
+  "mode": "mcq",
+  "num_qas": 44,
+  "num_qas_run": 44,
+  "dialog_json": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/dialog/Social_Chat_Memory_Test.json",
+  "image_root": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image",
+  "run_dir": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/runs/social_chat_memory_test/20260420_150016_gpt_4_1_nano_memgpt",
+  "git_commit": "1f877fec7f6f1b343118433dbd5768a8ca8941e0",
+  "summary": {
+    "open_count": 44,
+    "overall": {
+      "em": 0.3409090909090909,
+      "contains_gt": 0.3409090909090909,
+      "f1": 0.3409090909090909
+    },
+    "by_x": {
+      "X2": {
+        "em": 0.3611111111111111,
+        "contains_gt": 0.3611111111111111,
+        "f1": 0.3611111111111111
+      },
+      "X1": {
+        "em": 0.2,
+        "contains_gt": 0.2,
+        "f1": 0.2
+      },
+      "X3": {
+        "em": 0.5,
+        "contains_gt": 0.5,
+        "f1": 0.5
+      },
+      "X4": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0
+      }
+    },
+    "by_y": {
+      "Y2": {
+        "em": 0.3333333333333333,
+        "contains_gt": 0.3333333333333333,
+        "f1": 0.3333333333333333
+      },
+      "Y3": {
+        "em": 0.25,
+        "contains_gt": 0.25,
+        "f1": 0.25
+      },
+      "Y1": {
+        "em": 0.5,
+        "contains_gt": 0.5,
+        "f1": 0.5
+      }
+    },
+    "by_cell": {
+      "X2_Y2": {
+        "em": 0.37037037037037035,
+        "contains_gt": 0.37037037037037035,
+        "f1": 0.37037037037037035
+      },
+      "X2_Y3": {
+        "em": 0.3333333333333333,
+        "contains_gt": 0.3333333333333333,
+        "f1": 0.3333333333333333
+      },
+      "X2_Y1": {
+        "em": 0.3333333333333333,
+        "contains_gt": 0.3333333333333333,
+        "f1": 0.3333333333333333
+      },
+      "X1_Y1": {
+        "em": 0.5,
+        "contains_gt": 0.5,
+        "f1": 0.5
+      },
+      "X1_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0
+      },
+      "X3_Y1": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
+      },
+      "X3_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0
+      },
+      "X4_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0
+      },
+      "X1_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0
+      }
+    },
+    "mcq_count": 44,
+    "mcq_valid_rate": 1.0,
+    "mcq_overall": {
+      "em": 0.3409090909090909,
+      "contains_gt": 0.3409090909090909,
+      "f1": 0.3409090909090909
+    }
+  },
+  "method_runtime": {
+    "caption_validation_passed": true,
+    "caption_validation_round_count": 43,
+    "num_memories": 53,
+    "debug_dir": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/output/social_chat_memory_test/memgpt",
+    "memgpt_home": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/runs/social_chat_memory_test/memgpt_home",
+    "model_name": "gpt-4.1-nano",
+    "final_answer_formatter": "openai_json_schema",
+    "final_answer_model": "gpt-4.1-nano",
+    "last_memgpt_raw_prediction": "I haven't come across any information about Priya and Sara's current living plans yet. Would you like to share more details?",
+    "last_final_answer_prompt": "You are producing the final benchmark answer.\nUse the benchmark question and the MemGPT draft answer below.\nSelect exactly one option letter from: A, B, C, D.\nReturn the best final option even if the draft answer is verbose.\n\nBenchmark question:\nWhat is the current living arrangement plan for Priya and Sara?\n\nA. Sara is the one leaving — she found a cheaper apartment\nB. They haven't discussed the lease renewal yet\nC. Priya is moving out — she told Sara she wants her own place\nD. They are renewing the lease together — Priya decided to stay\n\nAnswer with ONLY the option letter (A, B, C, D). Do not explain.\n\nMemGPT draft answer:\nI haven't come across any information about Priya and Sara's current living plans yet. Would you like to share more details?"
+  }
+}

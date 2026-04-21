@@ -1,0 +1,70 @@
+{
+  "task_name": "card_playlog_test",
+  "model_name": "gpt_4_1_nano",
+  "model_path": "gpt-4.1-nano",
+  "method_name": "evermemos",
+  "base_method_name": "evermemos",
+  "method_modality": "",
+  "mode": "open",
+  "num_qas": 48,
+  "num_qas_run": 48,
+  "dialog_json": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/dialog/Card_Playlog_Test.json",
+  "image_root": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image",
+  "run_dir": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/runs/card_playlog_test/20260419_220252_gpt_4_1_nano_evermemos",
+  "git_commit": "2ede73a357fc683261e8335004aafee97dabd948",
+  "summary": {
+    "open_count": 48,
+    "overall": {
+      "em": 0.1875,
+      "contains_gt": 0.1875,
+      "f1": 0.1875
+    },
+    "by_x": {
+      "X4": {
+        "em": 0.1875,
+        "contains_gt": 0.1875,
+        "f1": 0.1875
+      }
+    },
+    "by_y": {
+      "Y3": {
+        "em": 0.21052631578947367,
+        "contains_gt": 0.21052631578947367,
+        "f1": 0.21052631578947367
+      },
+      "Y2": {
+        "em": 0.1724137931034483,
+        "contains_gt": 0.1724137931034483,
+        "f1": 0.1724137931034483
+      }
+    },
+    "by_cell": {
+      "X4_Y3": {
+        "em": 0.21052631578947367,
+        "contains_gt": 0.21052631578947367,
+        "f1": 0.21052631578947367
+      },
+      "X4_Y2": {
+        "em": 0.1724137931034483,
+        "contains_gt": 0.1724137931034483,
+        "f1": 0.1724137931034483
+      }
+    },
+    "mcq_count": 48,
+    "mcq_valid_rate": 1.0,
+    "mcq_overall": {
+      "em": 0.1875,
+      "contains_gt": 0.1875,
+      "f1": 0.1875
+    }
+  },
+  "method_runtime": {
+    "method_modality": "text_only",
+    "num_memories": 60,
+    "debug_dir": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/runs/card_playlog_test/evermemos/826f8493b2d9f09b",
+    "runtime_dir": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/runs/card_playlog_test/evermemos/826f8493b2d9f09b",
+    "runtime_signature": "826f8493b2d9f09b",
+    "internal_llm_model": "gpt-4.1-nano",
+    "answer_model": "gpt-4.1-nano"
+  }
+}

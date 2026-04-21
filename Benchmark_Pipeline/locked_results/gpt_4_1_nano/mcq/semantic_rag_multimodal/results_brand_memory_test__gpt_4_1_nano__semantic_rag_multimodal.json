@@ -1,0 +1,178 @@
+{
+  "task_name": "brand_memory_test",
+  "model_name": "gpt_4_1_nano",
+  "model_path": "gpt-4.1-nano",
+  "method_name": "semantic_rag_multimodal",
+  "base_method_name": "semantic_rag_multimodal",
+  "method_modality": "multimodal",
+  "mode": "open",
+  "num_qas": 33,
+  "num_qas_run": 33,
+  "dialog_json": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/dialog/Brand_Memory_Test.json",
+  "image_root": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image",
+  "run_dir": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/runs/brand_memory_test/20260419_203904_gpt_4_1_nano_semantic_rag_multimodal",
+  "git_commit": "2ede73a357fc683261e8335004aafee97dabd948",
+  "summary": {
+    "open_count": 33,
+    "overall": {
+      "em": 0.30303030303030304,
+      "contains_gt": 0.30303030303030304,
+      "f1": 0.30303030303030304
+    },
+    "by_x": {
+      "X2": {
+        "em": 0.4444444444444444,
+        "contains_gt": 0.4444444444444444,
+        "f1": 0.4444444444444444
+      },
+      "X4": {
+        "em": 0.5,
+        "contains_gt": 0.5,
+        "f1": 0.5
+      },
+      "X1": {
+        "em": 0.22727272727272727,
+        "contains_gt": 0.22727272727272727,
+        "f1": 0.22727272727272727
+      }
+    },
+    "by_y": {
+      "Y1": {
+        "em": 0.6666666666666666,
+        "contains_gt": 0.6666666666666666,
+        "f1": 0.6666666666666666
+      },
+      "Y2": {
+        "em": 0.26666666666666666,
+        "contains_gt": 0.26666666666666666,
+        "f1": 0.26666666666666666
+      }
+    },
+    "by_cell": {
+      "X2_Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0
+      },
+      "X4_Y1": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
+      },
+      "X2_Y2": {
+        "em": 0.5,
+        "contains_gt": 0.5,
+        "f1": 0.5
+      },
+      "X1_Y2": {
+        "em": 0.19047619047619047,
+        "contains_gt": 0.19047619047619047,
+        "f1": 0.19047619047619047
+      },
+      "X4_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0
+      },
+      "X1_Y1": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
+      }
+    },
+    "mcq_count": 33,
+    "mcq_valid_rate": 1.0,
+    "mcq_overall": {
+      "em": 0.30303030303030304,
+      "contains_gt": 0.30303030303030304,
+      "f1": 0.30303030303030304
+    }
+  },
+  "method_runtime": {
+    "retrieval_backend": "dense_multimodal",
+    "retrieval_corpus": "round_text",
+    "method_modality": "multimodal",
+    "top_k": 10,
+    "neighbor_window": 0,
+    "seed_round_ids": [
+      "D1:1",
+      "S5:1",
+      "P2:1",
+      "P1:1",
+      "D4:1",
+      "CC2:1",
+      "CC3:1",
+      "CC5:1",
+      "D2:1",
+      "CC1:1"
+    ],
+    "selected_round_ids": [
+      "D1:1",
+      "S5:1",
+      "P2:1",
+      "P1:1",
+      "D4:1",
+      "CC2:1",
+      "CC3:1",
+      "CC5:1",
+      "D2:1",
+      "CC1:1"
+    ],
+    "top_candidates": [
+      {
+        "round_id": "D1:1",
+        "score": 0.4327199438000478,
+        "text_dense_score": 0.56111022686607,
+        "image_dense_score": 0.30432966073402556,
+        "indexed_image_count": 1,
+        "best_image_path": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image/Brand_Memory_Test/Dunkin_1.png"
+      },
+      {
+        "round_id": "S5:1",
+        "score": 0.391176218673412,
+        "text_dense_score": 0.539286756160068,
+        "image_dense_score": 0.24306568118675592,
+        "indexed_image_count": 1,
+        "best_image_path": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image/Brand_Memory_Test/Starbucks_5.png"
+      },
+      {
+        "round_id": "P2:1",
+        "score": 0.376194216032407,
+        "text_dense_score": 0.47137183705137653,
+        "image_dense_score": 0.2810165950134375,
+        "indexed_image_count": 1,
+        "best_image_path": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image/Brand_Memory_Test/Pepsi_2.png"
+      },
+      {
+        "round_id": "P1:1",
+        "score": 0.36266397970278086,
+        "text_dense_score": 0.44651291454959524,
+        "image_dense_score": 0.27881504485596653,
+        "indexed_image_count": 1,
+        "best_image_path": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image/Brand_Memory_Test/Pepsi_1.png"
+      },
+      {
+        "round_id": "D4:1",
+        "score": 0.36130941277395884,
+        "text_dense_score": 0.46956051553508216,
+        "image_dense_score": 0.2530583100128355,
+        "indexed_image_count": 1,
+        "best_image_path": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image/Brand_Memory_Test/Dunkin_4.png"
+      }
+    ],
+    "clue_hit_count": 1,
+    "corpus_entry_count": 72,
+    "text_embedding_model": "all-MiniLM-L6-v2",
+    "multimodal_embedding_model": "siglip2-base-patch16-384",
+    "text_dense_weight": 0.5,
+    "image_dense_weight": 0.5,
+    "caption_text_included": false,
+    "image_embeddings_built": true,
+    "multi_image_indexing_enabled": true,
+    "indexed_image_count": 30,
+    "history_source": "retrieval",
+    "captions_loaded": false,
+    "images_loaded": true,
+    "history_turns_after_truncation": 20
+  }
+}

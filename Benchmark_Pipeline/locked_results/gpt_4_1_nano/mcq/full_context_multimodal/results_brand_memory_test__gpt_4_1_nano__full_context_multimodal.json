@@ -1,0 +1,99 @@
+{
+  "task_name": "brand_memory_test",
+  "model_name": "gpt_4_1_nano",
+  "model_path": "gpt-4.1-nano",
+  "method_name": "full_context_multimodal",
+  "base_method_name": "full_context_multimodal",
+  "method_modality": "",
+  "mode": "open",
+  "num_qas": 33,
+  "num_qas_run": 33,
+  "dialog_json": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/dialog/Brand_Memory_Test.json",
+  "image_root": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image",
+  "run_dir": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/runs/brand_memory_test/20260419_200822_gpt_4_1_nano_full_context_multimodal",
+  "git_commit": "2ede73a357fc683261e8335004aafee97dabd948",
+  "summary": {
+    "open_count": 33,
+    "overall": {
+      "em": 0.42424242424242425,
+      "contains_gt": 0.42424242424242425,
+      "f1": 0.42424242424242425
+    },
+    "by_x": {
+      "X2": {
+        "em": 0.5555555555555556,
+        "contains_gt": 0.5555555555555556,
+        "f1": 0.5555555555555556
+      },
+      "X4": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0
+      },
+      "X1": {
+        "em": 0.4090909090909091,
+        "contains_gt": 0.4090909090909091,
+        "f1": 0.4090909090909091
+      }
+    },
+    "by_y": {
+      "Y1": {
+        "em": 0.3333333333333333,
+        "contains_gt": 0.3333333333333333,
+        "f1": 0.3333333333333333
+      },
+      "Y2": {
+        "em": 0.43333333333333335,
+        "contains_gt": 0.43333333333333335,
+        "f1": 0.43333333333333335
+      }
+    },
+    "by_cell": {
+      "X2_Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0
+      },
+      "X4_Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0
+      },
+      "X2_Y2": {
+        "em": 0.625,
+        "contains_gt": 0.625,
+        "f1": 0.625
+      },
+      "X1_Y2": {
+        "em": 0.38095238095238093,
+        "contains_gt": 0.38095238095238093,
+        "f1": 0.38095238095238093
+      },
+      "X4_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0
+      },
+      "X1_Y1": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
+      }
+    },
+    "mcq_count": 33,
+    "mcq_valid_rate": 1.0,
+    "mcq_overall": {
+      "em": 0.42424242424242425,
+      "contains_gt": 0.42424242424242425,
+      "f1": 0.42424242424242425
+    }
+  },
+  "method_runtime": {
+    "method_modality": "multimodal",
+    "history_source": "full_context",
+    "captions_loaded": false,
+    "images_loaded": true,
+    "history_turns_after_truncation": 144,
+    "history_turns_before_truncation": 144
+  }
+}

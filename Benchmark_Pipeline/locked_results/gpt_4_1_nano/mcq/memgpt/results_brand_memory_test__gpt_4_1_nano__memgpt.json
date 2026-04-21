@@ -1,0 +1,103 @@
+{
+  "task_name": "brand_memory_test",
+  "model_name": "gpt_4_1_nano",
+  "model_path": "gpt-4.1-nano",
+  "method_name": "memgpt",
+  "base_method_name": "memgpt",
+  "method_modality": "",
+  "mode": "mcq",
+  "num_qas": 33,
+  "num_qas_run": 33,
+  "dialog_json": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/dialog/Brand_Memory_Test.json",
+  "image_root": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image",
+  "run_dir": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/runs/brand_memory_test/20260420_143223_gpt_4_1_nano_memgpt",
+  "git_commit": "1f877fec7f6f1b343118433dbd5768a8ca8941e0",
+  "summary": {
+    "open_count": 33,
+    "overall": {
+      "em": 0.36363636363636365,
+      "contains_gt": 0.36363636363636365,
+      "f1": 0.36363636363636365
+    },
+    "by_x": {
+      "X2": {
+        "em": 0.5555555555555556,
+        "contains_gt": 0.5555555555555556,
+        "f1": 0.5555555555555556
+      },
+      "X4": {
+        "em": 0.5,
+        "contains_gt": 0.5,
+        "f1": 0.5
+      },
+      "X1": {
+        "em": 0.2727272727272727,
+        "contains_gt": 0.2727272727272727,
+        "f1": 0.2727272727272727
+      }
+    },
+    "by_y": {
+      "Y1": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
+      },
+      "Y2": {
+        "em": 0.3,
+        "contains_gt": 0.3,
+        "f1": 0.3
+      }
+    },
+    "by_cell": {
+      "X2_Y1": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
+      },
+      "X4_Y1": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
+      },
+      "X2_Y2": {
+        "em": 0.5,
+        "contains_gt": 0.5,
+        "f1": 0.5
+      },
+      "X1_Y2": {
+        "em": 0.23809523809523808,
+        "contains_gt": 0.23809523809523808,
+        "f1": 0.23809523809523808
+      },
+      "X4_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0
+      },
+      "X1_Y1": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
+      }
+    },
+    "mcq_count": 33,
+    "mcq_valid_rate": 1.0,
+    "mcq_overall": {
+      "em": 0.36363636363636365,
+      "contains_gt": 0.36363636363636365,
+      "f1": 0.36363636363636365
+    }
+  },
+  "method_runtime": {
+    "caption_validation_passed": true,
+    "caption_validation_round_count": 30,
+    "num_memories": 72,
+    "debug_dir": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/output/brand_memory_test/memgpt",
+    "memgpt_home": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/runs/brand_memory_test/memgpt_home",
+    "model_name": "gpt-4.1-nano",
+    "final_answer_formatter": "openai_json_schema",
+    "final_answer_model": "gpt-4.1-nano",
+    "last_memgpt_raw_prediction": "",
+    "last_final_answer_prompt": "You are producing the final benchmark answer.\nUse the benchmark question and the MemGPT draft answer below.\nSelect exactly one option letter from: A, B, C, D.\nReturn the best final option even if the draft answer is verbose.\n\nBenchmark question:\nWhat was the very first product category shown in the ad deck — was it a cola, coffee, or fast food brand?\n\nA. Fast food (Burger King)\nB. Fast food (McDonald's)\nC. Cola (Coca-Cola)\nD. Coffee (Starbucks)\n\nAnswer with ONLY the option letter (A, B, C, D). Do not explain.\n\nMemGPT draft answer:\n[empty]"
+  }
+}

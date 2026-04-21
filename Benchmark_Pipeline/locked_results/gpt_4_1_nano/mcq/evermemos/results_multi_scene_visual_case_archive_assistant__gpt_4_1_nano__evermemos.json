@@ -1,0 +1,110 @@
+{
+  "task_name": "multi_scene_visual_case_archive_assistant",
+  "model_name": "gpt_4_1_nano",
+  "model_path": "gpt-4.1-nano",
+  "method_name": "evermemos",
+  "base_method_name": "evermemos",
+  "method_modality": "",
+  "mode": "open",
+  "num_qas": 59,
+  "num_qas_run": 59,
+  "dialog_json": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/dialog/Multi-Scene_Visual_Case_Archive_Assistant.json",
+  "image_root": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image",
+  "run_dir": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/runs/multi_scene_visual_case_archive_assistant/20260419_221749_gpt_4_1_nano_evermemos",
+  "git_commit": "2ede73a357fc683261e8335004aafee97dabd948",
+  "summary": {
+    "open_count": 59,
+    "overall": {
+      "em": 0.3728813559322034,
+      "contains_gt": 0.3728813559322034,
+      "f1": 0.3728813559322034
+    },
+    "by_x": {
+      "X4": {
+        "em": 0.5714285714285714,
+        "contains_gt": 0.5714285714285714,
+        "f1": 0.5714285714285714
+      },
+      "X2": {
+        "em": 0.6666666666666666,
+        "contains_gt": 0.6666666666666666,
+        "f1": 0.6666666666666666
+      },
+      "X3": {
+        "em": 0.27906976744186046,
+        "contains_gt": 0.27906976744186046,
+        "f1": 0.27906976744186046
+      }
+    },
+    "by_y": {
+      "Y2": {
+        "em": 0.6,
+        "contains_gt": 0.6,
+        "f1": 0.6
+      },
+      "Y3": {
+        "em": 0.46153846153846156,
+        "contains_gt": 0.46153846153846156,
+        "f1": 0.46153846153846156
+      },
+      "Y1": {
+        "em": 0.2777777777777778,
+        "contains_gt": 0.2777777777777778,
+        "f1": 0.2777777777777778
+      }
+    },
+    "by_cell": {
+      "X4_Y2": {
+        "em": 0.8,
+        "contains_gt": 0.8,
+        "f1": 0.8
+      },
+      "X2_Y2": {
+        "em": 0.3333333333333333,
+        "contains_gt": 0.3333333333333333,
+        "f1": 0.3333333333333333
+      },
+      "X3_Y3": {
+        "em": 0.2,
+        "contains_gt": 0.2,
+        "f1": 0.2
+      },
+      "X2_Y3": {
+        "em": 0.8333333333333334,
+        "contains_gt": 0.8333333333333334,
+        "f1": 0.8333333333333334
+      },
+      "X3_Y1": {
+        "em": 0.2777777777777778,
+        "contains_gt": 0.2777777777777778,
+        "f1": 0.2777777777777778
+      },
+      "X3_Y2": {
+        "em": 0.5,
+        "contains_gt": 0.5,
+        "f1": 0.5
+      },
+      "X4_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0
+      }
+    },
+    "mcq_count": 59,
+    "mcq_valid_rate": 1.0,
+    "mcq_overall": {
+      "em": 0.3728813559322034,
+      "contains_gt": 0.3728813559322034,
+      "f1": 0.3728813559322034
+    }
+  },
+  "method_runtime": {
+    "method_modality": "text_only",
+    "num_memories": 234,
+    "debug_dir": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/runs/multi_scene_visual_case_archive_assistant/evermemos/975a8418699ed96b",
+    "runtime_dir": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/runs/multi_scene_visual_case_archive_assistant/evermemos/975a8418699ed96b",
+    "runtime_signature": "975a8418699ed96b",
+    "internal_llm_model": "gpt-4.1-nano",
+    "answer_model": "gpt-4.1-nano"
+  }
+}

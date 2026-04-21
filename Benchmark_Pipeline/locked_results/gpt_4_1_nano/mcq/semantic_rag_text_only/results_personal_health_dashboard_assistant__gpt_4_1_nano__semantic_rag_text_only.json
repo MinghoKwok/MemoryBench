@@ -1,0 +1,158 @@
+{
+  "task_name": "personal_health_dashboard_assistant",
+  "model_name": "gpt_4_1_nano",
+  "model_path": "gpt-4.1-nano",
+  "method_name": "semantic_rag_text_only",
+  "base_method_name": "semantic_rag_text_only",
+  "method_modality": "",
+  "mode": "open",
+  "num_qas": 63,
+  "num_qas_run": 63,
+  "dialog_json": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/dialog/Personal_Health_Dashboard_Assistant.json",
+  "image_root": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image",
+  "run_dir": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/runs/personal_health_dashboard_assistant/20260419_203607_gpt_4_1_nano_semantic_rag_text_only",
+  "git_commit": "2ede73a357fc683261e8335004aafee97dabd948",
+  "summary": {
+    "open_count": 63,
+    "overall": {
+      "em": 0.31746031746031744,
+      "contains_gt": 0.31746031746031744,
+      "f1": 0.31746031746031744
+    },
+    "by_x": {
+      "X4": {
+        "em": 0.32142857142857145,
+        "contains_gt": 0.32142857142857145,
+        "f1": 0.32142857142857145
+      },
+      "X3": {
+        "em": 0.25,
+        "contains_gt": 0.25,
+        "f1": 0.25
+      },
+      "X1": {
+        "em": 0.3333333333333333,
+        "contains_gt": 0.3333333333333333,
+        "f1": 0.3333333333333333
+      }
+    },
+    "by_y": {
+      "Y2": {
+        "em": 0.2549019607843137,
+        "contains_gt": 0.2549019607843137,
+        "f1": 0.2549019607843137
+      },
+      "Y3": {
+        "em": 0.6363636363636364,
+        "contains_gt": 0.6363636363636364,
+        "f1": 0.6363636363636364
+      },
+      "Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0
+      }
+    },
+    "by_cell": {
+      "X4_Y2": {
+        "em": 0.2553191489361702,
+        "contains_gt": 0.2553191489361702,
+        "f1": 0.2553191489361702
+      },
+      "X4_Y3": {
+        "em": 0.6666666666666666,
+        "contains_gt": 0.6666666666666666,
+        "f1": 0.6666666666666666
+      },
+      "X3_Y2": {
+        "em": 0.25,
+        "contains_gt": 0.25,
+        "f1": 0.25
+      },
+      "X1_Y3": {
+        "em": 0.5,
+        "contains_gt": 0.5,
+        "f1": 0.5
+      },
+      "X1_Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0
+      }
+    },
+    "mcq_count": 63,
+    "mcq_valid_rate": 1.0,
+    "mcq_overall": {
+      "em": 0.31746031746031744,
+      "contains_gt": 0.31746031746031744,
+      "f1": 0.31746031746031744
+    }
+  },
+  "method_runtime": {
+    "retrieval_backend": "dense_text",
+    "retrieval_corpus": "round_text",
+    "method_modality": "text_only",
+    "top_k": 10,
+    "neighbor_window": 0,
+    "seed_round_ids": [
+      "D2:6",
+      "D1:0",
+      "D10:5",
+      "D6:1",
+      "D7:2",
+      "D11:6",
+      "D11:3",
+      "D2:2",
+      "D9:3",
+      "D2:1"
+    ],
+    "selected_round_ids": [
+      "D2:6",
+      "D1:0",
+      "D10:5",
+      "D6:1",
+      "D7:2",
+      "D11:6",
+      "D11:3",
+      "D2:2",
+      "D9:3",
+      "D2:1"
+    ],
+    "top_candidates": [
+      {
+        "round_id": "D2:6",
+        "score": 0.43049702101531834,
+        "text_dense_score": 0.43049702101531834
+      },
+      {
+        "round_id": "D1:0",
+        "score": 0.41694675962104505,
+        "text_dense_score": 0.41694675962104505
+      },
+      {
+        "round_id": "D10:5",
+        "score": 0.36520007798972876,
+        "text_dense_score": 0.36520007798972876
+      },
+      {
+        "round_id": "D6:1",
+        "score": 0.33342066220661315,
+        "text_dense_score": 0.33342066220661315
+      },
+      {
+        "round_id": "D7:2",
+        "score": 0.3224587813551054,
+        "text_dense_score": 0.3224587813551054
+      }
+    ],
+    "clue_hit_count": 0,
+    "corpus_entry_count": 97,
+    "text_embedding_model": "all-MiniLM-L6-v2",
+    "caption_text_included": true,
+    "image_embeddings_built": false,
+    "history_source": "retrieval",
+    "captions_loaded": true,
+    "images_loaded": false,
+    "history_turns_after_truncation": 20
+  }
+}

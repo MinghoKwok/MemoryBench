@@ -1,0 +1,139 @@
+{
+  "task_name": "social_chat_memory_test",
+  "model_name": "gpt_4_1_nano",
+  "model_path": "gpt-4.1-nano",
+  "method_name": "gen_agents__text_only",
+  "base_method_name": "gen_agents",
+  "method_modality": "text_only",
+  "mode": "mcq",
+  "num_qas": 44,
+  "num_qas_run": 44,
+  "dialog_json": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/dialog/Social_Chat_Memory_Test.json",
+  "image_root": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image",
+  "run_dir": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/runs/social_chat_memory_test/20260420_132826_gpt_4_1_nano_gen_agents__text_only",
+  "git_commit": "5cb368b7bf8ce5c708c557c1d1970548552894c1",
+  "summary": {
+    "open_count": 44,
+    "overall": {
+      "em": 0.4318181818181818,
+      "contains_gt": 0.4318181818181818,
+      "f1": 0.4318181818181818
+    },
+    "by_x": {
+      "X2": {
+        "em": 0.4166666666666667,
+        "contains_gt": 0.4166666666666667,
+        "f1": 0.4166666666666667
+      },
+      "X1": {
+        "em": 0.6,
+        "contains_gt": 0.6,
+        "f1": 0.6
+      },
+      "X3": {
+        "em": 0.5,
+        "contains_gt": 0.5,
+        "f1": 0.5
+      },
+      "X4": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0
+      }
+    },
+    "by_y": {
+      "Y2": {
+        "em": 0.3,
+        "contains_gt": 0.3,
+        "f1": 0.3
+      },
+      "Y3": {
+        "em": 0.75,
+        "contains_gt": 0.75,
+        "f1": 0.75
+      },
+      "Y1": {
+        "em": 0.6666666666666666,
+        "contains_gt": 0.6666666666666666,
+        "f1": 0.6666666666666666
+      }
+    },
+    "by_cell": {
+      "X2_Y2": {
+        "em": 0.3333333333333333,
+        "contains_gt": 0.3333333333333333,
+        "f1": 0.3333333333333333
+      },
+      "X2_Y3": {
+        "em": 0.6666666666666666,
+        "contains_gt": 0.6666666666666666,
+        "f1": 0.6666666666666666
+      },
+      "X2_Y1": {
+        "em": 0.6666666666666666,
+        "contains_gt": 0.6666666666666666,
+        "f1": 0.6666666666666666
+      },
+      "X1_Y1": {
+        "em": 0.5,
+        "contains_gt": 0.5,
+        "f1": 0.5
+      },
+      "X1_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0
+      },
+      "X3_Y1": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
+      },
+      "X3_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0
+      },
+      "X4_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0
+      },
+      "X1_Y3": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
+      }
+    },
+    "mcq_count": 44,
+    "mcq_valid_rate": 1.0,
+    "mcq_overall": {
+      "em": 0.4318181818181818,
+      "contains_gt": 0.4318181818181818,
+      "f1": 0.4318181818181818
+    }
+  },
+  "method_runtime": {
+    "caption_validation_passed": true,
+    "caption_validation_round_count": 43,
+    "method_modality": "text_only",
+    "history_source": "retrieval",
+    "captions_loaded": true,
+    "images_loaded": false,
+    "num_memories": 53,
+    "debug_dir": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/output/social_chat_memory_test/gen_agents",
+    "history_turns_after_truncation": 1,
+    "retrieved_round_ids": [
+      "R4b:1",
+      "R4:1",
+      "R4:2",
+      "B6b:1",
+      "R3:1",
+      "R2:1",
+      "R3b:1",
+      "B5b:1",
+      "B8:1",
+      "R2:2"
+    ]
+  }
+}
