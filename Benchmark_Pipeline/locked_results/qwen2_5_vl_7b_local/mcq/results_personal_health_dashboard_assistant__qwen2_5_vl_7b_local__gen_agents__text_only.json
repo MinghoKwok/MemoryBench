@@ -1,0 +1,16 @@
+{
+  "task_name": "personal_health_dashboard_assistant",
+  "model_name": "qwen2_5_vl_7b_local",
+  "model_path": "qwen2.5-vl-7b-instruct",
+  "method_name": "gen_agents__text_only",
+  "mode": "mcq",
+  "num_qas": 63,
+  "num_qas_run": 63,
+  "summary": {
+    "overall": {
+      "em": 0.23809523809523808,
+      "f1": 0.23809523809523808,
+      "bleu": NaN
+    }
+  }
+}

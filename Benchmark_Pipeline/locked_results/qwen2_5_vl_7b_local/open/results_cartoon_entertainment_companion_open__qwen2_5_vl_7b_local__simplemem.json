@@ -1,0 +1,16 @@
+{
+  "task_name": "cartoon_entertainment_companion_open",
+  "model_name": "qwen2_5_vl_7b_local",
+  "model_path": "qwen2.5-vl-7b-instruct",
+  "method_name": "simplemem",
+  "mode": "open",
+  "num_qas": 112,
+  "num_qas_run": 112,
+  "summary": {
+    "overall": {
+      "em": 0.05357142857142857,
+      "f1": 0.16621300434049216,
+      "bleu": 0.041300401728603005
+    }
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "task_name": "multi_scene_visual_case_archive_assistant",
+  "model_name": "qwen2_5_vl_7b_local",
+  "model_path": "qwen2.5-vl-7b-instruct",
+  "method_name": "memoryos",
+  "mode": "mcq",
+  "num_qas": 59,
+  "num_qas_run": 59,
+  "summary": {
+    "overall": {
+      "em": 0.7627118644067796,
+      "f1": 0.7627118644067796,
+      "bleu": NaN
+    }
+  }
+}

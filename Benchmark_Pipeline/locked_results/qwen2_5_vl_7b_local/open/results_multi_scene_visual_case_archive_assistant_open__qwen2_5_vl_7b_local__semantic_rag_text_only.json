@@ -1,0 +1,16 @@
+{
+  "task_name": "multi_scene_visual_case_archive_assistant_open",
+  "model_name": "qwen2_5_vl_7b_local",
+  "model_path": "qwen2.5-vl-7b-instruct",
+  "method_name": "semantic_rag_text_only",
+  "mode": "open",
+  "num_qas": 59,
+  "num_qas_run": 59,
+  "summary": {
+    "overall": {
+      "em": 0.0,
+      "f1": 0.24205058498259435,
+      "bleu": 0.06816458970752257
+    }
+  }
+}

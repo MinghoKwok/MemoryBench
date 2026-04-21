@@ -1,0 +1,16 @@
+{
+  "task_name": "personal_health_dashboard_assistant_open",
+  "model_name": "qwen2_5_vl_7b_local",
+  "model_path": "qwen2.5-vl-7b-instruct",
+  "method_name": "memoryos",
+  "mode": "open",
+  "num_qas": 63,
+  "num_qas_run": 63,
+  "summary": {
+    "overall": {
+      "em": 0.12698412698412698,
+      "f1": 0.24812141898976633,
+      "bleu": 0.10124329836401462
+    }
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "task_name": "card_playlog_test_open",
+  "model_name": "qwen2_5_vl_7b_local",
+  "model_path": "qwen2.5-vl-7b-instruct",
+  "method_name": "m2a",
+  "mode": "open",
+  "num_qas": 48,
+  "num_qas_run": 48,
+  "summary": {
+    "overall": {
+      "em": 0.0,
+      "f1": 0.018114117595020462,
+      "bleu": 0.0017933583397786062
+    }
+  }
+}

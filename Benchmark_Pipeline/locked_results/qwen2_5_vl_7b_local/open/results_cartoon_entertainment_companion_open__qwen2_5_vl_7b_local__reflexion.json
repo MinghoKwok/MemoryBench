@@ -1,0 +1,16 @@
+{
+  "task_name": "cartoon_entertainment_companion_open",
+  "model_name": "qwen2_5_vl_7b_local",
+  "model_path": "qwen2.5-vl-7b-instruct",
+  "method_name": "reflexion",
+  "mode": "open",
+  "num_qas": 112,
+  "num_qas_run": 112,
+  "summary": {
+    "overall": {
+      "em": 0.044642857142857144,
+      "f1": 0.26276954111585005,
+      "bleu": 0.053422518809689026
+    }
+  }
+}

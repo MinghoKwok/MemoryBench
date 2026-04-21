@@ -1,0 +1,16 @@
+{
+  "task_name": "home_renovation_interior_design",
+  "model_name": "qwen2_5_vl_7b_local",
+  "model_path": "qwen2.5-vl-7b-instruct",
+  "method_name": "memoryos",
+  "mode": "mcq",
+  "num_qas": 65,
+  "num_qas_run": 65,
+  "summary": {
+    "overall": {
+      "em": 0.23076923076923078,
+      "f1": 0.23076923076923078,
+      "bleu": NaN
+    }
+  }
+}

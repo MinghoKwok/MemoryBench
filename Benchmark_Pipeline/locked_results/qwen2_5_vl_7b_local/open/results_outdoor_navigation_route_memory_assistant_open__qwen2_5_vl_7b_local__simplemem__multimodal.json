@@ -1,0 +1,16 @@
+{
+  "task_name": "outdoor_navigation_route_memory_assistant_open",
+  "model_name": "qwen2_5_vl_7b_local",
+  "model_path": "qwen2.5-vl-7b-instruct",
+  "method_name": "simplemem__multimodal",
+  "mode": "open",
+  "num_qas": 40,
+  "num_qas_run": 40,
+  "summary": {
+    "overall": {
+      "em": 0.0,
+      "f1": 0.056373242868328954,
+      "bleu": 0.007837617384572875
+    }
+  }
+}

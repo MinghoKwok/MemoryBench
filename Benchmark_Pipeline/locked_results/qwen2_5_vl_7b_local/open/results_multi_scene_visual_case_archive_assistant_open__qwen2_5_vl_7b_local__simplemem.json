@@ -1,0 +1,16 @@
+{
+  "task_name": "multi_scene_visual_case_archive_assistant_open",
+  "model_name": "qwen2_5_vl_7b_local",
+  "model_path": "qwen2.5-vl-7b-instruct",
+  "method_name": "simplemem",
+  "mode": "open",
+  "num_qas": 59,
+  "num_qas_run": 59,
+  "summary": {
+    "overall": {
+      "em": 0.01694915254237288,
+      "f1": 0.050078007036080174,
+      "bleu": 0.0235647697792779
+    }
+  }
+}

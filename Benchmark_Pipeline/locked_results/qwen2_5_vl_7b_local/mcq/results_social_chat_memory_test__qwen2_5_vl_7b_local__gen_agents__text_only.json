@@ -1,0 +1,16 @@
+{
+  "task_name": "social_chat_memory_test",
+  "model_name": "qwen2_5_vl_7b_local",
+  "model_path": "qwen2.5-vl-7b-instruct",
+  "method_name": "gen_agents__text_only",
+  "mode": "mcq",
+  "num_qas": 44,
+  "num_qas_run": 44,
+  "summary": {
+    "overall": {
+      "em": 0.4772727272727273,
+      "f1": 0.4772727272727273,
+      "bleu": NaN
+    }
+  }
+}

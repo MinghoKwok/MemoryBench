@@ -1,0 +1,16 @@
+{
+  "task_name": "social_chat_memory_test_open",
+  "model_name": "qwen2_5_vl_7b_local",
+  "model_path": "qwen2.5-vl-7b-instruct",
+  "method_name": "semantic_rag_multimodal",
+  "mode": "open",
+  "num_qas": 44,
+  "num_qas_run": 44,
+  "summary": {
+    "overall": {
+      "em": 0.06818181818181818,
+      "f1": 0.19913740763996265,
+      "bleu": 0.042082500537743726
+    }
+  }
+}

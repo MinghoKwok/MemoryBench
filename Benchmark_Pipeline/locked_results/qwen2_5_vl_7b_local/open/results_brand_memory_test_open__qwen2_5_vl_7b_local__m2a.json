@@ -1,0 +1,16 @@
+{
+  "task_name": "brand_memory_test_open",
+  "model_name": "qwen2_5_vl_7b_local",
+  "model_path": "qwen2.5-vl-7b-instruct",
+  "method_name": "m2a",
+  "mode": "open",
+  "num_qas": 33,
+  "num_qas_run": 33,
+  "summary": {
+    "overall": {
+      "em": 0.0,
+      "f1": 0.041359585833270034,
+      "bleu": 0.003958170723130333
+    }
+  }
+}

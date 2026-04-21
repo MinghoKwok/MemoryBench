@@ -1,0 +1,16 @@
+{
+  "task_name": "home_renovation_interior_design_open",
+  "model_name": "qwen2_5_vl_7b_local",
+  "model_path": "qwen2.5-vl-7b-instruct",
+  "method_name": "mma",
+  "mode": "open",
+  "num_qas": 65,
+  "num_qas_run": 65,
+  "summary": {
+    "overall": {
+      "em": 0.015384615384615385,
+      "f1": 0.25574065233942384,
+      "bleu": 0.06900736143850679
+    }
+  }
+}

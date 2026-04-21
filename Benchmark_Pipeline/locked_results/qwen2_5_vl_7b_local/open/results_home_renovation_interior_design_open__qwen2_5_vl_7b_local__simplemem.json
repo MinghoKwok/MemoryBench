@@ -1,0 +1,16 @@
+{
+  "task_name": "home_renovation_interior_design_open",
+  "model_name": "qwen2_5_vl_7b_local",
+  "model_path": "qwen2.5-vl-7b-instruct",
+  "method_name": "simplemem",
+  "mode": "open",
+  "num_qas": 65,
+  "num_qas_run": 65,
+  "summary": {
+    "overall": {
+      "em": 0.0,
+      "f1": 0.04043734043734043,
+      "bleu": 0.010270039856969585
+    }
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "task_name": "personal_health_dashboard_assistant_open",
+  "model_name": "qwen2_5_vl_7b_local",
+  "model_path": "qwen2.5-vl-7b-instruct",
+  "method_name": "m2a",
+  "mode": "open",
+  "num_qas": 63,
+  "num_qas_run": 63,
+  "summary": {
+    "overall": {
+      "em": 0.0,
+      "f1": 0.13675101143718923,
+      "bleu": 0.029543036894126323
+    }
+  }
+}

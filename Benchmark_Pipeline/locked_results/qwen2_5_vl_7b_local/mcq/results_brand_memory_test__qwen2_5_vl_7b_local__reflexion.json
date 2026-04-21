@@ -1,0 +1,16 @@
+{
+  "task_name": "brand_memory_test",
+  "model_name": "qwen2_5_vl_7b_local",
+  "model_path": "qwen2.5-vl-7b-instruct",
+  "method_name": "reflexion",
+  "mode": "mcq",
+  "num_qas": 33,
+  "num_qas_run": 33,
+  "summary": {
+    "overall": {
+      "em": 0.48484848484848486,
+      "f1": 0.48484848484848486,
+      "bleu": NaN
+    }
+  }
+}
