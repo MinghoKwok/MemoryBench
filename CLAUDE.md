@@ -71,10 +71,10 @@ export GEMINI_API_KEY="AIzaSy..."  # will be detected and revoked
 |--------|-----------------|-----------------|-------|
 | `full_context_multimodal` | N/A | Yes | Full history with images |
 | `full_context_text_only` | N/A | No | Full history, captions as text; needs `image_caption` in dataset |
-| `semantic_rag_multimodal` | Yes (all-MiniLM-L6-v2) | Yes (SigLIP2/CLIP) | Requires memorybench env |
+| `semantic_rag_multimodal` | Yes (all-MiniLM-L6-v2) | Yes (SigLIP2) | Requires memorybench env |
 | `semantic_rag_text_only` | Yes (all-MiniLM-L6-v2) | No | Requires memorybench env |
-| `m2a` | Yes (all-MiniLM-L6-v2) | Yes (CLIP) | Agentic; requires memorybench env |
-| `mma` | Yes (all-MiniLM-L6-v2) | Yes (SigLIP2/CLIP) | Confidence-aware agentic; requires memorybench env |
+| `m2a` | Yes (all-MiniLM-L6-v2) | Yes (SigLIP2) | Agentic; requires memorybench env |
+| `mma` | Yes (all-MiniLM-L6-v2) | Yes (SigLIP v1 so400m) | Confidence-aware agentic; requires memorybench env |
 
 **Important:** If you see these warnings, you're in the wrong environment:
 ```

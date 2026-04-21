@@ -29,7 +29,7 @@ bash run_all.sh --method full_context_multimodal --model gemini_2_5_flash_lite
 ### `run_all.sh` — Run a method × model across all datasets
 
 ```bash
-# Full sweep: one method × one model × all 9 datasets
+# Full sweep: one method × one model × all 8 datasets
 bash run_all.sh --method full_context_multimodal --model gemini_2_5_flash_lite
 
 # Specific datasets only
@@ -60,7 +60,7 @@ python run_benchmark.py \
 | Gemini 2.5 Flash Lite | `gemini_2_5_flash_lite` | `GEMINI_API_KEY` |
 | GPT-4.1 Nano | `gpt_4_1_nano` | `OPENAI_API_KEY` |
 | GPT-4o Mini | `gpt_4o_mini` | `OPENAI_API_KEY` |
-| Qwen2.5-VL-7B (local) | `qwen2_5_vl_7b_local` | — |
+| Qwen3-VL-8B (OpenRouter) | `qwen3_vl_8b_openrouter` | `OPENROUTER_API_KEY` |
 
 ### Available Methods
 
@@ -75,9 +75,8 @@ python run_benchmark.py \
 | SimpleMem | `simplemem` / `simplemem_gemini` | Summarize | Omni-SimpleMem (text) |
 | SimpleMem (V) | `simplemem_multimodal` / `simplemem_multimodal_gemini` | Summarize | Omni-SimpleMem + images |
 | MemoryOS | `memoryos` / `memoryos_gemini` | Agentic | MemoryOS baseline |
-| MIRIX | `mirix` / `mirix_gemini` | Agentic | MIRIX baseline |
-| M2A | `m2a` / `m2a_gemini` | Agentic | Multimodal agentic; uses CLIP |
-| MMA | `mma` / `mma_gemini` | Agentic | Confidence-aware; uses CLIP |
+| M2A | `m2a` / `m2a_gemini` | Agentic | Multimodal agentic; uses SigLIP2 |
+| MMA | `mma` / `mma_gemini` | Agentic | Confidence-aware; uses SigLIP v1 |
 
 **`*_gemini` variants** automatically redirect the OpenAI SDK to Gemini's OpenAI-compatible endpoint. Use these on machines without OpenAI API access.
 
