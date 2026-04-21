@@ -363,9 +363,7 @@ class _DenseMultimodalRetriever(_BaseRetriever):
         self.image_dense_weight = float(config.get("image_dense_weight", 0.0))
         self.text_embedder = TextEmbedder(self.text_embedding_model)
         self.mm_model = str(config.get("multimodal_embedding_model", "siglip2-base-patch16-384"))
-        self.mm_url = str(config.get("multimodal_embedding_url", "http://localhost:8050/v1"))
-        self.mm_api_key = str(config.get("multimodal_embedding_api_key", "dummy"))
-        self.mm_embedder = get_multimodal_embedder(self.mm_model, self.mm_url, self.mm_api_key)
+        self.mm_embedder = get_multimodal_embedder(self.mm_model)
         if self.mm_embedder is None:
             raise RuntimeError(
                 "semantic_rag dense_multimodal requires a working multimodal embedder; "
@@ -477,8 +475,6 @@ def _cache_key(dataset: MemoryBenchmarkDataset, config: Dict[str, Any]) -> Tuple
         "semantic_weight",
         "text_embedding_model",
         "multimodal_embedding_model",
-        "multimodal_embedding_url",
-        "multimodal_embedding_api_key",
         "text_dense_weight",
         "image_dense_weight",
         "retrieval_backend",

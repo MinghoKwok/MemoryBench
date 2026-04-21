@@ -38,8 +38,6 @@ class MMAConfig:
 
     # Multimodal embedding (reuse M2A's CLIP/SigLIP infrastructure)
     multimodal_embedding_model: str = "google/siglip-so400m-patch14-384"
-    multimodal_embedding_url: str = "http://localhost:8050/v1"
-    multimodal_embedding_api_key: str = "dummy"
     image_text_weight: float = 0.5  # blend weight: text vs image retrieval
 
     # Retrieval
@@ -134,8 +132,6 @@ class MMASystem:
 
         self._mm_embedder = get_multimodal_embedder(
             vllm_model=self.cfg.multimodal_embedding_model,
-            vllm_url=self.cfg.multimodal_embedding_url,
-            vllm_api_key=self.cfg.multimodal_embedding_api_key,
         )
         if self._mm_embedder is not None:
             print(f"[MMA] Multimodal embedder: {type(self._mm_embedder).__name__}")

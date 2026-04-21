@@ -256,18 +256,18 @@ class LocalCLIPEmbedder:
 
 def get_multimodal_embedder(
     vllm_model: str = "siglip2-base-patch16-384",
-    vllm_url: str = "http://localhost:8050/v1",
-    vllm_api_key: str = "dummy",
     clip_model: str = "openai/clip-vit-base-patch32",
+    **_kwargs,
 ) -> Optional[Union[MultimodalEmbedder, LocalCLIPEmbedder]]:
     """
-    Factory function: try local SigLIP2 first, fallback to local CLIP.
+    Factory function: try local SigLIP first, fallback to local CLIP.
     Returns None if neither is available.
 
-    Note: vllm_url/vllm_api_key params are kept for config compatibility
-    but no longer used. SigLIP2 is loaded locally via transformers.
+    Args:
+        vllm_model: SigLIP model name (short or full HuggingFace ID).
+            Kept as 'vllm_model' for backwards config compatibility.
+        clip_model: CLIP model name for fallback.
     """
-    # Map short names to HuggingFace model IDs
     SHORT_NAME_MAP = {
         "siglip2-base-patch16-384": "google/siglip2-base-patch16-384",
         "siglip-so400m-patch14-384": "google/siglip-so400m-patch14-384",

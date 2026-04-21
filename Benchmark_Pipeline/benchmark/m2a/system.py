@@ -30,14 +30,12 @@ class M2ASystem:
       llm_timeout                 : int  = 90
       text_embedding_model        : str  = "all-MiniLM-L6-v2"
       multimodal_embedding_model  : str  = "siglip2-base-patch16-384"
-      multimodal_embedding_url    : str  = "http://localhost:8050/v1"
-      multimodal_embedding_api_key: str  = "dummy"
       max_memory_iterations       : int  = 15
       context_window              : int  = 5
       max_query_iterations        : int  = 5
 
     Image embedding fallback order:
-      1. vLLM + SigLIP2 (if server available at multimodal_embedding_url)
+      1. Local SigLIP2 (google/siglip2-base-patch16-384 via transformers)
       2. Local CLIP (openai/clip-vit-base-patch32 via transformers)
       3. None (image retrieval disabled, text-only search)
     """
@@ -53,8 +51,6 @@ class M2ASystem:
 
         text_model = str(cfg.get("text_embedding_model", "all-MiniLM-L6-v2"))
         mm_model = str(cfg.get("multimodal_embedding_model", "siglip2-base-patch16-384"))
-        mm_url = str(cfg.get("multimodal_embedding_url", "http://localhost:8050/v1"))
-        mm_api_key = str(cfg.get("multimodal_embedding_api_key", "dummy"))
 
         max_mem_iter = int(cfg.get("max_memory_iterations", 15))
         ctx_window = int(cfg.get("context_window", 5))
@@ -72,11 +68,9 @@ class M2ASystem:
 
         # Embedders
         self._text_embedder = TextEmbedder(text_model)
-        # Try vLLM first, fallback to local CLIP, or None if neither available
+        # Try local SigLIP2, fallback to local CLIP, or None
         self._multimodal_embedder = get_multimodal_embedder(
             vllm_model=mm_model,
-            vllm_url=mm_url,
-            vllm_api_key=mm_api_key,
         )
 
         # Stores
