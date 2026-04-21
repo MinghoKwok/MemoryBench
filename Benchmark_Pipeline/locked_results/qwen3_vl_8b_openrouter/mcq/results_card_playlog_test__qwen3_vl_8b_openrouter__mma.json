@@ -8,10 +8,10 @@
   "mode": "mcq",
   "num_qas": 48,
   "num_qas_run": 48,
-  "dialog_json": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/dialog/Card_Playlog_Test.json",
-  "image_root": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image",
-  "run_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/card_playlog_test/20260418_000906_qwen3_vl_8b_openrouter_mma",
-  "git_commit": "3e72cfbb2ad7b1177a0375324a70c69555d35ec9",
+  "dialog_json": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/dialog/Card_Playlog_Test.json",
+  "image_root": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/image",
+  "run_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/card_playlog_test/20260420_193351_qwen3_vl_8b_openrouter_mma",
+  "git_commit": "e3df13f29ca74b06578be06696cb2ed6310a339b",
   "summary": {
     "open_count": 48,
     "overall": {
@@ -28,26 +28,26 @@
     },
     "by_y": {
       "Y3": {
-        "em": 0.05263157894736842,
-        "contains_gt": 0.05263157894736842,
-        "f1": 0.05263157894736842
+        "em": 0.10526315789473684,
+        "contains_gt": 0.10526315789473684,
+        "f1": 0.10526315789473684
       },
       "Y2": {
-        "em": 0.6206896551724138,
-        "contains_gt": 0.6206896551724138,
-        "f1": 0.6206896551724138
+        "em": 0.5862068965517241,
+        "contains_gt": 0.5862068965517241,
+        "f1": 0.5862068965517241
       }
     },
     "by_cell": {
       "X4_Y3": {
-        "em": 0.05263157894736842,
-        "contains_gt": 0.05263157894736842,
-        "f1": 0.05263157894736842
+        "em": 0.10526315789473684,
+        "contains_gt": 0.10526315789473684,
+        "f1": 0.10526315789473684
       },
       "X4_Y2": {
-        "em": 0.6206896551724138,
-        "contains_gt": 0.6206896551724138,
-        "f1": 0.6206896551724138
+        "em": 0.5862068965517241,
+        "contains_gt": 0.5862068965517241,
+        "f1": 0.5862068965517241
       }
     },
     "mcq_count": 48,

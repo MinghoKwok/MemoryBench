@@ -1,0 +1,72 @@
+{
+  "task_name": "card_playlog_test_open",
+  "model_name": "gpt_4_1_nano",
+  "model_path": "gpt-4.1-nano",
+  "method_name": "mma",
+  "base_method_name": "mma",
+  "method_modality": "",
+  "mode": "open",
+  "num_qas": 48,
+  "num_qas_run": 48,
+  "dialog_json": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/dialog/Card_Playlog_Test_Open.json",
+  "image_root": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image",
+  "run_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/card_playlog_test_open/20260420_193649_gpt_4_1_nano_mma",
+  "git_commit": "e3df13f29ca74b06578be06696cb2ed6310a339b",
+  "summary": {
+    "open_count": 48,
+    "overall": {
+      "em": 0.0,
+      "contains_gt": 0.5,
+      "f1": 0.06155611577744261,
+      "bleu": 0.006721577571129436,
+      "bleu_1": 0.033098330445298405,
+      "bleu_2": 0.010896938155030761
+    },
+    "by_x": {
+      "X4": {
+        "em": 0.0,
+        "contains_gt": 0.5,
+        "f1": 0.06155611577744261,
+        "bleu": 0.006721577571129436,
+        "bleu_1": 0.033098330445298405,
+        "bleu_2": 0.010896938155030761
+      }
+    },
+    "by_y": {
+      "Y3": {
+        "em": 0.0,
+        "contains_gt": 0.47368421052631576,
+        "f1": 0.06615899684628478,
+        "bleu": 0.007617177490758206,
+        "bleu_1": 0.036127999424398316,
+        "bleu_2": 0.01201284324466082
+      },
+      "Y2": {
+        "em": 0.0,
+        "contains_gt": 0.5172413793103449,
+        "f1": 0.05854043507716671,
+        "bleu": 0.006134805209993344,
+        "bleu_1": 0.03111337490726743,
+        "bleu_2": 0.010165827923893827
+      }
+    },
+    "by_cell": {
+      "X4_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.47368421052631576,
+        "f1": 0.06615899684628478,
+        "bleu": 0.007617177490758206,
+        "bleu_1": 0.036127999424398316,
+        "bleu_2": 0.01201284324466082
+      },
+      "X4_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.5172413793103449,
+        "f1": 0.05854043507716671,
+        "bleu": 0.006134805209993344,
+        "bleu_1": 0.03111337490726743,
+        "bleu_2": 0.010165827923893827
+      }
+    }
+  }
+}

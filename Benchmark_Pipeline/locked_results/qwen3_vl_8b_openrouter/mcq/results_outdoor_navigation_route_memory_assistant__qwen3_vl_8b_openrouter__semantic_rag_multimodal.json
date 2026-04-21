@@ -10,20 +10,20 @@
   "num_qas_run": 40,
   "dialog_json": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/dialog/Outdoor_Navigation_Route_Memory_Assistant.json",
   "image_root": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/image",
-  "run_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/outdoor_navigation_route_memory_assistant/20260419_120230_qwen3_vl_8b_openrouter_semantic_rag_multimodal",
-  "git_commit": "4c82f93455d1401b3a5d0dc60990f978eb0ff055",
+  "run_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/outdoor_navigation_route_memory_assistant/20260420_202628_qwen3_vl_8b_openrouter_semantic_rag_multimodal",
+  "git_commit": "e3df13f29ca74b06578be06696cb2ed6310a339b",
   "summary": {
     "open_count": 40,
     "overall": {
-      "em": 0.5,
-      "contains_gt": 0.5,
-      "f1": 0.5
+      "em": 0.475,
+      "contains_gt": 0.475,
+      "f1": 0.475
     },
     "by_x": {
       "X3": {
-        "em": 0.5555555555555556,
-        "contains_gt": 0.5555555555555556,
-        "f1": 0.5555555555555556
+        "em": 0.5185185185185185,
+        "contains_gt": 0.5185185185185185,
+        "f1": 0.5185185185185185
       },
       "X1": {
         "em": 0.0,
@@ -53,9 +53,9 @@
         "f1": 0.0
       },
       "Y3": {
-        "em": 0.46153846153846156,
-        "contains_gt": 0.46153846153846156,
-        "f1": 0.46153846153846156
+        "em": 0.38461538461538464,
+        "contains_gt": 0.38461538461538464,
+        "f1": 0.38461538461538464
       }
     },
     "by_cell": {
@@ -80,9 +80,9 @@
         "f1": 0.6666666666666666
       },
       "X3_Y3": {
-        "em": 0.8,
-        "contains_gt": 0.8,
-        "f1": 0.8
+        "em": 0.6,
+        "contains_gt": 0.6,
+        "f1": 0.6
       },
       "X4_Y3": {
         "em": 0.0,
@@ -103,9 +103,9 @@
     "mcq_count": 40,
     "mcq_valid_rate": 1.0,
     "mcq_overall": {
-      "em": 0.5,
-      "contains_gt": 0.5,
-      "f1": 0.5
+      "em": 0.475,
+      "contains_gt": 0.475,
+      "f1": 0.475
     }
   },
   "method_runtime": {
@@ -116,68 +116,68 @@
     "neighbor_window": 0,
     "seed_round_ids": [
       "S7:R3",
-      "S1:R1",
       "S8:R4",
-      "S4:R6",
-      "S9:R4",
       "S5:R5",
-      "S2:R1",
+      "S9:R4",
+      "S2:R4",
       "S4:R3",
-      "S8:R1",
-      "S2:R4"
+      "S1:R1",
+      "S8:R2",
+      "S5:R3",
+      "S1:R5"
     ],
     "selected_round_ids": [
       "S7:R3",
-      "S1:R1",
       "S8:R4",
-      "S4:R6",
-      "S9:R4",
       "S5:R5",
-      "S2:R1",
+      "S9:R4",
+      "S2:R4",
       "S4:R3",
-      "S8:R1",
-      "S2:R4"
+      "S1:R1",
+      "S8:R2",
+      "S5:R3",
+      "S1:R5"
     ],
     "top_candidates": [
       {
         "round_id": "S7:R3",
-        "score": 0.2525791129414374,
+        "score": 0.3193191460266797,
         "text_dense_score": 0.5051582258828748,
-        "image_dense_score": 0.0,
+        "image_dense_score": 0.1334800661704846,
         "indexed_image_count": 1,
-        "best_image_path": ""
-      },
-      {
-        "round_id": "S1:R1",
-        "score": 0.21958728727096283,
-        "text_dense_score": 0.43917457454192566,
-        "image_dense_score": 0.0,
-        "indexed_image_count": 0,
-        "best_image_path": ""
+        "best_image_path": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/image/Outdoor_Navigation_Route_Memory_Assistant/S7_R3.jpg"
       },
       {
         "round_id": "S8:R4",
-        "score": 0.19119980366818154,
+        "score": 0.25494878888807904,
         "text_dense_score": 0.3823996073363631,
-        "image_dense_score": 0.0,
+        "image_dense_score": 0.12749797043979502,
         "indexed_image_count": 1,
-        "best_image_path": ""
+        "best_image_path": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/image/Outdoor_Navigation_Route_Memory_Assistant/S8_R4.jpg"
       },
       {
-        "round_id": "S4:R6",
-        "score": 0.1775958679024268,
-        "text_dense_score": 0.3551917358048536,
-        "image_dense_score": 0.0,
-        "indexed_image_count": 0,
-        "best_image_path": ""
+        "round_id": "S5:R5",
+        "score": 0.23940078520783586,
+        "text_dense_score": 0.3415139574757432,
+        "image_dense_score": 0.1372876129399285,
+        "indexed_image_count": 1,
+        "best_image_path": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/image/Outdoor_Navigation_Route_Memory_Assistant/S5_R5.jpg"
       },
       {
         "round_id": "S9:R4",
-        "score": 0.1757954326079576,
+        "score": 0.231891423193152,
         "text_dense_score": 0.3515908652159152,
-        "image_dense_score": 0.0,
+        "image_dense_score": 0.1121919811703888,
         "indexed_image_count": 1,
-        "best_image_path": ""
+        "best_image_path": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/image/Outdoor_Navigation_Route_Memory_Assistant/S9_R4.jpg"
+      },
+      {
+        "round_id": "S2:R4",
+        "score": 0.2281287600383447,
+        "text_dense_score": 0.3215345971571671,
+        "image_dense_score": 0.13472292291952234,
+        "indexed_image_count": 1,
+        "best_image_path": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/image/Outdoor_Navigation_Route_Memory_Assistant/S2_R4.jpg"
       }
     ],
     "clue_hit_count": 2,

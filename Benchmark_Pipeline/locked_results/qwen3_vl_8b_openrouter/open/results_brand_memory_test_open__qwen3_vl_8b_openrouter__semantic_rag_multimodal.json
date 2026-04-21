@@ -1,0 +1,207 @@
+{
+  "task_name": "brand_memory_test_open",
+  "model_name": "qwen3_vl_8b_openrouter",
+  "model_path": "qwen/qwen3-vl-8b-instruct",
+  "method_name": "semantic_rag_multimodal",
+  "base_method_name": "semantic_rag_multimodal",
+  "method_modality": "multimodal",
+  "mode": "open",
+  "num_qas": 33,
+  "num_qas_run": 33,
+  "dialog_json": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/dialog/Brand_Memory_Test_Open.json",
+  "image_root": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image",
+  "run_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/brand_memory_test_open/20260420_192640_qwen3_vl_8b_openrouter_semantic_rag_multimodal",
+  "git_commit": "e3df13f29ca74b06578be06696cb2ed6310a339b",
+  "summary": {
+    "open_count": 33,
+    "overall": {
+      "em": 0.18181818181818182,
+      "contains_gt": 0.18181818181818182,
+      "f1": 0.2853294853294853,
+      "bleu": 0.06372143038066112,
+      "bleu_1": 0.2468569807781347,
+      "bleu_2": 0.1432236475459755
+    },
+    "by_x": {
+      "X2": {
+        "em": 0.1111111111111111,
+        "contains_gt": 0.1111111111111111,
+        "f1": 0.27195767195767195,
+        "bleu": 0.05273239593375525,
+        "bleu_1": 0.18582991359972342,
+        "bleu_2": 0.145628912470007
+      },
+      "X4": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.3333333333333333,
+        "bleu": 0.03270962178059006,
+        "bleu_1": 0.18393972058572117,
+        "bleu_2": 0.05816684692258399
+      },
+      "X1": {
+        "em": 0.22727272727272727,
+        "contains_gt": 0.22727272727272727,
+        "f1": 0.28643578643578643,
+        "bleu": 0.07103619979985636,
+        "bleu_1": 0.277542350095886,
+        "bleu_2": 0.14997211195190727
+      }
+    },
+    "by_y": {
+      "Y1": {
+        "em": 0.3333333333333333,
+        "contains_gt": 0.3333333333333333,
+        "f1": 0.5555555555555556,
+        "bleu": 0.12721566985933938,
+        "bleu_1": 0.4559598137238141,
+        "bleu_2": 0.37211123128172263
+      },
+      "Y2": {
+        "em": 0.16666666666666666,
+        "contains_gt": 0.16666666666666666,
+        "f1": 0.2583068783068783,
+        "bleu": 0.0573720064327933,
+        "bleu_1": 0.22594669748356674,
+        "bleu_2": 0.12033488917240077
+      }
+    },
+    "by_cell": {
+      "X2_Y1": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0,
+        "bleu": 0.316227766016838,
+        "bleu_1": 1.0,
+        "bleu_2": 1.0
+      },
+      "X4_Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.6666666666666666,
+        "bleu": 0.06541924356118012,
+        "bleu_1": 0.36787944117144233,
+        "bleu_2": 0.11633369384516798
+      },
+      "X2_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.18095238095238095,
+        "bleu": 0.019795474673369905,
+        "bleu_1": 0.08405865279968885,
+        "bleu_2": 0.03883252652875789
+      },
+      "X1_Y2": {
+        "em": 0.23809523809523808,
+        "contains_gt": 0.23809523809523808,
+        "f1": 0.3000755857898715,
+        "bleu": 0.0744188759808019,
+        "bleu_1": 0.29075865248140437,
+        "bleu_2": 0.1571136410924743
+      },
+      "X4_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0,
+        "bleu": 0.0,
+        "bleu_1": 0.0,
+        "bleu_2": 0.0
+      },
+      "X1_Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0,
+        "bleu": 0.0,
+        "bleu_1": 0.0,
+        "bleu_2": 0.0
+      }
+    }
+  },
+  "method_runtime": {
+    "retrieval_backend": "dense_multimodal",
+    "retrieval_corpus": "round_text",
+    "method_modality": "multimodal",
+    "top_k": 10,
+    "neighbor_window": 0,
+    "seed_round_ids": [
+      "P1:2",
+      "D1:1",
+      "D1:2",
+      "D4:1",
+      "S5:1",
+      "D2:1",
+      "CC5:1",
+      "CC1:1",
+      "CX9:1",
+      "M3:1"
+    ],
+    "selected_round_ids": [
+      "P1:2",
+      "D1:1",
+      "D1:2",
+      "D4:1",
+      "S5:1",
+      "D2:1",
+      "CC5:1",
+      "CC1:1",
+      "CX9:1",
+      "M3:1"
+    ],
+    "top_candidates": [
+      {
+        "round_id": "P1:2",
+        "score": 0.2723367893847012,
+        "text_dense_score": 0.5446735787694024,
+        "image_dense_score": 0.0,
+        "indexed_image_count": 0,
+        "best_image_path": ""
+      },
+      {
+        "round_id": "D1:1",
+        "score": 0.26066926948290137,
+        "text_dense_score": 0.4014080751708185,
+        "image_dense_score": 0.11993046379498429,
+        "indexed_image_count": 1,
+        "best_image_path": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image/Brand_Memory_Test/Dunkin_1.png"
+      },
+      {
+        "round_id": "D1:2",
+        "score": 0.2514775075158019,
+        "text_dense_score": 0.5029550150316038,
+        "image_dense_score": 0.0,
+        "indexed_image_count": 0,
+        "best_image_path": ""
+      },
+      {
+        "round_id": "D4:1",
+        "score": 0.24970471782170137,
+        "text_dense_score": 0.41383720674308805,
+        "image_dense_score": 0.08557222890031467,
+        "indexed_image_count": 1,
+        "best_image_path": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image/Brand_Memory_Test/Dunkin_4.png"
+      },
+      {
+        "round_id": "S5:1",
+        "score": 0.23199096039861136,
+        "text_dense_score": 0.383507740712265,
+        "image_dense_score": 0.08047418008495773,
+        "indexed_image_count": 1,
+        "best_image_path": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image/Brand_Memory_Test/Starbucks_5.png"
+      }
+    ],
+    "clue_hit_count": 1,
+    "corpus_entry_count": 72,
+    "text_embedding_model": "all-MiniLM-L6-v2",
+    "multimodal_embedding_model": "siglip2-base-patch16-384",
+    "text_dense_weight": 0.5,
+    "image_dense_weight": 0.5,
+    "caption_text_included": false,
+    "image_embeddings_built": true,
+    "multi_image_indexing_enabled": true,
+    "indexed_image_count": 30,
+    "history_source": "retrieval",
+    "captions_loaded": false,
+    "images_loaded": true,
+    "history_turns_after_truncation": 20
+  }
+}

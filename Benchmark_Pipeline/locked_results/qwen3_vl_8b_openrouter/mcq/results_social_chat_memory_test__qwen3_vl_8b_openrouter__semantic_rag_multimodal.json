@@ -10,14 +10,14 @@
   "num_qas_run": 44,
   "dialog_json": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/dialog/Social_Chat_Memory_Test.json",
   "image_root": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/image",
-  "run_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/social_chat_memory_test/20260419_120418_qwen3_vl_8b_openrouter_semantic_rag_multimodal",
-  "git_commit": "4c82f93455d1401b3a5d0dc60990f978eb0ff055",
+  "run_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/social_chat_memory_test/20260420_204651_qwen3_vl_8b_openrouter_semantic_rag_multimodal",
+  "git_commit": "e3df13f29ca74b06578be06696cb2ed6310a339b",
   "summary": {
     "open_count": 44,
     "overall": {
-      "em": 0.6136363636363636,
-      "contains_gt": 0.6136363636363636,
-      "f1": 0.6136363636363636
+      "em": 0.6363636363636364,
+      "contains_gt": 0.6363636363636364,
+      "f1": 0.6363636363636364
     },
     "by_x": {
       "X2": {
@@ -31,9 +31,9 @@
         "f1": 0.8
       },
       "X3": {
-        "em": 0.5,
-        "contains_gt": 0.5,
-        "f1": 0.5
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
       },
       "X4": {
         "em": 1.0,
@@ -43,9 +43,9 @@
     },
     "by_y": {
       "Y2": {
-        "em": 0.5333333333333333,
-        "contains_gt": 0.5333333333333333,
-        "f1": 0.5333333333333333
+        "em": 0.5666666666666667,
+        "contains_gt": 0.5666666666666667,
+        "f1": 0.5666666666666667
       },
       "Y3": {
         "em": 0.875,
@@ -90,9 +90,9 @@
         "f1": 1.0
       },
       "X3_Y2": {
-        "em": 0.0,
-        "contains_gt": 0.0,
-        "f1": 0.0
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
       },
       "X4_Y2": {
         "em": 1.0,
@@ -108,9 +108,9 @@
     "mcq_count": 44,
     "mcq_valid_rate": 1.0,
     "mcq_overall": {
-      "em": 0.6136363636363636,
-      "contains_gt": 0.6136363636363636,
-      "f1": 0.6136363636363636
+      "em": 0.6363636363636364,
+      "contains_gt": 0.6363636363636364,
+      "f1": 0.6363636363636364
     }
   },
   "method_runtime": {
@@ -124,8 +124,8 @@
       "R4:2",
       "R1:1",
       "R3:1",
-      "CX4:1",
       "R4:1",
+      "CX4:1",
       "B5:1",
       "R3b:1",
       "R2:2",
@@ -136,8 +136,8 @@
       "R4:2",
       "R1:1",
       "R3:1",
-      "CX4:1",
       "R4:1",
+      "CX4:1",
       "B5:1",
       "R3b:1",
       "R2:2",
@@ -146,43 +146,43 @@
     "top_candidates": [
       {
         "round_id": "R4b:1",
-        "score": 0.3043260224341575,
+        "score": 0.3573451504320982,
         "text_dense_score": 0.608652044868315,
-        "image_dense_score": 0.0,
+        "image_dense_score": 0.10603825599588136,
         "indexed_image_count": 1,
-        "best_image_path": ""
+        "best_image_path": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/image/Social_Chat_Memory_Test/screenshots/R4b_1.png"
       },
       {
         "round_id": "R4:2",
-        "score": 0.2927632377941812,
+        "score": 0.3442078219216139,
         "text_dense_score": 0.5855264755883623,
-        "image_dense_score": 0.0,
+        "image_dense_score": 0.10288916825486547,
         "indexed_image_count": 1,
-        "best_image_path": ""
+        "best_image_path": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/image/Social_Chat_Memory_Test/screenshots/R4_2.png"
       },
       {
         "round_id": "R1:1",
-        "score": 0.2748096638324022,
+        "score": 0.3258173304941098,
         "text_dense_score": 0.5496193276648044,
-        "image_dense_score": 0.0,
+        "image_dense_score": 0.10201533332341532,
         "indexed_image_count": 1,
-        "best_image_path": ""
+        "best_image_path": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/image/Social_Chat_Memory_Test/screenshots/R1_1.png"
       },
       {
         "round_id": "R3:1",
-        "score": 0.2572617693289766,
+        "score": 0.30378556693245107,
         "text_dense_score": 0.5145235386579532,
-        "image_dense_score": 0.0,
+        "image_dense_score": 0.09304759520694889,
         "indexed_image_count": 1,
-        "best_image_path": ""
+        "best_image_path": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/image/Social_Chat_Memory_Test/screenshots/R3_1.png"
       },
       {
-        "round_id": "CX4:1",
-        "score": 0.2549522076124892,
-        "text_dense_score": 0.5099044152249784,
-        "image_dense_score": 0.0,
-        "indexed_image_count": 0,
-        "best_image_path": ""
+        "round_id": "R4:1",
+        "score": 0.26573847827191033,
+        "text_dense_score": 0.4301381901671816,
+        "image_dense_score": 0.10133876637663904,
+        "indexed_image_count": 1,
+        "best_image_path": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/image/Social_Chat_Memory_Test/screenshots/R4_1.png"
       }
     ],
     "clue_hit_count": 3,

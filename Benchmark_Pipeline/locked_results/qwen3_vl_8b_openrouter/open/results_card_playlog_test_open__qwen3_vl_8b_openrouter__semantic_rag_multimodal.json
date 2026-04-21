@@ -1,0 +1,159 @@
+{
+  "task_name": "card_playlog_test_open",
+  "model_name": "qwen3_vl_8b_openrouter",
+  "model_path": "qwen/qwen3-vl-8b-instruct",
+  "method_name": "semantic_rag_multimodal",
+  "base_method_name": "semantic_rag_multimodal",
+  "method_modality": "multimodal",
+  "mode": "open",
+  "num_qas": 48,
+  "num_qas_run": 48,
+  "dialog_json": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/dialog/Card_Playlog_Test_Open.json",
+  "image_root": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image",
+  "run_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/card_playlog_test_open/20260420_193603_qwen3_vl_8b_openrouter_semantic_rag_multimodal",
+  "git_commit": "e3df13f29ca74b06578be06696cb2ed6310a339b",
+  "summary": {
+    "open_count": 48,
+    "overall": {
+      "em": 0.2708333333333333,
+      "contains_gt": 0.2708333333333333,
+      "f1": 0.2708333333333333,
+      "bleu": 0.048161734021887496,
+      "bleu_1": 0.2708333333333333,
+      "bleu_2": 0.08564501996289363
+    },
+    "by_x": {
+      "X4": {
+        "em": 0.2708333333333333,
+        "contains_gt": 0.2708333333333333,
+        "f1": 0.2708333333333333,
+        "bleu": 0.048161734021887496,
+        "bleu_1": 0.2708333333333333,
+        "bleu_2": 0.08564501996289363
+      }
+    },
+    "by_y": {
+      "Y3": {
+        "em": 0.15789473684210525,
+        "contains_gt": 0.15789473684210525,
+        "f1": 0.15789473684210525,
+        "bleu": 0.028078095947982995,
+        "bleu_1": 0.15789473684210525,
+        "bleu_2": 0.04993069989739547
+      },
+      "Y2": {
+        "em": 0.3448275862068966,
+        "contains_gt": 0.3448275862068966,
+        "f1": 0.3448275862068966,
+        "bleu": 0.06131997965651458,
+        "bleu_1": 0.3448275862068966,
+        "bleu_2": 0.10904405724718552
+      }
+    },
+    "by_cell": {
+      "X4_Y3": {
+        "em": 0.15789473684210525,
+        "contains_gt": 0.15789473684210525,
+        "f1": 0.15789473684210525,
+        "bleu": 0.028078095947982995,
+        "bleu_1": 0.15789473684210525,
+        "bleu_2": 0.04993069989739547
+      },
+      "X4_Y2": {
+        "em": 0.3448275862068966,
+        "contains_gt": 0.3448275862068966,
+        "f1": 0.3448275862068966,
+        "bleu": 0.06131997965651458,
+        "bleu_1": 0.3448275862068966,
+        "bleu_2": 0.10904405724718552
+      }
+    }
+  },
+  "method_runtime": {
+    "retrieval_backend": "dense_multimodal",
+    "retrieval_corpus": "round_text",
+    "method_modality": "multimodal",
+    "top_k": 10,
+    "neighbor_window": 0,
+    "seed_round_ids": [
+      "uno_seed_44_p0_g0:1",
+      "uno_seed_44_p2_g0:1",
+      "uno_seed_44_p1_g0:1",
+      "uno_seed_44_p3_g0:1",
+      "uno_seed_44_p2_g0:3",
+      "uno_seed_44_p3_g0:6",
+      "uno_seed_44_p3_g0:5",
+      "uno_seed_44_p1_g0:3",
+      "uno_seed_44_p3_g0:3",
+      "uno_seed_44_p2_g0:6"
+    ],
+    "selected_round_ids": [
+      "uno_seed_44_p0_g0:1",
+      "uno_seed_44_p2_g0:1",
+      "uno_seed_44_p1_g0:1",
+      "uno_seed_44_p3_g0:1",
+      "uno_seed_44_p2_g0:3",
+      "uno_seed_44_p3_g0:6",
+      "uno_seed_44_p3_g0:5",
+      "uno_seed_44_p1_g0:3",
+      "uno_seed_44_p3_g0:3",
+      "uno_seed_44_p2_g0:6"
+    ],
+    "top_candidates": [
+      {
+        "round_id": "uno_seed_44_p0_g0:1",
+        "score": 0.3562928682650114,
+        "text_dense_score": 0.5862275032085359,
+        "image_dense_score": 0.1263582333214869,
+        "indexed_image_count": 1,
+        "best_image_path": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image/Card_Playlog_Test/uno_44/state_0000.jpg"
+      },
+      {
+        "round_id": "uno_seed_44_p2_g0:1",
+        "score": 0.33529164571875,
+        "text_dense_score": 0.5518056481000736,
+        "image_dense_score": 0.11877764333742631,
+        "indexed_image_count": 1,
+        "best_image_path": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image/Card_Playlog_Test/uno_44/state_0002.jpg"
+      },
+      {
+        "round_id": "uno_seed_44_p1_g0:1",
+        "score": 0.3335254804470187,
+        "text_dense_score": 0.5434318127044421,
+        "image_dense_score": 0.12361914818959527,
+        "indexed_image_count": 1,
+        "best_image_path": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image/Card_Playlog_Test/uno_44/state_0001.jpg"
+      },
+      {
+        "round_id": "uno_seed_44_p3_g0:1",
+        "score": 0.32247392729521845,
+        "text_dense_score": 0.5244686848606102,
+        "image_dense_score": 0.12047916972982674,
+        "indexed_image_count": 1,
+        "best_image_path": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image/Card_Playlog_Test/uno_44/state_0003.jpg"
+      },
+      {
+        "round_id": "uno_seed_44_p2_g0:3",
+        "score": 0.3084836022919121,
+        "text_dense_score": 0.48823736180102767,
+        "image_dense_score": 0.12872984278279653,
+        "indexed_image_count": 1,
+        "best_image_path": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image/Card_Playlog_Test/uno_44/state_0010.jpg"
+      }
+    ],
+    "clue_hit_count": 1,
+    "corpus_entry_count": 30,
+    "text_embedding_model": "all-MiniLM-L6-v2",
+    "multimodal_embedding_model": "siglip2-base-patch16-384",
+    "text_dense_weight": 0.5,
+    "image_dense_weight": 0.5,
+    "caption_text_included": false,
+    "image_embeddings_built": true,
+    "multi_image_indexing_enabled": true,
+    "indexed_image_count": 30,
+    "history_source": "retrieval",
+    "captions_loaded": false,
+    "images_loaded": true,
+    "history_turns_after_truncation": 20
+  }
+}

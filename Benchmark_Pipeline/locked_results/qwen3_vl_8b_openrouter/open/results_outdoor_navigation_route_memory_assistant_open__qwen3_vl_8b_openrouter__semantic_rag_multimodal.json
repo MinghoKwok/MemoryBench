@@ -1,0 +1,239 @@
+{
+  "task_name": "outdoor_navigation_route_memory_assistant_open",
+  "model_name": "qwen3_vl_8b_openrouter",
+  "model_path": "qwen/qwen3-vl-8b-instruct",
+  "method_name": "semantic_rag_multimodal",
+  "base_method_name": "semantic_rag_multimodal",
+  "method_modality": "multimodal",
+  "mode": "open",
+  "num_qas": 40,
+  "num_qas_run": 40,
+  "dialog_json": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/dialog/Outdoor_Navigation_Route_Memory_Assistant_Open.json",
+  "image_root": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image",
+  "run_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/outdoor_navigation_route_memory_assistant_open/20260420_202939_qwen3_vl_8b_openrouter_semantic_rag_multimodal",
+  "git_commit": "e3df13f29ca74b06578be06696cb2ed6310a339b",
+  "summary": {
+    "open_count": 40,
+    "overall": {
+      "em": 0.0,
+      "contains_gt": 0.0,
+      "f1": 0.13560779001849468,
+      "bleu": 0.016799920221592157,
+      "bleu_1": 0.09649004521476368,
+      "bleu_2": 0.03945037632056137
+    },
+    "by_x": {
+      "X3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.15629755046866667,
+        "bleu": 0.017909026625068287,
+        "bleu_1": 0.11258985364395503,
+        "bleu_2": 0.04434725399970732
+      },
+      "X1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0,
+        "bleu": 0.0,
+        "bleu_1": 0.0,
+        "bleu_2": 0.0
+      },
+      "X4": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.14885554761715752,
+        "bleu": 0.02394208107885424,
+        "bleu_1": 0.0881415012471014,
+        "bleu_2": 0.05359280105246901
+      },
+      "X2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.092,
+        "bleu": 0.013748536918514265,
+        "bleu_1": 0.07579365079365079,
+        "bleu_2": 0.022535037913602424
+      }
+    },
+    "by_y": {
+      "Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.10359480292634667,
+        "bleu": 0.009622464304489386,
+        "bleu_1": 0.06688057226332622,
+        "bleu_2": 0.018956380367013925
+      },
+      "Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0,
+        "bleu": 0.0,
+        "bleu_1": 0.0,
+        "bleu_2": 0.0
+      },
+      "Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.21006513266575186,
+        "bleu": 0.03244713361130479,
+        "bleu_1": 0.16313130228800501,
+        "bleu_2": 0.08347301256000714
+      }
+    },
+    "by_cell": {
+      "X3_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.10560038481039105,
+        "bleu": 0.009115004630979728,
+        "bleu_1": 0.06543054906471282,
+        "bleu_2": 0.018533462070561963
+      },
+      "X1_Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0,
+        "bleu": 0.0,
+        "bleu_1": 0.0,
+        "bleu_2": 0.0
+      },
+      "X4_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.07692307692307693,
+        "bleu": 0.008687475782716616,
+        "bleu_1": 0.04545454545454546,
+        "bleu_2": 0.014712247158412498
+      },
+      "X2_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.09777777777777778,
+        "bleu": 0.013655498084151136,
+        "bleu_1": 0.08465608465608465,
+        "bleu_2": 0.023472492277195427
+      },
+      "X3_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.37936507936507935,
+        "bleu": 0.05660272339905795,
+        "bleu_1": 0.32009079379262073,
+        "bleu_2": 0.15792793848794687
+      },
+      "X4_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.16683866529067767,
+        "bleu": 0.027755732402888644,
+        "bleu_1": 0.09881324019524038,
+        "bleu_2": 0.06331293952598314
+      },
+      "X2_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.08333333333333333,
+        "bleu": 0.01388809517005896,
+        "bleu_1": 0.06250000000000001,
+        "bleu_2": 0.021128856368212916
+      },
+      "X1_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0,
+        "bleu": 0.0,
+        "bleu_1": 0.0,
+        "bleu_2": 0.0
+      }
+    }
+  },
+  "method_runtime": {
+    "retrieval_backend": "dense_multimodal",
+    "retrieval_corpus": "round_text",
+    "method_modality": "multimodal",
+    "top_k": 10,
+    "neighbor_window": 0,
+    "seed_round_ids": [
+      "S7:R3",
+      "S8:R4",
+      "S5:R5",
+      "S9:R4",
+      "S4:R3",
+      "S2:R4",
+      "S8:R2",
+      "S5:R3",
+      "S1:R1",
+      "S1:R5"
+    ],
+    "selected_round_ids": [
+      "S7:R3",
+      "S8:R4",
+      "S5:R5",
+      "S9:R4",
+      "S4:R3",
+      "S2:R4",
+      "S8:R2",
+      "S5:R3",
+      "S1:R1",
+      "S1:R5"
+    ],
+    "top_candidates": [
+      {
+        "round_id": "S7:R3",
+        "score": 0.3382819813150315,
+        "text_dense_score": 0.5499551541289582,
+        "image_dense_score": 0.12660880850110479,
+        "indexed_image_count": 1,
+        "best_image_path": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image/Outdoor_Navigation_Route_Memory_Assistant/S7_R3.jpg"
+      },
+      {
+        "round_id": "S8:R4",
+        "score": 0.2602351153214122,
+        "text_dense_score": 0.4006369964455509,
+        "image_dense_score": 0.11983323419727346,
+        "indexed_image_count": 1,
+        "best_image_path": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image/Outdoor_Navigation_Route_Memory_Assistant/S8_R4.jpg"
+      },
+      {
+        "round_id": "S5:R5",
+        "score": 0.2325693036136111,
+        "text_dense_score": 0.33547308504255907,
+        "image_dense_score": 0.12966552218466315,
+        "indexed_image_count": 1,
+        "best_image_path": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image/Outdoor_Navigation_Route_Memory_Assistant/S5_R5.jpg"
+      },
+      {
+        "round_id": "S9:R4",
+        "score": 0.2295579697619867,
+        "text_dense_score": 0.3508365767330023,
+        "image_dense_score": 0.10827936279097111,
+        "indexed_image_count": 1,
+        "best_image_path": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image/Outdoor_Navigation_Route_Memory_Assistant/S9_R4.jpg"
+      },
+      {
+        "round_id": "S4:R3",
+        "score": 0.22268483769792644,
+        "text_dense_score": 0.3233118673480575,
+        "image_dense_score": 0.12205780804779538,
+        "indexed_image_count": 1,
+        "best_image_path": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image/Outdoor_Navigation_Route_Memory_Assistant/S4_R3.jpg"
+      }
+    ],
+    "clue_hit_count": 2,
+    "corpus_entry_count": 60,
+    "text_embedding_model": "all-MiniLM-L6-v2",
+    "multimodal_embedding_model": "siglip2-base-patch16-384",
+    "text_dense_weight": 0.5,
+    "image_dense_weight": 0.5,
+    "caption_text_included": false,
+    "image_embeddings_built": true,
+    "multi_image_indexing_enabled": true,
+    "indexed_image_count": 40,
+    "history_source": "retrieval",
+    "captions_loaded": false,
+    "images_loaded": true,
+    "history_turns_after_truncation": 20
+  }
+}

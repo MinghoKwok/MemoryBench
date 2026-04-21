@@ -10,30 +10,30 @@
   "num_qas_run": 33,
   "dialog_json": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/dialog/Brand_Memory_Test.json",
   "image_root": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/image",
-  "run_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/brand_memory_test/20260419_114914_qwen3_vl_8b_openrouter_semantic_rag_multimodal",
-  "git_commit": "a6c7a640c7fe21b875882833d3c78b9e2b576409",
+  "run_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/brand_memory_test/20260420_192318_qwen3_vl_8b_openrouter_semantic_rag_multimodal",
+  "git_commit": "4b7deedeca315696e4502e25d45d6d0de6bfe0d5",
   "summary": {
     "open_count": 33,
     "overall": {
-      "em": 0.5454545454545454,
-      "contains_gt": 0.5454545454545454,
-      "f1": 0.5454545454545454
+      "em": 0.6363636363636364,
+      "contains_gt": 0.6363636363636364,
+      "f1": 0.6363636363636364
     },
     "by_x": {
       "X2": {
-        "em": 0.6666666666666666,
-        "contains_gt": 0.6666666666666666,
-        "f1": 0.6666666666666666
+        "em": 0.7777777777777778,
+        "contains_gt": 0.7777777777777778,
+        "f1": 0.7777777777777778
       },
       "X4": {
-        "em": 1.0,
-        "contains_gt": 1.0,
-        "f1": 1.0
+        "em": 0.5,
+        "contains_gt": 0.5,
+        "f1": 0.5
       },
       "X1": {
-        "em": 0.45454545454545453,
-        "contains_gt": 0.45454545454545453,
-        "f1": 0.45454545454545453
+        "em": 0.5909090909090909,
+        "contains_gt": 0.5909090909090909,
+        "f1": 0.5909090909090909
       }
     },
     "by_y": {
@@ -43,9 +43,9 @@
         "f1": 1.0
       },
       "Y2": {
-        "em": 0.5,
-        "contains_gt": 0.5,
-        "f1": 0.5
+        "em": 0.6,
+        "contains_gt": 0.6,
+        "f1": 0.6
       }
     },
     "by_cell": {
@@ -60,19 +60,19 @@
         "f1": 1.0
       },
       "X2_Y2": {
-        "em": 0.625,
-        "contains_gt": 0.625,
-        "f1": 0.625
+        "em": 0.75,
+        "contains_gt": 0.75,
+        "f1": 0.75
       },
       "X1_Y2": {
-        "em": 0.42857142857142855,
-        "contains_gt": 0.42857142857142855,
-        "f1": 0.42857142857142855
+        "em": 0.5714285714285714,
+        "contains_gt": 0.5714285714285714,
+        "f1": 0.5714285714285714
       },
       "X4_Y2": {
-        "em": 1.0,
-        "contains_gt": 1.0,
-        "f1": 1.0
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0
       },
       "X1_Y1": {
         "em": 1.0,
@@ -83,9 +83,9 @@
     "mcq_count": 33,
     "mcq_valid_rate": 1.0,
     "mcq_overall": {
-      "em": 0.5454545454545454,
-      "contains_gt": 0.5454545454545454,
-      "f1": 0.5454545454545454
+      "em": 0.6363636363636364,
+      "contains_gt": 0.6363636363636364,
+      "f1": 0.6363636363636364
     }
   },
   "method_runtime": {
@@ -95,30 +95,54 @@
     "top_k": 10,
     "neighbor_window": 0,
     "seed_round_ids": [
-      "P1:2",
       "D1:1",
       "S5:1",
-      "CX9:1",
-      "CX3:1",
-      "CX5:1",
       "P2:1",
+      "P1:2",
       "CC1:1",
+      "CC3:1",
+      "CC2:1",
       "D4:1",
+      "P1:1",
       "D2:1"
     ],
     "selected_round_ids": [
-      "P1:2",
       "D1:1",
       "S5:1",
-      "CX9:1",
-      "CX3:1",
-      "CX5:1",
       "P2:1",
+      "P1:2",
       "CC1:1",
+      "CC3:1",
+      "CC2:1",
       "D4:1",
+      "P1:1",
       "D2:1"
     ],
     "top_candidates": [
+      {
+        "round_id": "D1:1",
+        "score": 0.3459404808685902,
+        "text_dense_score": 0.561110258761352,
+        "image_dense_score": 0.13077070297582832,
+        "indexed_image_count": 1,
+        "best_image_path": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/image/Brand_Memory_Test/Dunkin_1.png"
+      },
+      {
+        "round_id": "S5:1",
+        "score": 0.30658030417724585,
+        "text_dense_score": 0.5392866881447309,
+        "image_dense_score": 0.07387392020976079,
+        "indexed_image_count": 1,
+        "best_image_path": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/image/Brand_Memory_Test/Starbucks_5.png"
+      },
+      {
+        "round_id": "P2:1",
+        "score": 0.3043937167623479,
+        "text_dense_score": 0.4713718743614751,
+        "image_dense_score": 0.1374155591632207,
+        "indexed_image_count": 1,
+        "best_image_path": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/image/Brand_Memory_Test/Pepsi_2.png"
+      },
       {
         "round_id": "P1:2",
         "score": 0.29755167885704475,
@@ -128,36 +152,12 @@
         "best_image_path": ""
       },
       {
-        "round_id": "D1:1",
-        "score": 0.280555129380676,
-        "text_dense_score": 0.561110258761352,
-        "image_dense_score": 0.0,
+        "round_id": "CC1:1",
+        "score": 0.29595636949432136,
+        "text_dense_score": 0.46976903261706704,
+        "image_dense_score": 0.12214370637157562,
         "indexed_image_count": 1,
-        "best_image_path": ""
-      },
-      {
-        "round_id": "S5:1",
-        "score": 0.26964334407236545,
-        "text_dense_score": 0.5392866881447309,
-        "image_dense_score": 0.0,
-        "indexed_image_count": 1,
-        "best_image_path": ""
-      },
-      {
-        "round_id": "CX9:1",
-        "score": 0.24457244998138414,
-        "text_dense_score": 0.4891448999627683,
-        "image_dense_score": 0.0,
-        "indexed_image_count": 0,
-        "best_image_path": ""
-      },
-      {
-        "round_id": "CX3:1",
-        "score": 0.24430210223051535,
-        "text_dense_score": 0.4886042044610307,
-        "image_dense_score": 0.0,
-        "indexed_image_count": 0,
-        "best_image_path": ""
+        "best_image_path": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/image/Brand_Memory_Test/CocaCola_1.png"
       }
     ],
     "clue_hit_count": 1,

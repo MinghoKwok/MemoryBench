@@ -10,30 +10,30 @@
   "num_qas_run": 65,
   "dialog_json": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/dialog/Home_Renovation_Interior_Design.json",
   "image_root": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/image",
-  "run_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/home_renovation_interior_design/20260419_115601_qwen3_vl_8b_openrouter_semantic_rag_multimodal",
-  "git_commit": "4c82f93455d1401b3a5d0dc60990f978eb0ff055",
+  "run_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/home_renovation_interior_design/20260420_200100_qwen3_vl_8b_openrouter_semantic_rag_multimodal",
+  "git_commit": "e3df13f29ca74b06578be06696cb2ed6310a339b",
   "summary": {
     "open_count": 65,
     "overall": {
-      "em": 0.7846153846153846,
-      "contains_gt": 0.7846153846153846,
-      "f1": 0.7846153846153846
+      "em": 0.8,
+      "contains_gt": 0.8,
+      "f1": 0.8
     },
     "by_x": {
       "X4": {
-        "em": 0.5,
-        "contains_gt": 0.5,
-        "f1": 0.5
+        "em": 0.625,
+        "contains_gt": 0.625,
+        "f1": 0.625
       },
       "X3": {
-        "em": 0.813953488372093,
-        "contains_gt": 0.813953488372093,
-        "f1": 0.813953488372093
+        "em": 0.8372093023255814,
+        "contains_gt": 0.8372093023255814,
+        "f1": 0.8372093023255814
       },
       "X2": {
-        "em": 0.8461538461538461,
-        "contains_gt": 0.8461538461538461,
-        "f1": 0.8461538461538461
+        "em": 0.7692307692307693,
+        "contains_gt": 0.7692307692307693,
+        "f1": 0.7692307692307693
       },
       "X1": {
         "em": 1.0,
@@ -43,9 +43,9 @@
     },
     "by_y": {
       "Y2": {
-        "em": 0.8125,
-        "contains_gt": 0.8125,
-        "f1": 0.8125
+        "em": 0.75,
+        "contains_gt": 0.75,
+        "f1": 0.75
       },
       "Y1": {
         "em": 0.8,
@@ -53,9 +53,9 @@
         "f1": 0.8
       },
       "Y3": {
-        "em": 0.5,
-        "contains_gt": 0.5,
-        "f1": 0.5
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
       }
     },
     "by_cell": {
@@ -70,24 +70,24 @@
         "f1": 1.0
       },
       "X3_Y1": {
-        "em": 0.7837837837837838,
-        "contains_gt": 0.7837837837837838,
-        "f1": 0.7837837837837838
+        "em": 0.8108108108108109,
+        "contains_gt": 0.8108108108108109,
+        "f1": 0.8108108108108109
       },
       "X2_Y3": {
-        "em": 0.6666666666666666,
-        "contains_gt": 0.6666666666666666,
-        "f1": 0.6666666666666666
-      },
-      "X2_Y1": {
         "em": 1.0,
         "contains_gt": 1.0,
         "f1": 1.0
       },
+      "X2_Y1": {
+        "em": 0.5,
+        "contains_gt": 0.5,
+        "f1": 0.5
+      },
       "X2_Y2": {
-        "em": 0.875,
-        "contains_gt": 0.875,
-        "f1": 0.875
+        "em": 0.75,
+        "contains_gt": 0.75,
+        "f1": 0.75
       },
       "X4_Y1": {
         "em": 0.8,
@@ -95,9 +95,9 @@
         "f1": 0.8
       },
       "X4_Y3": {
-        "em": 0.0,
-        "contains_gt": 0.0,
-        "f1": 0.0
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
       },
       "X1_Y1": {
         "em": 1.0,
@@ -108,9 +108,9 @@
     "mcq_count": 65,
     "mcq_valid_rate": 1.0,
     "mcq_overall": {
-      "em": 0.7846153846153846,
-      "contains_gt": 0.7846153846153846,
-      "f1": 0.7846153846153846
+      "em": 0.8,
+      "contains_gt": 0.8,
+      "f1": 0.8
     }
   },
   "method_runtime": {
@@ -124,65 +124,65 @@
       "D13:5",
       "D1:6",
       "D12:5",
-      "D1:4",
-      "D1:3",
-      "D12:0",
-      "D11:6",
       "D9:5",
-      "D10:6"
+      "D1:3",
+      "D1:10",
+      "D1:4",
+      "D10:6",
+      "D10:1"
     ],
     "selected_round_ids": [
       "D1:9",
       "D13:5",
       "D1:6",
       "D12:5",
-      "D1:4",
-      "D1:3",
-      "D12:0",
-      "D11:6",
       "D9:5",
-      "D10:6"
+      "D1:3",
+      "D1:10",
+      "D1:4",
+      "D10:6",
+      "D10:1"
     ],
     "top_candidates": [
       {
         "round_id": "D1:9",
-        "score": 0.2118755456602436,
+        "score": 0.27663384925210927,
         "text_dense_score": 0.4237510913204872,
-        "image_dense_score": 0.0,
+        "image_dense_score": 0.12951660718373129,
         "indexed_image_count": 1,
-        "best_image_path": ""
+        "best_image_path": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/image/Home_Renovation_Interior_Design/D1_IMG_007.jpg"
       },
       {
         "round_id": "D13:5",
-        "score": 0.18823896825284656,
+        "score": 0.22681586626355035,
         "text_dense_score": 0.3764779365056931,
-        "image_dense_score": 0.0,
+        "image_dense_score": 0.07715379602140761,
         "indexed_image_count": 1,
-        "best_image_path": ""
+        "best_image_path": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/image/Home_Renovation_Interior_Design/D13_IMG_005.jpg"
       },
       {
         "round_id": "D1:6",
-        "score": 0.18511147865464628,
+        "score": 0.22306525819589446,
         "text_dense_score": 0.37022295730929256,
-        "image_dense_score": 0.0,
+        "image_dense_score": 0.07590755908249634,
         "indexed_image_count": 1,
-        "best_image_path": ""
+        "best_image_path": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/image/Home_Renovation_Interior_Design/D1_IMG_006.jpg"
       },
       {
         "round_id": "D12:5",
-        "score": 0.17735078649717,
+        "score": 0.2223565473817527,
         "text_dense_score": 0.35470157299434,
-        "image_dense_score": 0.0,
+        "image_dense_score": 0.09001152176916541,
         "indexed_image_count": 1,
-        "best_image_path": ""
+        "best_image_path": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/image/Home_Renovation_Interior_Design/D12_IMG_005.jpg"
       },
       {
-        "round_id": "D1:4",
-        "score": 0.17431613559617412,
-        "text_dense_score": 0.34863227119234824,
-        "image_dense_score": 0.0,
+        "round_id": "D9:5",
+        "score": 0.22066203267344833,
+        "text_dense_score": 0.3346185108135609,
+        "image_dense_score": 0.10670555453333573,
         "indexed_image_count": 1,
-        "best_image_path": ""
+        "best_image_path": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/image/Home_Renovation_Interior_Design/D9_IMG_005.jpg"
       }
     ],
     "clue_hit_count": 0,

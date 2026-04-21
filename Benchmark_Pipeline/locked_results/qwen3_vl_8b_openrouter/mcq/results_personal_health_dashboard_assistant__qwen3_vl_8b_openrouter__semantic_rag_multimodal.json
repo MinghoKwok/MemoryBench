@@ -10,25 +10,25 @@
   "num_qas_run": 63,
   "dialog_json": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/dialog/Personal_Health_Dashboard_Assistant.json",
   "image_root": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/image",
-  "run_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/personal_health_dashboard_assistant/20260419_121249_qwen3_vl_8b_openrouter_semantic_rag_multimodal",
-  "git_commit": "4c82f93455d1401b3a5d0dc60990f978eb0ff055",
+  "run_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/personal_health_dashboard_assistant/20260420_203411_qwen3_vl_8b_openrouter_semantic_rag_multimodal",
+  "git_commit": "e3df13f29ca74b06578be06696cb2ed6310a339b",
   "summary": {
     "open_count": 63,
     "overall": {
-      "em": 0.47619047619047616,
-      "contains_gt": 0.47619047619047616,
-      "f1": 0.47619047619047616
+      "em": 0.5396825396825397,
+      "contains_gt": 0.5396825396825397,
+      "f1": 0.5396825396825397
     },
     "by_x": {
       "X4": {
-        "em": 0.4642857142857143,
-        "contains_gt": 0.4642857142857143,
-        "f1": 0.4642857142857143
+        "em": 0.5,
+        "contains_gt": 0.5,
+        "f1": 0.5
       },
       "X3": {
-        "em": 0.25,
-        "contains_gt": 0.25,
-        "f1": 0.25
+        "em": 0.75,
+        "contains_gt": 0.75,
+        "f1": 0.75
       },
       "X1": {
         "em": 1.0,
@@ -38,9 +38,9 @@
     },
     "by_y": {
       "Y2": {
-        "em": 0.43137254901960786,
-        "contains_gt": 0.43137254901960786,
-        "f1": 0.43137254901960786
+        "em": 0.5098039215686274,
+        "contains_gt": 0.5098039215686274,
+        "f1": 0.5098039215686274
       },
       "Y3": {
         "em": 0.6363636363636364,
@@ -55,9 +55,9 @@
     },
     "by_cell": {
       "X4_Y2": {
-        "em": 0.44680851063829785,
-        "contains_gt": 0.44680851063829785,
-        "f1": 0.44680851063829785
+        "em": 0.48936170212765956,
+        "contains_gt": 0.48936170212765956,
+        "f1": 0.48936170212765956
       },
       "X4_Y3": {
         "em": 0.5555555555555556,
@@ -65,9 +65,9 @@
         "f1": 0.5555555555555556
       },
       "X3_Y2": {
-        "em": 0.25,
-        "contains_gt": 0.25,
-        "f1": 0.25
+        "em": 0.75,
+        "contains_gt": 0.75,
+        "f1": 0.75
       },
       "X1_Y3": {
         "em": 1.0,
@@ -83,9 +83,9 @@
     "mcq_count": 63,
     "mcq_valid_rate": 1.0,
     "mcq_overall": {
-      "em": 0.47619047619047616,
-      "contains_gt": 0.47619047619047616,
-      "f1": 0.47619047619047616
+      "em": 0.5396825396825397,
+      "contains_gt": 0.5396825396825397,
+      "f1": 0.5396825396825397
     }
   },
   "method_runtime": {
@@ -95,69 +95,69 @@
     "top_k": 10,
     "neighbor_window": 0,
     "seed_round_ids": [
-      "D1:0",
       "D6:1",
       "D3:1",
       "D1:4",
       "D12:6",
-      "D11:6",
       "D2:6",
+      "D1:0",
       "D9:1",
-      "D11:3",
-      "D11:5"
+      "D11:5",
+      "D5:6",
+      "D3:6"
     ],
     "selected_round_ids": [
-      "D1:0",
       "D6:1",
       "D3:1",
       "D1:4",
       "D12:6",
-      "D11:6",
       "D2:6",
+      "D1:0",
       "D9:1",
-      "D11:3",
-      "D11:5"
+      "D11:5",
+      "D5:6",
+      "D3:6"
     ],
     "top_candidates": [
       {
-        "round_id": "D1:0",
-        "score": 0.20847329961212843,
-        "text_dense_score": 0.41694659922425686,
-        "image_dense_score": 0.0,
-        "indexed_image_count": 0,
-        "best_image_path": ""
-      },
-      {
         "round_id": "D6:1",
-        "score": 0.1871617020158384,
+        "score": 0.252579392031523,
         "text_dense_score": 0.3743234040316768,
-        "image_dense_score": 0.0,
+        "image_dense_score": 0.1308353800313693,
         "indexed_image_count": 1,
-        "best_image_path": ""
+        "best_image_path": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/image/Personal_Health_Dashboard_Assistant/D6_IMG_001.jpg"
       },
       {
         "round_id": "D3:1",
-        "score": 0.17744425604190542,
+        "score": 0.241863871115154,
         "text_dense_score": 0.35488851208381084,
-        "image_dense_score": 0.0,
+        "image_dense_score": 0.12883923014649715,
         "indexed_image_count": 1,
-        "best_image_path": ""
+        "best_image_path": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/image/Personal_Health_Dashboard_Assistant/D3_IMG_001.jpg"
       },
       {
         "round_id": "D1:4",
-        "score": 0.1598189352134599,
+        "score": 0.2247988016994681,
         "text_dense_score": 0.3196378704269198,
-        "image_dense_score": 0.0,
+        "image_dense_score": 0.12995973297201632,
         "indexed_image_count": 1,
-        "best_image_path": ""
+        "best_image_path": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/image/Personal_Health_Dashboard_Assistant/D1_IMG_003.jpg"
       },
       {
         "round_id": "D12:6",
-        "score": 0.15488409492565855,
+        "score": 0.21678357139885895,
         "text_dense_score": 0.3097681898513171,
-        "image_dense_score": 0.0,
+        "image_dense_score": 0.12379895294640084,
         "indexed_image_count": 1,
-        "best_image_path": ""
+        "best_image_path": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/image/Personal_Health_Dashboard_Assistant/D12_IMG_005.jpg"
+      },
+      {
+        "round_id": "D2:6",
+        "score": 0.21027610286706397,
+        "text_dense_score": 0.2971883161915774,
+        "image_dense_score": 0.12336388954255055,
+        "indexed_image_count": 1,
+        "best_image_path": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/image/Personal_Health_Dashboard_Assistant/D2_IMG_005.jpg"
       }
     ],
     "clue_hit_count": 1,

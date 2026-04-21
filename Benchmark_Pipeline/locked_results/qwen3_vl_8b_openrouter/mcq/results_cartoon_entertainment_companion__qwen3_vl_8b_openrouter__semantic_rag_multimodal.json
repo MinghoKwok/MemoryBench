@@ -1,0 +1,213 @@
+{
+  "task_name": "cartoon_entertainment_companion",
+  "model_name": "qwen3_vl_8b_openrouter",
+  "model_path": "qwen/qwen3-vl-8b-instruct",
+  "method_name": "semantic_rag_multimodal",
+  "base_method_name": "semantic_rag_multimodal",
+  "method_modality": "multimodal",
+  "mode": "mcq",
+  "num_qas": 112,
+  "num_qas_run": 112,
+  "dialog_json": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/dialog/Cartoon_Entertainment_Companion.json",
+  "image_root": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image",
+  "run_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/cartoon_entertainment_companion/20260420_194041_qwen3_vl_8b_openrouter_semantic_rag_multimodal",
+  "git_commit": "e3df13f29ca74b06578be06696cb2ed6310a339b",
+  "summary": {
+    "open_count": 112,
+    "overall": {
+      "em": 0.7142857142857143,
+      "contains_gt": 0.7142857142857143,
+      "f1": 0.7142857142857143
+    },
+    "by_x": {
+      "X3": {
+        "em": 0.5925925925925926,
+        "contains_gt": 0.5925925925925926,
+        "f1": 0.5925925925925926
+      },
+      "X4": {
+        "em": 0.8055555555555556,
+        "contains_gt": 0.8055555555555556,
+        "f1": 0.8055555555555556
+      },
+      "X2": {
+        "em": 0.75,
+        "contains_gt": 0.75,
+        "f1": 0.75
+      },
+      "X1": {
+        "em": 0.6666666666666666,
+        "contains_gt": 0.6666666666666666,
+        "f1": 0.6666666666666666
+      }
+    },
+    "by_y": {
+      "Y1": {
+        "em": 0.7209302325581395,
+        "contains_gt": 0.7209302325581395,
+        "f1": 0.7209302325581395
+      },
+      "Y2": {
+        "em": 0.7068965517241379,
+        "contains_gt": 0.7068965517241379,
+        "f1": 0.7068965517241379
+      },
+      "Y3": {
+        "em": 0.7272727272727273,
+        "contains_gt": 0.7272727272727273,
+        "f1": 0.7272727272727273
+      }
+    },
+    "by_cell": {
+      "X3_Y1": {
+        "em": 0.5714285714285714,
+        "contains_gt": 0.5714285714285714,
+        "f1": 0.5714285714285714
+      },
+      "X4_Y2": {
+        "em": 0.7692307692307693,
+        "contains_gt": 0.7692307692307693,
+        "f1": 0.7692307692307693
+      },
+      "X2_Y2": {
+        "em": 0.7368421052631579,
+        "contains_gt": 0.7368421052631579,
+        "f1": 0.7368421052631579
+      },
+      "X3_Y2": {
+        "em": 0.6153846153846154,
+        "contains_gt": 0.6153846153846154,
+        "f1": 0.6153846153846154
+      },
+      "X2_Y1": {
+        "em": 0.7142857142857143,
+        "contains_gt": 0.7142857142857143,
+        "f1": 0.7142857142857143
+      },
+      "X4_Y1": {
+        "em": 0.8333333333333334,
+        "contains_gt": 0.8333333333333334,
+        "f1": 0.8333333333333334
+      },
+      "X1_Y1": {
+        "em": 0.75,
+        "contains_gt": 0.75,
+        "f1": 0.75
+      },
+      "X4_Y3": {
+        "em": 0.8,
+        "contains_gt": 0.8,
+        "f1": 0.8
+      },
+      "X2_Y3": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
+      },
+      "X1_Y2": {
+        "em": 0.6923076923076923,
+        "contains_gt": 0.6923076923076923,
+        "f1": 0.6923076923076923
+      },
+      "X1_Y3": {
+        "em": 0.5,
+        "contains_gt": 0.5,
+        "f1": 0.5
+      }
+    },
+    "mcq_count": 112,
+    "mcq_valid_rate": 1.0,
+    "mcq_overall": {
+      "em": 0.7142857142857143,
+      "contains_gt": 0.7142857142857143,
+      "f1": 0.7142857142857143
+    }
+  },
+  "method_runtime": {
+    "retrieval_backend": "dense_multimodal",
+    "retrieval_corpus": "round_text",
+    "method_modality": "multimodal",
+    "top_k": 10,
+    "neighbor_window": 0,
+    "seed_round_ids": [
+      "TC3:1",
+      "CX10:1",
+      "TC2:1",
+      "TC1:1",
+      "TC8:1",
+      "TC6:1",
+      "CX6:1",
+      "CX4:1",
+      "TC9:1",
+      "TC7:1"
+    ],
+    "selected_round_ids": [
+      "TC3:1",
+      "CX10:1",
+      "TC2:1",
+      "TC1:1",
+      "TC8:1",
+      "TC6:1",
+      "CX6:1",
+      "CX4:1",
+      "TC9:1",
+      "TC7:1"
+    ],
+    "top_candidates": [
+      {
+        "round_id": "TC3:1",
+        "score": 0.3484990069948594,
+        "text_dense_score": 0.5756723330916413,
+        "image_dense_score": 0.12132568089807746,
+        "indexed_image_count": 1,
+        "best_image_path": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image/Cartoon_Entertainment_Companion/Treasure_Comics_Page_3.jpg"
+      },
+      {
+        "round_id": "CX10:1",
+        "score": 0.3301522698415085,
+        "text_dense_score": 0.660304539683017,
+        "image_dense_score": 0.0,
+        "indexed_image_count": 0,
+        "best_image_path": ""
+      },
+      {
+        "round_id": "TC2:1",
+        "score": 0.32893604371742496,
+        "text_dense_score": 0.5687061723498634,
+        "image_dense_score": 0.08916591508498647,
+        "indexed_image_count": 1,
+        "best_image_path": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image/Cartoon_Entertainment_Companion/Treasure_Comics_Page_2.jpg"
+      },
+      {
+        "round_id": "TC1:1",
+        "score": 0.323353889214624,
+        "text_dense_score": 0.5527308200917429,
+        "image_dense_score": 0.09397695833750512,
+        "indexed_image_count": 1,
+        "best_image_path": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image/Cartoon_Entertainment_Companion/Treasure_Comics_Page_1.jpg"
+      },
+      {
+        "round_id": "TC8:1",
+        "score": 0.2922175457281517,
+        "text_dense_score": 0.48322364043492166,
+        "image_dense_score": 0.10121145102138171,
+        "indexed_image_count": 1,
+        "best_image_path": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image/Cartoon_Entertainment_Companion/Treasure_Comics_Page_8.jpg"
+      }
+    ],
+    "clue_hit_count": 2,
+    "corpus_entry_count": 299,
+    "text_embedding_model": "all-MiniLM-L6-v2",
+    "multimodal_embedding_model": "siglip2-base-patch16-384",
+    "text_dense_weight": 0.5,
+    "image_dense_weight": 0.5,
+    "caption_text_included": false,
+    "image_embeddings_built": true,
+    "multi_image_indexing_enabled": true,
+    "indexed_image_count": 87,
+    "history_source": "retrieval",
+    "captions_loaded": false,
+    "images_loaded": true,
+    "history_turns_after_truncation": 20
+  }
+}
