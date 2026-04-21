@@ -423,6 +423,8 @@ class Agent(BaseAgent):
                         raise ValueError(f"Bad finish reason from API: {response.choices[0].finish_reason}")
                 log_telemetry(self.logger, "_handle_ai_response finish")
 
+                self._validate_tool_call_batch(response)
+
             except ValueError as ve:
                 if attempt >= empty_response_retry_limit:
                     self.logger.error(f"Retry limit reached. Final error: {ve}")
@@ -498,6 +500,46 @@ class Agent(BaseAgent):
 
         log_telemetry(self.logger, "_handle_ai_response finish catch-all exception")
         raise Exception("Retries exhausted and no valid response received.")
+
+    def _validate_tool_call_batch(self, response: ChatCompletionResponse) -> None:
+        if len(response.choices) == 0 or response.choices[0] is None:
+            raise ValueError("Invalid tool-call batch: empty response choices")
+
+        message = response.choices[0].message
+        tool_calls = getattr(message, "tool_calls", None) or []
+        if not tool_calls:
+            return
+
+        terminal_tool_names = {"send_message", "finish_memory_update"}
+        terminal_indices = []
+
+        for idx, tool_call in enumerate(tool_calls):
+            function_name = tool_call.function.name
+            try:
+                json.loads(tool_call.function.arguments)
+            except json.JSONDecodeError as exc:
+                raise ValueError(
+                    f"Invalid tool-call batch in choice 0: malformed JSON for tool "
+                    f"'{function_name}' at index {idx}: {exc}"
+                ) from exc
+
+            if function_name in terminal_tool_names:
+                terminal_indices.append(idx)
+
+        if len(terminal_indices) > 1:
+            terminal_names = [tool_calls[idx].function.name for idx in terminal_indices]
+            raise ValueError(
+                f"Invalid tool-call batch in choice 0: multiple terminal tools emitted ({terminal_names})"
+            )
+
+        if terminal_indices:
+            terminal_idx = terminal_indices[0]
+            if terminal_idx != len(tool_calls) - 1:
+                terminal_name = tool_calls[terminal_idx].function.name
+                raise ValueError(
+                    f"Invalid tool-call batch in choice 0: terminal tool '{terminal_name}' "
+                    f"appears before the end of the batch"
+                )
 
     def _handle_ai_response(
         self,
@@ -654,13 +696,13 @@ class Agent(BaseAgent):
                         # send intermediate message to the user
                         display_intermediate_message("internal_monologue", response_message.content)
 
-                    function_response = self.execute_tool_and_persist_state(function_name, function_args, 
-                                                                            target_mirix_tool, 
-                                                                            terminal_tools=terminal_tools,
-                                                                            display_intermediate_message=display_intermediate_message)
-
-                    if function_name == 'send_message' or function_name == 'finish_memory_update':
-                        assert tool_call_idx == len(response_message.tool_calls) - 1, f"{function_name} must be the last tool call"
+                    function_response = self.execute_tool_and_persist_state(
+                        function_name,
+                        function_args,
+                        target_mirix_tool,
+                        terminal_tools=terminal_tools,
+                        display_intermediate_message=display_intermediate_message,
+                    )
 
                     if tool_call_idx == len(response_message.tool_calls) - 1:
                         if function_name == 'send_message':

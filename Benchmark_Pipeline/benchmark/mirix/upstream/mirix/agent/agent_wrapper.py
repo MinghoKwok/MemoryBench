@@ -37,6 +37,7 @@ from mirix.agent.upload_manager import UploadManager
 from mirix.agent.agent_states import AgentStates
 from mirix.agent.agent_configs import AGENT_CONFIGS
 from mirix.agent.app_constants import TEMPORARY_MESSAGE_LIMIT, MAXIMUM_NUM_IMAGES_IN_CLOUD, GEMINI_MODELS, OPENAI_MODELS
+from mirix.functions.helpers import parse_mirix_response_for_assistant_message
 
 from mirix import create_client
 from mirix import LLMConfig, EmbeddingConfig
@@ -135,7 +136,7 @@ class AgentWrapper():
                 
                 # Set the agent state on the appropriate attribute
                 setattr(self.agent_states, config['attr_name'], agent_state)
-            
+
         # for agent_state in all_agent_states:
         #     messages = self.client.server.agent_manager.get_in_context_messages(agent_id=agent_state.id, actor=self.client.user)
         #     print(agent_state.name, len(messages))
@@ -832,21 +833,10 @@ class AgentWrapper():
                 return "ERROR"
             
             try:
-
-                # Check if the message has tool_call attribute
-                if not hasattr(response.messages[-3], 'tool_call'):
+                response_text = parse_mirix_response_for_assistant_message(response)
+                if not isinstance(response_text, str) or not response_text.strip():
                     return "ERROR"
-                
-                tool_call = response.messages[-3].tool_call
-                
-                parsed_args = parse_json(tool_call.arguments)
-                
-                if 'message' not in parsed_args:
-                    return "ERROR"
-                    
-                response_text = parsed_args['message']
-                
-            except (AttributeError, KeyError, IndexError, json.JSONDecodeError) as e:
+            except Exception:
                 return "ERROR"
             
             # Add conversation to accumulator
@@ -1778,10 +1768,9 @@ class AgentWrapper():
                     row['summary_embedding'] = json.dumps(getattr(memory, 'summary_embedding', None))
                 
                 memories.append(row)
-            
+
             return memories, len(resource_memories)
-            
+
         except Exception as e:
             self.logger.error(f"Error exporting resource memories: {e}")
             return [], 0
-            

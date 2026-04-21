@@ -13,6 +13,14 @@ class MessageQueue:
     def __init__(self):
         self.message_queue = {}
         self._message_queue_lock = threading.Lock()
+
+    @staticmethod
+    def _is_retryable_protocol_error(error: Exception) -> bool:
+        message = str(error)
+        return (
+            "Invalid tool-call batch" in message
+            or "Failed to strip inner thoughts from kwargs" in message
+        )
     
     def send_message_in_queue(self, client, agent_id, kwargs, agent_type='chat'):
         """
@@ -44,22 +52,38 @@ class MessageQueue:
         with self._message_queue_lock:
             self.message_queue[message_uuid]['started'] = True
 
+        max_attempts = 3
+        response = None
         try:
-            response = client.send_message(
-                agent_id=agent_id,
-                role='user',
-                **self.message_queue[message_uuid]['kwargs']
-            )
-        except Exception as e:
-            print(f"Error sending message: {e}")
-            print(traceback.format_exc())
-            print("agent_type: ", agent_type, "gets error. agent_id: ", agent_id, "ERROR")
-            response = "ERROR"
-
-        with self._message_queue_lock:
-            self.message_queue[message_uuid]['finished'] = True
-            del self.message_queue[message_uuid]
+            for attempt in range(1, max_attempts + 1):
+                try:
+                    response = client.send_message(
+                        agent_id=agent_id,
+                        role='user',
+                        **self.message_queue[message_uuid]['kwargs']
+                    )
+                    break
+                except Exception as e:
+                    should_retry = attempt < max_attempts and self._is_retryable_protocol_error(e)
+                    if should_retry:
+                        delay = 0.5 * attempt
+                        print(
+                            f"Retrying queue send for agent_type={agent_type}, agent_id={agent_id} "
+                            f"after protocol error on attempt {attempt}/{max_attempts}: {e}"
+                        )
+                        time.sleep(delay)
+                        continue
+                    print(f"Error sending message: {e}")
+                    print(traceback.format_exc())
+                    print("agent_type: ", agent_type, "gets error. agent_id: ", agent_id, "ERROR")
+                    raise
         
+        finally:
+            with self._message_queue_lock:
+                if message_uuid in self.message_queue:
+                    self.message_queue[message_uuid]['finished'] = True
+                    del self.message_queue[message_uuid]
+
         return response, agent_type
     
     def _check_if_earlier_requests_are_finished(self, message_uuid):

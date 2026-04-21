@@ -93,13 +93,17 @@ class LLMConfig(BaseModel):
         Dynamically set the default for put_inner_thoughts_in_kwargs based on the model field,
         falling back to True if no specific rule is defined.
         """
-        model = values.get("model")
+        model = str(values.get("model") or "")
+        endpoint_type = str(values.get("model_endpoint_type") or "")
 
-        # Define models where we want put_inner_thoughts_in_kwargs to be False
-        avoid_put_inner_thoughts_in_kwargs = ["gpt-4"]
+        # OpenAI tool-call JSON is more reliable when inner thoughts stay in message content.
+        avoid_put_inner_thoughts_in_kwargs = (
+            endpoint_type == "openai"
+            or model.startswith(("gpt-", "o1", "o3", "o4"))
+        )
 
         if values.get("put_inner_thoughts_in_kwargs") is None:
-            values["put_inner_thoughts_in_kwargs"] = False if model in avoid_put_inner_thoughts_in_kwargs else True
+            values["put_inner_thoughts_in_kwargs"] = not avoid_put_inner_thoughts_in_kwargs
 
         return values
 
@@ -132,7 +136,7 @@ class LLMConfig(BaseModel):
                 model_endpoint="https://api.openai.com/v1",
                 model_wrapper=None,
                 context_window=8192,
-                put_inner_thoughts_in_kwargs=True,
+                put_inner_thoughts_in_kwargs=False,
             )
         elif model_name == "gpt-4o-mini":
             return cls(

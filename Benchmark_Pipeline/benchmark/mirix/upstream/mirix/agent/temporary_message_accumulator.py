@@ -329,8 +329,7 @@ class TemporaryMessageAccumulator:
                                     # Already uploaded file reference
                                     processed_image_uris.append(file_ref)
                             else:
-                                # Non-GEMINI: pass local file path as-is
-                                # The agent's LLM interface will handle base64 encoding
+                                # OpenAI-backed MIRIX uses local file/image refs directly.
                                 processed_image_uris.append(file_ref)
                         
                         if has_pending_uploads:
@@ -494,22 +493,15 @@ class TemporaryMessageAccumulator:
                 
                 # Add each image
                 for file_ref in file_refs:
-                    if hasattr(file_ref, 'uri'):
-                        # Gemini cloud file reference
+                    if isinstance(file_ref, str):
+                        message_parts.append({
+                            'type': 'file_uri',
+                            'file_uri': file_ref,
+                        })
+                    else:
                         message_parts.append({
                             'type': 'google_cloud_file_uri',
                             'google_cloud_file_uri': file_ref.uri
-                        })
-                    elif isinstance(file_ref, str) and os.path.isfile(file_ref):
-                        # Local file path — encode as base64 for OpenAI-compatible API
-                        import base64
-                        ext = os.path.splitext(file_ref)[1].lower()
-                        mime = {'.jpg': 'image/jpeg', '.jpeg': 'image/jpeg', '.png': 'image/png', '.gif': 'image/gif', '.webp': 'image/webp'}.get(ext, 'image/jpeg')
-                        with open(file_ref, 'rb') as img_f:
-                            b64 = base64.b64encode(img_f.read()).decode()
-                        message_parts.append({
-                            'type': 'image_url',
-                            'image_url': {'url': f'data:{mime};base64,{b64}'}
                         })
         
         # Add voice transcription if any
@@ -610,16 +602,30 @@ class TemporaryMessageAccumulator:
         
         # Time the actual API call separately
         api_start = time.time()
+        max_attempts = 3
+        response = None
         try:
-            response = self.client.send_message(
-                agent_id=agent_id,
-                role='user',
-                **kwargs
-            )
-        except Exception as e:
+            for attempt in range(1, max_attempts + 1):
+                try:
+                    response = self.client.send_message(
+                        agent_id=agent_id,
+                        role='user',
+                        **kwargs
+                    )
+                    break
+                except Exception as e:
+                    should_retry = (
+                        attempt < max_attempts
+                        and self.message_queue._is_retryable_protocol_error(e)
+                    )
+                    if should_retry:
+                        time.sleep(0.5 * attempt)
+                        continue
+                    raise
+        except Exception:
             import traceback
             traceback.print_exc()
-            response = "ERROR"
+            raise
         
         api_end = time.time()
         end_time = time.time()
@@ -710,9 +716,9 @@ class TemporaryMessageAccumulator:
         summary = {
             'total_messages': len(self.temporary_messages),
         }
-        
+
         # Get upload manager status if available
         if self.upload_manager and hasattr(self.upload_manager, 'get_upload_status_summary'):
             summary['upload_manager_status'] = self.upload_manager.get_upload_status_summary()
-        
-        return summary 
+
+        return summary

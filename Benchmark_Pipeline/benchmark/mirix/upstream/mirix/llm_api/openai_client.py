@@ -227,7 +227,17 @@ class OpenAIClient(LLMClientBase):
                         })
                     
                 elif m['type'] == 'file_uri':
-                    raise NotImplementedError("File URI is currently not supported for OpenAI")
+                    local_path = m['file_uri']
+                    if local_path and os.path.exists(local_path):
+                        message_content.append({
+                            'type': 'image_url',
+                            'image_url': {'url': encode_image(local_path)},
+                        })
+                    else:
+                        message_content.append({
+                            'type': 'text',
+                            'text': "[System Message] There was an image here but the local file is unavailable.",
+                        })
                 else:
                     message_content.append(m)
             message.content = message_content
