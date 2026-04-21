@@ -12,7 +12,7 @@ import os
 from typing import Any, Dict, List, Optional
 
 from .chat_agent import QA_SYSTEM_PROMPT, ChatAgent
-from .embeddings import TextEmbedder, get_multimodal_embedder
+from ..embeddings import TextEmbedder, get_multimodal_embedder
 from .image_manager import ImageManager
 from .memory_manager import MemoryManager
 from .stores import RawMessageStore, SemanticStore

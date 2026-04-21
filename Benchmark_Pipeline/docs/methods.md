@@ -51,7 +51,7 @@ Autonomous agents that construct, update, and query their own memory.
 |--------|----------|------------|
 | M2A, SRAG-MM | google/siglip2-base-patch16-384 | 768 |
 | MMA | google/siglip-so400m-patch14-384 | 1152 |
-| MIRIX | TBD | TBD |
+| MIRIX | all-MiniLM-L6-v2 (local) | 384 |
 | SimpleMem-MM, FC-MM | Native images (no embedding) | — |
 
 ## Caption-Proof Gap Pairs

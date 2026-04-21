@@ -131,7 +131,7 @@ python sync_hf_data.py push --push
 - `Benchmark_Pipeline/benchmark/` - Core benchmark modules
   - `methods.py` - History construction methods and method registry
   - `retrieval.py` - Retrieval logic (TF-IDF, dense)
-  - `m2a/embeddings.py` - Dense and multimodal embedding implementations (TextEmbedder, MultimodalEmbedder, LocalCLIPEmbedder)
+  - `embeddings.py` - Shared dense and multimodal embedding implementations (TextEmbedder, MultimodalEmbedder, LocalCLIPEmbedder)
 - `Benchmark_Pipeline/config/` - Configuration files
 - `Benchmark_Pipeline/runs/` - Experiment outputs
 - `Benchmark_Pipeline/output/` - Result JSON files

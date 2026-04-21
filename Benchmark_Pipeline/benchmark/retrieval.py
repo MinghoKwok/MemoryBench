@@ -308,7 +308,7 @@ class _SparseRetriever(_BaseRetriever):
 class _DenseTextRetriever(_BaseRetriever):
     def __init__(self, dataset: MemoryBenchmarkDataset, config: Dict[str, Any]) -> None:
         super().__init__(dataset, config)
-        from .m2a.embeddings import TextEmbedder
+        from .embeddings import TextEmbedder
 
         self.text_embedding_model = str(config.get("text_embedding_model", TextEmbedder.DEFAULT_MODEL))
         self.text_embedder = TextEmbedder(self.text_embedding_model)
@@ -356,7 +356,7 @@ class _DenseTextRetriever(_BaseRetriever):
 class _DenseMultimodalRetriever(_BaseRetriever):
     def __init__(self, dataset: MemoryBenchmarkDataset, config: Dict[str, Any]) -> None:
         super().__init__(dataset, config)
-        from .m2a.embeddings import TextEmbedder, get_multimodal_embedder
+        from .embeddings import TextEmbedder, get_multimodal_embedder
 
         self.text_embedding_model = str(config.get("text_embedding_model", TextEmbedder.DEFAULT_MODEL))
         self.text_dense_weight = float(config.get("text_dense_weight", 1.0))

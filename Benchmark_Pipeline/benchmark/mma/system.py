@@ -122,13 +122,13 @@ class MMASystem:
         )
         self._model = self.cfg.llm_model
 
-        # Text embedder (reuse M2A's)
-        from ..m2a.embeddings import TextEmbedder
+        # Text embedder
+        from ..embeddings import TextEmbedder
 
         self._text_embedder = TextEmbedder(self.cfg.text_embedding_model)
 
         # Multimodal embedder (best-effort: CLIP/SigLIP, falls back to None)
-        from ..m2a.embeddings import get_multimodal_embedder
+        from ..embeddings import get_multimodal_embedder
 
         self._mm_embedder = get_multimodal_embedder(
             vllm_model=self.cfg.multimodal_embedding_model,
