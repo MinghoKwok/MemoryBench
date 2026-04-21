@@ -71,10 +71,13 @@ python run_benchmark.py \
 | Semantic RAG (V) | `semantic_rag_multimodal` | RAG | Dense retrieval + images |
 | Semantic RAG (T) | `semantic_rag_text_only` | RAG | Dense retrieval, text-only |
 | A-MEM | `a_mem` / `a_mem_gemini` | Agentic | Autonomous memory agent |
+| Gen. Agents | `gen_agents` / `gen_agents_openrouter` | Agentic | Generative Agents reflection |
 | Reflexion | `reflexion` / `reflexion_gemini` | Agentic | Self-reflection loop |
 | SimpleMem | `simplemem` / `simplemem_gemini` | Summarize | Omni-SimpleMem (text) |
 | SimpleMem (V) | `simplemem_multimodal` / `simplemem_multimodal_gemini` | Summarize | Omni-SimpleMem + images |
 | MemoryOS | `memoryos` / `memoryos_gemini` | Agentic | MemoryOS baseline |
+| EverMemOS | `evermemos` / `evermemos_openrouter` | Agentic | EverMemOS memory system |
+| MemGPT | `memgpt` | Agentic | MemGPT/Letta baseline |
 | M2A | `m2a` / `m2a_gemini` | Agentic | Multimodal agentic; uses SigLIP2 |
 | MMA | `mma` / `mma_gemini` | Agentic | Confidence-aware; uses SigLIP v1 |
 
