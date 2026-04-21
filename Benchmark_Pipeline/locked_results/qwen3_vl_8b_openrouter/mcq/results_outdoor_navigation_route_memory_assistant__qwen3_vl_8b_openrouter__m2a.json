@@ -10,8 +10,8 @@
   "num_qas_run": 40,
   "dialog_json": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/dialog/Outdoor_Navigation_Route_Memory_Assistant.json",
   "image_root": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/image",
-  "run_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/outdoor_navigation_route_memory_assistant/20260418_042625_qwen3_vl_8b_openrouter_m2a",
-  "git_commit": "098e1cd297db81f969cb6d0b30fdf861a1fe20aa",
+  "run_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/outdoor_navigation_route_memory_assistant/20260421_011352_qwen3_vl_8b_openrouter_m2a",
+  "git_commit": "072863614aba6beee60562ec88ebb4c322ab94cd",
   "summary": {
     "open_count": 40,
     "overall": {

@@ -10,30 +10,30 @@
   "num_qas_run": 44,
   "dialog_json": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/dialog/Social_Chat_Memory_Test.json",
   "image_root": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/image",
-  "run_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/social_chat_memory_test/20260418_054103_qwen3_vl_8b_openrouter_m2a",
-  "git_commit": "098e1cd297db81f969cb6d0b30fdf861a1fe20aa",
+  "run_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/social_chat_memory_test/20260421_022605_qwen3_vl_8b_openrouter_m2a",
+  "git_commit": "072863614aba6beee60562ec88ebb4c322ab94cd",
   "summary": {
     "open_count": 44,
     "overall": {
-      "em": 0.5681818181818182,
-      "contains_gt": 0.5681818181818182,
-      "f1": 0.5681818181818182
+      "em": 0.3409090909090909,
+      "contains_gt": 0.3409090909090909,
+      "f1": 0.3409090909090909
     },
     "by_x": {
       "X2": {
-        "em": 0.6111111111111112,
-        "contains_gt": 0.6111111111111112,
-        "f1": 0.6111111111111112
+        "em": 0.4166666666666667,
+        "contains_gt": 0.4166666666666667,
+        "f1": 0.4166666666666667
       },
       "X1": {
-        "em": 0.4,
-        "contains_gt": 0.4,
-        "f1": 0.4
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0
       },
       "X3": {
-        "em": 0.5,
-        "contains_gt": 0.5,
-        "f1": 0.5
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0
       },
       "X4": {
         "em": 0.0,
@@ -43,26 +43,26 @@
     },
     "by_y": {
       "Y2": {
-        "em": 0.5333333333333333,
-        "contains_gt": 0.5333333333333333,
-        "f1": 0.5333333333333333
+        "em": 0.3333333333333333,
+        "contains_gt": 0.3333333333333333,
+        "f1": 0.3333333333333333
       },
       "Y3": {
-        "em": 0.625,
-        "contains_gt": 0.625,
-        "f1": 0.625
+        "em": 0.5,
+        "contains_gt": 0.5,
+        "f1": 0.5
       },
       "Y1": {
-        "em": 0.6666666666666666,
-        "contains_gt": 0.6666666666666666,
-        "f1": 0.6666666666666666
+        "em": 0.16666666666666666,
+        "contains_gt": 0.16666666666666666,
+        "f1": 0.16666666666666666
       }
     },
     "by_cell": {
       "X2_Y2": {
-        "em": 0.5925925925925926,
-        "contains_gt": 0.5925925925925926,
-        "f1": 0.5925925925925926
+        "em": 0.37037037037037035,
+        "contains_gt": 0.37037037037037035,
+        "f1": 0.37037037037037035
       },
       "X2_Y3": {
         "em": 0.6666666666666666,
@@ -70,14 +70,14 @@
         "f1": 0.6666666666666666
       },
       "X2_Y1": {
-        "em": 0.6666666666666666,
-        "contains_gt": 0.6666666666666666,
-        "f1": 0.6666666666666666
+        "em": 0.3333333333333333,
+        "contains_gt": 0.3333333333333333,
+        "f1": 0.3333333333333333
       },
       "X1_Y1": {
-        "em": 0.5,
-        "contains_gt": 0.5,
-        "f1": 0.5
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0
       },
       "X1_Y2": {
         "em": 0.0,
@@ -85,9 +85,9 @@
         "f1": 0.0
       },
       "X3_Y1": {
-        "em": 1.0,
-        "contains_gt": 1.0,
-        "f1": 1.0
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0
       },
       "X3_Y2": {
         "em": 0.0,
@@ -100,17 +100,17 @@
         "f1": 0.0
       },
       "X1_Y3": {
-        "em": 0.5,
-        "contains_gt": 0.5,
-        "f1": 0.5
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0
       }
     },
     "mcq_count": 44,
     "mcq_valid_rate": 1.0,
     "mcq_overall": {
-      "em": 0.5681818181818182,
-      "contains_gt": 0.5681818181818182,
-      "f1": 0.5681818181818182
+      "em": 0.3409090909090909,
+      "contains_gt": 0.3409090909090909,
+      "f1": 0.3409090909090909
     }
   }
 }
