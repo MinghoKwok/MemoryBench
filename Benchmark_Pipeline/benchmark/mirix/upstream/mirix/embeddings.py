@@ -184,6 +184,12 @@ def embedding_model(config: EmbeddingConfig, user_id: Optional[uuid.UUID] = None
     # TODO: refactor to pass in settings from server
     from mirix.settings import model_settings
 
+    if endpoint_type == "hugging-face" and config.embedding_model == "all-MiniLM-L6-v2":
+        from llama_index.embeddings.huggingface import HuggingFaceEmbedding
+
+        model = HuggingFaceEmbedding(model_name=config.embedding_model)
+        return model
+
     if endpoint_type == "openai":
         from llama_index.embeddings.openai import OpenAIEmbedding
 

@@ -67,8 +67,7 @@ class AgentWrapper():
 
         self.client = create_client()
         self.client.set_default_llm_config(LLMConfig.default_config("gpt-4o-mini")) 
-        self.client.set_default_embedding_config(EmbeddingConfig.default_config("text-embedding-3-small")) # FOR LOCOMO evaluation
-        # self.client.set_default_embedding_config(EmbeddingConfig.default_config("text-embedding-004"))
+        self.client.set_default_embedding_config(EmbeddingConfig.default_config("all-MiniLM-L6-v2"))  # Local embedding, no API key needed
 
         # Initialize agent states container
         self.agent_states = AgentStates()
@@ -477,8 +476,19 @@ class AgentWrapper():
                     context_window=128000,
                 )
             else:
-                # Fallback to default_config for unsupported models
-                llm_config = LLMConfig.default_config(model_name)
+                # For non-standard models (e.g. OpenRouter), use OPENAI_API_BASE
+                # if set, otherwise fall back to default OpenAI endpoint.
+                custom_base = os.environ.get("OPENAI_API_BASE", "").strip()
+                if custom_base:
+                    llm_config = LLMConfig(
+                        model=model_name,
+                        model_endpoint_type="openai",
+                        model_endpoint=custom_base,
+                        model_wrapper=None,
+                        context_window=128000,
+                    )
+                else:
+                    llm_config = LLMConfig.default_config(model_name)
             
             # Update LLM config for the client
             self.client.set_default_llm_config(llm_config)

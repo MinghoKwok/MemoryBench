@@ -78,6 +78,14 @@ class EmbeddingConfig(BaseModel):
                 embedding_chunk_size=300,
                 embedding_endpoint_type="hugging-face",
             )
+        elif model_name == "all-MiniLM-L6-v2":
+            return cls(
+                embedding_model="all-MiniLM-L6-v2",
+                embedding_endpoint_type="hugging-face",
+                embedding_endpoint=None,
+                embedding_dim=384,
+                embedding_chunk_size=256,
+            )
         else:
             raise ValueError(f"Model {model_name} not supported.")
 
