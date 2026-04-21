@@ -15,8 +15,6 @@ text_embedding_model: "all-MiniLM-L6-v2"
 # Multimodal embedding: siglip2-base-patch16-384 (768-dim) via vLLM
 # Faithful to official M2A (requires vLLM serving at the URL below)
 multimodal_embedding_model: "siglip2-base-patch16-384"
-multimodal_embedding_url: "http://localhost:8050/v1"
-multimodal_embedding_api_key: "dummy"
 
 # MemoryManager ReAct loop settings (faithful to official M2A defaults)
 max_memory_iterations: 15   # max tool-calling iterations per query/update

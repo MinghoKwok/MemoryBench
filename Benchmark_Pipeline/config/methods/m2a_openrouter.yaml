@@ -12,8 +12,6 @@ text_embedding_model: all-MiniLM-L6-v2
 
 # Multimodal embedding: SigLIP2 via vLLM (no CLIP fallback)
 multimodal_embedding_model: siglip2-base-patch16-384
-multimodal_embedding_url: http://localhost:8050/v1
-multimodal_embedding_api_key: dummy
 
 # ReAct loop settings
 max_memory_iterations: 15
