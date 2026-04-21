@@ -1,0 +1,99 @@
+{
+  "task_name": "personal_health_dashboard_assistant",
+  "model_name": "qwen2_5_vl_7b_local_bz",
+  "model_path": "/common/users/bz362/MMA-Memory/models/Qwen2.5-VL-7B-Instruct",
+  "method_name": "full_context_multimodal",
+  "base_method_name": "full_context_multimodal",
+  "method_modality": "",
+  "mode": "mcq",
+  "num_qas": 63,
+  "num_qas_run": 63,
+  "dialog_json": "/common/users/bz362/MMA-Memory/MemoryBench/Benchmark_Pipeline/data/dialog/Personal_Health_Dashboard_Assistant.json",
+  "image_root": "/common/users/bz362/MMA-Memory/MemoryBench/Benchmark_Pipeline/data/image",
+  "run_dir": "/common/users/bz362/MMA-Memory/MemoryBench/Benchmark_Pipeline/runs/personal_health_dashboard_assistant/20260419_214937_qwen2_5_vl_7b_local_bz_full_context_multimodal",
+  "git_commit": "12d35e8937eb650bda9ad099b8abcd27fad0edb6",
+  "summary": {
+    "open_count": 63,
+    "overall": {
+      "em": 0.36507936507936506,
+      "contains_gt": 0.36507936507936506,
+      "f1": 0.36507936507936506
+    },
+    "by_x": {
+      "X4": {
+        "em": 0.35714285714285715,
+        "contains_gt": 0.35714285714285715,
+        "f1": 0.35714285714285715
+      },
+      "X3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0
+      },
+      "X1": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
+      }
+    },
+    "by_y": {
+      "Y2": {
+        "em": 0.27450980392156865,
+        "contains_gt": 0.27450980392156865,
+        "f1": 0.27450980392156865
+      },
+      "Y3": {
+        "em": 0.7272727272727273,
+        "contains_gt": 0.7272727272727273,
+        "f1": 0.7272727272727273
+      },
+      "Y1": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
+      }
+    },
+    "by_cell": {
+      "X4_Y2": {
+        "em": 0.2978723404255319,
+        "contains_gt": 0.2978723404255319,
+        "f1": 0.2978723404255319
+      },
+      "X4_Y3": {
+        "em": 0.6666666666666666,
+        "contains_gt": 0.6666666666666666,
+        "f1": 0.6666666666666666
+      },
+      "X3_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0
+      },
+      "X1_Y3": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
+      },
+      "X1_Y1": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
+      }
+    },
+    "mcq_count": 63,
+    "mcq_valid_rate": 1.0,
+    "mcq_overall": {
+      "em": 0.36507936507936506,
+      "contains_gt": 0.36507936507936506,
+      "f1": 0.36507936507936506
+    }
+  },
+  "method_runtime": {
+    "method_modality": "multimodal",
+    "history_source": "full_context",
+    "captions_loaded": false,
+    "images_loaded": true,
+    "history_turns_after_truncation": 194,
+    "history_turns_before_truncation": 194
+  }
+}

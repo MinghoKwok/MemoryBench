@@ -1,0 +1,158 @@
+{
+  "task_name": "brand_memory_test",
+  "model_name": "qwen2_5_vl_7b_local_bz",
+  "model_path": "/common/users/bz362/MMA-Memory/models/Qwen2.5-VL-7B-Instruct",
+  "method_name": "semantic_rag_text_only",
+  "base_method_name": "semantic_rag_text_only",
+  "method_modality": "",
+  "mode": "mcq",
+  "num_qas": 33,
+  "num_qas_run": 33,
+  "dialog_json": "/common/users/bz362/MMA-Memory/MemoryBench/Benchmark_Pipeline/data/dialog/Brand_Memory_Test.json",
+  "image_root": "/common/users/bz362/MMA-Memory/MemoryBench/Benchmark_Pipeline/data/image",
+  "run_dir": "/common/users/bz362/MMA-Memory/MemoryBench/Benchmark_Pipeline/runs/brand_memory_test/20260419_160812_qwen2_5_vl_7b_local_bz_semantic_rag_text_only",
+  "git_commit": "12d35e8937eb650bda9ad099b8abcd27fad0edb6",
+  "summary": {
+    "open_count": 33,
+    "overall": {
+      "em": 0.45454545454545453,
+      "contains_gt": 0.45454545454545453,
+      "f1": 0.45454545454545453
+    },
+    "by_x": {
+      "X2": {
+        "em": 0.5555555555555556,
+        "contains_gt": 0.5555555555555556,
+        "f1": 0.5555555555555556
+      },
+      "X4": {
+        "em": 0.5,
+        "contains_gt": 0.5,
+        "f1": 0.5
+      },
+      "X1": {
+        "em": 0.4090909090909091,
+        "contains_gt": 0.4090909090909091,
+        "f1": 0.4090909090909091
+      }
+    },
+    "by_y": {
+      "Y1": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
+      },
+      "Y2": {
+        "em": 0.4,
+        "contains_gt": 0.4,
+        "f1": 0.4
+      }
+    },
+    "by_cell": {
+      "X2_Y1": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
+      },
+      "X4_Y1": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
+      },
+      "X2_Y2": {
+        "em": 0.5,
+        "contains_gt": 0.5,
+        "f1": 0.5
+      },
+      "X1_Y2": {
+        "em": 0.38095238095238093,
+        "contains_gt": 0.38095238095238093,
+        "f1": 0.38095238095238093
+      },
+      "X4_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0
+      },
+      "X1_Y1": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
+      }
+    },
+    "mcq_count": 33,
+    "mcq_valid_rate": 1.0,
+    "mcq_overall": {
+      "em": 0.45454545454545453,
+      "contains_gt": 0.45454545454545453,
+      "f1": 0.45454545454545453
+    }
+  },
+  "method_runtime": {
+    "retrieval_backend": "dense_text",
+    "retrieval_corpus": "round_text",
+    "method_modality": "text_only",
+    "top_k": 10,
+    "neighbor_window": 0,
+    "seed_round_ids": [
+      "P1:2",
+      "D1:1",
+      "S5:1",
+      "CX9:1",
+      "CX3:1",
+      "CX5:1",
+      "CC5:1",
+      "CC1:1",
+      "S3:2",
+      "M3:1"
+    ],
+    "selected_round_ids": [
+      "P1:2",
+      "D1:1",
+      "S5:1",
+      "CX9:1",
+      "CX3:1",
+      "CX5:1",
+      "CC5:1",
+      "CC1:1",
+      "S3:2",
+      "M3:1"
+    ],
+    "top_candidates": [
+      {
+        "round_id": "P1:2",
+        "score": 0.5951034925117156,
+        "text_dense_score": 0.5951034925117156
+      },
+      {
+        "round_id": "D1:1",
+        "score": 0.5860196870358775,
+        "text_dense_score": 0.5860196870358775
+      },
+      {
+        "round_id": "S5:1",
+        "score": 0.550282950018275,
+        "text_dense_score": 0.550282950018275
+      },
+      {
+        "round_id": "CX9:1",
+        "score": 0.48914486002398133,
+        "text_dense_score": 0.48914486002398133
+      },
+      {
+        "round_id": "CX3:1",
+        "score": 0.48860423264934866,
+        "text_dense_score": 0.48860423264934866
+      }
+    ],
+    "clue_hit_count": 1,
+    "corpus_entry_count": 72,
+    "text_embedding_model": "all-MiniLM-L6-v2",
+    "caption_text_included": true,
+    "image_embeddings_built": false,
+    "history_source": "retrieval",
+    "captions_loaded": true,
+    "images_loaded": false,
+    "history_turns_after_truncation": 20
+  }
+}
