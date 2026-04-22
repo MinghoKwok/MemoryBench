@@ -7,7 +7,7 @@ llm_api_key_env: OPENROUTER_API_KEY
 llm_base_url: https://openrouter.ai/api/v1
 
 # Embedding still uses OpenAI API (text-embedding-3-small)
-embedding_model: text-embedding-3-small
+embedding_model: all-MiniLM-L6-v2
 
 retrieve_k: 10
 caption_preprocessed: true

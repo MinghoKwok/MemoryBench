@@ -170,34 +170,32 @@ def _safe_task_name(dataset: MemoryBenchmarkDataset) -> str:
     return task_name.lower().replace(" ", "_").replace("/", "_")
 
 
-class OpenAIEmbeddingEncoder:
+class LocalMiniLMEmbeddingEncoder:
+    """Local sentence-transformers embedding encoder for Generative Agents.
+    Uses all-MiniLM-L6-v2 (384-dim) — no API key needed."""
+
     def __init__(self, config: Any) -> None:
         self.config = config
-        api_key = str(getattr(config, "api_key", "")).strip()
-        if not api_key:
-            raise ValueError(
-                "OpenAI API key not found for Generative Agents embeddings. "
-                "Set OPENAI_API_KEY in the environment or Benchmark_Pipeline/.env.local."
-            )
-        base_url = str(getattr(config, "base_url", "https://api.openai.com/v1")).strip() or "https://api.openai.com/v1"
-        timeout = int(getattr(config, "timeout", 90) or 90)
-        self.client = OpenAI(api_key=api_key, base_url=base_url, timeout=timeout)
-        self.model = str(getattr(config, "path", "")).strip() or str(getattr(config, "name", "")).strip()
-        if not self.model:
-            raise ValueError("OpenAIEmbeddingEncoder requires an embedding model name.")
         self.device = "cpu"
+        self._model = None
+
+    def _load(self) -> None:
+        if self._model is None:
+            from sentence_transformers import SentenceTransformer
+            model_name = str(getattr(self.config, "path", "")).strip() or "all-MiniLM-L6-v2"
+            self._model = SentenceTransformer(model_name)
 
     def reset(self) -> None:
         return None
 
     def __call__(self, text: str, return_type: str = "numpy") -> Any:
-        response = self.client.embeddings.create(model=self.model, input=[str(text)])
-        embedding = np.asarray([response.data[0].embedding], dtype=np.float32)
+        self._load()
+        embedding = self._model.encode([str(text)], normalize_embeddings=True)
+        embedding = np.asarray(embedding, dtype=np.float32)
         if return_type == "numpy":
             return embedding
         if return_type == "tensor":
             import torch
-
             return torch.from_numpy(embedding)
         raise ValueError(f"Unrecognized return type: {return_type}")
 
@@ -241,9 +239,9 @@ class GAMethod(HistoryMethod):
         import memengine.function.Encoder as encoder_mod  # type: ignore
         import memengine.function.Retrieval as retrieval_mod  # type: ignore
 
-        setattr(memengine_function, "OpenAIEmbeddingEncoder", OpenAIEmbeddingEncoder)
-        setattr(encoder_mod, "OpenAIEmbeddingEncoder", OpenAIEmbeddingEncoder)
-        setattr(retrieval_mod, "OpenAIEmbeddingEncoder", OpenAIEmbeddingEncoder)
+        setattr(memengine_function, "OpenAIEmbeddingEncoder", LocalMiniLMEmbeddingEncoder)
+        setattr(encoder_mod, "OpenAIEmbeddingEncoder", LocalMiniLMEmbeddingEncoder)
+        setattr(retrieval_mod, "OpenAIEmbeddingEncoder", LocalMiniLMEmbeddingEncoder)
 
     def _ensure_answer_client(self, method_config: Dict[str, Any], model_config: Dict[str, Any]) -> None:
         provider = str(model_config.get("provider", "")).strip().lower() or "openai_api"
@@ -312,7 +310,7 @@ class GAMethod(HistoryMethod):
 
         base_url = _resolve_base_url(method_config, model_config)
         llm_model = _resolve_model_name(method_config, model_config, "llm_model", "gpt-4.1-mini")
-        embedding_model = str(method_config.get("embedding_model", "text-embedding-3-small")).strip() or "text-embedding-3-small"
+        embedding_model = str(method_config.get("embedding_model", "all-MiniLM-L6-v2")).strip() or "all-MiniLM-L6-v2"
         llm_temperature = float(method_config.get("llm_temperature", 0.0))
         importance_post_scale = float(method_config.get("importance_post_scale", 10.0))
         retrieve_k = max(1, int(method_config.get("retrieve_k", 10)))

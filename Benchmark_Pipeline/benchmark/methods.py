@@ -164,6 +164,37 @@ class TargetSessionContextMethod(_MemGalleryHistoryMethod):
         return history
 
 
+class ClueOnlyContextMethod(_MemGalleryHistoryMethod):
+    """Oracle retrieval: only include the exact rounds listed in QA clue field."""
+
+    name = "clue_only_context"
+    history_source = "clue_only"
+
+    def build_history(self, dataset: MemoryBenchmarkDataset, qa: Dict[str, Any]) -> List[Dict[str, Any]]:
+        self._validate_modality_inputs(dataset)
+        clue_round_ids = set()
+        for clue in qa.get("clue", []):
+            # clue format: "S1:4" or "D28:1" — the round_id is the full string
+            clue_round_ids.add(clue)
+        history: List[Dict[str, Any]] = []
+        for sid in dataset.session_order():
+            session = dataset.get_session(sid)
+            for dialogue in session.get("dialogues", []):
+                rid = dialogue.get("round", "")
+                if rid in clue_round_ids:
+                    round_payload = dataset.rounds.get(rid, {})
+                    if round_payload:
+                        history.extend(
+                            history_from_round_ids(
+                                {"dialogues": [dialogue]},
+                                dataset.rounds,
+                                modality=self.modality,
+                            )
+                        )
+        self._update_history_runtime(history)
+        return history
+
+
 class _RetrievalHistoryMethod(_MemGalleryHistoryMethod):
     history_source = "retrieval"
 
@@ -285,6 +316,7 @@ def get_method(method_name: str, config: Optional[Dict[str, Any]] = None) -> His
         FullContextTextMethod.name: FullContextTextMethod,
         FullContextMultimodalMethod.name: FullContextMultimodalMethod,
         TargetSessionContextMethod.name: TargetSessionContextMethod,
+        ClueOnlyContextMethod.name: ClueOnlyContextMethod,
         SemanticRAGTextMethod.name: SemanticRAGTextMethod,
         SemanticRAGMultimodalMethod.name: SemanticRAGMultimodalMethod,
         M2AAgentMethod.name: M2AAgentMethod,
