@@ -1,0 +1,133 @@
+{
+  "task_name": "cartoon_entertainment_companion",
+  "model_name": "gpt_4_1_nano",
+  "model_path": "gpt-4.1-nano",
+  "method_name": "clue_only_context__multimodal",
+  "base_method_name": "clue_only_context",
+  "method_modality": "multimodal",
+  "mode": "mcq",
+  "num_qas": 112,
+  "num_qas_run": 112,
+  "dialog_json": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/dialog/Cartoon_Entertainment_Companion.json",
+  "image_root": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image",
+  "run_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/cartoon_entertainment_companion/20260422_115423_gpt_4_1_nano_clue_only_context__multimodal",
+  "git_commit": "d2f4f8977d4f5eed60bc84b41f08e49698c60c48",
+  "summary": {
+    "open_count": 112,
+    "overall": {
+      "em": 0.7589285714285714,
+      "contains_gt": 0.7589285714285714,
+      "f1": 0.7589285714285714
+    },
+    "by_x": {
+      "X3": {
+        "em": 0.6296296296296297,
+        "contains_gt": 0.6296296296296297,
+        "f1": 0.6296296296296297
+      },
+      "X4": {
+        "em": 0.8333333333333334,
+        "contains_gt": 0.8333333333333334,
+        "f1": 0.8333333333333334
+      },
+      "X2": {
+        "em": 0.75,
+        "contains_gt": 0.75,
+        "f1": 0.75
+      },
+      "X1": {
+        "em": 0.8095238095238095,
+        "contains_gt": 0.8095238095238095,
+        "f1": 0.8095238095238095
+      }
+    },
+    "by_y": {
+      "Y1": {
+        "em": 0.8837209302325582,
+        "contains_gt": 0.8837209302325582,
+        "f1": 0.8837209302325582
+      },
+      "Y2": {
+        "em": 0.6379310344827587,
+        "contains_gt": 0.6379310344827587,
+        "f1": 0.6379310344827587
+      },
+      "Y3": {
+        "em": 0.9090909090909091,
+        "contains_gt": 0.9090909090909091,
+        "f1": 0.9090909090909091
+      }
+    },
+    "by_cell": {
+      "X3_Y1": {
+        "em": 0.7857142857142857,
+        "contains_gt": 0.7857142857142857,
+        "f1": 0.7857142857142857
+      },
+      "X4_Y2": {
+        "em": 0.6153846153846154,
+        "contains_gt": 0.6153846153846154,
+        "f1": 0.6153846153846154
+      },
+      "X2_Y2": {
+        "em": 0.6842105263157895,
+        "contains_gt": 0.6842105263157895,
+        "f1": 0.6842105263157895
+      },
+      "X3_Y2": {
+        "em": 0.46153846153846156,
+        "contains_gt": 0.46153846153846156,
+        "f1": 0.46153846153846156
+      },
+      "X2_Y1": {
+        "em": 0.8571428571428571,
+        "contains_gt": 0.8571428571428571,
+        "f1": 0.8571428571428571
+      },
+      "X4_Y1": {
+        "em": 0.9444444444444444,
+        "contains_gt": 0.9444444444444444,
+        "f1": 0.9444444444444444
+      },
+      "X1_Y1": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
+      },
+      "X4_Y3": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
+      },
+      "X2_Y3": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
+      },
+      "X1_Y2": {
+        "em": 0.7692307692307693,
+        "contains_gt": 0.7692307692307693,
+        "f1": 0.7692307692307693
+      },
+      "X1_Y3": {
+        "em": 0.75,
+        "contains_gt": 0.75,
+        "f1": 0.75
+      }
+    },
+    "mcq_count": 112,
+    "mcq_valid_rate": 1.0,
+    "mcq_overall": {
+      "em": 0.7589285714285714,
+      "contains_gt": 0.7589285714285714,
+      "f1": 0.7589285714285714
+    }
+  },
+  "method_runtime": {
+    "method_modality": "multimodal",
+    "history_source": "clue_only",
+    "captions_loaded": false,
+    "images_loaded": true,
+    "history_turns_after_truncation": 4
+  }
+}
