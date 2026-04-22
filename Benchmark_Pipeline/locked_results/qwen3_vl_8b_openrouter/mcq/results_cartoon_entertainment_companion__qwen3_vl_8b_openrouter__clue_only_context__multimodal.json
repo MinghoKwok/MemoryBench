@@ -1,0 +1,133 @@
+{
+  "task_name": "cartoon_entertainment_companion",
+  "model_name": "qwen3_vl_8b_openrouter",
+  "model_path": "qwen/qwen3-vl-8b-instruct",
+  "method_name": "clue_only_context__multimodal",
+  "base_method_name": "clue_only_context",
+  "method_modality": "multimodal",
+  "mode": "mcq",
+  "num_qas": 112,
+  "num_qas_run": 112,
+  "dialog_json": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/dialog/Cartoon_Entertainment_Companion.json",
+  "image_root": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image",
+  "run_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/cartoon_entertainment_companion/20260422_014717_qwen3_vl_8b_openrouter_clue_only_context__multimodal",
+  "git_commit": "ade7dbe9a9e8626e08575af59791ee619bedb592",
+  "summary": {
+    "open_count": 112,
+    "overall": {
+      "em": 0.8303571428571429,
+      "contains_gt": 0.8303571428571429,
+      "f1": 0.8303571428571429
+    },
+    "by_x": {
+      "X3": {
+        "em": 0.5925925925925926,
+        "contains_gt": 0.5925925925925926,
+        "f1": 0.5925925925925926
+      },
+      "X4": {
+        "em": 0.9166666666666666,
+        "contains_gt": 0.9166666666666666,
+        "f1": 0.9166666666666666
+      },
+      "X2": {
+        "em": 0.9285714285714286,
+        "contains_gt": 0.9285714285714286,
+        "f1": 0.9285714285714286
+      },
+      "X1": {
+        "em": 0.8571428571428571,
+        "contains_gt": 0.8571428571428571,
+        "f1": 0.8571428571428571
+      }
+    },
+    "by_y": {
+      "Y1": {
+        "em": 0.9069767441860465,
+        "contains_gt": 0.9069767441860465,
+        "f1": 0.9069767441860465
+      },
+      "Y2": {
+        "em": 0.7413793103448276,
+        "contains_gt": 0.7413793103448276,
+        "f1": 0.7413793103448276
+      },
+      "Y3": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
+      }
+    },
+    "by_cell": {
+      "X3_Y1": {
+        "em": 0.7857142857142857,
+        "contains_gt": 0.7857142857142857,
+        "f1": 0.7857142857142857
+      },
+      "X4_Y2": {
+        "em": 0.8461538461538461,
+        "contains_gt": 0.8461538461538461,
+        "f1": 0.8461538461538461
+      },
+      "X2_Y2": {
+        "em": 0.8947368421052632,
+        "contains_gt": 0.8947368421052632,
+        "f1": 0.8947368421052632
+      },
+      "X3_Y2": {
+        "em": 0.38461538461538464,
+        "contains_gt": 0.38461538461538464,
+        "f1": 0.38461538461538464
+      },
+      "X2_Y1": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
+      },
+      "X4_Y1": {
+        "em": 0.9444444444444444,
+        "contains_gt": 0.9444444444444444,
+        "f1": 0.9444444444444444
+      },
+      "X1_Y1": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
+      },
+      "X4_Y3": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
+      },
+      "X2_Y3": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
+      },
+      "X1_Y2": {
+        "em": 0.7692307692307693,
+        "contains_gt": 0.7692307692307693,
+        "f1": 0.7692307692307693
+      },
+      "X1_Y3": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
+      }
+    },
+    "mcq_count": 112,
+    "mcq_valid_rate": 1.0,
+    "mcq_overall": {
+      "em": 0.8303571428571429,
+      "contains_gt": 0.8303571428571429,
+      "f1": 0.8303571428571429
+    }
+  },
+  "method_runtime": {
+    "method_modality": "multimodal",
+    "history_source": "clue_only",
+    "captions_loaded": false,
+    "images_loaded": true,
+    "history_turns_after_truncation": 4
+  }
+}

@@ -1,0 +1,100 @@
+{
+  "task_name": "personal_health_dashboard_assistant",
+  "model_name": "gpt_4_1_nano",
+  "model_path": "gpt-4.1-nano",
+  "method_name": "clue_only_context__text_only",
+  "base_method_name": "clue_only_context",
+  "method_modality": "text_only",
+  "mode": "mcq",
+  "num_qas": 63,
+  "num_qas_run": 63,
+  "dialog_json": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/dialog/Personal_Health_Dashboard_Assistant.json",
+  "image_root": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/image",
+  "run_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/personal_health_dashboard_assistant/20260422_012248_gpt_4_1_nano_clue_only_context__text_only",
+  "git_commit": "ade7dbe9a9e8626e08575af59791ee619bedb592",
+  "summary": {
+    "open_count": 63,
+    "overall": {
+      "em": 0.30158730158730157,
+      "contains_gt": 0.30158730158730157,
+      "f1": 0.30158730158730157
+    },
+    "by_x": {
+      "X4": {
+        "em": 0.30357142857142855,
+        "contains_gt": 0.30357142857142855,
+        "f1": 0.30357142857142855
+      },
+      "X3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0
+      },
+      "X1": {
+        "em": 0.6666666666666666,
+        "contains_gt": 0.6666666666666666,
+        "f1": 0.6666666666666666
+      }
+    },
+    "by_y": {
+      "Y2": {
+        "em": 0.21568627450980393,
+        "contains_gt": 0.21568627450980393,
+        "f1": 0.21568627450980393
+      },
+      "Y3": {
+        "em": 0.6363636363636364,
+        "contains_gt": 0.6363636363636364,
+        "f1": 0.6363636363636364
+      },
+      "Y1": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
+      }
+    },
+    "by_cell": {
+      "X4_Y2": {
+        "em": 0.23404255319148937,
+        "contains_gt": 0.23404255319148937,
+        "f1": 0.23404255319148937
+      },
+      "X4_Y3": {
+        "em": 0.6666666666666666,
+        "contains_gt": 0.6666666666666666,
+        "f1": 0.6666666666666666
+      },
+      "X3_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0
+      },
+      "X1_Y3": {
+        "em": 0.5,
+        "contains_gt": 0.5,
+        "f1": 0.5
+      },
+      "X1_Y1": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
+      }
+    },
+    "mcq_count": 63,
+    "mcq_valid_rate": 1.0,
+    "mcq_overall": {
+      "em": 0.30158730158730157,
+      "contains_gt": 0.30158730158730157,
+      "f1": 0.30158730158730157
+    }
+  },
+  "method_runtime": {
+    "caption_validation_passed": true,
+    "caption_validation_round_count": 62,
+    "method_modality": "text_only",
+    "history_source": "clue_only",
+    "captions_loaded": true,
+    "images_loaded": false,
+    "history_turns_after_truncation": 6
+  }
+}
