@@ -1,0 +1,8 @@
+name: all_concat
+dataset:
+  dialog_json: data/dialog/All_Concat.json
+  image_root: /common/home/mg1998/.cache/memeye_hf/MemEye/data/image
+eval:
+  mode: mcq
+  output_json: output/results_all_concat.json
+  max_questions: 0
