@@ -1,0 +1,239 @@
+{
+  "task_name": "outdoor_navigation_route_memory_assistant_open",
+  "model_name": "gemini_2_5_flash_lite",
+  "model_path": "gemini-2.5-flash-lite",
+  "method_name": "semantic_rag_multimodal",
+  "base_method_name": "semantic_rag_multimodal",
+  "method_modality": "multimodal",
+  "mode": "open",
+  "num_qas": 40,
+  "num_qas_run": 40,
+  "dialog_json": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/dialog/Outdoor_Navigation_Route_Memory_Assistant_Open.json",
+  "image_root": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image",
+  "run_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/outdoor_navigation_route_memory_assistant_open/20260422_072923_gemini_2_5_flash_lite_semantic_rag_multimodal",
+  "git_commit": "265dcfb5db60d50bff9abf401df5dcdd59de51fa",
+  "summary": {
+    "open_count": 40,
+    "overall": {
+      "em": 0.0,
+      "contains_gt": 0.0,
+      "f1": 0.15777620229200245,
+      "bleu": 0.03365407396620186,
+      "bleu_1": 0.11541945242312417,
+      "bleu_2": 0.059830778437872226
+    },
+    "by_x": {
+      "X3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.12518558899067303,
+        "bleu": 0.019675991970969895,
+        "bleu_1": 0.09442106754374488,
+        "bleu_2": 0.042238580409435116
+      },
+      "X1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.2716049382716049,
+        "bleu": 0.02608847776264928,
+        "bleu_1": 0.1596635174275178,
+        "bleu_2": 0.04729973115780455
+      },
+      "X4": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.11341991341991343,
+        "bleu": 0.023928640196056474,
+        "bleu_1": 0.08110208737158595,
+        "bleu_2": 0.038052647974025924
+      },
+      "X2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.3098245614035088,
+        "bleu": 0.12340050823273142,
+        "bleu_1": 0.23658165682067442,
+        "bleu_2": 0.18412540662331953
+      }
+    },
+    "by_y": {
+      "Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.13757668247953292,
+        "bleu": 0.03783457354965281,
+        "bleu_1": 0.09965453072826753,
+        "bleu_2": 0.060519600713951696
+      },
+      "Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.6666666666666666,
+        "bleu": 0.06541924356118012,
+        "bleu_1": 0.36787944117144233,
+        "bleu_2": 0.11633369384516798
+      },
+      "Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.15902982158042886,
+        "bleu": 0.02284960021507086,
+        "bleu_1": 0.12752929667835142,
+        "bleu_2": 0.05410675577745976
+      }
+    },
+    "by_cell": {
+      "X3_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.08397362771048923,
+        "bleu": 0.013835135171741302,
+        "bleu_1": 0.05705349565859966,
+        "bleu_2": 0.026791911996659333
+      },
+      "X1_Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.6666666666666666,
+        "bleu": 0.06541924356118012,
+        "bleu_1": 0.36787944117144233,
+        "bleu_2": 0.11633369384516798
+      },
+      "X4_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.28571428571428575,
+        "bleu": 0.0814136751754278,
+        "bleu_1": 0.23884377019126307,
+        "bleu_2": 0.09250379442961536
+      },
+      "X2_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.4812865497076023,
+        "bleu": 0.1993040877790789,
+        "bleu_1": 0.3656657080848335,
+        "bleu_2": 0.2971945867355411
+      },
+      "X3_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.3065182186234818,
+        "bleu": 0.045375761887575694,
+        "bleu_1": 0.25883838383838387,
+        "bleu_2": 0.11020392142564855
+      },
+      "X4_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.07034632034632035,
+        "bleu": 0.009557381451213643,
+        "bleu_1": 0.04166666666666666,
+        "bleu_2": 0.024439861360128563
+      },
+      "X2_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.052631578947368425,
+        "bleu": 0.009545138913210207,
+        "bleu_1": 0.04295557992443577,
+        "bleu_2": 0.014521636454987096
+      },
+      "X1_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.07407407407407407,
+        "bleu": 0.00642309486338386,
+        "bleu_1": 0.055555555555555546,
+        "bleu_2": 0.012782749814122835
+      }
+    }
+  },
+  "method_runtime": {
+    "retrieval_backend": "dense_multimodal",
+    "retrieval_corpus": "round_text",
+    "method_modality": "multimodal",
+    "top_k": 10,
+    "neighbor_window": 0,
+    "seed_round_ids": [
+      "S7:R3",
+      "S8:R4",
+      "S5:R5",
+      "S9:R4",
+      "S4:R3",
+      "S2:R4",
+      "S8:R2",
+      "S5:R3",
+      "S1:R1",
+      "S1:R5"
+    ],
+    "selected_round_ids": [
+      "S7:R3",
+      "S8:R4",
+      "S5:R5",
+      "S9:R4",
+      "S4:R3",
+      "S2:R4",
+      "S8:R2",
+      "S5:R3",
+      "S1:R1",
+      "S1:R5"
+    ],
+    "top_candidates": [
+      {
+        "round_id": "S7:R3",
+        "score": 0.3382819813150315,
+        "text_dense_score": 0.5499551541289582,
+        "image_dense_score": 0.12660880850110479,
+        "indexed_image_count": 1,
+        "best_image_path": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image/Outdoor_Navigation_Route_Memory_Assistant/S7_R3.jpg"
+      },
+      {
+        "round_id": "S8:R4",
+        "score": 0.2602351153214122,
+        "text_dense_score": 0.4006369964455509,
+        "image_dense_score": 0.11983323419727346,
+        "indexed_image_count": 1,
+        "best_image_path": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image/Outdoor_Navigation_Route_Memory_Assistant/S8_R4.jpg"
+      },
+      {
+        "round_id": "S5:R5",
+        "score": 0.2325693036136111,
+        "text_dense_score": 0.33547308504255907,
+        "image_dense_score": 0.12966552218466315,
+        "indexed_image_count": 1,
+        "best_image_path": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image/Outdoor_Navigation_Route_Memory_Assistant/S5_R5.jpg"
+      },
+      {
+        "round_id": "S9:R4",
+        "score": 0.2295579697619867,
+        "text_dense_score": 0.3508365767330023,
+        "image_dense_score": 0.10827936279097111,
+        "indexed_image_count": 1,
+        "best_image_path": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image/Outdoor_Navigation_Route_Memory_Assistant/S9_R4.jpg"
+      },
+      {
+        "round_id": "S4:R3",
+        "score": 0.22268483769792644,
+        "text_dense_score": 0.3233118673480575,
+        "image_dense_score": 0.12205780804779538,
+        "indexed_image_count": 1,
+        "best_image_path": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image/Outdoor_Navigation_Route_Memory_Assistant/S4_R3.jpg"
+      }
+    ],
+    "clue_hit_count": 2,
+    "corpus_entry_count": 60,
+    "text_embedding_model": "all-MiniLM-L6-v2",
+    "multimodal_embedding_model": "siglip2-base-patch16-384",
+    "text_dense_weight": 0.5,
+    "image_dense_weight": 0.5,
+    "caption_text_included": false,
+    "image_embeddings_built": true,
+    "multi_image_indexing_enabled": true,
+    "indexed_image_count": 40,
+    "history_source": "retrieval",
+    "captions_loaded": false,
+    "images_loaded": true,
+    "history_turns_after_truncation": 20
+  }
+}

@@ -127,7 +127,11 @@ class OpenAIAPIRouter(BaseRouter):
         payload = {
             "model": self.model,
             "messages": self._to_messages(history_messages, question, question_images),
-            "max_tokens": self.max_new_tokens,
+            **({
+                "max_completion_tokens": self.max_new_tokens
+            } if any(self.model.startswith(p) for p in ("gpt-5", "o3", "o4")) else {
+                "max_tokens": self.max_new_tokens
+            }),
             "temperature": 0,
         }
         response = post_json(

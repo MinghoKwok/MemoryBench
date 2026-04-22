@@ -1,0 +1,140 @@
+{
+  "task_name": "multi_scene_visual_case_archive_assistant_open",
+  "model_name": "gemini_2_5_flash_lite",
+  "model_path": "gemini-2.5-flash-lite",
+  "method_name": "reflexion",
+  "base_method_name": "reflexion",
+  "method_modality": "",
+  "mode": "open",
+  "num_qas": 59,
+  "num_qas_run": 59,
+  "dialog_json": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/dialog/Multi-Scene_Visual_Case_Archive_Assistant_Open.json",
+  "image_root": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image",
+  "run_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/multi_scene_visual_case_archive_assistant_open/20260422_065708_gemini_2_5_flash_lite_reflexion",
+  "git_commit": "265dcfb5db60d50bff9abf401df5dcdd59de51fa",
+  "summary": {
+    "open_count": 59,
+    "overall": {
+      "em": 0.03389830508474576,
+      "contains_gt": 0.05084745762711865,
+      "f1": 0.13667241731610075,
+      "bleu": 0.03493648309494205,
+      "bleu_1": 0.09703298418167854,
+      "bleu_2": 0.07501627705322042
+    },
+    "by_x": {
+      "X4": {
+        "em": 0.14285714285714285,
+        "contains_gt": 0.14285714285714285,
+        "f1": 0.2491823652537938,
+        "bleu": 0.059792264317745224,
+        "bleu_1": 0.21258503401360543,
+        "bleu_2": 0.18725159826442314
+      },
+      "X2": {
+        "em": 0.1111111111111111,
+        "contains_gt": 0.2222222222222222,
+        "f1": 0.39959898416892825,
+        "bleu": 0.12270927002563504,
+        "bleu_1": 0.32708869377261823,
+        "bleu_2": 0.26411764481389005
+      },
+      "X3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.06332570249658218,
+        "bleu": 0.012519144701084861,
+        "bleu_1": 0.03007099034116818,
+        "bleu_2": 0.017166054766605404
+      }
+    },
+    "by_y": {
+      "Y2": {
+        "em": 0.1,
+        "contains_gt": 0.1,
+        "f1": 0.22594884037531096,
+        "bleu": 0.04635160312324837,
+        "bleu_1": 0.18035854341736696,
+        "bleu_2": 0.13927646204305544
+      },
+      "Y3": {
+        "em": 0.07692307692307693,
+        "contains_gt": 0.15384615384615385,
+        "f1": 0.28726352029158114,
+        "bleu": 0.0853158083899636,
+        "bleu_1": 0.23413832645796648,
+        "bleu_2": 0.18382969677107275
+      },
+      "Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.05749329039184111,
+        "bleu": 0.013573082286099181,
+        "bleu_1": 0.024376733016438897,
+        "bleu_2": 0.017872490769041793
+      }
+    },
+    "by_cell": {
+      "X4_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.14885531135531135,
+        "bleu": 0.020463616841475716,
+        "bleu_1": 0.09761904761904762,
+        "bleu_2": 0.062152237570192385
+      },
+      "X2_Y2": {
+        "em": 0.3333333333333333,
+        "contains_gt": 0.3333333333333333,
+        "f1": 0.4177978883861237,
+        "bleu": 0.11403981072668204,
+        "bleu_1": 0.40555555555555556,
+        "bleu_2": 0.34997312112368334
+      },
+      "X3_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.07828571428571429,
+        "bleu": 0.006122749000403906,
+        "bleu_1": 0.06333333333333334,
+        "bleu_2": 0.012529323613997109
+      },
+      "X2_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.16666666666666666,
+        "f1": 0.39049953206033056,
+        "bleu": 0.12704399967511154,
+        "bleu_1": 0.2878552628811496,
+        "bleu_2": 0.22118990665899338
+      },
+      "X3_Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.05749329039184111,
+        "bleu": 0.013573082286099181,
+        "bleu_1": 0.024376733016438897,
+        "bleu_2": 0.017872490769041793
+      },
+      "X3_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.13090909090909092,
+        "bleu": 0.009539257422529505,
+        "bleu_1": 0.04941176470588235,
+        "bleu_2": 0.01604203460427116
+      },
+      "X4_Y3": {
+        "em": 0.5,
+        "contains_gt": 0.5,
+        "f1": 0.5,
+        "bleu": 0.158113883008419,
+        "bleu_1": 0.5,
+        "bleu_2": 0.5
+      }
+    }
+  },
+  "method_runtime": {
+    "num_memories": 117,
+    "debug_dir": "/common/home/mg1998/MemoryBench/output/multi-scene_visual_case_archive_assistant/reflexion"
+  }
+}

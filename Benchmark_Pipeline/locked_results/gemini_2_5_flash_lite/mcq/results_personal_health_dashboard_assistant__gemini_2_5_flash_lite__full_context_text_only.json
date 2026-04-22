@@ -10,8 +10,8 @@
   "num_qas_run": 63,
   "dialog_json": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/dialog/Personal_Health_Dashboard_Assistant.json",
   "image_root": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/image",
-  "run_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/personal_health_dashboard_assistant/20260416_232211_gemini_2_5_flash_lite_full_context_text_only",
-  "git_commit": "483ff1401e5ce04eb6a71f775bbe4e9835bb495c",
+  "run_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/personal_health_dashboard_assistant/20260422_091926_gemini_2_5_flash_lite_full_context_text_only",
+  "git_commit": "265dcfb5db60d50bff9abf401df5dcdd59de51fa",
   "summary": {
     "open_count": 63,
     "overall": {
@@ -81,7 +81,7 @@
       }
     },
     "mcq_count": 63,
-    "mcq_valid_rate": 0.7619047619047619,
+    "mcq_valid_rate": 0.8888888888888888,
     "mcq_overall": {
       "em": 0.2857142857142857,
       "contains_gt": 0.2857142857142857,

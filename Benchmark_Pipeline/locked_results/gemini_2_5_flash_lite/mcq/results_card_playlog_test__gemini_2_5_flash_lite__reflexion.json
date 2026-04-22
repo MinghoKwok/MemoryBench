@@ -1,0 +1,65 @@
+{
+  "task_name": "card_playlog_test",
+  "model_name": "gemini_2_5_flash_lite",
+  "model_path": "gemini-2.5-flash-lite",
+  "method_name": "reflexion",
+  "base_method_name": "reflexion",
+  "method_modality": "",
+  "mode": "mcq",
+  "num_qas": 48,
+  "num_qas_run": 48,
+  "dialog_json": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/dialog/Card_Playlog_Test.json",
+  "image_root": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/image",
+  "run_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/card_playlog_test/20260422_031709_gemini_2_5_flash_lite_reflexion",
+  "git_commit": "265dcfb5db60d50bff9abf401df5dcdd59de51fa",
+  "summary": {
+    "open_count": 48,
+    "overall": {
+      "em": 0.3541666666666667,
+      "contains_gt": 0.3541666666666667,
+      "f1": 0.3541666666666667
+    },
+    "by_x": {
+      "X4": {
+        "em": 0.3541666666666667,
+        "contains_gt": 0.3541666666666667,
+        "f1": 0.3541666666666667
+      }
+    },
+    "by_y": {
+      "Y3": {
+        "em": 0.15789473684210525,
+        "contains_gt": 0.15789473684210525,
+        "f1": 0.15789473684210525
+      },
+      "Y2": {
+        "em": 0.4827586206896552,
+        "contains_gt": 0.4827586206896552,
+        "f1": 0.4827586206896552
+      }
+    },
+    "by_cell": {
+      "X4_Y3": {
+        "em": 0.15789473684210525,
+        "contains_gt": 0.15789473684210525,
+        "f1": 0.15789473684210525
+      },
+      "X4_Y2": {
+        "em": 0.4827586206896552,
+        "contains_gt": 0.4827586206896552,
+        "f1": 0.4827586206896552
+      }
+    },
+    "mcq_count": 48,
+    "mcq_valid_rate": 0.9375,
+    "mcq_overall": {
+      "em": 0.3541666666666667,
+      "contains_gt": 0.3541666666666667,
+      "f1": 0.3541666666666667
+    }
+  },
+  "method_runtime": {
+    "num_memories": 30,
+    "debug_dir": "/common/home/mg1998/MemoryBench/output/card_playlog_test/reflexion"
+  }
+}

@@ -1,0 +1,223 @@
+{
+  "task_name": "multi_scene_visual_case_archive_assistant_open",
+  "model_name": "gemini_2_5_flash_lite",
+  "model_path": "gemini-2.5-flash-lite",
+  "method_name": "semantic_rag_multimodal",
+  "base_method_name": "semantic_rag_multimodal",
+  "method_modality": "multimodal",
+  "mode": "open",
+  "num_qas": 59,
+  "num_qas_run": 59,
+  "dialog_json": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/dialog/Multi-Scene_Visual_Case_Archive_Assistant_Open.json",
+  "image_root": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image",
+  "run_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/multi_scene_visual_case_archive_assistant_open/20260422_062451_gemini_2_5_flash_lite_semantic_rag_multimodal",
+  "git_commit": "265dcfb5db60d50bff9abf401df5dcdd59de51fa",
+  "summary": {
+    "open_count": 59,
+    "overall": {
+      "em": 0.05084745762711865,
+      "contains_gt": 0.06779661016949153,
+      "f1": 0.2131438699636855,
+      "bleu": 0.06083836316023931,
+      "bleu_1": 0.14751173419204658,
+      "bleu_2": 0.1076864653974234
+    },
+    "by_x": {
+      "X4": {
+        "em": 0.14285714285714285,
+        "contains_gt": 0.2857142857142857,
+        "f1": 0.4971226840792058,
+        "bleu": 0.09488010192063494,
+        "bleu_1": 0.3851743500166775,
+        "bleu_2": 0.2685009339598936
+      },
+      "X2": {
+        "em": 0.2222222222222222,
+        "contains_gt": 0.2222222222222222,
+        "f1": 0.3644954170415898,
+        "bleu": 0.1746516496040059,
+        "bleu_1": 0.3353590334180364,
+        "bleu_2": 0.28067635843389627
+      },
+      "X3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.13523652990531854,
+        "bleu": 0.03147529922264236,
+        "bleu_1": 0.06950559456864369,
+        "bleu_2": 0.04530017894938742
+      }
+    },
+    "by_y": {
+      "Y2": {
+        "em": 0.1,
+        "contains_gt": 0.1,
+        "f1": 0.3364118423442879,
+        "bleu": 0.0596358893466865,
+        "bleu_1": 0.26332433823642,
+        "bleu_2": 0.18268878017227924
+      },
+      "Y3": {
+        "em": 0.15384615384615385,
+        "contains_gt": 0.23076923076923078,
+        "f1": 0.3263132411045297,
+        "bleu": 0.16072504745536348,
+        "bleu_1": 0.2871571369594565,
+        "bleu_2": 0.23892209693416352
+      },
+      "Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.13803604916821335,
+        "bleu": 0.025102192112986917,
+        "bleu_1": 0.06491405984704485,
+        "bleu_2": 0.039461844349473946
+      }
+    },
+    "by_cell": {
+      "X4_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.3959717577108881,
+        "bleu": 0.04686220215617133,
+        "bleu_1": 0.27257742335668184,
+        "bleu_2": 0.1500814185691349
+      },
+      "X2_Y2": {
+        "em": 0.3333333333333333,
+        "contains_gt": 0.3333333333333333,
+        "f1": 0.4347532116294794,
+        "bleu": 0.11684836635536944,
+        "bleu_1": 0.40384424538967534,
+        "bleu_2": 0.3524355280519779
+      },
+      "X3_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.15317460317460319,
+        "bleu": 0.0876512333772385,
+        "bleu_1": 0.1186021765092599,
+        "bleu_2": 0.10162143470428252
+      },
+      "X2_Y3": {
+        "em": 0.16666666666666666,
+        "contains_gt": 0.16666666666666666,
+        "f1": 0.32936651974764497,
+        "bleu": 0.2035532912283241,
+        "bleu_1": 0.3011164274322169,
+        "bleu_2": 0.2447967736248554
+      },
+      "X3_Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.13803604916821335,
+        "bleu": 0.025102192112986917,
+        "bleu_1": 0.06491405984704485,
+        "bleu_2": 0.039461844349473946
+      },
+      "X3_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.039999999999999994,
+        "bleu": 0.005751391809950023,
+        "bleu_1": 0.02941176470588235,
+        "bleu_2": 0.009587062360592131
+      },
+      "X4_Y3": {
+        "em": 0.5,
+        "contains_gt": 1.0,
+        "f1": 0.75,
+        "bleu": 0.21492485133179398,
+        "bleu_1": 0.6666666666666666,
+        "bleu_2": 0.5645497224367902
+      }
+    }
+  },
+  "method_runtime": {
+    "retrieval_backend": "dense_multimodal",
+    "retrieval_corpus": "round_text",
+    "method_modality": "multimodal",
+    "top_k": 10,
+    "neighbor_window": 0,
+    "seed_round_ids": [
+      "S2:R6",
+      "S2:R4",
+      "S5:R6",
+      "S3:R4",
+      "S11:R2",
+      "S11:R4",
+      "S12:R8",
+      "S11:R5",
+      "S8:R7",
+      "S1:R4"
+    ],
+    "selected_round_ids": [
+      "S2:R6",
+      "S2:R4",
+      "S5:R6",
+      "S3:R4",
+      "S11:R2",
+      "S11:R4",
+      "S12:R8",
+      "S11:R5",
+      "S8:R7",
+      "S1:R4"
+    ],
+    "top_candidates": [
+      {
+        "round_id": "S2:R6",
+        "score": 0.29457348569186464,
+        "text_dense_score": 0.46308051819006135,
+        "image_dense_score": 0.12606645319366794,
+        "indexed_image_count": 1,
+        "best_image_path": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image/Multi-Scene_Visual_Case_Archive_Assistant/S2-IMG4.png"
+      },
+      {
+        "round_id": "S2:R4",
+        "score": 0.2791710778109021,
+        "text_dense_score": 0.43321688261710867,
+        "image_dense_score": 0.12512527300469556,
+        "indexed_image_count": 1,
+        "best_image_path": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image/Multi-Scene_Visual_Case_Archive_Assistant/S2-IMG3.png"
+      },
+      {
+        "round_id": "S5:R6",
+        "score": 0.27006069385635095,
+        "text_dense_score": 0.4341050019627993,
+        "image_dense_score": 0.10601638574990259,
+        "indexed_image_count": 1,
+        "best_image_path": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image/Multi-Scene_Visual_Case_Archive_Assistant/S5-IMG3.png"
+      },
+      {
+        "round_id": "S3:R4",
+        "score": 0.2505500151843526,
+        "text_dense_score": 0.3514873951777235,
+        "image_dense_score": 0.14961263519098178,
+        "indexed_image_count": 1,
+        "best_image_path": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image/Multi-Scene_Visual_Case_Archive_Assistant/S3-IMG3.png"
+      },
+      {
+        "round_id": "S11:R2",
+        "score": 0.2329271407846306,
+        "text_dense_score": 0.35818164302962624,
+        "image_dense_score": 0.10767263853963494,
+        "indexed_image_count": 1,
+        "best_image_path": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image/Multi-Scene_Visual_Case_Archive_Assistant/S11-IMG1.png"
+      }
+    ],
+    "clue_hit_count": 3,
+    "corpus_entry_count": 117,
+    "text_embedding_model": "all-MiniLM-L6-v2",
+    "multimodal_embedding_model": "siglip2-base-patch16-384",
+    "text_dense_weight": 0.5,
+    "image_dense_weight": 0.5,
+    "caption_text_included": false,
+    "image_embeddings_built": true,
+    "multi_image_indexing_enabled": true,
+    "indexed_image_count": 57,
+    "history_source": "retrieval",
+    "captions_loaded": false,
+    "images_loaded": true,
+    "history_turns_after_truncation": 20
+  }
+}

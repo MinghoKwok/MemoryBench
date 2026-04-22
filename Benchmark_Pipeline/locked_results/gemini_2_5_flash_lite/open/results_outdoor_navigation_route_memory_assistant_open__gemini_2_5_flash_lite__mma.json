@@ -1,0 +1,152 @@
+{
+  "task_name": "outdoor_navigation_route_memory_assistant_open",
+  "model_name": "gemini_2_5_flash_lite",
+  "model_path": "gemini-2.5-flash-lite",
+  "method_name": "mma",
+  "base_method_name": "mma",
+  "method_modality": "",
+  "mode": "open",
+  "num_qas": 40,
+  "num_qas_run": 40,
+  "dialog_json": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/dialog/Outdoor_Navigation_Route_Memory_Assistant_Open.json",
+  "image_root": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image",
+  "run_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/outdoor_navigation_route_memory_assistant_open/20260422_075720_gemini_2_5_flash_lite_mma",
+  "git_commit": "265dcfb5db60d50bff9abf401df5dcdd59de51fa",
+  "summary": {
+    "open_count": 40,
+    "overall": {
+      "em": 0.025,
+      "contains_gt": 0.025,
+      "f1": 0.10160602145912248,
+      "bleu": 0.02236879826898207,
+      "bleu_1": 0.0896996458741769,
+      "bleu_2": 0.055359896859062806
+    },
+    "by_x": {
+      "X3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.06638556989059026,
+        "bleu": 0.012532625117303355,
+        "bleu_1": 0.05608008172167536,
+        "bleu_2": 0.021522168085716598
+      },
+      "X1": {
+        "em": 0.3333333333333333,
+        "contains_gt": 0.3333333333333333,
+        "f1": 0.4117647058823529,
+        "bleu": 0.11512602960352981,
+        "bleu_1": 0.40687474188204964,
+        "bleu_2": 0.3509130924269683
+      },
+      "X4": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0,
+        "bleu": 0.0,
+        "bleu_1": 0.0,
+        "bleu_2": 0.0
+      },
+      "X2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.2073072707343807,
+        "bleu": 0.042198592756300564,
+        "bleu_1": 0.17063988056713855,
+        "bleu_2": 0.11611161175345183
+      }
+    },
+    "by_y": {
+      "Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.08404667931546743,
+        "bleu": 0.017867082400845946,
+        "bleu_1": 0.07223009709052336,
+        "bleu_2": 0.03923061683947558
+      },
+      "Y1": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0,
+        "bleu": 0.316227766016838,
+        "bleu_1": 1.0,
+        "bleu_2": 1.0
+      },
+      "Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.06761747662790354,
+        "bleu": 0.008767694024650014,
+        "bleu_1": 0.05461563927795916,
+        "bleu_2": 0.01495383357970361
+      }
+    },
+    "by_cell": {
+      "X3_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.056165174103153644,
+        "bleu": 0.012299289303551413,
+        "bleu_1": 0.05036892976596581,
+        "bleu_2": 0.021225548781239324
+      },
+      "X1_Y1": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0,
+        "bleu": 0.316227766016838,
+        "bleu_1": 1.0,
+        "bleu_2": 1.0
+      },
+      "X4_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0,
+        "bleu": 0.0,
+        "bleu_1": 0.0,
+        "bleu_2": 0.0
+      },
+      "X2_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.3165266106442577,
+        "bleu": 0.06465325924795451,
+        "bleu_1": 0.25662202316745314,
+        "bleu_2": 0.18434465487970003
+      },
+      "X3_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.11135531135531135,
+        "bleu": 0.013559302697811894,
+        "bleu_1": 0.08120915032679739,
+        "bleu_2": 0.022827293025416615
+      },
+      "X4_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0,
+        "bleu": 0.0,
+        "bleu_1": 0.0,
+        "bleu_2": 0.0
+      },
+      "X2_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.043478260869565216,
+        "bleu": 0.008516593018819641,
+        "bleu_1": 0.041666666666666664,
+        "bleu_2": 0.013762047064079514
+      },
+      "X1_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.11764705882352941,
+        "bleu": 0.014575161396875714,
+        "bleu_1": 0.11031211282307443,
+        "bleu_2": 0.026369638640452404
+      }
+    }
+  }
+}

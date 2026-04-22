@@ -1,0 +1,91 @@
+{
+  "task_name": "personal_health_dashboard_assistant",
+  "model_name": "gemini_2_5_flash_lite",
+  "model_path": "gemini-2.5-flash-lite",
+  "method_name": "mma",
+  "base_method_name": "mma",
+  "method_modality": "",
+  "mode": "mcq",
+  "num_qas": 63,
+  "num_qas_run": 63,
+  "dialog_json": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/dialog/Personal_Health_Dashboard_Assistant.json",
+  "image_root": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/image",
+  "run_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/personal_health_dashboard_assistant/20260422_101432_gemini_2_5_flash_lite_mma",
+  "git_commit": "265dcfb5db60d50bff9abf401df5dcdd59de51fa",
+  "summary": {
+    "open_count": 63,
+    "overall": {
+      "em": 0.4444444444444444,
+      "contains_gt": 0.4444444444444444,
+      "f1": 0.4444444444444444
+    },
+    "by_x": {
+      "X4": {
+        "em": 0.375,
+        "contains_gt": 0.375,
+        "f1": 0.375
+      },
+      "X3": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
+      },
+      "X1": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
+      }
+    },
+    "by_y": {
+      "Y2": {
+        "em": 0.3333333333333333,
+        "contains_gt": 0.3333333333333333,
+        "f1": 0.3333333333333333
+      },
+      "Y3": {
+        "em": 0.9090909090909091,
+        "contains_gt": 0.9090909090909091,
+        "f1": 0.9090909090909091
+      },
+      "Y1": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
+      }
+    },
+    "by_cell": {
+      "X4_Y2": {
+        "em": 0.2765957446808511,
+        "contains_gt": 0.2765957446808511,
+        "f1": 0.2765957446808511
+      },
+      "X4_Y3": {
+        "em": 0.8888888888888888,
+        "contains_gt": 0.8888888888888888,
+        "f1": 0.8888888888888888
+      },
+      "X3_Y2": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
+      },
+      "X1_Y3": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
+      },
+      "X1_Y1": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
+      }
+    },
+    "mcq_count": 63,
+    "mcq_valid_rate": 1.0,
+    "mcq_overall": {
+      "em": 0.4444444444444444,
+      "contains_gt": 0.4444444444444444,
+      "f1": 0.4444444444444444
+    }
+  }
+}

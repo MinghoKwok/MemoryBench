@@ -10,14 +10,14 @@
   "num_qas_run": 44,
   "dialog_json": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/dialog/Social_Chat_Memory_Test.json",
   "image_root": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/image",
-  "run_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/social_chat_memory_test/20260416_234132_gemini_2_5_flash_lite_full_context_multimodal",
-  "git_commit": "483ff1401e5ce04eb6a71f775bbe4e9835bb495c",
+  "run_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/social_chat_memory_test/20260422_101646_gemini_2_5_flash_lite_full_context_multimodal",
+  "git_commit": "265dcfb5db60d50bff9abf401df5dcdd59de51fa",
   "summary": {
     "open_count": 44,
     "overall": {
-      "em": 0.7045454545454546,
-      "contains_gt": 0.7045454545454546,
-      "f1": 0.7045454545454546
+      "em": 0.6818181818181818,
+      "contains_gt": 0.6818181818181818,
+      "f1": 0.6818181818181818
     },
     "by_x": {
       "X2": {
@@ -31,9 +31,9 @@
         "f1": 0.8
       },
       "X3": {
-        "em": 1.0,
-        "contains_gt": 1.0,
-        "f1": 1.0
+        "em": 0.5,
+        "contains_gt": 0.5,
+        "f1": 0.5
       },
       "X4": {
         "em": 1.0,
@@ -43,9 +43,9 @@
     },
     "by_y": {
       "Y2": {
-        "em": 0.6333333333333333,
-        "contains_gt": 0.6333333333333333,
-        "f1": 0.6333333333333333
+        "em": 0.6,
+        "contains_gt": 0.6,
+        "f1": 0.6
       },
       "Y3": {
         "em": 0.875,
@@ -90,9 +90,9 @@
         "f1": 1.0
       },
       "X3_Y2": {
-        "em": 1.0,
-        "contains_gt": 1.0,
-        "f1": 1.0
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0
       },
       "X4_Y2": {
         "em": 1.0,
@@ -108,9 +108,9 @@
     "mcq_count": 44,
     "mcq_valid_rate": 1.0,
     "mcq_overall": {
-      "em": 0.7045454545454546,
-      "contains_gt": 0.7045454545454546,
-      "f1": 0.7045454545454546
+      "em": 0.6818181818181818,
+      "contains_gt": 0.6818181818181818,
+      "f1": 0.6818181818181818
     }
   },
   "method_runtime": {

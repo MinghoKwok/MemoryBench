@@ -1,0 +1,111 @@
+{
+  "task_name": "outdoor_navigation_route_memory_assistant",
+  "model_name": "gemini_2_5_flash_lite",
+  "model_path": "gemini-2.5-flash-lite",
+  "method_name": "mma",
+  "base_method_name": "mma",
+  "method_modality": "",
+  "mode": "mcq",
+  "num_qas": 40,
+  "num_qas_run": 40,
+  "dialog_json": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/dialog/Outdoor_Navigation_Route_Memory_Assistant.json",
+  "image_root": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/image",
+  "run_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/outdoor_navigation_route_memory_assistant/20260422_090642_gemini_2_5_flash_lite_mma",
+  "git_commit": "265dcfb5db60d50bff9abf401df5dcdd59de51fa",
+  "summary": {
+    "open_count": 40,
+    "overall": {
+      "em": 0.475,
+      "contains_gt": 0.475,
+      "f1": 0.475
+    },
+    "by_x": {
+      "X3": {
+        "em": 0.5555555555555556,
+        "contains_gt": 0.5555555555555556,
+        "f1": 0.5555555555555556
+      },
+      "X1": {
+        "em": 0.3333333333333333,
+        "contains_gt": 0.3333333333333333,
+        "f1": 0.3333333333333333
+      },
+      "X4": {
+        "em": 0.2,
+        "contains_gt": 0.2,
+        "f1": 0.2
+      },
+      "X2": {
+        "em": 0.4,
+        "contains_gt": 0.4,
+        "f1": 0.4
+      }
+    },
+    "by_y": {
+      "Y2": {
+        "em": 0.5384615384615384,
+        "contains_gt": 0.5384615384615384,
+        "f1": 0.5384615384615384
+      },
+      "Y1": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
+      },
+      "Y3": {
+        "em": 0.3076923076923077,
+        "contains_gt": 0.3076923076923077,
+        "f1": 0.3076923076923077
+      }
+    },
+    "by_cell": {
+      "X3_Y2": {
+        "em": 0.5,
+        "contains_gt": 0.5,
+        "f1": 0.5
+      },
+      "X1_Y1": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
+      },
+      "X4_Y2": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
+      },
+      "X2_Y2": {
+        "em": 0.6666666666666666,
+        "contains_gt": 0.6666666666666666,
+        "f1": 0.6666666666666666
+      },
+      "X3_Y3": {
+        "em": 0.8,
+        "contains_gt": 0.8,
+        "f1": 0.8
+      },
+      "X4_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0
+      },
+      "X2_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0
+      },
+      "X1_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0
+      }
+    },
+    "mcq_count": 40,
+    "mcq_valid_rate": 1.0,
+    "mcq_overall": {
+      "em": 0.475,
+      "contains_gt": 0.475,
+      "f1": 0.475
+    }
+  }
+}

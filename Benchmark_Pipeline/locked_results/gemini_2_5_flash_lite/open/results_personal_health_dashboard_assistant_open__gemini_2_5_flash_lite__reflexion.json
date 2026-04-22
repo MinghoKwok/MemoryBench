@@ -1,0 +1,124 @@
+{
+  "task_name": "personal_health_dashboard_assistant_open",
+  "model_name": "gemini_2_5_flash_lite",
+  "model_path": "gemini-2.5-flash-lite",
+  "method_name": "reflexion",
+  "base_method_name": "reflexion",
+  "method_modality": "",
+  "mode": "open",
+  "num_qas": 63,
+  "num_qas_run": 63,
+  "dialog_json": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/dialog/Personal_Health_Dashboard_Assistant_Open.json",
+  "image_root": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image",
+  "run_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/personal_health_dashboard_assistant_open/20260422_085115_gemini_2_5_flash_lite_reflexion",
+  "git_commit": "265dcfb5db60d50bff9abf401df5dcdd59de51fa",
+  "summary": {
+    "open_count": 63,
+    "overall": {
+      "em": 0.015873015873015872,
+      "contains_gt": 0.07936507936507936,
+      "f1": 0.11991525327390708,
+      "bleu": 0.028675104155121513,
+      "bleu_1": 0.10102308856338853,
+      "bleu_2": 0.06524578090514083
+    },
+    "by_x": {
+      "X4": {
+        "em": 0.017857142857142856,
+        "contains_gt": 0.08928571428571429,
+        "f1": 0.13049989802838355,
+        "bleu": 0.03166964140343781,
+        "bleu_1": 0.11109995422564883,
+        "bleu_2": 0.07253016416743653
+      },
+      "X3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0,
+        "bleu": 0.0,
+        "bleu_1": 0.0,
+        "bleu_2": 0.0
+      },
+      "X1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.08222222222222222,
+        "bleu": 0.011010547726712687,
+        "bleu_1": 0.047619047619047616,
+        "bleu_2": 0.01626500121580889
+      }
+    },
+    "by_y": {
+      "Y2": {
+        "em": 0.0196078431372549,
+        "contains_gt": 0.09803921568627451,
+        "f1": 0.09299055096300567,
+        "bleu": 0.022549439475612717,
+        "bleu_1": 0.0775970015381078,
+        "bleu_2": 0.05099448879905347
+      },
+      "Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.2404978354978355,
+        "bleu": 0.056679864121478955,
+        "bleu_1": 0.20583185074480334,
+        "bleu_2": 0.13281547860224716
+      },
+      "Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.16666666666666666,
+        "bleu": 0.033031643180138064,
+        "bleu_1": 0.14285714285714285,
+        "bleu_2": 0.048795003647426664
+      }
+    },
+    "by_cell": {
+      "X4_Y2": {
+        "em": 0.02127659574468085,
+        "contains_gt": 0.10638297872340426,
+        "f1": 0.10090464040666572,
+        "bleu": 0.02446854070757976,
+        "bleu_1": 0.0842010016690106,
+        "bleu_2": 0.05533444529258993
+      },
+      "X4_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.28505291005291006,
+        "bleu": 0.06927538948180761,
+        "bleu_1": 0.2515722620214263,
+        "bleu_2": 0.16233002940274652
+      },
+      "X3_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0,
+        "bleu": 0.0,
+        "bleu_1": 0.0,
+        "bleu_2": 0.0
+      },
+      "X1_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.04,
+        "bleu": 0.0,
+        "bleu_1": 0.0,
+        "bleu_2": 0.0
+      },
+      "X1_Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.16666666666666666,
+        "bleu": 0.033031643180138064,
+        "bleu_1": 0.14285714285714285,
+        "bleu_2": 0.048795003647426664
+      }
+    }
+  },
+  "method_runtime": {
+    "num_memories": 97,
+    "debug_dir": "/common/home/mg1998/MemoryBench/output/personal_health_dashboard_assistant/reflexion"
+  }
+}

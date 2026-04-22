@@ -1,0 +1,139 @@
+{
+  "task_name": "card_playlog_test_open",
+  "model_name": "gemini_2_5_flash_lite",
+  "model_path": "gemini-2.5-flash-lite",
+  "method_name": "semantic_rag_text_only",
+  "base_method_name": "semantic_rag_text_only",
+  "method_modality": "",
+  "mode": "open",
+  "num_qas": 48,
+  "num_qas_run": 48,
+  "dialog_json": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/dialog/Card_Playlog_Test_Open.json",
+  "image_root": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image",
+  "run_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/card_playlog_test_open/20260422_025045_gemini_2_5_flash_lite_semantic_rag_text_only",
+  "git_commit": "dc79f95979a1a2f0bdf89f7b6e6a98e8cab76606",
+  "summary": {
+    "open_count": 48,
+    "overall": {
+      "em": 0.10416666666666667,
+      "contains_gt": 0.2916666666666667,
+      "f1": 0.1338260582010582,
+      "bleu": 0.022145777585639348,
+      "bleu_1": 0.12064318783068784,
+      "bleu_2": 0.03847973994187283
+    },
+    "by_x": {
+      "X4": {
+        "em": 0.10416666666666667,
+        "contains_gt": 0.2916666666666667,
+        "f1": 0.1338260582010582,
+        "bleu": 0.022145777585639348,
+        "bleu_1": 0.12064318783068784,
+        "bleu_2": 0.03847973994187283
+      }
+    },
+    "by_y": {
+      "Y3": {
+        "em": 0.0,
+        "contains_gt": 0.3157894736842105,
+        "f1": 0.05080618212197159,
+        "bleu": 0.006440828532861235,
+        "bleu_1": 0.028508771929824563,
+        "bleu_2": 0.009650459838430811
+      },
+      "Y2": {
+        "em": 0.1724137931034483,
+        "contains_gt": 0.27586206896551724,
+        "f1": 0.1882183908045977,
+        "bleu": 0.032435226965045694,
+        "bleu_1": 0.1810071154898741,
+        "bleu_2": 0.05736788897516243
+      }
+    },
+    "by_cell": {
+      "X4_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.3157894736842105,
+        "f1": 0.05080618212197159,
+        "bleu": 0.006440828532861235,
+        "bleu_1": 0.028508771929824563,
+        "bleu_2": 0.009650459838430811
+      },
+      "X4_Y2": {
+        "em": 0.1724137931034483,
+        "contains_gt": 0.27586206896551724,
+        "f1": 0.1882183908045977,
+        "bleu": 0.032435226965045694,
+        "bleu_1": 0.1810071154898741,
+        "bleu_2": 0.05736788897516243
+      }
+    }
+  },
+  "method_runtime": {
+    "retrieval_backend": "dense_text",
+    "retrieval_corpus": "round_text",
+    "method_modality": "text_only",
+    "top_k": 10,
+    "neighbor_window": 0,
+    "seed_round_ids": [
+      "uno_seed_44_p0_g0:1",
+      "uno_seed_44_p3_g0:1",
+      "uno_seed_44_p2_g0:1",
+      "uno_seed_44_p2_g0:3",
+      "uno_seed_44_p1_g0:1",
+      "uno_seed_44_p2_g0:6",
+      "uno_seed_44_p3_g0:7",
+      "uno_seed_44_p3_g0:6",
+      "uno_seed_44_p3_g0:3",
+      "uno_seed_44_p3_g0:4"
+    ],
+    "selected_round_ids": [
+      "uno_seed_44_p0_g0:1",
+      "uno_seed_44_p3_g0:1",
+      "uno_seed_44_p2_g0:1",
+      "uno_seed_44_p2_g0:3",
+      "uno_seed_44_p1_g0:1",
+      "uno_seed_44_p2_g0:6",
+      "uno_seed_44_p3_g0:7",
+      "uno_seed_44_p3_g0:6",
+      "uno_seed_44_p3_g0:3",
+      "uno_seed_44_p3_g0:4"
+    ],
+    "top_candidates": [
+      {
+        "round_id": "uno_seed_44_p0_g0:1",
+        "score": 0.5394041258901139,
+        "text_dense_score": 0.5394041258901139
+      },
+      {
+        "round_id": "uno_seed_44_p3_g0:1",
+        "score": 0.5351180694694047,
+        "text_dense_score": 0.5351180694694047
+      },
+      {
+        "round_id": "uno_seed_44_p2_g0:1",
+        "score": 0.5273098614940105,
+        "text_dense_score": 0.5273098614940105
+      },
+      {
+        "round_id": "uno_seed_44_p2_g0:3",
+        "score": 0.5244893091105578,
+        "text_dense_score": 0.5244893091105578
+      },
+      {
+        "round_id": "uno_seed_44_p1_g0:1",
+        "score": 0.507946035994645,
+        "text_dense_score": 0.507946035994645
+      }
+    ],
+    "clue_hit_count": 0,
+    "corpus_entry_count": 30,
+    "text_embedding_model": "all-MiniLM-L6-v2",
+    "caption_text_included": true,
+    "image_embeddings_built": false,
+    "history_source": "retrieval",
+    "captions_loaded": true,
+    "images_loaded": false,
+    "history_turns_after_truncation": 20
+  }
+}

@@ -1,0 +1,128 @@
+{
+  "task_name": "brand_memory_test_open",
+  "model_name": "gemini_2_5_flash_lite",
+  "model_path": "gemini-2.5-flash-lite",
+  "method_name": "full_context_multimodal",
+  "base_method_name": "full_context_multimodal",
+  "method_modality": "",
+  "mode": "open",
+  "num_qas": 33,
+  "num_qas_run": 33,
+  "dialog_json": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/dialog/Brand_Memory_Test_Open.json",
+  "image_root": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image",
+  "run_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/brand_memory_test_open/20260422_021101_gemini_2_5_flash_lite_full_context_multimodal",
+  "git_commit": "2d9bbf298929e9c004c9d4291e34a359c0f5c00c",
+  "summary": {
+    "open_count": 33,
+    "overall": {
+      "em": 0.24242424242424243,
+      "contains_gt": 0.24242424242424243,
+      "f1": 0.31907799802536646,
+      "bleu": 0.0870796588648877,
+      "bleu_1": 0.2896367877875143,
+      "bleu_2": 0.16716984415591887
+    },
+    "by_x": {
+      "X2": {
+        "em": 0.2222222222222222,
+        "contains_gt": 0.2222222222222222,
+        "f1": 0.3292119186856029,
+        "bleu": 0.06406304967973311,
+        "bleu_1": 0.2801226551226551,
+        "bleu_2": 0.16760189166633066
+      },
+      "X4": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.3333333333333333,
+        "bleu": 0.03270962178059006,
+        "bleu_1": 0.18393972058572117,
+        "bleu_2": 0.05816684692258399
+      },
+      "X1": {
+        "em": 0.2727272727272727,
+        "contains_gt": 0.2727272727272727,
+        "f1": 0.31363636363636366,
+        "bleu": 0.10143827508465982,
+        "bleu_1": 0.30313775725966513,
+        "bleu_2": 0.17690246083196265
+      }
+    },
+    "by_y": {
+      "Y1": {
+        "em": 0.3333333333333333,
+        "contains_gt": 0.3333333333333333,
+        "f1": 0.8222222222222222,
+        "bleu": 0.19114961503988773,
+        "bleu_1": 0.658136700294692,
+        "bleu_2": 0.5742881178526005
+      },
+      "Y2": {
+        "em": 0.23333333333333334,
+        "contains_gt": 0.23333333333333334,
+        "f1": 0.26876357560568087,
+        "bleu": 0.0766726632473877,
+        "bleu_1": 0.25278679653679653,
+        "bleu_2": 0.1264580167862507
+      }
+    },
+    "by_cell": {
+      "X2_Y1": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0,
+        "bleu": 0.316227766016838,
+        "bleu_1": 1.0,
+        "bleu_2": 1.0
+      },
+      "X4_Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.6666666666666666,
+        "bleu": 0.06541924356118012,
+        "bleu_1": 0.36787944117144233,
+        "bleu_2": 0.11633369384516798
+      },
+      "X2_Y2": {
+        "em": 0.125,
+        "contains_gt": 0.125,
+        "f1": 0.24536340852130326,
+        "bleu": 0.032542460137595,
+        "bleu_1": 0.190137987012987,
+        "bleu_2": 0.06355212812462199
+      },
+      "X1_Y2": {
+        "em": 0.2857142857142857,
+        "contains_gt": 0.2857142857142857,
+        "f1": 0.2904761904761905,
+        "bleu": 0.09713524839623194,
+        "bleu_1": 0.28869047619047616,
+        "bleu_2": 0.15644397517097833
+      },
+      "X4_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0,
+        "bleu": 0.0,
+        "bleu_1": 0.0,
+        "bleu_2": 0.0
+      },
+      "X1_Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.8,
+        "bleu": 0.19180183554164504,
+        "bleu_1": 0.6065306597126334,
+        "bleu_2": 0.6065306597126334
+      }
+    }
+  },
+  "method_runtime": {
+    "method_modality": "multimodal",
+    "history_source": "full_context",
+    "captions_loaded": false,
+    "images_loaded": true,
+    "history_turns_after_truncation": 144,
+    "history_turns_before_truncation": 144
+  }
+}

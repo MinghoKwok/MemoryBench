@@ -1,0 +1,66 @@
+{
+  "task_name": "card_playlog_test",
+  "model_name": "gemini_2_5_flash_lite",
+  "model_path": "gemini-2.5-flash-lite",
+  "method_name": "simplemem__multimodal",
+  "base_method_name": "simplemem",
+  "method_modality": "multimodal",
+  "mode": "mcq",
+  "num_qas": 48,
+  "num_qas_run": 48,
+  "dialog_json": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/dialog/Card_Playlog_Test.json",
+  "image_root": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/image",
+  "run_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/card_playlog_test/20260422_025958_gemini_2_5_flash_lite_simplemem__multimodal",
+  "git_commit": "265dcfb5db60d50bff9abf401df5dcdd59de51fa",
+  "summary": {
+    "open_count": 48,
+    "overall": {
+      "em": 0.125,
+      "contains_gt": 0.125,
+      "f1": 0.125
+    },
+    "by_x": {
+      "X4": {
+        "em": 0.125,
+        "contains_gt": 0.125,
+        "f1": 0.125
+      }
+    },
+    "by_y": {
+      "Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0
+      },
+      "Y2": {
+        "em": 0.20689655172413793,
+        "contains_gt": 0.20689655172413793,
+        "f1": 0.20689655172413793
+      }
+    },
+    "by_cell": {
+      "X4_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0
+      },
+      "X4_Y2": {
+        "em": 0.20689655172413793,
+        "contains_gt": 0.20689655172413793,
+        "f1": 0.20689655172413793
+      }
+    },
+    "mcq_count": 48,
+    "mcq_valid_rate": 0.22916666666666666,
+    "mcq_overall": {
+      "em": 0.125,
+      "contains_gt": 0.125,
+      "f1": 0.125
+    }
+  },
+  "method_runtime": {
+    "num_memories": 30,
+    "debug_dir": "/common/home/mg1998/MemoryBench/output/card_playlog_test/simplemem",
+    "data_dir": "/common/home/mg1998/MemoryBench/runs/simplemem/card_playlog_test"
+  }
+}

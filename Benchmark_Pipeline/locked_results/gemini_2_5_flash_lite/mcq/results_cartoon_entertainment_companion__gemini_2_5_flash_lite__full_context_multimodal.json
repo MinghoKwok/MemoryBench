@@ -1,0 +1,134 @@
+{
+  "task_name": "cartoon_entertainment_companion",
+  "model_name": "gemini_2_5_flash_lite",
+  "model_path": "gemini-2.5-flash-lite",
+  "method_name": "full_context_multimodal",
+  "base_method_name": "full_context_multimodal",
+  "method_modality": "",
+  "mode": "mcq",
+  "num_qas": 112,
+  "num_qas_run": 112,
+  "dialog_json": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/dialog/Cartoon_Entertainment_Companion.json",
+  "image_root": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image",
+  "run_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/cartoon_entertainment_companion/20260422_032733_gemini_2_5_flash_lite_full_context_multimodal",
+  "git_commit": "265dcfb5db60d50bff9abf401df5dcdd59de51fa",
+  "summary": {
+    "open_count": 112,
+    "overall": {
+      "em": 0.7410714285714286,
+      "contains_gt": 0.7410714285714286,
+      "f1": 0.7410714285714286
+    },
+    "by_x": {
+      "X3": {
+        "em": 0.6296296296296297,
+        "contains_gt": 0.6296296296296297,
+        "f1": 0.6296296296296297
+      },
+      "X4": {
+        "em": 0.75,
+        "contains_gt": 0.75,
+        "f1": 0.75
+      },
+      "X2": {
+        "em": 0.8571428571428571,
+        "contains_gt": 0.8571428571428571,
+        "f1": 0.8571428571428571
+      },
+      "X1": {
+        "em": 0.7142857142857143,
+        "contains_gt": 0.7142857142857143,
+        "f1": 0.7142857142857143
+      }
+    },
+    "by_y": {
+      "Y1": {
+        "em": 0.7906976744186046,
+        "contains_gt": 0.7906976744186046,
+        "f1": 0.7906976744186046
+      },
+      "Y2": {
+        "em": 0.7068965517241379,
+        "contains_gt": 0.7068965517241379,
+        "f1": 0.7068965517241379
+      },
+      "Y3": {
+        "em": 0.7272727272727273,
+        "contains_gt": 0.7272727272727273,
+        "f1": 0.7272727272727273
+      }
+    },
+    "by_cell": {
+      "X3_Y1": {
+        "em": 0.7142857142857143,
+        "contains_gt": 0.7142857142857143,
+        "f1": 0.7142857142857143
+      },
+      "X4_Y2": {
+        "em": 0.6923076923076923,
+        "contains_gt": 0.6923076923076923,
+        "f1": 0.6923076923076923
+      },
+      "X2_Y2": {
+        "em": 0.8421052631578947,
+        "contains_gt": 0.8421052631578947,
+        "f1": 0.8421052631578947
+      },
+      "X3_Y2": {
+        "em": 0.5384615384615384,
+        "contains_gt": 0.5384615384615384,
+        "f1": 0.5384615384615384
+      },
+      "X2_Y1": {
+        "em": 0.8571428571428571,
+        "contains_gt": 0.8571428571428571,
+        "f1": 0.8571428571428571
+      },
+      "X4_Y1": {
+        "em": 0.7777777777777778,
+        "contains_gt": 0.7777777777777778,
+        "f1": 0.7777777777777778
+      },
+      "X1_Y1": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
+      },
+      "X4_Y3": {
+        "em": 0.8,
+        "contains_gt": 0.8,
+        "f1": 0.8
+      },
+      "X2_Y3": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
+      },
+      "X1_Y2": {
+        "em": 0.6923076923076923,
+        "contains_gt": 0.6923076923076923,
+        "f1": 0.6923076923076923
+      },
+      "X1_Y3": {
+        "em": 0.5,
+        "contains_gt": 0.5,
+        "f1": 0.5
+      }
+    },
+    "mcq_count": 112,
+    "mcq_valid_rate": 1.0,
+    "mcq_overall": {
+      "em": 0.7410714285714286,
+      "contains_gt": 0.7410714285714286,
+      "f1": 0.7410714285714286
+    }
+  },
+  "method_runtime": {
+    "method_modality": "multimodal",
+    "history_source": "full_context",
+    "captions_loaded": false,
+    "images_loaded": true,
+    "history_turns_after_truncation": 598,
+    "history_turns_before_truncation": 598
+  }
+}

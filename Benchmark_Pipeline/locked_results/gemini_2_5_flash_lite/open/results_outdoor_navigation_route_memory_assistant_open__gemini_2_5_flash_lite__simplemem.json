@@ -1,0 +1,157 @@
+{
+  "task_name": "outdoor_navigation_route_memory_assistant_open",
+  "model_name": "gemini_2_5_flash_lite",
+  "model_path": "gemini-2.5-flash-lite",
+  "method_name": "simplemem",
+  "base_method_name": "simplemem",
+  "method_modality": "",
+  "mode": "open",
+  "num_qas": 40,
+  "num_qas_run": 40,
+  "dialog_json": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/dialog/Outdoor_Navigation_Route_Memory_Assistant_Open.json",
+  "image_root": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image",
+  "run_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/outdoor_navigation_route_memory_assistant_open/20260422_073251_gemini_2_5_flash_lite_simplemem",
+  "git_commit": "265dcfb5db60d50bff9abf401df5dcdd59de51fa",
+  "summary": {
+    "open_count": 40,
+    "overall": {
+      "em": 0.0,
+      "contains_gt": 0.0,
+      "f1": 0.07023079059209891,
+      "bleu": 0.010002081886829182,
+      "bleu_1": 0.054389073268974256,
+      "bleu_2": 0.02749236763907591
+    },
+    "by_x": {
+      "X3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0659062858860019,
+        "bleu": 0.01079338948767052,
+        "bleu_1": 0.05772373623962706,
+        "bleu_2": 0.02656712644450566
+      },
+      "X1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0,
+        "bleu": 0.0,
+        "bleu_1": 0.0,
+        "bleu_2": 0.0
+      },
+      "X4": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0,
+        "bleu": 0.0,
+        "bleu_1": 0.0,
+        "bleu_2": 0.0
+      },
+      "X2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.20595238095238097,
+        "bleu": 0.021732351861212647,
+        "bleu_1": 0.12340441045780794,
+        "bleu_2": 0.07647645831227672
+      }
+    },
+    "by_y": {
+      "Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.06858658582796515,
+        "bleu": 0.008668254272005651,
+        "bleu_1": 0.05058656992061138,
+        "bleu_2": 0.027071310389726114
+      },
+      "Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0,
+        "bleu": 0.0,
+        "bleu_1": 0.0,
+        "bleu_2": 0.0
+      },
+      "Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.07892156862745098,
+        "bleu": 0.013439128030847722,
+        "bleu_1": 0.0661778548325442,
+        "bleu_2": 0.03044927964847365
+      }
+    },
+    "by_cell": {
+      "X3_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.03993133303478131,
+        "bleu": 0.005305129625731076,
+        "bleu_1": 0.03173767116576619,
+        "bleu_2": 0.014612353571431608
+      },
+      "X1_Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0,
+        "bleu": 0.0,
+        "bleu_1": 0.0,
+        "bleu_2": 0.0
+      },
+      "X4_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0,
+        "bleu": 0.0,
+        "bleu_1": 0.0,
+        "bleu_2": 0.0
+      },
+      "X2_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.30158730158730157,
+        "bleu": 0.03622058643535441,
+        "bleu_1": 0.2056740174296799,
+        "bleu_2": 0.1274607638537945
+      },
+      "X3_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.18019607843137256,
+        "bleu": 0.03494173288020408,
+        "bleu_1": 0.1720624225646149,
+        "bleu_2": 0.07916812708603149
+      },
+      "X4_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0,
+        "bleu": 0.0,
+        "bleu_1": 0.0,
+        "bleu_2": 0.0
+      },
+      "X2_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.06250000000000001,
+        "bleu": 0.0,
+        "bleu_1": 0.0,
+        "bleu_2": 0.0
+      },
+      "X1_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0,
+        "bleu": 0.0,
+        "bleu_1": 0.0,
+        "bleu_2": 0.0
+      }
+    }
+  },
+  "method_runtime": {
+    "num_memories": 60,
+    "debug_dir": "/common/home/mg1998/MemoryBench/output/outdoor_navigation_route_memory_assistant/simplemem",
+    "data_dir": "/common/home/mg1998/MemoryBench/runs/simplemem/outdoor_navigation_route_memory_assistant"
+  }
+}

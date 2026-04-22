@@ -1,0 +1,72 @@
+{
+  "task_name": "card_playlog_test_open",
+  "model_name": "gemini_2_5_flash_lite",
+  "model_path": "gemini-2.5-flash-lite",
+  "method_name": "mma",
+  "base_method_name": "mma",
+  "method_modality": "",
+  "mode": "open",
+  "num_qas": 48,
+  "num_qas_run": 48,
+  "dialog_json": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/dialog/Card_Playlog_Test_Open.json",
+  "image_root": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image",
+  "run_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/card_playlog_test_open/20260422_030742_gemini_2_5_flash_lite_mma",
+  "git_commit": "dc79f95979a1a2f0bdf89f7b6e6a98e8cab76606",
+  "summary": {
+    "open_count": 48,
+    "overall": {
+      "em": 0.22916666666666666,
+      "contains_gt": 0.22916666666666666,
+      "f1": 0.22916666666666666,
+      "bleu": 0.04075223648005865,
+      "bleu_1": 0.22916666666666666,
+      "bleu_2": 0.07246886304552537
+    },
+    "by_x": {
+      "X4": {
+        "em": 0.22916666666666666,
+        "contains_gt": 0.22916666666666666,
+        "f1": 0.22916666666666666,
+        "bleu": 0.04075223648005865,
+        "bleu_1": 0.22916666666666666,
+        "bleu_2": 0.07246886304552537
+      }
+    },
+    "by_y": {
+      "Y3": {
+        "em": 0.2631578947368421,
+        "contains_gt": 0.2631578947368421,
+        "f1": 0.2631578947368421,
+        "bleu": 0.046796826579971654,
+        "bleu_1": 0.2631578947368421,
+        "bleu_2": 0.08321783316232578
+      },
+      "Y2": {
+        "em": 0.20689655172413793,
+        "contains_gt": 0.20689655172413793,
+        "f1": 0.20689655172413793,
+        "bleu": 0.03679198779390875,
+        "bleu_1": 0.20689655172413793,
+        "bleu_2": 0.06542643434831132
+      }
+    },
+    "by_cell": {
+      "X4_Y3": {
+        "em": 0.2631578947368421,
+        "contains_gt": 0.2631578947368421,
+        "f1": 0.2631578947368421,
+        "bleu": 0.046796826579971654,
+        "bleu_1": 0.2631578947368421,
+        "bleu_2": 0.08321783316232578
+      },
+      "X4_Y2": {
+        "em": 0.20689655172413793,
+        "contains_gt": 0.20689655172413793,
+        "f1": 0.20689655172413793,
+        "bleu": 0.03679198779390875,
+        "bleu_1": 0.20689655172413793,
+        "bleu_2": 0.06542643434831132
+      }
+    }
+  }
+}

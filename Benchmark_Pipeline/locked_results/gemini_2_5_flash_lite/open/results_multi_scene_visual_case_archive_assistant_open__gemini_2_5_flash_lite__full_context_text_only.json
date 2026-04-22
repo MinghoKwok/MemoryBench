@@ -1,0 +1,146 @@
+{
+  "task_name": "multi_scene_visual_case_archive_assistant_open",
+  "model_name": "gemini_2_5_flash_lite",
+  "model_path": "gemini-2.5-flash-lite",
+  "method_name": "full_context_text_only",
+  "base_method_name": "full_context_text_only",
+  "method_modality": "",
+  "mode": "open",
+  "num_qas": 59,
+  "num_qas_run": 59,
+  "dialog_json": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/dialog/Multi-Scene_Visual_Case_Archive_Assistant_Open.json",
+  "image_root": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image",
+  "run_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/multi_scene_visual_case_archive_assistant_open/20260422_062413_gemini_2_5_flash_lite_full_context_text_only",
+  "git_commit": "265dcfb5db60d50bff9abf401df5dcdd59de51fa",
+  "summary": {
+    "open_count": 59,
+    "overall": {
+      "em": 0.0,
+      "contains_gt": 0.05084745762711865,
+      "f1": 0.11836155546860959,
+      "bleu": 0.0281280955496235,
+      "bleu_1": 0.07126148620417685,
+      "bleu_2": 0.04948810927099541
+    },
+    "by_x": {
+      "X4": {
+        "em": 0.0,
+        "contains_gt": 0.14285714285714285,
+        "f1": 0.15038015206082433,
+        "bleu": 0.026366948893569827,
+        "bleu_1": 0.11542767577250336,
+        "bleu_2": 0.082496857579082
+      },
+      "X2": {
+        "em": 0.0,
+        "contains_gt": 0.2222222222222222,
+        "f1": 0.3517823740045962,
+        "bleu": 0.10249466510664874,
+        "bleu_1": 0.2604030252096449,
+        "bleu_2": 0.18502446785926557
+      },
+      "X3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.06429370563211231,
+        "bleu": 0.012849697888673463,
+        "bleu_1": 0.024483877412839694,
+        "bleu_2": 0.015746517051203834
+      }
+    },
+    "by_y": {
+      "Y2": {
+        "em": 0.0,
+        "contains_gt": 0.1,
+        "f1": 0.16917183034830094,
+        "bleu": 0.03914954902550382,
+        "bleu_1": 0.1415569487983281,
+        "bleu_2": 0.10120099855768713
+      },
+      "Y3": {
+        "em": 0.0,
+        "contains_gt": 0.15384615384615385,
+        "f1": 0.2567022349631045,
+        "bleu": 0.09146092698089708,
+        "bleu_1": 0.18360069577450944,
+        "bleu_2": 0.1366553798296028
+      },
+      "Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.05429123374012772,
+        "bleu": 0.002196391567252393,
+        "bleu_1": 0.011168032027625863,
+        "bleu_2": 0.0036463478785283775
+      }
+    },
+    "by_cell": {
+      "X4_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.13053221288515407,
+        "bleu": 0.02516583026159933,
+        "bleu_1": 0.1115987460815047,
+        "bleu_2": 0.07769915330979209
+      },
+      "X2_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.3333333333333333,
+        "f1": 0.3463524130190797,
+        "bleu": 0.08855544631568053,
+        "bleu_1": 0.28585858585858587,
+        "bleu_2": 0.2078380730093036
+      },
+      "X3_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.16202898550724637,
+        "bleu": 0.09469338255837455,
+        "bleu_1": 0.13015151515151513,
+        "bleu_2": 0.10916634191494866
+      },
+      "X2_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.16666666666666666,
+        "f1": 0.35449735449735453,
+        "bleu": 0.10946427450213286,
+        "bleu_1": 0.24767524488517448,
+        "bleu_2": 0.17361766528424658
+      },
+      "X3_Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.05429123374012772,
+        "bleu": 0.002196391567252393,
+        "bleu_1": 0.011168032027625863,
+        "bleu_2": 0.0036463478785283775
+      },
+      "X3_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0,
+        "bleu": 0.0,
+        "bleu_1": 0.0,
+        "bleu_2": 0.0
+      },
+      "X4_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.5,
+        "f1": 0.2,
+        "bleu": 0.02936974547349607,
+        "bleu_1": 0.125,
+        "bleu_2": 0.09449111825230679
+      }
+    }
+  },
+  "method_runtime": {
+    "caption_validation_passed": true,
+    "caption_validation_round_count": 57,
+    "method_modality": "text_only",
+    "history_source": "full_context",
+    "captions_loaded": true,
+    "images_loaded": false,
+    "history_turns_after_truncation": 234,
+    "history_turns_before_truncation": 234
+  }
+}

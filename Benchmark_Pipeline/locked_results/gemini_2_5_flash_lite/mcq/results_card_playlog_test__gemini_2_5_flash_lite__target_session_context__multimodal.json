@@ -1,0 +1,68 @@
+{
+  "task_name": "card_playlog_test",
+  "model_name": "gemini_2_5_flash_lite",
+  "model_path": "gemini-2.5-flash-lite",
+  "method_name": "target_session_context__multimodal",
+  "base_method_name": "target_session_context",
+  "method_modality": "multimodal",
+  "mode": "mcq",
+  "num_qas": 48,
+  "num_qas_run": 48,
+  "dialog_json": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/dialog/Card_Playlog_Test.json",
+  "image_root": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/image",
+  "run_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/card_playlog_test/20260422_024702_gemini_2_5_flash_lite_target_session_context__multimodal",
+  "git_commit": "dc79f95979a1a2f0bdf89f7b6e6a98e8cab76606",
+  "summary": {
+    "open_count": 48,
+    "overall": {
+      "em": 0.4583333333333333,
+      "contains_gt": 0.4583333333333333,
+      "f1": 0.4583333333333333
+    },
+    "by_x": {
+      "X4": {
+        "em": 0.4583333333333333,
+        "contains_gt": 0.4583333333333333,
+        "f1": 0.4583333333333333
+      }
+    },
+    "by_y": {
+      "Y3": {
+        "em": 0.47368421052631576,
+        "contains_gt": 0.47368421052631576,
+        "f1": 0.47368421052631576
+      },
+      "Y2": {
+        "em": 0.4482758620689655,
+        "contains_gt": 0.4482758620689655,
+        "f1": 0.4482758620689655
+      }
+    },
+    "by_cell": {
+      "X4_Y3": {
+        "em": 0.47368421052631576,
+        "contains_gt": 0.47368421052631576,
+        "f1": 0.47368421052631576
+      },
+      "X4_Y2": {
+        "em": 0.4482758620689655,
+        "contains_gt": 0.4482758620689655,
+        "f1": 0.4482758620689655
+      }
+    },
+    "mcq_count": 48,
+    "mcq_valid_rate": 1.0,
+    "mcq_overall": {
+      "em": 0.4583333333333333,
+      "contains_gt": 0.4583333333333333,
+      "f1": 0.4583333333333333
+    }
+  },
+  "method_runtime": {
+    "method_modality": "multimodal",
+    "history_source": "target_session_context",
+    "captions_loaded": false,
+    "images_loaded": true,
+    "history_turns_after_truncation": 16
+  }
+}

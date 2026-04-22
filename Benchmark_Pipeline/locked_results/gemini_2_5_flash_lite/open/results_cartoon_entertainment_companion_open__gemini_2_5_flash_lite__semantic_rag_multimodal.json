@@ -1,0 +1,263 @@
+{
+  "task_name": "cartoon_entertainment_companion_open",
+  "model_name": "gemini_2_5_flash_lite",
+  "model_path": "gemini-2.5-flash-lite",
+  "method_name": "semantic_rag_multimodal",
+  "base_method_name": "semantic_rag_multimodal",
+  "method_modality": "multimodal",
+  "mode": "open",
+  "num_qas": 112,
+  "num_qas_run": 112,
+  "dialog_json": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/dialog/Cartoon_Entertainment_Companion_Open.json",
+  "image_root": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image",
+  "run_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/cartoon_entertainment_companion_open/20260422_033242_gemini_2_5_flash_lite_semantic_rag_multimodal",
+  "git_commit": "265dcfb5db60d50bff9abf401df5dcdd59de51fa",
+  "summary": {
+    "open_count": 112,
+    "overall": {
+      "em": 0.08928571428571429,
+      "contains_gt": 0.14285714285714285,
+      "f1": 0.3537990544708342,
+      "bleu": 0.08863104274562472,
+      "bleu_1": 0.2737408414093145,
+      "bleu_2": 0.19008363387242955
+    },
+    "by_x": {
+      "X3": {
+        "em": 0.07142857142857142,
+        "contains_gt": 0.14285714285714285,
+        "f1": 0.2684351854773472,
+        "bleu": 0.04719007208446623,
+        "bleu_1": 0.2012791977504483,
+        "bleu_2": 0.12996719047112848
+      },
+      "X4": {
+        "em": 0.08888888888888889,
+        "contains_gt": 0.13333333333333333,
+        "f1": 0.37346144156671207,
+        "bleu": 0.09250767342434048,
+        "bleu_1": 0.27760452397754765,
+        "bleu_2": 0.1731090908527681
+      },
+      "X2": {
+        "em": 0.05555555555555555,
+        "contains_gt": 0.05555555555555555,
+        "f1": 0.3949214057547391,
+        "bleu": 0.13039365702979008,
+        "bleu_1": 0.30619125381399503,
+        "bleu_2": 0.22989726350319897
+      },
+      "X1": {
+        "em": 0.14285714285714285,
+        "contains_gt": 0.23809523809523808,
+        "f1": 0.39023613015620773,
+        "bleu": 0.09978207802444623,
+        "bleu_1": 0.33426240729471984,
+        "bleu_2": 0.27248694424230313
+      }
+    },
+    "by_y": {
+      "Y1": {
+        "em": 0.09090909090909091,
+        "contains_gt": 0.18181818181818182,
+        "f1": 0.3172579381001076,
+        "bleu": 0.07094085140628817,
+        "bleu_1": 0.24784070153145543,
+        "bleu_2": 0.12936351579148914
+      },
+      "Y2": {
+        "em": 0.10526315789473684,
+        "contains_gt": 0.14035087719298245,
+        "f1": 0.40687467186426246,
+        "bleu": 0.11503819456352754,
+        "bleu_1": 0.31736329245026196,
+        "bleu_2": 0.2576975657971344
+      },
+      "Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.22493532073324848,
+        "bleu": 0.022554748682928998,
+        "bleu_1": 0.15129779098129567,
+        "bleu_2": 0.08260100440453884
+      }
+    },
+    "by_cell": {
+      "X3_Y1": {
+        "em": 0.0,
+        "contains_gt": 0.13333333333333333,
+        "f1": 0.17622659838346114,
+        "bleu": 0.024158553269656054,
+        "bleu_1": 0.12546255149775154,
+        "bleu_2": 0.04898421352811581
+      },
+      "X4_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.3620110631918475,
+        "bleu": 0.08730850611434292,
+        "bleu_1": 0.25382426595990476,
+        "bleu_2": 0.17859747412404964
+      },
+      "X2_Y2": {
+        "em": 0.1,
+        "contains_gt": 0.1,
+        "f1": 0.41624819624819626,
+        "bleu": 0.18837622185573685,
+        "bleu_1": 0.33018782229542937,
+        "bleu_2": 0.28686871583610596
+      },
+      "X3_Y2": {
+        "em": 0.15384615384615385,
+        "contains_gt": 0.15384615384615385,
+        "f1": 0.3748297090472157,
+        "bleu": 0.07376490148617029,
+        "bleu_1": 0.28875994342663686,
+        "bleu_2": 0.22340908694383543
+      },
+      "X2_Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.3878703703703704,
+        "bleu": 0.07062902961161138,
+        "bleu_1": 0.2932915888467031,
+        "bleu_2": 0.18064147353045484
+      },
+      "X4_Y1": {
+        "em": 0.21052631578947367,
+        "contains_gt": 0.3157894736842105,
+        "f1": 0.40206909861853857,
+        "bleu": 0.11456540303600078,
+        "bleu_1": 0.32604025686157945,
+        "bleu_2": 0.183191841042694
+      },
+      "X1_Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.33735380116959063,
+        "bleu": 0.03962558186953893,
+        "bleu_1": 0.26713454536688436,
+        "bleu_2": 0.09818441772746755
+      },
+      "X4_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.31284393394420257,
+        "bleu": 0.03052480360202113,
+        "bleu_1": 0.1934258226923269,
+        "bleu_2": 0.11174343039166723
+      },
+      "X2_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.3094405594405594,
+        "bleu": 0.019774715154592316,
+        "bleu_1": 0.22490740630869918,
+        "bleu_2": 0.09280737175689666
+      },
+      "X1_Y2": {
+        "em": 0.23076923076923078,
+        "contains_gt": 0.38461538461538464,
+        "f1": 0.5041812145491076,
+        "bleu": 0.14469173260325283,
+        "bleu_1": 0.4387415843851046,
+        "bleu_2": 0.3973237696308229
+      },
+      "X1_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.07279693486590039,
+        "bleu": 0.01398219679823217,
+        "bleu_1": 0.06183294367880491,
+        "bleu_2": 0.04106978824444943
+      }
+    }
+  },
+  "method_runtime": {
+    "retrieval_backend": "dense_multimodal",
+    "retrieval_corpus": "round_text",
+    "method_modality": "multimodal",
+    "top_k": 10,
+    "neighbor_window": 0,
+    "seed_round_ids": [
+      "TC3:1",
+      "CX10:1",
+      "TC1:1",
+      "TC2:1",
+      "TC6:1",
+      "TC8:1",
+      "CX4:1",
+      "CX6:1",
+      "D28:1",
+      "TC7:1"
+    ],
+    "selected_round_ids": [
+      "TC3:1",
+      "CX10:1",
+      "TC1:1",
+      "TC2:1",
+      "TC6:1",
+      "TC8:1",
+      "CX4:1",
+      "CX6:1",
+      "D28:1",
+      "TC7:1"
+    ],
+    "top_candidates": [
+      {
+        "round_id": "TC3:1",
+        "score": 0.3493398821227246,
+        "text_dense_score": 0.5952703413461002,
+        "image_dense_score": 0.10340942289934901,
+        "indexed_image_count": 1,
+        "best_image_path": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image/Cartoon_Entertainment_Companion/Treasure_Comics_Page_3.jpg"
+      },
+      {
+        "round_id": "CX10:1",
+        "score": 0.33706435511691235,
+        "text_dense_score": 0.6741287102338247,
+        "image_dense_score": 0.0,
+        "indexed_image_count": 0,
+        "best_image_path": ""
+      },
+      {
+        "round_id": "TC1:1",
+        "score": 0.3175170480816444,
+        "text_dense_score": 0.5423996181920467,
+        "image_dense_score": 0.09263447797124207,
+        "indexed_image_count": 1,
+        "best_image_path": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image/Cartoon_Entertainment_Companion/Treasure_Comics_Page_1.jpg"
+      },
+      {
+        "round_id": "TC2:1",
+        "score": 0.3133596622010974,
+        "text_dense_score": 0.5483547527189023,
+        "image_dense_score": 0.0783645716832925,
+        "indexed_image_count": 1,
+        "best_image_path": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image/Cartoon_Entertainment_Companion/Treasure_Comics_Page_2.jpg"
+      },
+      {
+        "round_id": "TC6:1",
+        "score": 0.2873707476011298,
+        "text_dense_score": 0.48354555796008875,
+        "image_dense_score": 0.0911959372421709,
+        "indexed_image_count": 1,
+        "best_image_path": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image/Cartoon_Entertainment_Companion/Treasure_Comics_Page_6.jpg"
+      }
+    ],
+    "clue_hit_count": 2,
+    "corpus_entry_count": 299,
+    "text_embedding_model": "all-MiniLM-L6-v2",
+    "multimodal_embedding_model": "siglip2-base-patch16-384",
+    "text_dense_weight": 0.5,
+    "image_dense_weight": 0.5,
+    "caption_text_included": false,
+    "image_embeddings_built": true,
+    "multi_image_indexing_enabled": true,
+    "indexed_image_count": 87,
+    "history_source": "retrieval",
+    "captions_loaded": false,
+    "images_loaded": true,
+    "history_turns_after_truncation": 20
+  }
+}

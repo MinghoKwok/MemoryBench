@@ -10,20 +10,20 @@
   "num_qas_run": 63,
   "dialog_json": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/dialog/Personal_Health_Dashboard_Assistant.json",
   "image_root": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/image",
-  "run_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/personal_health_dashboard_assistant/20260416_233622_gemini_2_5_flash_lite_semantic_rag_text_only",
-  "git_commit": "483ff1401e5ce04eb6a71f775bbe4e9835bb495c",
+  "run_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/personal_health_dashboard_assistant/20260422_092300_gemini_2_5_flash_lite_semantic_rag_text_only",
+  "git_commit": "265dcfb5db60d50bff9abf401df5dcdd59de51fa",
   "summary": {
     "open_count": 63,
     "overall": {
-      "em": 0.14285714285714285,
-      "contains_gt": 0.14285714285714285,
-      "f1": 0.14285714285714285
+      "em": 0.1746031746031746,
+      "contains_gt": 0.1746031746031746,
+      "f1": 0.1746031746031746
     },
     "by_x": {
       "X4": {
-        "em": 0.14285714285714285,
-        "contains_gt": 0.14285714285714285,
-        "f1": 0.14285714285714285
+        "em": 0.17857142857142858,
+        "contains_gt": 0.17857142857142858,
+        "f1": 0.17857142857142858
       },
       "X3": {
         "em": 0.0,
@@ -38,9 +38,9 @@
     },
     "by_y": {
       "Y2": {
-        "em": 0.09803921568627451,
-        "contains_gt": 0.09803921568627451,
-        "f1": 0.09803921568627451
+        "em": 0.13725490196078433,
+        "contains_gt": 0.13725490196078433,
+        "f1": 0.13725490196078433
       },
       "Y3": {
         "em": 0.36363636363636365,
@@ -55,9 +55,9 @@
     },
     "by_cell": {
       "X4_Y2": {
-        "em": 0.10638297872340426,
-        "contains_gt": 0.10638297872340426,
-        "f1": 0.10638297872340426
+        "em": 0.14893617021276595,
+        "contains_gt": 0.14893617021276595,
+        "f1": 0.14893617021276595
       },
       "X4_Y3": {
         "em": 0.3333333333333333,
@@ -81,11 +81,11 @@
       }
     },
     "mcq_count": 63,
-    "mcq_valid_rate": 0.746031746031746,
+    "mcq_valid_rate": 0.9206349206349206,
     "mcq_overall": {
-      "em": 0.14285714285714285,
-      "contains_gt": 0.14285714285714285,
-      "f1": 0.14285714285714285
+      "em": 0.1746031746031746,
+      "contains_gt": 0.1746031746031746,
+      "f1": 0.1746031746031746
     }
   },
   "method_runtime": {
@@ -121,28 +121,28 @@
     "top_candidates": [
       {
         "round_id": "D2:6",
-        "score": 0.43049701879291535,
-        "text_dense_score": 0.43049701879291535
+        "score": 0.4304968926613546,
+        "text_dense_score": 0.4304968926613546
       },
       {
         "round_id": "D1:0",
-        "score": 0.41694677439505223,
-        "text_dense_score": 0.41694677439505223
+        "score": 0.41694655925154933,
+        "text_dense_score": 0.41694655925154933
       },
       {
         "round_id": "D10:5",
-        "score": 0.36520007861403553,
-        "text_dense_score": 0.36520007861403553
+        "score": 0.36520013032610465,
+        "text_dense_score": 0.36520013032610465
       },
       {
         "round_id": "D6:1",
-        "score": 0.3334207499072463,
-        "text_dense_score": 0.3334207499072463
+        "score": 0.33342068490005455,
+        "text_dense_score": 0.33342068490005455
       },
       {
         "round_id": "D7:2",
-        "score": 0.3224585980439038,
-        "text_dense_score": 0.3224585980439038
+        "score": 0.3224586440890367,
+        "text_dense_score": 0.3224586440890367
       }
     ],
     "clue_hit_count": 0,

@@ -8,10 +8,10 @@
   "mode": "mcq",
   "num_qas": 48,
   "num_qas_run": 48,
-  "dialog_json": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/dialog/Card_Playlog_Test.json",
-  "image_root": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image",
-  "run_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/card_playlog_test/20260417_000047_gemini_2_5_flash_lite_semantic_rag_text_only",
-  "git_commit": "19262b5fb5d5a815990401ec3935bf95c666c9d4",
+  "dialog_json": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/dialog/Card_Playlog_Test.json",
+  "image_root": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/image",
+  "run_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/card_playlog_test/20260422_025109_gemini_2_5_flash_lite_semantic_rag_text_only",
+  "git_commit": "dc79f95979a1a2f0bdf89f7b6e6a98e8cab76606",
   "summary": {
     "open_count": 48,
     "overall": {
@@ -28,30 +28,30 @@
     },
     "by_y": {
       "Y3": {
-        "em": 0.10526315789473684,
-        "contains_gt": 0.10526315789473684,
-        "f1": 0.10526315789473684
+        "em": 0.15789473684210525,
+        "contains_gt": 0.15789473684210525,
+        "f1": 0.15789473684210525
       },
       "Y2": {
-        "em": 0.3793103448275862,
-        "contains_gt": 0.3793103448275862,
-        "f1": 0.3793103448275862
+        "em": 0.3448275862068966,
+        "contains_gt": 0.3448275862068966,
+        "f1": 0.3448275862068966
       }
     },
     "by_cell": {
       "X4_Y3": {
-        "em": 0.10526315789473684,
-        "contains_gt": 0.10526315789473684,
-        "f1": 0.10526315789473684
+        "em": 0.15789473684210525,
+        "contains_gt": 0.15789473684210525,
+        "f1": 0.15789473684210525
       },
       "X4_Y2": {
-        "em": 0.3793103448275862,
-        "contains_gt": 0.3793103448275862,
-        "f1": 0.3793103448275862
+        "em": 0.3448275862068966,
+        "contains_gt": 0.3448275862068966,
+        "f1": 0.3448275862068966
       }
     },
     "mcq_count": 48,
-    "mcq_valid_rate": 0.8958333333333334,
+    "mcq_valid_rate": 0.9791666666666666,
     "mcq_overall": {
       "em": 0.2708333333333333,
       "contains_gt": 0.2708333333333333,
@@ -91,28 +91,28 @@
     "top_candidates": [
       {
         "round_id": "uno_seed_44_p3_g0:1",
-        "score": 0.5290760621901255,
-        "text_dense_score": 0.5290760621901255
+        "score": 0.5290761124946076,
+        "text_dense_score": 0.5290761124946076
       },
       {
         "round_id": "uno_seed_44_p0_g0:1",
-        "score": 0.5282294169610163,
-        "text_dense_score": 0.5282294169610163
+        "score": 0.5282293179523683,
+        "text_dense_score": 0.5282293179523683
       },
       {
         "round_id": "uno_seed_44_p2_g0:1",
-        "score": 0.5238403685380788,
-        "text_dense_score": 0.5238403685380788
+        "score": 0.5238403237334013,
+        "text_dense_score": 0.5238403237334013
       },
       {
         "round_id": "uno_seed_44_p2_g0:3",
-        "score": 0.5189786326989828,
-        "text_dense_score": 0.5189786326989828
+        "score": 0.5189786916356125,
+        "text_dense_score": 0.5189786916356125
       },
       {
         "round_id": "uno_seed_44_p1_g0:1",
-        "score": 0.5036247491865121,
-        "text_dense_score": 0.5036247491865121
+        "score": 0.5036247733565343,
+        "text_dense_score": 0.5036247733565343
       }
     ],
     "clue_hit_count": 0,

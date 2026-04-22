@@ -1,0 +1,76 @@
+{
+  "task_name": "card_playlog_test_open",
+  "model_name": "gemini_2_5_flash_lite",
+  "model_path": "gemini-2.5-flash-lite",
+  "method_name": "reflexion",
+  "base_method_name": "reflexion",
+  "method_modality": "",
+  "mode": "open",
+  "num_qas": 48,
+  "num_qas_run": 48,
+  "dialog_json": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/dialog/Card_Playlog_Test_Open.json",
+  "image_root": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image",
+  "run_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/card_playlog_test_open/20260422_025934_gemini_2_5_flash_lite_reflexion",
+  "git_commit": "dc79f95979a1a2f0bdf89f7b6e6a98e8cab76606",
+  "summary": {
+    "open_count": 48,
+    "overall": {
+      "em": 0.041666666666666664,
+      "contains_gt": 0.1875,
+      "f1": 0.0657387365720699,
+      "bleu": 0.010600297565586203,
+      "bleu_1": 0.05536477411477411,
+      "bleu_2": 0.01785280797484622
+    },
+    "by_x": {
+      "X4": {
+        "em": 0.041666666666666664,
+        "contains_gt": 0.1875,
+        "f1": 0.0657387365720699,
+        "bleu": 0.010600297565586203,
+        "bleu_1": 0.05536477411477411,
+        "bleu_2": 0.01785280797484622
+      }
+    },
+    "by_y": {
+      "Y3": {
+        "em": 0.0,
+        "contains_gt": 0.21052631578947367,
+        "f1": 0.038758512442722964,
+        "bleu": 0.005160523132384607,
+        "bleu_1": 0.022074416811258917,
+        "bleu_2": 0.007542308541739748
+      },
+      "Y2": {
+        "em": 0.06896551724137931,
+        "contains_gt": 0.1724137931034483,
+        "f1": 0.08341543513957307,
+        "bleu": 0.014164287711476903,
+        "bleu_1": 0.07717569786535304,
+        "bleu_2": 0.024607962775847012
+      }
+    },
+    "by_cell": {
+      "X4_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.21052631578947367,
+        "f1": 0.038758512442722964,
+        "bleu": 0.005160523132384607,
+        "bleu_1": 0.022074416811258917,
+        "bleu_2": 0.007542308541739748
+      },
+      "X4_Y2": {
+        "em": 0.06896551724137931,
+        "contains_gt": 0.1724137931034483,
+        "f1": 0.08341543513957307,
+        "bleu": 0.014164287711476903,
+        "bleu_1": 0.07717569786535304,
+        "bleu_2": 0.024607962775847012
+      }
+    }
+  },
+  "method_runtime": {
+    "num_memories": 30,
+    "debug_dir": "/common/home/mg1998/MemoryBench/output/card_playlog_test_open/reflexion"
+  }
+}

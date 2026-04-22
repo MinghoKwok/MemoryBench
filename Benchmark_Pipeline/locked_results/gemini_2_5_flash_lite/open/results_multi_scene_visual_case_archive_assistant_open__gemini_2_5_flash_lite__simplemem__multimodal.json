@@ -1,0 +1,141 @@
+{
+  "task_name": "multi_scene_visual_case_archive_assistant_open",
+  "model_name": "gemini_2_5_flash_lite",
+  "model_path": "gemini-2.5-flash-lite",
+  "method_name": "simplemem__multimodal",
+  "base_method_name": "simplemem",
+  "method_modality": "multimodal",
+  "mode": "open",
+  "num_qas": 59,
+  "num_qas_run": 59,
+  "dialog_json": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/dialog/Multi-Scene_Visual_Case_Archive_Assistant_Open.json",
+  "image_root": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image",
+  "run_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/multi_scene_visual_case_archive_assistant_open/20260422_063942_gemini_2_5_flash_lite_simplemem__multimodal",
+  "git_commit": "265dcfb5db60d50bff9abf401df5dcdd59de51fa",
+  "summary": {
+    "open_count": 59,
+    "overall": {
+      "em": 0.0,
+      "contains_gt": 0.0,
+      "f1": 0.05854445235432708,
+      "bleu": 0.01936562660706464,
+      "bleu_1": 0.036421432767376964,
+      "bleu_2": 0.03507559085527857
+    },
+    "by_x": {
+      "X4": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0,
+        "bleu": 0.0,
+        "bleu_1": 0.0,
+        "bleu_2": 0.0
+      },
+      "X2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.3123073383942949,
+        "bleu": 0.1102354749050471,
+        "bleu_1": 0.20049765110085177,
+        "bleu_2": 0.1957901119271031
+      },
+      "X3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.014961782403642867,
+        "bleu": 0.0034988998993346447,
+        "bleu_1": 0.008008969148083142,
+        "bleu_2": 0.007147647746918783
+      }
+    },
+    "by_y": {
+      "Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.008695652173913044,
+        "bleu": 0.0013758777297397085,
+        "bleu_1": 0.006375038008193697,
+        "bleu_2": 0.0021382527518198947
+      },
+      "Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.2235098235098235,
+        "bleu": 0.0756058506844377,
+        "bleu_1": 0.13506362857976062,
+        "bleu_2": 0.13442160154101707
+      },
+      "Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.01282051282051282,
+        "bleu": 0.004053809267270176,
+        "bleu_1": 0.009146860601567107,
+        "bleu_2": 0.008349903136389298
+      }
+    },
+    "by_cell": {
+      "X4_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0,
+        "bleu": 0.0,
+        "bleu_1": 0.0,
+        "bleu_2": 0.0
+      },
+      "X2_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.028985507246376812,
+        "bleu": 0.004586259099132362,
+        "bleu_1": 0.02125012669397899,
+        "bleu_2": 0.007127509172732982
+      },
+      "X3_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.03636363636363636,
+        "bleu": 0.0009031124099326774,
+        "bleu_1": 0.00301973834223185,
+        "bleu_2": 0.0013504680414985883
+      },
+      "X2_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.45396825396825397,
+        "bleu": 0.16306008280800446,
+        "bleu_1": 0.29012141330428814,
+        "bleu_2": 0.29012141330428814
+      },
+      "X3_Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.01282051282051282,
+        "bleu": 0.004053809267270176,
+        "bleu_1": 0.009146860601567107,
+        "bleu_2": 0.008349903136389298
+      },
+      "X3_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0,
+        "bleu": 0.0,
+        "bleu_1": 0.0,
+        "bleu_2": 0.0
+      },
+      "X4_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0,
+        "bleu": 0.0,
+        "bleu_1": 0.0,
+        "bleu_2": 0.0
+      }
+    }
+  },
+  "method_runtime": {
+    "num_memories": 117,
+    "debug_dir": "/common/home/mg1998/MemoryBench/output/multi-scene_visual_case_archive_assistant/simplemem",
+    "data_dir": "/common/home/mg1998/MemoryBench/runs/simplemem/multi-scene_visual_case_archive_assistant"
+  }
+}

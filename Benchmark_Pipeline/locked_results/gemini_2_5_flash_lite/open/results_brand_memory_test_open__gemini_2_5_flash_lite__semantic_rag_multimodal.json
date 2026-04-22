@@ -1,0 +1,207 @@
+{
+  "task_name": "brand_memory_test_open",
+  "model_name": "gemini_2_5_flash_lite",
+  "model_path": "gemini-2.5-flash-lite",
+  "method_name": "semantic_rag_multimodal",
+  "base_method_name": "semantic_rag_multimodal",
+  "method_modality": "multimodal",
+  "mode": "open",
+  "num_qas": 33,
+  "num_qas_run": 33,
+  "dialog_json": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/dialog/Brand_Memory_Test_Open.json",
+  "image_root": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image",
+  "run_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/brand_memory_test_open/20260422_021725_gemini_2_5_flash_lite_semantic_rag_multimodal",
+  "git_commit": "662f5209977d226875c4c7398d7f80e2c655606e",
+  "summary": {
+    "open_count": 33,
+    "overall": {
+      "em": 0.2727272727272727,
+      "contains_gt": 0.2727272727272727,
+      "f1": 0.34119330961436223,
+      "bleu": 0.09304890889826654,
+      "bleu_1": 0.3172686256466249,
+      "bleu_2": 0.18044635515308566
+    },
+    "by_x": {
+      "X2": {
+        "em": 0.1111111111111111,
+        "contains_gt": 0.1111111111111111,
+        "f1": 0.1641025641025641,
+        "bleu": 0.04053097923135942,
+        "bleu_1": 0.14393939393939395,
+        "bleu_2": 0.1294964354941438
+      },
+      "X4": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.3333333333333333,
+        "bleu": 0.03270962178059006,
+        "bleu_1": 0.18393972058572117,
+        "bleu_2": 0.05816684692258399
+      },
+      "X1": {
+        "em": 0.36363636363636365,
+        "contains_gt": 0.36363636363636365,
+        "f1": 0.4143540669856459,
+        "bleu": 0.12001890622724459,
+        "bleu_1": 0.40029684816875605,
+        "bleu_2": 0.21240582303451658
+      }
+    },
+    "by_y": {
+      "Y1": {
+        "em": 0.3333333333333333,
+        "contains_gt": 0.3333333333333333,
+        "f1": 0.8222222222222222,
+        "bleu": 0.19114961503988773,
+        "bleu_1": 0.658136700294692,
+        "bleu_2": 0.5742881178526005
+      },
+      "Y2": {
+        "em": 0.26666666666666666,
+        "contains_gt": 0.26666666666666666,
+        "f1": 0.29309041835357624,
+        "bleu": 0.08323883828410443,
+        "bleu_1": 0.2831818181818182,
+        "bleu_2": 0.1410621788831342
+      }
+    },
+    "by_cell": {
+      "X2_Y1": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0,
+        "bleu": 0.316227766016838,
+        "bleu_1": 1.0,
+        "bleu_2": 1.0
+      },
+      "X4_Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.6666666666666666,
+        "bleu": 0.06541924356118012,
+        "bleu_1": 0.36787944117144233,
+        "bleu_2": 0.11633369384516798
+      },
+      "X2_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.05961538461538462,
+        "bleu": 0.0060688808831745955,
+        "bleu_1": 0.036931818181818184,
+        "bleu_2": 0.020683489930911785
+      },
+      "X1_Y2": {
+        "em": 0.38095238095238093,
+        "contains_gt": 0.38095238095238093,
+        "f1": 0.39598997493734334,
+        "bleu": 0.11660067149798743,
+        "bleu_1": 0.3904761904761905,
+        "bleu_2": 0.19363797366889196
+      },
+      "X4_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0,
+        "bleu": 0.0,
+        "bleu_1": 0.0,
+        "bleu_2": 0.0
+      },
+      "X1_Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.8,
+        "bleu": 0.19180183554164504,
+        "bleu_1": 0.6065306597126334,
+        "bleu_2": 0.6065306597126334
+      }
+    }
+  },
+  "method_runtime": {
+    "retrieval_backend": "dense_multimodal",
+    "retrieval_corpus": "round_text",
+    "method_modality": "multimodal",
+    "top_k": 10,
+    "neighbor_window": 0,
+    "seed_round_ids": [
+      "P1:2",
+      "D1:1",
+      "D1:2",
+      "D4:1",
+      "S5:1",
+      "D2:1",
+      "CC5:1",
+      "CC1:1",
+      "CX9:1",
+      "M3:1"
+    ],
+    "selected_round_ids": [
+      "P1:2",
+      "D1:1",
+      "D1:2",
+      "D4:1",
+      "S5:1",
+      "D2:1",
+      "CC5:1",
+      "CC1:1",
+      "CX9:1",
+      "M3:1"
+    ],
+    "top_candidates": [
+      {
+        "round_id": "P1:2",
+        "score": 0.2723367893847012,
+        "text_dense_score": 0.5446735787694024,
+        "image_dense_score": 0.0,
+        "indexed_image_count": 0,
+        "best_image_path": ""
+      },
+      {
+        "round_id": "D1:1",
+        "score": 0.26066926948290137,
+        "text_dense_score": 0.4014080751708185,
+        "image_dense_score": 0.11993046379498429,
+        "indexed_image_count": 1,
+        "best_image_path": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image/Brand_Memory_Test/Dunkin_1.png"
+      },
+      {
+        "round_id": "D1:2",
+        "score": 0.2514775075158019,
+        "text_dense_score": 0.5029550150316038,
+        "image_dense_score": 0.0,
+        "indexed_image_count": 0,
+        "best_image_path": ""
+      },
+      {
+        "round_id": "D4:1",
+        "score": 0.24970471782170137,
+        "text_dense_score": 0.41383720674308805,
+        "image_dense_score": 0.08557222890031467,
+        "indexed_image_count": 1,
+        "best_image_path": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image/Brand_Memory_Test/Dunkin_4.png"
+      },
+      {
+        "round_id": "S5:1",
+        "score": 0.23199096039861136,
+        "text_dense_score": 0.383507740712265,
+        "image_dense_score": 0.08047418008495773,
+        "indexed_image_count": 1,
+        "best_image_path": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image/Brand_Memory_Test/Starbucks_5.png"
+      }
+    ],
+    "clue_hit_count": 1,
+    "corpus_entry_count": 72,
+    "text_embedding_model": "all-MiniLM-L6-v2",
+    "multimodal_embedding_model": "siglip2-base-patch16-384",
+    "text_dense_weight": 0.5,
+    "image_dense_weight": 0.5,
+    "caption_text_included": false,
+    "image_embeddings_built": true,
+    "multi_image_indexing_enabled": true,
+    "indexed_image_count": 30,
+    "history_source": "retrieval",
+    "captions_loaded": false,
+    "images_loaded": true,
+    "history_turns_after_truncation": 20
+  }
+}

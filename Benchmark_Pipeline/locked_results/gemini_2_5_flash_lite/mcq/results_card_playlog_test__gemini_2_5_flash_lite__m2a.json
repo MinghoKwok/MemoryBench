@@ -1,0 +1,61 @@
+{
+  "task_name": "card_playlog_test",
+  "model_name": "gemini_2_5_flash_lite",
+  "model_path": "gemini-2.5-flash-lite",
+  "method_name": "m2a",
+  "base_method_name": "m2a",
+  "method_modality": "",
+  "mode": "mcq",
+  "num_qas": 48,
+  "num_qas_run": 48,
+  "dialog_json": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/dialog/Card_Playlog_Test.json",
+  "image_root": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/image",
+  "run_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/card_playlog_test/20260422_032058_gemini_2_5_flash_lite_m2a",
+  "git_commit": "265dcfb5db60d50bff9abf401df5dcdd59de51fa",
+  "summary": {
+    "open_count": 48,
+    "overall": {
+      "em": 0.0625,
+      "contains_gt": 0.0625,
+      "f1": 0.0625
+    },
+    "by_x": {
+      "X4": {
+        "em": 0.0625,
+        "contains_gt": 0.0625,
+        "f1": 0.0625
+      }
+    },
+    "by_y": {
+      "Y3": {
+        "em": 0.05263157894736842,
+        "contains_gt": 0.05263157894736842,
+        "f1": 0.05263157894736842
+      },
+      "Y2": {
+        "em": 0.06896551724137931,
+        "contains_gt": 0.06896551724137931,
+        "f1": 0.06896551724137931
+      }
+    },
+    "by_cell": {
+      "X4_Y3": {
+        "em": 0.05263157894736842,
+        "contains_gt": 0.05263157894736842,
+        "f1": 0.05263157894736842
+      },
+      "X4_Y2": {
+        "em": 0.06896551724137931,
+        "contains_gt": 0.06896551724137931,
+        "f1": 0.06896551724137931
+      }
+    },
+    "mcq_count": 48,
+    "mcq_valid_rate": 0.14583333333333334,
+    "mcq_overall": {
+      "em": 0.0625,
+      "contains_gt": 0.0625,
+      "f1": 0.0625
+    }
+  }
+}
