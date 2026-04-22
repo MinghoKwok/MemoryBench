@@ -199,9 +199,9 @@ class AMemAgent:
             sglang_port=_resolve_sglang_port(method_config),
         )
         self.answer_client: Optional[OpenAI] = None
-        if self.answer_provider == "openai_api":
+        if self.answer_provider in ("openai_api", "gemini_api"):
             if not self.answer_api_key:
-                raise ValueError("OpenAI API key not found for benchmark answer model.")
+                raise ValueError("API key not found for benchmark answer model.")
             self.answer_client = OpenAI(api_key=self.answer_api_key, base_url=self.answer_base_url, timeout=self.answer_timeout)
         self._answer_retryable_errors = (APIConnectionError, APITimeoutError, RateLimitError, InternalServerError)
 

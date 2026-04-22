@@ -240,13 +240,13 @@ class MemoryOSAgent:
         )
         self.answer_timeout = int(model_config.get("timeout", method_config.get("llm_timeout", 90)) or 90)
 
-        if self.answer_provider != "openai_api":
+        if self.answer_provider not in ("openai_api", "gemini_api"):
             raise ValueError(
                 f"Unsupported answer model provider for MemoryOS benchmark QA: {self.answer_provider}. "
-                "Use an OpenAI API model config for final answer generation."
+                "Use an OpenAI API or Gemini API model config for final answer generation."
             )
         if not self.answer_api_key:
-            raise ValueError("OpenAI API key not found for MemoryOS benchmark answer model.")
+            raise ValueError("API key not found for MemoryOS benchmark answer model.")
 
         self.answer_client = OpenAI(
             api_key=self.answer_api_key,

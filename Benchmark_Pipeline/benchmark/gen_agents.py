@@ -245,10 +245,10 @@ class GAMethod(HistoryMethod):
 
     def _ensure_answer_client(self, method_config: Dict[str, Any], model_config: Dict[str, Any]) -> None:
         provider = str(model_config.get("provider", "")).strip().lower() or "openai_api"
-        if provider != "openai_api":
+        if provider not in ("openai_api", "gemini_api"):
             raise ValueError(
                 f"Unsupported answer model provider for Generative Agents benchmark QA: {provider}. "
-                "Use an OpenAI API model config for final answer generation."
+                "Use an OpenAI API or Gemini API model config for final answer generation."
             )
         api_key = _resolve_secret(model_config, method_config, "api_key", "api_key_env", "OPENAI_API_KEY")
         if not api_key:
