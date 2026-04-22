@@ -1,6 +1,7 @@
 import importlib.util
 import json
 import os
+import re
 import sys
 import types
 from pathlib import Path
@@ -101,6 +102,19 @@ def _resolve_base_url(method_config: Dict[str, Any], model_config: Dict[str, Any
     if raw:
         return raw
     return "https://api.openai.com/v1"
+
+
+def _infer_provider(method_config: Dict[str, Any], model_config: Dict[str, Any]) -> str:
+    provider = str(method_config.get("provider", "")).strip().lower()
+    if provider:
+        return provider
+    provider = str(model_config.get("provider", "")).strip().lower()
+    if provider:
+        return provider
+    base_url = _resolve_base_url(method_config, model_config).lower()
+    if "generativelanguage.googleapis.com" in base_url:
+        return "gemini_api"
+    return "openai_api"
 
 
 def _dialogue_text(round_payload: Dict[str, Any], speaker_a: str, speaker_b: str) -> str:
@@ -215,6 +229,7 @@ class GAMethod(HistoryMethod):
         self._answer_client: Optional[OpenAI] = None
         self._answer_model: str = ""
         self._answer_timeout: int = 90
+        self._answer_provider: str = "openai_api"
 
     def _debug_dir(self, dataset: MemoryBenchmarkDataset) -> Path:
         return (SCRIPT_DIR / "output" / _safe_task_name(dataset) / "gen_agents").resolve()
@@ -244,26 +259,27 @@ class GAMethod(HistoryMethod):
         setattr(retrieval_mod, "OpenAIEmbeddingEncoder", LocalMiniLMEmbeddingEncoder)
 
     def _ensure_answer_client(self, method_config: Dict[str, Any], model_config: Dict[str, Any]) -> None:
-        provider = str(model_config.get("provider", "")).strip().lower() or "openai_api"
-        if provider != "openai_api":
+        provider = _infer_provider(method_config, model_config)
+        if provider not in {"openai_api", "gemini_api"}:
             raise ValueError(
                 f"Unsupported answer model provider for Generative Agents benchmark QA: {provider}. "
-                "Use an OpenAI API model config for final answer generation."
+                "Supported providers are openai_api and gemini_api."
             )
         api_key = _resolve_secret(model_config, method_config, "api_key", "api_key_env", "OPENAI_API_KEY")
         if not api_key:
             raise ValueError(
-                "OpenAI API key not found for Generative Agents final answer model. "
-                "Set OPENAI_API_KEY in the environment or Benchmark_Pipeline/.env.local."
+                "LLM API key not found for Generative Agents final answer model. "
+                "Set the configured api_key_env in the environment or Benchmark_Pipeline/.env.local."
             )
         self._answer_model = str(model_config.get("model", "")).strip() or "gpt-4.1-nano"
         base_url = _resolve_base_url(method_config, model_config)
         self._answer_timeout = int(model_config.get("timeout", 90) or 90)
+        self._answer_provider = provider
         self._answer_client = OpenAI(api_key=api_key, base_url=base_url, timeout=self._answer_timeout)
 
     def _load_json_object(self, raw: str, fallback_key: str) -> str:
         try:
-            payload = json.loads(raw)
+            payload = self._parse_json_payload(raw)
             if isinstance(payload, dict):
                 value = payload.get(fallback_key, "")
                 if isinstance(value, str):
@@ -271,6 +287,101 @@ class GAMethod(HistoryMethod):
         except Exception:
             pass
         return raw.strip()
+
+    def _parse_json_payload(self, raw: str) -> Any:
+        text = str(raw or "").strip()
+        if text.startswith("```"):
+            lines = text.splitlines()
+            if lines:
+                lines = lines[1:]
+            if lines and lines[-1].strip() == "```":
+                lines = lines[:-1]
+            text = "\n".join(lines).strip()
+        try:
+            return json.loads(text)
+        except json.JSONDecodeError:
+            start = text.find("{")
+            end = text.rfind("}")
+            if start != -1 and end != -1 and end > start:
+                return json.loads(text[start : end + 1])
+            raise
+
+    def _create_answer_completion(self, user_prompt: str, option_keys: Optional[List[str]] = None) -> Any:
+        assert self._answer_client is not None
+        schema: Dict[str, Any] = {
+            "type": "object",
+            "properties": {"answer": {"type": "string"}},
+            "required": ["answer"],
+            "additionalProperties": False,
+        }
+        if option_keys:
+            schema["properties"]["answer"]["enum"] = option_keys
+
+        base_messages = [
+            {"role": "system", "content": "You must respond with a JSON object."},
+            {
+                "role": "user",
+                "content": (
+                    f"{user_prompt}\n\nReturn JSON only with no markdown fences and this schema: "
+                    + ('{"answer":"<one of ' + ", ".join(option_keys) + '>"}' if option_keys else '{"answer":"..."}')
+                ),
+            },
+        ]
+        last_error: Optional[Exception] = None
+        last_raw = ""
+        for attempt in range(1, 4):
+            request: Dict[str, Any] = {
+                "model": self._answer_model,
+                "messages": base_messages,
+                "temperature": 0.0,
+            }
+            if self._answer_provider == "openai_api":
+                request["response_format"] = {
+                    "type": "json_schema",
+                    "json_schema": {
+                        "name": "mcq_response" if option_keys else "open_response",
+                        "schema": schema,
+                        "strict": True,
+                    },
+                }
+            response = self._answer_client.chat.completions.create(**request)
+            raw_response = response.choices[0].message.content
+            last_raw = str(raw_response)
+            try:
+                payload = self._parse_json_payload(last_raw)
+                answer = payload.get("answer")
+                if not isinstance(answer, str) or not answer.strip():
+                    raise ValueError("Structured answer missing non-empty answer string")
+                normalized = answer.strip()
+                if option_keys and normalized not in option_keys:
+                    match = re.search(r"\b([A-Z])\b", normalized.upper())
+                    if match and match.group(1) in option_keys:
+                        normalized = match.group(1)
+                    else:
+                        raise ValueError(
+                            f"Structured MCQ answer {normalized!r} not in valid options {option_keys}"
+                        )
+                response.choices[0].message.content = json.dumps({"answer": normalized})
+                return response
+            except Exception as exc:
+                last_error = exc
+                if attempt == 3:
+                    break
+                base_messages = list(base_messages)
+                if last_raw.strip():
+                    base_messages.append({"role": "assistant", "content": last_raw})
+                base_messages.append(
+                    {
+                        "role": "user",
+                        "content": (
+                            "Your previous response did not match the required JSON format. "
+                            "Reply again with only valid JSON, no markdown, no prose, and no extra keys."
+                        ),
+                    }
+                )
+        raise ValueError(
+            f"Structured answer generation failed after 3 attempt(s): {last_error}. Raw response: {last_raw}"
+        )
 
     def _retrieve_context(self, qa: Dict[str, Any]) -> Dict[str, Any]:
         self._ensure_initialized(self._active_dataset)
@@ -304,11 +415,12 @@ class GAMethod(HistoryMethod):
         api_key = _resolve_secret(method_config, model_config, "llm_api_key", "llm_api_key_env", "OPENAI_API_KEY")
         if not api_key:
             raise ValueError(
-                "OpenAI API key not found for Generative Agents. "
-                "Set OPENAI_API_KEY in the environment or Benchmark_Pipeline/.env.local."
+                "LLM API key not found for Generative Agents. "
+                "Set the configured llm_api_key_env in the environment or Benchmark_Pipeline/.env.local."
             )
 
         base_url = _resolve_base_url(method_config, model_config)
+        provider = _infer_provider(method_config, model_config)
         llm_model = _resolve_model_name(method_config, model_config, "llm_model", "gpt-4.1-mini")
         embedding_model = str(method_config.get("embedding_model", "all-MiniLM-L6-v2")).strip() or "all-MiniLM-L6-v2"
         llm_temperature = float(method_config.get("llm_temperature", 0.0))
@@ -377,6 +489,7 @@ class GAMethod(HistoryMethod):
                     "post_scale": importance_post_scale,
                     "LLM_config": {
                         "method": "APILLM",
+                        "provider": provider,
                         "name": llm_model,
                         "api_key": api_key,
                         "base_url": base_url,
@@ -399,6 +512,7 @@ class GAMethod(HistoryMethod):
                     "insight_number": reflection_insights,
                     "LLM_config": {
                         "method": "APILLM",
+                        "provider": provider,
                         "name": llm_model,
                         "api_key": api_key,
                         "base_url": base_url,
@@ -577,27 +691,7 @@ class GAMethod(HistoryMethod):
                 f"Question:\n{recall_query}\n\n"
                 f"Return only one option letter from: {', '.join(option_keys)}."
             )
-            response = self._answer_client.chat.completions.create(
-                model=self._answer_model,
-                messages=[
-                    {"role": "system", "content": "You must respond with a JSON object."},
-                    {"role": "user", "content": user_prompt},
-                ],
-                response_format={
-                    "type": "json_schema",
-                    "json_schema": {
-                        "name": "mcq_response",
-                        "schema": {
-                            "type": "object",
-                            "properties": {"answer": {"type": "string", "enum": option_keys}},
-                            "required": ["answer"],
-                            "additionalProperties": False,
-                        },
-                        "strict": True,
-                    },
-                },
-                temperature=0.0,
-            )
+            response = self._create_answer_completion(user_prompt, option_keys=option_keys)
         else:
             user_prompt = (
                 "Use only the retrieved context below to answer the question.\n"
@@ -605,27 +699,7 @@ class GAMethod(HistoryMethod):
                 f"Retrieved context:\n{recall_text_value or self._empty_memory_text}\n\n"
                 f"Question:\n{recall_query}"
             )
-            response = self._answer_client.chat.completions.create(
-                model=self._answer_model,
-                messages=[
-                    {"role": "system", "content": "You must respond with a JSON object."},
-                    {"role": "user", "content": user_prompt},
-                ],
-                response_format={
-                    "type": "json_schema",
-                    "json_schema": {
-                        "name": "open_response",
-                        "schema": {
-                            "type": "object",
-                            "properties": {"answer": {"type": "string"}},
-                            "required": ["answer"],
-                            "additionalProperties": False,
-                        },
-                        "strict": True,
-                    },
-                },
-                temperature=0.0,
-            )
+            response = self._create_answer_completion(user_prompt)
 
         raw_response = response.choices[0].message.content
         answer = self._load_json_object(raw_response, "answer")
