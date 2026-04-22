@@ -1,0 +1,72 @@
+{
+  "task_name": "card_playlog_test_open",
+  "model_name": "gpt_4_1_nano",
+  "model_path": "gpt-4.1-nano",
+  "method_name": "m2a",
+  "base_method_name": "m2a",
+  "method_modality": "",
+  "mode": "open",
+  "num_qas": 48,
+  "num_qas_run": 48,
+  "dialog_json": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/dialog/Card_Playlog_Test_Open.json",
+  "image_root": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image",
+  "run_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/card_playlog_test_open/20260421_171108_gpt_4_1_nano_m2a",
+  "git_commit": "98752bccddfaa75c1d9b06151fcc907cc4b2487f",
+  "summary": {
+    "open_count": 48,
+    "overall": {
+      "em": 0.0,
+      "contains_gt": 0.4791666666666667,
+      "f1": 0.04520984585196312,
+      "bleu": 0.004659180717599068,
+      "bleu_1": 0.02388133177846877,
+      "bleu_2": 0.007776945859976202
+    },
+    "by_x": {
+      "X4": {
+        "em": 0.0,
+        "contains_gt": 0.4791666666666667,
+        "f1": 0.04520984585196312,
+        "bleu": 0.004659180717599068,
+        "bleu_1": 0.02388133177846877,
+        "bleu_2": 0.007776945859976202
+      }
+    },
+    "by_y": {
+      "Y3": {
+        "em": 0.0,
+        "contains_gt": 0.47368421052631576,
+        "f1": 0.04754471338194712,
+        "bleu": 0.0049784234780093405,
+        "bleu_1": 0.025249845055939236,
+        "bleu_2": 0.008248317198697924
+      },
+      "Y2": {
+        "em": 0.0,
+        "contains_gt": 0.4827586206896552,
+        "f1": 0.04368010505645635,
+        "bleu": 0.004450021667675095,
+        "bleu_1": 0.022984719631160538,
+        "bleu_2": 0.007468116362193004
+      }
+    },
+    "by_cell": {
+      "X4_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.47368421052631576,
+        "f1": 0.04754471338194712,
+        "bleu": 0.0049784234780093405,
+        "bleu_1": 0.025249845055939236,
+        "bleu_2": 0.008248317198697924
+      },
+      "X4_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.4827586206896552,
+        "f1": 0.04368010505645635,
+        "bleu": 0.004450021667675095,
+        "bleu_1": 0.022984719631160538,
+        "bleu_2": 0.007468116362193004
+      }
+    }
+  }
+}

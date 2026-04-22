@@ -1,0 +1,120 @@
+{
+  "task_name": "personal_health_dashboard_assistant_open",
+  "model_name": "gpt_4_1_nano",
+  "model_path": "gpt-4.1-nano",
+  "method_name": "m2a",
+  "base_method_name": "m2a",
+  "method_modality": "",
+  "mode": "open",
+  "num_qas": 63,
+  "num_qas_run": 63,
+  "dialog_json": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/dialog/Personal_Health_Dashboard_Assistant_Open.json",
+  "image_root": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image",
+  "run_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/personal_health_dashboard_assistant_open/20260421_195428_gpt_4_1_nano_m2a",
+  "git_commit": "95d14acae2f43ed61ef7e0c915c2eb678f4fe218",
+  "summary": {
+    "open_count": 63,
+    "overall": {
+      "em": 0.0,
+      "contains_gt": 0.3333333333333333,
+      "f1": 0.10440607756600206,
+      "bleu": 0.02059366010388582,
+      "bleu_1": 0.05937205460741704,
+      "bleu_2": 0.04277693056458624
+    },
+    "by_x": {
+      "X4": {
+        "em": 0.0,
+        "contains_gt": 0.35714285714285715,
+        "f1": 0.11369743876551172,
+        "bleu": 0.022733485015112364,
+        "bleu_1": 0.06469272109720972,
+        "bleu_2": 0.046592809517815685
+      },
+      "X3": {
+        "em": 0.0,
+        "contains_gt": 0.25,
+        "f1": 0.05263157894736842,
+        "bleu": 0.00608135642462857,
+        "bleu_1": 0.029411764705882353,
+        "bleu_2": 0.02143732314281361
+      },
+      "X1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0,
+        "bleu": 0.0,
+        "bleu_1": 0.0,
+        "bleu_2": 0.0
+      }
+    },
+    "by_y": {
+      "Y2": {
+        "em": 0.0,
+        "contains_gt": 0.39215686274509803,
+        "f1": 0.10716983431833364,
+        "bleu": 0.021490881114547285,
+        "bleu_1": 0.06063685648487385,
+        "bleu_2": 0.04502707507100411
+      },
+      "Y3": {
+        "em": 0.0,
+        "contains_gt": 0.09090909090909091,
+        "f1": 0.10108375785664674,
+        "bleu": 0.018305968154808647,
+        "bleu_1": 0.05890543268533699,
+        "bleu_2": 0.03623325426797485
+      },
+      "Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0,
+        "bleu": 0.0,
+        "bleu_1": 0.0,
+        "bleu_2": 0.0
+      }
+    },
+    "by_cell": {
+      "X4_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.40425531914893614,
+        "f1": 0.11181138796692643,
+        "bleu": 0.022802330024327598,
+        "bleu_1": 0.0632943111043625,
+        "bleu_2": 0.04703471353297777
+      },
+      "X4_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.1111111111111111,
+        "f1": 0.1235468151581238,
+        "bleu": 0.02237396107809946,
+        "bleu_1": 0.0719955288376341,
+        "bleu_2": 0.04428508854974704
+      },
+      "X3_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.25,
+        "f1": 0.05263157894736842,
+        "bleu": 0.00608135642462857,
+        "bleu_1": 0.029411764705882353,
+        "bleu_2": 0.02143732314281361
+      },
+      "X1_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0,
+        "bleu": 0.0,
+        "bleu_1": 0.0,
+        "bleu_2": 0.0
+      },
+      "X1_Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0,
+        "bleu": 0.0,
+        "bleu_1": 0.0,
+        "bleu_2": 0.0
+      }
+    }
+  }
+}
