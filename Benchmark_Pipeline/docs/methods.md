@@ -52,7 +52,17 @@ Autonomous agents that construct, update, and query their own memory.
 | M2A, SRAG-MM | google/siglip2-base-patch16-384 | 768 |
 | MMA | google/siglip-so400m-patch14-384 | 1152 |
 | MIRIX | all-MiniLM-L6-v2 (local) | 384 |
+| Gen. Agents | all-MiniLM-L6-v2 (local) | 384 |
 | SimpleMem-MM, FC-MM | Native images (no embedding) | — |
+
+## Oracle Methods (Ablation)
+
+| Method | Config | Description |
+|--------|--------|-------------|
+| Clue Only (T) | `clue_only_context` | Only clue rounds, captions replace images |
+| Clue Only (V) | `clue_only_context_multimodal` | Only clue rounds, with native images |
+| Session Only (T) | `target_session_context_text_only` | All rounds from clue sessions, text only |
+| Session Only (V) | `target_session_context` | All rounds from clue sessions, with images |
 
 ## Caption-Proof Gap Pairs
 

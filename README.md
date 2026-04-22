@@ -71,7 +71,7 @@ python run_benchmark.py \
 | Semantic RAG (V) | `semantic_rag_multimodal` | RAG | Dense retrieval + images |
 | Semantic RAG (T) | `semantic_rag_text_only` | RAG | Dense retrieval, text-only |
 | A-MEM | `a_mem` / `a_mem_gemini` | Agentic | Autonomous memory agent |
-| Gen. Agents | `gen_agents` / `gen_agents_openrouter` | Agentic | Generative Agents reflection |
+| Gen. Agents | `gen_agents` / `gen_agents_gemini` | Agentic | Generative Agents reflection |
 | Reflexion | `reflexion` / `reflexion_gemini` | Agentic | Self-reflection loop |
 | SimpleMem | `simplemem` / `simplemem_gemini` | Summarize | Omni-SimpleMem (text) |
 | SimpleMem (V) | `simplemem_multimodal` / `simplemem_multimodal_gemini` | Summarize | Omni-SimpleMem + images |
