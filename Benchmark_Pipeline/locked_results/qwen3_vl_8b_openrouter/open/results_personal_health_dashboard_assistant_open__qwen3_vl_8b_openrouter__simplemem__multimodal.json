@@ -1,0 +1,125 @@
+{
+  "task_name": "personal_health_dashboard_assistant_open",
+  "model_name": "qwen3_vl_8b_openrouter",
+  "model_path": "qwen/qwen3-vl-8b-instruct",
+  "method_name": "simplemem__multimodal",
+  "base_method_name": "simplemem",
+  "method_modality": "multimodal",
+  "mode": "open",
+  "num_qas": 63,
+  "num_qas_run": 63,
+  "dialog_json": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/dialog/Personal_Health_Dashboard_Assistant_Open.json",
+  "image_root": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image",
+  "run_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/personal_health_dashboard_assistant_open/20260421_204748_qwen3_vl_8b_openrouter_simplemem__multimodal",
+  "git_commit": "95d14acae2f43ed61ef7e0c915c2eb678f4fe218",
+  "summary": {
+    "open_count": 63,
+    "overall": {
+      "em": 0.0,
+      "contains_gt": 0.0,
+      "f1": 0.026618795666414716,
+      "bleu": 0.007337814843844387,
+      "bleu_1": 0.023571155712203074,
+      "bleu_2": 0.008660560779253645
+    },
+    "by_x": {
+      "X4": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.027565192743764174,
+        "bleu": 0.007759038300394258,
+        "bleu_1": 0.024285407319085604,
+        "bleu_2": 0.008988528863509891
+      },
+      "X3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0,
+        "bleu": 0.0,
+        "bleu_1": 0.0,
+        "bleu_2": 0.0
+      },
+      "X1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.044444444444444446,
+        "bleu": 0.00925873011337264,
+        "bleu_1": 0.04166666666666668,
+        "bleu_2": 0.014085904245475277
+      }
+    },
+    "by_y": {
+      "Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.009959539371304078,
+        "bleu": 0.00262884977422828,
+        "bleu_1": 0.008823529411764706,
+        "bleu_2": 0.003176426883062401
+      },
+      "Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.10627705627705628,
+        "bleu": 0.029837363334232193,
+        "bleu_1": 0.09408934635170853,
+        "bleu_2": 0.03487432345970884
+      },
+      "Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0,
+        "bleu": 0.0,
+        "bleu_1": 0.0,
+        "bleu_2": 0.0
+      }
+    },
+    "by_cell": {
+      "X4_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.010807159743329957,
+        "bleu": 0.0028525816699072823,
+        "bleu_1": 0.009574468085106383,
+        "bleu_2": 0.0034467610858762224
+      },
+      "X4_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.11507936507936509,
+        "bleu": 0.033381645148492914,
+        "bleu_1": 0.10110920109653264,
+        "bleu_2": 0.03792887170226349
+      },
+      "X3_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0,
+        "bleu": 0.0,
+        "bleu_1": 0.0,
+        "bleu_2": 0.0
+      },
+      "X1_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.06666666666666667,
+        "bleu": 0.01388809517005896,
+        "bleu_1": 0.06250000000000001,
+        "bleu_2": 0.021128856368212916
+      },
+      "X1_Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0,
+        "bleu": 0.0,
+        "bleu_1": 0.0,
+        "bleu_2": 0.0
+      }
+    }
+  },
+  "method_runtime": {
+    "num_memories": 97,
+    "debug_dir": "/common/home/mg1998/MemoryBench/output/personal_health_dashboard_assistant/simplemem",
+    "data_dir": "/common/home/mg1998/MemoryBench/runs/simplemem/personal_health_dashboard_assistant"
+  }
+}

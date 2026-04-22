@@ -1,0 +1,77 @@
+{
+  "task_name": "card_playlog_test_open",
+  "model_name": "qwen3_vl_8b_openrouter",
+  "model_path": "qwen/qwen3-vl-8b-instruct",
+  "method_name": "simplemem",
+  "base_method_name": "simplemem",
+  "method_modality": "",
+  "mode": "open",
+  "num_qas": 48,
+  "num_qas_run": 48,
+  "dialog_json": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/dialog/Card_Playlog_Test_Open.json",
+  "image_root": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image",
+  "run_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/card_playlog_test_open/20260421_162353_qwen3_vl_8b_openrouter_simplemem",
+  "git_commit": "af05dd0d984ce1b9b1b0e1142b0c97e0361ae045",
+  "summary": {
+    "open_count": 48,
+    "overall": {
+      "em": 0.1875,
+      "contains_gt": 0.1875,
+      "f1": 0.1875,
+      "bleu": 0.0333427389382298,
+      "bleu_1": 0.1875,
+      "bleu_2": 0.059292706128157124
+    },
+    "by_x": {
+      "X4": {
+        "em": 0.1875,
+        "contains_gt": 0.1875,
+        "f1": 0.1875,
+        "bleu": 0.0333427389382298,
+        "bleu_1": 0.1875,
+        "bleu_2": 0.059292706128157124
+      }
+    },
+    "by_y": {
+      "Y3": {
+        "em": 0.10526315789473684,
+        "contains_gt": 0.10526315789473684,
+        "f1": 0.10526315789473684,
+        "bleu": 0.018718730631988662,
+        "bleu_1": 0.10526315789473684,
+        "bleu_2": 0.03328713326493032
+      },
+      "Y2": {
+        "em": 0.2413793103448276,
+        "contains_gt": 0.2413793103448276,
+        "f1": 0.2413793103448276,
+        "bleu": 0.04292398575956021,
+        "bleu_1": 0.2413793103448276,
+        "bleu_2": 0.07633084007302986
+      }
+    },
+    "by_cell": {
+      "X4_Y3": {
+        "em": 0.10526315789473684,
+        "contains_gt": 0.10526315789473684,
+        "f1": 0.10526315789473684,
+        "bleu": 0.018718730631988662,
+        "bleu_1": 0.10526315789473684,
+        "bleu_2": 0.03328713326493032
+      },
+      "X4_Y2": {
+        "em": 0.2413793103448276,
+        "contains_gt": 0.2413793103448276,
+        "f1": 0.2413793103448276,
+        "bleu": 0.04292398575956021,
+        "bleu_1": 0.2413793103448276,
+        "bleu_2": 0.07633084007302986
+      }
+    }
+  },
+  "method_runtime": {
+    "num_memories": 30,
+    "debug_dir": "/common/home/mg1998/MemoryBench/output/card_playlog_test_open/simplemem",
+    "data_dir": "/common/home/mg1998/MemoryBench/runs/simplemem/card_playlog_test_open"
+  }
+}

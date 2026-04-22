@@ -1,0 +1,165 @@
+{
+  "task_name": "home_renovation_interior_design_open",
+  "model_name": "qwen3_vl_8b_openrouter",
+  "model_path": "qwen/qwen3-vl-8b-instruct",
+  "method_name": "simplemem__multimodal",
+  "base_method_name": "simplemem",
+  "method_modality": "multimodal",
+  "mode": "open",
+  "num_qas": 65,
+  "num_qas_run": 65,
+  "dialog_json": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/dialog/Home_Renovation_Interior_Design_Open.json",
+  "image_root": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image",
+  "run_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/home_renovation_interior_design_open/20260421_184453_qwen3_vl_8b_openrouter_simplemem__multimodal",
+  "git_commit": "95d14acae2f43ed61ef7e0c915c2eb678f4fe218",
+  "summary": {
+    "open_count": 65,
+    "overall": {
+      "em": 0.015384615384615385,
+      "contains_gt": 0.015384615384615385,
+      "f1": 0.07098119272032315,
+      "bleu": 0.019846597865533354,
+      "bleu_1": 0.05283640287549247,
+      "bleu_2": 0.03661257279595881
+    },
+    "by_x": {
+      "X4": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.08333333333333333,
+        "bleu": 0.008177405445147515,
+        "bleu_1": 0.04598493014643029,
+        "bleu_2": 0.014541711730645997
+      },
+      "X3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.03095741467834491,
+        "bleu": 0.007592856570185735,
+        "bleu_1": 0.028810320237006116,
+        "bleu_2": 0.01470554321387052
+      },
+      "X2": {
+        "em": 0.07692307692307693,
+        "contains_gt": 0.07692307692307693,
+        "f1": 0.14102564102564102,
+        "bleu": 0.04510828615026881,
+        "bleu_1": 0.08733348332589329,
+        "bleu_2": 0.08021513648316693
+      },
+      "X1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.7826086956521738,
+        "bleu": 0.31170906522700675,
+        "bleu_1": 0.6923076923076923,
+        "bleu_2": 0.5883484054145521
+      }
+    },
+    "by_y": {
+      "Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0,
+        "bleu": 0.0,
+        "bleu_1": 0.0,
+        "bleu_2": 0.0
+      },
+      "Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.06549135244787418,
+        "bleu": 0.014717073166847528,
+        "bleu_1": 0.04592192768301263,
+        "bleu_2": 0.02807741195315899
+      },
+      "Y3": {
+        "em": 0.25,
+        "contains_gt": 0.25,
+        "f1": 0.41666666666666663,
+        "bleu": 0.1569401421878823,
+        "bleu_1": 0.3419698602928606,
+        "bleu_2": 0.279083423461292
+      }
+    },
+    "by_cell": {
+      "X4_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0,
+        "bleu": 0.0,
+        "bleu_1": 0.0,
+        "bleu_2": 0.0
+      },
+      "X3_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0,
+        "bleu": 0.0,
+        "bleu_1": 0.0,
+        "bleu_2": 0.0
+      },
+      "X3_Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.03597753597753598,
+        "bleu": 0.008824130608594232,
+        "bleu_1": 0.033482264059223325,
+        "bleu_2": 0.017090225897200873
+      },
+      "X2_Y3": {
+        "em": 0.3333333333333333,
+        "contains_gt": 0.3333333333333333,
+        "f1": 0.3333333333333333,
+        "bleu": 0.18744710839678302,
+        "bleu_1": 0.3333333333333333,
+        "bleu_2": 0.3333333333333333
+      },
+      "X2_Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.41666666666666663,
+        "bleu": 0.012033197381572708,
+        "bleu_1": 0.06766764161830635,
+        "bleu_2": 0.02139838714058503
+      },
+      "X2_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0,
+        "bleu": 0.0,
+        "bleu_1": 0.0,
+        "bleu_2": 0.0
+      },
+      "X4_Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0,
+        "bleu": 0.0,
+        "bleu_1": 0.0,
+        "bleu_2": 0.0
+      },
+      "X4_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.6666666666666666,
+        "bleu": 0.06541924356118012,
+        "bleu_1": 0.36787944117144233,
+        "bleu_2": 0.11633369384516798
+      },
+      "X1_Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.7826086956521738,
+        "bleu": 0.31170906522700675,
+        "bleu_1": 0.6923076923076923,
+        "bleu_2": 0.5883484054145521
+      }
+    }
+  },
+  "method_runtime": {
+    "num_memories": 120,
+    "debug_dir": "/common/home/mg1998/MemoryBench/output/home_renovation_interior_design/simplemem",
+    "data_dir": "/common/home/mg1998/MemoryBench/runs/simplemem/home_renovation_interior_design"
+  }
+}
