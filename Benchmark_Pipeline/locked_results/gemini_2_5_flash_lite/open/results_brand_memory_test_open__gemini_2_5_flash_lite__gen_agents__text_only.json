@@ -1,0 +1,143 @@
+{
+  "task_name": "brand_memory_test_open",
+  "model_name": "gemini_2_5_flash_lite",
+  "model_path": "gemini-2.5-flash-lite",
+  "method_name": "gen_agents__text_only",
+  "base_method_name": "gen_agents",
+  "method_modality": "text_only",
+  "mode": "open",
+  "num_qas": 33,
+  "num_qas_run": 33,
+  "dialog_json": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/dialog/Brand_Memory_Test_Open.json",
+  "image_root": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image",
+  "run_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/brand_memory_test_open/20260422_160824_gemini_2_5_flash_lite_gen_agents__text_only",
+  "git_commit": "872245cd4323d8bc38dbc5c90356c08acbff98e4",
+  "summary": {
+    "open_count": 33,
+    "overall": {
+      "em": 0.12121212121212122,
+      "contains_gt": 0.15151515151515152,
+      "f1": 0.14963915564387914,
+      "bleu": 0.03247663565484414,
+      "bleu_1": 0.13547060238236708,
+      "bleu_2": 0.08603508415016861
+    },
+    "by_x": {
+      "X2": {
+        "em": 0.2222222222222222,
+        "contains_gt": 0.2222222222222222,
+        "f1": 0.29543510387500155,
+        "bleu": 0.07613926186621542,
+        "bleu_1": 0.25738536155202824,
+        "bleu_2": 0.2353912849184965
+      },
+      "X4": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.05263157894736842,
+        "bleu": 0.005751391809950023,
+        "bleu_1": 0.02941176470588235,
+        "bleu_2": 0.009587062360592131
+      },
+      "X1": {
+        "em": 0.09090909090909091,
+        "contains_gt": 0.13636363636363635,
+        "f1": 0.09881422924901186,
+        "bleu": 0.017044219827000814,
+        "bleu_1": 0.09523809523809523,
+        "bleu_2": 0.031884640362177794
+      }
+    },
+    "by_y": {
+      "Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.06407322654462241,
+        "bleu": 0.006879069095488172,
+        "bleu_1": 0.035480859010270774,
+        "bleu_2": 0.011534819905797817
+      },
+      "Y2": {
+        "em": 0.13333333333333333,
+        "contains_gt": 0.16666666666666666,
+        "f1": 0.1581957485538048,
+        "bleu": 0.03503639231077974,
+        "bleu_1": 0.14546957671957672,
+        "bleu_2": 0.09348511057460569
+      }
+    },
+    "by_cell": {
+      "X2_Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.08695652173913042,
+        "bleu": 0.00913442366656447,
+        "bleu_1": 0.047619047619047616,
+        "bleu_2": 0.01543033499620919
+      },
+      "X4_Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.10526315789473684,
+        "bleu": 0.011502783619900045,
+        "bleu_1": 0.0588235294117647,
+        "bleu_2": 0.019174124721184262
+      },
+      "X2_Y2": {
+        "em": 0.25,
+        "contains_gt": 0.25,
+        "f1": 0.3214949266419855,
+        "bleu": 0.08451486664117179,
+        "bleu_1": 0.2836061507936508,
+        "bleu_2": 0.2628864036587824
+      },
+      "X1_Y2": {
+        "em": 0.09523809523809523,
+        "contains_gt": 0.14285714285714285,
+        "f1": 0.10351966873706003,
+        "bleu": 0.017855849342572283,
+        "bleu_1": 0.09977324263038549,
+        "bleu_2": 0.03340295656990054
+      },
+      "X4_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0,
+        "bleu": 0.0,
+        "bleu_1": 0.0,
+        "bleu_2": 0.0
+      },
+      "X1_Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0,
+        "bleu": 0.0,
+        "bleu_1": 0.0,
+        "bleu_2": 0.0
+      }
+    }
+  },
+  "method_runtime": {
+    "caption_validation_passed": true,
+    "caption_validation_round_count": 30,
+    "method_modality": "text_only",
+    "history_source": "retrieval",
+    "captions_loaded": true,
+    "images_loaded": false,
+    "num_memories": 72,
+    "debug_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/output/brand_memory_test_open/gen_agents",
+    "history_turns_after_truncation": 1,
+    "retrieved_round_ids": [
+      "BRAND_S38:R1",
+      "BRAND_S3:R1",
+      "BRAND_S18:R1",
+      "BRAND_S41:R2",
+      "BRAND_S1:R1",
+      "BRAND_S27:R1",
+      "BRAND_S34:R1",
+      "BRAND_S14:R1",
+      "BRAND_S41:R1",
+      "BRAND_S40:R1"
+    ]
+  }
+}

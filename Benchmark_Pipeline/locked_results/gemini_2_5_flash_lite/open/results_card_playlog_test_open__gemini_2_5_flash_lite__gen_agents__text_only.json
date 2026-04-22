@@ -1,0 +1,95 @@
+{
+  "task_name": "card_playlog_test_open",
+  "model_name": "gemini_2_5_flash_lite",
+  "model_path": "gemini-2.5-flash-lite",
+  "method_name": "gen_agents__text_only",
+  "base_method_name": "gen_agents",
+  "method_modality": "text_only",
+  "mode": "open",
+  "num_qas": 48,
+  "num_qas_run": 48,
+  "dialog_json": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/dialog/Card_Playlog_Test_Open.json",
+  "image_root": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image",
+  "run_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/card_playlog_test_open/20260422_160937_gemini_2_5_flash_lite_gen_agents__text_only",
+  "git_commit": "872245cd4323d8bc38dbc5c90356c08acbff98e4",
+  "summary": {
+    "open_count": 48,
+    "overall": {
+      "em": 0.020833333333333332,
+      "contains_gt": 0.1875,
+      "f1": 0.03552052093073765,
+      "bleu": 0.005236819033123491,
+      "bleu_1": 0.028621810382481114,
+      "bleu_2": 0.009130391659706832
+    },
+    "by_x": {
+      "X4": {
+        "em": 0.020833333333333332,
+        "contains_gt": 0.1875,
+        "f1": 0.03552052093073765,
+        "bleu": 0.005236819033123491,
+        "bleu_1": 0.028621810382481114,
+        "bleu_2": 0.009130391659706832
+      }
+    },
+    "by_y": {
+      "Y3": {
+        "em": 0.0,
+        "contains_gt": 0.10526315789473684,
+        "f1": 0.016194331983805668,
+        "bleu": 0.0017929669513304508,
+        "bleu_1": 0.008771929824561403,
+        "bleu_2": 0.002897273066122003
+      },
+      "Y2": {
+        "em": 0.034482758620689655,
+        "contains_gt": 0.2413793103448276,
+        "f1": 0.04818250679252067,
+        "bleu": 0.007493135914298241,
+        "bleu_1": 0.04162690454111816,
+        "bleu_2": 0.01321415901412448
+      }
+    },
+    "by_cell": {
+      "X4_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.10526315789473684,
+        "f1": 0.016194331983805668,
+        "bleu": 0.0017929669513304508,
+        "bleu_1": 0.008771929824561403,
+        "bleu_2": 0.002897273066122003
+      },
+      "X4_Y2": {
+        "em": 0.034482758620689655,
+        "contains_gt": 0.2413793103448276,
+        "f1": 0.04818250679252067,
+        "bleu": 0.007493135914298241,
+        "bleu_1": 0.04162690454111816,
+        "bleu_2": 0.01321415901412448
+      }
+    }
+  },
+  "method_runtime": {
+    "caption_validation_passed": true,
+    "caption_validation_round_count": 30,
+    "method_modality": "text_only",
+    "history_source": "retrieval",
+    "captions_loaded": true,
+    "images_loaded": false,
+    "num_memories": 30,
+    "debug_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/output/card_playlog_test_open/gen_agents",
+    "history_turns_after_truncation": 1,
+    "retrieved_round_ids": [
+      "PLAY_S1:R1",
+      "PLAY_S4:R7",
+      "PLAY_S4:R5",
+      "PLAY_S2:R2",
+      "PLAY_S3:R1",
+      "PLAY_S4:R1",
+      "PLAY_S3:R6",
+      "PLAY_S3:R3",
+      "PLAY_S4:R6",
+      "PLAY_S4:R3"
+    ]
+  }
+}

@@ -1,0 +1,168 @@
+{
+  "task_name": "home_renovation_interior_design_open",
+  "model_name": "gemini_2_5_flash_lite",
+  "model_path": "gemini-2.5-flash-lite",
+  "method_name": "memoryos",
+  "base_method_name": "memoryos",
+  "method_modality": "",
+  "mode": "open",
+  "num_qas": 65,
+  "num_qas_run": 65,
+  "dialog_json": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/dialog/Home_Renovation_Interior_Design_Open.json",
+  "image_root": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image",
+  "run_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/home_renovation_interior_design_open/20260422_151430_gemini_2_5_flash_lite_memoryos",
+  "git_commit": "6f1e549d204820c227eaa15ae07e867336f4a9f3",
+  "summary": {
+    "open_count": 65,
+    "overall": {
+      "em": 0.0,
+      "contains_gt": 0.015384615384615385,
+      "f1": 0.08282451222311644,
+      "bleu": 0.013314618269394585,
+      "bleu_1": 0.05189299784917789,
+      "bleu_2": 0.023994173190759374
+    },
+    "by_x": {
+      "X4": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.010416666666666666,
+        "bleu": 0.0011418029583205587,
+        "bleu_1": 0.005952380952380952,
+        "bleu_2": 0.0019287918745261488
+      },
+      "X3": {
+        "em": 0.0,
+        "contains_gt": 0.023255813953488372,
+        "f1": 0.09833325899087982,
+        "bleu": 0.00847182121640774,
+        "bleu_1": 0.06183160804443834,
+        "bleu_2": 0.021557616803599595
+      },
+      "X2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.020917678812415654,
+        "bleu": 0.0,
+        "bleu_1": 0.0,
+        "bleu_2": 0.0
+      },
+      "X1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.8,
+        "bleu": 0.4920274515385508,
+        "bleu_1": 0.6666666666666666,
+        "bleu_2": 0.6172133998483675
+      }
+    },
+    "by_y": {
+      "Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.035931174089068825,
+        "bleu": 0.0038105569946595497,
+        "bleu_1": 0.021875000000000002,
+        "bleu_2": 0.011505562851388446
+      },
+      "Y1": {
+        "em": 0.0,
+        "contains_gt": 0.022222222222222223,
+        "f1": 0.10685987797949928,
+        "bleu": 0.017877361679913228,
+        "bleu_1": 0.06717877467103472,
+        "bleu_2": 0.030567383372825427
+      },
+      "Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0,
+        "bleu": 0.0,
+        "bleu_1": 0.0,
+        "bleu_2": 0.0
+      }
+    },
+    "by_cell": {
+      "X4_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0,
+        "bleu": 0.0,
+        "bleu_1": 0.0,
+        "bleu_2": 0.0
+      },
+      "X3_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.07827260458839405,
+        "bleu": 0.010161485319092133,
+        "bleu_1": 0.058333333333333334,
+        "bleu_2": 0.030681500937035856
+      },
+      "X3_Y1": {
+        "em": 0.0,
+        "contains_gt": 0.02702702702702703,
+        "f1": 0.1015863380831748,
+        "bleu": 0.008197821632188648,
+        "bleu_1": 0.06239889583542834,
+        "bleu_2": 0.020078068025204527
+      },
+      "X2_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0,
+        "bleu": 0.0,
+        "bleu_1": 0.0,
+        "bleu_2": 0.0
+      },
+      "X2_Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.08333333333333333,
+        "bleu": 0.0,
+        "bleu_1": 0.0,
+        "bleu_2": 0.0
+      },
+      "X2_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.013157894736842105,
+        "bleu": 0.0,
+        "bleu_1": 0.0,
+        "bleu_2": 0.0
+      },
+      "X4_Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.016666666666666666,
+        "bleu": 0.0018268847333128939,
+        "bleu_1": 0.009523809523809523,
+        "bleu_2": 0.003086066999241838
+      },
+      "X4_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0,
+        "bleu": 0.0,
+        "bleu_1": 0.0,
+        "bleu_2": 0.0
+      },
+      "X1_Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.8,
+        "bleu": 0.4920274515385508,
+        "bleu_1": 0.6666666666666666,
+        "bleu_2": 0.6172133998483675
+      }
+    }
+  },
+  "method_runtime": {
+    "caption_validation_passed": true,
+    "caption_validation_round_count": 89,
+    "num_memories": 120,
+    "debug_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/output/home_renovation_interior_design/memoryos/8116c7603f7bebbb",
+    "data_storage_path": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/home_renovation_interior_design/memoryos_data/8116c7603f7bebbb",
+    "runtime_signature": "8116c7603f7bebbb"
+  }
+}

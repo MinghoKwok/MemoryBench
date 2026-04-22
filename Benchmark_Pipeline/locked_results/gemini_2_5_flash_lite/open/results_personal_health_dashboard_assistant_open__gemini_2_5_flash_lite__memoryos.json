@@ -1,0 +1,128 @@
+{
+  "task_name": "personal_health_dashboard_assistant_open",
+  "model_name": "gemini_2_5_flash_lite",
+  "model_path": "gemini-2.5-flash-lite",
+  "method_name": "memoryos",
+  "base_method_name": "memoryos",
+  "method_modality": "",
+  "mode": "open",
+  "num_qas": 63,
+  "num_qas_run": 63,
+  "dialog_json": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/dialog/Personal_Health_Dashboard_Assistant_Open.json",
+  "image_root": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image",
+  "run_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/personal_health_dashboard_assistant_open/20260422_153201_gemini_2_5_flash_lite_memoryos",
+  "git_commit": "6f1e549d204820c227eaa15ae07e867336f4a9f3",
+  "summary": {
+    "open_count": 63,
+    "overall": {
+      "em": 0.12698412698412698,
+      "contains_gt": 0.15873015873015872,
+      "f1": 0.20613544373114867,
+      "bleu": 0.09417163369670299,
+      "bleu_1": 0.19003270438345338,
+      "bleu_2": 0.16342362321583465
+    },
+    "by_x": {
+      "X4": {
+        "em": 0.125,
+        "contains_gt": 0.16071428571428573,
+        "f1": 0.20835545543003525,
+        "bleu": 0.09972904262907901,
+        "bleu_1": 0.19190303892998448,
+        "bleu_2": 0.1649569498333629
+      },
+      "X3": {
+        "em": 0.25,
+        "contains_gt": 0.25,
+        "f1": 0.25,
+        "bleu": 0.0790569415042095,
+        "bleu_1": 0.25,
+        "bleu_2": 0.25
+      },
+      "X1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.10620915032679738,
+        "bleu": 0.010586256549008563,
+        "bleu_1": 0.07516339869281047,
+        "bleu_2": 0.019366357309753477
+      }
+    },
+    "by_y": {
+      "Y2": {
+        "em": 0.1568627450980392,
+        "contains_gt": 0.17647058823529413,
+        "f1": 0.2227492783605817,
+        "bleu": 0.10766248157117636,
+        "bleu_1": 0.20715199996590097,
+        "bleu_2": 0.1837121140524843
+      },
+      "Y3": {
+        "em": 0.0,
+        "contains_gt": 0.09090909090909091,
+        "f1": 0.12645687645687645,
+        "bleu": 0.03834276152137896,
+        "bleu_1": 0.11278561011181332,
+        "bleu_2": 0.08067686351934618
+      },
+      "Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.23529411764705882,
+        "bleu": 0.020255986027125642,
+        "bleu_1": 0.16666666666666669,
+        "bleu_2": 0.03892494720807617
+      }
+    },
+    "by_cell": {
+      "X4_Y2": {
+        "em": 0.14893617021276595,
+        "contains_gt": 0.1702127659574468,
+        "f1": 0.2204300680082908,
+        "bleu": 0.11009699561942886,
+        "bleu_1": 0.2035053616651266,
+        "bleu_2": 0.17807059184418508
+      },
+      "X4_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.1111111111111111,
+        "f1": 0.1452991452991453,
+        "bleu": 0.045585288123918724,
+        "bleu_1": 0.13131313131313133,
+        "bleu_2": 0.0964745971101804
+      },
+      "X3_Y2": {
+        "em": 0.25,
+        "contains_gt": 0.25,
+        "f1": 0.25,
+        "bleu": 0.0790569415042095,
+        "bleu_1": 0.25,
+        "bleu_2": 0.25
+      },
+      "X1_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.041666666666666664,
+        "bleu": 0.005751391809950023,
+        "bleu_1": 0.02941176470588235,
+        "bleu_2": 0.009587062360592131
+      },
+      "X1_Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.23529411764705882,
+        "bleu": 0.020255986027125642,
+        "bleu_1": 0.16666666666666669,
+        "bleu_2": 0.03892494720807617
+      }
+    }
+  },
+  "method_runtime": {
+    "caption_validation_passed": true,
+    "caption_validation_round_count": 62,
+    "num_memories": 97,
+    "debug_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/output/personal_health_dashboard_assistant/memoryos/943ae30c207f8a4a",
+    "data_storage_path": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/personal_health_dashboard_assistant/memoryos_data/943ae30c207f8a4a",
+    "runtime_signature": "943ae30c207f8a4a"
+  }
+}

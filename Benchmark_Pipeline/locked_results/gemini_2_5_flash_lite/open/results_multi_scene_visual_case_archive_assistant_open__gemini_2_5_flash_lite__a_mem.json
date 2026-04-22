@@ -1,0 +1,140 @@
+{
+  "task_name": "multi_scene_visual_case_archive_assistant_open",
+  "model_name": "gemini_2_5_flash_lite",
+  "model_path": "gemini-2.5-flash-lite",
+  "method_name": "a_mem",
+  "base_method_name": "a_mem",
+  "method_modality": "",
+  "mode": "open",
+  "num_qas": 59,
+  "num_qas_run": 59,
+  "dialog_json": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/dialog/Multi-Scene_Visual_Case_Archive_Assistant_Open.json",
+  "image_root": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image",
+  "run_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/multi_scene_visual_case_archive_assistant_open/20260422_131603_gemini_2_5_flash_lite_a_mem",
+  "git_commit": "3e9d49e662235e46cdaf70d1561ea57dd2bf6d99",
+  "summary": {
+    "open_count": 59,
+    "overall": {
+      "em": 0.01694915254237288,
+      "contains_gt": 0.01694915254237288,
+      "f1": 0.16880392946737816,
+      "bleu": 0.030716327303326085,
+      "bleu_1": 0.09446198744514259,
+      "bleu_2": 0.07122020422997638
+    },
+    "by_x": {
+      "X4": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0,
+        "bleu": 0.0,
+        "bleu_1": 0.0,
+        "bleu_2": 0.0
+      },
+      "X2": {
+        "em": 0.1111111111111111,
+        "contains_gt": 0.1111111111111111,
+        "f1": 0.43514195283310725,
+        "bleu": 0.1412452814154123,
+        "bleu_1": 0.3239973560934884,
+        "bleu_2": 0.29208016263566
+      },
+      "X3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.1405384712343569,
+        "bleu": 0.012582692515291356,
+        "bleu_1": 0.06179723382376783,
+        "bleu_2": 0.03658768804296898
+      }
+    },
+    "by_y": {
+      "Y2": {
+        "em": 0.1,
+        "contains_gt": 0.1,
+        "f1": 0.11739130434782609,
+        "bleu": 0.03325898018726405,
+        "bleu_1": 0.1127500760163874,
+        "bleu_2": 0.10302394604140529
+      },
+      "Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.2610604956493551,
+        "bleu": 0.07575462339060537,
+        "bleu_1": 0.1670936700045098,
+        "bleu_2": 0.12973847985116777
+      },
+      "Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.14977034310153986,
+        "bleu": 0.013746205692936907,
+        "bleu_1": 0.06315385525113641,
+        "bleu_2": 0.04125423197470479
+      }
+    },
+    "by_cell": {
+      "X4_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0,
+        "bleu": 0.0,
+        "bleu_1": 0.0,
+        "bleu_2": 0.0
+      },
+      "X2_Y2": {
+        "em": 0.3333333333333333,
+        "contains_gt": 0.3333333333333333,
+        "f1": 0.391304347826087,
+        "bleu": 0.11086326729088017,
+        "bleu_1": 0.3758335867212913,
+        "bleu_2": 0.343413153471351
+      },
+      "X3_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.1302843822843823,
+        "bleu": 0.009238474642359927,
+        "bleu_1": 0.07674845307622122,
+        "bleu_2": 0.017623646951658727
+      },
+      "X2_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.45706075533661744,
+        "bleu": 0.15643628847767838,
+        "bleu_1": 0.2980792407795869,
+        "bleu_2": 0.2664136672178145
+      },
+      "X3_Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.14977034310153986,
+        "bleu": 0.013746205692936907,
+        "bleu_1": 0.06315385525113641,
+        "bleu_2": 0.04125423197470479
+      },
+      "X3_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0,
+        "bleu": 0.0,
+        "bleu_1": 0.0,
+        "bleu_2": 0.0
+      },
+      "X4_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0,
+        "bleu": 0.0,
+        "bleu_1": 0.0,
+        "bleu_2": 0.0
+      }
+    }
+  },
+  "method_runtime": {
+    "num_memories": 117,
+    "debug_dir": "/common/home/mg1998/MemoryBench/output/multi-scene_visual_case_archive_assistant/a_mem"
+  }
+}

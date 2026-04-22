@@ -1,0 +1,69 @@
+{
+  "task_name": "card_playlog_test",
+  "model_name": "gemini_2_5_flash_lite",
+  "model_path": "gemini-2.5-flash-lite",
+  "method_name": "memoryos",
+  "base_method_name": "memoryos",
+  "method_modality": "",
+  "mode": "mcq",
+  "num_qas": 48,
+  "num_qas_run": 48,
+  "dialog_json": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/dialog/Card_Playlog_Test.json",
+  "image_root": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/image",
+  "run_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/card_playlog_test/20260422_134641_gemini_2_5_flash_lite_memoryos",
+  "git_commit": "3e9d49e662235e46cdaf70d1561ea57dd2bf6d99",
+  "summary": {
+    "open_count": 48,
+    "overall": {
+      "em": 0.3541666666666667,
+      "contains_gt": 0.3541666666666667,
+      "f1": 0.3541666666666667
+    },
+    "by_x": {
+      "X4": {
+        "em": 0.3541666666666667,
+        "contains_gt": 0.3541666666666667,
+        "f1": 0.3541666666666667
+      }
+    },
+    "by_y": {
+      "Y3": {
+        "em": 0.15789473684210525,
+        "contains_gt": 0.15789473684210525,
+        "f1": 0.15789473684210525
+      },
+      "Y2": {
+        "em": 0.4827586206896552,
+        "contains_gt": 0.4827586206896552,
+        "f1": 0.4827586206896552
+      }
+    },
+    "by_cell": {
+      "X4_Y3": {
+        "em": 0.15789473684210525,
+        "contains_gt": 0.15789473684210525,
+        "f1": 0.15789473684210525
+      },
+      "X4_Y2": {
+        "em": 0.4827586206896552,
+        "contains_gt": 0.4827586206896552,
+        "f1": 0.4827586206896552
+      }
+    },
+    "mcq_count": 48,
+    "mcq_valid_rate": 1.0,
+    "mcq_overall": {
+      "em": 0.3541666666666667,
+      "contains_gt": 0.3541666666666667,
+      "f1": 0.3541666666666667
+    }
+  },
+  "method_runtime": {
+    "caption_validation_passed": true,
+    "caption_validation_round_count": 30,
+    "num_memories": 30,
+    "debug_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/output/card_playlog_test/memoryos/1a306f080a8aea33",
+    "data_storage_path": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/card_playlog_test/memoryos_data/1a306f080a8aea33",
+    "runtime_signature": "1a306f080a8aea33"
+  }
+}

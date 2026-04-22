@@ -1,0 +1,175 @@
+{
+  "task_name": "outdoor_navigation_route_memory_assistant_open",
+  "model_name": "gemini_2_5_flash_lite",
+  "model_path": "gemini-2.5-flash-lite",
+  "method_name": "gen_agents__text_only",
+  "base_method_name": "gen_agents",
+  "method_modality": "text_only",
+  "mode": "open",
+  "num_qas": 40,
+  "num_qas_run": 40,
+  "dialog_json": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/dialog/Outdoor_Navigation_Route_Memory_Assistant_Open.json",
+  "image_root": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image",
+  "run_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/outdoor_navigation_route_memory_assistant_open/20260422_161838_gemini_2_5_flash_lite_gen_agents__text_only",
+  "git_commit": "872245cd4323d8bc38dbc5c90356c08acbff98e4",
+  "summary": {
+    "open_count": 40,
+    "overall": {
+      "em": 0.0,
+      "contains_gt": 0.025,
+      "f1": 0.11966322684153255,
+      "bleu": 0.026398280816843187,
+      "bleu_1": 0.08431356948633399,
+      "bleu_2": 0.04634053888598511
+    },
+    "by_x": {
+      "X3": {
+        "em": 0.0,
+        "contains_gt": 0.037037037037037035,
+        "f1": 0.11422365592572102,
+        "bleu": 0.01630512795948254,
+        "bleu_1": 0.07173131249113589,
+        "bleu_2": 0.03439634634237743
+      },
+      "X1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.1503267973856209,
+        "bleu": 0.014925931005835585,
+        "bleu_1": 0.13333333333333333,
+        "bleu_2": 0.02879050382012984
+      },
+      "X4": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.06215384615384615,
+        "bleu": 0.006334367277847864,
+        "bleu_1": 0.039523809523809524,
+        "bleu_2": 0.02085653333201461
+      },
+      "X2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.18814814814814815,
+        "bleu": 0.10784862967219054,
+        "bleu_1": 0.16763565891472867,
+        "bleu_2": 0.14685320521495027
+      }
+    },
+    "by_y": {
+      "Y2": {
+        "em": 0.0,
+        "contains_gt": 0.038461538461538464,
+        "f1": 0.12922352526362965,
+        "bleu": 0.03383393485348771,
+        "bleu_1": 0.08929083247866527,
+        "bleu_2": 0.05549829230563644
+      },
+      "Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.11764705882352941,
+        "bleu": 0.013217947626377298,
+        "bleu_1": 0.06666666666666667,
+        "bleu_2": 0.02182178902359924
+      },
+      "Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.10069771984487703,
+        "bleu": 0.012540844527436132,
+        "bleu_1": 0.07571649756472278,
+        "bleu_2": 0.029911089728404457
+      }
+    },
+    "by_cell": {
+      "X3_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.045454545454545456,
+        "f1": 0.10968840864489565,
+        "bleu": 0.015291015907521058,
+        "bleu_1": 0.0673761786436174,
+        "bleu_2": 0.03199011999996067
+      },
+      "X1_Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.11764705882352941,
+        "bleu": 0.013217947626377298,
+        "bleu_1": 0.06666666666666667,
+        "bleu_2": 0.02182178902359924
+      },
+      "X4_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.08,
+        "bleu": 0.00913442366656447,
+        "bleu_1": 0.047619047619047616,
+        "bleu_2": 0.01543033499620919
+      },
+      "X2_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.28888888888888886,
+        "bleu": 0.17804851085288423,
+        "bleu_1": 0.2638888888888889,
+        "bleu_2": 0.2412475416504012
+      },
+      "X3_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.13417874396135265,
+        "bleu": 0.02076722098811307,
+        "bleu_1": 0.09089390142021721,
+        "bleu_2": 0.044983742249011194
+      },
+      "X4_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.05769230769230769,
+        "bleu": 0.0056343531806687126,
+        "bleu_1": 0.0375,
+        "bleu_2": 0.022213082915965965
+      },
+      "X2_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.037037037037037035,
+        "bleu": 0.0025488079011500306,
+        "bleu_1": 0.023255813953488375,
+        "bleu_2": 0.005261700561773909
+      },
+      "X1_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.16666666666666666,
+        "bleu": 0.01577992269556473,
+        "bleu_1": 0.16666666666666666,
+        "bleu_2": 0.032274861218395144
+      }
+    }
+  },
+  "method_runtime": {
+    "caption_validation_passed": true,
+    "caption_validation_round_count": 40,
+    "method_modality": "text_only",
+    "history_source": "retrieval",
+    "captions_loaded": true,
+    "images_loaded": false,
+    "num_memories": 60,
+    "debug_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/output/outdoor_navigation_route_memory_assistant/gen_agents",
+    "history_turns_after_truncation": 1,
+    "retrieved_round_ids": [
+      "OUTDOOR_S8:R4",
+      "OUTDOOR_S1:R2",
+      "OUTDOOR_S6:R4",
+      "OUTDOOR_S1:R6",
+      "OUTDOOR_S7:R3",
+      "OUTDOOR_S9:R5",
+      "OUTDOOR_S9:R4",
+      "OUTDOOR_S4:R3",
+      "OUTDOOR_S5:R1",
+      "OUTDOOR_S4:R4"
+    ]
+  }
+}
