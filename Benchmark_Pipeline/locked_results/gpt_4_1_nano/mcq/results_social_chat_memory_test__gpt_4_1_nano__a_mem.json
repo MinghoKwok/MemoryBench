@@ -5,7 +5,7 @@
   "method_name": "a_mem",
   "base_method_name": "a_mem",
   "method_modality": "",
-  "mode": "open",
+  "mode": "mcq",
   "num_qas": 44,
   "num_qas_run": 44,
   "dialog_json": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/dialog/Social_Chat_Memory_Test.json",

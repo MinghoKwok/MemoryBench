@@ -5,7 +5,7 @@
   "method_name": "a_mem",
   "base_method_name": "a_mem",
   "method_modality": "",
-  "mode": "open",
+  "mode": "mcq",
   "num_qas": 63,
   "num_qas_run": 63,
   "dialog_json": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/dialog/Personal_Health_Dashboard_Assistant.json",

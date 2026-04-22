@@ -5,7 +5,7 @@
   "method_name": "semantic_rag_multimodal",
   "base_method_name": "semantic_rag_multimodal",
   "method_modality": "multimodal",
-  "mode": "open",
+  "mode": "mcq",
   "num_qas": 65,
   "num_qas_run": 65,
   "dialog_json": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/dialog/Home_Renovation_Interior_Design.json",

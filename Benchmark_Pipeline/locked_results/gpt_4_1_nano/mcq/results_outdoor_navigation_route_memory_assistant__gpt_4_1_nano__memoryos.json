@@ -5,7 +5,7 @@
   "method_name": "memoryos",
   "base_method_name": "memoryos",
   "method_modality": "",
-  "mode": "open",
+  "mode": "mcq",
   "num_qas": 40,
   "num_qas_run": 40,
   "dialog_json": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/dialog/Outdoor_Navigation_Route_Memory_Assistant.json",
