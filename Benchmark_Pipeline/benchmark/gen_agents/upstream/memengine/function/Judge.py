@@ -26,13 +26,7 @@ class LLMJudge(BaseJudge):
         self.llm = eval(config.LLM_config.method)(config.LLM_config)
 
     def __post_scale__(self, res):
-        # [TODO] Add an exception catch.
-        # For example:
-        # try:
-        #     score = float(eval(res))
-        # except Exception as e:
-        #     score = 5.0
-        score = float(eval(res))
+        score = float(res)
         if hasattr(self.config, 'post_scale'):
             return score/self.config.post_scale
     
@@ -50,7 +44,10 @@ class LLMJudge(BaseJudge):
             template=self.config.prompt.template
         )
         prompt = prompt_template.format(**input_dict)
-        res = self.llm.fast_run(prompt)
+        if post_process == 'scale' and hasattr(self.llm, 'fast_run_number'):
+            res = self.llm.fast_run_number(prompt)
+        else:
+            res = self.llm.fast_run(prompt)
 
         if post_process == 'scale':
             return self.__post_scale__(res)
