@@ -18,7 +18,7 @@ _IMAGE_TOKEN_COST = 765
 
 def _normalize_modality(config: Dict[str, Any], method_name: str) -> str:
     raw = str(config.get("modality", "")).strip().lower()
-    if raw in {"text_only", "multimodal"}:
+    if raw in {"text_only", "multimodal", "no_visual"}:
         return raw
     if method_name in {"semantic_rag_multimodal", "full_context_multimodal"}:
         return "multimodal"
@@ -140,6 +140,23 @@ class FullContextMultimodalMethod(_MemGalleryFullContextMethod):
 
     name = "full_context_multimodal"
     fixed_modality = "multimodal"
+
+
+class FullContextNoVisualMethod(_MemGalleryFullContextMethod):
+    """Ablation: full dialogue text, no images, no captions. Tests context leakage."""
+
+    name = "full_context_no_visual"
+    fixed_modality = "no_visual"
+
+
+class QuestionOnlyMethod(HistoryMethod):
+    """Ablation: zero history, question + options only. Tests MCQ guessability."""
+
+    name = "question_only"
+    fixed_modality = "no_visual"
+
+    def build_history(self, dataset: MemoryBenchmarkDataset, qa: Dict[str, Any]) -> List[Dict[str, Any]]:
+        return []
 
 
 class TargetSessionContextMethod(_MemGalleryHistoryMethod):
@@ -315,6 +332,8 @@ def get_method(method_name: str, config: Optional[Dict[str, Any]] = None) -> His
     registry = {
         FullContextTextMethod.name: FullContextTextMethod,
         FullContextMultimodalMethod.name: FullContextMultimodalMethod,
+        FullContextNoVisualMethod.name: FullContextNoVisualMethod,
+        QuestionOnlyMethod.name: QuestionOnlyMethod,
         TargetSessionContextMethod.name: TargetSessionContextMethod,
         ClueOnlyContextMethod.name: ClueOnlyContextMethod,
         SemanticRAGTextMethod.name: SemanticRAGTextMethod,

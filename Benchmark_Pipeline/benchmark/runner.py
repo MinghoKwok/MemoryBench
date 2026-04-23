@@ -93,10 +93,11 @@ def merge_legacy_config(opts: LegacyRunOptions) -> Dict[str, Any]:
 def _effective_method_name(method_cfg: Dict[str, Any]) -> str:
     method_name = str(method_cfg.get("name", "method")).strip() or "method"
     if method_name in {"full_context_multimodal", "full_context_text_only",
+                       "full_context_no_visual", "question_only",
                        "semantic_rag_multimodal", "semantic_rag_text_only"}:
         return method_name
     modality = str(method_cfg.get("modality", "")).strip().lower()
-    if modality in {"text_only", "multimodal"}:
+    if modality in {"text_only", "multimodal", "no_visual"}:
         return f"{method_name}__{modality}"
     return method_name
 
@@ -372,7 +373,7 @@ def run_benchmark(
         # Text-only methods are deliberately blind to images on the question
         # turn too, so face-lookup tasks correctly fail on text-only methods.
         question_image_paths = dataset.resolve_question_images(qa)
-        if getattr(method, "modality", "") == "text_only":
+        if getattr(method, "modality", "") in ("text_only", "no_visual"):
             question_image_paths = []
 
         t0 = dt.datetime.now()

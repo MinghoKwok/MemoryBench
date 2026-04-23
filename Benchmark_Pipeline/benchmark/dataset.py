@@ -185,6 +185,9 @@ def history_from_round_ids(
             if caption_text:
                 user_text = f"{user_text}\n{caption_text}".strip() if user_text else caption_text
             images = []
+        elif modality == "no_visual":
+            # No images, no captions — pure dialogue text for leakage testing
+            images = []
         elif modality == "multimodal":
             images = images
         else:
