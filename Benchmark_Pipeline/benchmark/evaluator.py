@@ -374,4 +374,16 @@ def summarize_results(results: List[Dict[str, Any]]) -> Dict[str, Any]:
                 if val is not None:
                     mcq_overall[m].append(float(val))
         summary["mcq_overall"] = {m: _mean(vs) for m, vs in mcq_overall.items() if vs}
+
+        # Aggregate position bias from rotation MCQ results
+        rotation_rows = [r for r in mcq_rows if r.get("rotations")]
+        if rotation_rows:
+            per_position_em: Dict[str, List[float]] = {}
+            for row in rotation_rows:
+                for rot in row["rotations"]:
+                    pos = rot["correct_position"]
+                    per_position_em.setdefault(pos, []).append(float(rot["em"]))
+            summary["mcq_per_position_accuracy"] = {
+                pos: _mean(vals) for pos, vals in sorted(per_position_em.items())
+            }
     return summary

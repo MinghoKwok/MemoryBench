@@ -245,7 +245,7 @@ def build_payload(
         "method_name": _effective_method_name(cfg.get("method", {})),
         "base_method_name": cfg.get("method", {}).get("name", "full_context_multimodal"),
         "method_modality": cfg.get("method", {}).get("modality", ""),
-        "mode": "mcq" if all(isinstance(q.get("options"), dict) for q in dataset.qas) else cfg["eval"].get("mode", "open"),
+        "mode": "mcq" if all(isinstance(q.get("options"), (dict, list)) and q.get("options") for q in dataset.qas) else cfg["eval"].get("mode", "open"),
         "num_qas": len(dataset.qas),
         "num_qas_run": len({r["idx"] for r in results}),
         "dialog_json": str(paths["dialog_json"]),
@@ -260,23 +260,39 @@ def build_payload(
     return payload
 
 
+def _format_options_block(question: str, options_dict: Dict[str, str]) -> str:
+    """Append MCQ options to a question string."""
+    option_keys = [k for k in sorted(options_dict.keys()) if k != "answer"]
+    lines = [question, ""]
+    for key in option_keys:
+        lines.append(f"{key}. {options_dict[key]}")
+    lines.append("")
+    valid = ", ".join(option_keys)
+    lines.append(f"Answer with ONLY the option letter ({valid}). Do not explain.")
+    return "\n".join(lines)
+
+
 def format_question(qa: Dict[str, Any]) -> str:
     """Build the final question string.
 
-    If the QA has an ``options`` dict (e.g. {"A": "...", "B": "..."}),
-    append the options and an instruction to pick one letter.
+    Handles both legacy format (options as dict) and rotation format
+    (options as list of dicts).  For rotation format, uses the *last*
+    rotation (answer at D) as the default — the rotation loop calls
+    ``_format_options_block`` directly for each rotation.
     """
     question = qa.get("question", "")
     options = qa.get("options")
+    if options and isinstance(options, list):
+        # Rotation format — use last rotation as canonical for non-rotation callers
+        return _format_options_block(question, options[-1])
     if options and isinstance(options, dict):
-        lines = [question, ""]
-        for key in sorted(options.keys()):
-            lines.append(f"{key}. {options[key]}")
-        lines.append("")
-        valid = ", ".join(sorted(options.keys()))
-        lines.append(f"Answer with ONLY the option letter ({valid}). Do not explain.")
-        return "\n".join(lines)
+        return _format_options_block(question, options)
     return question
+
+
+def is_rotation_mcq(qa: Dict[str, Any]) -> bool:
+    """Check if a QA uses the rotation MCQ format (options is a list)."""
+    return isinstance(qa.get("options"), list) and len(qa["options"]) > 0
 
 
 def run_benchmark(
@@ -344,9 +360,10 @@ def run_benchmark(
     )
 
     for i, qa in enumerate(qas, start=1):
-        question = format_question(qa)
+        question_text = qa.get("question", "")
         gt = qa.get("answer", "")
-        has_options = isinstance(qa.get("options"), dict)
+        has_options = isinstance(qa.get("options"), (dict, list)) and bool(qa.get("options"))
+        rotation_mode = is_rotation_mcq(qa)
 
         # Determine effective mode for this QA:
         # - QA with options → always mcq scoring
@@ -362,37 +379,118 @@ def run_benchmark(
             if _history_is_qa_independent:
                 _cached_history = history
         current_method_runtime = dict(getattr(method, "runtime_info", {}) or {})
-        print(
-            f"[INFO] QA {i}/{len(qas)} point={qa.get('point')} "
-            f"method={method.name} mode={qa_mode} history_turns={len(history)}"
-        )
 
-        # --- Single inference path ---
-        # Resolve any QA-level question images (e.g. a face crop the model
-        # must identify against avatars seen in past chat screenshots).
-        # Text-only methods are deliberately blind to images on the question
-        # turn too, so face-lookup tasks correctly fail on text-only methods.
+        # Resolve any QA-level question images
         question_image_paths = dataset.resolve_question_images(qa)
         if getattr(method, "modality", "") in ("text_only", "no_visual"):
             question_image_paths = []
 
-        t0 = dt.datetime.now()
-        if is_agentic:
-            answer_kwargs: Dict[str, Any] = {}
-            try:
-                answer_signature = inspect.signature(method.answer)
-            except (TypeError, ValueError):
-                answer_signature = None
-            if answer_signature is not None and "question_images" in answer_signature.parameters:
-                answer_kwargs["question_images"] = question_image_paths
-            pred = method.answer(dataset, qa, question, **answer_kwargs)
-        else:
-            pred = router.answer(history, question, question_images=question_image_paths)
-        latency_ms = int((dt.datetime.now() - t0).total_seconds() * 1000)
+        # --- MCQ with rotations ---
+        if qa_mode == "mcq" and rotation_mode:
+            rotations = qa["options"]
+            n_rot = len(rotations)
+            print(
+                f"[INFO] QA {i}/{len(qas)} point={qa.get('point')} "
+                f"method={method.name} mode=mcq rotations={n_rot} history_turns={len(history)}"
+            )
+            rotation_results = []
+            for r_idx, rot in enumerate(rotations):
+                rot_answer = rot["answer"]
+                rot_options = {k: v for k, v in rot.items() if k != "answer"}
+                question = _format_options_block(question_text, rot_options)
+                valid_keys = set(rot_options.keys())
 
-        # --- Scoring ---
-        if qa_mode == "mcq":
-            valid_keys = set(qa.get("options", {}).keys()) if has_options else None
+                t0 = dt.datetime.now()
+                if is_agentic:
+                    answer_kwargs: Dict[str, Any] = {}
+                    try:
+                        answer_signature = inspect.signature(method.answer)
+                    except (TypeError, ValueError):
+                        answer_signature = None
+                    if answer_signature is not None and "question_images" in answer_signature.parameters:
+                        answer_kwargs["question_images"] = question_image_paths
+                    pred = method.answer(dataset, qa, question, **answer_kwargs)
+                else:
+                    pred = router.answer(history, question, question_images=question_image_paths)
+                latency_ms = int((dt.datetime.now() - t0).total_seconds() * 1000)
+
+                choice = extract_choice(pred, valid_keys=valid_keys)
+                em = 1.0 if choice == rot_answer.strip().upper() else 0.0
+                rotation_results.append({
+                    "rotation_idx": r_idx,
+                    "correct_position": rot_answer,
+                    "pred": pred,
+                    "choice": choice,
+                    "em": em,
+                    "latency_ms": latency_ms,
+                })
+                print(
+                    f"  [ROT {rot_answer}][{i}] choice={choice} gt={rot_answer} "
+                    f"em={em:.0f} latency_ms={latency_ms}"
+                )
+
+            # Aggregate across rotations
+            debiased_em = sum(r["em"] for r in rotation_results) / n_rot
+            total_latency = sum(r["latency_ms"] for r in rotation_results)
+            # Position bias: fraction of times each position was chosen
+            position_counts: Dict[str, int] = {}
+            for r in rotation_results:
+                c = r["choice"]
+                if c != "INVALID":
+                    position_counts[c] = position_counts.get(c, 0) + 1
+            result = {
+                "idx": i,
+                "point": qa.get("point"),
+                "mode": "mcq",
+                "question": question_text,
+                "gt": gt,
+                "pred": rotation_results[-1]["pred"],  # last rotation pred for compat
+                "choice": rotation_results[-1]["choice"],
+                "valid_choice": all(r["choice"] != "INVALID" for r in rotation_results),
+                "exact_match": debiased_em == 1.0,
+                "em": debiased_em,
+                "contains_gt": rotation_results[-1]["choice"] == gt.strip().upper(),
+                "f1": debiased_em,
+                "bleu": None,
+                "bleu_1": None,
+                "bleu_2": None,
+                "bert": None,
+                "judge": None,
+                "judge_reasoning": None,
+                "latency_ms": total_latency,
+                "method_name": method.name,
+                "effective_method_name": _effective_method_name(method_cfg),
+                "method_modality": getattr(method, "modality", method_cfg.get("modality", "")),
+                "history_turns": len(history),
+                "source_sessions": qa.get("session_id", []),
+                "clue_rounds": qa.get("clue", []),
+                "rotations": rotation_results,
+                "debiased_em": debiased_em,
+                "position_bias": position_counts,
+            }
+            print(f"[MCQ][{i}] debiased_em={debiased_em:.2f} position_bias={position_counts} total_latency={total_latency}ms")
+
+        # --- Legacy MCQ (single options dict) ---
+        elif qa_mode == "mcq":
+            question = format_question(qa)
+            print(
+                f"[INFO] QA {i}/{len(qas)} point={qa.get('point')} "
+                f"method={method.name} mode=mcq history_turns={len(history)}"
+            )
+            t0 = dt.datetime.now()
+            if is_agentic:
+                answer_kwargs = {}
+                try:
+                    answer_signature = inspect.signature(method.answer)
+                except (TypeError, ValueError):
+                    answer_signature = None
+                if answer_signature is not None and "question_images" in answer_signature.parameters:
+                    answer_kwargs["question_images"] = question_image_paths
+                pred = method.answer(dataset, qa, question, **answer_kwargs)
+            else:
+                pred = router.answer(history, question, question_images=question_image_paths)
+            latency_ms = int((dt.datetime.now() - t0).total_seconds() * 1000)
+            valid_keys = set(qa.get("options", {}).keys())
             choice = extract_choice(pred, valid_keys=valid_keys)
             em = 1.0 if choice == gt.strip().upper() else 0.0
             result = {
@@ -407,7 +505,7 @@ def run_benchmark(
                 "exact_match": em == 1.0,
                 "em": em,
                 "contains_gt": choice == gt.strip().upper(),
-                "f1": em,  # MCQ: F1 equals EM (binary)
+                "f1": em,
                 "bleu": None,
                 "bleu_1": None,
                 "bleu_2": None,
@@ -423,7 +521,28 @@ def run_benchmark(
                 "clue_rounds": qa.get("clue", []),
             }
             print(f"[MCQ][{i}] choice={choice} gt={gt} em={em} latency_ms={latency_ms}")
+
         else:
+            # --- Open-ended QA ---
+            question = format_question(qa)
+            print(
+                f"[INFO] QA {i}/{len(qas)} point={qa.get('point')} "
+                f"method={method.name} mode=open history_turns={len(history)}"
+            )
+            t0 = dt.datetime.now()
+            if is_agentic:
+                answer_kwargs = {}
+                try:
+                    answer_signature = inspect.signature(method.answer)
+                except (TypeError, ValueError):
+                    answer_signature = None
+                if answer_signature is not None and "question_images" in answer_signature.parameters:
+                    answer_kwargs["question_images"] = question_image_paths
+                pred = method.answer(dataset, qa, question, **answer_kwargs)
+            else:
+                pred = router.answer(history, question, question_images=question_image_paths)
+            latency_ms = int((dt.datetime.now() - t0).total_seconds() * 1000)
+
             exact, contains = score_open(pred, gt)
             _f1 = f1_score(pred, gt)
             _bleu = bleu_score(pred, gt)
