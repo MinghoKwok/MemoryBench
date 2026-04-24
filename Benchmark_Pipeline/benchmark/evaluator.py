@@ -176,12 +176,32 @@ def bert_score_metric(prediction: str, ground_truth: str) -> float:
 # LLM Judge
 # ---------------------------------------------------------------------------
 
-_VALID_JUDGE_SCORES = {0.0, 0.25, 0.5, 0.75, 1.0}
+_VALID_JUDGE_SCORES = {0.0, 0.5, 1.0}
 
 
-def _nearest_valid_score(score: float) -> float:
-    """Snap to the nearest discrete rubric value in {0, 0.25, 0.5, 0.75, 1}."""
-    return min(_VALID_JUDGE_SCORES, key=lambda v: abs(v - score))
+def _coerce_valid_judge_score(raw_score: Any) -> Optional[float]:
+    try:
+        score = float(raw_score)
+    except (TypeError, ValueError):
+        return None
+    if score < 0.25:
+        return 0.0
+    if score < 0.75:
+        return 0.5
+    return 1.0
+
+
+def _extract_judge_result(response_text: str) -> Optional[Dict[str, Any]]:
+    parsed = parse_judge_response(response_text)
+    if parsed is None:
+        return None
+    score = _coerce_valid_judge_score(parsed.get("score"))
+    if score is None:
+        return None
+    return {
+        "score": score,
+        "reasoning": str(parsed.get("reasoning", "")),
+    }
 
 
 def parse_judge_response(response_text: str) -> Optional[Dict[str, Any]]:
@@ -196,9 +216,9 @@ def parse_judge_response(response_text: str) -> Optional[Dict[str, Any]]:
     if match:
         try:
             result = json.loads(match.group())
-            raw = float(result.get("score", -1))
-            if 0.0 <= raw <= 1.0:
-                result["score"] = _nearest_valid_score(raw)
+            raw = _coerce_valid_judge_score(result.get("score"))
+            if raw is not None:
+                result["score"] = raw
                 result.setdefault("reasoning", "")
                 return result
         except (json.JSONDecodeError, ValueError):
@@ -209,10 +229,10 @@ def parse_judge_response(response_text: str) -> Optional[Dict[str, Any]]:
         m = re.search(pattern, response_text)
         if m:
             try:
-                raw = float(m.group(1))
-                if 0.0 <= raw <= 1.0:
+                raw = _coerce_valid_judge_score(m.group(1))
+                if raw is not None:
                     return {
-                        "score": _nearest_valid_score(raw),
+                        "score": raw,
                         "reasoning": response_text[:200],
                     }
             except ValueError:
@@ -262,8 +282,9 @@ def llm_judge_score(
                 temperature=0,
                 timeout=timeout,
             )
-            text = response.choices[0].message.content.strip()
-            result = parse_judge_response(text)
+            content = response.choices[0].message.content
+            text = content.strip() if isinstance(content, str) else str(content).strip()
+            result = _extract_judge_result(text)
             if result is not None:
                 return result
             last_err = ValueError(f"Unparseable judge response: {text[:120]}")
