@@ -1,0 +1,139 @@
+{
+  "task_name": "card_playlog_test_open",
+  "model_name": "gpt_4_1_nano",
+  "model_path": "gpt-4.1-nano",
+  "method_name": "semantic_rag_text_only",
+  "base_method_name": "semantic_rag_text_only",
+  "method_modality": "",
+  "mode": "open",
+  "num_qas": 48,
+  "num_qas_run": 48,
+  "dialog_json": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/dialog/Card_Playlog_Test_Open.json",
+  "image_root": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image",
+  "run_dir": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/runs/card_playlog_test_open/20260424_174522_gpt_4_1_nano_semantic_rag_text_only",
+  "git_commit": "b24985b9af7b246db9e6e807768083d0acb8c78a",
+  "summary": {
+    "open_count": 48,
+    "overall": {
+      "em": 0.16666666666666666,
+      "contains_gt": 0.16666666666666666,
+      "f1": 0.16666666666666666,
+      "bleu": 0.029637990167315383,
+      "bleu_1": 0.16666666666666666,
+      "bleu_2": 0.052704627669473
+    },
+    "by_x": {
+      "X4": {
+        "em": 0.16666666666666666,
+        "contains_gt": 0.16666666666666666,
+        "f1": 0.16666666666666666,
+        "bleu": 0.029637990167315383,
+        "bleu_1": 0.16666666666666666,
+        "bleu_2": 0.052704627669473
+      }
+    },
+    "by_y": {
+      "Y3": {
+        "em": 0.10526315789473684,
+        "contains_gt": 0.10526315789473684,
+        "f1": 0.10526315789473684,
+        "bleu": 0.018718730631988662,
+        "bleu_1": 0.10526315789473684,
+        "bleu_2": 0.03328713326493032
+      },
+      "Y2": {
+        "em": 0.20689655172413793,
+        "contains_gt": 0.20689655172413793,
+        "f1": 0.20689655172413793,
+        "bleu": 0.03679198779390875,
+        "bleu_1": 0.20689655172413793,
+        "bleu_2": 0.06542643434831132
+      }
+    },
+    "by_cell": {
+      "X4_Y3": {
+        "em": 0.10526315789473684,
+        "contains_gt": 0.10526315789473684,
+        "f1": 0.10526315789473684,
+        "bleu": 0.018718730631988662,
+        "bleu_1": 0.10526315789473684,
+        "bleu_2": 0.03328713326493032
+      },
+      "X4_Y2": {
+        "em": 0.20689655172413793,
+        "contains_gt": 0.20689655172413793,
+        "f1": 0.20689655172413793,
+        "bleu": 0.03679198779390875,
+        "bleu_1": 0.20689655172413793,
+        "bleu_2": 0.06542643434831132
+      }
+    }
+  },
+  "method_runtime": {
+    "retrieval_backend": "dense_text",
+    "retrieval_corpus": "round_text",
+    "method_modality": "text_only",
+    "top_k": 10,
+    "neighbor_window": 0,
+    "seed_round_ids": [
+      "PLAY_S1:R1",
+      "PLAY_S4:R1",
+      "PLAY_S3:R1",
+      "PLAY_S3:R3",
+      "PLAY_S2:R1",
+      "PLAY_S3:R6",
+      "PLAY_S4:R7",
+      "PLAY_S4:R6",
+      "PLAY_S4:R3",
+      "PLAY_S4:R4"
+    ],
+    "selected_round_ids": [
+      "PLAY_S1:R1",
+      "PLAY_S4:R1",
+      "PLAY_S3:R1",
+      "PLAY_S3:R3",
+      "PLAY_S2:R1",
+      "PLAY_S3:R6",
+      "PLAY_S4:R7",
+      "PLAY_S4:R6",
+      "PLAY_S4:R3",
+      "PLAY_S4:R4"
+    ],
+    "top_candidates": [
+      {
+        "round_id": "PLAY_S1:R1",
+        "score": 0.5394042847880628,
+        "text_dense_score": 0.5394042847880628
+      },
+      {
+        "round_id": "PLAY_S4:R1",
+        "score": 0.5351180075554457,
+        "text_dense_score": 0.5351180075554457
+      },
+      {
+        "round_id": "PLAY_S3:R1",
+        "score": 0.5273098327670225,
+        "text_dense_score": 0.5273098327670225
+      },
+      {
+        "round_id": "PLAY_S3:R3",
+        "score": 0.5244891772869864,
+        "text_dense_score": 0.5244891772869864
+      },
+      {
+        "round_id": "PLAY_S2:R1",
+        "score": 0.5079459356215262,
+        "text_dense_score": 0.5079459356215262
+      }
+    ],
+    "clue_hit_count": 0,
+    "corpus_entry_count": 30,
+    "text_embedding_model": "all-MiniLM-L6-v2",
+    "caption_text_included": true,
+    "image_embeddings_built": false,
+    "history_source": "retrieval",
+    "captions_loaded": true,
+    "images_loaded": false,
+    "history_turns_after_truncation": 20
+  }
+}

@@ -1,0 +1,75 @@
+{
+  "task_name": "card_playlog_test",
+  "model_name": "gpt_4_1_nano",
+  "model_path": "gpt-4.1-nano",
+  "method_name": "full_context_multimodal",
+  "base_method_name": "full_context_multimodal",
+  "method_modality": "",
+  "mode": "mcq",
+  "num_qas": 48,
+  "num_qas_run": 48,
+  "dialog_json": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/dialog/Card_Playlog_Test.json",
+  "image_root": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image",
+  "run_dir": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/Benchmark_Pipeline/runs/mcq_clean_ablation_20260424_full/card_playlog_test/20260424_170954_gpt_4_1_nano_full_context_multimodal",
+  "git_commit": "b24985b9af7b246db9e6e807768083d0acb8c78a",
+  "summary": {
+    "open_count": 48,
+    "overall": {
+      "em": 0.20833333333333334,
+      "contains_gt": 0.041666666666666664,
+      "f1": 0.20833333333333334
+    },
+    "by_x": {
+      "X4": {
+        "em": 0.20833333333333334,
+        "contains_gt": 0.041666666666666664,
+        "f1": 0.20833333333333334
+      }
+    },
+    "by_y": {
+      "Y3": {
+        "em": 0.13157894736842105,
+        "contains_gt": 0.05263157894736842,
+        "f1": 0.13157894736842105
+      },
+      "Y2": {
+        "em": 0.25862068965517243,
+        "contains_gt": 0.034482758620689655,
+        "f1": 0.25862068965517243
+      }
+    },
+    "by_cell": {
+      "X4_Y3": {
+        "em": 0.13157894736842105,
+        "contains_gt": 0.05263157894736842,
+        "f1": 0.13157894736842105
+      },
+      "X4_Y2": {
+        "em": 0.25862068965517243,
+        "contains_gt": 0.034482758620689655,
+        "f1": 0.25862068965517243
+      }
+    },
+    "mcq_count": 48,
+    "mcq_valid_rate": 1.0,
+    "mcq_overall": {
+      "em": 0.20833333333333334,
+      "contains_gt": 0.041666666666666664,
+      "f1": 0.20833333333333334
+    },
+    "mcq_per_position_accuracy": {
+      "A": 0.375,
+      "B": 0.0625,
+      "C": 0.3541666666666667,
+      "D": 0.041666666666666664
+    }
+  },
+  "method_runtime": {
+    "method_modality": "multimodal",
+    "history_source": "full_context",
+    "captions_loaded": false,
+    "images_loaded": true,
+    "history_turns_after_truncation": 60,
+    "history_turns_before_truncation": 60
+  }
+}

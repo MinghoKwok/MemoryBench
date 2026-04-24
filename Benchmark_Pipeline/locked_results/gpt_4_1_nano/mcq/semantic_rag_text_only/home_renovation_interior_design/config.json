@@ -1,0 +1,111 @@
+{
+  "task": {
+    "name": "home_renovation_interior_design",
+    "dataset": {
+      "dialog_json": "data/dialog/Home_Renovation_Interior_Design.json",
+      "image_root": "data/image"
+    },
+    "eval": {
+      "mode": "mcq",
+      "output_json": "output/results_home_renovation_interior_design.json",
+      "max_questions": 0
+    }
+  },
+  "dataset": {
+    "dialog_json": "data/dialog/Home_Renovation_Interior_Design.json",
+    "image_root": "data/image"
+  },
+  "eval": {
+    "mode": "mcq",
+    "output_json": "output/results_home_renovation_interior_design.json",
+    "max_questions": 0
+  },
+  "model": {
+    "name": "gpt_4_1_nano",
+    "provider": "openai_api",
+    "model": "gpt-4.1-nano",
+    "api_key_env": "OPENAI_API_KEY",
+    "base_url": "https://api.openai.com/v1",
+    "max_new_tokens": 128,
+    "timeout": 90
+  },
+  "method": {
+    "name": "semantic_rag_text_only",
+    "retrieval_backend": "dense_text",
+    "top_k": 10,
+    "neighbor_window": 0,
+    "text_embedding_model": "all-MiniLM-L6-v2",
+    "text_dense_weight": 1.0,
+    "image_dense_weight": 0.0
+  },
+  "run": {
+    "output_root": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/runs",
+    "method_runtime": {
+      "retrieval_backend": "dense_text",
+      "retrieval_corpus": "round_text",
+      "method_modality": "text_only",
+      "top_k": 10,
+      "neighbor_window": 0,
+      "seed_round_ids": [
+        "HOME_S9:R5",
+        "HOME_S1:R10",
+        "HOME_S1:R11",
+        "HOME_S13:R6",
+        "HOME_S1:R7",
+        "HOME_S6:R4",
+        "HOME_S12:R1",
+        "HOME_S1:R5",
+        "HOME_S12:R6",
+        "HOME_S10:R7"
+      ],
+      "selected_round_ids": [
+        "HOME_S9:R5",
+        "HOME_S1:R10",
+        "HOME_S1:R11",
+        "HOME_S13:R6",
+        "HOME_S1:R7",
+        "HOME_S6:R4",
+        "HOME_S12:R1",
+        "HOME_S1:R5",
+        "HOME_S12:R6",
+        "HOME_S10:R7"
+      ],
+      "top_candidates": [
+        {
+          "round_id": "HOME_S9:R5",
+          "score": 0.41742302610892773,
+          "text_dense_score": 0.41742302610892773
+        },
+        {
+          "round_id": "HOME_S1:R10",
+          "score": 0.3913432701986887,
+          "text_dense_score": 0.3913432701986887
+        },
+        {
+          "round_id": "HOME_S1:R11",
+          "score": 0.38409026668254526,
+          "text_dense_score": 0.38409026668254526
+        },
+        {
+          "round_id": "HOME_S13:R6",
+          "score": 0.3791916016859843,
+          "text_dense_score": 0.3791916016859843
+        },
+        {
+          "round_id": "HOME_S1:R7",
+          "score": 0.379047998692167,
+          "text_dense_score": 0.379047998692167
+        }
+      ],
+      "clue_hit_count": 0,
+      "corpus_entry_count": 120,
+      "text_embedding_model": "all-MiniLM-L6-v2",
+      "caption_text_included": true,
+      "image_embeddings_built": false,
+      "history_source": "retrieval",
+      "captions_loaded": true,
+      "images_loaded": false,
+      "history_turns_after_truncation": 20
+    }
+  }
+}

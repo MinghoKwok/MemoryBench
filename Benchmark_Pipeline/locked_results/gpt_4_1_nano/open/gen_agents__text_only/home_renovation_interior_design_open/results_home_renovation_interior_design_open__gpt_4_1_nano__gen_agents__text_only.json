@@ -1,0 +1,175 @@
+{
+  "task_name": "home_renovation_interior_design_open",
+  "model_name": "gpt_4_1_nano",
+  "model_path": "gpt-4.1-nano",
+  "method_name": "gen_agents__text_only",
+  "base_method_name": "gen_agents",
+  "method_modality": "text_only",
+  "mode": "open",
+  "num_qas": 52,
+  "num_qas_run": 52,
+  "dialog_json": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/dialog/Home_Renovation_Interior_Design_Open.json",
+  "image_root": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image",
+  "run_dir": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/runs/home_renovation_interior_design_open/20260424_213139_gpt_4_1_nano_gen_agents__text_only",
+  "git_commit": "b24985b9af7b246db9e6e807768083d0acb8c78a",
+  "summary": {
+    "open_count": 52,
+    "overall": {
+      "em": 0.0,
+      "contains_gt": 0.07692307692307693,
+      "f1": 0.1685178117319288,
+      "bleu": 0.030254989672438337,
+      "bleu_1": 0.1162589576932608,
+      "bleu_2": 0.05607440038402379
+    },
+    "by_x": {
+      "X4": {
+        "em": 0.0,
+        "contains_gt": 0.125,
+        "f1": 0.1038374963159446,
+        "bleu": 0.011435254416281142,
+        "bleu_1": 0.060010822510822515,
+        "bleu_2": 0.027918366519504474
+      },
+      "X3": {
+        "em": 0.0,
+        "contains_gt": 0.08333333333333333,
+        "f1": 0.18920325412843472,
+        "bleu": 0.037372763450583726,
+        "bleu_1": 0.13363228988467873,
+        "bleu_2": 0.06813016732774023
+      },
+      "X2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.16012987012987012,
+        "bleu": 0.019479706202218613,
+        "bleu_1": 0.10780239773064962,
+        "bleu_2": 0.03426226628779329
+      },
+      "X1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0,
+        "bleu": 0.0,
+        "bleu_1": 0.0,
+        "bleu_2": 0.0
+      }
+    },
+    "by_y": {
+      "Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.1463753662384494,
+        "bleu": 0.017243247372246313,
+        "bleu_1": 0.10018631931113291,
+        "bleu_2": 0.03844438153661971
+      },
+      "Y1": {
+        "em": 0.0,
+        "contains_gt": 0.07692307692307693,
+        "f1": 0.17176229506427174,
+        "bleu": 0.034012228800439935,
+        "bleu_1": 0.11952337914096885,
+        "bleu_2": 0.05947939151377313
+      },
+      "Y3": {
+        "em": 0.0,
+        "contains_gt": 1.0,
+        "f1": 0.3076923076923077,
+        "bleu": 0.03986357128268015,
+        "bleu_1": 0.18181818181818182,
+        "bleu_2": 0.13483997249264845
+      }
+    },
+    "by_cell": {
+      "X4_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.15900383141762453,
+        "bleu": 0.012040334621052508,
+        "bleu_1": 0.08095238095238096,
+        "bleu_2": 0.02182178902359924
+      },
+      "X3_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.24169934640522875,
+        "bleu": 0.03279367955918772,
+        "bleu_1": 0.18844898908538382,
+        "bleu_2": 0.07717542280648125
+      },
+      "X3_Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0967741935483871,
+        "f1": 0.1807361424708873,
+        "bleu": 0.038111325368550816,
+        "bleu_1": 0.12479088678779081,
+        "bleu_2": 0.06667125515374973
+      },
+      "X2_Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.4454545454545455,
+        "bleu": 0.05874402099330909,
+        "bleu_1": 0.32826532985631673,
+        "bleu_2": 0.10401198882736065
+      },
+      "X2_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.046,
+        "bleu": 0.0037739802857824226,
+        "bleu_1": 0.019617224880382776,
+        "bleu_2": 0.006362377271966347
+      },
+      "X4_Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.04100000000000001,
+        "bleu": 0.005507558961092794,
+        "bleu_1": 0.02727272727272727,
+        "bleu_2": 0.008972676323237774
+      },
+      "X4_Y3": {
+        "em": 0.0,
+        "contains_gt": 1.0,
+        "f1": 0.3076923076923077,
+        "bleu": 0.03986357128268015,
+        "bleu_1": 0.18181818181818182,
+        "bleu_2": 0.13483997249264845
+      },
+      "X1_Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0,
+        "bleu": 0.0,
+        "bleu_1": 0.0,
+        "bleu_2": 0.0
+      }
+    }
+  },
+  "method_runtime": {
+    "caption_validation_passed": true,
+    "caption_validation_round_count": 89,
+    "method_modality": "text_only",
+    "history_source": "retrieval",
+    "captions_loaded": true,
+    "images_loaded": false,
+    "num_memories": 120,
+    "debug_dir": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/output/home_renovation_interior_design/gen_agents",
+    "history_turns_after_truncation": 1,
+    "retrieved_round_ids": [
+      "HOME_S12:R7",
+      "HOME_S13:R9",
+      "HOME_S12:R2",
+      "HOME_S10:R2",
+      "HOME_S13:R6",
+      "HOME_S12:R9",
+      "HOME_S13:R7",
+      "HOME_S12:R3",
+      "HOME_S12:R4",
+      "HOME_S11:R2"
+    ]
+  }
+}

@@ -1,0 +1,134 @@
+{
+  "task_name": "card_playlog_test",
+  "model_name": "gpt_4_1_nano",
+  "model_path": "gpt-4.1-nano",
+  "method_name": "semantic_rag_text_only",
+  "base_method_name": "semantic_rag_text_only",
+  "method_modality": "",
+  "mode": "mcq",
+  "num_qas": 48,
+  "num_qas_run": 48,
+  "dialog_json": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/dialog/Card_Playlog_Test.json",
+  "image_root": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image",
+  "run_dir": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/runs/card_playlog_test/20260424_191201_gpt_4_1_nano_semantic_rag_text_only",
+  "git_commit": "b24985b9af7b246db9e6e807768083d0acb8c78a",
+  "summary": {
+    "open_count": 48,
+    "overall": {
+      "em": 0.2708333333333333,
+      "contains_gt": 0.020833333333333332,
+      "f1": 0.2708333333333333
+    },
+    "by_x": {
+      "X4": {
+        "em": 0.2708333333333333,
+        "contains_gt": 0.020833333333333332,
+        "f1": 0.2708333333333333
+      }
+    },
+    "by_y": {
+      "Y3": {
+        "em": 0.14473684210526316,
+        "contains_gt": 0.05263157894736842,
+        "f1": 0.14473684210526316
+      },
+      "Y2": {
+        "em": 0.35344827586206895,
+        "contains_gt": 0.0,
+        "f1": 0.35344827586206895
+      }
+    },
+    "by_cell": {
+      "X4_Y3": {
+        "em": 0.14473684210526316,
+        "contains_gt": 0.05263157894736842,
+        "f1": 0.14473684210526316
+      },
+      "X4_Y2": {
+        "em": 0.35344827586206895,
+        "contains_gt": 0.0,
+        "f1": 0.35344827586206895
+      }
+    },
+    "mcq_count": 48,
+    "mcq_valid_rate": 1.0,
+    "mcq_overall": {
+      "em": 0.2708333333333333,
+      "contains_gt": 0.020833333333333332,
+      "f1": 0.2708333333333333
+    },
+    "mcq_per_position_accuracy": {
+      "A": 0.5625,
+      "B": 0.125,
+      "C": 0.375,
+      "D": 0.020833333333333332
+    }
+  },
+  "method_runtime": {
+    "retrieval_backend": "dense_text",
+    "retrieval_corpus": "round_text",
+    "method_modality": "text_only",
+    "top_k": 10,
+    "neighbor_window": 0,
+    "seed_round_ids": [
+      "PLAY_S4:R1",
+      "PLAY_S1:R1",
+      "PLAY_S3:R1",
+      "PLAY_S3:R3",
+      "PLAY_S2:R1",
+      "PLAY_S3:R6",
+      "PLAY_S4:R6",
+      "PLAY_S4:R7",
+      "PLAY_S4:R3",
+      "PLAY_S4:R4"
+    ],
+    "selected_round_ids": [
+      "PLAY_S4:R1",
+      "PLAY_S1:R1",
+      "PLAY_S3:R1",
+      "PLAY_S3:R3",
+      "PLAY_S2:R1",
+      "PLAY_S3:R6",
+      "PLAY_S4:R6",
+      "PLAY_S4:R7",
+      "PLAY_S4:R3",
+      "PLAY_S4:R4"
+    ],
+    "top_candidates": [
+      {
+        "round_id": "PLAY_S4:R1",
+        "score": 0.5290761004454869,
+        "text_dense_score": 0.5290761004454869
+      },
+      {
+        "round_id": "PLAY_S1:R1",
+        "score": 0.5282295396347007,
+        "text_dense_score": 0.5282295396347007
+      },
+      {
+        "round_id": "PLAY_S3:R1",
+        "score": 0.5238403230310388,
+        "text_dense_score": 0.5238403230310388
+      },
+      {
+        "round_id": "PLAY_S3:R3",
+        "score": 0.5189786516095851,
+        "text_dense_score": 0.5189786516095851
+      },
+      {
+        "round_id": "PLAY_S2:R1",
+        "score": 0.5036247296950199,
+        "text_dense_score": 0.5036247296950199
+      }
+    ],
+    "clue_hit_count": 0,
+    "corpus_entry_count": 30,
+    "text_embedding_model": "all-MiniLM-L6-v2",
+    "caption_text_included": true,
+    "image_embeddings_built": false,
+    "history_source": "retrieval",
+    "captions_loaded": true,
+    "images_loaded": false,
+    "history_turns_after_truncation": 20
+  }
+}

@@ -1,0 +1,127 @@
+{
+  "task_name": "cartoon_entertainment_companion",
+  "model_name": "gpt_4_1_nano",
+  "model_path": "gpt-4.1-nano",
+  "method_name": "question_only",
+  "base_method_name": "question_only",
+  "method_modality": "",
+  "mode": "mcq",
+  "num_qas": 76,
+  "num_qas_run": 76,
+  "dialog_json": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/dialog/Cartoon_Entertainment_Companion.json",
+  "image_root": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image",
+  "run_dir": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/runs/mcq_clean_ablation_20260424_full/cartoon_entertainment_companion/20260424_151019_gpt_4_1_nano_question_only",
+  "git_commit": "b24985b9af7b246db9e6e807768083d0acb8c78a",
+  "summary": {
+    "open_count": 76,
+    "overall": {
+      "em": 0.46381578947368424,
+      "contains_gt": 0.23684210526315788,
+      "f1": 0.46381578947368424
+    },
+    "by_x": {
+      "X3": {
+        "em": 0.358695652173913,
+        "contains_gt": 0.08695652173913043,
+        "f1": 0.358695652173913
+      },
+      "X4": {
+        "em": 0.5108695652173914,
+        "contains_gt": 0.30434782608695654,
+        "f1": 0.5108695652173914
+      },
+      "X2": {
+        "em": 0.42857142857142855,
+        "contains_gt": 0.35714285714285715,
+        "f1": 0.42857142857142855
+      },
+      "X1": {
+        "em": 0.578125,
+        "contains_gt": 0.25,
+        "f1": 0.578125
+      }
+    },
+    "by_y": {
+      "Y1": {
+        "em": 0.515625,
+        "contains_gt": 0.28125,
+        "f1": 0.515625
+      },
+      "Y2": {
+        "em": 0.3717948717948718,
+        "contains_gt": 0.15384615384615385,
+        "f1": 0.3717948717948718
+      },
+      "Y3": {
+        "em": 0.85,
+        "contains_gt": 0.6,
+        "f1": 0.85
+      }
+    },
+    "by_cell": {
+      "X3_Y1": {
+        "em": 0.3409090909090909,
+        "contains_gt": 0.09090909090909091,
+        "f1": 0.3409090909090909
+      },
+      "X4_Y2": {
+        "em": 0.45,
+        "contains_gt": 0.3,
+        "f1": 0.45
+      },
+      "X2_Y2": {
+        "em": 0.3333333333333333,
+        "contains_gt": 0.2222222222222222,
+        "f1": 0.3333333333333333
+      },
+      "X3_Y2": {
+        "em": 0.375,
+        "contains_gt": 0.08333333333333333,
+        "f1": 0.375
+      },
+      "X4_Y1": {
+        "em": 0.5416666666666666,
+        "contains_gt": 0.25,
+        "f1": 0.5416666666666666
+      },
+      "X1_Y1": {
+        "em": 0.8125,
+        "contains_gt": 0.5,
+        "f1": 0.8125
+      },
+      "X1_Y2": {
+        "em": 0.3125,
+        "contains_gt": 0.0,
+        "f1": 0.3125
+      },
+      "X2_Y1": {
+        "em": 0.6,
+        "contains_gt": 0.6,
+        "f1": 0.6
+      },
+      "X1_Y3": {
+        "em": 0.875,
+        "contains_gt": 0.5,
+        "f1": 0.875
+      },
+      "X4_Y3": {
+        "em": 0.75,
+        "contains_gt": 1.0,
+        "f1": 0.75
+      }
+    },
+    "mcq_count": 76,
+    "mcq_valid_rate": 1.0,
+    "mcq_overall": {
+      "em": 0.46381578947368424,
+      "contains_gt": 0.23684210526315788,
+      "f1": 0.46381578947368424
+    },
+    "mcq_per_position_accuracy": {
+      "A": 0.7236842105263158,
+      "B": 0.3815789473684211,
+      "C": 0.5131578947368421,
+      "D": 0.23684210526315788
+    }
+  }
+}

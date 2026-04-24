@@ -1,0 +1,140 @@
+{
+  "task_name": "multi_scene_visual_case_archive_assistant_open",
+  "model_name": "gpt_4_1_nano",
+  "model_path": "gpt-4.1-nano",
+  "method_name": "a_mem",
+  "base_method_name": "a_mem",
+  "method_modality": "",
+  "mode": "open",
+  "num_qas": 50,
+  "num_qas_run": 50,
+  "dialog_json": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/dialog/Multi-Scene_Visual_Case_Archive_Assistant_Open.json",
+  "image_root": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image",
+  "run_dir": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/runs/multi_scene_visual_case_archive_assistant_open/20260424_183839_gpt_4_1_nano_a_mem",
+  "git_commit": "b24985b9af7b246db9e6e807768083d0acb8c78a",
+  "summary": {
+    "open_count": 50,
+    "overall": {
+      "em": 0.14,
+      "contains_gt": 0.16,
+      "f1": 0.29119326167468584,
+      "bleu": 0.15924372354429683,
+      "bleu_1": 0.2621924949437923,
+      "bleu_2": 0.21418573009257302
+    },
+    "by_x": {
+      "X4": {
+        "em": 0.25,
+        "contains_gt": 0.25,
+        "f1": 0.5738636363636364,
+        "bleu": 0.21804622492761475,
+        "bleu_1": 0.5052353953056069,
+        "bleu_2": 0.4533833863900333
+      },
+      "X2": {
+        "em": 0.25,
+        "contains_gt": 0.375,
+        "f1": 0.3700657894736842,
+        "bleu": 0.2860771361332259,
+        "bleu_1": 0.3464777899622179,
+        "bleu_2": 0.3235994934937694
+      },
+      "X3": {
+        "em": 0.10526315789473684,
+        "contains_gt": 0.10526315789473684,
+        "f1": 0.24483374269711242,
+        "bleu": 0.12635221548522566,
+        "bleu_1": 0.21886475911235378,
+        "bleu_2": 0.16597255292416743
+      }
+    },
+    "by_y": {
+      "Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.27158094098883573,
+        "bleu": 0.10236757116570677,
+        "bleu_1": 0.23242882094835465,
+        "bleu_2": 0.17899465064934342
+      },
+      "Y3": {
+        "em": 0.2727272727272727,
+        "contains_gt": 0.36363636363636365,
+        "f1": 0.41811916154021417,
+        "bleu": 0.24432339284357335,
+        "bleu_1": 0.3837999046115134,
+        "bleu_2": 0.338400207889634
+      },
+      "Y1": {
+        "em": 0.12903225806451613,
+        "contains_gt": 0.12903225806451613,
+        "f1": 0.2512162831897177,
+        "bleu": 0.14373188021322195,
+        "bleu_1": 0.22672242673793966,
+        "bleu_2": 0.17919119395638483
+      }
+    },
+    "by_cell": {
+      "X4_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.4318181818181818,
+        "bleu": 0.18531904456454032,
+        "bleu_1": 0.34031386040747585,
+        "bleu_2": 0.27117784852004434
+      },
+      "X2_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.07017543859649124,
+        "bleu": 0.0075674314061859455,
+        "bleu_1": 0.057274106565914355,
+        "bleu_2": 0.013691130148329539
+      },
+      "X3_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.1698621553884712,
+        "bleu": 0.021082952083043886,
+        "bleu_1": 0.12435979014532958,
+        "bleu_2": 0.034935945856161506
+      },
+      "X2_Y3": {
+        "em": 0.4,
+        "contains_gt": 0.6,
+        "f1": 0.5499999999999999,
+        "bleu": 0.4531829589694499,
+        "bleu_1": 0.52,
+        "bleu_2": 0.5095445115010332
+      },
+      "X3_Y1": {
+        "em": 0.12903225806451613,
+        "contains_gt": 0.12903225806451613,
+        "f1": 0.2512162831897177,
+        "bleu": 0.14373188021322195,
+        "bleu_1": 0.22672242673793966,
+        "bleu_2": 0.17919119395638483
+      },
+      "X3_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.3333333333333333,
+        "bleu": 0.12014057070673771,
+        "bleu_1": 0.3333333333333333,
+        "bleu_2": 0.28867513459481287
+      },
+      "X4_Y3": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0,
+        "bleu": 0.316227766016838,
+        "bleu_1": 1.0,
+        "bleu_2": 1.0
+      }
+    }
+  },
+  "method_runtime": {
+    "num_memories": 117,
+    "debug_dir": "/Users/qingyuejiao/Desktop/MemoryBench/output/multi-scene_visual_case_archive_assistant/a_mem"
+  }
+}

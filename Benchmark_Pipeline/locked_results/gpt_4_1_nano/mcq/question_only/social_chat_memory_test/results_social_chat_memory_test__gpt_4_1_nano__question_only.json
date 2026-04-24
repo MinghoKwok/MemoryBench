@@ -1,0 +1,122 @@
+{
+  "task_name": "social_chat_memory_test",
+  "model_name": "gpt_4_1_nano",
+  "model_path": "gpt-4.1-nano",
+  "method_name": "question_only",
+  "base_method_name": "question_only",
+  "method_modality": "",
+  "mode": "mcq",
+  "num_qas": 37,
+  "num_qas_run": 37,
+  "dialog_json": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/dialog/Social_Chat_Memory_Test.json",
+  "image_root": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image",
+  "run_dir": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/runs/mcq_clean_ablation_20260424_full/social_chat_memory_test/20260424_153134_gpt_4_1_nano_question_only",
+  "git_commit": "b24985b9af7b246db9e6e807768083d0acb8c78a",
+  "summary": {
+    "open_count": 37,
+    "overall": {
+      "em": 0.2905405405405405,
+      "contains_gt": 0.05405405405405406,
+      "f1": 0.2905405405405405
+    },
+    "by_x": {
+      "X2": {
+        "em": 0.2672413793103448,
+        "contains_gt": 0.034482758620689655,
+        "f1": 0.2672413793103448
+      },
+      "X1": {
+        "em": 0.35,
+        "contains_gt": 0.0,
+        "f1": 0.35
+      },
+      "X3": {
+        "em": 0.625,
+        "contains_gt": 0.5,
+        "f1": 0.625
+      },
+      "X4": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0
+      }
+    },
+    "by_y": {
+      "Y2": {
+        "em": 0.26,
+        "contains_gt": 0.0,
+        "f1": 0.26
+      },
+      "Y3": {
+        "em": 0.25,
+        "contains_gt": 0.16666666666666666,
+        "f1": 0.25
+      },
+      "Y1": {
+        "em": 0.4583333333333333,
+        "contains_gt": 0.16666666666666666,
+        "f1": 0.4583333333333333
+      }
+    },
+    "by_cell": {
+      "X2_Y2": {
+        "em": 0.2727272727272727,
+        "contains_gt": 0.0,
+        "f1": 0.2727272727272727
+      },
+      "X2_Y3": {
+        "em": 0.3125,
+        "contains_gt": 0.25,
+        "f1": 0.3125
+      },
+      "X2_Y1": {
+        "em": 0.16666666666666666,
+        "contains_gt": 0.0,
+        "f1": 0.16666666666666666
+      },
+      "X1_Y1": {
+        "em": 0.625,
+        "contains_gt": 0.0,
+        "f1": 0.625
+      },
+      "X1_Y2": {
+        "em": 0.25,
+        "contains_gt": 0.0,
+        "f1": 0.25
+      },
+      "X3_Y1": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
+      },
+      "X3_Y2": {
+        "em": 0.25,
+        "contains_gt": 0.0,
+        "f1": 0.25
+      },
+      "X4_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0
+      },
+      "X1_Y3": {
+        "em": 0.125,
+        "contains_gt": 0.0,
+        "f1": 0.125
+      }
+    },
+    "mcq_count": 37,
+    "mcq_valid_rate": 1.0,
+    "mcq_overall": {
+      "em": 0.2905405405405405,
+      "contains_gt": 0.05405405405405406,
+      "f1": 0.2905405405405405
+    },
+    "mcq_per_position_accuracy": {
+      "A": 0.5135135135135135,
+      "B": 0.2702702702702703,
+      "C": 0.32432432432432434,
+      "D": 0.05405405405405406
+    }
+  }
+}

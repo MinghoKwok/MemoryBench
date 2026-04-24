@@ -1,0 +1,164 @@
+{
+  "task_name": "social_chat_memory_test_open",
+  "model_name": "gpt_4_1_nano",
+  "model_path": "gpt-4.1-nano",
+  "method_name": "a_mem",
+  "base_method_name": "a_mem",
+  "method_modality": "",
+  "mode": "open",
+  "num_qas": 37,
+  "num_qas_run": 37,
+  "dialog_json": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/dialog/Social_Chat_Memory_Test_Open.json",
+  "image_root": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image",
+  "run_dir": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/runs/social_chat_memory_test_open/20260424_190106_gpt_4_1_nano_a_mem",
+  "git_commit": "b24985b9af7b246db9e6e807768083d0acb8c78a",
+  "summary": {
+    "open_count": 37,
+    "overall": {
+      "em": 0.02702702702702703,
+      "contains_gt": 0.05405405405405406,
+      "f1": 0.19399267655187136,
+      "bleu": 0.03885514527029552,
+      "bleu_1": 0.1389538576279558,
+      "bleu_2": 0.08431922750969689
+    },
+    "by_x": {
+      "X2": {
+        "em": 0.0,
+        "contains_gt": 0.034482758620689655,
+        "f1": 0.1745379310400405,
+        "bleu": 0.029523454254142753,
+        "bleu_1": 0.11742372713583869,
+        "bleu_2": 0.05874083965011709
+      },
+      "X1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.22322580645161294,
+        "bleu": 0.0530464871227913,
+        "bleu_1": 0.1472009290590086,
+        "bleu_2": 0.08326541360107789
+      },
+      "X3": {
+        "em": 0.5,
+        "contains_gt": 0.5,
+        "f1": 0.5,
+        "bleu": 0.158113883008419,
+        "bleu_1": 0.5,
+        "bleu_2": 0.5
+      },
+      "X4": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0,
+        "bleu": 0.0,
+        "bleu_1": 0.0,
+        "bleu_2": 0.0
+      }
+    },
+    "by_y": {
+      "Y2": {
+        "em": 0.0,
+        "contains_gt": 0.04,
+        "f1": 0.12257185951303598,
+        "bleu": 0.025938196825163108,
+        "bleu_1": 0.07833804894942158,
+        "bleu_2": 0.0364036131086493
+      },
+      "Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.37923995217535356,
+        "bleu": 0.0640906283784752,
+        "bleu_1": 0.263574364295478,
+        "bleu_2": 0.14481174920055093
+      },
+      "Y1": {
+        "em": 0.16666666666666666,
+        "contains_gt": 0.16666666666666666,
+        "f1": 0.30633213859020314,
+        "bleu": 0.0674402806835009,
+        "bleu_1": 0.26689922045432635,
+        "bleu_2": 0.22347509915654115
+      }
+    },
+    "by_cell": {
+      "X2_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.045454545454545456,
+        "f1": 0.13928620399208635,
+        "bleu": 0.02947522366495808,
+        "bleu_1": 0.08902051016979724,
+        "bleu_2": 0.041367742168919655
+      },
+      "X2_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.3398276701985142,
+        "bleu": 0.031689059464335256,
+        "bleu_1": 0.21758376866543916,
+        "bleu_2": 0.11591903853125336
+      },
+      "X2_Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.21266427718040623,
+        "bleu": 0.026989671627907035,
+        "bleu_1": 0.192167262847342,
+        "bleu_2": 0.10990595600404988
+      },
+      "X1_Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.1,
+        "bleu": 0.0037224516002231475,
+        "bleu_1": 0.012446767091965986,
+        "bleu_2": 0.005566363463548665
+      },
+      "X1_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0,
+        "bleu": 0.0,
+        "bleu_1": 0.0,
+        "bleu_2": 0.0
+      },
+      "X3_Y1": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0,
+        "bleu": 0.316227766016838,
+        "bleu_1": 1.0,
+        "bleu_2": 1.0
+      },
+      "X3_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0,
+        "bleu": 0.0,
+        "bleu_1": 0.0,
+        "bleu_2": 0.0
+      },
+      "X4_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0,
+        "bleu": 0.0,
+        "bleu_1": 0.0,
+        "bleu_2": 0.0
+      },
+      "X1_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.4580645161290323,
+        "bleu": 0.1288937662067551,
+        "bleu_1": 0.3555555555555555,
+        "bleu_2": 0.20259717053914605
+      }
+    }
+  },
+  "method_runtime": {
+    "num_memories": 53,
+    "debug_dir": "/Users/qingyuejiao/Desktop/MemoryBench/output/social_chat_memory_test_open/a_mem"
+  }
+}

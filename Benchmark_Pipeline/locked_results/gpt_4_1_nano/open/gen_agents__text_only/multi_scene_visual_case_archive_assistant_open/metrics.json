@@ -1,0 +1,159 @@
+{
+  "task_name": "multi_scene_visual_case_archive_assistant_open",
+  "model_name": "gpt_4_1_nano",
+  "model_path": "gpt-4.1-nano",
+  "method_name": "gen_agents__text_only",
+  "base_method_name": "gen_agents",
+  "method_modality": "text_only",
+  "mode": "open",
+  "num_qas": 50,
+  "num_qas_run": 50,
+  "dialog_json": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/dialog/Multi-Scene_Visual_Case_Archive_Assistant_Open.json",
+  "image_root": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image",
+  "run_dir": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/runs/multi_scene_visual_case_archive_assistant_open/20260424_213512_gpt_4_1_nano_gen_agents__text_only",
+  "git_commit": "b24985b9af7b246db9e6e807768083d0acb8c78a",
+  "summary": {
+    "open_count": 50,
+    "overall": {
+      "em": 0.0,
+      "contains_gt": 0.12,
+      "f1": 0.2081725989684734,
+      "bleu": 0.05582400434668731,
+      "bleu_1": 0.14240511663104016,
+      "bleu_2": 0.10035934912159145
+    },
+    "by_x": {
+      "X4": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.13031358885017422,
+        "bleu": 0.03059244225663523,
+        "bleu_1": 0.07090336134453781,
+        "bleu_2": 0.052312140915074336
+      },
+      "X2": {
+        "em": 0.0,
+        "contains_gt": 0.25,
+        "f1": 0.26266513756997656,
+        "bleu": 0.10977665842478875,
+        "bleu_1": 0.1873322046457127,
+        "bleu_2": 0.14387405629520653
+      },
+      "X3": {
+        "em": 0.0,
+        "contains_gt": 0.10526315789473684,
+        "f1": 0.2048961708542937,
+        "bleu": 0.04712150476077669,
+        "bleu_1": 0.14047328286863567,
+        "bleu_2": 0.09625595900151639
+      }
+    },
+    "by_y": {
+      "Y2": {
+        "em": 0.0,
+        "contains_gt": 0.125,
+        "f1": 0.1558134548378451,
+        "bleu": 0.02382148378871118,
+        "bleu_1": 0.09036621058679882,
+        "bleu_2": 0.05338760700461529
+      },
+      "Y3": {
+        "em": 0.0,
+        "contains_gt": 0.09090909090909091,
+        "f1": 0.22954293146928886,
+        "bleu": 0.0850265817231206,
+        "bleu_1": 0.17474915097715685,
+        "bleu_2": 0.11182861850435469
+      },
+      "Y1": {
+        "em": 0.0,
+        "contains_gt": 0.12903225806451613,
+        "f1": 0.2141016149535075,
+        "bleu": 0.053720514453882234,
+        "bleu_1": 0.1443575963260933,
+        "bleu_2": 0.10841134827402414
+      }
+    },
+    "by_cell": {
+      "X4_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.1737514518002323,
+        "bleu": 0.04078992300884698,
+        "bleu_1": 0.09453781512605042,
+        "bleu_2": 0.06974952122009911
+      },
+      "X2_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.3333333333333333,
+        "f1": 0.1391869918699187,
+        "bleu": 0.00785657996820507,
+        "bleu_1": 0.07977207977207976,
+        "bleu_2": 0.022927031292213004
+      },
+      "X3_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.16824242424242422,
+        "bleu": 0.016129774292126347,
+        "bleu_1": 0.13257985257985258,
+        "bleu_2": 0.029580689412577688
+      },
+      "X2_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.2,
+        "f1": 0.3367520249900113,
+        "bleu": 0.17092870549873895,
+        "bleu_1": 0.25186827956989244,
+        "bleu_2": 0.2164422712970026
+      },
+      "X3_Y1": {
+        "em": 0.0,
+        "contains_gt": 0.12903225806451613,
+        "f1": 0.2141016149535075,
+        "bleu": 0.053720514453882234,
+        "bleu_1": 0.1443575963260933,
+        "bleu_2": 0.10841134827402414
+      },
+      "X3_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.15384615384615383,
+        "bleu": 0.02231618068926665,
+        "bleu_1": 0.1,
+        "bleu_2": 0.07453559924999299
+      },
+      "X4_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0,
+        "bleu": 0.0,
+        "bleu_1": 0.0,
+        "bleu_2": 0.0
+      }
+    }
+  },
+  "method_runtime": {
+    "caption_validation_passed": true,
+    "caption_validation_round_count": 57,
+    "method_modality": "text_only",
+    "history_source": "retrieval",
+    "captions_loaded": true,
+    "images_loaded": false,
+    "num_memories": 117,
+    "debug_dir": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/output/multi-scene_visual_case_archive_assistant/gen_agents",
+    "history_turns_after_truncation": 1,
+    "retrieved_round_ids": [
+      "SCENE_S11:R4",
+      "SCENE_S8:R8",
+      "SCENE_S12:R5",
+      "SCENE_S8:R6",
+      "SCENE_S15:R2",
+      "SCENE_S15:R4",
+      "SCENE_S12:R8",
+      "SCENE_S9:R2",
+      "SCENE_S15:R7",
+      "SCENE_S12:R7"
+    ]
+  }
+}

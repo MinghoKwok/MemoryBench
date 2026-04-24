@@ -1,0 +1,130 @@
+{
+  "task_name": "social_chat_memory_test",
+  "model_name": "gpt_4_1_nano",
+  "model_path": "gpt-4.1-nano",
+  "method_name": "full_context_no_visual",
+  "base_method_name": "full_context_no_visual",
+  "method_modality": "",
+  "mode": "mcq",
+  "num_qas": 37,
+  "num_qas_run": 37,
+  "dialog_json": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/dialog/Social_Chat_Memory_Test.json",
+  "image_root": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image",
+  "run_dir": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/Benchmark_Pipeline/runs/mcq_clean_ablation_20260424_full/social_chat_memory_test/20260424_161251_gpt_4_1_nano_full_context_no_visual",
+  "git_commit": "b24985b9af7b246db9e6e807768083d0acb8c78a",
+  "summary": {
+    "open_count": 37,
+    "overall": {
+      "em": 0.27702702702702703,
+      "contains_gt": 0.10810810810810811,
+      "f1": 0.27702702702702703
+    },
+    "by_x": {
+      "X2": {
+        "em": 0.25862068965517243,
+        "contains_gt": 0.06896551724137931,
+        "f1": 0.25862068965517243
+      },
+      "X1": {
+        "em": 0.35,
+        "contains_gt": 0.2,
+        "f1": 0.35
+      },
+      "X3": {
+        "em": 0.5,
+        "contains_gt": 0.5,
+        "f1": 0.5
+      },
+      "X4": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0
+      }
+    },
+    "by_y": {
+      "Y2": {
+        "em": 0.26,
+        "contains_gt": 0.08,
+        "f1": 0.26
+      },
+      "Y3": {
+        "em": 0.20833333333333334,
+        "contains_gt": 0.0,
+        "f1": 0.20833333333333334
+      },
+      "Y1": {
+        "em": 0.4166666666666667,
+        "contains_gt": 0.3333333333333333,
+        "f1": 0.4166666666666667
+      }
+    },
+    "by_cell": {
+      "X2_Y2": {
+        "em": 0.2727272727272727,
+        "contains_gt": 0.09090909090909091,
+        "f1": 0.2727272727272727
+      },
+      "X2_Y3": {
+        "em": 0.25,
+        "contains_gt": 0.0,
+        "f1": 0.25
+      },
+      "X2_Y1": {
+        "em": 0.16666666666666666,
+        "contains_gt": 0.0,
+        "f1": 0.16666666666666666
+      },
+      "X1_Y1": {
+        "em": 0.5,
+        "contains_gt": 0.5,
+        "f1": 0.5
+      },
+      "X1_Y2": {
+        "em": 0.5,
+        "contains_gt": 0.0,
+        "f1": 0.5
+      },
+      "X3_Y1": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
+      },
+      "X3_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0
+      },
+      "X4_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0
+      },
+      "X1_Y3": {
+        "em": 0.125,
+        "contains_gt": 0.0,
+        "f1": 0.125
+      }
+    },
+    "mcq_count": 37,
+    "mcq_valid_rate": 0.918918918918919,
+    "mcq_overall": {
+      "em": 0.27702702702702703,
+      "contains_gt": 0.10810810810810811,
+      "f1": 0.27702702702702703
+    },
+    "mcq_per_position_accuracy": {
+      "A": 0.40540540540540543,
+      "B": 0.35135135135135137,
+      "C": 0.24324324324324326,
+      "D": 0.10810810810810811
+    }
+  },
+  "method_runtime": {
+    "method_modality": "no_visual",
+    "history_source": "full_context",
+    "captions_loaded": false,
+    "images_loaded": false,
+    "history_turns_after_truncation": 106,
+    "history_turns_before_truncation": 106
+  }
+}

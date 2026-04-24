@@ -1,0 +1,133 @@
+{
+  "task": {
+    "name": "brand_memory_test_open",
+    "dataset": {
+      "dialog_json": "data/dialog/Brand_Memory_Test_Open.json",
+      "image_root": "data/image"
+    },
+    "eval": {
+      "mode": "open",
+      "output_json": "output/results_brand_memory_test_open.json",
+      "max_questions": 0
+    }
+  },
+  "dataset": {
+    "dialog_json": "data/dialog/Brand_Memory_Test_Open.json",
+    "image_root": "data/image"
+  },
+  "eval": {
+    "mode": "open",
+    "output_json": "output/results_brand_memory_test_open.json",
+    "max_questions": 0
+  },
+  "model": {
+    "name": "gpt_4_1_nano",
+    "provider": "openai_api",
+    "model": "gpt-4.1-nano",
+    "api_key_env": "OPENAI_API_KEY",
+    "base_url": "https://api.openai.com/v1",
+    "max_new_tokens": 128,
+    "timeout": 90
+  },
+  "method": {
+    "name": "semantic_rag_multimodal",
+    "modality": "multimodal",
+    "retrieval_backend": "dense_multimodal",
+    "top_k": 10,
+    "neighbor_window": 0,
+    "text_embedding_model": "all-MiniLM-L6-v2",
+    "multimodal_embedding_model": "siglip2-base-patch16-384",
+    "text_dense_weight": 0.5,
+    "image_dense_weight": 0.5
+  },
+  "run": {
+    "output_root": "runs",
+    "method_runtime": {
+      "retrieval_backend": "dense_multimodal",
+      "retrieval_corpus": "round_text",
+      "method_modality": "multimodal",
+      "top_k": 10,
+      "neighbor_window": 0,
+      "seed_round_ids": [
+        "BRAND_S6:R2",
+        "BRAND_S3:R1",
+        "BRAND_S3:R2",
+        "BRAND_S27:R1",
+        "BRAND_S40:R1",
+        "BRAND_S10:R1",
+        "BRAND_S34:R1",
+        "BRAND_S1:R1",
+        "BRAND_S38:R1",
+        "BRAND_S18:R1"
+      ],
+      "selected_round_ids": [
+        "BRAND_S6:R2",
+        "BRAND_S3:R1",
+        "BRAND_S3:R2",
+        "BRAND_S27:R1",
+        "BRAND_S40:R1",
+        "BRAND_S10:R1",
+        "BRAND_S34:R1",
+        "BRAND_S1:R1",
+        "BRAND_S38:R1",
+        "BRAND_S18:R1"
+      ],
+      "top_candidates": [
+        {
+          "round_id": "BRAND_S6:R2",
+          "score": 0.27233679726517823,
+          "text_dense_score": 0.5446735945303565,
+          "image_dense_score": 0.0,
+          "indexed_image_count": 0,
+          "best_image_path": ""
+        },
+        {
+          "round_id": "BRAND_S3:R1",
+          "score": 0.2606693075971258,
+          "text_dense_score": 0.4014081596350008,
+          "image_dense_score": 0.1199304555592508,
+          "indexed_image_count": 1,
+          "best_image_path": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image/Brand_Memory_Test/Dunkin_1.png"
+        },
+        {
+          "round_id": "BRAND_S3:R2",
+          "score": 0.2514774575801325,
+          "text_dense_score": 0.502954915160265,
+          "image_dense_score": 0.0,
+          "indexed_image_count": 0,
+          "best_image_path": ""
+        },
+        {
+          "round_id": "BRAND_S27:R1",
+          "score": 0.2497046135429535,
+          "text_dense_score": 0.41383710880367397,
+          "image_dense_score": 0.08557211828223306,
+          "indexed_image_count": 1,
+          "best_image_path": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image/Brand_Memory_Test/Dunkin_4.png"
+        },
+        {
+          "round_id": "BRAND_S40:R1",
+          "score": 0.2319909571040258,
+          "text_dense_score": 0.38350771516128057,
+          "image_dense_score": 0.08047419904677107,
+          "indexed_image_count": 1,
+          "best_image_path": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image/Brand_Memory_Test/Starbucks_5.png"
+        }
+      ],
+      "clue_hit_count": 1,
+      "corpus_entry_count": 72,
+      "text_embedding_model": "all-MiniLM-L6-v2",
+      "multimodal_embedding_model": "siglip2-base-patch16-384",
+      "text_dense_weight": 0.5,
+      "image_dense_weight": 0.5,
+      "caption_text_included": false,
+      "image_embeddings_built": true,
+      "multi_image_indexing_enabled": true,
+      "indexed_image_count": 30,
+      "history_source": "retrieval",
+      "captions_loaded": false,
+      "images_loaded": true,
+      "history_turns_after_truncation": 20
+    }
+  }
+}

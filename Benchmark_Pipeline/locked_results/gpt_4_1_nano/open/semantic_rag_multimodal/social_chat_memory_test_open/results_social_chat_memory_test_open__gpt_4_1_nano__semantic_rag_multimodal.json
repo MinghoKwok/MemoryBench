@@ -1,0 +1,247 @@
+{
+  "task_name": "social_chat_memory_test_open",
+  "model_name": "gpt_4_1_nano",
+  "model_path": "gpt-4.1-nano",
+  "method_name": "semantic_rag_multimodal",
+  "base_method_name": "semantic_rag_multimodal",
+  "method_modality": "multimodal",
+  "mode": "open",
+  "num_qas": 37,
+  "num_qas_run": 37,
+  "dialog_json": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/dialog/Social_Chat_Memory_Test_Open.json",
+  "image_root": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image",
+  "run_dir": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/runs/social_chat_memory_test_open/20260424_193924_gpt_4_1_nano_semantic_rag_multimodal",
+  "git_commit": "b24985b9af7b246db9e6e807768083d0acb8c78a",
+  "summary": {
+    "open_count": 37,
+    "overall": {
+      "em": 0.02702702702702703,
+      "contains_gt": 0.05405405405405406,
+      "f1": 0.2407601734155761,
+      "bleu": 0.05040818054515529,
+      "bleu_1": 0.1703783617734892,
+      "bleu_2": 0.10527517181074683
+    },
+    "by_x": {
+      "X2": {
+        "em": 0.0,
+        "contains_gt": 0.034482758620689655,
+        "f1": 0.2065441096881348,
+        "bleu": 0.049100196131338925,
+        "bleu_1": 0.1453352329682873,
+        "bleu_2": 0.08676797074754752
+      },
+      "X1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.288431351845986,
+        "bleu": 0.02018538328301474,
+        "bleu_1": 0.19428571428571428,
+        "bleu_2": 0.0591868542092499
+      },
+      "X3": {
+        "em": 0.5,
+        "contains_gt": 0.5,
+        "f1": 0.5952380952380952,
+        "bleu": 0.16953594035270128,
+        "bleu_1": 0.5555555555555556,
+        "bleu_2": 0.5404226041727221
+      },
+      "X4": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.2857142857142857,
+        "bleu": 0.0011981952414407235,
+        "bleu_1": 0.006737946999085467,
+        "bleu_2": 0.002130725927060655
+      }
+    },
+    "by_y": {
+      "Y2": {
+        "em": 0.0,
+        "contains_gt": 0.04,
+        "f1": 0.1958258148895851,
+        "bleu": 0.0495864899169084,
+        "bleu_1": 0.12270280039352632,
+        "bleu_2": 0.07920305493914258
+      },
+      "Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.25006123779331885,
+        "bleu": 0.021972988940230392,
+        "bleu_1": 0.18065027325407118,
+        "bleu_2": 0.08359553702156859
+      },
+      "Y1": {
+        "em": 0.16666666666666666,
+        "contains_gt": 0.16666666666666666,
+        "f1": 0.4186856028961292,
+        "bleu": 0.08226708310110889,
+        "bleu_1": 0.3587546227094191,
+        "bleu_2": 0.23558862689827612
+      }
+    },
+    "by_cell": {
+      "X2_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.045454545454545456,
+        "f1": 0.2008843134567796,
+        "bleu": 0.05525545172694113,
+        "bleu_1": 0.1340782250785437,
+        "bleu_2": 0.08623183814572997
+      },
+      "X2_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.22487012719995614,
+        "bleu": 0.020253615553383134,
+        "bleu_1": 0.16978493369063058,
+        "bleu_2": 0.07780764123947621
+      },
+      "X2_Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.22361459203564468,
+        "bleu": 0.04242376253419715,
+        "bleu_1": 0.19528702319661598,
+        "bleu_2": 0.10264671583830463
+      },
+      "X1_Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.42063492063492064,
+        "bleu": 0.02505172249361194,
+        "bleu_1": 0.2833333333333333,
+        "bleu_2": 0.05279580693737142
+      },
+      "X1_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0,
+        "bleu": 0.0,
+        "bleu_1": 0.0,
+        "bleu_2": 0.0
+      },
+      "X3_Y1": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0,
+        "bleu": 0.316227766016838,
+        "bleu_1": 1.0,
+        "bleu_2": 1.0
+      },
+      "X3_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.1904761904761905,
+        "bleu": 0.02284411468856457,
+        "bleu_1": 0.11111111111111109,
+        "bleu_2": 0.08084520834544433
+      },
+      "X4_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.2857142857142857,
+        "bleu": 0.0011981952414407235,
+        "bleu_1": 0.006737946999085467,
+        "bleu_2": 0.002130725927060655
+      },
+      "X1_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.3004434589800443,
+        "bleu": 0.02541173571392491,
+        "bleu_1": 0.20238095238095236,
+        "bleu_2": 0.09517132858575333
+      }
+    }
+  },
+  "method_runtime": {
+    "retrieval_backend": "dense_multimodal",
+    "retrieval_corpus": "round_text",
+    "method_modality": "multimodal",
+    "top_k": 10,
+    "neighbor_window": 0,
+    "seed_round_ids": [
+      "CHAT_S35:R2",
+      "CHAT_S38:R1",
+      "CHAT_S35:R1",
+      "CHAT_S6:R1",
+      "CHAT_S2:R2",
+      "CHAT_S18:R2",
+      "CHAT_S15:R2",
+      "CHAT_S28:R2",
+      "CHAT_S18:R1",
+      "CHAT_S4:R2"
+    ],
+    "selected_round_ids": [
+      "CHAT_S35:R2",
+      "CHAT_S38:R1",
+      "CHAT_S35:R1",
+      "CHAT_S6:R1",
+      "CHAT_S2:R2",
+      "CHAT_S18:R2",
+      "CHAT_S15:R2",
+      "CHAT_S28:R2",
+      "CHAT_S18:R1",
+      "CHAT_S4:R2"
+    ],
+    "top_candidates": [
+      {
+        "round_id": "CHAT_S35:R2",
+        "score": 0.09027617422222675,
+        "text_dense_score": 0.03656703472398569,
+        "image_dense_score": 0.1439853137204678,
+        "indexed_image_count": 1,
+        "best_image_path": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image/Social_Chat_Memory_Test/screenshots/R4_2.png"
+      },
+      {
+        "round_id": "CHAT_S38:R1",
+        "score": 0.08394590116965588,
+        "text_dense_score": 0.018676557317969546,
+        "image_dense_score": 0.1492152450213422,
+        "indexed_image_count": 1,
+        "best_image_path": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image/Social_Chat_Memory_Test/screenshots/R4b_1.png"
+      },
+      {
+        "round_id": "CHAT_S35:R1",
+        "score": 0.08215390228412583,
+        "text_dense_score": 0.01867653128465822,
+        "image_dense_score": 0.14563127328359346,
+        "indexed_image_count": 1,
+        "best_image_path": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image/Social_Chat_Memory_Test/screenshots/R4_1.png"
+      },
+      {
+        "round_id": "CHAT_S6:R1",
+        "score": 0.0761295182120096,
+        "text_dense_score": 0.018676557317969546,
+        "image_dense_score": 0.13358247910604965,
+        "indexed_image_count": 1,
+        "best_image_path": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image/Social_Chat_Memory_Test/screenshots/R1_1.png"
+      },
+      {
+        "round_id": "CHAT_S2:R2",
+        "score": 0.07473515610808074,
+        "text_dense_score": 0.03656703472398569,
+        "image_dense_score": 0.1129032774921758,
+        "indexed_image_count": 1,
+        "best_image_path": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image/Social_Chat_Memory_Test/screenshots/B1_2.png"
+      }
+    ],
+    "clue_hit_count": 3,
+    "corpus_entry_count": 53,
+    "text_embedding_model": "all-MiniLM-L6-v2",
+    "multimodal_embedding_model": "siglip2-base-patch16-384",
+    "text_dense_weight": 0.5,
+    "image_dense_weight": 0.5,
+    "caption_text_included": false,
+    "image_embeddings_built": true,
+    "multi_image_indexing_enabled": true,
+    "indexed_image_count": 43,
+    "history_source": "retrieval",
+    "captions_loaded": false,
+    "images_loaded": true,
+    "history_turns_after_truncation": 20
+  }
+}

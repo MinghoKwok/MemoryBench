@@ -1,0 +1,117 @@
+{
+  "task_name": "home_renovation_interior_design",
+  "model_name": "gpt_4_1_nano",
+  "model_path": "gpt-4.1-nano",
+  "method_name": "question_only",
+  "base_method_name": "question_only",
+  "method_modality": "",
+  "mode": "mcq",
+  "num_qas": 52,
+  "num_qas_run": 52,
+  "dialog_json": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/dialog/Home_Renovation_Interior_Design.json",
+  "image_root": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image",
+  "run_dir": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/runs/mcq_clean_ablation_20260424_full/home_renovation_interior_design/20260424_151701_gpt_4_1_nano_question_only",
+  "git_commit": "b24985b9af7b246db9e6e807768083d0acb8c78a",
+  "summary": {
+    "open_count": 52,
+    "overall": {
+      "em": 0.3317307692307692,
+      "contains_gt": 0.057692307692307696,
+      "f1": 0.3317307692307692
+    },
+    "by_x": {
+      "X4": {
+        "em": 0.375,
+        "contains_gt": 0.0,
+        "f1": 0.375
+      },
+      "X3": {
+        "em": 0.3263888888888889,
+        "contains_gt": 0.05555555555555555,
+        "f1": 0.3263888888888889
+      },
+      "X2": {
+        "em": 0.21428571428571427,
+        "contains_gt": 0.0,
+        "f1": 0.21428571428571427
+      },
+      "X1": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
+      }
+    },
+    "by_y": {
+      "Y2": {
+        "em": 0.2708333333333333,
+        "contains_gt": 0.0,
+        "f1": 0.2708333333333333
+      },
+      "Y1": {
+        "em": 0.358974358974359,
+        "contains_gt": 0.07692307692307693,
+        "f1": 0.358974358974359
+      },
+      "Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0
+      }
+    },
+    "by_cell": {
+      "X4_Y2": {
+        "em": 0.25,
+        "contains_gt": 0.0,
+        "f1": 0.25
+      },
+      "X3_Y2": {
+        "em": 0.35,
+        "contains_gt": 0.0,
+        "f1": 0.35
+      },
+      "X3_Y1": {
+        "em": 0.3225806451612903,
+        "contains_gt": 0.06451612903225806,
+        "f1": 0.3225806451612903
+      },
+      "X2_Y1": {
+        "em": 0.25,
+        "contains_gt": 0.0,
+        "f1": 0.25
+      },
+      "X2_Y2": {
+        "em": 0.2,
+        "contains_gt": 0.0,
+        "f1": 0.2
+      },
+      "X4_Y1": {
+        "em": 0.5,
+        "contains_gt": 0.0,
+        "f1": 0.5
+      },
+      "X4_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0
+      },
+      "X1_Y1": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
+      }
+    },
+    "mcq_count": 52,
+    "mcq_valid_rate": 1.0,
+    "mcq_overall": {
+      "em": 0.3317307692307692,
+      "contains_gt": 0.057692307692307696,
+      "f1": 0.3317307692307692
+    },
+    "mcq_per_position_accuracy": {
+      "A": 0.6730769230769231,
+      "B": 0.2692307692307692,
+      "C": 0.3269230769230769,
+      "D": 0.057692307692307696
+    }
+  }
+}

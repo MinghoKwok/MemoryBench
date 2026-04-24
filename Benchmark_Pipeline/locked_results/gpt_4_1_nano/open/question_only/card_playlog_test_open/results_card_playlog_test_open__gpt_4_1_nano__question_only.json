@@ -1,0 +1,83 @@
+{
+  "task_name": "card_playlog_test_open",
+  "model_name": "gpt_4_1_nano",
+  "model_path": "gpt-4.1-nano",
+  "method_name": "question_only",
+  "base_method_name": "question_only",
+  "method_modality": "",
+  "mode": "open",
+  "num_qas": 48,
+  "num_qas_run": 48,
+  "dialog_json": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/dialog/Card_Playlog_Test_Open.json",
+  "image_root": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image",
+  "run_dir": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/runs/card_playlog_test_open/20260424_161806_gpt_4_1_nano_question_only",
+  "git_commit": "b24985b9af7b246db9e6e807768083d0acb8c78a",
+  "summary": {
+    "open_count": 48,
+    "overall": {
+      "em": 0.375,
+      "contains_gt": 0.375,
+      "f1": 0.375,
+      "bleu": 0.0666854778764596,
+      "bleu_1": 0.375,
+      "bleu_2": 0.11858541225631425,
+      "judge": 0.3958333333333333
+    },
+    "by_x": {
+      "X4": {
+        "em": 0.375,
+        "contains_gt": 0.375,
+        "f1": 0.375,
+        "bleu": 0.0666854778764596,
+        "bleu_1": 0.375,
+        "bleu_2": 0.11858541225631425,
+        "judge": 0.3958333333333333
+      }
+    },
+    "by_y": {
+      "Y3": {
+        "em": 0.10526315789473684,
+        "contains_gt": 0.10526315789473684,
+        "f1": 0.10526315789473684,
+        "bleu": 0.018718730631988662,
+        "bleu_1": 0.10526315789473684,
+        "bleu_2": 0.03328713326493032,
+        "judge": 0.10526315789473684
+      },
+      "Y2": {
+        "em": 0.5517241379310345,
+        "contains_gt": 0.5517241379310345,
+        "f1": 0.5517241379310345,
+        "bleu": 0.09811196745042333,
+        "bleu_1": 0.5517241379310345,
+        "bleu_2": 0.17447049159549682,
+        "judge": 0.5862068965517241
+      }
+    },
+    "by_cell": {
+      "X4_Y3": {
+        "em": 0.10526315789473684,
+        "contains_gt": 0.10526315789473684,
+        "f1": 0.10526315789473684,
+        "bleu": 0.018718730631988662,
+        "bleu_1": 0.10526315789473684,
+        "bleu_2": 0.03328713326493032,
+        "judge": 0.10526315789473684
+      },
+      "X4_Y2": {
+        "em": 0.5517241379310345,
+        "contains_gt": 0.5517241379310345,
+        "f1": 0.5517241379310345,
+        "bleu": 0.09811196745042333,
+        "bleu_1": 0.5517241379310345,
+        "bleu_2": 0.17447049159549682,
+        "judge": 0.5862068965517241
+      }
+    }
+  },
+  "judge": {
+    "enabled": true,
+    "model": "gpt-5.2",
+    "scored_open_rows": 48
+  }
+}

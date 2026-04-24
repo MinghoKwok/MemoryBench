@@ -1,0 +1,76 @@
+{
+  "task_name": "card_playlog_test_open",
+  "model_name": "gpt_4_1_nano",
+  "model_path": "gpt-4.1-nano",
+  "method_name": "a_mem",
+  "base_method_name": "a_mem",
+  "method_modality": "",
+  "mode": "open",
+  "num_qas": 48,
+  "num_qas_run": 48,
+  "dialog_json": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/dialog/Card_Playlog_Test_Open.json",
+  "image_root": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image",
+  "run_dir": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/runs/card_playlog_test_open/20260424_180243_gpt_4_1_nano_a_mem",
+  "git_commit": "b24985b9af7b246db9e6e807768083d0acb8c78a",
+  "summary": {
+    "open_count": 48,
+    "overall": {
+      "em": 0.0,
+      "contains_gt": 0.10416666666666667,
+      "f1": 0.020508000771158667,
+      "bleu": 0.002635798855394984,
+      "bleu_1": 0.011574074074074073,
+      "bleu_2": 0.00392907875512079
+    },
+    "by_x": {
+      "X4": {
+        "em": 0.0,
+        "contains_gt": 0.10416666666666667,
+        "f1": 0.020508000771158667,
+        "bleu": 0.002635798855394984,
+        "bleu_1": 0.011574074074074073,
+        "bleu_2": 0.00392907875512079
+      }
+    },
+    "by_y": {
+      "Y3": {
+        "em": 0.0,
+        "contains_gt": 0.2631578947368421,
+        "f1": 0.05180968615871663,
+        "bleu": 0.006658860266261012,
+        "bleu_1": 0.029239766081871347,
+        "bleu_2": 0.009926093697147257
+      },
+      "Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0,
+        "bleu": 0.0,
+        "bleu_1": 0.0,
+        "bleu_2": 0.0
+      }
+    },
+    "by_cell": {
+      "X4_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.2631578947368421,
+        "f1": 0.05180968615871663,
+        "bleu": 0.006658860266261012,
+        "bleu_1": 0.029239766081871347,
+        "bleu_2": 0.009926093697147257
+      },
+      "X4_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0,
+        "bleu": 0.0,
+        "bleu_1": 0.0,
+        "bleu_2": 0.0
+      }
+    }
+  },
+  "method_runtime": {
+    "num_memories": 30,
+    "debug_dir": "/Users/qingyuejiao/Desktop/MemoryBench/output/card_playlog_test_open/a_mem"
+  }
+}

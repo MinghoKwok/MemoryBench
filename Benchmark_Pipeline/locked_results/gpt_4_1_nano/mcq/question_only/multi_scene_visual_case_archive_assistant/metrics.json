@@ -1,0 +1,107 @@
+{
+  "task_name": "multi_scene_visual_case_archive_assistant",
+  "model_name": "gpt_4_1_nano",
+  "model_path": "gpt-4.1-nano",
+  "method_name": "question_only",
+  "base_method_name": "question_only",
+  "method_modality": "",
+  "mode": "mcq",
+  "num_qas": 50,
+  "num_qas_run": 50,
+  "dialog_json": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/dialog/Multi-Scene_Visual_Case_Archive_Assistant.json",
+  "image_root": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image",
+  "run_dir": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/runs/mcq_clean_ablation_20260424_full/multi_scene_visual_case_archive_assistant/20260424_152121_gpt_4_1_nano_question_only",
+  "git_commit": "b24985b9af7b246db9e6e807768083d0acb8c78a",
+  "summary": {
+    "open_count": 50,
+    "overall": {
+      "em": 0.36,
+      "contains_gt": 0.1,
+      "f1": 0.36
+    },
+    "by_x": {
+      "X4": {
+        "em": 0.75,
+        "contains_gt": 0.75,
+        "f1": 0.75
+      },
+      "X2": {
+        "em": 0.3125,
+        "contains_gt": 0.0,
+        "f1": 0.3125
+      },
+      "X3": {
+        "em": 0.32894736842105265,
+        "contains_gt": 0.05263157894736842,
+        "f1": 0.32894736842105265
+      }
+    },
+    "by_y": {
+      "Y2": {
+        "em": 0.53125,
+        "contains_gt": 0.375,
+        "f1": 0.53125
+      },
+      "Y3": {
+        "em": 0.29545454545454547,
+        "contains_gt": 0.0,
+        "f1": 0.29545454545454547
+      },
+      "Y1": {
+        "em": 0.3387096774193548,
+        "contains_gt": 0.06451612903225806,
+        "f1": 0.3387096774193548
+      }
+    },
+    "by_cell": {
+      "X4_Y2": {
+        "em": 0.9166666666666666,
+        "contains_gt": 1.0,
+        "f1": 0.9166666666666666
+      },
+      "X2_Y2": {
+        "em": 0.4166666666666667,
+        "contains_gt": 0.0,
+        "f1": 0.4166666666666667
+      },
+      "X3_Y3": {
+        "em": 0.35,
+        "contains_gt": 0.0,
+        "f1": 0.35
+      },
+      "X2_Y3": {
+        "em": 0.25,
+        "contains_gt": 0.0,
+        "f1": 0.25
+      },
+      "X3_Y1": {
+        "em": 0.3387096774193548,
+        "contains_gt": 0.06451612903225806,
+        "f1": 0.3387096774193548
+      },
+      "X3_Y2": {
+        "em": 0.125,
+        "contains_gt": 0.0,
+        "f1": 0.125
+      },
+      "X4_Y3": {
+        "em": 0.25,
+        "contains_gt": 0.0,
+        "f1": 0.25
+      }
+    },
+    "mcq_count": 50,
+    "mcq_valid_rate": 1.0,
+    "mcq_overall": {
+      "em": 0.36,
+      "contains_gt": 0.1,
+      "f1": 0.36
+    },
+    "mcq_per_position_accuracy": {
+      "A": 0.76,
+      "B": 0.18,
+      "C": 0.4,
+      "D": 0.1
+    }
+  }
+}

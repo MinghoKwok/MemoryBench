@@ -1,0 +1,199 @@
+{
+  "task_name": "cartoon_entertainment_companion_open",
+  "model_name": "gpt_4_1_nano",
+  "model_path": "gpt-4.1-nano",
+  "method_name": "full_context_multimodal",
+  "base_method_name": "full_context_multimodal",
+  "method_modality": "",
+  "mode": "open",
+  "num_qas": 76,
+  "num_qas_run": 76,
+  "dialog_json": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/dialog/Cartoon_Entertainment_Companion_Open.json",
+  "image_root": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image",
+  "run_dir": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/runs/cartoon_entertainment_companion_open/20260424_170532_gpt_4_1_nano_full_context_multimodal",
+  "git_commit": "b24985b9af7b246db9e6e807768083d0acb8c78a",
+  "summary": {
+    "open_count": 76,
+    "overall": {
+      "em": 0.0,
+      "contains_gt": 0.11842105263157894,
+      "f1": 0.24924379727607615,
+      "bleu": 0.051104923387834046,
+      "bleu_1": 0.18160406247346142,
+      "bleu_2": 0.11163958404519952,
+      "judge": 0.4276315789473684
+    },
+    "by_x": {
+      "X3": {
+        "em": 0.0,
+        "contains_gt": 0.16666666666666666,
+        "f1": 0.17058707129519152,
+        "bleu": 0.022007271181946085,
+        "bleu_1": 0.1113601766590897,
+        "bleu_2": 0.058417642579124546,
+        "judge": 0.4166666666666667
+      },
+      "X4": {
+        "em": 0.0,
+        "contains_gt": 0.038461538461538464,
+        "f1": 0.2669396845129384,
+        "bleu": 0.06407001733897219,
+        "bleu_1": 0.21106902244554065,
+        "bleu_2": 0.1297198603839756,
+        "judge": 0.34615384615384615
+      },
+      "X2": {
+        "em": 0.0,
+        "contains_gt": 0.1,
+        "f1": 0.3645755633255633,
+        "bleu": 0.08004900063225032,
+        "bleu_1": 0.256996891996892,
+        "bleu_2": 0.1675908150940354,
+        "judge": 0.5
+      },
+      "X1": {
+        "em": 0.0,
+        "contains_gt": 0.1875,
+        "f1": 0.26639071570657247,
+        "bleu": 0.05559307574830634,
+        "bleu_1": 0.19196881278824612,
+        "bleu_2": 0.12712252778827848,
+        "judge": 0.53125
+      }
+    },
+    "by_y": {
+      "Y1": {
+        "em": 0.0,
+        "contains_gt": 0.06060606060606061,
+        "f1": 0.15852206117661624,
+        "bleu": 0.029340071239194996,
+        "bleu_1": 0.11101824045906818,
+        "bleu_2": 0.055941682452512555,
+        "judge": 0.30303030303030304
+      },
+      "Y2": {
+        "em": 0.0,
+        "contains_gt": 0.18421052631578946,
+        "f1": 0.3367827480110745,
+        "bleu": 0.07418996915426936,
+        "bleu_1": 0.2515910319378945,
+        "bleu_2": 0.16559909135448583,
+        "judge": 0.5526315789473685
+      },
+      "Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.18271122994652406,
+        "bleu": 0.019306599743943453,
+        "bleu_1": 0.11556951983876534,
+        "bleu_2": 0.06915347900635749,
+        "judge": 0.3
+      }
+    },
+    "by_cell": {
+      "X3_Y1": {
+        "em": 0.0,
+        "contains_gt": 0.08333333333333333,
+        "f1": 0.05804449174014391,
+        "bleu": 0.005856790473831006,
+        "bleu_1": 0.03294082125603865,
+        "bleu_2": 0.012716200188930568,
+        "judge": 0.3333333333333333
+      },
+      "X4_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.40671917290016346,
+        "bleu": 0.08884118709884739,
+        "bleu_1": 0.329830352583389,
+        "bleu_2": 0.20669289648658268,
+        "judge": 0.5384615384615384
+      },
+      "X2_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.2,
+        "f1": 0.2973717948717949,
+        "bleu": 0.1084941315809076,
+        "bleu_1": 0.231010101010101,
+        "bleu_2": 0.1892893333871766,
+        "judge": 0.4
+      },
+      "X3_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.25,
+        "f1": 0.2831296508502391,
+        "bleu": 0.03815775189006116,
+        "bleu_1": 0.18977953206214077,
+        "bleu_2": 0.10411908496931853,
+        "judge": 0.5
+      },
+      "X4_Y1": {
+        "em": 0.0,
+        "contains_gt": 0.08333333333333333,
+        "f1": 0.1301811215604319,
+        "bleu": 0.04257375154402174,
+        "bleu_1": 0.1,
+        "bleu_2": 0.05714239297148255,
+        "judge": 0.16666666666666666
+      },
+      "X1_Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.2034060000811919,
+        "bleu": 0.032259124565309195,
+        "bleu_1": 0.16334841628959276,
+        "bleu_2": 0.0695777297508715,
+        "judge": 0.25
+      },
+      "X1_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.375,
+        "f1": 0.32824754901960784,
+        "bleu": 0.08298996437399342,
+        "bleu_1": 0.23003246753246753,
+        "bleu_2": 0.17623526632214775,
+        "judge": 0.75
+      },
+      "X2_Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.43177933177933175,
+        "bleu": 0.05160386968359303,
+        "bleu_1": 0.282983682983683,
+        "bleu_2": 0.1458922968008942,
+        "judge": 0.6
+      },
+      "X1_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.20566176470588235,
+        "bleu": 0.024133249679929313,
+        "bleu_1": 0.14446189979845667,
+        "bleu_2": 0.08644184875794686,
+        "judge": 0.375
+      },
+      "X4_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0909090909090909,
+        "bleu": 0.0,
+        "bleu_1": 0.0,
+        "bleu_2": 0.0,
+        "judge": 0.0
+      }
+    }
+  },
+  "method_runtime": {
+    "method_modality": "multimodal",
+    "history_source": "full_context",
+    "captions_loaded": false,
+    "images_loaded": true,
+    "history_turns_after_truncation": 598,
+    "history_turns_before_truncation": 598
+  },
+  "judge": {
+    "enabled": true,
+    "model": "gpt-5.2",
+    "scored_open_rows": 76
+  }
+}

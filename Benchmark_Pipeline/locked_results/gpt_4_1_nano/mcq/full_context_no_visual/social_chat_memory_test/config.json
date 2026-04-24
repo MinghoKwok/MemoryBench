@@ -1,0 +1,47 @@
+{
+  "task": {
+    "name": "social_chat_memory_test",
+    "dataset": {
+      "dialog_json": "data/dialog/Social_Chat_Memory_Test.json",
+      "image_root": "data/image"
+    },
+    "eval": {
+      "mode": "open",
+      "output_json": "output/results_social_chat_memory_test.json",
+      "max_questions": 0
+    }
+  },
+  "dataset": {
+    "dialog_json": "data/dialog/Social_Chat_Memory_Test.json",
+    "image_root": "data/image"
+  },
+  "eval": {
+    "mode": "open",
+    "output_json": "output/results_social_chat_memory_test.json",
+    "max_questions": 0
+  },
+  "model": {
+    "name": "gpt_4_1_nano",
+    "provider": "openai_api",
+    "model": "gpt-4.1-nano",
+    "api_key_env": "OPENAI_API_KEY",
+    "base_url": "https://api.openai.com/v1",
+    "max_new_tokens": 128,
+    "timeout": 90
+  },
+  "method": {
+    "name": "full_context_no_visual",
+    "context_token_limit": 128000
+  },
+  "run": {
+    "output_root": "Benchmark_Pipeline/runs/mcq_clean_ablation_20260424_full",
+    "method_runtime": {
+      "method_modality": "no_visual",
+      "history_source": "full_context",
+      "captions_loaded": false,
+      "images_loaded": false,
+      "history_turns_after_truncation": 106,
+      "history_turns_before_truncation": 106
+    }
+  }
+}

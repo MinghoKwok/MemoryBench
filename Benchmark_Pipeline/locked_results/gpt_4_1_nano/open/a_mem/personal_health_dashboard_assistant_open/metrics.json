@@ -1,0 +1,124 @@
+{
+  "task_name": "personal_health_dashboard_assistant_open",
+  "model_name": "gpt_4_1_nano",
+  "model_path": "gpt-4.1-nano",
+  "method_name": "a_mem",
+  "base_method_name": "a_mem",
+  "method_modality": "",
+  "mode": "open",
+  "num_qas": 51,
+  "num_qas_run": 51,
+  "dialog_json": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/dialog/Personal_Health_Dashboard_Assistant_Open.json",
+  "image_root": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image",
+  "run_dir": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/runs/personal_health_dashboard_assistant_open/20260424_185300_gpt_4_1_nano_a_mem",
+  "git_commit": "b24985b9af7b246db9e6e807768083d0acb8c78a",
+  "summary": {
+    "open_count": 51,
+    "overall": {
+      "em": 0.09803921568627451,
+      "contains_gt": 0.09803921568627451,
+      "f1": 0.2253746797864445,
+      "bleu": 0.11764185377217534,
+      "bleu_1": 0.20861159611789698,
+      "bleu_2": 0.15413647529019456
+    },
+    "by_x": {
+      "X4": {
+        "em": 0.11363636363636363,
+        "contains_gt": 0.11363636363636363,
+        "f1": 0.22320526695526696,
+        "bleu": 0.11471626570786982,
+        "bleu_1": 0.20551612902550298,
+        "bleu_2": 0.1558264689068384
+      },
+      "X3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0,
+        "bleu": 0.0,
+        "bleu_1": 0.0,
+        "bleu_2": 0.0
+      },
+      "X1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.5576923076923077,
+        "bleu": 0.31740628374489016,
+        "bleu_1": 0.532160574963538,
+        "bleu_2": 0.334865202633011
+      }
+    },
+    "by_y": {
+      "Y2": {
+        "em": 0.11363636363636363,
+        "contains_gt": 0.11363636363636363,
+        "f1": 0.20016233766233765,
+        "bleu": 0.11060755440270553,
+        "bleu_1": 0.190715838695849,
+        "bleu_2": 0.1498547539103927
+      },
+      "Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.4478276353276353,
+        "bleu": 0.1888336914436498,
+        "bleu_1": 0.37461574989923163,
+        "bleu_2": 0.21122517795710713
+      },
+      "Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0,
+        "bleu": 0.0,
+        "bleu_1": 0.0,
+        "bleu_2": 0.0
+      }
+    },
+    "by_cell": {
+      "X4_Y2": {
+        "em": 0.125,
+        "contains_gt": 0.125,
+        "f1": 0.22017857142857142,
+        "bleu": 0.1216683098429761,
+        "bleu_1": 0.2097874225654339,
+        "bleu_2": 0.164840229301432
+      },
+      "X4_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.2534722222222222,
+        "bleu": 0.0451958243568071,
+        "bleu_1": 0.16280319362619391,
+        "bleu_2": 0.06568886496090245
+      },
+      "X3_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0,
+        "bleu": 0.0,
+        "bleu_1": 0.0,
+        "bleu_2": 0.0
+      },
+      "X1_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.8365384615384615,
+        "bleu": 0.4761094256173352,
+        "bleu_1": 0.798240862445307,
+        "bleu_2": 0.5022978039495165
+      },
+      "X1_Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0,
+        "bleu": 0.0,
+        "bleu_1": 0.0,
+        "bleu_2": 0.0
+      }
+    }
+  },
+  "method_runtime": {
+    "num_memories": 97,
+    "debug_dir": "/Users/qingyuejiao/Desktop/MemoryBench/output/personal_health_dashboard_assistant/a_mem"
+  }
+}

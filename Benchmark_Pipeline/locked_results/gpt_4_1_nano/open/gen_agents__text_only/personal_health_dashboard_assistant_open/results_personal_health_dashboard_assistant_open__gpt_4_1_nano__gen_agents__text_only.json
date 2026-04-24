@@ -1,0 +1,141 @@
+{
+  "task_name": "personal_health_dashboard_assistant_open",
+  "model_name": "gpt_4_1_nano",
+  "model_path": "gpt-4.1-nano",
+  "method_name": "gen_agents__text_only",
+  "base_method_name": "gen_agents",
+  "method_modality": "text_only",
+  "mode": "open",
+  "num_qas": 51,
+  "num_qas_run": 51,
+  "dialog_json": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/dialog/Personal_Health_Dashboard_Assistant_Open.json",
+  "image_root": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image",
+  "run_dir": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/runs/personal_health_dashboard_assistant_open/20260424_214053_gpt_4_1_nano_gen_agents__text_only",
+  "git_commit": "b24985b9af7b246db9e6e807768083d0acb8c78a",
+  "summary": {
+    "open_count": 51,
+    "overall": {
+      "em": 0.0,
+      "contains_gt": 0.19607843137254902,
+      "f1": 0.13160999021362524,
+      "bleu": 0.03358418082084004,
+      "bleu_1": 0.08520490384535256,
+      "bleu_2": 0.0619035609298502
+    },
+    "by_x": {
+      "X4": {
+        "em": 0.0,
+        "contains_gt": 0.20454545454545456,
+        "f1": 0.1264508518876739,
+        "bleu": 0.03437185140306323,
+        "bleu_1": 0.08073910916326563,
+        "bleu_2": 0.05951617414300543
+      },
+      "X3": {
+        "em": 0.0,
+        "contains_gt": 0.25,
+        "f1": 0.07692307692307693,
+        "bleu": 0.009965892820670038,
+        "bleu_1": 0.045454545454545456,
+        "bleu_2": 0.03370999312316211
+      },
+      "X1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.28019323671497587,
+        "bleu": 0.05352272961512661,
+        "bleu_1": 0.2037037037037037,
+        "bleu_2": 0.13450999087915763
+      }
+    },
+    "by_y": {
+      "Y2": {
+        "em": 0.0,
+        "contains_gt": 0.20454545454545456,
+        "f1": 0.12123739526756767,
+        "bleu": 0.03212415051491109,
+        "bleu_1": 0.07770569919205661,
+        "bleu_2": 0.05777986943605589
+      },
+      "Y3": {
+        "em": 0.0,
+        "contains_gt": 0.16666666666666666,
+        "f1": 0.20062517760727477,
+        "bleu": 0.04774740157999776,
+        "bleu_1": 0.1358813700918964,
+        "bleu_2": 0.09820030876794256
+      },
+      "Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.1739130434782609,
+        "bleu": 0.01284618972676772,
+        "bleu_1": 0.11111111111111109,
+        "bleu_2": 0.02556549962824567
+      }
+    },
+    "by_cell": {
+      "X4_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.2,
+        "f1": 0.12566882710201677,
+        "bleu": 0.034339976284335195,
+        "bleu_1": 0.08093081456580774,
+        "bleu_2": 0.06018685706734527
+      },
+      "X4_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.25,
+        "f1": 0.13427109974424553,
+        "bleu": 0.03469060259034361,
+        "bleu_1": 0.0788220551378446,
+        "bleu_2": 0.05280934489960703
+      },
+      "X3_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.25,
+        "f1": 0.07692307692307693,
+        "bleu": 0.009965892820670038,
+        "bleu_1": 0.045454545454545456,
+        "bleu_2": 0.03370999312316211
+      },
+      "X1_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.3333333333333333,
+        "bleu": 0.07386099955930606,
+        "bleu_1": 0.25,
+        "bleu_2": 0.1889822365046136
+      },
+      "X1_Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.1739130434782609,
+        "bleu": 0.01284618972676772,
+        "bleu_1": 0.11111111111111109,
+        "bleu_2": 0.02556549962824567
+      }
+    }
+  },
+  "method_runtime": {
+    "caption_validation_passed": true,
+    "caption_validation_round_count": 62,
+    "method_modality": "text_only",
+    "history_source": "retrieval",
+    "captions_loaded": true,
+    "images_loaded": false,
+    "num_memories": 97,
+    "debug_dir": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/output/personal_health_dashboard_assistant/gen_agents",
+    "history_turns_after_truncation": 1,
+    "retrieved_round_ids": [
+      "HEALTH_S10:R6",
+      "HEALTH_S10:R1",
+      "HEALTH_S11:R1",
+      "HEALTH_S7:R9",
+      "HEALTH_S11:R7",
+      "HEALTH_S12:R7",
+      "HEALTH_S9:R6",
+      "HEALTH_S12:R2"
+    ]
+  }
+}

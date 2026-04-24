@@ -1,0 +1,147 @@
+{
+  "task_name": "personal_health_dashboard_assistant_open",
+  "model_name": "gpt_4_1_nano",
+  "model_path": "gpt-4.1-nano",
+  "method_name": "full_context_text_only",
+  "base_method_name": "full_context_text_only",
+  "method_modality": "",
+  "mode": "open",
+  "num_qas": 51,
+  "num_qas_run": 51,
+  "dialog_json": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/dialog/Personal_Health_Dashboard_Assistant_Open.json",
+  "image_root": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image",
+  "run_dir": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/runs/personal_health_dashboard_assistant_open/20260424_164158_gpt_4_1_nano_full_context_text_only",
+  "git_commit": "b24985b9af7b246db9e6e807768083d0acb8c78a",
+  "summary": {
+    "open_count": 51,
+    "overall": {
+      "em": 0.058823529411764705,
+      "contains_gt": 0.17647058823529413,
+      "f1": 0.19881975674195787,
+      "bleu": 0.08073075314432455,
+      "bleu_1": 0.16439715797132676,
+      "bleu_2": 0.13040250161174707,
+      "judge": 0.2549019607843137
+    },
+    "by_x": {
+      "X4": {
+        "em": 0.06818181818181818,
+        "contains_gt": 0.1590909090909091,
+        "f1": 0.18796488010197687,
+        "bleu": 0.0828201235941443,
+        "bleu_1": 0.16212868570823116,
+        "bleu_2": 0.12959150798677,
+        "judge": 0.19318181818181818
+      },
+      "X3": {
+        "em": 0.0,
+        "contains_gt": 0.5,
+        "f1": 0.15384615384615385,
+        "bleu": 0.019931785641340075,
+        "bleu_1": 0.09090909090909091,
+        "bleu_2": 0.06741998624632423,
+        "judge": 0.5
+      },
+      "X1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.41798941798941797,
+        "bleu": 0.13115194321761428,
+        "bleu_1": 0.2956521739130435,
+        "bleu_2": 0.22627376193197463,
+        "judge": 0.8333333333333334
+      }
+    },
+    "by_y": {
+      "Y2": {
+        "em": 0.06818181818181818,
+        "contains_gt": 0.20454545454545456,
+        "f1": 0.1906184765055733,
+        "bleu": 0.08340901298925338,
+        "bleu_1": 0.16324537205219022,
+        "bleu_2": 0.13364224859233007,
+        "judge": 0.20454545454545456
+      },
+      "Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.26828958078958076,
+        "bleu": 0.07290374822741917,
+        "bleu_1": 0.18575036075036075,
+        "bleu_2": 0.12506459580406484,
+        "judge": 0.5833333333333334
+      },
+      "Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.14285714285714285,
+        "bleu": 0.009849349468888718,
+        "bleu_1": 0.08695652173913045,
+        "bleu_2": 0.01988106931218861,
+        "judge": 0.5
+      }
+    },
+    "by_cell": {
+      "X4_Y2": {
+        "em": 0.075,
+        "contains_gt": 0.175,
+        "f1": 0.19429570877151522,
+        "bleu": 0.08975673572404472,
+        "bleu_1": 0.17047900016650017,
+        "bleu_2": 0.14026447482693066,
+        "judge": 0.175
+      },
+      "X4_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.12465659340659341,
+        "bleu": 0.013454002295140224,
+        "bleu_1": 0.07862554112554113,
+        "bleu_2": 0.02286183958516344,
+        "judge": 0.375
+      },
+      "X3_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.5,
+        "f1": 0.15384615384615385,
+        "bleu": 0.019931785641340075,
+        "bleu_1": 0.09090909090909091,
+        "bleu_2": 0.06741998624632423,
+        "judge": 0.5
+      },
+      "X1_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.5555555555555556,
+        "bleu": 0.19180324009197708,
+        "bleu_1": 0.4,
+        "bleu_2": 0.3294701082418676,
+        "judge": 1.0
+      },
+      "X1_Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.14285714285714285,
+        "bleu": 0.009849349468888718,
+        "bleu_1": 0.08695652173913045,
+        "bleu_2": 0.01988106931218861,
+        "judge": 0.5
+      }
+    }
+  },
+  "method_runtime": {
+    "caption_validation_passed": true,
+    "caption_validation_round_count": 62,
+    "method_modality": "text_only",
+    "history_source": "full_context",
+    "captions_loaded": true,
+    "images_loaded": false,
+    "history_turns_after_truncation": 194,
+    "history_turns_before_truncation": 194
+  },
+  "judge": {
+    "enabled": true,
+    "model": "gpt-5.2",
+    "scored_open_rows": 51
+  }
+}

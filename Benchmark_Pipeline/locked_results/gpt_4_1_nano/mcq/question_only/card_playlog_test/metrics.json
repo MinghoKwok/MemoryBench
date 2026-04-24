@@ -1,0 +1,67 @@
+{
+  "task_name": "card_playlog_test",
+  "model_name": "gpt_4_1_nano",
+  "model_path": "gpt-4.1-nano",
+  "method_name": "question_only",
+  "base_method_name": "question_only",
+  "method_modality": "",
+  "mode": "mcq",
+  "num_qas": 48,
+  "num_qas_run": 48,
+  "dialog_json": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/dialog/Card_Playlog_Test.json",
+  "image_root": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image",
+  "run_dir": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/runs/mcq_clean_ablation_20260424_full/card_playlog_test/20260424_150601_gpt_4_1_nano_question_only",
+  "git_commit": "b24985b9af7b246db9e6e807768083d0acb8c78a",
+  "summary": {
+    "open_count": 48,
+    "overall": {
+      "em": 0.234375,
+      "contains_gt": 0.0,
+      "f1": 0.234375
+    },
+    "by_x": {
+      "X4": {
+        "em": 0.234375,
+        "contains_gt": 0.0,
+        "f1": 0.234375
+      }
+    },
+    "by_y": {
+      "Y3": {
+        "em": 0.14473684210526316,
+        "contains_gt": 0.0,
+        "f1": 0.14473684210526316
+      },
+      "Y2": {
+        "em": 0.29310344827586204,
+        "contains_gt": 0.0,
+        "f1": 0.29310344827586204
+      }
+    },
+    "by_cell": {
+      "X4_Y3": {
+        "em": 0.14473684210526316,
+        "contains_gt": 0.0,
+        "f1": 0.14473684210526316
+      },
+      "X4_Y2": {
+        "em": 0.29310344827586204,
+        "contains_gt": 0.0,
+        "f1": 0.29310344827586204
+      }
+    },
+    "mcq_count": 48,
+    "mcq_valid_rate": 1.0,
+    "mcq_overall": {
+      "em": 0.234375,
+      "contains_gt": 0.0,
+      "f1": 0.234375
+    },
+    "mcq_per_position_accuracy": {
+      "A": 0.4375,
+      "B": 0.14583333333333334,
+      "C": 0.3541666666666667,
+      "D": 0.0
+    }
+  }
+}

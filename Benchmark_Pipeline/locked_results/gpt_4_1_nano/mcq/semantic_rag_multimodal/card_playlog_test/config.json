@@ -1,0 +1,133 @@
+{
+  "task": {
+    "name": "card_playlog_test",
+    "dataset": {
+      "dialog_json": "data/dialog/Card_Playlog_Test.json",
+      "image_root": "data/image"
+    },
+    "eval": {
+      "output_json": "output/results_card_playlog_test.json",
+      "mode": "mcq",
+      "max_questions": 0
+    }
+  },
+  "dataset": {
+    "dialog_json": "data/dialog/Card_Playlog_Test.json",
+    "image_root": "data/image"
+  },
+  "eval": {
+    "output_json": "output/results_card_playlog_test.json",
+    "mode": "mcq",
+    "max_questions": 0
+  },
+  "model": {
+    "name": "gpt_4_1_nano",
+    "provider": "openai_api",
+    "model": "gpt-4.1-nano",
+    "api_key_env": "OPENAI_API_KEY",
+    "base_url": "https://api.openai.com/v1",
+    "max_new_tokens": 128,
+    "timeout": 90
+  },
+  "method": {
+    "name": "semantic_rag_multimodal",
+    "modality": "multimodal",
+    "retrieval_backend": "dense_multimodal",
+    "top_k": 10,
+    "neighbor_window": 0,
+    "text_embedding_model": "all-MiniLM-L6-v2",
+    "multimodal_embedding_model": "siglip2-base-patch16-384",
+    "text_dense_weight": 0.5,
+    "image_dense_weight": 0.5
+  },
+  "run": {
+    "output_root": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/runs",
+    "method_runtime": {
+      "retrieval_backend": "dense_multimodal",
+      "retrieval_corpus": "round_text",
+      "method_modality": "multimodal",
+      "top_k": 10,
+      "neighbor_window": 0,
+      "seed_round_ids": [
+        "PLAY_S1:R1",
+        "PLAY_S3:R1",
+        "PLAY_S2:R1",
+        "PLAY_S4:R1",
+        "PLAY_S3:R3",
+        "PLAY_S4:R6",
+        "PLAY_S4:R5",
+        "PLAY_S4:R3",
+        "PLAY_S2:R3",
+        "PLAY_S3:R6"
+      ],
+      "selected_round_ids": [
+        "PLAY_S1:R1",
+        "PLAY_S3:R1",
+        "PLAY_S2:R1",
+        "PLAY_S4:R1",
+        "PLAY_S3:R3",
+        "PLAY_S4:R6",
+        "PLAY_S4:R5",
+        "PLAY_S4:R3",
+        "PLAY_S2:R3",
+        "PLAY_S3:R6"
+      ],
+      "top_candidates": [
+        {
+          "round_id": "PLAY_S1:R1",
+          "score": 0.351890153612686,
+          "text_dense_score": 0.5804199306938046,
+          "image_dense_score": 0.12336037653156742,
+          "indexed_image_count": 1,
+          "best_image_path": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image/Card_Playlog_Test/uno_44/state_0000.jpg"
+        },
+        {
+          "round_id": "PLAY_S3:R1",
+          "score": 0.33250810825518873,
+          "text_dense_score": 0.5513922318256589,
+          "image_dense_score": 0.11362398468471852,
+          "indexed_image_count": 1,
+          "best_image_path": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image/Card_Playlog_Test/uno_44/state_0002.jpg"
+        },
+        {
+          "round_id": "PLAY_S2:R1",
+          "score": 0.3292489063529285,
+          "text_dense_score": 0.5431649007827428,
+          "image_dense_score": 0.11533291192311428,
+          "indexed_image_count": 1,
+          "best_image_path": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image/Card_Playlog_Test/uno_44/state_0001.jpg"
+        },
+        {
+          "round_id": "PLAY_S4:R1",
+          "score": 0.3183630301813312,
+          "text_dense_score": 0.5212187261575336,
+          "image_dense_score": 0.1155073342051288,
+          "indexed_image_count": 1,
+          "best_image_path": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image/Card_Playlog_Test/uno_44/state_0003.jpg"
+        },
+        {
+          "round_id": "PLAY_S3:R3",
+          "score": 0.3035416643394456,
+          "text_dense_score": 0.48129261820785096,
+          "image_dense_score": 0.12579071047104035,
+          "indexed_image_count": 1,
+          "best_image_path": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image/Card_Playlog_Test/uno_44/state_0010.jpg"
+        }
+      ],
+      "clue_hit_count": 1,
+      "corpus_entry_count": 30,
+      "text_embedding_model": "all-MiniLM-L6-v2",
+      "multimodal_embedding_model": "siglip2-base-patch16-384",
+      "text_dense_weight": 0.5,
+      "image_dense_weight": 0.5,
+      "caption_text_included": false,
+      "image_embeddings_built": true,
+      "multi_image_indexing_enabled": true,
+      "indexed_image_count": 30,
+      "history_source": "retrieval",
+      "captions_loaded": false,
+      "images_loaded": true,
+      "history_turns_after_truncation": 20
+    }
+  }
+}

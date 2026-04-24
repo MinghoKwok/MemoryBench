@@ -1,0 +1,145 @@
+{
+  "task_name": "personal_health_dashboard_assistant_open",
+  "model_name": "gpt_4_1_nano",
+  "model_path": "gpt-4.1-nano",
+  "method_name": "full_context_no_visual",
+  "base_method_name": "full_context_no_visual",
+  "method_modality": "",
+  "mode": "open",
+  "num_qas": 51,
+  "num_qas_run": 51,
+  "dialog_json": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/dialog/Personal_Health_Dashboard_Assistant_Open.json",
+  "image_root": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image",
+  "run_dir": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/runs/personal_health_dashboard_assistant_open/20260424_163205_gpt_4_1_nano_full_context_no_visual",
+  "git_commit": "b24985b9af7b246db9e6e807768083d0acb8c78a",
+  "summary": {
+    "open_count": 51,
+    "overall": {
+      "em": 0.0784313725490196,
+      "contains_gt": 0.17647058823529413,
+      "f1": 0.1885583921665794,
+      "bleu": 0.07743004031445344,
+      "bleu_1": 0.16015609739287204,
+      "bleu_2": 0.12486570989384098,
+      "judge": 0.20588235294117646
+    },
+    "by_x": {
+      "X4": {
+        "em": 0.09090909090909091,
+        "contains_gt": 0.18181818181818182,
+        "f1": 0.21098056061732312,
+        "bleu": 0.08873408396951346,
+        "bleu_1": 0.18109002197810167,
+        "bleu_2": 0.14134272741104328,
+        "judge": 0.20454545454545456
+      },
+      "X3": {
+        "em": 0.0,
+        "contains_gt": 0.25,
+        "f1": 0.08333333333333334,
+        "bleu": 0.011158090344633324,
+        "bleu_1": 0.05,
+        "bleu_2": 0.037267799624996496,
+        "judge": 0.25
+      },
+      "X1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0,
+        "bleu": 0.0,
+        "bleu_1": 0.0,
+        "bleu_2": 0.0,
+        "judge": 0.16666666666666666
+      }
+    },
+    "by_y": {
+      "Y2": {
+        "em": 0.09090909090909091,
+        "contains_gt": 0.20454545454545456,
+        "f1": 0.2027283961151586,
+        "bleu": 0.08825039406880672,
+        "bleu_1": 0.17465062803870773,
+        "bleu_2": 0.14203542614103262,
+        "judge": 0.20454545454545456
+      },
+      "Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.11607142857142856,
+        "bleu": 0.01098578616827164,
+        "bleu_1": 0.08055555555555556,
+        "bleu_2": 0.019765409063409158,
+        "judge": 0.16666666666666666
+      },
+      "Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0,
+        "bleu": 0.0,
+        "bleu_1": 0.0,
+        "bleu_2": 0.0,
+        "judge": 0.5
+      }
+    },
+    "by_cell": {
+      "X4_Y2": {
+        "em": 0.1,
+        "contains_gt": 0.2,
+        "f1": 0.21466790239334113,
+        "bleu": 0.09595962444122405,
+        "bleu_1": 0.1871156908425785,
+        "bleu_2": 0.15251218879263623,
+        "judge": 0.2
+      },
+      "X4_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.17410714285714285,
+        "bleu": 0.016478679252407463,
+        "bleu_1": 0.12083333333333333,
+        "bleu_2": 0.02964811359511374,
+        "judge": 0.25
+      },
+      "X3_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.25,
+        "f1": 0.08333333333333334,
+        "bleu": 0.011158090344633324,
+        "bleu_1": 0.05,
+        "bleu_2": 0.037267799624996496,
+        "judge": 0.25
+      },
+      "X1_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0,
+        "bleu": 0.0,
+        "bleu_1": 0.0,
+        "bleu_2": 0.0,
+        "judge": 0.0
+      },
+      "X1_Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0,
+        "bleu": 0.0,
+        "bleu_1": 0.0,
+        "bleu_2": 0.0,
+        "judge": 0.5
+      }
+    }
+  },
+  "method_runtime": {
+    "method_modality": "no_visual",
+    "history_source": "full_context",
+    "captions_loaded": false,
+    "images_loaded": false,
+    "history_turns_after_truncation": 194,
+    "history_turns_before_truncation": 194
+  },
+  "judge": {
+    "enabled": true,
+    "model": "gpt-5.2",
+    "scored_open_rows": 51
+  }
+}

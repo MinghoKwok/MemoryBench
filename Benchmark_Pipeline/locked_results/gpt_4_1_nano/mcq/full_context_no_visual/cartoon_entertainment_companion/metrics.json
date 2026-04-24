@@ -1,0 +1,135 @@
+{
+  "task_name": "cartoon_entertainment_companion",
+  "model_name": "gpt_4_1_nano",
+  "model_path": "gpt-4.1-nano",
+  "method_name": "full_context_no_visual",
+  "base_method_name": "full_context_no_visual",
+  "method_modality": "",
+  "mode": "mcq",
+  "num_qas": 76,
+  "num_qas_run": 76,
+  "dialog_json": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/dialog/Cartoon_Entertainment_Companion.json",
+  "image_root": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image",
+  "run_dir": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/runs/mcq_clean_ablation_20260424_full/cartoon_entertainment_companion/20260424_154104_gpt_4_1_nano_full_context_no_visual",
+  "git_commit": "b24985b9af7b246db9e6e807768083d0acb8c78a",
+  "summary": {
+    "open_count": 76,
+    "overall": {
+      "em": 0.4440789473684211,
+      "contains_gt": 0.23684210526315788,
+      "f1": 0.4440789473684211
+    },
+    "by_x": {
+      "X3": {
+        "em": 0.33695652173913043,
+        "contains_gt": 0.043478260869565216,
+        "f1": 0.33695652173913043
+      },
+      "X4": {
+        "em": 0.5,
+        "contains_gt": 0.30434782608695654,
+        "f1": 0.5
+      },
+      "X2": {
+        "em": 0.48214285714285715,
+        "contains_gt": 0.42857142857142855,
+        "f1": 0.48214285714285715
+      },
+      "X1": {
+        "em": 0.484375,
+        "contains_gt": 0.25,
+        "f1": 0.484375
+      }
+    },
+    "by_y": {
+      "Y1": {
+        "em": 0.484375,
+        "contains_gt": 0.25,
+        "f1": 0.484375
+      },
+      "Y2": {
+        "em": 0.4358974358974359,
+        "contains_gt": 0.23076923076923078,
+        "f1": 0.4358974358974359
+      },
+      "Y3": {
+        "em": 0.25,
+        "contains_gt": 0.2,
+        "f1": 0.25
+      }
+    },
+    "by_cell": {
+      "X3_Y1": {
+        "em": 0.3409090909090909,
+        "contains_gt": 0.09090909090909091,
+        "f1": 0.3409090909090909
+      },
+      "X4_Y2": {
+        "em": 0.55,
+        "contains_gt": 0.4,
+        "f1": 0.55
+      },
+      "X2_Y2": {
+        "em": 0.3333333333333333,
+        "contains_gt": 0.2222222222222222,
+        "f1": 0.3333333333333333
+      },
+      "X3_Y2": {
+        "em": 0.3333333333333333,
+        "contains_gt": 0.0,
+        "f1": 0.3333333333333333
+      },
+      "X4_Y1": {
+        "em": 0.5,
+        "contains_gt": 0.25,
+        "f1": 0.5
+      },
+      "X1_Y1": {
+        "em": 0.5,
+        "contains_gt": 0.0,
+        "f1": 0.5
+      },
+      "X1_Y2": {
+        "em": 0.5625,
+        "contains_gt": 0.375,
+        "f1": 0.5625
+      },
+      "X2_Y1": {
+        "em": 0.75,
+        "contains_gt": 0.8,
+        "f1": 0.75
+      },
+      "X1_Y3": {
+        "em": 0.3125,
+        "contains_gt": 0.25,
+        "f1": 0.3125
+      },
+      "X4_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0
+      }
+    },
+    "mcq_count": 76,
+    "mcq_valid_rate": 1.0,
+    "mcq_overall": {
+      "em": 0.4440789473684211,
+      "contains_gt": 0.23684210526315788,
+      "f1": 0.4440789473684211
+    },
+    "mcq_per_position_accuracy": {
+      "A": 0.5921052631578947,
+      "B": 0.4605263157894737,
+      "C": 0.4868421052631579,
+      "D": 0.23684210526315788
+    }
+  },
+  "method_runtime": {
+    "method_modality": "no_visual",
+    "history_source": "full_context",
+    "captions_loaded": false,
+    "images_loaded": false,
+    "history_turns_after_truncation": 598,
+    "history_turns_before_truncation": 598
+  }
+}

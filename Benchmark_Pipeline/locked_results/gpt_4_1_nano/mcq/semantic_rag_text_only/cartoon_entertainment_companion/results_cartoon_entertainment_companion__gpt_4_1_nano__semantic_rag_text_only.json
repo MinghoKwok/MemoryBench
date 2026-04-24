@@ -1,0 +1,194 @@
+{
+  "task_name": "cartoon_entertainment_companion",
+  "model_name": "gpt_4_1_nano",
+  "model_path": "gpt-4.1-nano",
+  "method_name": "semantic_rag_text_only",
+  "base_method_name": "semantic_rag_text_only",
+  "method_modality": "",
+  "mode": "mcq",
+  "num_qas": 76,
+  "num_qas_run": 76,
+  "dialog_json": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/dialog/Cartoon_Entertainment_Companion.json",
+  "image_root": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image",
+  "run_dir": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/runs/cartoon_entertainment_companion/20260424_191656_gpt_4_1_nano_semantic_rag_text_only",
+  "git_commit": "b24985b9af7b246db9e6e807768083d0acb8c78a",
+  "summary": {
+    "open_count": 76,
+    "overall": {
+      "em": 0.48355263157894735,
+      "contains_gt": 0.3157894736842105,
+      "f1": 0.48355263157894735
+    },
+    "by_x": {
+      "X3": {
+        "em": 0.3804347826086957,
+        "contains_gt": 0.13043478260869565,
+        "f1": 0.3804347826086957
+      },
+      "X4": {
+        "em": 0.5434782608695652,
+        "contains_gt": 0.391304347826087,
+        "f1": 0.5434782608695652
+      },
+      "X2": {
+        "em": 0.42857142857142855,
+        "contains_gt": 0.35714285714285715,
+        "f1": 0.42857142857142855
+      },
+      "X1": {
+        "em": 0.59375,
+        "contains_gt": 0.4375,
+        "f1": 0.59375
+      }
+    },
+    "by_y": {
+      "Y1": {
+        "em": 0.5546875,
+        "contains_gt": 0.375,
+        "f1": 0.5546875
+      },
+      "Y2": {
+        "em": 0.4358974358974359,
+        "contains_gt": 0.2564102564102564,
+        "f1": 0.4358974358974359
+      },
+      "Y3": {
+        "em": 0.4,
+        "contains_gt": 0.4,
+        "f1": 0.4
+      }
+    },
+    "by_cell": {
+      "X3_Y1": {
+        "em": 0.36363636363636365,
+        "contains_gt": 0.18181818181818182,
+        "f1": 0.36363636363636365
+      },
+      "X4_Y2": {
+        "em": 0.475,
+        "contains_gt": 0.4,
+        "f1": 0.475
+      },
+      "X2_Y2": {
+        "em": 0.3055555555555556,
+        "contains_gt": 0.2222222222222222,
+        "f1": 0.3055555555555556
+      },
+      "X3_Y2": {
+        "em": 0.3958333333333333,
+        "contains_gt": 0.08333333333333333,
+        "f1": 0.3958333333333333
+      },
+      "X4_Y1": {
+        "em": 0.6458333333333334,
+        "contains_gt": 0.4166666666666667,
+        "f1": 0.6458333333333334
+      },
+      "X1_Y1": {
+        "em": 0.6875,
+        "contains_gt": 0.5,
+        "f1": 0.6875
+      },
+      "X1_Y2": {
+        "em": 0.59375,
+        "contains_gt": 0.375,
+        "f1": 0.59375
+      },
+      "X2_Y1": {
+        "em": 0.65,
+        "contains_gt": 0.6,
+        "f1": 0.65
+      },
+      "X1_Y3": {
+        "em": 0.5,
+        "contains_gt": 0.5,
+        "f1": 0.5
+      },
+      "X4_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0
+      }
+    },
+    "mcq_count": 76,
+    "mcq_valid_rate": 1.0,
+    "mcq_overall": {
+      "em": 0.48355263157894735,
+      "contains_gt": 0.3157894736842105,
+      "f1": 0.48355263157894735
+    },
+    "mcq_per_position_accuracy": {
+      "A": 0.5789473684210527,
+      "B": 0.4868421052631579,
+      "C": 0.5526315789473685,
+      "D": 0.3157894736842105
+    }
+  },
+  "method_runtime": {
+    "retrieval_backend": "dense_text",
+    "retrieval_corpus": "round_text",
+    "method_modality": "text_only",
+    "top_k": 10,
+    "neighbor_window": 0,
+    "seed_round_ids": [
+      "CARTOON_S40:R1",
+      "CARTOON_S61:R1",
+      "CARTOON_S41:R1",
+      "CARTOON_S47:R1",
+      "CARTOON_S59:R1",
+      "CARTOON_S23:R1",
+      "CARTOON_S54:R1",
+      "CARTOON_S13:R1",
+      "CARTOON_S14:R1",
+      "CARTOON_S38:R1"
+    ],
+    "selected_round_ids": [
+      "CARTOON_S40:R1",
+      "CARTOON_S61:R1",
+      "CARTOON_S41:R1",
+      "CARTOON_S47:R1",
+      "CARTOON_S59:R1",
+      "CARTOON_S23:R1",
+      "CARTOON_S54:R1",
+      "CARTOON_S13:R1",
+      "CARTOON_S14:R1",
+      "CARTOON_S38:R1"
+    ],
+    "top_candidates": [
+      {
+        "round_id": "CARTOON_S40:R1",
+        "score": 0.5492438311233877,
+        "text_dense_score": 0.5492438311233877
+      },
+      {
+        "round_id": "CARTOON_S61:R1",
+        "score": 0.5328984147511199,
+        "text_dense_score": 0.5328984147511199
+      },
+      {
+        "round_id": "CARTOON_S41:R1",
+        "score": 0.5285279094486708,
+        "text_dense_score": 0.5285279094486708
+      },
+      {
+        "round_id": "CARTOON_S47:R1",
+        "score": 0.5239205003733479,
+        "text_dense_score": 0.5239205003733479
+      },
+      {
+        "round_id": "CARTOON_S59:R1",
+        "score": 0.5170045947537092,
+        "text_dense_score": 0.5170045947537092
+      }
+    ],
+    "clue_hit_count": 2,
+    "corpus_entry_count": 299,
+    "text_embedding_model": "all-MiniLM-L6-v2",
+    "caption_text_included": true,
+    "image_embeddings_built": false,
+    "history_source": "retrieval",
+    "captions_loaded": true,
+    "images_loaded": false,
+    "history_turns_after_truncation": 20
+  }
+}

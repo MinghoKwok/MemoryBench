@@ -1,0 +1,133 @@
+{
+  "task": {
+    "name": "outdoor_navigation_route_memory_assistant",
+    "dataset": {
+      "dialog_json": "data/dialog/Outdoor_Navigation_Route_Memory_Assistant.json",
+      "image_root": "data/image"
+    },
+    "eval": {
+      "mode": "mcq",
+      "output_json": "output/results_outdoor_navigation_route_memory_assistant.json",
+      "max_questions": 0
+    }
+  },
+  "dataset": {
+    "dialog_json": "data/dialog/Outdoor_Navigation_Route_Memory_Assistant.json",
+    "image_root": "data/image"
+  },
+  "eval": {
+    "mode": "mcq",
+    "output_json": "output/results_outdoor_navigation_route_memory_assistant.json",
+    "max_questions": 0
+  },
+  "model": {
+    "name": "gpt_4_1_nano",
+    "provider": "openai_api",
+    "model": "gpt-4.1-nano",
+    "api_key_env": "OPENAI_API_KEY",
+    "base_url": "https://api.openai.com/v1",
+    "max_new_tokens": 128,
+    "timeout": 90
+  },
+  "method": {
+    "name": "semantic_rag_multimodal",
+    "modality": "multimodal",
+    "retrieval_backend": "dense_multimodal",
+    "top_k": 10,
+    "neighbor_window": 0,
+    "text_embedding_model": "all-MiniLM-L6-v2",
+    "multimodal_embedding_model": "siglip2-base-patch16-384",
+    "text_dense_weight": 0.5,
+    "image_dense_weight": 0.5
+  },
+  "run": {
+    "output_root": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/runs",
+    "method_runtime": {
+      "retrieval_backend": "dense_multimodal",
+      "retrieval_corpus": "round_text",
+      "method_modality": "multimodal",
+      "top_k": 10,
+      "neighbor_window": 0,
+      "seed_round_ids": [
+        "OUTDOOR_S5:R5",
+        "OUTDOOR_S6:R5",
+        "OUTDOOR_S5:R2",
+        "OUTDOOR_S8:R5",
+        "OUTDOOR_S8:R2",
+        "OUTDOOR_S6:R2",
+        "OUTDOOR_S6:R3",
+        "OUTDOOR_S5:R3",
+        "OUTDOOR_S8:R3",
+        "OUTDOOR_S8:R4"
+      ],
+      "selected_round_ids": [
+        "OUTDOOR_S5:R5",
+        "OUTDOOR_S6:R5",
+        "OUTDOOR_S5:R2",
+        "OUTDOOR_S8:R5",
+        "OUTDOOR_S8:R2",
+        "OUTDOOR_S6:R2",
+        "OUTDOOR_S6:R3",
+        "OUTDOOR_S5:R3",
+        "OUTDOOR_S8:R3",
+        "OUTDOOR_S8:R4"
+      ],
+      "top_candidates": [
+        {
+          "round_id": "OUTDOOR_S5:R5",
+          "score": 0.11103639614144697,
+          "text_dense_score": 0.05437646602772391,
+          "image_dense_score": 0.16769632625517003,
+          "indexed_image_count": 1,
+          "best_image_path": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image/Outdoor_Navigation_Route_Memory_Assistant/S5_R5.jpg"
+        },
+        {
+          "round_id": "OUTDOOR_S6:R5",
+          "score": 0.10741758505612103,
+          "text_dense_score": 0.05437646602772391,
+          "image_dense_score": 0.16045870408451815,
+          "indexed_image_count": 1,
+          "best_image_path": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image/Outdoor_Navigation_Route_Memory_Assistant/S6_R5.jpg"
+        },
+        {
+          "round_id": "OUTDOOR_S5:R2",
+          "score": 0.10380060968896349,
+          "text_dense_score": 0.04478191680051148,
+          "image_dense_score": 0.1628193025774155,
+          "indexed_image_count": 1,
+          "best_image_path": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image/Outdoor_Navigation_Route_Memory_Assistant/S5_R2.jpg"
+        },
+        {
+          "round_id": "OUTDOOR_S8:R5",
+          "score": 0.10300407771354712,
+          "text_dense_score": 0.05437646602772391,
+          "image_dense_score": 0.15163168939937033,
+          "indexed_image_count": 1,
+          "best_image_path": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image/Outdoor_Navigation_Route_Memory_Assistant/S8_R5.jpg"
+        },
+        {
+          "round_id": "OUTDOOR_S8:R2",
+          "score": 0.10168892232748622,
+          "text_dense_score": 0.04478191680051148,
+          "image_dense_score": 0.15859592785446097,
+          "indexed_image_count": 1,
+          "best_image_path": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image/Outdoor_Navigation_Route_Memory_Assistant/S8_R2.jpg"
+        }
+      ],
+      "clue_hit_count": 2,
+      "corpus_entry_count": 60,
+      "text_embedding_model": "all-MiniLM-L6-v2",
+      "multimodal_embedding_model": "siglip2-base-patch16-384",
+      "text_dense_weight": 0.5,
+      "image_dense_weight": 0.5,
+      "caption_text_included": false,
+      "image_embeddings_built": true,
+      "multi_image_indexing_enabled": true,
+      "indexed_image_count": 40,
+      "history_source": "retrieval",
+      "captions_loaded": false,
+      "images_loaded": true,
+      "history_turns_after_truncation": 20
+    }
+  }
+}

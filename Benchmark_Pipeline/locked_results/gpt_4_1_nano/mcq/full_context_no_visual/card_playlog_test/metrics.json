@@ -1,0 +1,75 @@
+{
+  "task_name": "card_playlog_test",
+  "model_name": "gpt_4_1_nano",
+  "model_path": "gpt-4.1-nano",
+  "method_name": "full_context_no_visual",
+  "base_method_name": "full_context_no_visual",
+  "method_modality": "",
+  "mode": "mcq",
+  "num_qas": 48,
+  "num_qas_run": 48,
+  "dialog_json": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/dialog/Card_Playlog_Test.json",
+  "image_root": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image",
+  "run_dir": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/runs/mcq_clean_ablation_20260424_full/card_playlog_test/20260424_153647_gpt_4_1_nano_full_context_no_visual",
+  "git_commit": "b24985b9af7b246db9e6e807768083d0acb8c78a",
+  "summary": {
+    "open_count": 48,
+    "overall": {
+      "em": 0.19791666666666666,
+      "contains_gt": 0.0,
+      "f1": 0.19791666666666666
+    },
+    "by_x": {
+      "X4": {
+        "em": 0.19791666666666666,
+        "contains_gt": 0.0,
+        "f1": 0.19791666666666666
+      }
+    },
+    "by_y": {
+      "Y3": {
+        "em": 0.07894736842105263,
+        "contains_gt": 0.0,
+        "f1": 0.07894736842105263
+      },
+      "Y2": {
+        "em": 0.27586206896551724,
+        "contains_gt": 0.0,
+        "f1": 0.27586206896551724
+      }
+    },
+    "by_cell": {
+      "X4_Y3": {
+        "em": 0.07894736842105263,
+        "contains_gt": 0.0,
+        "f1": 0.07894736842105263
+      },
+      "X4_Y2": {
+        "em": 0.27586206896551724,
+        "contains_gt": 0.0,
+        "f1": 0.27586206896551724
+      }
+    },
+    "mcq_count": 48,
+    "mcq_valid_rate": 1.0,
+    "mcq_overall": {
+      "em": 0.19791666666666666,
+      "contains_gt": 0.0,
+      "f1": 0.19791666666666666
+    },
+    "mcq_per_position_accuracy": {
+      "A": 0.25,
+      "B": 0.14583333333333334,
+      "C": 0.3958333333333333,
+      "D": 0.0
+    }
+  },
+  "method_runtime": {
+    "method_modality": "no_visual",
+    "history_source": "full_context",
+    "captions_loaded": false,
+    "images_loaded": false,
+    "history_turns_after_truncation": 60,
+    "history_turns_before_truncation": 60
+  }
+}

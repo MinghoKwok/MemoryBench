@@ -1,0 +1,133 @@
+{
+  "task": {
+    "name": "social_chat_memory_test_open",
+    "dataset": {
+      "dialog_json": "data/dialog/Social_Chat_Memory_Test_Open.json",
+      "image_root": "data/image"
+    },
+    "eval": {
+      "mode": "open",
+      "output_json": "output/results_social_chat_memory_test_open.json",
+      "max_questions": 0
+    }
+  },
+  "dataset": {
+    "dialog_json": "data/dialog/Social_Chat_Memory_Test_Open.json",
+    "image_root": "data/image"
+  },
+  "eval": {
+    "mode": "open",
+    "output_json": "output/results_social_chat_memory_test_open.json",
+    "max_questions": 0
+  },
+  "model": {
+    "name": "gpt_4_1_nano",
+    "provider": "openai_api",
+    "model": "gpt-4.1-nano",
+    "api_key_env": "OPENAI_API_KEY",
+    "base_url": "https://api.openai.com/v1",
+    "max_new_tokens": 128,
+    "timeout": 90
+  },
+  "method": {
+    "name": "semantic_rag_multimodal",
+    "modality": "multimodal",
+    "retrieval_backend": "dense_multimodal",
+    "top_k": 10,
+    "neighbor_window": 0,
+    "text_embedding_model": "all-MiniLM-L6-v2",
+    "multimodal_embedding_model": "siglip2-base-patch16-384",
+    "text_dense_weight": 0.5,
+    "image_dense_weight": 0.5
+  },
+  "run": {
+    "output_root": "runs",
+    "method_runtime": {
+      "retrieval_backend": "dense_multimodal",
+      "retrieval_corpus": "round_text",
+      "method_modality": "multimodal",
+      "top_k": 10,
+      "neighbor_window": 0,
+      "seed_round_ids": [
+        "CHAT_S35:R2",
+        "CHAT_S38:R1",
+        "CHAT_S35:R1",
+        "CHAT_S6:R1",
+        "CHAT_S2:R2",
+        "CHAT_S18:R2",
+        "CHAT_S15:R2",
+        "CHAT_S28:R2",
+        "CHAT_S18:R1",
+        "CHAT_S4:R2"
+      ],
+      "selected_round_ids": [
+        "CHAT_S35:R2",
+        "CHAT_S38:R1",
+        "CHAT_S35:R1",
+        "CHAT_S6:R1",
+        "CHAT_S2:R2",
+        "CHAT_S18:R2",
+        "CHAT_S15:R2",
+        "CHAT_S28:R2",
+        "CHAT_S18:R1",
+        "CHAT_S4:R2"
+      ],
+      "top_candidates": [
+        {
+          "round_id": "CHAT_S35:R2",
+          "score": 0.09027617422222675,
+          "text_dense_score": 0.03656703472398569,
+          "image_dense_score": 0.1439853137204678,
+          "indexed_image_count": 1,
+          "best_image_path": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image/Social_Chat_Memory_Test/screenshots/R4_2.png"
+        },
+        {
+          "round_id": "CHAT_S38:R1",
+          "score": 0.08394590116965588,
+          "text_dense_score": 0.018676557317969546,
+          "image_dense_score": 0.1492152450213422,
+          "indexed_image_count": 1,
+          "best_image_path": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image/Social_Chat_Memory_Test/screenshots/R4b_1.png"
+        },
+        {
+          "round_id": "CHAT_S35:R1",
+          "score": 0.08215390228412583,
+          "text_dense_score": 0.01867653128465822,
+          "image_dense_score": 0.14563127328359346,
+          "indexed_image_count": 1,
+          "best_image_path": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image/Social_Chat_Memory_Test/screenshots/R4_1.png"
+        },
+        {
+          "round_id": "CHAT_S6:R1",
+          "score": 0.0761295182120096,
+          "text_dense_score": 0.018676557317969546,
+          "image_dense_score": 0.13358247910604965,
+          "indexed_image_count": 1,
+          "best_image_path": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image/Social_Chat_Memory_Test/screenshots/R1_1.png"
+        },
+        {
+          "round_id": "CHAT_S2:R2",
+          "score": 0.07473515610808074,
+          "text_dense_score": 0.03656703472398569,
+          "image_dense_score": 0.1129032774921758,
+          "indexed_image_count": 1,
+          "best_image_path": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image/Social_Chat_Memory_Test/screenshots/B1_2.png"
+        }
+      ],
+      "clue_hit_count": 3,
+      "corpus_entry_count": 53,
+      "text_embedding_model": "all-MiniLM-L6-v2",
+      "multimodal_embedding_model": "siglip2-base-patch16-384",
+      "text_dense_weight": 0.5,
+      "image_dense_weight": 0.5,
+      "caption_text_included": false,
+      "image_embeddings_built": true,
+      "multi_image_indexing_enabled": true,
+      "indexed_image_count": 43,
+      "history_source": "retrieval",
+      "captions_loaded": false,
+      "images_loaded": true,
+      "history_turns_after_truncation": 20
+    }
+  }
+}

@@ -1,0 +1,138 @@
+{
+  "task_name": "brand_memory_test_open",
+  "model_name": "gpt_4_1_nano",
+  "model_path": "gpt-4.1-nano",
+  "method_name": "full_context_text_only",
+  "base_method_name": "full_context_text_only",
+  "method_modality": "",
+  "mode": "open",
+  "num_qas": 29,
+  "num_qas_run": 29,
+  "dialog_json": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/dialog/Brand_Memory_Test_Open.json",
+  "image_root": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image",
+  "run_dir": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/runs/brand_memory_test_open/20260424_163356_gpt_4_1_nano_full_context_text_only",
+  "git_commit": "b24985b9af7b246db9e6e807768083d0acb8c78a",
+  "summary": {
+    "open_count": 29,
+    "overall": {
+      "em": 0.06896551724137931,
+      "contains_gt": 0.10344827586206896,
+      "f1": 0.1816965177806429,
+      "bleu": 0.04049689510089237,
+      "bleu_1": 0.14481025908522374,
+      "bleu_2": 0.1149526721634023,
+      "judge": 0.3620689655172414
+    },
+    "by_x": {
+      "X4": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.3333333333333333,
+        "bleu": 0.047772139610218346,
+        "bleu_1": 0.25,
+        "bleu_2": 0.06454972243679029,
+        "judge": 0.5
+      },
+      "X2": {
+        "em": 0.16666666666666666,
+        "contains_gt": 0.16666666666666666,
+        "f1": 0.34064327485380114,
+        "bleu": 0.07257266405369565,
+        "bleu_1": 0.26964657352857374,
+        "bleu_2": 0.2083130832498536,
+        "judge": 0.3333333333333333
+      },
+      "X1": {
+        "em": 0.047619047619047616,
+        "contains_gt": 0.09523809523809523,
+        "f1": 0.1218415571356748,
+        "bleu": 0.030639509256346103,
+        "bleu_1": 0.099124670109526,
+        "bleu_2": 0.09307854992218878,
+        "judge": 0.35714285714285715
+      }
+    },
+    "by_y": {
+      "Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.7333333333333334,
+        "bleu": 0.14367305738104086,
+        "bleu_1": 0.5532653298563167,
+        "bleu_2": 0.367815052293107,
+        "judge": 1.0
+      },
+      "Y2": {
+        "em": 0.07407407407407407,
+        "contains_gt": 0.1111111111111111,
+        "f1": 0.14083453144340657,
+        "bleu": 0.03285421641347397,
+        "bleu_1": 0.11455432791699463,
+        "bleu_2": 0.09622212548712787,
+        "judge": 0.3148148148148148
+      }
+    },
+    "by_cell": {
+      "X4_Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.6666666666666666,
+        "bleu": 0.09554427922043669,
+        "bleu_1": 0.5,
+        "bleu_2": 0.12909944487358058,
+        "judge": 1.0
+      },
+      "X2_Y2": {
+        "em": 0.16666666666666666,
+        "contains_gt": 0.16666666666666666,
+        "f1": 0.34064327485380114,
+        "bleu": 0.07257266405369565,
+        "bleu_1": 0.26964657352857374,
+        "bleu_2": 0.2083130832498536,
+        "judge": 0.3333333333333333
+      },
+      "X1_Y2": {
+        "em": 0.05,
+        "contains_gt": 0.1,
+        "f1": 0.08793363499245853,
+        "bleu": 0.022581392942081155,
+        "bleu_1": 0.07375437062937062,
+        "bleu_2": 0.06740594443266655,
+        "judge": 0.325
+      },
+      "X4_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0,
+        "bleu": 0.0,
+        "bleu_1": 0.0,
+        "bleu_2": 0.0,
+        "judge": 0.0
+      },
+      "X1_Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.8,
+        "bleu": 0.19180183554164504,
+        "bleu_1": 0.6065306597126334,
+        "bleu_2": 0.6065306597126334,
+        "judge": 1.0
+      }
+    }
+  },
+  "method_runtime": {
+    "caption_validation_passed": true,
+    "caption_validation_round_count": 30,
+    "method_modality": "text_only",
+    "history_source": "full_context",
+    "captions_loaded": true,
+    "images_loaded": false,
+    "history_turns_after_truncation": 144,
+    "history_turns_before_truncation": 144
+  },
+  "judge": {
+    "enabled": true,
+    "model": "gpt-5.2",
+    "scored_open_rows": 29
+  }
+}
