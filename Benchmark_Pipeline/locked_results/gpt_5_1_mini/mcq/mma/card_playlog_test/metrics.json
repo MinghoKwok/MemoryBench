@@ -1,0 +1,67 @@
+{
+  "task_name": "card_playlog_test",
+  "model_name": "gpt_5_1_mini",
+  "model_path": "gpt-5.1-mini",
+  "method_name": "mma",
+  "base_method_name": "mma",
+  "method_modality": "",
+  "mode": "mcq",
+  "num_qas": 48,
+  "num_qas_run": 48,
+  "dialog_json": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/dialog/Card_Playlog_Test.json",
+  "image_root": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/image",
+  "run_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/card_playlog_test/20260425_020836_gpt_5_1_mini_mma",
+  "git_commit": "b6a188308ff7c48ebcc509618341807cfdaa773c",
+  "summary": {
+    "open_count": 48,
+    "overall": {
+      "em": 0.296875,
+      "contains_gt": 0.22916666666666666,
+      "f1": 0.296875
+    },
+    "by_x": {
+      "X4": {
+        "em": 0.296875,
+        "contains_gt": 0.22916666666666666,
+        "f1": 0.296875
+      }
+    },
+    "by_y": {
+      "Y3": {
+        "em": 0.14473684210526316,
+        "contains_gt": 0.0,
+        "f1": 0.14473684210526316
+      },
+      "Y2": {
+        "em": 0.39655172413793105,
+        "contains_gt": 0.3793103448275862,
+        "f1": 0.39655172413793105
+      }
+    },
+    "by_cell": {
+      "X4_Y3": {
+        "em": 0.14473684210526316,
+        "contains_gt": 0.0,
+        "f1": 0.14473684210526316
+      },
+      "X4_Y2": {
+        "em": 0.39655172413793105,
+        "contains_gt": 0.3793103448275862,
+        "f1": 0.39655172413793105
+      }
+    },
+    "mcq_count": 48,
+    "mcq_valid_rate": 1.0,
+    "mcq_overall": {
+      "em": 0.296875,
+      "contains_gt": 0.22916666666666666,
+      "f1": 0.296875
+    },
+    "mcq_per_position_accuracy": {
+      "A": 0.1875,
+      "B": 0.2708333333333333,
+      "C": 0.5,
+      "D": 0.22916666666666666
+    }
+  }
+}
