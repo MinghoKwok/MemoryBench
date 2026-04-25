@@ -1,0 +1,117 @@
+{
+  "task_name": "home_renovation_interior_design",
+  "model_name": "gemini_2_5_flash_lite",
+  "model_path": "gemini-2.5-flash-lite",
+  "method_name": "mma",
+  "base_method_name": "mma",
+  "method_modality": "",
+  "mode": "mcq",
+  "num_qas": 52,
+  "num_qas_run": 52,
+  "dialog_json": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/dialog/Home_Renovation_Interior_Design.json",
+  "image_root": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/image",
+  "run_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/home_renovation_interior_design/20260424_171329_gemini_2_5_flash_lite_mma",
+  "git_commit": "658ab1743219fa7a98e5672df9c7253b6b5b5e6d",
+  "summary": {
+    "open_count": 52,
+    "overall": {
+      "em": 0.49038461538461536,
+      "contains_gt": 0.40384615384615385,
+      "f1": 0.49038461538461536
+    },
+    "by_x": {
+      "X4": {
+        "em": 0.40625,
+        "contains_gt": 0.25,
+        "f1": 0.40625
+      },
+      "X3": {
+        "em": 0.5277777777777778,
+        "contains_gt": 0.3888888888888889,
+        "f1": 0.5277777777777778
+      },
+      "X2": {
+        "em": 0.4642857142857143,
+        "contains_gt": 0.7142857142857143,
+        "f1": 0.4642857142857143
+      },
+      "X1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0
+      }
+    },
+    "by_y": {
+      "Y2": {
+        "em": 0.375,
+        "contains_gt": 0.3333333333333333,
+        "f1": 0.375
+      },
+      "Y1": {
+        "em": 0.532051282051282,
+        "contains_gt": 0.4358974358974359,
+        "f1": 0.532051282051282
+      },
+      "Y3": {
+        "em": 0.25,
+        "contains_gt": 0.0,
+        "f1": 0.25
+      }
+    },
+    "by_cell": {
+      "X4_Y2": {
+        "em": 0.25,
+        "contains_gt": 0.0,
+        "f1": 0.25
+      },
+      "X3_Y2": {
+        "em": 0.35,
+        "contains_gt": 0.2,
+        "f1": 0.35
+      },
+      "X3_Y1": {
+        "em": 0.5564516129032258,
+        "contains_gt": 0.41935483870967744,
+        "f1": 0.5564516129032258
+      },
+      "X2_Y1": {
+        "em": 0.5,
+        "contains_gt": 1.0,
+        "f1": 0.5
+      },
+      "X2_Y2": {
+        "em": 0.45,
+        "contains_gt": 0.6,
+        "f1": 0.45
+      },
+      "X4_Y1": {
+        "em": 0.5,
+        "contains_gt": 0.4,
+        "f1": 0.5
+      },
+      "X4_Y3": {
+        "em": 0.25,
+        "contains_gt": 0.0,
+        "f1": 0.25
+      },
+      "X1_Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0
+      }
+    },
+    "mcq_count": 52,
+    "mcq_valid_rate": 1.0,
+    "mcq_overall": {
+      "em": 0.49038461538461536,
+      "contains_gt": 0.40384615384615385,
+      "f1": 0.49038461538461536
+    },
+    "mcq_per_position_accuracy": {
+      "A": 0.6346153846153846,
+      "B": 0.36538461538461536,
+      "C": 0.5576923076923077,
+      "D": 0.40384615384615385
+    }
+  }
+}

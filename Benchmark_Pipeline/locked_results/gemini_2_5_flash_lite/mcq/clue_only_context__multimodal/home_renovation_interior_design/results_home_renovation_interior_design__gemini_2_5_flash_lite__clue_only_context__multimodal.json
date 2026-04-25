@@ -1,0 +1,124 @@
+{
+  "task_name": "home_renovation_interior_design",
+  "model_name": "gemini_2_5_flash_lite",
+  "model_path": "gemini-2.5-flash-lite",
+  "method_name": "clue_only_context__multimodal",
+  "base_method_name": "clue_only_context",
+  "method_modality": "multimodal",
+  "mode": "mcq",
+  "num_qas": 52,
+  "num_qas_run": 52,
+  "dialog_json": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/dialog/Home_Renovation_Interior_Design.json",
+  "image_root": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/image",
+  "run_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/home_renovation_interior_design/20260424_215016_gemini_2_5_flash_lite_clue_only_context__multimodal",
+  "git_commit": "658ab1743219fa7a98e5672df9c7253b6b5b5e6d",
+  "summary": {
+    "open_count": 52,
+    "overall": {
+      "em": 0.8557692307692307,
+      "contains_gt": 0.8461538461538461,
+      "f1": 0.8557692307692307
+    },
+    "by_x": {
+      "X4": {
+        "em": 0.46875,
+        "contains_gt": 0.5,
+        "f1": 0.46875
+      },
+      "X3": {
+        "em": 0.9375,
+        "contains_gt": 0.9166666666666666,
+        "f1": 0.9375
+      },
+      "X2": {
+        "em": 0.8571428571428571,
+        "contains_gt": 0.8571428571428571,
+        "f1": 0.8571428571428571
+      },
+      "X1": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
+      }
+    },
+    "by_y": {
+      "Y2": {
+        "em": 0.7083333333333334,
+        "contains_gt": 0.75,
+        "f1": 0.7083333333333334
+      },
+      "Y1": {
+        "em": 0.9038461538461539,
+        "contains_gt": 0.8717948717948718,
+        "f1": 0.9038461538461539
+      },
+      "Y3": {
+        "em": 0.75,
+        "contains_gt": 1.0,
+        "f1": 0.75
+      }
+    },
+    "by_cell": {
+      "X4_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0
+      },
+      "X3_Y2": {
+        "em": 0.9,
+        "contains_gt": 1.0,
+        "f1": 0.9
+      },
+      "X3_Y1": {
+        "em": 0.9435483870967742,
+        "contains_gt": 0.9032258064516129,
+        "f1": 0.9435483870967742
+      },
+      "X2_Y1": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
+      },
+      "X2_Y2": {
+        "em": 0.8,
+        "contains_gt": 0.8,
+        "f1": 0.8
+      },
+      "X4_Y1": {
+        "em": 0.6,
+        "contains_gt": 0.6,
+        "f1": 0.6
+      },
+      "X4_Y3": {
+        "em": 0.75,
+        "contains_gt": 1.0,
+        "f1": 0.75
+      },
+      "X1_Y1": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
+      }
+    },
+    "mcq_count": 52,
+    "mcq_valid_rate": 1.0,
+    "mcq_overall": {
+      "em": 0.8557692307692307,
+      "contains_gt": 0.8461538461538461,
+      "f1": 0.8557692307692307
+    },
+    "mcq_per_position_accuracy": {
+      "A": 0.9038461538461539,
+      "B": 0.8269230769230769,
+      "C": 0.8461538461538461,
+      "D": 0.8461538461538461
+    }
+  },
+  "method_runtime": {
+    "method_modality": "multimodal",
+    "history_source": "clue_only",
+    "captions_loaded": false,
+    "images_loaded": true,
+    "history_turns_after_truncation": 2
+  }
+}

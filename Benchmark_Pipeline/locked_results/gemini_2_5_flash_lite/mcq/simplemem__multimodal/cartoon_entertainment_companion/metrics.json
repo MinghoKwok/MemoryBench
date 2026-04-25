@@ -1,0 +1,132 @@
+{
+  "task_name": "cartoon_entertainment_companion",
+  "model_name": "gemini_2_5_flash_lite",
+  "model_path": "gemini-2.5-flash-lite",
+  "method_name": "simplemem__multimodal",
+  "base_method_name": "simplemem",
+  "method_modality": "multimodal",
+  "mode": "mcq",
+  "num_qas": 76,
+  "num_qas_run": 76,
+  "dialog_json": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/dialog/Cartoon_Entertainment_Companion.json",
+  "image_root": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image",
+  "run_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/cartoon_entertainment_companion/20260424_171940_gemini_2_5_flash_lite_simplemem__multimodal",
+  "git_commit": "658ab1743219fa7a98e5672df9c7253b6b5b5e6d",
+  "summary": {
+    "open_count": 76,
+    "overall": {
+      "em": 0.20394736842105263,
+      "contains_gt": 0.2631578947368421,
+      "f1": 0.20394736842105263
+    },
+    "by_x": {
+      "X3": {
+        "em": 0.09782608695652174,
+        "contains_gt": 0.08695652173913043,
+        "f1": 0.09782608695652174
+      },
+      "X4": {
+        "em": 0.17391304347826086,
+        "contains_gt": 0.21739130434782608,
+        "f1": 0.17391304347826086
+      },
+      "X2": {
+        "em": 0.35714285714285715,
+        "contains_gt": 0.5714285714285714,
+        "f1": 0.35714285714285715
+      },
+      "X1": {
+        "em": 0.265625,
+        "contains_gt": 0.3125,
+        "f1": 0.265625
+      }
+    },
+    "by_y": {
+      "Y1": {
+        "em": 0.1953125,
+        "contains_gt": 0.3125,
+        "f1": 0.1953125
+      },
+      "Y2": {
+        "em": 0.21153846153846154,
+        "contains_gt": 0.23076923076923078,
+        "f1": 0.21153846153846154
+      },
+      "Y3": {
+        "em": 0.2,
+        "contains_gt": 0.2,
+        "f1": 0.2
+      }
+    },
+    "by_cell": {
+      "X3_Y1": {
+        "em": 0.18181818181818182,
+        "contains_gt": 0.18181818181818182,
+        "f1": 0.18181818181818182
+      },
+      "X4_Y2": {
+        "em": 0.225,
+        "contains_gt": 0.1,
+        "f1": 0.225
+      },
+      "X2_Y2": {
+        "em": 0.25,
+        "contains_gt": 0.4444444444444444,
+        "f1": 0.25
+      },
+      "X3_Y2": {
+        "em": 0.020833333333333332,
+        "contains_gt": 0.0,
+        "f1": 0.020833333333333332
+      },
+      "X4_Y1": {
+        "em": 0.10416666666666667,
+        "contains_gt": 0.25,
+        "f1": 0.10416666666666667
+      },
+      "X1_Y1": {
+        "em": 0.0625,
+        "contains_gt": 0.25,
+        "f1": 0.0625
+      },
+      "X1_Y2": {
+        "em": 0.4375,
+        "contains_gt": 0.5,
+        "f1": 0.4375
+      },
+      "X2_Y1": {
+        "em": 0.55,
+        "contains_gt": 0.8,
+        "f1": 0.55
+      },
+      "X1_Y3": {
+        "em": 0.125,
+        "contains_gt": 0.0,
+        "f1": 0.125
+      },
+      "X4_Y3": {
+        "em": 0.5,
+        "contains_gt": 1.0,
+        "f1": 0.5
+      }
+    },
+    "mcq_count": 76,
+    "mcq_valid_rate": 0.10526315789473684,
+    "mcq_overall": {
+      "em": 0.20394736842105263,
+      "contains_gt": 0.2631578947368421,
+      "f1": 0.20394736842105263
+    },
+    "mcq_per_position_accuracy": {
+      "A": 0.25,
+      "B": 0.11842105263157894,
+      "C": 0.18421052631578946,
+      "D": 0.2631578947368421
+    }
+  },
+  "method_runtime": {
+    "num_memories": 299,
+    "debug_dir": "/common/home/mg1998/MemoryBench/output/cartoon_entertainment_companion/simplemem",
+    "data_dir": "/common/home/mg1998/MemoryBench/runs/simplemem/cartoon_entertainment_companion"
+  }
+}

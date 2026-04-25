@@ -1,0 +1,46 @@
+{
+  "task": {
+    "name": "personal_health_dashboard_assistant",
+    "dataset": {
+      "dialog_json": "data/dialog/Personal_Health_Dashboard_Assistant.json",
+      "image_root": "data/image"
+    },
+    "eval": {
+      "mode": "open",
+      "output_json": "output/results_personal_health_dashboard_assistant.json",
+      "max_questions": 0
+    }
+  },
+  "dataset": {
+    "dialog_json": "data/dialog/Personal_Health_Dashboard_Assistant.json",
+    "image_root": "data/image"
+  },
+  "eval": {
+    "mode": "open",
+    "output_json": "output/results_personal_health_dashboard_assistant.json",
+    "max_questions": 0
+  },
+  "model": {
+    "name": "gemini_2_5_flash_lite",
+    "provider": "gemini_api",
+    "model": "gemini-2.5-flash-lite",
+    "api_key_env": "GEMINI_API_KEY",
+    "base_url": "https://generativelanguage.googleapis.com/v1beta",
+    "max_new_tokens": 128,
+    "timeout": 90
+  },
+  "method": {
+    "name": "clue_only_context",
+    "modality": "multimodal"
+  },
+  "run": {
+    "output_root": "runs",
+    "method_runtime": {
+      "method_modality": "multimodal",
+      "history_source": "clue_only",
+      "captions_loaded": false,
+      "images_loaded": true,
+      "history_turns_after_truncation": 6
+    }
+  }
+}

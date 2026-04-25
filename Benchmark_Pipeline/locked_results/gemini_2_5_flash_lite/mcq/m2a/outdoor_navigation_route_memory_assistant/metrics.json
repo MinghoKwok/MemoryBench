@@ -1,0 +1,117 @@
+{
+  "task_name": "outdoor_navigation_route_memory_assistant",
+  "model_name": "gemini_2_5_flash_lite",
+  "model_path": "gemini-2.5-flash-lite",
+  "method_name": "m2a",
+  "base_method_name": "m2a",
+  "method_modality": "",
+  "mode": "mcq",
+  "num_qas": 28,
+  "num_qas_run": 28,
+  "dialog_json": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/dialog/Outdoor_Navigation_Route_Memory_Assistant.json",
+  "image_root": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/image",
+  "run_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/outdoor_navigation_route_memory_assistant/20260424_161211_gemini_2_5_flash_lite_m2a",
+  "git_commit": "658ab1743219fa7a98e5672df9c7253b6b5b5e6d",
+  "summary": {
+    "open_count": 28,
+    "overall": {
+      "em": 0.17857142857142858,
+      "contains_gt": 0.14285714285714285,
+      "f1": 0.17857142857142858
+    },
+    "by_x": {
+      "X3": {
+        "em": 0.19444444444444445,
+        "contains_gt": 0.16666666666666666,
+        "f1": 0.19444444444444445
+      },
+      "X1": {
+        "em": 0.25,
+        "contains_gt": 0.0,
+        "f1": 0.25
+      },
+      "X4": {
+        "em": 0.1,
+        "contains_gt": 0.2,
+        "f1": 0.1
+      },
+      "X2": {
+        "em": 0.125,
+        "contains_gt": 0.0,
+        "f1": 0.125
+      }
+    },
+    "by_y": {
+      "Y2": {
+        "em": 0.08333333333333333,
+        "contains_gt": 0.0,
+        "f1": 0.08333333333333333
+      },
+      "Y1": {
+        "em": 0.25,
+        "contains_gt": 0.0,
+        "f1": 0.25
+      },
+      "Y3": {
+        "em": 0.2916666666666667,
+        "contains_gt": 0.3333333333333333,
+        "f1": 0.2916666666666667
+      }
+    },
+    "by_cell": {
+      "X3_Y2": {
+        "em": 0.057692307692307696,
+        "contains_gt": 0.0,
+        "f1": 0.057692307692307696
+      },
+      "X1_Y1": {
+        "em": 0.25,
+        "contains_gt": 0.0,
+        "f1": 0.25
+      },
+      "X4_Y2": {
+        "em": 0.25,
+        "contains_gt": 0.0,
+        "f1": 0.25
+      },
+      "X2_Y2": {
+        "em": 0.25,
+        "contains_gt": 0.0,
+        "f1": 0.25
+      },
+      "X3_Y3": {
+        "em": 0.55,
+        "contains_gt": 0.6,
+        "f1": 0.55
+      },
+      "X4_Y3": {
+        "em": 0.0625,
+        "contains_gt": 0.25,
+        "f1": 0.0625
+      },
+      "X1_Y3": {
+        "em": 0.25,
+        "contains_gt": 0.0,
+        "f1": 0.25
+      },
+      "X2_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0
+      }
+    },
+    "mcq_count": 28,
+    "mcq_valid_rate": 0.21428571428571427,
+    "mcq_overall": {
+      "em": 0.17857142857142858,
+      "contains_gt": 0.14285714285714285,
+      "f1": 0.17857142857142858
+    },
+    "mcq_per_position_accuracy": {
+      "A": 0.17857142857142858,
+      "B": 0.21428571428571427,
+      "C": 0.17857142857142858,
+      "D": 0.14285714285714285
+    }
+  }
+}

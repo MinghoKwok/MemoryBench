@@ -1,0 +1,100 @@
+{
+  "task_name": "brand_memory_test",
+  "model_name": "gemini_2_5_flash_lite",
+  "model_path": "gemini-2.5-flash-lite",
+  "method_name": "full_context_multimodal",
+  "base_method_name": "full_context_multimodal",
+  "method_modality": "",
+  "mode": "mcq",
+  "num_qas": 29,
+  "num_qas_run": 29,
+  "dialog_json": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/dialog/Brand_Memory_Test.json",
+  "image_root": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/image",
+  "run_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/brand_memory_test/20260424_195221_gemini_2_5_flash_lite_full_context_multimodal",
+  "git_commit": "658ab1743219fa7a98e5672df9c7253b6b5b5e6d",
+  "summary": {
+    "open_count": 29,
+    "overall": {
+      "em": 0.45689655172413796,
+      "contains_gt": 0.4482758620689655,
+      "f1": 0.45689655172413796
+    },
+    "by_x": {
+      "X4": {
+        "em": 0.5,
+        "contains_gt": 0.5,
+        "f1": 0.5
+      },
+      "X2": {
+        "em": 0.375,
+        "contains_gt": 0.3333333333333333,
+        "f1": 0.375
+      },
+      "X1": {
+        "em": 0.47619047619047616,
+        "contains_gt": 0.47619047619047616,
+        "f1": 0.47619047619047616
+      }
+    },
+    "by_y": {
+      "Y1": {
+        "em": 0.5,
+        "contains_gt": 0.5,
+        "f1": 0.5
+      },
+      "Y2": {
+        "em": 0.4537037037037037,
+        "contains_gt": 0.4444444444444444,
+        "f1": 0.4537037037037037
+      }
+    },
+    "by_cell": {
+      "X4_Y1": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
+      },
+      "X2_Y2": {
+        "em": 0.375,
+        "contains_gt": 0.3333333333333333,
+        "f1": 0.375
+      },
+      "X1_Y2": {
+        "em": 0.5,
+        "contains_gt": 0.5,
+        "f1": 0.5
+      },
+      "X4_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0
+      },
+      "X1_Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0
+      }
+    },
+    "mcq_count": 29,
+    "mcq_valid_rate": 0.9655172413793104,
+    "mcq_overall": {
+      "em": 0.45689655172413796,
+      "contains_gt": 0.4482758620689655,
+      "f1": 0.45689655172413796
+    },
+    "mcq_per_position_accuracy": {
+      "A": 0.5862068965517241,
+      "B": 0.3448275862068966,
+      "C": 0.4482758620689655,
+      "D": 0.4482758620689655
+    }
+  },
+  "method_runtime": {
+    "method_modality": "multimodal",
+    "history_source": "full_context",
+    "captions_loaded": false,
+    "images_loaded": true,
+    "history_turns_after_truncation": 144,
+    "history_turns_before_truncation": 144
+  }
+}

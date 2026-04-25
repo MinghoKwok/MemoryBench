@@ -1,0 +1,107 @@
+{
+  "task_name": "multi_scene_visual_case_archive_assistant",
+  "model_name": "gemini_2_5_flash_lite",
+  "model_path": "gemini-2.5-flash-lite",
+  "method_name": "m2a",
+  "base_method_name": "m2a",
+  "method_modality": "",
+  "mode": "mcq",
+  "num_qas": 50,
+  "num_qas_run": 50,
+  "dialog_json": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/dialog/Multi-Scene_Visual_Case_Archive_Assistant.json",
+  "image_root": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/image",
+  "run_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/multi_scene_visual_case_archive_assistant/20260424_155153_gemini_2_5_flash_lite_m2a",
+  "git_commit": "658ab1743219fa7a98e5672df9c7253b6b5b5e6d",
+  "summary": {
+    "open_count": 50,
+    "overall": {
+      "em": 0.17,
+      "contains_gt": 0.12,
+      "f1": 0.17
+    },
+    "by_x": {
+      "X4": {
+        "em": 0.5,
+        "contains_gt": 0.5,
+        "f1": 0.5
+      },
+      "X2": {
+        "em": 0.3125,
+        "contains_gt": 0.375,
+        "f1": 0.3125
+      },
+      "X3": {
+        "em": 0.10526315789473684,
+        "contains_gt": 0.02631578947368421,
+        "f1": 0.10526315789473684
+      }
+    },
+    "by_y": {
+      "Y2": {
+        "em": 0.4375,
+        "contains_gt": 0.5,
+        "f1": 0.4375
+      },
+      "Y3": {
+        "em": 0.25,
+        "contains_gt": 0.18181818181818182,
+        "f1": 0.25
+      },
+      "Y1": {
+        "em": 0.07258064516129033,
+        "contains_gt": 0.0,
+        "f1": 0.07258064516129033
+      }
+    },
+    "by_cell": {
+      "X4_Y2": {
+        "em": 0.6666666666666666,
+        "contains_gt": 0.6666666666666666,
+        "f1": 0.6666666666666666
+      },
+      "X2_Y2": {
+        "em": 0.4166666666666667,
+        "contains_gt": 0.6666666666666666,
+        "f1": 0.4166666666666667
+      },
+      "X3_Y3": {
+        "em": 0.3,
+        "contains_gt": 0.2,
+        "f1": 0.3
+      },
+      "X2_Y3": {
+        "em": 0.25,
+        "contains_gt": 0.2,
+        "f1": 0.25
+      },
+      "X3_Y1": {
+        "em": 0.07258064516129033,
+        "contains_gt": 0.0,
+        "f1": 0.07258064516129033
+      },
+      "X3_Y2": {
+        "em": 0.125,
+        "contains_gt": 0.0,
+        "f1": 0.125
+      },
+      "X4_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0
+      }
+    },
+    "mcq_count": 50,
+    "mcq_valid_rate": 0.26,
+    "mcq_overall": {
+      "em": 0.17,
+      "contains_gt": 0.12,
+      "f1": 0.17
+    },
+    "mcq_per_position_accuracy": {
+      "A": 0.28,
+      "B": 0.1,
+      "C": 0.18,
+      "D": 0.12
+    }
+  }
+}

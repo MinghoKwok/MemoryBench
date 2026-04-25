@@ -1,0 +1,75 @@
+{
+  "task_name": "card_playlog_test",
+  "model_name": "gemini_2_5_flash_lite",
+  "model_path": "gemini-2.5-flash-lite",
+  "method_name": "full_context_multimodal",
+  "base_method_name": "full_context_multimodal",
+  "method_modality": "",
+  "mode": "mcq",
+  "num_qas": 48,
+  "num_qas_run": 48,
+  "dialog_json": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/dialog/Card_Playlog_Test.json",
+  "image_root": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/image",
+  "run_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/card_playlog_test/20260424_201135_gemini_2_5_flash_lite_full_context_multimodal",
+  "git_commit": "658ab1743219fa7a98e5672df9c7253b6b5b5e6d",
+  "summary": {
+    "open_count": 48,
+    "overall": {
+      "em": 0.3854166666666667,
+      "contains_gt": 0.6041666666666666,
+      "f1": 0.3854166666666667
+    },
+    "by_x": {
+      "X4": {
+        "em": 0.3854166666666667,
+        "contains_gt": 0.6041666666666666,
+        "f1": 0.3854166666666667
+      }
+    },
+    "by_y": {
+      "Y3": {
+        "em": 0.3157894736842105,
+        "contains_gt": 0.5789473684210527,
+        "f1": 0.3157894736842105
+      },
+      "Y2": {
+        "em": 0.43103448275862066,
+        "contains_gt": 0.6206896551724138,
+        "f1": 0.43103448275862066
+      }
+    },
+    "by_cell": {
+      "X4_Y3": {
+        "em": 0.3157894736842105,
+        "contains_gt": 0.5789473684210527,
+        "f1": 0.3157894736842105
+      },
+      "X4_Y2": {
+        "em": 0.43103448275862066,
+        "contains_gt": 0.6206896551724138,
+        "f1": 0.43103448275862066
+      }
+    },
+    "mcq_count": 48,
+    "mcq_valid_rate": 1.0,
+    "mcq_overall": {
+      "em": 0.3854166666666667,
+      "contains_gt": 0.6041666666666666,
+      "f1": 0.3854166666666667
+    },
+    "mcq_per_position_accuracy": {
+      "A": 0.4166666666666667,
+      "B": 0.14583333333333334,
+      "C": 0.375,
+      "D": 0.6041666666666666
+    }
+  },
+  "method_runtime": {
+    "method_modality": "multimodal",
+    "history_source": "full_context",
+    "captions_loaded": false,
+    "images_loaded": true,
+    "history_turns_after_truncation": 60,
+    "history_turns_before_truncation": 60
+  }
+}

@@ -1,0 +1,134 @@
+{
+  "task_name": "cartoon_entertainment_companion",
+  "model_name": "gemini_2_5_flash_lite",
+  "model_path": "gemini-2.5-flash-lite",
+  "method_name": "clue_only_context__multimodal",
+  "base_method_name": "clue_only_context",
+  "method_modality": "multimodal",
+  "mode": "mcq",
+  "num_qas": 76,
+  "num_qas_run": 76,
+  "dialog_json": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/dialog/Cartoon_Entertainment_Companion.json",
+  "image_root": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image",
+  "run_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/cartoon_entertainment_companion/20260424_214711_gemini_2_5_flash_lite_clue_only_context__multimodal",
+  "git_commit": "658ab1743219fa7a98e5672df9c7253b6b5b5e6d",
+  "summary": {
+    "open_count": 76,
+    "overall": {
+      "em": 0.7993421052631579,
+      "contains_gt": 0.8289473684210527,
+      "f1": 0.7993421052631579
+    },
+    "by_x": {
+      "X3": {
+        "em": 0.6847826086956522,
+        "contains_gt": 0.6521739130434783,
+        "f1": 0.6847826086956522
+      },
+      "X4": {
+        "em": 0.9347826086956522,
+        "contains_gt": 0.9565217391304348,
+        "f1": 0.9347826086956522
+      },
+      "X2": {
+        "em": 0.875,
+        "contains_gt": 0.9285714285714286,
+        "f1": 0.875
+      },
+      "X1": {
+        "em": 0.703125,
+        "contains_gt": 0.8125,
+        "f1": 0.703125
+      }
+    },
+    "by_y": {
+      "Y1": {
+        "em": 0.9453125,
+        "contains_gt": 0.9375,
+        "f1": 0.9453125
+      },
+      "Y2": {
+        "em": 0.6923076923076923,
+        "contains_gt": 0.717948717948718,
+        "f1": 0.6923076923076923
+      },
+      "Y3": {
+        "em": 0.7,
+        "contains_gt": 1.0,
+        "f1": 0.7
+      }
+    },
+    "by_cell": {
+      "X3_Y1": {
+        "em": 0.8409090909090909,
+        "contains_gt": 0.8181818181818182,
+        "f1": 0.8409090909090909
+      },
+      "X4_Y2": {
+        "em": 0.925,
+        "contains_gt": 0.9,
+        "f1": 0.925
+      },
+      "X2_Y2": {
+        "em": 0.8055555555555556,
+        "contains_gt": 0.8888888888888888,
+        "f1": 0.8055555555555556
+      },
+      "X3_Y2": {
+        "em": 0.5416666666666666,
+        "contains_gt": 0.5,
+        "f1": 0.5416666666666666
+      },
+      "X4_Y1": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
+      },
+      "X1_Y1": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
+      },
+      "X1_Y2": {
+        "em": 0.5,
+        "contains_gt": 0.625,
+        "f1": 0.5
+      },
+      "X2_Y1": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
+      },
+      "X1_Y3": {
+        "em": 0.8125,
+        "contains_gt": 1.0,
+        "f1": 0.8125
+      },
+      "X4_Y3": {
+        "em": 0.25,
+        "contains_gt": 1.0,
+        "f1": 0.25
+      }
+    },
+    "mcq_count": 76,
+    "mcq_valid_rate": 0.9868421052631579,
+    "mcq_overall": {
+      "em": 0.7993421052631579,
+      "contains_gt": 0.8289473684210527,
+      "f1": 0.7993421052631579
+    },
+    "mcq_per_position_accuracy": {
+      "A": 0.8157894736842105,
+      "B": 0.7763157894736842,
+      "C": 0.7763157894736842,
+      "D": 0.8289473684210527
+    }
+  },
+  "method_runtime": {
+    "method_modality": "multimodal",
+    "history_source": "clue_only",
+    "captions_loaded": false,
+    "images_loaded": true,
+    "history_turns_after_truncation": 4
+  }
+}

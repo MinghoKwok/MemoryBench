@@ -1,0 +1,133 @@
+{
+  "task": {
+    "name": "brand_memory_test",
+    "dataset": {
+      "dialog_json": "data/dialog/Brand_Memory_Test.json",
+      "image_root": "data/image"
+    },
+    "eval": {
+      "mode": "open",
+      "output_json": "output/results_brand_memory_test.json",
+      "max_questions": 0
+    }
+  },
+  "dataset": {
+    "dialog_json": "data/dialog/Brand_Memory_Test.json",
+    "image_root": "data/image"
+  },
+  "eval": {
+    "mode": "open",
+    "output_json": "output/results_brand_memory_test.json",
+    "max_questions": 0
+  },
+  "model": {
+    "name": "gemini_2_5_flash_lite",
+    "provider": "gemini_api",
+    "model": "gemini-2.5-flash-lite",
+    "api_key_env": "GEMINI_API_KEY",
+    "base_url": "https://generativelanguage.googleapis.com/v1beta",
+    "max_new_tokens": 128,
+    "timeout": 90
+  },
+  "method": {
+    "name": "semantic_rag_multimodal",
+    "modality": "multimodal",
+    "retrieval_backend": "dense_multimodal",
+    "top_k": 10,
+    "neighbor_window": 0,
+    "text_embedding_model": "all-MiniLM-L6-v2",
+    "multimodal_embedding_model": "siglip2-base-patch16-384",
+    "text_dense_weight": 0.5,
+    "image_dense_weight": 0.5
+  },
+  "run": {
+    "output_root": "runs",
+    "method_runtime": {
+      "retrieval_backend": "dense_multimodal",
+      "retrieval_corpus": "round_text",
+      "method_modality": "multimodal",
+      "top_k": 10,
+      "neighbor_window": 0,
+      "seed_round_ids": [
+        "BRAND_S3:R1",
+        "BRAND_S40:R1",
+        "BRAND_S14:R1",
+        "BRAND_S6:R2",
+        "BRAND_S1:R1",
+        "BRAND_S17:R1",
+        "BRAND_S9:R1",
+        "BRAND_S27:R1",
+        "BRAND_S6:R1",
+        "BRAND_S10:R1"
+      ],
+      "selected_round_ids": [
+        "BRAND_S3:R1",
+        "BRAND_S40:R1",
+        "BRAND_S14:R1",
+        "BRAND_S6:R2",
+        "BRAND_S1:R1",
+        "BRAND_S17:R1",
+        "BRAND_S9:R1",
+        "BRAND_S27:R1",
+        "BRAND_S6:R1",
+        "BRAND_S10:R1"
+      ],
+      "top_candidates": [
+        {
+          "round_id": "BRAND_S3:R1",
+          "score": 0.3459404808685902,
+          "text_dense_score": 0.561110258761352,
+          "image_dense_score": 0.13077070297582832,
+          "indexed_image_count": 1,
+          "best_image_path": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/image/Brand_Memory_Test/Dunkin_1.png"
+        },
+        {
+          "round_id": "BRAND_S40:R1",
+          "score": 0.30658030417724585,
+          "text_dense_score": 0.5392866881447309,
+          "image_dense_score": 0.07387392020976079,
+          "indexed_image_count": 1,
+          "best_image_path": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/image/Brand_Memory_Test/Starbucks_5.png"
+        },
+        {
+          "round_id": "BRAND_S14:R1",
+          "score": 0.3043937167623479,
+          "text_dense_score": 0.4713718743614751,
+          "image_dense_score": 0.1374155591632207,
+          "indexed_image_count": 1,
+          "best_image_path": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/image/Brand_Memory_Test/Pepsi_2.png"
+        },
+        {
+          "round_id": "BRAND_S6:R2",
+          "score": 0.29755167885704475,
+          "text_dense_score": 0.5951033577140895,
+          "image_dense_score": 0.0,
+          "indexed_image_count": 0,
+          "best_image_path": ""
+        },
+        {
+          "round_id": "BRAND_S1:R1",
+          "score": 0.29595636949432136,
+          "text_dense_score": 0.46976903261706704,
+          "image_dense_score": 0.12214370637157562,
+          "indexed_image_count": 1,
+          "best_image_path": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/image/Brand_Memory_Test/CocaCola_1.png"
+        }
+      ],
+      "clue_hit_count": 1,
+      "corpus_entry_count": 72,
+      "text_embedding_model": "all-MiniLM-L6-v2",
+      "multimodal_embedding_model": "siglip2-base-patch16-384",
+      "text_dense_weight": 0.5,
+      "image_dense_weight": 0.5,
+      "caption_text_included": false,
+      "image_embeddings_built": true,
+      "multi_image_indexing_enabled": true,
+      "indexed_image_count": 30,
+      "history_source": "retrieval",
+      "captions_loaded": false,
+      "images_loaded": true,
+      "history_turns_after_truncation": 20
+    }
+  }
+}
