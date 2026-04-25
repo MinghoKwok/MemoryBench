@@ -1,0 +1,145 @@
+{
+  "task_name": "personal_health_dashboard_assistant_open",
+  "model_name": "gemini_2_5_flash_lite",
+  "model_path": "gemini-2.5-flash-lite",
+  "method_name": "full_context_multimodal",
+  "base_method_name": "full_context_multimodal",
+  "method_modality": "",
+  "mode": "open",
+  "num_qas": 51,
+  "num_qas_run": 51,
+  "dialog_json": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/dialog/Personal_Health_Dashboard_Assistant_Open.json",
+  "image_root": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image",
+  "run_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/personal_health_dashboard_assistant_open/20260424_213336_gemini_2_5_flash_lite_full_context_multimodal",
+  "git_commit": "658ab1743219fa7a98e5672df9c7253b6b5b5e6d",
+  "summary": {
+    "open_count": 51,
+    "overall": {
+      "em": 0.19607843137254902,
+      "contains_gt": 0.29411764705882354,
+      "f1": 0.3050465522625244,
+      "bleu": 0.17131595730466934,
+      "bleu_1": 0.2806879264281077,
+      "bleu_2": 0.25043350142856385,
+      "judge": 0.3137254901960784
+    },
+    "by_x": {
+      "X4": {
+        "em": 0.22727272727272727,
+        "contains_gt": 0.3181818181818182,
+        "f1": 0.3212173782177096,
+        "bleu": 0.1911749868614975,
+        "bleu_1": 0.3014298495337762,
+        "bleu_2": 0.27313537033436414,
+        "judge": 0.29545454545454547
+      },
+      "X3": {
+        "em": 0.0,
+        "contains_gt": 0.25,
+        "f1": 0.2,
+        "bleu": 0.060070285353368856,
+        "bleu_1": 0.16666666666666666,
+        "bleu_2": 0.14433756729740643,
+        "judge": 0.25
+      },
+      "X1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.20793650793650792,
+        "bleu": 0.02837775307292342,
+        "bleu_1": 0.1285014005602241,
+        "bleu_2": 0.05893400298503564,
+        "judge": 0.6666666666666666
+      }
+    },
+    "by_y": {
+      "Y2": {
+        "em": 0.22727272727272727,
+        "contains_gt": 0.3409090909090909,
+        "f1": 0.3365582873086187,
+        "bleu": 0.19624880402913014,
+        "bleu_1": 0.31468742529135196,
+        "bleu_2": 0.28563141976757933,
+        "judge": 0.3181818181818182
+      },
+      "Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.09702380952380953,
+        "bleu": 0.011522467012711913,
+        "bleu_1": 0.054330065359477125,
+        "bleu_2": 0.025921849905973217,
+        "judge": 0.25
+      },
+      "Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.16666666666666666,
+        "bleu": 0.033031643180138064,
+        "bleu_1": 0.14285714285714285,
+        "bleu_2": 0.048795003647426664,
+        "judge": 0.5
+      }
+    },
+    "by_cell": {
+      "X4_Y2": {
+        "em": 0.25,
+        "contains_gt": 0.35,
+        "f1": 0.35021411603948055,
+        "bleu": 0.20986665589670628,
+        "bleu_1": 0.32948950115382053,
+        "bleu_2": 0.2997608050145966,
+        "judge": 0.325
+      },
+      "X4_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.03125,
+        "bleu": 0.004258296509409821,
+        "bleu_1": 0.020833333333333332,
+        "bleu_2": 0.006881023532039757,
+        "judge": 0.0
+      },
+      "X3_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.25,
+        "f1": 0.2,
+        "bleu": 0.060070285353368856,
+        "bleu_1": 0.16666666666666666,
+        "bleu_2": 0.14433756729740643,
+        "judge": 0.25
+      },
+      "X1_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.22857142857142856,
+        "bleu": 0.0260508080193161,
+        "bleu_1": 0.12132352941176472,
+        "bleu_2": 0.06400350265384014,
+        "judge": 0.75
+      },
+      "X1_Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.16666666666666666,
+        "bleu": 0.033031643180138064,
+        "bleu_1": 0.14285714285714285,
+        "bleu_2": 0.048795003647426664,
+        "judge": 0.5
+      }
+    }
+  },
+  "method_runtime": {
+    "method_modality": "multimodal",
+    "history_source": "full_context",
+    "captions_loaded": false,
+    "images_loaded": true,
+    "history_turns_after_truncation": 194,
+    "history_turns_before_truncation": 194
+  },
+  "judge": {
+    "enabled": true,
+    "model": "gpt-5.2",
+    "scored_open_rows": 51
+  }
+}

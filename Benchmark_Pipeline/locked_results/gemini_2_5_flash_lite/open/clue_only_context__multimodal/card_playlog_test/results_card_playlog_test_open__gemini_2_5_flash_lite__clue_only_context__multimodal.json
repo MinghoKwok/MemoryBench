@@ -1,0 +1,90 @@
+{
+  "task_name": "card_playlog_test_open",
+  "model_name": "gemini_2_5_flash_lite",
+  "model_path": "gemini-2.5-flash-lite",
+  "method_name": "clue_only_context__multimodal",
+  "base_method_name": "clue_only_context",
+  "method_modality": "multimodal",
+  "mode": "open",
+  "num_qas": 48,
+  "num_qas_run": 48,
+  "dialog_json": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/dialog/Card_Playlog_Test_Open.json",
+  "image_root": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image",
+  "run_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/card_playlog_test_open/20260424_220815_gemini_2_5_flash_lite_clue_only_context__multimodal",
+  "git_commit": "658ab1743219fa7a98e5672df9c7253b6b5b5e6d",
+  "summary": {
+    "open_count": 48,
+    "overall": {
+      "em": 0.041666666666666664,
+      "contains_gt": 0.125,
+      "f1": 0.051918758280650866,
+      "bleu": 0.008680238045191382,
+      "bleu_1": 0.047368213383838384,
+      "bleu_2": 0.015097380927590652,
+      "judge": 0.0625
+    },
+    "by_x": {
+      "X4": {
+        "em": 0.041666666666666664,
+        "contains_gt": 0.125,
+        "f1": 0.051918758280650866,
+        "bleu": 0.008680238045191382,
+        "bleu_1": 0.047368213383838384,
+        "bleu_2": 0.015097380927590652,
+        "judge": 0.0625
+      }
+    },
+    "by_y": {
+      "Y3": {
+        "em": 0.0,
+        "contains_gt": 0.10526315789473684,
+        "f1": 0.01813356921716055,
+        "bleu": 0.002445985326228768,
+        "bleu_1": 0.010366826156299842,
+        "bleu_2": 0.0035508559853148223,
+        "judge": 0.05263157894736842
+      },
+      "Y2": {
+        "em": 0.06896551724137931,
+        "contains_gt": 0.13793103448275862,
+        "f1": 0.07405388214983417,
+        "bleu": 0.012764748447270335,
+        "bleu_1": 0.07161050156739812,
+        "bleu_2": 0.022662345544943785,
+        "judge": 0.06896551724137931
+      }
+    },
+    "by_cell": {
+      "X4_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.10526315789473684,
+        "f1": 0.01813356921716055,
+        "bleu": 0.002445985326228768,
+        "bleu_1": 0.010366826156299842,
+        "bleu_2": 0.0035508559853148223,
+        "judge": 0.05263157894736842
+      },
+      "X4_Y2": {
+        "em": 0.06896551724137931,
+        "contains_gt": 0.13793103448275862,
+        "f1": 0.07405388214983417,
+        "bleu": 0.012764748447270335,
+        "bleu_1": 0.07161050156739812,
+        "bleu_2": 0.022662345544943785,
+        "judge": 0.06896551724137931
+      }
+    }
+  },
+  "method_runtime": {
+    "method_modality": "multimodal",
+    "history_source": "clue_only",
+    "captions_loaded": false,
+    "images_loaded": true,
+    "history_turns_after_truncation": 2
+  },
+  "judge": {
+    "enabled": true,
+    "model": "gpt-5.2",
+    "scored_open_rows": 48
+  }
+}

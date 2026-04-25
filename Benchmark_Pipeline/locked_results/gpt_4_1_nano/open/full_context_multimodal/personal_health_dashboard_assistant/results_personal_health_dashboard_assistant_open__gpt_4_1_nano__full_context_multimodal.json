@@ -1,0 +1,145 @@
+{
+  "task_name": "personal_health_dashboard_assistant_open",
+  "model_name": "gpt_4_1_nano",
+  "model_path": "gpt-4.1-nano",
+  "method_name": "full_context_multimodal",
+  "base_method_name": "full_context_multimodal",
+  "method_modality": "",
+  "mode": "open",
+  "num_qas": 51,
+  "num_qas_run": 51,
+  "dialog_json": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/dialog/Personal_Health_Dashboard_Assistant_Open.json",
+  "image_root": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image",
+  "run_dir": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/runs/personal_health_dashboard_assistant_open/20260424_172420_gpt_4_1_nano_full_context_multimodal",
+  "git_commit": "b24985b9af7b246db9e6e807768083d0acb8c78a",
+  "summary": {
+    "open_count": 51,
+    "overall": {
+      "em": 0.0,
+      "contains_gt": 0.19607843137254902,
+      "f1": 0.11543070081431048,
+      "bleu": 0.024940699179721474,
+      "bleu_1": 0.06956780364203974,
+      "bleu_2": 0.046354975711590876,
+      "judge": 0.19607843137254902
+    },
+    "by_x": {
+      "X4": {
+        "em": 0.0,
+        "contains_gt": 0.13636363636363635,
+        "f1": 0.09369208825113935,
+        "bleu": 0.020187708297490267,
+        "bleu_1": 0.05776055634660274,
+        "bleu_2": 0.0367104218546276,
+        "judge": 0.10227272727272728
+      },
+      "X3": {
+        "em": 0.0,
+        "contains_gt": 0.75,
+        "f1": 0.2094017094017094,
+        "bleu": 0.026434981742349557,
+        "bleu_1": 0.12215909090909091,
+        "bleu_2": 0.09024175947570615,
+        "judge": 0.75
+      },
+      "X1": {
+        "em": 0.0,
+        "contains_gt": 0.3333333333333333,
+        "f1": 0.30896900695762175,
+        "bleu": 0.09265885536894174,
+        "bleu_1": 0.17261904761904762,
+        "bleu_2": 0.12929272059489863,
+        "judge": 0.8333333333333334
+      }
+    },
+    "by_y": {
+      "Y2": {
+        "em": 0.0,
+        "contains_gt": 0.18181818181818182,
+        "f1": 0.10092267236401403,
+        "bleu": 0.01938681012277788,
+        "bleu_1": 0.06186459573122253,
+        "bleu_2": 0.04005901866425716,
+        "judge": 0.14772727272727273
+      },
+      "Y3": {
+        "em": 0.0,
+        "contains_gt": 0.3333333333333333,
+        "f1": 0.2018456733110264,
+        "bleu": 0.06698713778765486,
+        "bleu_1": 0.12376374003948375,
+        "bleu_2": 0.09566380765594347,
+        "judge": 0.5
+      },
+      "Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.23529411764705882,
+        "bleu": 0.017033186037639283,
+        "bleu_1": 0.08333333333333333,
+        "bleu_2": 0.027524094128159027,
+        "judge": 0.5
+      }
+    },
+    "by_cell": {
+      "X4_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.125,
+        "f1": 0.0900747686602445,
+        "bleu": 0.018681992960820713,
+        "bleu_1": 0.05583514621343569,
+        "bleu_2": 0.03504074458311226,
+        "judge": 0.0875
+      },
+      "X4_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.25,
+        "f1": 0.12986528416008797,
+        "bleu": 0.035244861664185806,
+        "bleu_1": 0.07701465767827324,
+        "bleu_2": 0.053407194569780984,
+        "judge": 0.25
+      },
+      "X3_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.75,
+        "f1": 0.2094017094017094,
+        "bleu": 0.026434981742349557,
+        "bleu_1": 0.12215909090909091,
+        "bleu_2": 0.09024175947570615,
+        "judge": 0.75
+      },
+      "X1_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.5,
+        "f1": 0.34580645161290324,
+        "bleu": 0.13047169003459297,
+        "bleu_1": 0.21726190476190477,
+        "bleu_2": 0.18017703382826844,
+        "judge": 1.0
+      },
+      "X1_Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.23529411764705882,
+        "bleu": 0.017033186037639283,
+        "bleu_1": 0.08333333333333333,
+        "bleu_2": 0.027524094128159027,
+        "judge": 0.5
+      }
+    }
+  },
+  "method_runtime": {
+    "method_modality": "multimodal",
+    "history_source": "full_context",
+    "captions_loaded": false,
+    "images_loaded": true,
+    "history_turns_after_truncation": 194,
+    "history_turns_before_truncation": 194
+  },
+  "judge": {
+    "enabled": true,
+    "model": "gpt-5.2",
+    "scored_open_rows": 51
+  }
+}

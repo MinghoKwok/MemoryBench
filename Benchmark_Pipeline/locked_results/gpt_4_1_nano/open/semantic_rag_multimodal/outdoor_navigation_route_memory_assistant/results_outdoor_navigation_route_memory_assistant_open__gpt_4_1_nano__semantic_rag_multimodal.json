@@ -1,0 +1,239 @@
+{
+  "task_name": "outdoor_navigation_route_memory_assistant_open",
+  "model_name": "gpt_4_1_nano",
+  "model_path": "gpt-4.1-nano",
+  "method_name": "semantic_rag_multimodal",
+  "base_method_name": "semantic_rag_multimodal",
+  "method_modality": "multimodal",
+  "mode": "open",
+  "num_qas": 28,
+  "num_qas_run": 28,
+  "dialog_json": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/dialog/Outdoor_Navigation_Route_Memory_Assistant_Open.json",
+  "image_root": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image",
+  "run_dir": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/runs/outdoor_navigation_route_memory_assistant_open/20260424_193315_gpt_4_1_nano_semantic_rag_multimodal",
+  "git_commit": "b24985b9af7b246db9e6e807768083d0acb8c78a",
+  "summary": {
+    "open_count": 28,
+    "overall": {
+      "em": 0.0,
+      "contains_gt": 0.03571428571428571,
+      "f1": 0.12103583858561097,
+      "bleu": 0.013645136063612439,
+      "bleu_1": 0.0763260067450691,
+      "bleu_2": 0.03372099119348622
+    },
+    "by_x": {
+      "X3": {
+        "em": 0.0,
+        "contains_gt": 0.05555555555555555,
+        "f1": 0.12457144194461728,
+        "bleu": 0.014163090015719573,
+        "bleu_1": 0.08129659743866831,
+        "bleu_2": 0.035782993984928714
+      },
+      "X1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0998217468805704,
+        "bleu": 0.010996470078711474,
+        "bleu_1": 0.06370370370370369,
+        "bleu_2": 0.018508406069500674
+      },
+      "X4": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.1213023088023088,
+        "bleu": 0.014754785593934104,
+        "bleu_1": 0.07653566477095888,
+        "bleu_2": 0.03440420369387881
+      },
+      "X2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.12037037037037038,
+        "bleu": 0.0101824256461955,
+        "bleu_1": 0.05000000000000001,
+        "bleu_2": 0.03627381250550058
+      }
+    },
+    "by_y": {
+      "Y2": {
+        "em": 0.0,
+        "contains_gt": 0.06666666666666667,
+        "f1": 0.11371369154090698,
+        "bleu": 0.013614046020810702,
+        "bleu_1": 0.07469729979533901,
+        "bleu_2": 0.03521146645283191
+      },
+      "Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.1818181818181818,
+        "bleu": 0.023980296761827107,
+        "bleu_1": 0.11111111111111109,
+        "bleu_2": 0.03726779962499649
+      },
+      "Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.12512332712211005,
+        "bleu": 0.01282273522559672,
+        "bleu_1": 0.07546313173506156,
+        "bleu_2": 0.03156232975001158
+      }
+    },
+    "by_cell": {
+      "X3_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.07692307692307693,
+        "f1": 0.10373557815159595,
+        "bleu": 0.013089742068972895,
+        "bleu_1": 0.06944711062358122,
+        "bleu_2": 0.03296215881185734
+      },
+      "X1_Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.1818181818181818,
+        "bleu": 0.023980296761827107,
+        "bleu_1": 0.11111111111111109,
+        "bleu_2": 0.03726779962499649
+      },
+      "X4_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.19047619047619047,
+        "bleu": 0.013679192123121896,
+        "bleu_1": 0.11764705882352941,
+        "bleu_2": 0.027116307227332027
+      },
+      "X2_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.16666666666666669,
+        "bleu": 0.020364851292391,
+        "bleu_1": 0.10000000000000002,
+        "bleu_2": 0.07254762501100116
+      },
+      "X3_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.1787446878064727,
+        "bleu": 0.016953794677260936,
+        "bleu_1": 0.11210526315789474,
+        "bleu_2": 0.04311716543491429
+      },
+      "X4_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.1040088383838384,
+        "bleu": 0.015023683961637157,
+        "bleu_1": 0.06625781625781625,
+        "bleu_2": 0.0362261778105155
+      },
+      "X1_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.058823529411764705,
+        "bleu": 0.004504556737153659,
+        "bleu_1": 0.039999999999999994,
+        "bleu_2": 0.009128709291752765
+      },
+      "X2_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.07407407407407408,
+        "bleu": 0.0,
+        "bleu_1": 0.0,
+        "bleu_2": 0.0
+      }
+    }
+  },
+  "method_runtime": {
+    "retrieval_backend": "dense_multimodal",
+    "retrieval_corpus": "round_text",
+    "method_modality": "multimodal",
+    "top_k": 10,
+    "neighbor_window": 0,
+    "seed_round_ids": [
+      "OUTDOOR_S5:R5",
+      "OUTDOOR_S6:R5",
+      "OUTDOOR_S8:R5",
+      "OUTDOOR_S5:R2",
+      "OUTDOOR_S6:R2",
+      "OUTDOOR_S8:R2",
+      "OUTDOOR_S6:R3",
+      "OUTDOOR_S2:R5",
+      "OUTDOOR_S8:R4",
+      "OUTDOOR_S5:R3"
+    ],
+    "selected_round_ids": [
+      "OUTDOOR_S5:R5",
+      "OUTDOOR_S6:R5",
+      "OUTDOOR_S8:R5",
+      "OUTDOOR_S5:R2",
+      "OUTDOOR_S6:R2",
+      "OUTDOOR_S8:R2",
+      "OUTDOOR_S6:R3",
+      "OUTDOOR_S2:R5",
+      "OUTDOOR_S8:R4",
+      "OUTDOOR_S5:R3"
+    ],
+    "top_candidates": [
+      {
+        "round_id": "OUTDOOR_S5:R5",
+        "score": 0.1276217915897611,
+        "text_dense_score": 0.1154125059004617,
+        "image_dense_score": 0.13983107727906052,
+        "indexed_image_count": 1,
+        "best_image_path": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image/Outdoor_Navigation_Route_Memory_Assistant/S5_R5.jpg"
+      },
+      {
+        "round_id": "OUTDOOR_S6:R5",
+        "score": 0.1263977216294252,
+        "text_dense_score": 0.1154125059004617,
+        "image_dense_score": 0.13738293735838866,
+        "indexed_image_count": 1,
+        "best_image_path": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image/Outdoor_Navigation_Route_Memory_Assistant/S6_R5.jpg"
+      },
+      {
+        "round_id": "OUTDOOR_S8:R5",
+        "score": 0.12159727640358939,
+        "text_dense_score": 0.1154125059004617,
+        "image_dense_score": 0.12778204690671707,
+        "indexed_image_count": 1,
+        "best_image_path": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image/Outdoor_Navigation_Route_Memory_Assistant/S8_R5.jpg"
+      },
+      {
+        "round_id": "OUTDOOR_S5:R2",
+        "score": 0.11901851666424804,
+        "text_dense_score": 0.09474555533799423,
+        "image_dense_score": 0.14329147799050185,
+        "indexed_image_count": 1,
+        "best_image_path": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image/Outdoor_Navigation_Route_Memory_Assistant/S5_R2.jpg"
+      },
+      {
+        "round_id": "OUTDOOR_S6:R2",
+        "score": 0.11660719479026425,
+        "text_dense_score": 0.09474555533799423,
+        "image_dense_score": 0.13846883424253428,
+        "indexed_image_count": 1,
+        "best_image_path": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image/Outdoor_Navigation_Route_Memory_Assistant/S6_R2.jpg"
+      }
+    ],
+    "clue_hit_count": 2,
+    "corpus_entry_count": 60,
+    "text_embedding_model": "all-MiniLM-L6-v2",
+    "multimodal_embedding_model": "siglip2-base-patch16-384",
+    "text_dense_weight": 0.5,
+    "image_dense_weight": 0.5,
+    "caption_text_included": false,
+    "image_embeddings_built": true,
+    "multi_image_indexing_enabled": true,
+    "indexed_image_count": 40,
+    "history_source": "retrieval",
+    "captions_loaded": false,
+    "images_loaded": true,
+    "history_turns_after_truncation": 20
+  }
+}

@@ -1,0 +1,133 @@
+{
+  "task": {
+    "name": "brand_memory_test_open",
+    "dataset": {
+      "dialog_json": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/dialog/Brand_Memory_Test_Open.json",
+      "image_root": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image"
+    },
+    "eval": {
+      "mode": "open",
+      "output_json": "output/results_brand_memory_test_open.json",
+      "max_questions": 0
+    }
+  },
+  "dataset": {
+    "dialog_json": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/dialog/Brand_Memory_Test_Open.json",
+    "image_root": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image"
+  },
+  "eval": {
+    "mode": "open",
+    "output_json": "output/results_brand_memory_test_open.json",
+    "max_questions": 0
+  },
+  "model": {
+    "name": "gemini_2_5_flash_lite",
+    "provider": "gemini_api",
+    "model": "gemini-2.5-flash-lite",
+    "api_key_env": "GEMINI_API_KEY",
+    "base_url": "https://generativelanguage.googleapis.com/v1beta",
+    "max_new_tokens": 128,
+    "timeout": 90
+  },
+  "method": {
+    "name": "semantic_rag_multimodal",
+    "modality": "multimodal",
+    "retrieval_backend": "dense_multimodal",
+    "top_k": 10,
+    "neighbor_window": 0,
+    "text_embedding_model": "all-MiniLM-L6-v2",
+    "multimodal_embedding_model": "siglip2-base-patch16-384",
+    "text_dense_weight": 0.5,
+    "image_dense_weight": 0.5
+  },
+  "run": {
+    "output_root": "runs",
+    "method_runtime": {
+      "retrieval_backend": "dense_multimodal",
+      "retrieval_corpus": "round_text",
+      "method_modality": "multimodal",
+      "top_k": 10,
+      "neighbor_window": 0,
+      "seed_round_ids": [
+        "BRAND_S6:R2",
+        "BRAND_S3:R1",
+        "BRAND_S3:R2",
+        "BRAND_S27:R1",
+        "BRAND_S40:R1",
+        "BRAND_S10:R1",
+        "BRAND_S34:R1",
+        "BRAND_S1:R1",
+        "BRAND_S38:R1",
+        "BRAND_S18:R1"
+      ],
+      "selected_round_ids": [
+        "BRAND_S6:R2",
+        "BRAND_S3:R1",
+        "BRAND_S3:R2",
+        "BRAND_S27:R1",
+        "BRAND_S40:R1",
+        "BRAND_S10:R1",
+        "BRAND_S34:R1",
+        "BRAND_S1:R1",
+        "BRAND_S38:R1",
+        "BRAND_S18:R1"
+      ],
+      "top_candidates": [
+        {
+          "round_id": "BRAND_S6:R2",
+          "score": 0.2723367893847012,
+          "text_dense_score": 0.5446735787694024,
+          "image_dense_score": 0.0,
+          "indexed_image_count": 0,
+          "best_image_path": ""
+        },
+        {
+          "round_id": "BRAND_S3:R1",
+          "score": 0.26066926948290137,
+          "text_dense_score": 0.4014080751708185,
+          "image_dense_score": 0.11993046379498429,
+          "indexed_image_count": 1,
+          "best_image_path": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image/Brand_Memory_Test/Dunkin_1.png"
+        },
+        {
+          "round_id": "BRAND_S3:R2",
+          "score": 0.2514775075158019,
+          "text_dense_score": 0.5029550150316038,
+          "image_dense_score": 0.0,
+          "indexed_image_count": 0,
+          "best_image_path": ""
+        },
+        {
+          "round_id": "BRAND_S27:R1",
+          "score": 0.24970471782170137,
+          "text_dense_score": 0.41383720674308805,
+          "image_dense_score": 0.08557222890031467,
+          "indexed_image_count": 1,
+          "best_image_path": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image/Brand_Memory_Test/Dunkin_4.png"
+        },
+        {
+          "round_id": "BRAND_S40:R1",
+          "score": 0.23199096039861136,
+          "text_dense_score": 0.383507740712265,
+          "image_dense_score": 0.08047418008495773,
+          "indexed_image_count": 1,
+          "best_image_path": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image/Brand_Memory_Test/Starbucks_5.png"
+        }
+      ],
+      "clue_hit_count": 1,
+      "corpus_entry_count": 72,
+      "text_embedding_model": "all-MiniLM-L6-v2",
+      "multimodal_embedding_model": "siglip2-base-patch16-384",
+      "text_dense_weight": 0.5,
+      "image_dense_weight": 0.5,
+      "caption_text_included": false,
+      "image_embeddings_built": true,
+      "multi_image_indexing_enabled": true,
+      "indexed_image_count": 30,
+      "history_source": "retrieval",
+      "captions_loaded": false,
+      "images_loaded": true,
+      "history_turns_after_truncation": 20
+    }
+  }
+}

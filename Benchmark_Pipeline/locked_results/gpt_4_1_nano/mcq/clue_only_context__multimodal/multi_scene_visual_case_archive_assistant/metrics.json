@@ -1,0 +1,114 @@
+{
+  "task_name": "multi_scene_visual_case_archive_assistant",
+  "model_name": "gpt_4_1_nano",
+  "model_path": "gpt-4.1-nano",
+  "method_name": "clue_only_context__multimodal",
+  "base_method_name": "clue_only_context",
+  "method_modality": "multimodal",
+  "mode": "mcq",
+  "num_qas": 50,
+  "num_qas_run": 50,
+  "dialog_json": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/dialog/Multi-Scene_Visual_Case_Archive_Assistant.json",
+  "image_root": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/image",
+  "run_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/multi_scene_visual_case_archive_assistant/20260424_214742_gpt_4_1_nano_clue_only_context__multimodal",
+  "git_commit": "658ab1743219fa7a98e5672df9c7253b6b5b5e6d",
+  "summary": {
+    "open_count": 50,
+    "overall": {
+      "em": 0.49,
+      "contains_gt": 0.44,
+      "f1": 0.49
+    },
+    "by_x": {
+      "X4": {
+        "em": 0.8125,
+        "contains_gt": 0.75,
+        "f1": 0.8125
+      },
+      "X2": {
+        "em": 0.53125,
+        "contains_gt": 0.5,
+        "f1": 0.53125
+      },
+      "X3": {
+        "em": 0.4473684210526316,
+        "contains_gt": 0.39473684210526316,
+        "f1": 0.4473684210526316
+      }
+    },
+    "by_y": {
+      "Y2": {
+        "em": 0.5625,
+        "contains_gt": 0.5,
+        "f1": 0.5625
+      },
+      "Y3": {
+        "em": 0.5,
+        "contains_gt": 0.36363636363636365,
+        "f1": 0.5
+      },
+      "Y1": {
+        "em": 0.46774193548387094,
+        "contains_gt": 0.45161290322580644,
+        "f1": 0.46774193548387094
+      }
+    },
+    "by_cell": {
+      "X4_Y2": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
+      },
+      "X2_Y2": {
+        "em": 0.5,
+        "contains_gt": 0.3333333333333333,
+        "f1": 0.5
+      },
+      "X3_Y3": {
+        "em": 0.5,
+        "contains_gt": 0.2,
+        "f1": 0.5
+      },
+      "X2_Y3": {
+        "em": 0.55,
+        "contains_gt": 0.6,
+        "f1": 0.55
+      },
+      "X3_Y1": {
+        "em": 0.46774193548387094,
+        "contains_gt": 0.45161290322580644,
+        "f1": 0.46774193548387094
+      },
+      "X3_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0
+      },
+      "X4_Y3": {
+        "em": 0.25,
+        "contains_gt": 0.0,
+        "f1": 0.25
+      }
+    },
+    "mcq_count": 50,
+    "mcq_valid_rate": 1.0,
+    "mcq_overall": {
+      "em": 0.49,
+      "contains_gt": 0.44,
+      "f1": 0.49
+    },
+    "mcq_per_position_accuracy": {
+      "A": 0.72,
+      "B": 0.38,
+      "C": 0.42,
+      "D": 0.44
+    }
+  },
+  "method_runtime": {
+    "method_modality": "multimodal",
+    "history_source": "clue_only",
+    "captions_loaded": false,
+    "images_loaded": true,
+    "history_turns_after_truncation": 6
+  }
+}

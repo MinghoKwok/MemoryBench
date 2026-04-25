@@ -1,0 +1,135 @@
+{
+  "task_name": "brand_memory_test_open",
+  "model_name": "gpt_4_1_nano",
+  "model_path": "gpt-4.1-nano",
+  "method_name": "clue_only_context__multimodal",
+  "base_method_name": "clue_only_context",
+  "method_modality": "multimodal",
+  "mode": "open",
+  "num_qas": 29,
+  "num_qas_run": 29,
+  "dialog_json": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/dialog/Brand_Memory_Test_Open.json",
+  "image_root": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image",
+  "run_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/brand_memory_test_open/20260424_220033_gpt_4_1_nano_clue_only_context__multimodal",
+  "git_commit": "658ab1743219fa7a98e5672df9c7253b6b5b5e6d",
+  "summary": {
+    "open_count": 29,
+    "overall": {
+      "em": 0.13793103448275862,
+      "contains_gt": 0.20689655172413793,
+      "f1": 0.2220223221722472,
+      "bleu": 0.052059144633388205,
+      "bleu_1": 0.19358409285814004,
+      "bleu_2": 0.12485199150640434,
+      "judge": 0.41379310344827586
+    },
+    "by_x": {
+      "X4": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.22222222222222224,
+        "bleu": 0.019640732545025658,
+        "bleu_1": 0.14285714285714285,
+        "bleu_2": 0.03450327796711771,
+        "judge": 0.5
+      },
+      "X2": {
+        "em": 0.3333333333333333,
+        "contains_gt": 0.3333333333333333,
+        "f1": 0.45555555555555555,
+        "bleu": 0.1175584577494157,
+        "bleu_1": 0.4166666666666667,
+        "bleu_2": 0.36841951712593357,
+        "judge": 0.8333333333333334
+      },
+      "X1": {
+        "em": 0.09523809523809523,
+        "contains_gt": 0.19047619047619047,
+        "f1": 0.15527950310559008,
+        "bleu": 0.03643252298960535,
+        "bleu_1": 0.1346773527224655,
+        "bleu_2": 0.06386590928551854,
+        "judge": 0.2857142857142857
+      }
+    },
+    "by_y": {
+      "Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.22222222222222224,
+        "bleu": 0.019640732545025658,
+        "bleu_1": 0.14285714285714285,
+        "bleu_2": 0.03450327796711771,
+        "judge": 0.5
+      },
+      "Y2": {
+        "em": 0.14814814814814814,
+        "contains_gt": 0.2222222222222222,
+        "f1": 0.22200751476113795,
+        "bleu": 0.05446050849178543,
+        "bleu_1": 0.19734164471006577,
+        "bleu_2": 0.13154448880561076,
+        "judge": 0.4074074074074074
+      }
+    },
+    "by_cell": {
+      "X4_Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.4444444444444445,
+        "bleu": 0.039281465090051315,
+        "bleu_1": 0.2857142857142857,
+        "bleu_2": 0.06900655593423542,
+        "judge": 1.0
+      },
+      "X2_Y2": {
+        "em": 0.3333333333333333,
+        "contains_gt": 0.3333333333333333,
+        "f1": 0.45555555555555555,
+        "bleu": 0.1175584577494157,
+        "bleu_1": 0.4166666666666667,
+        "bleu_2": 0.36841951712593357,
+        "judge": 0.8333333333333334
+      },
+      "X1_Y2": {
+        "em": 0.1,
+        "contains_gt": 0.2,
+        "f1": 0.16304347826086957,
+        "bleu": 0.03825414913908562,
+        "bleu_1": 0.14141122035858877,
+        "bleu_2": 0.06705920474979446,
+        "judge": 0.3
+      },
+      "X4_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0,
+        "bleu": 0.0,
+        "bleu_1": 0.0,
+        "bleu_2": 0.0,
+        "judge": 0.0
+      },
+      "X1_Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0,
+        "bleu": 0.0,
+        "bleu_1": 0.0,
+        "bleu_2": 0.0,
+        "judge": 0.0
+      }
+    }
+  },
+  "method_runtime": {
+    "method_modality": "multimodal",
+    "history_source": "clue_only",
+    "captions_loaded": false,
+    "images_loaded": true,
+    "history_turns_after_truncation": 2
+  },
+  "judge": {
+    "enabled": true,
+    "model": "gpt-5.2",
+    "scored_open_rows": 29
+  }
+}

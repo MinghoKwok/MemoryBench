@@ -1,0 +1,124 @@
+{
+  "task_name": "home_renovation_interior_design",
+  "model_name": "gpt_4_1_nano",
+  "model_path": "gpt-4.1-nano",
+  "method_name": "clue_only_context__multimodal",
+  "base_method_name": "clue_only_context",
+  "method_modality": "multimodal",
+  "mode": "mcq",
+  "num_qas": 52,
+  "num_qas_run": 52,
+  "dialog_json": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/dialog/Home_Renovation_Interior_Design.json",
+  "image_root": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/image",
+  "run_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/home_renovation_interior_design/20260424_214450_gpt_4_1_nano_clue_only_context__multimodal",
+  "git_commit": "658ab1743219fa7a98e5672df9c7253b6b5b5e6d",
+  "summary": {
+    "open_count": 52,
+    "overall": {
+      "em": 0.7067307692307693,
+      "contains_gt": 0.6730769230769231,
+      "f1": 0.7067307692307693
+    },
+    "by_x": {
+      "X4": {
+        "em": 0.375,
+        "contains_gt": 0.25,
+        "f1": 0.375
+      },
+      "X3": {
+        "em": 0.8055555555555556,
+        "contains_gt": 0.7777777777777778,
+        "f1": 0.8055555555555556
+      },
+      "X2": {
+        "em": 0.5357142857142857,
+        "contains_gt": 0.5714285714285714,
+        "f1": 0.5357142857142857
+      },
+      "X1": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
+      }
+    },
+    "by_y": {
+      "Y2": {
+        "em": 0.5208333333333334,
+        "contains_gt": 0.5,
+        "f1": 0.5208333333333334
+      },
+      "Y1": {
+        "em": 0.782051282051282,
+        "contains_gt": 0.7435897435897436,
+        "f1": 0.782051282051282
+      },
+      "Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0
+      }
+    },
+    "by_cell": {
+      "X4_Y2": {
+        "em": 0.125,
+        "contains_gt": 0.0,
+        "f1": 0.125
+      },
+      "X3_Y2": {
+        "em": 0.65,
+        "contains_gt": 0.6,
+        "f1": 0.65
+      },
+      "X3_Y1": {
+        "em": 0.8306451612903226,
+        "contains_gt": 0.8064516129032258,
+        "f1": 0.8306451612903226
+      },
+      "X2_Y1": {
+        "em": 0.5,
+        "contains_gt": 0.5,
+        "f1": 0.5
+      },
+      "X2_Y2": {
+        "em": 0.55,
+        "contains_gt": 0.6,
+        "f1": 0.55
+      },
+      "X4_Y1": {
+        "em": 0.55,
+        "contains_gt": 0.4,
+        "f1": 0.55
+      },
+      "X4_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0
+      },
+      "X1_Y1": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
+      }
+    },
+    "mcq_count": 52,
+    "mcq_valid_rate": 1.0,
+    "mcq_overall": {
+      "em": 0.7067307692307693,
+      "contains_gt": 0.6730769230769231,
+      "f1": 0.7067307692307693
+    },
+    "mcq_per_position_accuracy": {
+      "A": 0.7307692307692307,
+      "B": 0.6923076923076923,
+      "C": 0.7307692307692307,
+      "D": 0.6730769230769231
+    }
+  },
+  "method_runtime": {
+    "method_modality": "multimodal",
+    "history_source": "clue_only",
+    "captions_loaded": false,
+    "images_loaded": true,
+    "history_turns_after_truncation": 2
+  }
+}

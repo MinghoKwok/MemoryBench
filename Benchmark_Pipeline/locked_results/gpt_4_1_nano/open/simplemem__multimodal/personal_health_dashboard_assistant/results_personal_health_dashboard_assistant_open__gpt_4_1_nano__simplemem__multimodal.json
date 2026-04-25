@@ -1,0 +1,142 @@
+{
+  "task_name": "personal_health_dashboard_assistant_open",
+  "model_name": "gpt_4_1_nano",
+  "model_path": "gpt-4.1-nano",
+  "method_name": "simplemem__multimodal",
+  "base_method_name": "simplemem",
+  "method_modality": "multimodal",
+  "mode": "open",
+  "num_qas": 51,
+  "num_qas_run": 51,
+  "dialog_json": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/dialog/Personal_Health_Dashboard_Assistant_Open.json",
+  "image_root": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image",
+  "run_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/personal_health_dashboard_assistant_open/20260424_150636_gpt_4_1_nano_simplemem__multimodal",
+  "git_commit": "658ab1743219fa7a98e5672df9c7253b6b5b5e6d",
+  "summary": {
+    "open_count": 51,
+    "overall": {
+      "em": 0.13725490196078433,
+      "contains_gt": 0.1568627450980392,
+      "f1": 0.19851526469173528,
+      "bleu": 0.1390011767982181,
+      "bleu_1": 0.18669573709737605,
+      "bleu_2": 0.16452698262236157,
+      "judge": 0.18627450980392157
+    },
+    "by_x": {
+      "X4": {
+        "em": 0.13636363636363635,
+        "contains_gt": 0.1590909090909091,
+        "f1": 0.183757215007215,
+        "bleu": 0.14873510688582545,
+        "bleu_1": 0.1747013555274349,
+        "bleu_2": 0.15547934081159154,
+        "judge": 0.17045454545454544
+      },
+      "X3": {
+        "em": 0.25,
+        "contains_gt": 0.25,
+        "f1": 0.25,
+        "bleu": 0.0790569415042095,
+        "bleu_1": 0.25,
+        "bleu_2": 0.25,
+        "judge": 0.25
+      },
+      "X1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.3463203463203463,
+        "bleu": 0.07616251590532161,
+        "bleu_1": 0.27820764958634764,
+        "bleu_2": 0.18326170601013728,
+        "judge": 0.3333333333333333
+      }
+    },
+    "by_y": {
+      "Y2": {
+        "em": 0.1590909090909091,
+        "contains_gt": 0.18181818181818182,
+        "f1": 0.1911525974025974,
+        "bleu": 0.15221941152014626,
+        "bleu_1": 0.18461399711399712,
+        "bleu_2": 0.17353679114603027,
+        "judge": 0.18181818181818182
+      },
+      "Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.2855940355940356,
+        "bleu": 0.06523431830378128,
+        "bleu_1": 0.23307778649171768,
+        "bleu_2": 0.12587621721918463,
+        "judge": 0.25
+      },
+      "Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0,
+        "bleu": 0.0,
+        "bleu_1": 0.0,
+        "bleu_2": 0.0,
+        "judge": 0.0
+      }
+    },
+    "by_cell": {
+      "X4_Y2": {
+        "em": 0.15,
+        "contains_gt": 0.175,
+        "f1": 0.18526785714285715,
+        "bleu": 0.15953565852173993,
+        "bleu_1": 0.17807539682539683,
+        "bleu_2": 0.1658904702606333,
+        "judge": 0.175
+      },
+      "X4_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.16865079365079366,
+        "bleu": 0.0407295905266807,
+        "bleu_1": 0.14096094254781577,
+        "bleu_2": 0.05136804632117399,
+        "judge": 0.125
+      },
+      "X3_Y2": {
+        "em": 0.25,
+        "contains_gt": 0.25,
+        "f1": 0.25,
+        "bleu": 0.0790569415042095,
+        "bleu_1": 0.25,
+        "bleu_2": 0.25,
+        "judge": 0.25
+      },
+      "X1_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.5194805194805194,
+        "bleu": 0.11424377385798243,
+        "bleu_1": 0.4173114743795215,
+        "bleu_2": 0.27489255901520593,
+        "judge": 0.5
+      },
+      "X1_Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0,
+        "bleu": 0.0,
+        "bleu_1": 0.0,
+        "bleu_2": 0.0,
+        "judge": 0.0
+      }
+    }
+  },
+  "method_runtime": {
+    "num_memories": 97,
+    "debug_dir": "/common/home/mg1998/MemoryBench/output/personal_health_dashboard_assistant/simplemem",
+    "data_dir": "/common/home/mg1998/MemoryBench/runs/simplemem/personal_health_dashboard_assistant"
+  },
+  "judge": {
+    "enabled": true,
+    "model": "gpt-5.2",
+    "scored_open_rows": 51
+  }
+}

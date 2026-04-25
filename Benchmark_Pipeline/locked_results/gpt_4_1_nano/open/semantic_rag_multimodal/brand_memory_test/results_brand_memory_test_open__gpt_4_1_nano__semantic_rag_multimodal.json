@@ -1,0 +1,199 @@
+{
+  "task_name": "brand_memory_test_open",
+  "model_name": "gpt_4_1_nano",
+  "model_path": "gpt-4.1-nano",
+  "method_name": "semantic_rag_multimodal",
+  "base_method_name": "semantic_rag_multimodal",
+  "method_modality": "multimodal",
+  "mode": "open",
+  "num_qas": 29,
+  "num_qas_run": 29,
+  "dialog_json": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/dialog/Brand_Memory_Test_Open.json",
+  "image_root": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image",
+  "run_dir": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/runs/brand_memory_test_open/20260424_191624_gpt_4_1_nano_semantic_rag_multimodal",
+  "git_commit": "b24985b9af7b246db9e6e807768083d0acb8c78a",
+  "summary": {
+    "open_count": 29,
+    "overall": {
+      "em": 0.034482758620689655,
+      "contains_gt": 0.06896551724137931,
+      "f1": 0.1206896551724138,
+      "bleu": 0.023234117044389928,
+      "bleu_1": 0.09303555639762537,
+      "bleu_2": 0.06801617201152992
+    },
+    "by_x": {
+      "X4": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.22222222222222224,
+        "bleu": 0.019640732545025658,
+        "bleu_1": 0.14285714285714285,
+        "bleu_2": 0.03450327796711771
+      },
+      "X2": {
+        "em": 0.16666666666666666,
+        "contains_gt": 0.16666666666666666,
+        "f1": 0.3055555555555556,
+        "bleu": 0.06690394446135334,
+        "bleu_1": 0.2604166666666667,
+        "bleu_2": 0.20515491954646578
+      },
+      "X1": {
+        "em": 0.0,
+        "contains_gt": 0.047619047619047616,
+        "f1": 0.058201058201058205,
+        "bleu": 0.011099250591863648,
+        "bleu_1": 0.040467469038897606,
+        "bleu_2": 0.03202537691053989
+      }
+    },
+    "by_y": {
+      "Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.4444444444444444,
+        "bleu": 0.06280773361354818,
+        "bleu_1": 0.30952380952380953,
+        "bleu_2": 0.1636027228406983
+      },
+      "Y2": {
+        "em": 0.037037037037037035,
+        "contains_gt": 0.07407407407407407,
+        "f1": 0.09670781893004116,
+        "bleu": 0.020302738039267094,
+        "bleu_1": 0.0769993894993895,
+        "bleu_2": 0.060935686764924855
+      }
+    },
+    "by_cell": {
+      "X4_Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.4444444444444445,
+        "bleu": 0.039281465090051315,
+        "bleu_1": 0.2857142857142857,
+        "bleu_2": 0.06900655593423542
+      },
+      "X2_Y2": {
+        "em": 0.16666666666666666,
+        "contains_gt": 0.16666666666666666,
+        "f1": 0.3055555555555556,
+        "bleu": 0.06690394446135334,
+        "bleu_1": 0.2604166666666667,
+        "bleu_2": 0.20515491954646578
+      },
+      "X1_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.05,
+        "f1": 0.03888888888888889,
+        "bleu": 0.007337513014604579,
+        "bleu_1": 0.025824175824175823,
+        "bleu_2": 0.020716701268708823
+      },
+      "X4_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0,
+        "bleu": 0.0,
+        "bleu_1": 0.0,
+        "bleu_2": 0.0
+      },
+      "X1_Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.4444444444444444,
+        "bleu": 0.08633400213704504,
+        "bleu_1": 0.3333333333333333,
+        "bleu_2": 0.25819888974716115
+      }
+    }
+  },
+  "method_runtime": {
+    "retrieval_backend": "dense_multimodal",
+    "retrieval_corpus": "round_text",
+    "method_modality": "multimodal",
+    "top_k": 10,
+    "neighbor_window": 0,
+    "seed_round_ids": [
+      "BRAND_S6:R2",
+      "BRAND_S3:R1",
+      "BRAND_S3:R2",
+      "BRAND_S27:R1",
+      "BRAND_S40:R1",
+      "BRAND_S10:R1",
+      "BRAND_S34:R1",
+      "BRAND_S1:R1",
+      "BRAND_S38:R1",
+      "BRAND_S18:R1"
+    ],
+    "selected_round_ids": [
+      "BRAND_S6:R2",
+      "BRAND_S3:R1",
+      "BRAND_S3:R2",
+      "BRAND_S27:R1",
+      "BRAND_S40:R1",
+      "BRAND_S10:R1",
+      "BRAND_S34:R1",
+      "BRAND_S1:R1",
+      "BRAND_S38:R1",
+      "BRAND_S18:R1"
+    ],
+    "top_candidates": [
+      {
+        "round_id": "BRAND_S6:R2",
+        "score": 0.27233679726517823,
+        "text_dense_score": 0.5446735945303565,
+        "image_dense_score": 0.0,
+        "indexed_image_count": 0,
+        "best_image_path": ""
+      },
+      {
+        "round_id": "BRAND_S3:R1",
+        "score": 0.2606693075971258,
+        "text_dense_score": 0.4014081596350008,
+        "image_dense_score": 0.1199304555592508,
+        "indexed_image_count": 1,
+        "best_image_path": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image/Brand_Memory_Test/Dunkin_1.png"
+      },
+      {
+        "round_id": "BRAND_S3:R2",
+        "score": 0.2514774575801325,
+        "text_dense_score": 0.502954915160265,
+        "image_dense_score": 0.0,
+        "indexed_image_count": 0,
+        "best_image_path": ""
+      },
+      {
+        "round_id": "BRAND_S27:R1",
+        "score": 0.2497046135429535,
+        "text_dense_score": 0.41383710880367397,
+        "image_dense_score": 0.08557211828223306,
+        "indexed_image_count": 1,
+        "best_image_path": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image/Brand_Memory_Test/Dunkin_4.png"
+      },
+      {
+        "round_id": "BRAND_S40:R1",
+        "score": 0.2319909571040258,
+        "text_dense_score": 0.38350771516128057,
+        "image_dense_score": 0.08047419904677107,
+        "indexed_image_count": 1,
+        "best_image_path": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image/Brand_Memory_Test/Starbucks_5.png"
+      }
+    ],
+    "clue_hit_count": 1,
+    "corpus_entry_count": 72,
+    "text_embedding_model": "all-MiniLM-L6-v2",
+    "multimodal_embedding_model": "siglip2-base-patch16-384",
+    "text_dense_weight": 0.5,
+    "image_dense_weight": 0.5,
+    "caption_text_included": false,
+    "image_embeddings_built": true,
+    "multi_image_indexing_enabled": true,
+    "indexed_image_count": 30,
+    "history_source": "retrieval",
+    "captions_loaded": false,
+    "images_loaded": true,
+    "history_turns_after_truncation": 20
+  }
+}

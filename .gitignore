@@ -26,6 +26,7 @@ Benchmark_Pipeline/benchmark/mirix/**/__pycache__/
 Benchmark_Pipeline/data/
 Benchmark_Pipeline/output/
 Benchmark_Pipeline/runs/
+Benchmark_Pipeline/locked_results/_invalidated_pre_rotation/
 Benchmark_Pipeline/logs/
 Benchmark_Pipeline/Benchmark_Pipeline/
 /output/

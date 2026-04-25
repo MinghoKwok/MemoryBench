@@ -1,0 +1,97 @@
+{
+  "task_name": "personal_health_dashboard_assistant",
+  "model_name": "gpt_4_1_nano",
+  "model_path": "gpt-4.1-nano",
+  "method_name": "mma",
+  "base_method_name": "mma",
+  "method_modality": "",
+  "mode": "mcq",
+  "num_qas": 51,
+  "num_qas_run": 51,
+  "dialog_json": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/dialog/Personal_Health_Dashboard_Assistant.json",
+  "image_root": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/image",
+  "run_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/personal_health_dashboard_assistant/20260424_191300_gpt_4_1_nano_mma",
+  "git_commit": "658ab1743219fa7a98e5672df9c7253b6b5b5e6d",
+  "summary": {
+    "open_count": 51,
+    "overall": {
+      "em": 0.21568627450980393,
+      "contains_gt": 0.19607843137254902,
+      "f1": 0.21568627450980393
+    },
+    "by_x": {
+      "X4": {
+        "em": 0.23295454545454544,
+        "contains_gt": 0.20454545454545456,
+        "f1": 0.23295454545454544
+      },
+      "X3": {
+        "em": 0.0625,
+        "contains_gt": 0.25,
+        "f1": 0.0625
+      },
+      "X1": {
+        "em": 0.16666666666666666,
+        "contains_gt": 0.0,
+        "f1": 0.16666666666666666
+      }
+    },
+    "by_y": {
+      "Y2": {
+        "em": 0.2159090909090909,
+        "contains_gt": 0.18181818181818182,
+        "f1": 0.2159090909090909
+      },
+      "Y3": {
+        "em": 0.25,
+        "contains_gt": 0.3333333333333333,
+        "f1": 0.25
+      },
+      "Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0
+      }
+    },
+    "by_cell": {
+      "X4_Y2": {
+        "em": 0.23125,
+        "contains_gt": 0.175,
+        "f1": 0.23125
+      },
+      "X4_Y3": {
+        "em": 0.25,
+        "contains_gt": 0.5,
+        "f1": 0.25
+      },
+      "X3_Y2": {
+        "em": 0.0625,
+        "contains_gt": 0.25,
+        "f1": 0.0625
+      },
+      "X1_Y3": {
+        "em": 0.25,
+        "contains_gt": 0.0,
+        "f1": 0.25
+      },
+      "X1_Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0
+      }
+    },
+    "mcq_count": 51,
+    "mcq_valid_rate": 1.0,
+    "mcq_overall": {
+      "em": 0.21568627450980393,
+      "contains_gt": 0.19607843137254902,
+      "f1": 0.21568627450980393
+    },
+    "mcq_per_position_accuracy": {
+      "A": 0.19607843137254902,
+      "B": 0.11764705882352941,
+      "C": 0.35294117647058826,
+      "D": 0.19607843137254902
+    }
+  }
+}

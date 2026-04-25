@@ -1,0 +1,278 @@
+{
+  "task_name": "cartoon_entertainment_companion_open",
+  "model_name": "gemini_2_5_flash_lite",
+  "model_path": "gemini-2.5-flash-lite",
+  "method_name": "semantic_rag_multimodal",
+  "base_method_name": "semantic_rag_multimodal",
+  "method_modality": "multimodal",
+  "mode": "open",
+  "num_qas": 76,
+  "num_qas_run": 76,
+  "dialog_json": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/dialog/Cartoon_Entertainment_Companion_Open.json",
+  "image_root": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image",
+  "run_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/cartoon_entertainment_companion_open/20260424_215309_gemini_2_5_flash_lite_semantic_rag_multimodal",
+  "git_commit": "658ab1743219fa7a98e5672df9c7253b6b5b5e6d",
+  "summary": {
+    "open_count": 76,
+    "overall": {
+      "em": 0.06578947368421052,
+      "contains_gt": 0.13157894736842105,
+      "f1": 0.34137236986152897,
+      "bleu": 0.091500357283157,
+      "bleu_1": 0.2706947601241236,
+      "bleu_2": 0.18033163025178303,
+      "judge": 0.5657894736842105
+    },
+    "by_x": {
+      "X3": {
+        "em": 0.08333333333333333,
+        "contains_gt": 0.125,
+        "f1": 0.26633342445124053,
+        "bleu": 0.050349942424511636,
+        "bleu_1": 0.21008953835177527,
+        "bleu_2": 0.14405695300195678,
+        "judge": 0.5
+      },
+      "X4": {
+        "em": 0.11538461538461539,
+        "contains_gt": 0.19230769230769232,
+        "f1": 0.46018764891945185,
+        "bleu": 0.1475467433252299,
+        "bleu_1": 0.3656967505762622,
+        "bleu_2": 0.23258558047363634,
+        "judge": 0.7307692307692307
+      },
+      "X2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.3332936507936508,
+        "bleu": 0.08994796544279164,
+        "bleu_1": 0.2550227983885816,
+        "bleu_2": 0.1817956712956503,
+        "judge": 0.55
+      },
+      "X1": {
+        "em": 0.0,
+        "contains_gt": 0.125,
+        "f1": 0.26590515892526073,
+        "bleu": 0.06312084715298495,
+        "bleu_1": 0.21701933438263443,
+        "bleu_2": 0.14891595136359378,
+        "judge": 0.40625
+      }
+    },
+    "by_y": {
+      "Y1": {
+        "em": 0.09090909090909091,
+        "contains_gt": 0.18181818181818182,
+        "f1": 0.3303194664039959,
+        "bleu": 0.07957631174090415,
+        "bleu_1": 0.26435959428626227,
+        "bleu_2": 0.13025817079291754,
+        "judge": 0.6212121212121212
+      },
+      "Y2": {
+        "em": 0.05263157894736842,
+        "contains_gt": 0.10526315789473684,
+        "f1": 0.3849360520705456,
+        "bleu": 0.11242315997045176,
+        "bleu_1": 0.3053053521913557,
+        "bleu_2": 0.24322118710503776,
+        "judge": 0.5657894736842105
+      },
+      "Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.08323754789272031,
+        "bleu": 0.011185757438585735,
+        "bleu_1": 0.049466354943043925,
+        "bleu_2": 0.03285583059555954,
+        "judge": 0.2
+      }
+    },
+    "by_cell": {
+      "X3_Y1": {
+        "em": 0.0,
+        "contains_gt": 0.08333333333333333,
+        "f1": 0.1682679974346641,
+        "bleu": 0.022793441135934248,
+        "bleu_1": 0.11863374492774499,
+        "bleu_2": 0.04965379300485604,
+        "judge": 0.5833333333333334
+      },
+      "X4_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.4978351187197772,
+        "bleu": 0.1590725947226035,
+        "bleu_1": 0.3757113552171476,
+        "bleu_2": 0.29041377250636297,
+        "judge": 0.8461538461538461
+      },
+      "X2_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.21714285714285714,
+        "bleu": 0.09778468487692508,
+        "bleu_1": 0.17142902349445283,
+        "bleu_2": 0.15118593215947465,
+        "judge": 0.4
+      },
+      "X3_Y2": {
+        "em": 0.16666666666666666,
+        "contains_gt": 0.16666666666666666,
+        "f1": 0.364398851467817,
+        "bleu": 0.07790644371308902,
+        "bleu_1": 0.30154533177580556,
+        "bleu_2": 0.23846011299905756,
+        "judge": 0.4166666666666667
+      },
+      "X4_Y1": {
+        "em": 0.25,
+        "contains_gt": 0.4166666666666667,
+        "f1": 0.44733519404572036,
+        "bleu": 0.1473559662551777,
+        "bleu_1": 0.38532232476332484,
+        "bleu_2": 0.18932050414431884,
+        "judge": 0.6666666666666666
+      },
+      "X1_Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.3165204678362573,
+        "bleu": 0.04341729217830077,
+        "bleu_1": 0.24582772718506618,
+        "bleu_2": 0.09220025455426262,
+        "judge": 0.5
+      },
+      "X1_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.25,
+        "f1": 0.3371516164994426,
+        "bleu": 0.09754194981770344,
+        "bleu_1": 0.28020833333333334,
+        "bleu_2": 0.23119688132783153,
+        "judge": 0.4375
+      },
+      "X2_Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.4494444444444445,
+        "bleu": 0.0821112460086582,
+        "bleu_1": 0.3386165732827104,
+        "bleu_2": 0.21240541043182595,
+        "judge": 0.7
+      },
+      "X1_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.07279693486590039,
+        "bleu": 0.01398219679823217,
+        "bleu_1": 0.06183294367880491,
+        "bleu_2": 0.04106978824444943,
+        "judge": 0.25
+      },
+      "X4_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.125,
+        "bleu": 0.0,
+        "bleu_1": 0.0,
+        "bleu_2": 0.0,
+        "judge": 0.0
+      }
+    }
+  },
+  "method_runtime": {
+    "retrieval_backend": "dense_multimodal",
+    "retrieval_corpus": "round_text",
+    "method_modality": "multimodal",
+    "top_k": 10,
+    "neighbor_window": 0,
+    "seed_round_ids": [
+      "CARTOON_S13:R1",
+      "CARTOON_S63:R1",
+      "CARTOON_S56:R1",
+      "CARTOON_S40:R1",
+      "CARTOON_S65:R1",
+      "CARTOON_S59:R1",
+      "CARTOON_S61:R1",
+      "CARTOON_S54:R1",
+      "CARTOON_S22:R1",
+      "CARTOON_S39:R1"
+    ],
+    "selected_round_ids": [
+      "CARTOON_S13:R1",
+      "CARTOON_S63:R1",
+      "CARTOON_S56:R1",
+      "CARTOON_S40:R1",
+      "CARTOON_S65:R1",
+      "CARTOON_S59:R1",
+      "CARTOON_S61:R1",
+      "CARTOON_S54:R1",
+      "CARTOON_S22:R1",
+      "CARTOON_S39:R1"
+    ],
+    "top_candidates": [
+      {
+        "round_id": "CARTOON_S13:R1",
+        "score": 0.3485312316478659,
+        "text_dense_score": 0.6073936720836527,
+        "image_dense_score": 0.08966879121207919,
+        "indexed_image_count": 1,
+        "best_image_path": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image/Cartoon_Entertainment_Companion/Alley_Oop_Page_1.jpg"
+      },
+      {
+        "round_id": "CARTOON_S63:R1",
+        "score": 0.3478341079516686,
+        "text_dense_score": 0.588621159229904,
+        "image_dense_score": 0.1070470566734332,
+        "indexed_image_count": 1,
+        "best_image_path": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image/Cartoon_Entertainment_Companion/Alley_Oop_Page_34.jpg"
+      },
+      {
+        "round_id": "CARTOON_S56:R1",
+        "score": 0.3467156769638653,
+        "text_dense_score": 0.5915949208897433,
+        "image_dense_score": 0.10183643303798733,
+        "indexed_image_count": 1,
+        "best_image_path": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image/Cartoon_Entertainment_Companion/Alley_Oop_Page_31.jpg"
+      },
+      {
+        "round_id": "CARTOON_S40:R1",
+        "score": 0.34424721885978987,
+        "text_dense_score": 0.5874183232883474,
+        "image_dense_score": 0.1010761144312323,
+        "indexed_image_count": 1,
+        "best_image_path": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image/Cartoon_Entertainment_Companion/Alley_Oop_Page_27.jpg"
+      },
+      {
+        "round_id": "CARTOON_S65:R1",
+        "score": 0.34316266749851604,
+        "text_dense_score": 0.5841855457433666,
+        "image_dense_score": 0.10213978925366556,
+        "indexed_image_count": 1,
+        "best_image_path": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image/Cartoon_Entertainment_Companion/Alley_Oop_Page_35.jpg"
+      }
+    ],
+    "clue_hit_count": 2,
+    "corpus_entry_count": 299,
+    "text_embedding_model": "all-MiniLM-L6-v2",
+    "multimodal_embedding_model": "siglip2-base-patch16-384",
+    "text_dense_weight": 0.5,
+    "image_dense_weight": 0.5,
+    "caption_text_included": false,
+    "image_embeddings_built": true,
+    "multi_image_indexing_enabled": true,
+    "indexed_image_count": 87,
+    "history_source": "retrieval",
+    "captions_loaded": false,
+    "images_loaded": true,
+    "history_turns_after_truncation": 20
+  },
+  "judge": {
+    "enabled": true,
+    "model": "gpt-5.2",
+    "scored_open_rows": 76
+  }
+}

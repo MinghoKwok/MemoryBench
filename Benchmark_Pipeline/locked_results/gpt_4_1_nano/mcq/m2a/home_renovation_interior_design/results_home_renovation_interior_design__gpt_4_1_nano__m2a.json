@@ -1,0 +1,117 @@
+{
+  "task_name": "home_renovation_interior_design",
+  "model_name": "gpt_4_1_nano",
+  "model_path": "gpt-4.1-nano",
+  "method_name": "m2a",
+  "base_method_name": "m2a",
+  "method_modality": "",
+  "mode": "mcq",
+  "num_qas": 52,
+  "num_qas_run": 52,
+  "dialog_json": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/dialog/Home_Renovation_Interior_Design.json",
+  "image_root": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/image",
+  "run_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/home_renovation_interior_design/20260424_204153_gpt_4_1_nano_m2a",
+  "git_commit": "658ab1743219fa7a98e5672df9c7253b6b5b5e6d",
+  "summary": {
+    "open_count": 52,
+    "overall": {
+      "em": 0.39903846153846156,
+      "contains_gt": 0.28846153846153844,
+      "f1": 0.39903846153846156
+    },
+    "by_x": {
+      "X4": {
+        "em": 0.4375,
+        "contains_gt": 0.25,
+        "f1": 0.4375
+      },
+      "X3": {
+        "em": 0.3263888888888889,
+        "contains_gt": 0.2222222222222222,
+        "f1": 0.3263888888888889
+      },
+      "X2": {
+        "em": 0.6428571428571429,
+        "contains_gt": 0.5714285714285714,
+        "f1": 0.6428571428571429
+      },
+      "X1": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
+      }
+    },
+    "by_y": {
+      "Y2": {
+        "em": 0.4375,
+        "contains_gt": 0.3333333333333333,
+        "f1": 0.4375
+      },
+      "Y1": {
+        "em": 0.391025641025641,
+        "contains_gt": 0.28205128205128205,
+        "f1": 0.391025641025641
+      },
+      "Y3": {
+        "em": 0.25,
+        "contains_gt": 0.0,
+        "f1": 0.25
+      }
+    },
+    "by_cell": {
+      "X4_Y2": {
+        "em": 0.25,
+        "contains_gt": 0.0,
+        "f1": 0.25
+      },
+      "X3_Y2": {
+        "em": 0.4,
+        "contains_gt": 0.4,
+        "f1": 0.4
+      },
+      "X3_Y1": {
+        "em": 0.31451612903225806,
+        "contains_gt": 0.1935483870967742,
+        "f1": 0.31451612903225806
+      },
+      "X2_Y1": {
+        "em": 0.875,
+        "contains_gt": 1.0,
+        "f1": 0.875
+      },
+      "X2_Y2": {
+        "em": 0.55,
+        "contains_gt": 0.4,
+        "f1": 0.55
+      },
+      "X4_Y1": {
+        "em": 0.55,
+        "contains_gt": 0.4,
+        "f1": 0.55
+      },
+      "X4_Y3": {
+        "em": 0.25,
+        "contains_gt": 0.0,
+        "f1": 0.25
+      },
+      "X1_Y1": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
+      }
+    },
+    "mcq_count": 52,
+    "mcq_valid_rate": 0.9423076923076923,
+    "mcq_overall": {
+      "em": 0.39903846153846156,
+      "contains_gt": 0.28846153846153844,
+      "f1": 0.39903846153846156
+    },
+    "mcq_per_position_accuracy": {
+      "A": 0.3269230769230769,
+      "B": 0.40384615384615385,
+      "C": 0.5769230769230769,
+      "D": 0.28846153846153844
+    }
+  }
+}

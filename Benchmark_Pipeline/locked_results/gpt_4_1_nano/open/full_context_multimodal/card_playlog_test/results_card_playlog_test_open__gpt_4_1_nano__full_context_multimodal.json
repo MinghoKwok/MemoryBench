@@ -1,0 +1,91 @@
+{
+  "task_name": "card_playlog_test_open",
+  "model_name": "gpt_4_1_nano",
+  "model_path": "gpt-4.1-nano",
+  "method_name": "full_context_multimodal",
+  "base_method_name": "full_context_multimodal",
+  "method_modality": "",
+  "mode": "open",
+  "num_qas": 48,
+  "num_qas_run": 48,
+  "dialog_json": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/dialog/Card_Playlog_Test_Open.json",
+  "image_root": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image",
+  "run_dir": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/runs/card_playlog_test_open/20260424_170124_gpt_4_1_nano_full_context_multimodal",
+  "git_commit": "b24985b9af7b246db9e6e807768083d0acb8c78a",
+  "summary": {
+    "open_count": 48,
+    "overall": {
+      "em": 0.20833333333333334,
+      "contains_gt": 0.2916666666666667,
+      "f1": 0.2296626984126984,
+      "bleu": 0.03999175450418394,
+      "bleu_1": 0.2206439393939394,
+      "bleu_2": 0.07011737240381342,
+      "judge": 0.2708333333333333
+    },
+    "by_x": {
+      "X4": {
+        "em": 0.20833333333333334,
+        "contains_gt": 0.2916666666666667,
+        "f1": 0.2296626984126984,
+        "bleu": 0.03999175450418394,
+        "bleu_1": 0.2206439393939394,
+        "bleu_2": 0.07011737240381342,
+        "judge": 0.2708333333333333
+      }
+    },
+    "by_y": {
+      "Y3": {
+        "em": 0.10526315789473684,
+        "contains_gt": 0.2631578947368421,
+        "f1": 0.15037593984962405,
+        "bleu": 0.025164756270891764,
+        "bleu_1": 0.13157894736842105,
+        "bleu_2": 0.04240319014687178,
+        "judge": 0.21052631578947367
+      },
+      "Y2": {
+        "em": 0.27586206896551724,
+        "contains_gt": 0.3103448275862069,
+        "f1": 0.28160919540229884,
+        "bleu": 0.04970599472599606,
+        "bleu_1": 0.27899686520376177,
+        "bleu_2": 0.08827494008939588,
+        "judge": 0.3103448275862069
+      }
+    },
+    "by_cell": {
+      "X4_Y3": {
+        "em": 0.10526315789473684,
+        "contains_gt": 0.2631578947368421,
+        "f1": 0.15037593984962405,
+        "bleu": 0.025164756270891764,
+        "bleu_1": 0.13157894736842105,
+        "bleu_2": 0.04240319014687178,
+        "judge": 0.21052631578947367
+      },
+      "X4_Y2": {
+        "em": 0.27586206896551724,
+        "contains_gt": 0.3103448275862069,
+        "f1": 0.28160919540229884,
+        "bleu": 0.04970599472599606,
+        "bleu_1": 0.27899686520376177,
+        "bleu_2": 0.08827494008939588,
+        "judge": 0.3103448275862069
+      }
+    }
+  },
+  "method_runtime": {
+    "method_modality": "multimodal",
+    "history_source": "full_context",
+    "captions_loaded": false,
+    "images_loaded": true,
+    "history_turns_after_truncation": 60,
+    "history_turns_before_truncation": 60
+  },
+  "judge": {
+    "enabled": true,
+    "model": "gpt-5.2",
+    "scored_open_rows": 48
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "task": {
+    "name": "home_renovation_interior_design",
+    "dataset": {
+      "dialog_json": "data/dialog/Home_Renovation_Interior_Design.json",
+      "image_root": "data/image"
+    },
+    "eval": {
+      "mode": "open",
+      "output_json": "output/results_home_renovation_interior_design.json",
+      "max_questions": 0
+    }
+  },
+  "dataset": {
+    "dialog_json": "data/dialog/Home_Renovation_Interior_Design.json",
+    "image_root": "data/image"
+  },
+  "eval": {
+    "mode": "open",
+    "output_json": "output/results_home_renovation_interior_design.json",
+    "max_questions": 0
+  },
+  "model": {
+    "name": "gpt_4_1_nano",
+    "provider": "openai_api",
+    "model": "gpt-4.1-nano",
+    "api_key_env": "OPENAI_API_KEY",
+    "base_url": "https://api.openai.com/v1",
+    "max_new_tokens": 128,
+    "timeout": 90
+  },
+  "method": {
+    "name": "simplemem",
+    "modality": "multimodal",
+    "llm_model": "",
+    "llm_api_key": "",
+    "llm_api_key_env": "OPENAI_API_KEY",
+    "retrieve_k": 20,
+    "embedding_model": "all-MiniLM-L6-v2",
+    "embedding_dim": 384,
+    "caption_preprocessed": false,
+    "temperature": 0.0,
+    "max_tokens": 1000,
+    "enable_self_evolution": false
+  },
+  "run": {
+    "output_root": "runs",
+    "method_runtime": {
+      "num_memories": 120,
+      "debug_dir": "/common/home/mg1998/MemoryBench/output/home_renovation_interior_design/simplemem",
+      "data_dir": "/common/home/mg1998/MemoryBench/runs/simplemem/home_renovation_interior_design"
+    }
+  }
+}

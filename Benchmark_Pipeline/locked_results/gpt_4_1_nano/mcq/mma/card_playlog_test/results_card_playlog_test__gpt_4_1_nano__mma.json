@@ -1,0 +1,67 @@
+{
+  "task_name": "card_playlog_test",
+  "model_name": "gpt_4_1_nano",
+  "model_path": "gpt-4.1-nano",
+  "method_name": "mma",
+  "base_method_name": "mma",
+  "method_modality": "",
+  "mode": "mcq",
+  "num_qas": 48,
+  "num_qas_run": 48,
+  "dialog_json": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/dialog/Card_Playlog_Test.json",
+  "image_root": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/image",
+  "run_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/card_playlog_test/20260424_184534_gpt_4_1_nano_mma",
+  "git_commit": "658ab1743219fa7a98e5672df9c7253b6b5b5e6d",
+  "summary": {
+    "open_count": 48,
+    "overall": {
+      "em": 0.3177083333333333,
+      "contains_gt": 0.25,
+      "f1": 0.3177083333333333
+    },
+    "by_x": {
+      "X4": {
+        "em": 0.3177083333333333,
+        "contains_gt": 0.25,
+        "f1": 0.3177083333333333
+      }
+    },
+    "by_y": {
+      "Y3": {
+        "em": 0.15789473684210525,
+        "contains_gt": 0.0,
+        "f1": 0.15789473684210525
+      },
+      "Y2": {
+        "em": 0.4224137931034483,
+        "contains_gt": 0.41379310344827586,
+        "f1": 0.4224137931034483
+      }
+    },
+    "by_cell": {
+      "X4_Y3": {
+        "em": 0.15789473684210525,
+        "contains_gt": 0.0,
+        "f1": 0.15789473684210525
+      },
+      "X4_Y2": {
+        "em": 0.4224137931034483,
+        "contains_gt": 0.41379310344827586,
+        "f1": 0.4224137931034483
+      }
+    },
+    "mcq_count": 48,
+    "mcq_valid_rate": 1.0,
+    "mcq_overall": {
+      "em": 0.3177083333333333,
+      "contains_gt": 0.25,
+      "f1": 0.3177083333333333
+    },
+    "mcq_per_position_accuracy": {
+      "A": 0.1875,
+      "B": 0.2916666666666667,
+      "C": 0.5416666666666666,
+      "D": 0.25
+    }
+  }
+}

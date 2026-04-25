@@ -1,0 +1,46 @@
+{
+  "task": {
+    "name": "multi_scene_visual_case_archive_assistant_open",
+    "dataset": {
+      "dialog_json": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/dialog/Multi-Scene_Visual_Case_Archive_Assistant_Open.json",
+      "image_root": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image"
+    },
+    "eval": {
+      "mode": "open",
+      "output_json": "output/results_multi_scene_visual_case_archive_assistant_open.json",
+      "max_questions": 0
+    }
+  },
+  "dataset": {
+    "dialog_json": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/dialog/Multi-Scene_Visual_Case_Archive_Assistant_Open.json",
+    "image_root": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image"
+  },
+  "eval": {
+    "mode": "open",
+    "output_json": "output/results_multi_scene_visual_case_archive_assistant_open.json",
+    "max_questions": 0
+  },
+  "model": {
+    "name": "gemini_2_5_flash_lite",
+    "provider": "gemini_api",
+    "model": "gemini-2.5-flash-lite",
+    "api_key_env": "GEMINI_API_KEY",
+    "base_url": "https://generativelanguage.googleapis.com/v1beta",
+    "max_new_tokens": 128,
+    "timeout": 90
+  },
+  "method": {
+    "name": "clue_only_context",
+    "modality": "multimodal"
+  },
+  "run": {
+    "output_root": "runs",
+    "method_runtime": {
+      "method_modality": "multimodal",
+      "history_source": "clue_only",
+      "captions_loaded": false,
+      "images_loaded": true,
+      "history_turns_after_truncation": 6
+    }
+  }
+}

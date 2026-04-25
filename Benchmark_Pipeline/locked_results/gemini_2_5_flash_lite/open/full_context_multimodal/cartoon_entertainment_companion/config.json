@@ -1,0 +1,48 @@
+{
+  "task": {
+    "name": "cartoon_entertainment_companion_open",
+    "dataset": {
+      "dialog_json": "data/dialog/Cartoon_Entertainment_Companion_Open.json",
+      "image_root": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image"
+    },
+    "eval": {
+      "mode": "open",
+      "output_json": "output/results_cartoon_entertainment_companion_open.json",
+      "max_questions": 0
+    }
+  },
+  "dataset": {
+    "dialog_json": "data/dialog/Cartoon_Entertainment_Companion_Open.json",
+    "image_root": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image"
+  },
+  "eval": {
+    "mode": "open",
+    "output_json": "output/results_cartoon_entertainment_companion_open.json",
+    "max_questions": 0
+  },
+  "model": {
+    "name": "gemini_2_5_flash_lite",
+    "provider": "gemini_api",
+    "model": "gemini-2.5-flash-lite",
+    "api_key_env": "GEMINI_API_KEY",
+    "base_url": "https://generativelanguage.googleapis.com/v1beta",
+    "max_new_tokens": 128,
+    "timeout": 90
+  },
+  "method": {
+    "name": "full_context_multimodal",
+    "context_token_limit": 128000,
+    "reserved_tokens": 1000
+  },
+  "run": {
+    "output_root": "runs",
+    "method_runtime": {
+      "method_modality": "multimodal",
+      "history_source": "full_context",
+      "captions_loaded": false,
+      "images_loaded": true,
+      "history_turns_after_truncation": 598,
+      "history_turns_before_truncation": 598
+    }
+  }
+}

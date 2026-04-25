@@ -1,0 +1,137 @@
+{
+  "task_name": "personal_health_dashboard_assistant_open",
+  "model_name": "gemini_2_5_flash_lite",
+  "model_path": "gemini-2.5-flash-lite",
+  "method_name": "mma",
+  "base_method_name": "mma",
+  "method_modality": "",
+  "mode": "open",
+  "num_qas": 51,
+  "num_qas_run": 51,
+  "dialog_json": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/dialog/Personal_Health_Dashboard_Assistant_Open.json",
+  "image_root": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image",
+  "run_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/personal_health_dashboard_assistant_open/20260424_173154_gemini_2_5_flash_lite_mma",
+  "git_commit": "658ab1743219fa7a98e5672df9c7253b6b5b5e6d",
+  "summary": {
+    "open_count": 51,
+    "overall": {
+      "em": 0.1568627450980392,
+      "contains_gt": 0.17647058823529413,
+      "f1": 0.23831817932163954,
+      "bleu": 0.1273386594318652,
+      "bleu_1": 0.2211471388893704,
+      "bleu_2": 0.19495937362996624,
+      "judge": 0.21568627450980393
+    },
+    "by_x": {
+      "X4": {
+        "em": 0.18181818181818182,
+        "contains_gt": 0.20454545454545456,
+        "f1": 0.24500949139986575,
+        "bleu": 0.14130962992863794,
+        "bleu_1": 0.23331440302514933,
+        "bleu_2": 0.21199373474311228,
+        "judge": 0.20454545454545456
+      },
+      "X3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0,
+        "bleu": 0.0,
+        "bleu_1": 0.0,
+        "bleu_2": 0.0,
+        "judge": 0.0
+      },
+      "X1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.4579365079365079,
+        "bleu": 0.09221597138835197,
+        "bleu_1": 0.33755678341710665,
+        "bleu_2": 0.2050679088104457,
+        "judge": 0.6666666666666666
+      }
+    },
+    "by_y": {
+      "Y2": {
+        "em": 0.18181818181818182,
+        "contains_gt": 0.20454545454545456,
+        "f1": 0.23981044208316935,
+        "bleu": 0.14063188542246932,
+        "bleu_1": 0.22994277465352098,
+        "bleu_2": 0.21088557915847556,
+        "judge": 0.20454545454545456
+      },
+      "Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.2254279489573607,
+        "bleu": 0.04135553751073292,
+        "bleu_1": 0.1649804931542396,
+        "bleu_2": 0.09961345118327548,
+        "judge": 0.25
+      },
+      "Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.25,
+        "bleu": 0.05833544737207805,
+        "bleu_1": 0.17113903967753066,
+        "bleu_2": 0.06628186505570068,
+        "judge": 0.5
+      }
+    },
+    "by_cell": {
+      "X4_Y2": {
+        "em": 0.2,
+        "contains_gt": 0.225,
+        "f1": 0.2637914862914863,
+        "bleu": 0.15469507396471624,
+        "bleu_1": 0.2529370521188731,
+        "bleu_2": 0.2319741370743231,
+        "judge": 0.225
+      },
+      "X4_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.057189542483660136,
+        "bleu": 0.00745518956785491,
+        "bleu_1": 0.03708791208791208,
+        "bleu_2": 0.01218971143100411,
+        "judge": 0.0
+      },
+      "X3_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0,
+        "bleu": 0.0,
+        "bleu_1": 0.0,
+        "bleu_2": 0.0,
+        "judge": 0.0
+      },
+      "X1_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.5619047619047619,
+        "bleu": 0.10915623339648893,
+        "bleu_1": 0.42076565528689464,
+        "bleu_2": 0.27446093068781824,
+        "judge": 0.75
+      },
+      "X1_Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.25,
+        "bleu": 0.05833544737207805,
+        "bleu_1": 0.17113903967753066,
+        "bleu_2": 0.06628186505570068,
+        "judge": 0.5
+      }
+    }
+  },
+  "judge": {
+    "enabled": true,
+    "model": "gpt-5.2",
+    "scored_open_rows": 51
+  }
+}

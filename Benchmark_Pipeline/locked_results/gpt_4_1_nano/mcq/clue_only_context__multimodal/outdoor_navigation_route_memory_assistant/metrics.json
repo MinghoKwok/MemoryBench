@@ -1,0 +1,124 @@
+{
+  "task_name": "outdoor_navigation_route_memory_assistant",
+  "model_name": "gpt_4_1_nano",
+  "model_path": "gpt-4.1-nano",
+  "method_name": "clue_only_context__multimodal",
+  "base_method_name": "clue_only_context",
+  "method_modality": "multimodal",
+  "mode": "mcq",
+  "num_qas": 28,
+  "num_qas_run": 28,
+  "dialog_json": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/dialog/Outdoor_Navigation_Route_Memory_Assistant.json",
+  "image_root": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/image",
+  "run_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/outdoor_navigation_route_memory_assistant/20260424_215127_gpt_4_1_nano_clue_only_context__multimodal",
+  "git_commit": "658ab1743219fa7a98e5672df9c7253b6b5b5e6d",
+  "summary": {
+    "open_count": 28,
+    "overall": {
+      "em": 0.4642857142857143,
+      "contains_gt": 0.42857142857142855,
+      "f1": 0.4642857142857143
+    },
+    "by_x": {
+      "X3": {
+        "em": 0.5138888888888888,
+        "contains_gt": 0.5,
+        "f1": 0.5138888888888888
+      },
+      "X1": {
+        "em": 0.4166666666666667,
+        "contains_gt": 0.6666666666666666,
+        "f1": 0.4166666666666667
+      },
+      "X4": {
+        "em": 0.25,
+        "contains_gt": 0.2,
+        "f1": 0.25
+      },
+      "X2": {
+        "em": 0.625,
+        "contains_gt": 0.0,
+        "f1": 0.625
+      }
+    },
+    "by_y": {
+      "Y2": {
+        "em": 0.48333333333333334,
+        "contains_gt": 0.4666666666666667,
+        "f1": 0.48333333333333334
+      },
+      "Y1": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
+      },
+      "Y3": {
+        "em": 0.3958333333333333,
+        "contains_gt": 0.3333333333333333,
+        "f1": 0.3958333333333333
+      }
+    },
+    "by_cell": {
+      "X3_Y2": {
+        "em": 0.46153846153846156,
+        "contains_gt": 0.46153846153846156,
+        "f1": 0.46153846153846156
+      },
+      "X1_Y1": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
+      },
+      "X4_Y2": {
+        "em": 0.5,
+        "contains_gt": 1.0,
+        "f1": 0.5
+      },
+      "X2_Y2": {
+        "em": 0.75,
+        "contains_gt": 0.0,
+        "f1": 0.75
+      },
+      "X3_Y3": {
+        "em": 0.65,
+        "contains_gt": 0.6,
+        "f1": 0.65
+      },
+      "X4_Y3": {
+        "em": 0.1875,
+        "contains_gt": 0.0,
+        "f1": 0.1875
+      },
+      "X1_Y3": {
+        "em": 0.125,
+        "contains_gt": 0.5,
+        "f1": 0.125
+      },
+      "X2_Y3": {
+        "em": 0.5,
+        "contains_gt": 0.0,
+        "f1": 0.5
+      }
+    },
+    "mcq_count": 28,
+    "mcq_valid_rate": 1.0,
+    "mcq_overall": {
+      "em": 0.4642857142857143,
+      "contains_gt": 0.42857142857142855,
+      "f1": 0.4642857142857143
+    },
+    "mcq_per_position_accuracy": {
+      "A": 0.5357142857142857,
+      "B": 0.42857142857142855,
+      "C": 0.4642857142857143,
+      "D": 0.42857142857142855
+    }
+  },
+  "method_runtime": {
+    "method_modality": "multimodal",
+    "history_source": "clue_only",
+    "captions_loaded": false,
+    "images_loaded": true,
+    "history_turns_after_truncation": 8
+  }
+}

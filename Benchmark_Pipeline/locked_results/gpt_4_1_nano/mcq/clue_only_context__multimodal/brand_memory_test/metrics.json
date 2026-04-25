@@ -1,0 +1,99 @@
+{
+  "task_name": "brand_memory_test",
+  "model_name": "gpt_4_1_nano",
+  "model_path": "gpt-4.1-nano",
+  "method_name": "clue_only_context__multimodal",
+  "base_method_name": "clue_only_context",
+  "method_modality": "multimodal",
+  "mode": "mcq",
+  "num_qas": 29,
+  "num_qas_run": 29,
+  "dialog_json": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/dialog/Brand_Memory_Test.json",
+  "image_root": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/image",
+  "run_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/brand_memory_test/20260424_213350_gpt_4_1_nano_clue_only_context__multimodal",
+  "git_commit": "658ab1743219fa7a98e5672df9c7253b6b5b5e6d",
+  "summary": {
+    "open_count": 29,
+    "overall": {
+      "em": 0.4051724137931034,
+      "contains_gt": 0.27586206896551724,
+      "f1": 0.4051724137931034
+    },
+    "by_x": {
+      "X4": {
+        "em": 0.5,
+        "contains_gt": 0.5,
+        "f1": 0.5
+      },
+      "X2": {
+        "em": 0.5833333333333334,
+        "contains_gt": 0.5,
+        "f1": 0.5833333333333334
+      },
+      "X1": {
+        "em": 0.34523809523809523,
+        "contains_gt": 0.19047619047619047,
+        "f1": 0.34523809523809523
+      }
+    },
+    "by_y": {
+      "Y1": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
+      },
+      "Y2": {
+        "em": 0.3611111111111111,
+        "contains_gt": 0.2222222222222222,
+        "f1": 0.3611111111111111
+      }
+    },
+    "by_cell": {
+      "X4_Y1": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
+      },
+      "X2_Y2": {
+        "em": 0.5833333333333334,
+        "contains_gt": 0.5,
+        "f1": 0.5833333333333334
+      },
+      "X1_Y2": {
+        "em": 0.3125,
+        "contains_gt": 0.15,
+        "f1": 0.3125
+      },
+      "X4_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0
+      },
+      "X1_Y1": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
+      }
+    },
+    "mcq_count": 29,
+    "mcq_valid_rate": 1.0,
+    "mcq_overall": {
+      "em": 0.4051724137931034,
+      "contains_gt": 0.27586206896551724,
+      "f1": 0.4051724137931034
+    },
+    "mcq_per_position_accuracy": {
+      "A": 0.5517241379310345,
+      "B": 0.41379310344827586,
+      "C": 0.3793103448275862,
+      "D": 0.27586206896551724
+    }
+  },
+  "method_runtime": {
+    "method_modality": "multimodal",
+    "history_source": "clue_only",
+    "captions_loaded": false,
+    "images_loaded": true,
+    "history_turns_after_truncation": 2
+  }
+}

@@ -1,0 +1,90 @@
+{
+  "task_name": "card_playlog_test_open",
+  "model_name": "gpt_4_1_nano",
+  "model_path": "gpt-4.1-nano",
+  "method_name": "clue_only_context__multimodal",
+  "base_method_name": "clue_only_context",
+  "method_modality": "multimodal",
+  "mode": "open",
+  "num_qas": 48,
+  "num_qas_run": 48,
+  "dialog_json": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/dialog/Card_Playlog_Test_Open.json",
+  "image_root": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image",
+  "run_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/card_playlog_test_open/20260424_220118_gpt_4_1_nano_clue_only_context__multimodal",
+  "git_commit": "658ab1743219fa7a98e5672df9c7253b6b5b5e6d",
+  "summary": {
+    "open_count": 48,
+    "overall": {
+      "em": 0.020833333333333332,
+      "contains_gt": 0.5833333333333334,
+      "f1": 0.1067958575717443,
+      "bleu": 0.0136638655435313,
+      "bleu_1": 0.06791821117479012,
+      "bleu_2": 0.022266262582078533,
+      "judge": 0.5833333333333334
+    },
+    "by_x": {
+      "X4": {
+        "em": 0.020833333333333332,
+        "contains_gt": 0.5833333333333334,
+        "f1": 0.1067958575717443,
+        "bleu": 0.0136638655435313,
+        "bleu_1": 0.06791821117479012,
+        "bleu_2": 0.022266262582078533,
+        "judge": 0.5833333333333334
+      }
+    },
+    "by_y": {
+      "Y3": {
+        "em": 0.0,
+        "contains_gt": 0.5263157894736842,
+        "f1": 0.0876419287084107,
+        "bleu": 0.010533795018120184,
+        "bleu_1": 0.04849302744039586,
+        "bleu_2": 0.016255883150229553,
+        "judge": 0.2631578947368421
+      },
+      "Y2": {
+        "em": 0.034482758620689655,
+        "contains_gt": 0.6206896551724138,
+        "f1": 0.11934498337875597,
+        "bleu": 0.015714601405007547,
+        "bleu_1": 0.08064505569042774,
+        "bleu_2": 0.02620409738225545,
+        "judge": 0.7931034482758621
+      }
+    },
+    "by_cell": {
+      "X4_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.5263157894736842,
+        "f1": 0.0876419287084107,
+        "bleu": 0.010533795018120184,
+        "bleu_1": 0.04849302744039586,
+        "bleu_2": 0.016255883150229553,
+        "judge": 0.2631578947368421
+      },
+      "X4_Y2": {
+        "em": 0.034482758620689655,
+        "contains_gt": 0.6206896551724138,
+        "f1": 0.11934498337875597,
+        "bleu": 0.015714601405007547,
+        "bleu_1": 0.08064505569042774,
+        "bleu_2": 0.02620409738225545,
+        "judge": 0.7931034482758621
+      }
+    }
+  },
+  "method_runtime": {
+    "method_modality": "multimodal",
+    "history_source": "clue_only",
+    "captions_loaded": false,
+    "images_loaded": true,
+    "history_turns_after_truncation": 2
+  },
+  "judge": {
+    "enabled": true,
+    "model": "gpt-5.2",
+    "scored_open_rows": 48
+  }
+}

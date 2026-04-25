@@ -1,0 +1,133 @@
+{
+  "task": {
+    "name": "personal_health_dashboard_assistant_open",
+    "dataset": {
+      "dialog_json": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/dialog/Personal_Health_Dashboard_Assistant_Open.json",
+      "image_root": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image"
+    },
+    "eval": {
+      "mode": "open",
+      "output_json": "output/results_personal_health_dashboard_assistant_open.json",
+      "max_questions": 0
+    }
+  },
+  "dataset": {
+    "dialog_json": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/dialog/Personal_Health_Dashboard_Assistant_Open.json",
+    "image_root": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image"
+  },
+  "eval": {
+    "mode": "open",
+    "output_json": "output/results_personal_health_dashboard_assistant_open.json",
+    "max_questions": 0
+  },
+  "model": {
+    "name": "gemini_2_5_flash_lite",
+    "provider": "gemini_api",
+    "model": "gemini-2.5-flash-lite",
+    "api_key_env": "GEMINI_API_KEY",
+    "base_url": "https://generativelanguage.googleapis.com/v1beta",
+    "max_new_tokens": 128,
+    "timeout": 90
+  },
+  "method": {
+    "name": "semantic_rag_multimodal",
+    "modality": "multimodal",
+    "retrieval_backend": "dense_multimodal",
+    "top_k": 10,
+    "neighbor_window": 0,
+    "text_embedding_model": "all-MiniLM-L6-v2",
+    "multimodal_embedding_model": "siglip2-base-patch16-384",
+    "text_dense_weight": 0.5,
+    "image_dense_weight": 0.5
+  },
+  "run": {
+    "output_root": "runs",
+    "method_runtime": {
+      "retrieval_backend": "dense_multimodal",
+      "retrieval_corpus": "round_text",
+      "method_modality": "multimodal",
+      "top_k": 10,
+      "neighbor_window": 0,
+      "seed_round_ids": [
+        "HEALTH_S1:R1",
+        "HEALTH_S6:R2",
+        "HEALTH_S2:R7",
+        "HEALTH_S12:R7",
+        "HEALTH_S1:R2",
+        "HEALTH_S3:R7",
+        "HEALTH_S3:R2",
+        "HEALTH_S11:R2",
+        "HEALTH_S11:R6",
+        "HEALTH_S3:R3"
+      ],
+      "selected_round_ids": [
+        "HEALTH_S1:R1",
+        "HEALTH_S6:R2",
+        "HEALTH_S2:R7",
+        "HEALTH_S12:R7",
+        "HEALTH_S1:R2",
+        "HEALTH_S3:R7",
+        "HEALTH_S3:R2",
+        "HEALTH_S11:R2",
+        "HEALTH_S11:R6",
+        "HEALTH_S3:R3"
+      ],
+      "top_candidates": [
+        {
+          "round_id": "HEALTH_S1:R1",
+          "score": 0.20077693337704175,
+          "text_dense_score": 0.4015538667540835,
+          "image_dense_score": 0.0,
+          "indexed_image_count": 0,
+          "best_image_path": ""
+        },
+        {
+          "round_id": "HEALTH_S6:R2",
+          "score": 0.19060088580565093,
+          "text_dense_score": 0.2616183396383373,
+          "image_dense_score": 0.11958343197296455,
+          "indexed_image_count": 1,
+          "best_image_path": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image/Personal_Health_Dashboard_Assistant/D6_IMG_001.jpg"
+        },
+        {
+          "round_id": "HEALTH_S2:R7",
+          "score": 0.18726256586113313,
+          "text_dense_score": 0.2623997749880243,
+          "image_dense_score": 0.11212535673424194,
+          "indexed_image_count": 1,
+          "best_image_path": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image/Personal_Health_Dashboard_Assistant/D2_IMG_005.jpg"
+        },
+        {
+          "round_id": "HEALTH_S12:R7",
+          "score": 0.18052104604186575,
+          "text_dense_score": 0.2484664016370259,
+          "image_dense_score": 0.11257569044670557,
+          "indexed_image_count": 1,
+          "best_image_path": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image/Personal_Health_Dashboard_Assistant/D12_IMG_005.jpg"
+        },
+        {
+          "round_id": "HEALTH_S1:R2",
+          "score": 0.1729068649270978,
+          "text_dense_score": 0.23420730322662553,
+          "image_dense_score": 0.11160642662757009,
+          "indexed_image_count": 1,
+          "best_image_path": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image/Personal_Health_Dashboard_Assistant/D1_IMG_001.jpg"
+        }
+      ],
+      "clue_hit_count": 1,
+      "corpus_entry_count": 97,
+      "text_embedding_model": "all-MiniLM-L6-v2",
+      "multimodal_embedding_model": "siglip2-base-patch16-384",
+      "text_dense_weight": 0.5,
+      "image_dense_weight": 0.5,
+      "caption_text_included": false,
+      "image_embeddings_built": true,
+      "multi_image_indexing_enabled": true,
+      "indexed_image_count": 62,
+      "history_source": "retrieval",
+      "captions_loaded": false,
+      "images_loaded": true,
+      "history_turns_after_truncation": 20
+    }
+  }
+}
