@@ -1,0 +1,184 @@
+{
+  "task_name": "personal_health_dashboard_assistant",
+  "model_name": "gemini_2_5_flash_lite",
+  "model_path": "gemini-2.5-flash-lite",
+  "method_name": "semantic_rag_multimodal",
+  "base_method_name": "semantic_rag_multimodal",
+  "method_modality": "multimodal",
+  "mode": "mcq",
+  "num_qas": 51,
+  "num_qas_run": 51,
+  "dialog_json": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/dialog/Personal_Health_Dashboard_Assistant.json",
+  "image_root": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/image",
+  "run_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/personal_health_dashboard_assistant/20260425_022953_gemini_2_5_flash_lite_semantic_rag_multimodal",
+  "git_commit": "b6a188308ff7c48ebcc509618341807cfdaa773c",
+  "summary": {
+    "open_count": 51,
+    "overall": {
+      "em": 0.3137254901960784,
+      "contains_gt": 0.29411764705882354,
+      "f1": 0.3137254901960784
+    },
+    "by_x": {
+      "X4": {
+        "em": 0.30113636363636365,
+        "contains_gt": 0.2727272727272727,
+        "f1": 0.30113636363636365
+      },
+      "X3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0
+      },
+      "X1": {
+        "em": 0.9166666666666666,
+        "contains_gt": 1.0,
+        "f1": 0.9166666666666666
+      }
+    },
+    "by_y": {
+      "Y2": {
+        "em": 0.2727272727272727,
+        "contains_gt": 0.25,
+        "f1": 0.2727272727272727
+      },
+      "Y3": {
+        "em": 0.5,
+        "contains_gt": 0.5,
+        "f1": 0.5
+      },
+      "Y1": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
+      }
+    },
+    "by_cell": {
+      "X4_Y2": {
+        "em": 0.3,
+        "contains_gt": 0.275,
+        "f1": 0.3
+      },
+      "X4_Y3": {
+        "em": 0.3125,
+        "contains_gt": 0.25,
+        "f1": 0.3125
+      },
+      "X3_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0
+      },
+      "X1_Y3": {
+        "em": 0.875,
+        "contains_gt": 1.0,
+        "f1": 0.875
+      },
+      "X1_Y1": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
+      }
+    },
+    "mcq_count": 51,
+    "mcq_valid_rate": 1.0,
+    "mcq_overall": {
+      "em": 0.3137254901960784,
+      "contains_gt": 0.29411764705882354,
+      "f1": 0.3137254901960784
+    },
+    "mcq_per_position_accuracy": {
+      "A": 0.45098039215686275,
+      "B": 0.1568627450980392,
+      "C": 0.35294117647058826,
+      "D": 0.29411764705882354
+    }
+  },
+  "method_runtime": {
+    "retrieval_backend": "dense_multimodal",
+    "retrieval_corpus": "round_text",
+    "method_modality": "multimodal",
+    "top_k": 10,
+    "neighbor_window": 0,
+    "seed_round_ids": [
+      "HEALTH_S12:R7",
+      "HEALTH_S6:R2",
+      "HEALTH_S2:R7",
+      "HEALTH_S1:R1",
+      "HEALTH_S11:R7",
+      "HEALTH_S9:R2",
+      "HEALTH_S1:R2",
+      "HEALTH_S11:R6",
+      "HEALTH_S5:R7",
+      "HEALTH_S3:R7"
+    ],
+    "selected_round_ids": [
+      "HEALTH_S12:R7",
+      "HEALTH_S6:R2",
+      "HEALTH_S2:R7",
+      "HEALTH_S1:R1",
+      "HEALTH_S11:R7",
+      "HEALTH_S9:R2",
+      "HEALTH_S1:R2",
+      "HEALTH_S11:R6",
+      "HEALTH_S5:R7",
+      "HEALTH_S3:R7"
+    ],
+    "top_candidates": [
+      {
+        "round_id": "HEALTH_S12:R7",
+        "score": 0.21678357139885895,
+        "text_dense_score": 0.3097681898513171,
+        "image_dense_score": 0.12379895294640084,
+        "indexed_image_count": 1,
+        "best_image_path": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/image/Personal_Health_Dashboard_Assistant/D12_IMG_005.jpg"
+      },
+      {
+        "round_id": "HEALTH_S6:R2",
+        "score": 0.21514792701016217,
+        "text_dense_score": 0.29946047398895503,
+        "image_dense_score": 0.1308353800313693,
+        "indexed_image_count": 1,
+        "best_image_path": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/image/Personal_Health_Dashboard_Assistant/D6_IMG_001.jpg"
+      },
+      {
+        "round_id": "HEALTH_S2:R7",
+        "score": 0.21027610286706397,
+        "text_dense_score": 0.2971883161915774,
+        "image_dense_score": 0.12336388954255055,
+        "indexed_image_count": 1,
+        "best_image_path": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/image/Personal_Health_Dashboard_Assistant/D2_IMG_005.jpg"
+      },
+      {
+        "round_id": "HEALTH_S1:R1",
+        "score": 0.20847327962577467,
+        "text_dense_score": 0.41694655925154933,
+        "image_dense_score": 0.0,
+        "indexed_image_count": 0,
+        "best_image_path": ""
+      },
+      {
+        "round_id": "HEALTH_S11:R7",
+        "score": 0.20770469852665424,
+        "text_dense_score": 0.36469746735740577,
+        "image_dense_score": 0.050711929695902706,
+        "indexed_image_count": 1,
+        "best_image_path": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/image/Personal_Health_Dashboard_Assistant/D11_IMG_005.jpg"
+      }
+    ],
+    "clue_hit_count": 1,
+    "corpus_entry_count": 97,
+    "text_embedding_model": "all-MiniLM-L6-v2",
+    "multimodal_embedding_model": "siglip2-base-patch16-384",
+    "text_dense_weight": 0.5,
+    "image_dense_weight": 0.5,
+    "caption_text_included": false,
+    "image_embeddings_built": true,
+    "multi_image_indexing_enabled": true,
+    "indexed_image_count": 62,
+    "history_source": "retrieval",
+    "captions_loaded": false,
+    "images_loaded": true,
+    "history_turns_after_truncation": 20
+  }
+}

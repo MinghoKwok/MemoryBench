@@ -1,0 +1,214 @@
+{
+  "task_name": "cartoon_entertainment_companion",
+  "model_name": "gemini_2_5_flash_lite",
+  "model_path": "gemini-2.5-flash-lite",
+  "method_name": "semantic_rag_multimodal",
+  "base_method_name": "semantic_rag_multimodal",
+  "method_modality": "multimodal",
+  "mode": "mcq",
+  "num_qas": 76,
+  "num_qas_run": 76,
+  "dialog_json": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/dialog/Cartoon_Entertainment_Companion.json",
+  "image_root": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image",
+  "run_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/cartoon_entertainment_companion/20260425_020223_gemini_2_5_flash_lite_semantic_rag_multimodal",
+  "git_commit": "b6a188308ff7c48ebcc509618341807cfdaa773c",
+  "summary": {
+    "open_count": 76,
+    "overall": {
+      "em": 0.6578947368421053,
+      "contains_gt": 0.6842105263157895,
+      "f1": 0.6578947368421053
+    },
+    "by_x": {
+      "X3": {
+        "em": 0.5,
+        "contains_gt": 0.4782608695652174,
+        "f1": 0.5
+      },
+      "X4": {
+        "em": 0.782608695652174,
+        "contains_gt": 0.782608695652174,
+        "f1": 0.782608695652174
+      },
+      "X2": {
+        "em": 0.7321428571428571,
+        "contains_gt": 0.7857142857142857,
+        "f1": 0.7321428571428571
+      },
+      "X1": {
+        "em": 0.640625,
+        "contains_gt": 0.75,
+        "f1": 0.640625
+      }
+    },
+    "by_y": {
+      "Y1": {
+        "em": 0.7578125,
+        "contains_gt": 0.75,
+        "f1": 0.7578125
+      },
+      "Y2": {
+        "em": 0.6025641025641025,
+        "contains_gt": 0.6410256410256411,
+        "f1": 0.6025641025641025
+      },
+      "Y3": {
+        "em": 0.45,
+        "contains_gt": 0.6,
+        "f1": 0.45
+      }
+    },
+    "by_cell": {
+      "X3_Y1": {
+        "em": 0.6136363636363636,
+        "contains_gt": 0.6363636363636364,
+        "f1": 0.6136363636363636
+      },
+      "X4_Y2": {
+        "em": 0.8,
+        "contains_gt": 0.9,
+        "f1": 0.8
+      },
+      "X2_Y2": {
+        "em": 0.6388888888888888,
+        "contains_gt": 0.6666666666666666,
+        "f1": 0.6388888888888888
+      },
+      "X3_Y2": {
+        "em": 0.3958333333333333,
+        "contains_gt": 0.3333333333333333,
+        "f1": 0.3958333333333333
+      },
+      "X4_Y1": {
+        "em": 0.8333333333333334,
+        "contains_gt": 0.75,
+        "f1": 0.8333333333333334
+      },
+      "X1_Y1": {
+        "em": 0.75,
+        "contains_gt": 0.75,
+        "f1": 0.75
+      },
+      "X1_Y2": {
+        "em": 0.625,
+        "contains_gt": 0.75,
+        "f1": 0.625
+      },
+      "X2_Y1": {
+        "em": 0.9,
+        "contains_gt": 1.0,
+        "f1": 0.9
+      },
+      "X1_Y3": {
+        "em": 0.5625,
+        "contains_gt": 0.75,
+        "f1": 0.5625
+      },
+      "X4_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0
+      }
+    },
+    "mcq_count": 76,
+    "mcq_valid_rate": 1.0,
+    "mcq_overall": {
+      "em": 0.6578947368421053,
+      "contains_gt": 0.6842105263157895,
+      "f1": 0.6578947368421053
+    },
+    "mcq_per_position_accuracy": {
+      "A": 0.6447368421052632,
+      "B": 0.6052631578947368,
+      "C": 0.6973684210526315,
+      "D": 0.6842105263157895
+    }
+  },
+  "method_runtime": {
+    "retrieval_backend": "dense_multimodal",
+    "retrieval_corpus": "round_text",
+    "method_modality": "multimodal",
+    "top_k": 10,
+    "neighbor_window": 0,
+    "seed_round_ids": [
+      "CARTOON_S13:R1",
+      "CARTOON_S63:R1",
+      "CARTOON_S56:R1",
+      "CARTOON_S40:R1",
+      "CARTOON_S65:R1",
+      "CARTOON_S59:R1",
+      "CARTOON_S61:R1",
+      "CARTOON_S54:R1",
+      "CARTOON_S22:R1",
+      "CARTOON_S39:R1"
+    ],
+    "selected_round_ids": [
+      "CARTOON_S13:R1",
+      "CARTOON_S63:R1",
+      "CARTOON_S56:R1",
+      "CARTOON_S40:R1",
+      "CARTOON_S65:R1",
+      "CARTOON_S59:R1",
+      "CARTOON_S61:R1",
+      "CARTOON_S54:R1",
+      "CARTOON_S22:R1",
+      "CARTOON_S39:R1"
+    ],
+    "top_candidates": [
+      {
+        "round_id": "CARTOON_S13:R1",
+        "score": 0.3487591864683538,
+        "text_dense_score": 0.6047644454115516,
+        "image_dense_score": 0.09275392752515603,
+        "indexed_image_count": 1,
+        "best_image_path": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image/Cartoon_Entertainment_Companion/Alley_Oop_Page_1.jpg"
+      },
+      {
+        "round_id": "CARTOON_S63:R1",
+        "score": 0.3482768322898564,
+        "text_dense_score": 0.5919117712880023,
+        "image_dense_score": 0.10464189329171043,
+        "indexed_image_count": 1,
+        "best_image_path": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image/Cartoon_Entertainment_Companion/Alley_Oop_Page_34.jpg"
+      },
+      {
+        "round_id": "CARTOON_S56:R1",
+        "score": 0.3476974925388236,
+        "text_dense_score": 0.592446999469822,
+        "image_dense_score": 0.10294798560782518,
+        "indexed_image_count": 1,
+        "best_image_path": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image/Cartoon_Entertainment_Companion/Alley_Oop_Page_31.jpg"
+      },
+      {
+        "round_id": "CARTOON_S40:R1",
+        "score": 0.346530200330598,
+        "text_dense_score": 0.588636208485334,
+        "image_dense_score": 0.10442419217586195,
+        "indexed_image_count": 1,
+        "best_image_path": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image/Cartoon_Entertainment_Companion/Alley_Oop_Page_27.jpg"
+      },
+      {
+        "round_id": "CARTOON_S65:R1",
+        "score": 0.3462472245668456,
+        "text_dense_score": 0.5854399668559496,
+        "image_dense_score": 0.10705448227774164,
+        "indexed_image_count": 1,
+        "best_image_path": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image/Cartoon_Entertainment_Companion/Alley_Oop_Page_35.jpg"
+      }
+    ],
+    "clue_hit_count": 2,
+    "corpus_entry_count": 299,
+    "text_embedding_model": "all-MiniLM-L6-v2",
+    "multimodal_embedding_model": "siglip2-base-patch16-384",
+    "text_dense_weight": 0.5,
+    "image_dense_weight": 0.5,
+    "caption_text_included": false,
+    "image_embeddings_built": true,
+    "multi_image_indexing_enabled": true,
+    "indexed_image_count": 87,
+    "history_source": "retrieval",
+    "captions_loaded": false,
+    "images_loaded": true,
+    "history_turns_after_truncation": 20
+  }
+}

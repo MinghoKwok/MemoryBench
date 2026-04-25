@@ -1,0 +1,194 @@
+{
+  "task_name": "multi_scene_visual_case_archive_assistant",
+  "model_name": "gemini_2_5_flash_lite",
+  "model_path": "gemini-2.5-flash-lite",
+  "method_name": "semantic_rag_multimodal",
+  "base_method_name": "semantic_rag_multimodal",
+  "method_modality": "multimodal",
+  "mode": "mcq",
+  "num_qas": 50,
+  "num_qas_run": 50,
+  "dialog_json": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/dialog/Multi-Scene_Visual_Case_Archive_Assistant.json",
+  "image_root": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/image",
+  "run_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/multi_scene_visual_case_archive_assistant/20260425_021405_gemini_2_5_flash_lite_semantic_rag_multimodal",
+  "git_commit": "b6a188308ff7c48ebcc509618341807cfdaa773c",
+  "summary": {
+    "open_count": 50,
+    "overall": {
+      "em": 0.575,
+      "contains_gt": 0.58,
+      "f1": 0.575
+    },
+    "by_x": {
+      "X4": {
+        "em": 0.5,
+        "contains_gt": 0.5,
+        "f1": 0.5
+      },
+      "X2": {
+        "em": 0.53125,
+        "contains_gt": 0.625,
+        "f1": 0.53125
+      },
+      "X3": {
+        "em": 0.5921052631578947,
+        "contains_gt": 0.5789473684210527,
+        "f1": 0.5921052631578947
+      }
+    },
+    "by_y": {
+      "Y2": {
+        "em": 0.5,
+        "contains_gt": 0.625,
+        "f1": 0.5
+      },
+      "Y3": {
+        "em": 0.4772727272727273,
+        "contains_gt": 0.45454545454545453,
+        "f1": 0.4772727272727273
+      },
+      "Y1": {
+        "em": 0.6290322580645161,
+        "contains_gt": 0.6129032258064516,
+        "f1": 0.6290322580645161
+      }
+    },
+    "by_cell": {
+      "X4_Y2": {
+        "em": 0.6666666666666666,
+        "contains_gt": 0.6666666666666666,
+        "f1": 0.6666666666666666
+      },
+      "X2_Y2": {
+        "em": 0.6666666666666666,
+        "contains_gt": 1.0,
+        "f1": 0.6666666666666666
+      },
+      "X3_Y3": {
+        "em": 0.6,
+        "contains_gt": 0.6,
+        "f1": 0.6
+      },
+      "X2_Y3": {
+        "em": 0.45,
+        "contains_gt": 0.4,
+        "f1": 0.45
+      },
+      "X3_Y1": {
+        "em": 0.6290322580645161,
+        "contains_gt": 0.6129032258064516,
+        "f1": 0.6290322580645161
+      },
+      "X3_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0
+      },
+      "X4_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0
+      }
+    },
+    "mcq_count": 50,
+    "mcq_valid_rate": 1.0,
+    "mcq_overall": {
+      "em": 0.575,
+      "contains_gt": 0.58,
+      "f1": 0.575
+    },
+    "mcq_per_position_accuracy": {
+      "A": 0.64,
+      "B": 0.54,
+      "C": 0.54,
+      "D": 0.58
+    }
+  },
+  "method_runtime": {
+    "retrieval_backend": "dense_multimodal",
+    "retrieval_corpus": "round_text",
+    "method_modality": "multimodal",
+    "top_k": 10,
+    "neighbor_window": 0,
+    "seed_round_ids": [
+      "SCENE_S2:R6",
+      "SCENE_S2:R4",
+      "SCENE_S5:R6",
+      "SCENE_S11:R4",
+      "SCENE_S11:R2",
+      "SCENE_S3:R4",
+      "SCENE_S12:R8",
+      "SCENE_S11:R5",
+      "SCENE_S8:R7",
+      "SCENE_S1:R4"
+    ],
+    "selected_round_ids": [
+      "SCENE_S2:R6",
+      "SCENE_S2:R4",
+      "SCENE_S5:R6",
+      "SCENE_S11:R4",
+      "SCENE_S11:R2",
+      "SCENE_S3:R4",
+      "SCENE_S12:R8",
+      "SCENE_S11:R5",
+      "SCENE_S8:R7",
+      "SCENE_S1:R4"
+    ],
+    "top_candidates": [
+      {
+        "round_id": "SCENE_S2:R6",
+        "score": 0.29209125703659766,
+        "text_dense_score": 0.4667632580609187,
+        "image_dense_score": 0.11741925601227668,
+        "indexed_image_count": 1,
+        "best_image_path": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/image/Multi-Scene_Visual_Case_Archive_Assistant/S2-IMG4.png"
+      },
+      {
+        "round_id": "SCENE_S2:R4",
+        "score": 0.27643177858851736,
+        "text_dense_score": 0.4353517886754722,
+        "image_dense_score": 0.11751176850156257,
+        "indexed_image_count": 1,
+        "best_image_path": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/image/Multi-Scene_Visual_Case_Archive_Assistant/S2-IMG3.png"
+      },
+      {
+        "round_id": "SCENE_S5:R6",
+        "score": 0.2646978987301108,
+        "text_dense_score": 0.42775224300497466,
+        "image_dense_score": 0.10164355445524688,
+        "indexed_image_count": 1,
+        "best_image_path": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/image/Multi-Scene_Visual_Case_Archive_Assistant/S5-IMG3.png"
+      },
+      {
+        "round_id": "SCENE_S11:R4",
+        "score": 0.2420052679405493,
+        "text_dense_score": 0.3982978682010249,
+        "image_dense_score": 0.08571266768007368,
+        "indexed_image_count": 1,
+        "best_image_path": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/image/Multi-Scene_Visual_Case_Archive_Assistant/S11-IMG2.png"
+      },
+      {
+        "round_id": "SCENE_S11:R2",
+        "score": 0.23667165449554264,
+        "text_dense_score": 0.3641072341509245,
+        "image_dense_score": 0.1092360748401608,
+        "indexed_image_count": 1,
+        "best_image_path": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/image/Multi-Scene_Visual_Case_Archive_Assistant/S11-IMG1.png"
+      }
+    ],
+    "clue_hit_count": 3,
+    "corpus_entry_count": 117,
+    "text_embedding_model": "all-MiniLM-L6-v2",
+    "multimodal_embedding_model": "siglip2-base-patch16-384",
+    "text_dense_weight": 0.5,
+    "image_dense_weight": 0.5,
+    "caption_text_included": false,
+    "image_embeddings_built": true,
+    "multi_image_indexing_enabled": true,
+    "indexed_image_count": 57,
+    "history_source": "retrieval",
+    "captions_loaded": false,
+    "images_loaded": true,
+    "history_turns_after_truncation": 20
+  }
+}
