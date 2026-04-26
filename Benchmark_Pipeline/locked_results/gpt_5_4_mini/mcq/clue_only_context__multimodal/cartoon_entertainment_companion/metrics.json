@@ -1,0 +1,134 @@
+{
+  "task_name": "cartoon_entertainment_companion",
+  "model_name": "gpt_5_4_mini",
+  "model_path": "gpt-5.4-mini",
+  "method_name": "clue_only_context__multimodal",
+  "base_method_name": "clue_only_context",
+  "method_modality": "multimodal",
+  "mode": "mcq",
+  "num_qas": 76,
+  "num_qas_run": 76,
+  "dialog_json": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/dialog/Cartoon_Entertainment_Companion.json",
+  "image_root": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image",
+  "run_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/cartoon_entertainment_companion/20260425_184137_gpt_5_4_mini_clue_only_context__multimodal",
+  "git_commit": "7eb4b31f1f56487e02ecff48e751fe66ab6c6c5f",
+  "summary": {
+    "open_count": 76,
+    "overall": {
+      "em": 0.805921052631579,
+      "contains_gt": 0.8026315789473685,
+      "f1": 0.805921052631579
+    },
+    "by_x": {
+      "X3": {
+        "em": 0.7282608695652174,
+        "contains_gt": 0.6521739130434783,
+        "f1": 0.7282608695652174
+      },
+      "X4": {
+        "em": 0.8369565217391305,
+        "contains_gt": 0.8260869565217391,
+        "f1": 0.8369565217391305
+      },
+      "X2": {
+        "em": 0.8214285714285714,
+        "contains_gt": 0.8571428571428571,
+        "f1": 0.8214285714285714
+      },
+      "X1": {
+        "em": 0.859375,
+        "contains_gt": 0.9375,
+        "f1": 0.859375
+      }
+    },
+    "by_y": {
+      "Y1": {
+        "em": 0.8828125,
+        "contains_gt": 0.84375,
+        "f1": 0.8828125
+      },
+      "Y2": {
+        "em": 0.7371794871794872,
+        "contains_gt": 0.7692307692307693,
+        "f1": 0.7371794871794872
+      },
+      "Y3": {
+        "em": 0.85,
+        "contains_gt": 0.8,
+        "f1": 0.85
+      }
+    },
+    "by_cell": {
+      "X3_Y1": {
+        "em": 0.7727272727272727,
+        "contains_gt": 0.6363636363636364,
+        "f1": 0.7727272727272727
+      },
+      "X4_Y2": {
+        "em": 0.825,
+        "contains_gt": 0.8,
+        "f1": 0.825
+      },
+      "X2_Y2": {
+        "em": 0.7222222222222222,
+        "contains_gt": 0.7777777777777778,
+        "f1": 0.7222222222222222
+      },
+      "X3_Y2": {
+        "em": 0.6875,
+        "contains_gt": 0.6666666666666666,
+        "f1": 0.6875
+      },
+      "X4_Y1": {
+        "em": 0.8958333333333334,
+        "contains_gt": 0.9166666666666666,
+        "f1": 0.8958333333333334
+      },
+      "X1_Y1": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
+      },
+      "X1_Y2": {
+        "em": 0.71875,
+        "contains_gt": 0.875,
+        "f1": 0.71875
+      },
+      "X2_Y1": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
+      },
+      "X1_Y3": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
+      },
+      "X4_Y3": {
+        "em": 0.25,
+        "contains_gt": 0.0,
+        "f1": 0.25
+      }
+    },
+    "mcq_count": 76,
+    "mcq_valid_rate": 1.0,
+    "mcq_overall": {
+      "em": 0.805921052631579,
+      "contains_gt": 0.8026315789473685,
+      "f1": 0.805921052631579
+    },
+    "mcq_per_position_accuracy": {
+      "A": 0.8026315789473685,
+      "B": 0.7894736842105263,
+      "C": 0.8289473684210527,
+      "D": 0.8026315789473685
+    }
+  },
+  "method_runtime": {
+    "method_modality": "multimodal",
+    "history_source": "clue_only",
+    "captions_loaded": false,
+    "images_loaded": true,
+    "history_turns_after_truncation": 4
+  }
+}

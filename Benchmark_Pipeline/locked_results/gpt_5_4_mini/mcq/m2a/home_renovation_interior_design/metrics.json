@@ -1,0 +1,117 @@
+{
+  "task_name": "home_renovation_interior_design",
+  "model_name": "gpt_5_4_mini",
+  "model_path": "gpt-5.4-mini",
+  "method_name": "m2a",
+  "base_method_name": "m2a",
+  "method_modality": "",
+  "mode": "mcq",
+  "num_qas": 52,
+  "num_qas_run": 52,
+  "dialog_json": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/dialog/Home_Renovation_Interior_Design.json",
+  "image_root": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/image",
+  "run_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/home_renovation_interior_design/20260425_184831_gpt_5_4_mini_m2a",
+  "git_commit": "7eb4b31f1f56487e02ecff48e751fe66ab6c6c5f",
+  "summary": {
+    "open_count": 52,
+    "overall": {
+      "em": 0.375,
+      "contains_gt": 0.25,
+      "f1": 0.375
+    },
+    "by_x": {
+      "X4": {
+        "em": 0.375,
+        "contains_gt": 0.25,
+        "f1": 0.375
+      },
+      "X3": {
+        "em": 0.3263888888888889,
+        "contains_gt": 0.19444444444444445,
+        "f1": 0.3263888888888889
+      },
+      "X2": {
+        "em": 0.5714285714285714,
+        "contains_gt": 0.42857142857142855,
+        "f1": 0.5714285714285714
+      },
+      "X1": {
+        "em": 0.75,
+        "contains_gt": 1.0,
+        "f1": 0.75
+      }
+    },
+    "by_y": {
+      "Y2": {
+        "em": 0.4375,
+        "contains_gt": 0.25,
+        "f1": 0.4375
+      },
+      "Y1": {
+        "em": 0.358974358974359,
+        "contains_gt": 0.2564102564102564,
+        "f1": 0.358974358974359
+      },
+      "Y3": {
+        "em": 0.25,
+        "contains_gt": 0.0,
+        "f1": 0.25
+      }
+    },
+    "by_cell": {
+      "X4_Y2": {
+        "em": 0.25,
+        "contains_gt": 0.5,
+        "f1": 0.25
+      },
+      "X3_Y2": {
+        "em": 0.3,
+        "contains_gt": 0.0,
+        "f1": 0.3
+      },
+      "X3_Y1": {
+        "em": 0.33064516129032256,
+        "contains_gt": 0.22580645161290322,
+        "f1": 0.33064516129032256
+      },
+      "X2_Y1": {
+        "em": 0.375,
+        "contains_gt": 0.5,
+        "f1": 0.375
+      },
+      "X2_Y2": {
+        "em": 0.65,
+        "contains_gt": 0.4,
+        "f1": 0.65
+      },
+      "X4_Y1": {
+        "em": 0.45,
+        "contains_gt": 0.2,
+        "f1": 0.45
+      },
+      "X4_Y3": {
+        "em": 0.25,
+        "contains_gt": 0.0,
+        "f1": 0.25
+      },
+      "X1_Y1": {
+        "em": 0.75,
+        "contains_gt": 1.0,
+        "f1": 0.75
+      }
+    },
+    "mcq_count": 52,
+    "mcq_valid_rate": 1.0,
+    "mcq_overall": {
+      "em": 0.375,
+      "contains_gt": 0.25,
+      "f1": 0.375
+    },
+    "mcq_per_position_accuracy": {
+      "A": 0.5576923076923077,
+      "B": 0.4423076923076923,
+      "C": 0.25,
+      "D": 0.25
+    }
+  }
+}

@@ -1,0 +1,133 @@
+{
+  "task": {
+    "name": "outdoor_navigation_route_memory_assistant_open",
+    "dataset": {
+      "dialog_json": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/dialog/Outdoor_Navigation_Route_Memory_Assistant_Open.json",
+      "image_root": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image"
+    },
+    "eval": {
+      "mode": "open",
+      "output_json": "output/results_outdoor_navigation_route_memory_assistant_open.json",
+      "max_questions": 0
+    }
+  },
+  "dataset": {
+    "dialog_json": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/dialog/Outdoor_Navigation_Route_Memory_Assistant_Open.json",
+    "image_root": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image"
+  },
+  "eval": {
+    "mode": "open",
+    "output_json": "output/results_outdoor_navigation_route_memory_assistant_open.json",
+    "max_questions": 0
+  },
+  "model": {
+    "name": "gpt_5_4_mini",
+    "provider": "openai_api",
+    "model": "gpt-5.4-mini",
+    "api_key_env": "OPENAI_API_KEY",
+    "base_url": "https://api.openai.com/v1",
+    "max_new_tokens": 128,
+    "timeout": 90
+  },
+  "method": {
+    "name": "semantic_rag_multimodal",
+    "modality": "multimodal",
+    "retrieval_backend": "dense_multimodal",
+    "top_k": 10,
+    "neighbor_window": 0,
+    "text_embedding_model": "all-MiniLM-L6-v2",
+    "multimodal_embedding_model": "siglip2-base-patch16-384",
+    "text_dense_weight": 0.5,
+    "image_dense_weight": 0.5
+  },
+  "run": {
+    "output_root": "runs",
+    "method_runtime": {
+      "retrieval_backend": "dense_multimodal",
+      "retrieval_corpus": "round_text",
+      "method_modality": "multimodal",
+      "top_k": 10,
+      "neighbor_window": 0,
+      "seed_round_ids": [
+        "OUTDOOR_S5:R5",
+        "OUTDOOR_S6:R5",
+        "OUTDOOR_S8:R5",
+        "OUTDOOR_S5:R2",
+        "OUTDOOR_S6:R2",
+        "OUTDOOR_S8:R2",
+        "OUTDOOR_S6:R3",
+        "OUTDOOR_S2:R5",
+        "OUTDOOR_S8:R4",
+        "OUTDOOR_S5:R3"
+      ],
+      "selected_round_ids": [
+        "OUTDOOR_S5:R5",
+        "OUTDOOR_S6:R5",
+        "OUTDOOR_S8:R5",
+        "OUTDOOR_S5:R2",
+        "OUTDOOR_S6:R2",
+        "OUTDOOR_S8:R2",
+        "OUTDOOR_S6:R3",
+        "OUTDOOR_S2:R5",
+        "OUTDOOR_S8:R4",
+        "OUTDOOR_S5:R3"
+      ],
+      "top_candidates": [
+        {
+          "round_id": "OUTDOOR_S5:R5",
+          "score": 0.12762181942328618,
+          "text_dense_score": 0.11541252920570473,
+          "image_dense_score": 0.13983110964086765,
+          "indexed_image_count": 1,
+          "best_image_path": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image/Outdoor_Navigation_Route_Memory_Assistant/S5_R5.jpg"
+        },
+        {
+          "round_id": "OUTDOOR_S6:R5",
+          "score": 0.1263976905832591,
+          "text_dense_score": 0.11541252920570473,
+          "image_dense_score": 0.13738285196081346,
+          "indexed_image_count": 1,
+          "best_image_path": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image/Outdoor_Navigation_Route_Memory_Assistant/S6_R5.jpg"
+        },
+        {
+          "round_id": "OUTDOOR_S8:R5",
+          "score": 0.12159732236811771,
+          "text_dense_score": 0.11541252920570473,
+          "image_dense_score": 0.12778211553053068,
+          "indexed_image_count": 1,
+          "best_image_path": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image/Outdoor_Navigation_Route_Memory_Assistant/S8_R5.jpg"
+        },
+        {
+          "round_id": "OUTDOOR_S5:R2",
+          "score": 0.11901849074086415,
+          "text_dense_score": 0.09474549817984337,
+          "image_dense_score": 0.14329148330188493,
+          "indexed_image_count": 1,
+          "best_image_path": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image/Outdoor_Navigation_Route_Memory_Assistant/S5_R2.jpg"
+        },
+        {
+          "round_id": "OUTDOOR_S6:R2",
+          "score": 0.11660713427870795,
+          "text_dense_score": 0.09474549817984337,
+          "image_dense_score": 0.13846877037757252,
+          "indexed_image_count": 1,
+          "best_image_path": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image/Outdoor_Navigation_Route_Memory_Assistant/S6_R2.jpg"
+        }
+      ],
+      "clue_hit_count": 2,
+      "corpus_entry_count": 60,
+      "text_embedding_model": "all-MiniLM-L6-v2",
+      "multimodal_embedding_model": "siglip2-base-patch16-384",
+      "text_dense_weight": 0.5,
+      "image_dense_weight": 0.5,
+      "caption_text_included": false,
+      "image_embeddings_built": true,
+      "multi_image_indexing_enabled": true,
+      "indexed_image_count": 40,
+      "history_source": "retrieval",
+      "captions_loaded": false,
+      "images_loaded": true,
+      "history_turns_after_truncation": 20
+    }
+  }
+}

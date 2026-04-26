@@ -1,0 +1,142 @@
+{
+  "task_name": "personal_health_dashboard_assistant_open",
+  "model_name": "gpt_5_4_mini",
+  "model_path": "gpt-5.4-mini",
+  "method_name": "simplemem__multimodal",
+  "base_method_name": "simplemem",
+  "method_modality": "multimodal",
+  "mode": "open",
+  "num_qas": 51,
+  "num_qas_run": 51,
+  "dialog_json": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/dialog/Personal_Health_Dashboard_Assistant_Open.json",
+  "image_root": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image",
+  "run_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/personal_health_dashboard_assistant_open/20260425_185040_gpt_5_4_mini_simplemem__multimodal",
+  "git_commit": "7eb4b31f1f56487e02ecff48e751fe66ab6c6c5f",
+  "summary": {
+    "open_count": 51,
+    "overall": {
+      "em": 0.0392156862745098,
+      "contains_gt": 0.0392156862745098,
+      "f1": 0.09833848069142187,
+      "bleu": 0.04451284916408985,
+      "bleu_1": 0.09258691662711048,
+      "bleu_2": 0.07237439350937679,
+      "judge": 0.0784313725490196
+    },
+    "by_x": {
+      "X4": {
+        "em": 0.045454545454545456,
+        "contains_gt": 0.045454545454545456,
+        "f1": 0.0762987012987013,
+        "bleu": 0.034763849083997996,
+        "bleu_1": 0.07310298433122248,
+        "bleu_2": 0.055911035661906854,
+        "judge": 0.045454545454545456
+      },
+      "X3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0,
+        "bleu": 0.0,
+        "bleu_1": 0.0,
+        "bleu_2": 0.0,
+        "judge": 0.0
+      },
+      "X1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.5527065527065527,
+        "bleu": 0.24684864922422356,
+        "bleu_1": 0.5018004791362817,
+        "bleu_2": 0.41033616661810485,
+        "judge": 0.6666666666666666
+      }
+    },
+    "by_y": {
+      "Y2": {
+        "em": 0.045454545454545456,
+        "contains_gt": 0.045454545454545456,
+        "f1": 0.06331168831168832,
+        "bleu": 0.031063227485114916,
+        "bleu_1": 0.06224644932252871,
+        "bleu_2": 0.051706317733287974,
+        "judge": 0.045454545454545456
+      },
+      "Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.3715913715913716,
+        "bleu": 0.1505622163372544,
+        "bleu_1": 0.3305148296318952,
+        "bleu_2": 0.23600268145225756,
+        "judge": 0.3333333333333333
+      },
+      "Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0,
+        "bleu": 0.0,
+        "bleu_1": 0.0,
+        "bleu_2": 0.0,
+        "judge": 0.0
+      }
+    },
+    "by_cell": {
+      "X4_Y2": {
+        "em": 0.05,
+        "contains_gt": 0.05,
+        "f1": 0.06964285714285715,
+        "bleu": 0.03416955023362641,
+        "bleu_1": 0.06847109425478158,
+        "bleu_2": 0.056876949506616765,
+        "judge": 0.05
+      },
+      "X4_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.14285714285714288,
+        "bleu": 0.0407068375877139,
+        "bleu_1": 0.11942188509563154,
+        "bleu_2": 0.04625189721480768,
+        "judge": 0.0
+      },
+      "X3_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0,
+        "bleu": 0.0,
+        "bleu_1": 0.0,
+        "bleu_2": 0.0,
+        "judge": 0.0
+      },
+      "X1_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.829059829059829,
+        "bleu": 0.37027297383633534,
+        "bleu_1": 0.7527007187044226,
+        "bleu_2": 0.6155042499271572,
+        "judge": 1.0
+      },
+      "X1_Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0,
+        "bleu": 0.0,
+        "bleu_1": 0.0,
+        "bleu_2": 0.0,
+        "judge": 0.0
+      }
+    }
+  },
+  "method_runtime": {
+    "num_memories": 97,
+    "debug_dir": "/common/home/mg1998/MemoryBench/output/personal_health_dashboard_assistant/simplemem",
+    "data_dir": "/common/home/mg1998/MemoryBench/runs/simplemem/personal_health_dashboard_assistant"
+  },
+  "judge": {
+    "enabled": true,
+    "model": "gpt-5.2",
+    "scored_open_rows": 51
+  }
+}

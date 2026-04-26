@@ -1,0 +1,74 @@
+{
+  "task_name": "card_playlog_test",
+  "model_name": "gpt_5_4_mini",
+  "model_path": "gpt-5.4-mini",
+  "method_name": "clue_only_context__multimodal",
+  "base_method_name": "clue_only_context",
+  "method_modality": "multimodal",
+  "mode": "mcq",
+  "num_qas": 48,
+  "num_qas_run": 48,
+  "dialog_json": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/dialog/Card_Playlog_Test.json",
+  "image_root": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/image",
+  "run_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/card_playlog_test/20260425_164434_gpt_5_4_mini_clue_only_context__multimodal",
+  "git_commit": "7eb4b31f1f56487e02ecff48e751fe66ab6c6c5f",
+  "summary": {
+    "open_count": 48,
+    "overall": {
+      "em": 0.515625,
+      "contains_gt": 0.4791666666666667,
+      "f1": 0.515625
+    },
+    "by_x": {
+      "X4": {
+        "em": 0.515625,
+        "contains_gt": 0.4791666666666667,
+        "f1": 0.515625
+      }
+    },
+    "by_y": {
+      "Y3": {
+        "em": 0.4868421052631579,
+        "contains_gt": 0.3684210526315789,
+        "f1": 0.4868421052631579
+      },
+      "Y2": {
+        "em": 0.5344827586206896,
+        "contains_gt": 0.5517241379310345,
+        "f1": 0.5344827586206896
+      }
+    },
+    "by_cell": {
+      "X4_Y3": {
+        "em": 0.4868421052631579,
+        "contains_gt": 0.3684210526315789,
+        "f1": 0.4868421052631579
+      },
+      "X4_Y2": {
+        "em": 0.5344827586206896,
+        "contains_gt": 0.5517241379310345,
+        "f1": 0.5344827586206896
+      }
+    },
+    "mcq_count": 48,
+    "mcq_valid_rate": 1.0,
+    "mcq_overall": {
+      "em": 0.515625,
+      "contains_gt": 0.4791666666666667,
+      "f1": 0.515625
+    },
+    "mcq_per_position_accuracy": {
+      "A": 0.5625,
+      "B": 0.6041666666666666,
+      "C": 0.4166666666666667,
+      "D": 0.4791666666666667
+    }
+  },
+  "method_runtime": {
+    "method_modality": "multimodal",
+    "history_source": "clue_only",
+    "captions_loaded": false,
+    "images_loaded": true,
+    "history_turns_after_truncation": 2
+  }
+}

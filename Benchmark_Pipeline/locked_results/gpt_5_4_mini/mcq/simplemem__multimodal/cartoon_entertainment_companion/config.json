@@ -1,0 +1,54 @@
+{
+  "task": {
+    "name": "cartoon_entertainment_companion",
+    "dataset": {
+      "dialog_json": "data/dialog/Cartoon_Entertainment_Companion.json",
+      "image_root": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image"
+    },
+    "eval": {
+      "mode": "open",
+      "output_json": "output/results_cartoon_entertainment_companion.json",
+      "max_questions": 0
+    }
+  },
+  "dataset": {
+    "dialog_json": "data/dialog/Cartoon_Entertainment_Companion.json",
+    "image_root": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image"
+  },
+  "eval": {
+    "mode": "open",
+    "output_json": "output/results_cartoon_entertainment_companion.json",
+    "max_questions": 0
+  },
+  "model": {
+    "name": "gpt_5_4_mini",
+    "provider": "openai_api",
+    "model": "gpt-5.4-mini",
+    "api_key_env": "OPENAI_API_KEY",
+    "base_url": "https://api.openai.com/v1",
+    "max_new_tokens": 128,
+    "timeout": 90
+  },
+  "method": {
+    "name": "simplemem",
+    "modality": "multimodal",
+    "llm_model": "",
+    "llm_api_key": "",
+    "llm_api_key_env": "OPENAI_API_KEY",
+    "retrieve_k": 20,
+    "embedding_model": "all-MiniLM-L6-v2",
+    "embedding_dim": 384,
+    "caption_preprocessed": false,
+    "temperature": 0.0,
+    "max_tokens": 1000,
+    "enable_self_evolution": false
+  },
+  "run": {
+    "output_root": "runs",
+    "method_runtime": {
+      "num_memories": 299,
+      "debug_dir": "/common/home/mg1998/MemoryBench/output/cartoon_entertainment_companion/simplemem",
+      "data_dir": "/common/home/mg1998/MemoryBench/runs/simplemem/cartoon_entertainment_companion"
+    }
+  }
+}

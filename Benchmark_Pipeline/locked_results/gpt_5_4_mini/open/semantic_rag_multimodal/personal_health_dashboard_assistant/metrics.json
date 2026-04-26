@@ -1,0 +1,224 @@
+{
+  "task_name": "personal_health_dashboard_assistant_open",
+  "model_name": "gpt_5_4_mini",
+  "model_path": "gpt-5.4-mini",
+  "method_name": "semantic_rag_multimodal",
+  "base_method_name": "semantic_rag_multimodal",
+  "method_modality": "multimodal",
+  "mode": "open",
+  "num_qas": 51,
+  "num_qas_run": 51,
+  "dialog_json": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/dialog/Personal_Health_Dashboard_Assistant_Open.json",
+  "image_root": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image",
+  "run_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/personal_health_dashboard_assistant_open/20260425_190317_gpt_5_4_mini_semantic_rag_multimodal",
+  "git_commit": "7eb4b31f1f56487e02ecff48e751fe66ab6c6c5f",
+  "summary": {
+    "open_count": 51,
+    "overall": {
+      "em": 0.17647058823529413,
+      "contains_gt": 0.21568627450980393,
+      "f1": 0.2568126862244509,
+      "bleu": 0.17329221379925105,
+      "bleu_1": 0.24175476482294073,
+      "bleu_2": 0.2152937886868653,
+      "judge": 0.2549019607843137
+    },
+    "by_x": {
+      "X4": {
+        "em": 0.20454545454545456,
+        "contains_gt": 0.25,
+        "f1": 0.2804489702216975,
+        "bleu": 0.19853438161745282,
+        "bleu_1": 0.2695274697078897,
+        "bleu_2": 0.2462654146847242,
+        "judge": 0.25
+      },
+      "X3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0,
+        "bleu": 0.0,
+        "bleu_1": 0.0,
+        "bleu_2": 0.0,
+        "judge": 0.0
+      },
+      "X1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.25256410256410255,
+        "bleu": 0.0341300375312933,
+        "bleu_1": 0.1567614462742766,
+        "bleu_2": 0.04810165896742177,
+        "judge": 0.6666666666666666
+      }
+    },
+    "by_y": {
+      "Y2": {
+        "em": 0.20454545454545456,
+        "contains_gt": 0.25,
+        "f1": 0.26890495867768593,
+        "bleu": 0.19546296862275725,
+        "bleu_1": 0.25955374765808825,
+        "bleu_2": 0.2425559948540817,
+        "judge": 0.25
+      },
+      "Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.16927146927146927,
+        "bleu": 0.029866139498067792,
+        "bleu_1": 0.12299817822276037,
+        "bleu_2": 0.0402062640658058,
+        "judge": 0.25
+      },
+      "Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.25,
+        "bleu": 0.05833544737207805,
+        "bleu_1": 0.17113903967753066,
+        "bleu_2": 0.06628186505570068,
+        "judge": 0.5
+      }
+    },
+    "by_cell": {
+      "X4_Y2": {
+        "em": 0.225,
+        "contains_gt": 0.275,
+        "f1": 0.29579545454545453,
+        "bleu": 0.21500926548503296,
+        "bleu_1": 0.2855091224238971,
+        "bleu_2": 0.26681159433948987,
+        "judge": 0.275
+      },
+      "X4_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.126984126984127,
+        "bleu": 0.033785542941651224,
+        "bleu_1": 0.10971094254781577,
+        "bleu_2": 0.04080361813706753,
+        "judge": 0.0
+      },
+      "X3_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0,
+        "bleu": 0.0,
+        "bleu_1": 0.0,
+        "bleu_2": 0.0,
+        "judge": 0.0
+      },
+      "X1_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.25384615384615383,
+        "bleu": 0.022027332610900927,
+        "bleu_1": 0.14957264957264957,
+        "bleu_2": 0.03901155592328233,
+        "judge": 0.75
+      },
+      "X1_Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.25,
+        "bleu": 0.05833544737207805,
+        "bleu_1": 0.17113903967753066,
+        "bleu_2": 0.06628186505570068,
+        "judge": 0.5
+      }
+    }
+  },
+  "method_runtime": {
+    "retrieval_backend": "dense_multimodal",
+    "retrieval_corpus": "round_text",
+    "method_modality": "multimodal",
+    "top_k": 10,
+    "neighbor_window": 0,
+    "seed_round_ids": [
+      "HEALTH_S1:R1",
+      "HEALTH_S6:R2",
+      "HEALTH_S2:R7",
+      "HEALTH_S12:R7",
+      "HEALTH_S1:R2",
+      "HEALTH_S3:R7",
+      "HEALTH_S3:R2",
+      "HEALTH_S11:R2",
+      "HEALTH_S11:R6",
+      "HEALTH_S3:R3"
+    ],
+    "selected_round_ids": [
+      "HEALTH_S1:R1",
+      "HEALTH_S6:R2",
+      "HEALTH_S2:R7",
+      "HEALTH_S12:R7",
+      "HEALTH_S1:R2",
+      "HEALTH_S3:R7",
+      "HEALTH_S3:R2",
+      "HEALTH_S11:R2",
+      "HEALTH_S11:R6",
+      "HEALTH_S3:R3"
+    ],
+    "top_candidates": [
+      {
+        "round_id": "HEALTH_S1:R1",
+        "score": 0.20077693337704175,
+        "text_dense_score": 0.4015538667540835,
+        "image_dense_score": 0.0,
+        "indexed_image_count": 0,
+        "best_image_path": ""
+      },
+      {
+        "round_id": "HEALTH_S6:R2",
+        "score": 0.19060088580565093,
+        "text_dense_score": 0.2616183396383373,
+        "image_dense_score": 0.11958343197296455,
+        "indexed_image_count": 1,
+        "best_image_path": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image/Personal_Health_Dashboard_Assistant/D6_IMG_001.jpg"
+      },
+      {
+        "round_id": "HEALTH_S2:R7",
+        "score": 0.18726256586113313,
+        "text_dense_score": 0.2623997749880243,
+        "image_dense_score": 0.11212535673424194,
+        "indexed_image_count": 1,
+        "best_image_path": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image/Personal_Health_Dashboard_Assistant/D2_IMG_005.jpg"
+      },
+      {
+        "round_id": "HEALTH_S12:R7",
+        "score": 0.18052104604186575,
+        "text_dense_score": 0.2484664016370259,
+        "image_dense_score": 0.11257569044670557,
+        "indexed_image_count": 1,
+        "best_image_path": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image/Personal_Health_Dashboard_Assistant/D12_IMG_005.jpg"
+      },
+      {
+        "round_id": "HEALTH_S1:R2",
+        "score": 0.1729068649270978,
+        "text_dense_score": 0.23420730322662553,
+        "image_dense_score": 0.11160642662757009,
+        "indexed_image_count": 1,
+        "best_image_path": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image/Personal_Health_Dashboard_Assistant/D1_IMG_001.jpg"
+      }
+    ],
+    "clue_hit_count": 1,
+    "corpus_entry_count": 97,
+    "text_embedding_model": "all-MiniLM-L6-v2",
+    "multimodal_embedding_model": "siglip2-base-patch16-384",
+    "text_dense_weight": 0.5,
+    "image_dense_weight": 0.5,
+    "caption_text_included": false,
+    "image_embeddings_built": true,
+    "multi_image_indexing_enabled": true,
+    "indexed_image_count": 62,
+    "history_source": "retrieval",
+    "captions_loaded": false,
+    "images_loaded": true,
+    "history_turns_after_truncation": 20
+  },
+  "judge": {
+    "enabled": true,
+    "model": "gpt-5.2",
+    "scored_open_rows": 51
+  }
+}

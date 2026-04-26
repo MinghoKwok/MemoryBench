@@ -1,0 +1,103 @@
+{
+  "task_name": "brand_memory_test",
+  "model_name": "gpt_5_4_mini",
+  "model_path": "gpt-5.4-mini",
+  "method_name": "mirix",
+  "base_method_name": "mirix",
+  "method_modality": "",
+  "mode": "mcq",
+  "num_qas": 29,
+  "num_qas_run": 29,
+  "dialog_json": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/dialog/Brand_Memory_Test.json",
+  "image_root": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/image",
+  "run_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/brand_memory_test/20260425_210325_gpt_5_4_mini_mirix",
+  "git_commit": "7eb4b31f1f56487e02ecff48e751fe66ab6c6c5f",
+  "summary": {
+    "open_count": 29,
+    "overall": {
+      "em": 0.2672413793103448,
+      "contains_gt": 0.27586206896551724,
+      "f1": 0.2672413793103448
+    },
+    "by_x": {
+      "X4": {
+        "em": 0.25,
+        "contains_gt": 0.0,
+        "f1": 0.25
+      },
+      "X2": {
+        "em": 0.25,
+        "contains_gt": 0.0,
+        "f1": 0.25
+      },
+      "X1": {
+        "em": 0.27380952380952384,
+        "contains_gt": 0.38095238095238093,
+        "f1": 0.27380952380952384
+      }
+    },
+    "by_y": {
+      "Y1": {
+        "em": 0.25,
+        "contains_gt": 0.5,
+        "f1": 0.25
+      },
+      "Y2": {
+        "em": 0.26851851851851855,
+        "contains_gt": 0.25925925925925924,
+        "f1": 0.26851851851851855
+      }
+    },
+    "by_cell": {
+      "X4_Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0
+      },
+      "X2_Y2": {
+        "em": 0.25,
+        "contains_gt": 0.0,
+        "f1": 0.25
+      },
+      "X1_Y2": {
+        "em": 0.2625,
+        "contains_gt": 0.35,
+        "f1": 0.2625
+      },
+      "X4_Y2": {
+        "em": 0.5,
+        "contains_gt": 0.0,
+        "f1": 0.5
+      },
+      "X1_Y1": {
+        "em": 0.5,
+        "contains_gt": 1.0,
+        "f1": 0.5
+      }
+    },
+    "mcq_count": 29,
+    "mcq_valid_rate": 1.0,
+    "mcq_overall": {
+      "em": 0.2672413793103448,
+      "contains_gt": 0.27586206896551724,
+      "f1": 0.2672413793103448
+    },
+    "mcq_per_position_accuracy": {
+      "A": 0.3448275862068966,
+      "B": 0.3448275862068966,
+      "C": 0.10344827586206896,
+      "D": 0.27586206896551724
+    }
+  },
+  "method_runtime": {
+    "official_mirix": true,
+    "official_model_name": "gpt-5.4-mini",
+    "ingested_turns": 144,
+    "runtime_signature": "36506de0d00cad09",
+    "runtime_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/brand_memory_test/mirix/36506de0d00cad09",
+    "runtime_home": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/brand_memory_test/mirix/36506de0d00cad09/runtime_home",
+    "debug_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/output/brand_memory_test/mirix/36506de0d00cad09",
+    "resumed": false,
+    "completed_ingestion": true
+  }
+}

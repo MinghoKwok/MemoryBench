@@ -1,0 +1,133 @@
+{
+  "task": {
+    "name": "home_renovation_interior_design",
+    "dataset": {
+      "dialog_json": "data/dialog/Home_Renovation_Interior_Design.json",
+      "image_root": "data/image"
+    },
+    "eval": {
+      "mode": "open",
+      "output_json": "output/results_home_renovation_interior_design.json",
+      "max_questions": 0
+    }
+  },
+  "dataset": {
+    "dialog_json": "data/dialog/Home_Renovation_Interior_Design.json",
+    "image_root": "data/image"
+  },
+  "eval": {
+    "mode": "open",
+    "output_json": "output/results_home_renovation_interior_design.json",
+    "max_questions": 0
+  },
+  "model": {
+    "name": "gpt_5_4_mini",
+    "provider": "openai_api",
+    "model": "gpt-5.4-mini",
+    "api_key_env": "OPENAI_API_KEY",
+    "base_url": "https://api.openai.com/v1",
+    "max_new_tokens": 128,
+    "timeout": 90
+  },
+  "method": {
+    "name": "semantic_rag_multimodal",
+    "modality": "multimodal",
+    "retrieval_backend": "dense_multimodal",
+    "top_k": 10,
+    "neighbor_window": 0,
+    "text_embedding_model": "all-MiniLM-L6-v2",
+    "multimodal_embedding_model": "siglip2-base-patch16-384",
+    "text_dense_weight": 0.5,
+    "image_dense_weight": 0.5
+  },
+  "run": {
+    "output_root": "runs",
+    "method_runtime": {
+      "retrieval_backend": "dense_multimodal",
+      "retrieval_corpus": "round_text",
+      "method_modality": "multimodal",
+      "top_k": 10,
+      "neighbor_window": 0,
+      "seed_round_ids": [
+        "HOME_S1:R10",
+        "HOME_S13:R6",
+        "HOME_S1:R7",
+        "HOME_S12:R6",
+        "HOME_S9:R6",
+        "HOME_S1:R4",
+        "HOME_S1:R11",
+        "HOME_S1:R5",
+        "HOME_S10:R7",
+        "HOME_S10:R2"
+      ],
+      "selected_round_ids": [
+        "HOME_S1:R10",
+        "HOME_S13:R6",
+        "HOME_S1:R7",
+        "HOME_S12:R6",
+        "HOME_S9:R6",
+        "HOME_S1:R4",
+        "HOME_S1:R11",
+        "HOME_S1:R5",
+        "HOME_S10:R7",
+        "HOME_S10:R2"
+      ],
+      "top_candidates": [
+        {
+          "round_id": "HOME_S1:R10",
+          "score": 0.27663384925210927,
+          "text_dense_score": 0.4237510913204872,
+          "image_dense_score": 0.12951660718373129,
+          "indexed_image_count": 1,
+          "best_image_path": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/image/Home_Renovation_Interior_Design/D1_IMG_007.jpg"
+        },
+        {
+          "round_id": "HOME_S13:R6",
+          "score": 0.22681586626355035,
+          "text_dense_score": 0.3764779365056931,
+          "image_dense_score": 0.07715379602140761,
+          "indexed_image_count": 1,
+          "best_image_path": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/image/Home_Renovation_Interior_Design/D13_IMG_005.jpg"
+        },
+        {
+          "round_id": "HOME_S1:R7",
+          "score": 0.22306525819589446,
+          "text_dense_score": 0.37022295730929256,
+          "image_dense_score": 0.07590755908249634,
+          "indexed_image_count": 1,
+          "best_image_path": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/image/Home_Renovation_Interior_Design/D1_IMG_006.jpg"
+        },
+        {
+          "round_id": "HOME_S12:R6",
+          "score": 0.2223565473817527,
+          "text_dense_score": 0.35470157299434,
+          "image_dense_score": 0.09001152176916541,
+          "indexed_image_count": 1,
+          "best_image_path": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/image/Home_Renovation_Interior_Design/D12_IMG_005.jpg"
+        },
+        {
+          "round_id": "HOME_S9:R6",
+          "score": 0.22066203267344833,
+          "text_dense_score": 0.3346185108135609,
+          "image_dense_score": 0.10670555453333573,
+          "indexed_image_count": 1,
+          "best_image_path": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/image/Home_Renovation_Interior_Design/D9_IMG_005.jpg"
+        }
+      ],
+      "clue_hit_count": 0,
+      "corpus_entry_count": 120,
+      "text_embedding_model": "all-MiniLM-L6-v2",
+      "multimodal_embedding_model": "siglip2-base-patch16-384",
+      "text_dense_weight": 0.5,
+      "image_dense_weight": 0.5,
+      "caption_text_included": false,
+      "image_embeddings_built": true,
+      "multi_image_indexing_enabled": true,
+      "indexed_image_count": 89,
+      "history_source": "retrieval",
+      "captions_loaded": false,
+      "images_loaded": true,
+      "history_turns_after_truncation": 20
+    }
+  }
+}

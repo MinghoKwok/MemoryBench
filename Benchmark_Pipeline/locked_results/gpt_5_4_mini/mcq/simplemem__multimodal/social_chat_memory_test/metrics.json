@@ -1,0 +1,127 @@
+{
+  "task_name": "social_chat_memory_test",
+  "model_name": "gpt_5_4_mini",
+  "model_path": "gpt-5.4-mini",
+  "method_name": "simplemem__multimodal",
+  "base_method_name": "simplemem",
+  "method_modality": "multimodal",
+  "mode": "mcq",
+  "num_qas": 37,
+  "num_qas_run": 37,
+  "dialog_json": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/dialog/Social_Chat_Memory_Test.json",
+  "image_root": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/image",
+  "run_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/social_chat_memory_test/20260426_000559_gpt_5_4_mini_simplemem__multimodal",
+  "git_commit": "7eb4b31f1f56487e02ecff48e751fe66ab6c6c5f",
+  "summary": {
+    "open_count": 37,
+    "overall": {
+      "em": 0.5135135135135135,
+      "contains_gt": 0.4864864864864865,
+      "f1": 0.5135135135135135
+    },
+    "by_x": {
+      "X2": {
+        "em": 0.5344827586206896,
+        "contains_gt": 0.5172413793103449,
+        "f1": 0.5344827586206896
+      },
+      "X1": {
+        "em": 0.5,
+        "contains_gt": 0.4,
+        "f1": 0.5
+      },
+      "X3": {
+        "em": 0.5,
+        "contains_gt": 0.5,
+        "f1": 0.5
+      },
+      "X4": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0
+      }
+    },
+    "by_y": {
+      "Y2": {
+        "em": 0.39,
+        "contains_gt": 0.4,
+        "f1": 0.39
+      },
+      "Y3": {
+        "em": 0.75,
+        "contains_gt": 0.6666666666666666,
+        "f1": 0.75
+      },
+      "Y1": {
+        "em": 0.7916666666666666,
+        "contains_gt": 0.6666666666666666,
+        "f1": 0.7916666666666666
+      }
+    },
+    "by_cell": {
+      "X2_Y2": {
+        "em": 0.4431818181818182,
+        "contains_gt": 0.45454545454545453,
+        "f1": 0.4431818181818182
+      },
+      "X2_Y3": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
+      },
+      "X2_Y1": {
+        "em": 0.5833333333333334,
+        "contains_gt": 0.3333333333333333,
+        "f1": 0.5833333333333334
+      },
+      "X1_Y1": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
+      },
+      "X1_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0
+      },
+      "X3_Y1": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
+      },
+      "X3_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0
+      },
+      "X4_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0
+      },
+      "X1_Y3": {
+        "em": 0.25,
+        "contains_gt": 0.0,
+        "f1": 0.25
+      }
+    },
+    "mcq_count": 37,
+    "mcq_valid_rate": 0.9459459459459459,
+    "mcq_overall": {
+      "em": 0.5135135135135135,
+      "contains_gt": 0.4864864864864865,
+      "f1": 0.5135135135135135
+    },
+    "mcq_per_position_accuracy": {
+      "A": 0.4594594594594595,
+      "B": 0.5135135135135135,
+      "C": 0.5945945945945946,
+      "D": 0.4864864864864865
+    }
+  },
+  "method_runtime": {
+    "num_memories": 53,
+    "debug_dir": "/common/home/mg1998/MemoryBench/output/social_chat_memory_test/simplemem",
+    "data_dir": "/common/home/mg1998/MemoryBench/runs/simplemem/social_chat_memory_test"
+  }
+}

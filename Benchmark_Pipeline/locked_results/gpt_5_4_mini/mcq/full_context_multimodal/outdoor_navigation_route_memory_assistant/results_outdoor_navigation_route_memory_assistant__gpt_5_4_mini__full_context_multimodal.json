@@ -1,0 +1,125 @@
+{
+  "task_name": "outdoor_navigation_route_memory_assistant",
+  "model_name": "gpt_5_4_mini",
+  "model_path": "gpt-5.4-mini",
+  "method_name": "full_context_multimodal",
+  "base_method_name": "full_context_multimodal",
+  "method_modality": "",
+  "mode": "mcq",
+  "num_qas": 28,
+  "num_qas_run": 28,
+  "dialog_json": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/dialog/Outdoor_Navigation_Route_Memory_Assistant.json",
+  "image_root": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/image",
+  "run_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/outdoor_navigation_route_memory_assistant/20260425_221522_gpt_5_4_mini_full_context_multimodal",
+  "git_commit": "7eb4b31f1f56487e02ecff48e751fe66ab6c6c5f",
+  "summary": {
+    "open_count": 28,
+    "overall": {
+      "em": 0.41964285714285715,
+      "contains_gt": 0.42857142857142855,
+      "f1": 0.41964285714285715
+    },
+    "by_x": {
+      "X3": {
+        "em": 0.4444444444444444,
+        "contains_gt": 0.4444444444444444,
+        "f1": 0.4444444444444444
+      },
+      "X1": {
+        "em": 0.6666666666666666,
+        "contains_gt": 0.6666666666666666,
+        "f1": 0.6666666666666666
+      },
+      "X4": {
+        "em": 0.35,
+        "contains_gt": 0.4,
+        "f1": 0.35
+      },
+      "X2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0
+      }
+    },
+    "by_y": {
+      "Y2": {
+        "em": 0.36666666666666664,
+        "contains_gt": 0.3333333333333333,
+        "f1": 0.36666666666666664
+      },
+      "Y1": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
+      },
+      "Y3": {
+        "em": 0.4375,
+        "contains_gt": 0.5,
+        "f1": 0.4375
+      }
+    },
+    "by_cell": {
+      "X3_Y2": {
+        "em": 0.4230769230769231,
+        "contains_gt": 0.38461538461538464,
+        "f1": 0.4230769230769231
+      },
+      "X1_Y1": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
+      },
+      "X4_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0
+      },
+      "X2_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0
+      },
+      "X3_Y3": {
+        "em": 0.5,
+        "contains_gt": 0.6,
+        "f1": 0.5
+      },
+      "X4_Y3": {
+        "em": 0.4375,
+        "contains_gt": 0.5,
+        "f1": 0.4375
+      },
+      "X1_Y3": {
+        "em": 0.5,
+        "contains_gt": 0.5,
+        "f1": 0.5
+      },
+      "X2_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0
+      }
+    },
+    "mcq_count": 28,
+    "mcq_valid_rate": 1.0,
+    "mcq_overall": {
+      "em": 0.41964285714285715,
+      "contains_gt": 0.42857142857142855,
+      "f1": 0.41964285714285715
+    },
+    "mcq_per_position_accuracy": {
+      "A": 0.39285714285714285,
+      "B": 0.4642857142857143,
+      "C": 0.39285714285714285,
+      "D": 0.42857142857142855
+    }
+  },
+  "method_runtime": {
+    "method_modality": "multimodal",
+    "history_source": "full_context",
+    "captions_loaded": false,
+    "images_loaded": true,
+    "history_turns_after_truncation": 120,
+    "history_turns_before_truncation": 120
+  }
+}

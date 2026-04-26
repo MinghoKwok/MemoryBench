@@ -1,0 +1,173 @@
+{
+  "task_name": "home_renovation_interior_design_open",
+  "model_name": "gpt_5_4_mini",
+  "model_path": "gpt-5.4-mini",
+  "method_name": "mma",
+  "base_method_name": "mma",
+  "method_modality": "",
+  "mode": "open",
+  "num_qas": 52,
+  "num_qas_run": 52,
+  "dialog_json": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/dialog/Home_Renovation_Interior_Design_Open.json",
+  "image_root": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image",
+  "run_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/home_renovation_interior_design_open/20260425_165922_gpt_5_4_mini_mma",
+  "git_commit": "7eb4b31f1f56487e02ecff48e751fe66ab6c6c5f",
+  "summary": {
+    "open_count": 52,
+    "overall": {
+      "em": 0.0,
+      "contains_gt": 0.019230769230769232,
+      "f1": 0.03746947496947497,
+      "bleu": 0.010361465180129138,
+      "bleu_1": 0.032241407373103326,
+      "bleu_2": 0.011772897402641383,
+      "judge": 0.0
+    },
+    "by_x": {
+      "X4": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0,
+        "bleu": 0.0,
+        "bleu_1": 0.0,
+        "bleu_2": 0.0,
+        "judge": 0.0
+      },
+      "X3": {
+        "em": 0.0,
+        "contains_gt": 0.027777777777777776,
+        "f1": 0.05015432098765432,
+        "bleu": 0.014468591060778422,
+        "bleu_1": 0.04502140676011848,
+        "bleu_2": 0.01643949336875498,
+        "judge": 0.0
+      },
+      "X2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0,
+        "bleu": 0.0,
+        "bleu_1": 0.0,
+        "bleu_2": 0.0,
+        "judge": 0.0
+      },
+      "X1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.14285714285714288,
+        "bleu": 0.017926911178691992,
+        "bleu_1": 0.055782540037107455,
+        "bleu_2": 0.020368903662172547,
+        "judge": 0.0
+      }
+    },
+    "by_y": {
+      "Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.013888888888888888,
+        "bleu": 0.002463039981521783,
+        "bleu_1": 0.007664155024405049,
+        "bleu_2": 0.002798553727388801,
+        "judge": 0.0
+      },
+      "Y1": {
+        "em": 0.0,
+        "contains_gt": 0.02564102564102564,
+        "f1": 0.045685795685795685,
+        "bleu": 0.013057428450985994,
+        "bleu_1": 0.04063034161816698,
+        "bleu_2": 0.014836103082274007,
+        "judge": 0.0
+      },
+      "Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0,
+        "bleu": 0.0,
+        "bleu_1": 0.0,
+        "bleu_2": 0.0,
+        "judge": 0.0
+      }
+    },
+    "by_cell": {
+      "X4_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0,
+        "bleu": 0.0,
+        "bleu_1": 0.0,
+        "bleu_2": 0.0,
+        "judge": 0.0
+      },
+      "X3_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.03333333333333333,
+        "bleu": 0.005911295955652279,
+        "bleu_1": 0.018393972058572117,
+        "bleu_2": 0.006716528945733123,
+        "judge": 0.0
+      },
+      "X3_Y1": {
+        "em": 0.0,
+        "contains_gt": 0.03225806451612903,
+        "f1": 0.0528673835125448,
+        "bleu": 0.015848799948701992,
+        "bleu_1": 0.049316154292625966,
+        "bleu_2": 0.018007713436984315,
+        "judge": 0.0
+      },
+      "X2_Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0,
+        "bleu": 0.0,
+        "bleu_1": 0.0,
+        "bleu_2": 0.0,
+        "judge": 0.0
+      },
+      "X2_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0,
+        "bleu": 0.0,
+        "bleu_1": 0.0,
+        "bleu_2": 0.0,
+        "judge": 0.0
+      },
+      "X4_Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0,
+        "bleu": 0.0,
+        "bleu_1": 0.0,
+        "bleu_2": 0.0,
+        "judge": 0.0
+      },
+      "X4_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0,
+        "bleu": 0.0,
+        "bleu_1": 0.0,
+        "bleu_2": 0.0,
+        "judge": 0.0
+      },
+      "X1_Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.14285714285714288,
+        "bleu": 0.017926911178691992,
+        "bleu_1": 0.055782540037107455,
+        "bleu_2": 0.020368903662172547,
+        "judge": 0.0
+      }
+    }
+  },
+  "judge": {
+    "enabled": true,
+    "model": "gpt-5.2",
+    "scored_open_rows": 52
+  }
+}

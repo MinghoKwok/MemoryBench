@@ -1,0 +1,48 @@
+{
+  "task": {
+    "name": "cartoon_entertainment_companion_open",
+    "dataset": {
+      "dialog_json": "data/dialog/Cartoon_Entertainment_Companion_Open.json",
+      "image_root": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image"
+    },
+    "eval": {
+      "mode": "open",
+      "output_json": "output/results_cartoon_entertainment_companion_open.json",
+      "max_questions": 0
+    }
+  },
+  "dataset": {
+    "dialog_json": "data/dialog/Cartoon_Entertainment_Companion_Open.json",
+    "image_root": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image"
+  },
+  "eval": {
+    "mode": "open",
+    "output_json": "output/results_cartoon_entertainment_companion_open.json",
+    "max_questions": 0
+  },
+  "model": {
+    "name": "gpt_5_4_mini",
+    "provider": "openai_api",
+    "model": "gpt-5.4-mini",
+    "api_key_env": "OPENAI_API_KEY",
+    "base_url": "https://api.openai.com/v1",
+    "max_new_tokens": 128,
+    "timeout": 90
+  },
+  "method": {
+    "name": "m2a",
+    "llm_model": "gpt-5.4-mini",
+    "llm_api_key": "",
+    "llm_api_key_env": "OPENAI_API_KEY",
+    "llm_base_url": "https://api.openai.com/v1",
+    "llm_timeout": 90,
+    "text_embedding_model": "all-MiniLM-L6-v2",
+    "multimodal_embedding_model": "siglip2-base-patch16-384",
+    "max_memory_iterations": 15,
+    "context_window": 5,
+    "max_query_iterations": 5
+  },
+  "run": {
+    "output_root": "runs"
+  }
+}
