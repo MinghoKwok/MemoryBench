@@ -1,0 +1,76 @@
+{
+  "task_name": "card_playlog_test",
+  "model_name": "gpt_4_1_nano",
+  "model_path": "gpt-4.1-nano",
+  "method_name": "clue_only_context__text_only",
+  "base_method_name": "clue_only_context",
+  "method_modality": "text_only",
+  "mode": "mcq",
+  "num_qas": 48,
+  "num_qas_run": 48,
+  "dialog_json": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/dialog/Card_Playlog_Test.json",
+  "image_root": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image",
+  "run_dir": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/Benchmark_Pipeline/runs_clue_only_mcq_ablation/card_playlog_test/20260424_235551_gpt_4_1_nano_clue_only_context__text_only",
+  "git_commit": "35aa30ab7205e464bf92b809f6f3a6932c7f7aef",
+  "summary": {
+    "open_count": 48,
+    "overall": {
+      "em": 0.18229166666666666,
+      "contains_gt": 0.0,
+      "f1": 0.18229166666666666
+    },
+    "by_x": {
+      "X4": {
+        "em": 0.18229166666666666,
+        "contains_gt": 0.0,
+        "f1": 0.18229166666666666
+      }
+    },
+    "by_y": {
+      "Y3": {
+        "em": 0.11842105263157894,
+        "contains_gt": 0.0,
+        "f1": 0.11842105263157894
+      },
+      "Y2": {
+        "em": 0.22413793103448276,
+        "contains_gt": 0.0,
+        "f1": 0.22413793103448276
+      }
+    },
+    "by_cell": {
+      "X4_Y3": {
+        "em": 0.11842105263157894,
+        "contains_gt": 0.0,
+        "f1": 0.11842105263157894
+      },
+      "X4_Y2": {
+        "em": 0.22413793103448276,
+        "contains_gt": 0.0,
+        "f1": 0.22413793103448276
+      }
+    },
+    "mcq_count": 48,
+    "mcq_valid_rate": 0.9583333333333334,
+    "mcq_overall": {
+      "em": 0.18229166666666666,
+      "contains_gt": 0.0,
+      "f1": 0.18229166666666666
+    },
+    "mcq_per_position_accuracy": {
+      "A": 0.2708333333333333,
+      "B": 0.16666666666666666,
+      "C": 0.2916666666666667,
+      "D": 0.0
+    }
+  },
+  "method_runtime": {
+    "caption_validation_passed": true,
+    "caption_validation_round_count": 30,
+    "method_modality": "text_only",
+    "history_source": "clue_only",
+    "captions_loaded": true,
+    "images_loaded": false,
+    "history_turns_after_truncation": 2
+  }
+}

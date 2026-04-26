@@ -1,0 +1,139 @@
+{
+  "task_name": "personal_health_dashboard_assistant_open",
+  "model_name": "gpt_5_4_mini",
+  "model_path": "gpt-5.4-mini",
+  "method_name": "simplemem",
+  "base_method_name": "simplemem",
+  "method_modality": "",
+  "mode": "open",
+  "num_qas": 51,
+  "num_qas_run": 51,
+  "dialog_json": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/dialog/Personal_Health_Dashboard_Assistant_Open.json",
+  "image_root": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image",
+  "run_dir": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/runs/personal_health_dashboard_assistant_open/20260426_152233_gpt_5_4_mini_simplemem",
+  "git_commit": "f50478ca8d87824ef1e9bc48c2b9e0d49e54305a",
+  "summary": {
+    "open_count": 51,
+    "overall": {
+      "em": 0.058823529411764705,
+      "contains_gt": 0.058823529411764705,
+      "f1": 0.1116438028202734,
+      "bleu": 0.062071831458623626,
+      "bleu_1": 0.10618400484858115,
+      "bleu_2": 0.08965428127793502,
+      "judge": 0.10784313725490197
+    },
+    "by_x": {
+      "X4": {
+        "em": 0.06818181818181818,
+        "contains_gt": 0.06818181818181818,
+        "f1": 0.08603896103896104,
+        "bleu": 0.05379050021238764,
+        "bleu_1": 0.08497372204980143,
+        "bleu_2": 0.0744335904605607,
+        "judge": 0.06818181818181818
+      },
+      "X3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0,
+        "bleu": 0.0,
+        "bleu_1": 0.0,
+        "bleu_2": 0.0,
+        "judge": 0.0
+      },
+      "X1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.636039886039886,
+        "bleu": 0.26629379834824957,
+        "bleu_1": 0.5588468256954586,
+        "bleu_2": 0.43243012163667177,
+        "judge": 0.8333333333333334
+      }
+    },
+    "by_y": {
+      "Y2": {
+        "em": 0.06818181818181818,
+        "contains_gt": 0.06818181818181818,
+        "f1": 0.07954545454545454,
+        "bleu": 0.051940189412946106,
+        "bleu_1": 0.07954545454545454,
+        "bleu_2": 0.07233123149625126,
+        "judge": 0.06818181818181818
+      },
+      "Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.323972323972324,
+        "bleu": 0.13699327047468307,
+        "bleu_1": 0.290707534600018,
+        "bleu_2": 0.220585382380655,
+        "judge": 0.3333333333333333
+      },
+      "Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.25,
+        "bleu": 0.05833544737207805,
+        "bleu_1": 0.17113903967753066,
+        "bleu_2": 0.06628186505570068,
+        "judge": 0.5
+      }
+    },
+    "by_cell": {
+      "X4_Y2": {
+        "em": 0.075,
+        "contains_gt": 0.075,
+        "f1": 0.0875,
+        "bleu": 0.05713420835424071,
+        "bleu_1": 0.0875,
+        "bleu_2": 0.07956435464587638,
+        "judge": 0.075
+      },
+      "X4_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.07142857142857144,
+        "bleu": 0.02035341879385695,
+        "bleu_1": 0.05971094254781577,
+        "bleu_2": 0.02312594860740384,
+        "judge": 0.0
+      },
+      "X3_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0,
+        "bleu": 0.0,
+        "bleu_1": 0.0,
+        "bleu_2": 0.0,
+        "judge": 0.0
+      },
+      "X1_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.829059829059829,
+        "bleu": 0.37027297383633534,
+        "bleu_1": 0.7527007187044226,
+        "bleu_2": 0.6155042499271572,
+        "judge": 1.0
+      },
+      "X1_Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.25,
+        "bleu": 0.05833544737207805,
+        "bleu_1": 0.17113903967753066,
+        "bleu_2": 0.06628186505570068,
+        "judge": 0.5
+      }
+    }
+  },
+  "method_runtime": {
+    "num_memories": 97,
+    "debug_dir": "/Users/qingyuejiao/Desktop/MemoryBench/output/personal_health_dashboard_assistant/simplemem",
+    "data_dir": "/Users/qingyuejiao/Desktop/MemoryBench/runs/simplemem/personal_health_dashboard_assistant"
+  },
+  "judge_model": "gpt-5.2",
+  "judge_rescored_from_predictions": true
+}

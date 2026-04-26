@@ -1,0 +1,76 @@
+{
+  "task": {
+    "name": "brand_memory_test_open",
+    "dataset": {
+      "dialog_json": "data/dialog/Brand_Memory_Test_Open.json",
+      "image_root": "data/image"
+    },
+    "eval": {
+      "mode": "open",
+      "output_json": "output/results_brand_memory_test_open.json",
+      "max_questions": 0
+    }
+  },
+  "dataset": {
+    "dialog_json": "data/dialog/Brand_Memory_Test_Open.json",
+    "image_root": "data/image"
+  },
+  "eval": {
+    "mode": "open",
+    "output_json": "output/results_brand_memory_test_open.json",
+    "max_questions": 0
+  },
+  "model": {
+    "name": "gpt_5_4_mini",
+    "provider": "openai_api",
+    "model": "gpt-5.4-mini",
+    "api_key_env": "OPENAI_API_KEY",
+    "base_url": "https://api.openai.com/v1",
+    "max_new_tokens": 128,
+    "timeout": 90
+  },
+  "method": {
+    "name": "gen_agents",
+    "modality": "text_only",
+    "llm_model": "gpt-4.1-nano",
+    "llm_api_key": "",
+    "llm_api_key_env": "OPENAI_API_KEY",
+    "embedding_model": "all-MiniLM-L6-v2",
+    "retrieve_k": 10,
+    "caption_preprocessed": true,
+    "llm_temperature": 0.0,
+    "importance_post_scale": 10.0,
+    "reflection_threshold": 8.0,
+    "reflection_topk": 2,
+    "reflection_question_number": 2,
+    "reflection_insight_number": 2,
+    "recency_decay": 0.995,
+    "recall_truncation_words": 4000
+  },
+  "run": {
+    "output_root": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/runs",
+    "method_runtime": {
+      "caption_validation_passed": true,
+      "caption_validation_round_count": 30,
+      "method_modality": "text_only",
+      "history_source": "retrieval",
+      "captions_loaded": true,
+      "images_loaded": false,
+      "num_memories": 72,
+      "debug_dir": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/output/brand_memory_test_open/gen_agents",
+      "history_turns_after_truncation": 1,
+      "retrieved_round_ids": [
+        "BRAND_S34:R1",
+        "BRAND_S38:R1",
+        "BRAND_S41:R1",
+        "BRAND_S18:R1",
+        "BRAND_S41:R2",
+        "BRAND_S40:R1",
+        "BRAND_S27:R1",
+        "BRAND_S37:R1",
+        "BRAND_S16:R1",
+        "BRAND_S7:R1"
+      ]
+    }
+  }
+}

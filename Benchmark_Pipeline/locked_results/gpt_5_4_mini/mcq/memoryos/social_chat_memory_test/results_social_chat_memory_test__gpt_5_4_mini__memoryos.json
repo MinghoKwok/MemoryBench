@@ -1,0 +1,130 @@
+{
+  "task_name": "social_chat_memory_test",
+  "model_name": "gpt_5_4_mini",
+  "model_path": "gpt-5.4-mini",
+  "method_name": "memoryos",
+  "base_method_name": "memoryos",
+  "method_modality": "",
+  "mode": "mcq",
+  "num_qas": 37,
+  "num_qas_run": 37,
+  "dialog_json": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/dialog/Social_Chat_Memory_Test.json",
+  "image_root": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image",
+  "run_dir": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/runs/social_chat_memory_test/20260426_124614_gpt_5_4_mini_memoryos",
+  "git_commit": "f50478ca8d87824ef1e9bc48c2b9e0d49e54305a",
+  "summary": {
+    "open_count": 37,
+    "overall": {
+      "em": 0.43243243243243246,
+      "contains_gt": 0.5135135135135135,
+      "f1": 0.43243243243243246
+    },
+    "by_x": {
+      "X2": {
+        "em": 0.4051724137931034,
+        "contains_gt": 0.4827586206896552,
+        "f1": 0.4051724137931034
+      },
+      "X1": {
+        "em": 0.65,
+        "contains_gt": 0.8,
+        "f1": 0.65
+      },
+      "X3": {
+        "em": 0.5,
+        "contains_gt": 0.5,
+        "f1": 0.5
+      },
+      "X4": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0
+      }
+    },
+    "by_y": {
+      "Y2": {
+        "em": 0.3,
+        "contains_gt": 0.4,
+        "f1": 0.3
+      },
+      "Y3": {
+        "em": 0.8333333333333334,
+        "contains_gt": 0.8333333333333334,
+        "f1": 0.8333333333333334
+      },
+      "Y1": {
+        "em": 0.5833333333333334,
+        "contains_gt": 0.6666666666666666,
+        "f1": 0.5833333333333334
+      }
+    },
+    "by_cell": {
+      "X2_Y2": {
+        "em": 0.3409090909090909,
+        "contains_gt": 0.45454545454545453,
+        "f1": 0.3409090909090909
+      },
+      "X2_Y3": {
+        "em": 0.75,
+        "contains_gt": 0.75,
+        "f1": 0.75
+      },
+      "X2_Y1": {
+        "em": 0.4166666666666667,
+        "contains_gt": 0.3333333333333333,
+        "f1": 0.4166666666666667
+      },
+      "X1_Y1": {
+        "em": 0.625,
+        "contains_gt": 1.0,
+        "f1": 0.625
+      },
+      "X1_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0
+      },
+      "X3_Y1": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
+      },
+      "X3_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0
+      },
+      "X4_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0
+      },
+      "X1_Y3": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
+      }
+    },
+    "mcq_count": 37,
+    "mcq_valid_rate": 1.0,
+    "mcq_overall": {
+      "em": 0.43243243243243246,
+      "contains_gt": 0.5135135135135135,
+      "f1": 0.43243243243243246
+    },
+    "mcq_per_position_accuracy": {
+      "A": 0.43243243243243246,
+      "B": 0.40540540540540543,
+      "C": 0.3783783783783784,
+      "D": 0.5135135135135135
+    }
+  },
+  "method_runtime": {
+    "caption_validation_passed": true,
+    "caption_validation_round_count": 43,
+    "num_memories": 53,
+    "debug_dir": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/output/social_chat_memory_test/memoryos/318ecda07315d6f5",
+    "data_storage_path": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/runs/social_chat_memory_test/memoryos_data/318ecda07315d6f5",
+    "runtime_signature": "318ecda07315d6f5"
+  }
+}

@@ -1,0 +1,212 @@
+{
+  "task_name": "brand_memory_test_open",
+  "model_name": "gpt_5_4_mini",
+  "model_path": "gpt-5.4-mini",
+  "method_name": "semantic_rag_multimodal",
+  "base_method_name": "semantic_rag_multimodal",
+  "method_modality": "multimodal",
+  "mode": "open",
+  "num_qas": 29,
+  "num_qas_run": 29,
+  "dialog_json": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/dialog/Brand_Memory_Test_Open.json",
+  "image_root": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image",
+  "run_dir": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/runs/brand_memory_test_open/20260426_110847_gpt_5_4_mini_semantic_rag_multimodal",
+  "git_commit": "f50478ca8d87824ef1e9bc48c2b9e0d49e54305a",
+  "summary": {
+    "open_count": 29,
+    "overall": {
+      "em": 0.41379310344827586,
+      "contains_gt": 0.4482758620689655,
+      "f1": 0.5645593869731801,
+      "bleu": 0.14192142419822673,
+      "bleu_1": 0.5248572748492051,
+      "bleu_2": 0.25706216204320137,
+      "judge": 0.5862068965517241
+    },
+    "by_x": {
+      "X4": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.3333333333333333,
+        "bleu": 0.03270962178059006,
+        "bleu_1": 0.18393972058572117,
+        "bleu_2": 0.05816684692258399,
+        "judge": 0.5
+      },
+      "X2": {
+        "em": 0.0,
+        "contains_gt": 0.16666666666666666,
+        "f1": 0.3592592592592592,
+        "bleu": 0.061059613701077334,
+        "bleu_1": 0.2494084782904785,
+        "bleu_2": 0.14375898405668502,
+        "judge": 0.3333333333333333
+      },
+      "X1": {
+        "em": 0.5714285714285714,
+        "contains_gt": 0.5714285714285714,
+        "f1": 0.6452380952380953,
+        "bleu": 0.17542592266575863,
+        "bleu_1": 0.6360252695101254,
+        "bleu_2": 0.30837690957464575,
+        "judge": 0.6666666666666666
+      }
+    },
+    "by_y": {
+      "Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.7333333333333334,
+        "bleu": 0.12861053955141258,
+        "bleu_1": 0.4872050504420379,
+        "bleu_2": 0.3614321767789007,
+        "judge": 1.0
+      },
+      "Y2": {
+        "em": 0.4444444444444444,
+        "contains_gt": 0.48148148148148145,
+        "f1": 0.5520576131687243,
+        "bleu": 0.1429074156535463,
+        "bleu_1": 0.5276463285089952,
+        "bleu_2": 0.24933104984055696,
+        "judge": 0.5555555555555556
+      }
+    },
+    "by_cell": {
+      "X4_Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.6666666666666666,
+        "bleu": 0.06541924356118012,
+        "bleu_1": 0.36787944117144233,
+        "bleu_2": 0.11633369384516798,
+        "judge": 1.0
+      },
+      "X2_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.16666666666666666,
+        "f1": 0.3592592592592592,
+        "bleu": 0.061059613701077334,
+        "bleu_1": 0.2494084782904785,
+        "bleu_2": 0.14375898405668502,
+        "judge": 0.3333333333333333
+      },
+      "X1_Y2": {
+        "em": 0.6,
+        "contains_gt": 0.6,
+        "f1": 0.6375,
+        "bleu": 0.17460712702196432,
+        "bleu_1": 0.6375,
+        "bleu_2": 0.2934692220677464,
+        "judge": 0.65
+      },
+      "X4_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0,
+        "bleu": 0.0,
+        "bleu_1": 0.0,
+        "bleu_2": 0.0,
+        "judge": 0.0
+      },
+      "X1_Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.8,
+        "bleu": 0.19180183554164504,
+        "bleu_1": 0.6065306597126334,
+        "bleu_2": 0.6065306597126334,
+        "judge": 1.0
+      }
+    }
+  },
+  "method_runtime": {
+    "retrieval_backend": "dense_multimodal",
+    "retrieval_corpus": "round_text",
+    "method_modality": "multimodal",
+    "top_k": 10,
+    "neighbor_window": 0,
+    "seed_round_ids": [
+      "BRAND_S6:R2",
+      "BRAND_S3:R1",
+      "BRAND_S3:R2",
+      "BRAND_S27:R1",
+      "BRAND_S40:R1",
+      "BRAND_S10:R1",
+      "BRAND_S34:R1",
+      "BRAND_S1:R1",
+      "BRAND_S38:R1",
+      "BRAND_S18:R1"
+    ],
+    "selected_round_ids": [
+      "BRAND_S6:R2",
+      "BRAND_S3:R1",
+      "BRAND_S3:R2",
+      "BRAND_S27:R1",
+      "BRAND_S40:R1",
+      "BRAND_S10:R1",
+      "BRAND_S34:R1",
+      "BRAND_S1:R1",
+      "BRAND_S38:R1",
+      "BRAND_S18:R1"
+    ],
+    "top_candidates": [
+      {
+        "round_id": "BRAND_S6:R2",
+        "score": 0.27233679726517823,
+        "text_dense_score": 0.5446735945303565,
+        "image_dense_score": 0.0,
+        "indexed_image_count": 0,
+        "best_image_path": ""
+      },
+      {
+        "round_id": "BRAND_S3:R1",
+        "score": 0.2606693075971258,
+        "text_dense_score": 0.4014081596350008,
+        "image_dense_score": 0.1199304555592508,
+        "indexed_image_count": 1,
+        "best_image_path": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image/Brand_Memory_Test/Dunkin_1.png"
+      },
+      {
+        "round_id": "BRAND_S3:R2",
+        "score": 0.2514774575801325,
+        "text_dense_score": 0.502954915160265,
+        "image_dense_score": 0.0,
+        "indexed_image_count": 0,
+        "best_image_path": ""
+      },
+      {
+        "round_id": "BRAND_S27:R1",
+        "score": 0.2497046135429535,
+        "text_dense_score": 0.41383710880367397,
+        "image_dense_score": 0.08557211828223306,
+        "indexed_image_count": 1,
+        "best_image_path": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image/Brand_Memory_Test/Dunkin_4.png"
+      },
+      {
+        "round_id": "BRAND_S40:R1",
+        "score": 0.2319909571040258,
+        "text_dense_score": 0.38350771516128057,
+        "image_dense_score": 0.08047419904677107,
+        "indexed_image_count": 1,
+        "best_image_path": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image/Brand_Memory_Test/Starbucks_5.png"
+      }
+    ],
+    "clue_hit_count": 1,
+    "corpus_entry_count": 72,
+    "text_embedding_model": "all-MiniLM-L6-v2",
+    "multimodal_embedding_model": "siglip2-base-patch16-384",
+    "text_dense_weight": 0.5,
+    "image_dense_weight": 0.5,
+    "caption_text_included": false,
+    "image_embeddings_built": true,
+    "multi_image_indexing_enabled": true,
+    "indexed_image_count": 30,
+    "history_source": "retrieval",
+    "captions_loaded": false,
+    "images_loaded": true,
+    "history_turns_after_truncation": 20
+  },
+  "judge_model": "gpt-5.2",
+  "judge_rescored_from_predictions": true
+}

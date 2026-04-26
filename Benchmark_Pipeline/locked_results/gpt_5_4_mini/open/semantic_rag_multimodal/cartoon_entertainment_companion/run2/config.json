@@ -1,0 +1,133 @@
+{
+  "task": {
+    "name": "cartoon_entertainment_companion_open",
+    "dataset": {
+      "dialog_json": "data/dialog/Cartoon_Entertainment_Companion_Open.json",
+      "image_root": "data/image"
+    },
+    "eval": {
+      "mode": "open",
+      "output_json": "output/results_cartoon_entertainment_companion_open.json",
+      "max_questions": 0
+    }
+  },
+  "dataset": {
+    "dialog_json": "data/dialog/Cartoon_Entertainment_Companion_Open.json",
+    "image_root": "data/image"
+  },
+  "eval": {
+    "mode": "open",
+    "output_json": "output/results_cartoon_entertainment_companion_open.json",
+    "max_questions": 0
+  },
+  "model": {
+    "name": "gpt_5_4_mini",
+    "provider": "openai_api",
+    "model": "gpt-5.4-mini",
+    "api_key_env": "OPENAI_API_KEY",
+    "base_url": "https://api.openai.com/v1",
+    "max_new_tokens": 128,
+    "timeout": 90
+  },
+  "method": {
+    "name": "semantic_rag_multimodal",
+    "modality": "multimodal",
+    "retrieval_backend": "dense_multimodal",
+    "top_k": 10,
+    "neighbor_window": 0,
+    "text_embedding_model": "all-MiniLM-L6-v2",
+    "multimodal_embedding_model": "siglip2-base-patch16-384",
+    "text_dense_weight": 0.5,
+    "image_dense_weight": 0.5
+  },
+  "run": {
+    "output_root": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/runs",
+    "method_runtime": {
+      "retrieval_backend": "dense_multimodal",
+      "retrieval_corpus": "round_text",
+      "method_modality": "multimodal",
+      "top_k": 10,
+      "neighbor_window": 0,
+      "seed_round_ids": [
+        "CARTOON_S13:R1",
+        "CARTOON_S63:R1",
+        "CARTOON_S56:R1",
+        "CARTOON_S40:R1",
+        "CARTOON_S65:R1",
+        "CARTOON_S59:R1",
+        "CARTOON_S61:R1",
+        "CARTOON_S54:R1",
+        "CARTOON_S22:R1",
+        "CARTOON_S39:R1"
+      ],
+      "selected_round_ids": [
+        "CARTOON_S13:R1",
+        "CARTOON_S63:R1",
+        "CARTOON_S56:R1",
+        "CARTOON_S40:R1",
+        "CARTOON_S65:R1",
+        "CARTOON_S59:R1",
+        "CARTOON_S61:R1",
+        "CARTOON_S54:R1",
+        "CARTOON_S22:R1",
+        "CARTOON_S39:R1"
+      ],
+      "top_candidates": [
+        {
+          "round_id": "CARTOON_S13:R1",
+          "score": 0.3485313794414455,
+          "text_dense_score": 0.6073938748862114,
+          "image_dense_score": 0.08966888399667963,
+          "indexed_image_count": 1,
+          "best_image_path": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image/Cartoon_Entertainment_Companion/Alley_Oop_Page_1.jpg"
+        },
+        {
+          "round_id": "CARTOON_S63:R1",
+          "score": 0.34783412439471084,
+          "text_dense_score": 0.5886211785395831,
+          "image_dense_score": 0.10704707024983859,
+          "indexed_image_count": 1,
+          "best_image_path": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image/Cartoon_Entertainment_Companion/Alley_Oop_Page_34.jpg"
+        },
+        {
+          "round_id": "CARTOON_S56:R1",
+          "score": 0.34671562482837615,
+          "text_dense_score": 0.5915948695777525,
+          "image_dense_score": 0.10183638007899974,
+          "indexed_image_count": 1,
+          "best_image_path": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image/Cartoon_Entertainment_Companion/Alley_Oop_Page_31.jpg"
+        },
+        {
+          "round_id": "CARTOON_S40:R1",
+          "score": 0.3442472264677857,
+          "text_dense_score": 0.5874182847358476,
+          "image_dense_score": 0.10107616819972387,
+          "indexed_image_count": 1,
+          "best_image_path": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image/Cartoon_Entertainment_Companion/Alley_Oop_Page_27.jpg"
+        },
+        {
+          "round_id": "CARTOON_S65:R1",
+          "score": 0.343162621436015,
+          "text_dense_score": 0.5841854113488235,
+          "image_dense_score": 0.1021398315232065,
+          "indexed_image_count": 1,
+          "best_image_path": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image/Cartoon_Entertainment_Companion/Alley_Oop_Page_35.jpg"
+        }
+      ],
+      "clue_hit_count": 2,
+      "corpus_entry_count": 299,
+      "text_embedding_model": "all-MiniLM-L6-v2",
+      "multimodal_embedding_model": "siglip2-base-patch16-384",
+      "text_dense_weight": 0.5,
+      "image_dense_weight": 0.5,
+      "caption_text_included": false,
+      "image_embeddings_built": true,
+      "multi_image_indexing_enabled": true,
+      "indexed_image_count": 87,
+      "history_source": "retrieval",
+      "captions_loaded": false,
+      "images_loaded": true,
+      "history_turns_after_truncation": 20
+    }
+  }
+}

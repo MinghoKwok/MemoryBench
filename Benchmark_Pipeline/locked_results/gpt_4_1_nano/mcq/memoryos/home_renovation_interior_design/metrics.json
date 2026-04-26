@@ -1,0 +1,125 @@
+{
+  "task_name": "home_renovation_interior_design",
+  "model_name": "gpt_4_1_nano",
+  "model_path": "gpt-4.1-nano",
+  "method_name": "memoryos",
+  "base_method_name": "memoryos",
+  "method_modality": "",
+  "mode": "mcq",
+  "num_qas": 52,
+  "num_qas_run": 52,
+  "dialog_json": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/dialog/Home_Renovation_Interior_Design.json",
+  "image_root": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image",
+  "run_dir": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/runs/home_renovation_interior_design/20260426_012508_gpt_4_1_nano_memoryos",
+  "git_commit": "f50478ca8d87824ef1e9bc48c2b9e0d49e54305a",
+  "summary": {
+    "open_count": 52,
+    "overall": {
+      "em": 0.28846153846153844,
+      "contains_gt": 0.1346153846153846,
+      "f1": 0.28846153846153844
+    },
+    "by_x": {
+      "X4": {
+        "em": 0.3125,
+        "contains_gt": 0.125,
+        "f1": 0.3125
+      },
+      "X3": {
+        "em": 0.2361111111111111,
+        "contains_gt": 0.08333333333333333,
+        "f1": 0.2361111111111111
+      },
+      "X2": {
+        "em": 0.42857142857142855,
+        "contains_gt": 0.2857142857142857,
+        "f1": 0.42857142857142855
+      },
+      "X1": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
+      }
+    },
+    "by_y": {
+      "Y2": {
+        "em": 0.3541666666666667,
+        "contains_gt": 0.16666666666666666,
+        "f1": 0.3541666666666667
+      },
+      "Y1": {
+        "em": 0.27564102564102566,
+        "contains_gt": 0.1282051282051282,
+        "f1": 0.27564102564102566
+      },
+      "Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0
+      }
+    },
+    "by_cell": {
+      "X4_Y2": {
+        "em": 0.375,
+        "contains_gt": 0.0,
+        "f1": 0.375
+      },
+      "X3_Y2": {
+        "em": 0.3,
+        "contains_gt": 0.2,
+        "f1": 0.3
+      },
+      "X3_Y1": {
+        "em": 0.22580645161290322,
+        "contains_gt": 0.06451612903225806,
+        "f1": 0.22580645161290322
+      },
+      "X2_Y1": {
+        "em": 0.5,
+        "contains_gt": 0.5,
+        "f1": 0.5
+      },
+      "X2_Y2": {
+        "em": 0.4,
+        "contains_gt": 0.2,
+        "f1": 0.4
+      },
+      "X4_Y1": {
+        "em": 0.35,
+        "contains_gt": 0.2,
+        "f1": 0.35
+      },
+      "X4_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0
+      },
+      "X1_Y1": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
+      }
+    },
+    "mcq_count": 52,
+    "mcq_valid_rate": 1.0,
+    "mcq_overall": {
+      "em": 0.28846153846153844,
+      "contains_gt": 0.1346153846153846,
+      "f1": 0.28846153846153844
+    },
+    "mcq_per_position_accuracy": {
+      "A": 0.2692307692307692,
+      "B": 0.36538461538461536,
+      "C": 0.38461538461538464,
+      "D": 0.1346153846153846
+    }
+  },
+  "method_runtime": {
+    "caption_validation_passed": true,
+    "caption_validation_round_count": 89,
+    "num_memories": 120,
+    "debug_dir": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/output/home_renovation_interior_design/memoryos/71027a1835607baf",
+    "data_storage_path": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/runs/home_renovation_interior_design/memoryos_data/71027a1835607baf",
+    "runtime_signature": "71027a1835607baf"
+  }
+}

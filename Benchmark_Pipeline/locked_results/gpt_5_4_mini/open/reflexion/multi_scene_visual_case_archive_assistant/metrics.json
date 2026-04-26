@@ -1,0 +1,156 @@
+{
+  "task_name": "multi_scene_visual_case_archive_assistant_open",
+  "model_name": "gpt_5_4_mini",
+  "model_path": "gpt-5.4-mini",
+  "method_name": "reflexion",
+  "base_method_name": "reflexion",
+  "method_modality": "",
+  "mode": "open",
+  "num_qas": 50,
+  "num_qas_run": 50,
+  "dialog_json": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/dialog/Multi-Scene_Visual_Case_Archive_Assistant_Open.json",
+  "image_root": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image",
+  "run_dir": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/runs/multi_scene_visual_case_archive_assistant_open/20260426_133706_gpt_5_4_mini_reflexion",
+  "git_commit": "f50478ca8d87824ef1e9bc48c2b9e0d49e54305a",
+  "summary": {
+    "open_count": 50,
+    "overall": {
+      "em": 0.2,
+      "contains_gt": 0.22,
+      "f1": 0.31586712690549007,
+      "bleu": 0.17012715396977626,
+      "bleu_1": 0.2862019337845526,
+      "bleu_2": 0.25986135790626996,
+      "judge": 0.39
+    },
+    "by_x": {
+      "X4": {
+        "em": 0.25,
+        "contains_gt": 0.25,
+        "f1": 0.28846153846153844,
+        "bleu": 0.08444024363941317,
+        "bleu_1": 0.2763157894736842,
+        "bleu_2": 0.2691179778225468,
+        "judge": 0.375
+      },
+      "X2": {
+        "em": 0.25,
+        "contains_gt": 0.25,
+        "f1": 0.3235294117647059,
+        "bleu": 0.1740075153438715,
+        "bleu_1": 0.3194444444444444,
+        "bleu_2": 0.29658474953124564,
+        "judge": 0.5
+      },
+      "X3": {
+        "em": 0.18421052631578946,
+        "contains_gt": 0.21052631578947367,
+        "f1": 0.31713881308712377,
+        "bleu": 0.17832991055737338,
+        "bleu_1": 0.28024415725729834,
+        "bleu_2": 0.2511557365203512,
+        "judge": 0.3684210526315789
+      }
+    },
+    "by_y": {
+      "Y2": {
+        "em": 0.125,
+        "contains_gt": 0.125,
+        "f1": 0.14423076923076922,
+        "bleu": 0.04222012181970659,
+        "bleu_1": 0.1381578947368421,
+        "bleu_2": 0.1345589889112734,
+        "judge": 0.1875
+      },
+      "Y3": {
+        "em": 0.18181818181818182,
+        "contains_gt": 0.18181818181818182,
+        "f1": 0.292866553736119,
+        "bleu": 0.13240106646573285,
+        "bleu_1": 0.2795321637426901,
+        "bleu_2": 0.2354130071164817,
+        "judge": 0.45454545454545453
+      },
+      "Y1": {
+        "em": 0.22580645161290322,
+        "contains_gt": 0.25806451612903225,
+        "f1": 0.36832187420422713,
+        "bleu": 0.21652209654219673,
+        "bleu_1": 0.32677353968268713,
+        "bleu_2": 0.30087267437877463,
+        "judge": 0.41935483870967744
+      }
+    },
+    "by_cell": {
+      "X4_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.05128205128205129,
+        "bleu": 0.0071777361802715595,
+        "bleu_1": 0.035087719298245605,
+        "bleu_2": 0.02549063709672908,
+        "judge": 0.16666666666666666
+      },
+      "X2_Y2": {
+        "em": 0.3333333333333333,
+        "contains_gt": 0.3333333333333333,
+        "f1": 0.3333333333333333,
+        "bleu": 0.105409255338946,
+        "bleu_1": 0.3333333333333333,
+        "bleu_2": 0.3333333333333333,
+        "judge": 0.3333333333333333
+      },
+      "X3_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.12665935939593229,
+        "bleu": 0.012870321674417913,
+        "bleu_1": 0.10385964912280701,
+        "bleu_2": 0.043373016406266715,
+        "judge": 0.2
+      },
+      "X2_Y3": {
+        "em": 0.2,
+        "contains_gt": 0.2,
+        "f1": 0.3176470588235294,
+        "bleu": 0.2151664713468268,
+        "bleu_1": 0.3111111111111111,
+        "bleu_2": 0.274535599249993,
+        "judge": 0.6
+      },
+      "X3_Y1": {
+        "em": 0.22580645161290322,
+        "contains_gt": 0.25806451612903225,
+        "f1": 0.36832187420422713,
+        "bleu": 0.21652209654219673,
+        "bleu_1": 0.32677353968268713,
+        "bleu_2": 0.30087267437877463,
+        "judge": 0.41935483870967744
+      },
+      "X3_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0,
+        "bleu": 0.0,
+        "bleu_1": 0.0,
+        "bleu_2": 0.0,
+        "judge": 0.0
+      },
+      "X4_Y3": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0,
+        "bleu": 0.316227766016838,
+        "bleu_1": 1.0,
+        "bleu_2": 1.0,
+        "judge": 1.0
+      }
+    }
+  },
+  "method_runtime": {
+    "num_memories": 117,
+    "debug_dir": "/Users/qingyuejiao/Desktop/MemoryBench/output/multi-scene_visual_case_archive_assistant/reflexion"
+  },
+  "judge_model": "gpt-5.2",
+  "judge_rescored_from_predictions": true
+}

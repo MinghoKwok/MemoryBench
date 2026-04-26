@@ -1,0 +1,90 @@
+{
+  "task_name": "card_playlog_test",
+  "model_name": "gpt_5_4_mini",
+  "model_path": "gpt-5.4-mini",
+  "method_name": "gen_agents__text_only",
+  "base_method_name": "gen_agents",
+  "method_modality": "text_only",
+  "mode": "mcq",
+  "num_qas": 48,
+  "num_qas_run": 48,
+  "dialog_json": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/dialog/Card_Playlog_Test.json",
+  "image_root": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image",
+  "run_dir": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/runs/card_playlog_test/20260426_125602_gpt_5_4_mini_gen_agents__text_only",
+  "git_commit": "f50478ca8d87824ef1e9bc48c2b9e0d49e54305a",
+  "summary": {
+    "open_count": 48,
+    "overall": {
+      "em": 0.234375,
+      "contains_gt": 0.25,
+      "f1": 0.234375
+    },
+    "by_x": {
+      "X4": {
+        "em": 0.234375,
+        "contains_gt": 0.25,
+        "f1": 0.234375
+      }
+    },
+    "by_y": {
+      "Y3": {
+        "em": 0.23684210526315788,
+        "contains_gt": 0.3157894736842105,
+        "f1": 0.23684210526315788
+      },
+      "Y2": {
+        "em": 0.23275862068965517,
+        "contains_gt": 0.20689655172413793,
+        "f1": 0.23275862068965517
+      }
+    },
+    "by_cell": {
+      "X4_Y3": {
+        "em": 0.23684210526315788,
+        "contains_gt": 0.3157894736842105,
+        "f1": 0.23684210526315788
+      },
+      "X4_Y2": {
+        "em": 0.23275862068965517,
+        "contains_gt": 0.20689655172413793,
+        "f1": 0.23275862068965517
+      }
+    },
+    "mcq_count": 48,
+    "mcq_valid_rate": 1.0,
+    "mcq_overall": {
+      "em": 0.234375,
+      "contains_gt": 0.25,
+      "f1": 0.234375
+    },
+    "mcq_per_position_accuracy": {
+      "A": 0.22916666666666666,
+      "B": 0.25,
+      "C": 0.20833333333333334,
+      "D": 0.25
+    }
+  },
+  "method_runtime": {
+    "caption_validation_passed": true,
+    "caption_validation_round_count": 30,
+    "method_modality": "text_only",
+    "history_source": "retrieval",
+    "captions_loaded": true,
+    "images_loaded": false,
+    "num_memories": 30,
+    "debug_dir": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/output/card_playlog_test/gen_agents",
+    "history_turns_after_truncation": 1,
+    "retrieved_round_ids": [
+      "PLAY_S4:R1",
+      "PLAY_S2:R1",
+      "PLAY_S3:R3",
+      "PLAY_S4:R6",
+      "PLAY_S4:R3",
+      "PLAY_S1:R6",
+      "PLAY_S4:R7",
+      "PLAY_S4:R2",
+      "PLAY_S2:R5",
+      "PLAY_S2:R6"
+    ]
+  }
+}

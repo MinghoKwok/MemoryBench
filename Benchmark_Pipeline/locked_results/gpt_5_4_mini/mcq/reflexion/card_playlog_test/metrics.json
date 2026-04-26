@@ -1,0 +1,71 @@
+{
+  "task_name": "card_playlog_test",
+  "model_name": "gpt_5_4_mini",
+  "model_path": "gpt-5.4-mini",
+  "method_name": "reflexion",
+  "base_method_name": "reflexion",
+  "method_modality": "",
+  "mode": "mcq",
+  "num_qas": 48,
+  "num_qas_run": 48,
+  "dialog_json": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/dialog/Card_Playlog_Test.json",
+  "image_root": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image",
+  "run_dir": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/runs/card_playlog_test/20260426_174812_gpt_5_4_mini_reflexion",
+  "git_commit": "f50478ca8d87824ef1e9bc48c2b9e0d49e54305a",
+  "summary": {
+    "open_count": 48,
+    "overall": {
+      "em": 0.3333333333333333,
+      "contains_gt": 0.25,
+      "f1": 0.3333333333333333
+    },
+    "by_x": {
+      "X4": {
+        "em": 0.3333333333333333,
+        "contains_gt": 0.25,
+        "f1": 0.3333333333333333
+      }
+    },
+    "by_y": {
+      "Y3": {
+        "em": 0.18421052631578946,
+        "contains_gt": 0.15789473684210525,
+        "f1": 0.18421052631578946
+      },
+      "Y2": {
+        "em": 0.43103448275862066,
+        "contains_gt": 0.3103448275862069,
+        "f1": 0.43103448275862066
+      }
+    },
+    "by_cell": {
+      "X4_Y3": {
+        "em": 0.18421052631578946,
+        "contains_gt": 0.15789473684210525,
+        "f1": 0.18421052631578946
+      },
+      "X4_Y2": {
+        "em": 0.43103448275862066,
+        "contains_gt": 0.3103448275862069,
+        "f1": 0.43103448275862066
+      }
+    },
+    "mcq_count": 48,
+    "mcq_valid_rate": 1.0,
+    "mcq_overall": {
+      "em": 0.3333333333333333,
+      "contains_gt": 0.25,
+      "f1": 0.3333333333333333
+    },
+    "mcq_per_position_accuracy": {
+      "A": 0.5,
+      "B": 0.3541666666666667,
+      "C": 0.22916666666666666,
+      "D": 0.25
+    }
+  },
+  "method_runtime": {
+    "num_memories": 30,
+    "debug_dir": "/Users/qingyuejiao/Desktop/MemoryBench/output/card_playlog_test/reflexion"
+  }
+}

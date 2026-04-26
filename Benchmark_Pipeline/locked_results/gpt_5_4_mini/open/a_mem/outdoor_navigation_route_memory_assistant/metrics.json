@@ -1,0 +1,174 @@
+{
+  "task_name": "outdoor_navigation_route_memory_assistant_open",
+  "model_name": "gpt_5_4_mini",
+  "model_path": "gpt-5.4-mini",
+  "method_name": "a_mem",
+  "base_method_name": "a_mem",
+  "method_modality": "",
+  "mode": "open",
+  "num_qas": 28,
+  "num_qas_run": 28,
+  "dialog_json": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/dialog/Outdoor_Navigation_Route_Memory_Assistant_Open.json",
+  "image_root": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image",
+  "run_dir": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/runs/outdoor_navigation_route_memory_assistant_open/20260426_120843_gpt_5_4_mini_a_mem",
+  "git_commit": "f50478ca8d87824ef1e9bc48c2b9e0d49e54305a",
+  "summary": {
+    "open_count": 28,
+    "overall": {
+      "em": 0.0,
+      "contains_gt": 0.0,
+      "f1": 0.09785499785499785,
+      "bleu": 0.029976892671054474,
+      "bleu_1": 0.09031665075225774,
+      "bleu_2": 0.04700860952210206,
+      "judge": 0.10714285714285714
+    },
+    "by_x": {
+      "X3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.07536703370036704,
+        "bleu": 0.017228250031790984,
+        "bleu_1": 0.07006172839506172,
+        "bleu_2": 0.026681440872976,
+        "judge": 0.027777777777777776
+      },
+      "X1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.2111111111111111,
+        "bleu": 0.05809879620542742,
+        "bleu_1": 0.20036281442847964,
+        "bleu_2": 0.08620828723855467,
+        "judge": 0.5
+      },
+      "X4": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.15,
+        "bleu": 0.07098962112020106,
+        "bleu_1": 0.13333333333333333,
+        "bleu_2": 0.11547005383792515,
+        "judge": 0.2
+      },
+      "X2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0,
+        "bleu": 0.0,
+        "bleu_1": 0.0,
+        "bleu_2": 0.0,
+        "judge": 0.0
+      }
+    },
+    "by_y": {
+      "Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.044144144144144144,
+        "bleu": 0.011058089883543017,
+        "bleu_1": 0.04074074074074074,
+        "bleu_2": 0.01926525618640269,
+        "judge": 0.0
+      },
+      "Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.5,
+        "bleu": 0.1495348781221221,
+        "bleu_1": 0.5,
+        "bleu_2": 0.223606797749979,
+        "judge": 1.0
+      },
+      "Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.13148148148148148,
+        "bleu": 0.04366223070118816,
+        "bleu_1": 0.11814625916267546,
+        "bleu_2": 0.06697128550606987,
+        "judge": 0.16666666666666666
+      }
+    },
+    "by_cell": {
+      "X3_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.05093555093555094,
+        "bleu": 0.012759334481011174,
+        "bleu_1": 0.04700854700854701,
+        "bleu_2": 0.022229141753541563,
+        "judge": 0.0
+      },
+      "X1_Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.5,
+        "bleu": 0.1495348781221221,
+        "bleu_1": 0.5,
+        "bleu_2": 0.223606797749979,
+        "judge": 1.0
+      },
+      "X4_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0,
+        "bleu": 0.0,
+        "bleu_1": 0.0,
+        "bleu_2": 0.0,
+        "judge": 0.0
+      },
+      "X2_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0,
+        "bleu": 0.0,
+        "bleu_1": 0.0,
+        "bleu_2": 0.0,
+        "judge": 0.0
+      },
+      "X3_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.1388888888888889,
+        "bleu": 0.028847430463818484,
+        "bleu_1": 0.13,
+        "bleu_2": 0.038257418583505544,
+        "judge": 0.1
+      },
+      "X4_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.1875,
+        "bleu": 0.08873702640025133,
+        "bleu_1": 0.16666666666666666,
+        "bleu_2": 0.14433756729740643,
+        "judge": 0.25
+      },
+      "X1_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.06666666666666667,
+        "bleu": 0.012380755247080082,
+        "bleu_1": 0.050544221642719454,
+        "bleu_2": 0.017509031982842514,
+        "judge": 0.25
+      },
+      "X2_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0,
+        "bleu": 0.0,
+        "bleu_1": 0.0,
+        "bleu_2": 0.0,
+        "judge": 0.0
+      }
+    }
+  },
+  "method_runtime": {
+    "num_memories": 60,
+    "debug_dir": "/Users/qingyuejiao/Desktop/MemoryBench/output/outdoor_navigation_route_memory_assistant/a_mem"
+  },
+  "judge_model": "gpt-5.2",
+  "judge_rescored_from_predictions": true
+}

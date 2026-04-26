@@ -1,0 +1,71 @@
+{
+  "task_name": "card_playlog_test",
+  "model_name": "gpt_4_1_nano",
+  "model_path": "gpt-4.1-nano",
+  "method_name": "reflexion",
+  "base_method_name": "reflexion",
+  "method_modality": "",
+  "mode": "mcq",
+  "num_qas": 48,
+  "num_qas_run": 48,
+  "dialog_json": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/dialog/Card_Playlog_Test.json",
+  "image_root": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image",
+  "run_dir": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/runs/card_playlog_test/20260424_233037_gpt_4_1_nano_reflexion",
+  "git_commit": "35aa30ab7205e464bf92b809f6f3a6932c7f7aef",
+  "summary": {
+    "open_count": 48,
+    "overall": {
+      "em": 0.23958333333333334,
+      "contains_gt": 0.020833333333333332,
+      "f1": 0.23958333333333334
+    },
+    "by_x": {
+      "X4": {
+        "em": 0.23958333333333334,
+        "contains_gt": 0.020833333333333332,
+        "f1": 0.23958333333333334
+      }
+    },
+    "by_y": {
+      "Y3": {
+        "em": 0.11842105263157894,
+        "contains_gt": 0.0,
+        "f1": 0.11842105263157894
+      },
+      "Y2": {
+        "em": 0.31896551724137934,
+        "contains_gt": 0.034482758620689655,
+        "f1": 0.31896551724137934
+      }
+    },
+    "by_cell": {
+      "X4_Y3": {
+        "em": 0.11842105263157894,
+        "contains_gt": 0.0,
+        "f1": 0.11842105263157894
+      },
+      "X4_Y2": {
+        "em": 0.31896551724137934,
+        "contains_gt": 0.034482758620689655,
+        "f1": 0.31896551724137934
+      }
+    },
+    "mcq_count": 48,
+    "mcq_valid_rate": 1.0,
+    "mcq_overall": {
+      "em": 0.23958333333333334,
+      "contains_gt": 0.020833333333333332,
+      "f1": 0.23958333333333334
+    },
+    "mcq_per_position_accuracy": {
+      "A": 0.3958333333333333,
+      "B": 0.16666666666666666,
+      "C": 0.375,
+      "D": 0.020833333333333332
+    }
+  },
+  "method_runtime": {
+    "num_memories": 30,
+    "debug_dir": "/Users/qingyuejiao/Desktop/MemoryBench/output/card_playlog_test/reflexion"
+  }
+}

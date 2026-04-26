@@ -1,0 +1,111 @@
+{
+  "task": {
+    "name": "cartoon_entertainment_companion_open",
+    "dataset": {
+      "dialog_json": "data/dialog/Cartoon_Entertainment_Companion_Open.json",
+      "image_root": "data/image"
+    },
+    "eval": {
+      "mode": "open",
+      "output_json": "output/results_cartoon_entertainment_companion_open.json",
+      "max_questions": 0
+    }
+  },
+  "dataset": {
+    "dialog_json": "data/dialog/Cartoon_Entertainment_Companion_Open.json",
+    "image_root": "data/image"
+  },
+  "eval": {
+    "mode": "open",
+    "output_json": "output/results_cartoon_entertainment_companion_open.json",
+    "max_questions": 0
+  },
+  "model": {
+    "name": "gpt_5_4_mini",
+    "provider": "openai_api",
+    "model": "gpt-5.4-mini",
+    "api_key_env": "OPENAI_API_KEY",
+    "base_url": "https://api.openai.com/v1",
+    "max_new_tokens": 128,
+    "timeout": 90
+  },
+  "method": {
+    "name": "semantic_rag_text_only",
+    "retrieval_backend": "dense_text",
+    "top_k": 10,
+    "neighbor_window": 0,
+    "text_embedding_model": "all-MiniLM-L6-v2",
+    "text_dense_weight": 1.0,
+    "image_dense_weight": 0.0
+  },
+  "run": {
+    "output_root": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/runs",
+    "method_runtime": {
+      "retrieval_backend": "dense_text",
+      "retrieval_corpus": "round_text",
+      "method_modality": "text_only",
+      "top_k": 10,
+      "neighbor_window": 0,
+      "seed_round_ids": [
+        "CARTOON_S40:R1",
+        "CARTOON_S23:R1",
+        "CARTOON_S61:R1",
+        "CARTOON_S41:R1",
+        "CARTOON_S47:R1",
+        "CARTOON_S59:R1",
+        "CARTOON_S14:R1",
+        "CARTOON_S54:R1",
+        "CARTOON_S13:R1",
+        "CARTOON_S38:R1"
+      ],
+      "selected_round_ids": [
+        "CARTOON_S40:R1",
+        "CARTOON_S23:R1",
+        "CARTOON_S61:R1",
+        "CARTOON_S41:R1",
+        "CARTOON_S47:R1",
+        "CARTOON_S59:R1",
+        "CARTOON_S14:R1",
+        "CARTOON_S54:R1",
+        "CARTOON_S13:R1",
+        "CARTOON_S38:R1"
+      ],
+      "top_candidates": [
+        {
+          "round_id": "CARTOON_S40:R1",
+          "score": 0.5544204136332266,
+          "text_dense_score": 0.5544204136332266
+        },
+        {
+          "round_id": "CARTOON_S23:R1",
+          "score": 0.5372509319710623,
+          "text_dense_score": 0.5372509319710623
+        },
+        {
+          "round_id": "CARTOON_S61:R1",
+          "score": 0.5367384459479194,
+          "text_dense_score": 0.5367384459479194
+        },
+        {
+          "round_id": "CARTOON_S41:R1",
+          "score": 0.5310101660086198,
+          "text_dense_score": 0.5310101660086198
+        },
+        {
+          "round_id": "CARTOON_S47:R1",
+          "score": 0.5228604773727975,
+          "text_dense_score": 0.5228604773727975
+        }
+      ],
+      "clue_hit_count": 2,
+      "corpus_entry_count": 299,
+      "text_embedding_model": "all-MiniLM-L6-v2",
+      "caption_text_included": true,
+      "image_embeddings_built": false,
+      "history_source": "retrieval",
+      "captions_loaded": true,
+      "images_loaded": false,
+      "history_turns_after_truncation": 20
+    }
+  }
+}

@@ -1,0 +1,97 @@
+{
+  "task_name": "brand_memory_test",
+  "model_name": "gpt_4_1_nano",
+  "model_path": "gpt-4.1-nano",
+  "method_name": "simplemem",
+  "base_method_name": "simplemem",
+  "method_modality": "",
+  "mode": "mcq",
+  "num_qas": 29,
+  "num_qas_run": 29,
+  "dialog_json": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/dialog/Brand_Memory_Test.json",
+  "image_root": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image",
+  "run_dir": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/runs/brand_memory_test/20260426_024331_gpt_4_1_nano_simplemem",
+  "git_commit": "f50478ca8d87824ef1e9bc48c2b9e0d49e54305a",
+  "summary": {
+    "open_count": 29,
+    "overall": {
+      "em": 0.23275862068965517,
+      "contains_gt": 0.2413793103448276,
+      "f1": 0.23275862068965517
+    },
+    "by_x": {
+      "X4": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0
+      },
+      "X2": {
+        "em": 0.3333333333333333,
+        "contains_gt": 0.5,
+        "f1": 0.3333333333333333
+      },
+      "X1": {
+        "em": 0.2261904761904762,
+        "contains_gt": 0.19047619047619047,
+        "f1": 0.2261904761904762
+      }
+    },
+    "by_y": {
+      "Y1": {
+        "em": 0.5,
+        "contains_gt": 0.5,
+        "f1": 0.5
+      },
+      "Y2": {
+        "em": 0.21296296296296297,
+        "contains_gt": 0.2222222222222222,
+        "f1": 0.21296296296296297
+      }
+    },
+    "by_cell": {
+      "X4_Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0
+      },
+      "X2_Y2": {
+        "em": 0.3333333333333333,
+        "contains_gt": 0.5,
+        "f1": 0.3333333333333333
+      },
+      "X1_Y2": {
+        "em": 0.1875,
+        "contains_gt": 0.15,
+        "f1": 0.1875
+      },
+      "X4_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0
+      },
+      "X1_Y1": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
+      }
+    },
+    "mcq_count": 29,
+    "mcq_valid_rate": 0.6551724137931034,
+    "mcq_overall": {
+      "em": 0.23275862068965517,
+      "contains_gt": 0.2413793103448276,
+      "f1": 0.23275862068965517
+    },
+    "mcq_per_position_accuracy": {
+      "A": 0.1724137931034483,
+      "B": 0.3103448275862069,
+      "C": 0.20689655172413793,
+      "D": 0.2413793103448276
+    }
+  },
+  "method_runtime": {
+    "num_memories": 72,
+    "debug_dir": "/Users/qingyuejiao/Desktop/MemoryBench/output/brand_memory_test/simplemem",
+    "data_dir": "/Users/qingyuejiao/Desktop/MemoryBench/runs/simplemem/brand_memory_test"
+  }
+}

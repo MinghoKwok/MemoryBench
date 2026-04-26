@@ -1,0 +1,48 @@
+{
+  "task": {
+    "name": "social_chat_memory_test",
+    "dataset": {
+      "dialog_json": "data/dialog/Social_Chat_Memory_Test.json",
+      "image_root": "data/image"
+    },
+    "eval": {
+      "mode": "mcq",
+      "output_json": "output/results_social_chat_memory_test.json",
+      "max_questions": 0
+    }
+  },
+  "dataset": {
+    "dialog_json": "data/dialog/Social_Chat_Memory_Test.json",
+    "image_root": "data/image"
+  },
+  "eval": {
+    "mode": "mcq",
+    "output_json": "output/results_social_chat_memory_test.json",
+    "max_questions": 0
+  },
+  "model": {
+    "name": "gpt_4_1_nano",
+    "provider": "openai_api",
+    "model": "gpt-4.1-nano",
+    "api_key_env": "OPENAI_API_KEY",
+    "base_url": "https://api.openai.com/v1",
+    "max_new_tokens": 128,
+    "timeout": 90
+  },
+  "method": {
+    "name": "clue_only_context",
+    "modality": "text_only"
+  },
+  "run": {
+    "output_root": "Benchmark_Pipeline/runs_clue_only_mcq_ablation",
+    "method_runtime": {
+      "caption_validation_passed": true,
+      "caption_validation_round_count": 43,
+      "method_modality": "text_only",
+      "history_source": "clue_only",
+      "captions_loaded": true,
+      "images_loaded": false,
+      "history_turns_after_truncation": 6
+    }
+  }
+}

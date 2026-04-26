@@ -1,0 +1,257 @@
+{
+  "task_name": "home_renovation_interior_design_open",
+  "model_name": "gpt_5_4_mini",
+  "model_path": "gpt-5.4-mini",
+  "method_name": "semantic_rag_multimodal",
+  "base_method_name": "semantic_rag_multimodal",
+  "method_modality": "multimodal",
+  "mode": "open",
+  "num_qas": 52,
+  "num_qas_run": 52,
+  "dialog_json": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/dialog/Home_Renovation_Interior_Design_Open.json",
+  "image_root": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image",
+  "run_dir": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/runs/home_renovation_interior_design_open/20260426_112123_gpt_5_4_mini_semantic_rag_multimodal",
+  "git_commit": "f50478ca8d87824ef1e9bc48c2b9e0d49e54305a",
+  "summary": {
+    "open_count": 52,
+    "overall": {
+      "em": 0.11538461538461539,
+      "contains_gt": 0.17307692307692307,
+      "f1": 0.45199236828196104,
+      "bleu": 0.15933612837367006,
+      "bleu_1": 0.3697047622078941,
+      "bleu_2": 0.2645256419745158,
+      "judge": 0.7211538461538461
+    },
+    "by_x": {
+      "X4": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.16141774891774893,
+        "bleu": 0.02276882707154511,
+        "bleu_1": 0.08008701990961936,
+        "bleu_2": 0.02909120745710209,
+        "judge": 0.5
+      },
+      "X3": {
+        "em": 0.16666666666666666,
+        "contains_gt": 0.25,
+        "f1": 0.5250833861127979,
+        "bleu": 0.20570604435128392,
+        "bleu_1": 0.4432148065171293,
+        "bleu_2": 0.33273488583468436,
+        "judge": 0.7638888888888888
+      },
+      "X2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.3880952380952381,
+        "bleu": 0.09404904213110524,
+        "bleu_1": 0.3166362478620758,
+        "bleu_2": 0.18818236138944425,
+        "judge": 0.7142857142857143
+      },
+      "X1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.5925925925925927,
+        "bleu": 0.039567167294524315,
+        "bleu_1": 0.4117647058823529,
+        "bleu_2": 0.22687130324325758,
+        "judge": 1.0
+      }
+    },
+    "by_y": {
+      "Y2": {
+        "em": 0.0,
+        "contains_gt": 0.08333333333333333,
+        "f1": 0.3331409331409331,
+        "bleu": 0.06049236157390993,
+        "bleu_1": 0.21138012977313067,
+        "bleu_2": 0.1342891065339962,
+        "judge": 0.75
+      },
+      "Y1": {
+        "em": 0.15384615384615385,
+        "contains_gt": 0.20512820512820512,
+        "f1": 0.48989517828130197,
+        "bleu": 0.19092175384351728,
+        "bleu_1": 0.4193526344666562,
+        "bleu_2": 0.30807088870239197,
+        "judge": 0.7051282051282052
+      },
+      "Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.4,
+        "bleu": 0.11362193664674995,
+        "bleu_1": 0.3333333333333333,
+        "bleu_2": 0.12909944487358058,
+        "judge": 1.0
+      }
+    },
+    "by_cell": {
+      "X4_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.08333333333333333,
+        "bleu": 0.0,
+        "bleu_1": 0.0,
+        "bleu_2": 0.0,
+        "judge": 0.0
+      },
+      "X3_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.2,
+        "f1": 0.3395382395382396,
+        "bleu": 0.04440236193246374,
+        "bleu_1": 0.16402156444860755,
+        "bleu_2": 0.09620544409487759,
+        "judge": 1.0
+      },
+      "X3_Y1": {
+        "em": 0.1935483870967742,
+        "contains_gt": 0.25806451612903225,
+        "f1": 0.5550100226570814,
+        "bleu": 0.23172276732206135,
+        "bleu_1": 0.48824597459269736,
+        "bleu_2": 0.3708847957927177,
+        "judge": 0.7258064516129032
+      },
+      "X2_Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.29166666666666663,
+        "bleu": 0.07722338284656813,
+        "bleu_1": 0.25,
+        "bleu_2": 0.09341723589627157,
+        "judge": 0.5
+      },
+      "X2_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.42666666666666664,
+        "bleu": 0.10077930584492008,
+        "bleu_1": 0.3432907470069061,
+        "bleu_2": 0.2260884115867133,
+        "judge": 0.8
+      },
+      "X4_Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.14493506493506494,
+        "bleu": 0.013705735985122184,
+        "bleu_1": 0.06147256518872431,
+        "bleu_2": 0.02072604295664723,
+        "judge": 0.6
+      },
+      "X4_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.4,
+        "bleu": 0.11362193664674995,
+        "bleu_1": 0.3333333333333333,
+        "bleu_2": 0.12909944487358058,
+        "judge": 1.0
+      },
+      "X1_Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.5925925925925927,
+        "bleu": 0.039567167294524315,
+        "bleu_1": 0.4117647058823529,
+        "bleu_2": 0.22687130324325758,
+        "judge": 1.0
+      }
+    }
+  },
+  "method_runtime": {
+    "retrieval_backend": "dense_multimodal",
+    "retrieval_corpus": "round_text",
+    "method_modality": "multimodal",
+    "top_k": 10,
+    "neighbor_window": 0,
+    "seed_round_ids": [
+      "HOME_S1:R10",
+      "HOME_S12:R6",
+      "HOME_S13:R6",
+      "HOME_S1:R2",
+      "HOME_S1:R4",
+      "HOME_S1:R7",
+      "HOME_S10:R2",
+      "HOME_S10:R7",
+      "HOME_S1:R3",
+      "HOME_S1:R5"
+    ],
+    "selected_round_ids": [
+      "HOME_S1:R10",
+      "HOME_S12:R6",
+      "HOME_S13:R6",
+      "HOME_S1:R2",
+      "HOME_S1:R4",
+      "HOME_S1:R7",
+      "HOME_S10:R2",
+      "HOME_S10:R7",
+      "HOME_S1:R3",
+      "HOME_S1:R5"
+    ],
+    "top_candidates": [
+      {
+        "round_id": "HOME_S1:R10",
+        "score": 0.25870927797656207,
+        "text_dense_score": 0.39667855018957626,
+        "image_dense_score": 0.12074000576354783,
+        "indexed_image_count": 1,
+        "best_image_path": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image/Home_Renovation_Interior_Design/D1_IMG_007.jpg"
+      },
+      {
+        "round_id": "HOME_S12:R6",
+        "score": 0.24472455814185812,
+        "text_dense_score": 0.40853528415502854,
+        "image_dense_score": 0.0809138321286877,
+        "indexed_image_count": 1,
+        "best_image_path": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image/Home_Renovation_Interior_Design/D12_IMG_005.jpg"
+      },
+      {
+        "round_id": "HOME_S13:R6",
+        "score": 0.23662903486060713,
+        "text_dense_score": 0.4011123178967641,
+        "image_dense_score": 0.07214575182445017,
+        "indexed_image_count": 1,
+        "best_image_path": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image/Home_Renovation_Interior_Design/D13_IMG_005.jpg"
+      },
+      {
+        "round_id": "HOME_S1:R2",
+        "score": 0.23093703010431915,
+        "text_dense_score": 0.3598335421156141,
+        "image_dense_score": 0.10204051809302425,
+        "indexed_image_count": 1,
+        "best_image_path": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image/Home_Renovation_Interior_Design/D1_IMG_001.jpg"
+      },
+      {
+        "round_id": "HOME_S1:R4",
+        "score": 0.22905741762242332,
+        "text_dense_score": 0.36673097083333883,
+        "image_dense_score": 0.0913838644115078,
+        "indexed_image_count": 1,
+        "best_image_path": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image/Home_Renovation_Interior_Design/D1_IMG_003.jpg"
+      }
+    ],
+    "clue_hit_count": 1,
+    "corpus_entry_count": 120,
+    "text_embedding_model": "all-MiniLM-L6-v2",
+    "multimodal_embedding_model": "siglip2-base-patch16-384",
+    "text_dense_weight": 0.5,
+    "image_dense_weight": 0.5,
+    "caption_text_included": false,
+    "image_embeddings_built": true,
+    "multi_image_indexing_enabled": true,
+    "indexed_image_count": 89,
+    "history_source": "retrieval",
+    "captions_loaded": false,
+    "images_loaded": true,
+    "history_turns_after_truncation": 20
+  },
+  "judge_model": "gpt-5.2",
+  "judge_rescored_from_predictions": true
+}

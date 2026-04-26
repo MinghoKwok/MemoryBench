@@ -1,0 +1,111 @@
+{
+  "task": {
+    "name": "brand_memory_test",
+    "dataset": {
+      "dialog_json": "data/dialog/Brand_Memory_Test.json",
+      "image_root": "data/image"
+    },
+    "eval": {
+      "mode": "mcq",
+      "output_json": "output/results_brand_memory_test.json",
+      "max_questions": 0
+    }
+  },
+  "dataset": {
+    "dialog_json": "data/dialog/Brand_Memory_Test.json",
+    "image_root": "data/image"
+  },
+  "eval": {
+    "mode": "mcq",
+    "output_json": "output/results_brand_memory_test.json",
+    "max_questions": 0
+  },
+  "model": {
+    "name": "gpt_5_4_mini",
+    "provider": "openai_api",
+    "model": "gpt-5.4-mini",
+    "api_key_env": "OPENAI_API_KEY",
+    "base_url": "https://api.openai.com/v1",
+    "max_new_tokens": 128,
+    "timeout": 90
+  },
+  "method": {
+    "name": "semantic_rag_text_only",
+    "retrieval_backend": "dense_text",
+    "top_k": 10,
+    "neighbor_window": 0,
+    "text_embedding_model": "all-MiniLM-L6-v2",
+    "text_dense_weight": 1.0,
+    "image_dense_weight": 0.0
+  },
+  "run": {
+    "output_root": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/runs",
+    "method_runtime": {
+      "retrieval_backend": "dense_text",
+      "retrieval_corpus": "round_text",
+      "method_modality": "text_only",
+      "top_k": 10,
+      "neighbor_window": 0,
+      "seed_round_ids": [
+        "BRAND_S6:R2",
+        "BRAND_S3:R1",
+        "BRAND_S40:R1",
+        "BRAND_S38:R1",
+        "BRAND_S12:R1",
+        "BRAND_S20:R1",
+        "BRAND_S34:R1",
+        "BRAND_S1:R1",
+        "BRAND_S23:R2",
+        "BRAND_S18:R1"
+      ],
+      "selected_round_ids": [
+        "BRAND_S6:R2",
+        "BRAND_S3:R1",
+        "BRAND_S40:R1",
+        "BRAND_S38:R1",
+        "BRAND_S12:R1",
+        "BRAND_S20:R1",
+        "BRAND_S34:R1",
+        "BRAND_S1:R1",
+        "BRAND_S23:R2",
+        "BRAND_S18:R1"
+      ],
+      "top_candidates": [
+        {
+          "round_id": "BRAND_S6:R2",
+          "score": 0.5951035176959312,
+          "text_dense_score": 0.5951035176959312
+        },
+        {
+          "round_id": "BRAND_S3:R1",
+          "score": 0.5860196976116133,
+          "text_dense_score": 0.5860196976116133
+        },
+        {
+          "round_id": "BRAND_S40:R1",
+          "score": 0.5502831494386465,
+          "text_dense_score": 0.5502831494386465
+        },
+        {
+          "round_id": "BRAND_S38:R1",
+          "score": 0.48914474438691,
+          "text_dense_score": 0.48914474438691
+        },
+        {
+          "round_id": "BRAND_S12:R1",
+          "score": 0.48860436324135237,
+          "text_dense_score": 0.48860436324135237
+        }
+      ],
+      "clue_hit_count": 1,
+      "corpus_entry_count": 72,
+      "text_embedding_model": "all-MiniLM-L6-v2",
+      "caption_text_included": true,
+      "image_embeddings_built": false,
+      "history_source": "retrieval",
+      "captions_loaded": true,
+      "images_loaded": false,
+      "history_turns_after_truncation": 20
+    }
+  }
+}

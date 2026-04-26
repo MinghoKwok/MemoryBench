@@ -1,0 +1,144 @@
+{
+  "task_name": "personal_health_dashboard_assistant_open",
+  "model_name": "gpt_5_4_mini",
+  "model_path": "gpt-5.4-mini",
+  "method_name": "full_context_text_only",
+  "base_method_name": "full_context_text_only",
+  "method_modality": "",
+  "mode": "open",
+  "num_qas": 51,
+  "num_qas_run": 51,
+  "dialog_json": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/dialog/Personal_Health_Dashboard_Assistant_Open.json",
+  "image_root": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image",
+  "run_dir": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/runs/personal_health_dashboard_assistant_open/20260426_100912_gpt_5_4_mini_full_context_text_only",
+  "git_commit": "f50478ca8d87824ef1e9bc48c2b9e0d49e54305a",
+  "summary": {
+    "open_count": 51,
+    "overall": {
+      "em": 0.13725490196078433,
+      "contains_gt": 0.13725490196078433,
+      "f1": 0.24526682467858937,
+      "bleu": 0.12837603335690945,
+      "bleu_1": 0.220785097432391,
+      "bleu_2": 0.18514128961527418,
+      "judge": 0.20588235294117646
+    },
+    "by_x": {
+      "X4": {
+        "em": 0.1590909090909091,
+        "contains_gt": 0.1590909090909091,
+        "f1": 0.25995670995670994,
+        "bleu": 0.1441163694252657,
+        "bleu_1": 0.2406568393039639,
+        "bleu_2": 0.20449907800713762,
+        "judge": 0.20454545454545456
+      },
+      "X3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0,
+        "bleu": 0.0,
+        "bleu_1": 0.0,
+        "bleu_2": 0.0,
+        "judge": 0.0
+      },
+      "X1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.3568376068376068,
+        "bleu": 0.06868581549689672,
+        "bleu_1": 0.22371301322584355,
+        "bleu_2": 0.1480821126883093,
+        "judge": 0.5
+      }
+    },
+    "by_y": {
+      "Y2": {
+        "em": 0.1590909090909091,
+        "contains_gt": 0.1590909090909091,
+        "f1": 0.24437229437229438,
+        "bleu": 0.14206484199272243,
+        "bleu_1": 0.23409704751852917,
+        "bleu_2": 0.20203889964722596,
+        "judge": 0.18181818181818182
+      },
+      "Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.25103785103785103,
+        "bleu": 0.03966486769175286,
+        "bleu_1": 0.13143847309318785,
+        "bleu_2": 0.08103538680755662,
+        "judge": 0.3333333333333333
+      },
+      "Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.25,
+        "bleu": 0.05833544737207805,
+        "bleu_1": 0.17113903967753066,
+        "bleu_2": 0.06628186505570068,
+        "judge": 0.5
+      }
+    },
+    "by_cell": {
+      "X4_Y2": {
+        "em": 0.175,
+        "contains_gt": 0.175,
+        "f1": 0.26880952380952383,
+        "bleu": 0.15627132619199466,
+        "bleu_1": 0.2575067522703821,
+        "bleu_2": 0.22224278961194857,
+        "judge": 0.2
+      },
+      "X4_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.17142857142857143,
+        "bleu": 0.022566801757976266,
+        "bleu_1": 0.07215770963978176,
+        "bleu_2": 0.027061961959028137,
+        "judge": 0.25
+      },
+      "X3_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0,
+        "bleu": 0.0,
+        "bleu_1": 0.0,
+        "bleu_2": 0.0,
+        "judge": 0.0
+      },
+      "X1_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.41025641025641024,
+        "bleu": 0.07386099955930606,
+        "bleu_1": 0.25,
+        "bleu_2": 0.1889822365046136,
+        "judge": 0.5
+      },
+      "X1_Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.25,
+        "bleu": 0.05833544737207805,
+        "bleu_1": 0.17113903967753066,
+        "bleu_2": 0.06628186505570068,
+        "judge": 0.5
+      }
+    }
+  },
+  "method_runtime": {
+    "caption_validation_passed": true,
+    "caption_validation_round_count": 62,
+    "method_modality": "text_only",
+    "history_source": "full_context",
+    "captions_loaded": true,
+    "images_loaded": false,
+    "history_turns_after_truncation": 194,
+    "history_turns_before_truncation": 194
+  },
+  "judge_model": "gpt-5.2",
+  "judge_rescored_from_predictions": true
+}

@@ -1,0 +1,96 @@
+{
+  "task_name": "brand_memory_test",
+  "model_name": "gpt_5_4_mini",
+  "model_path": "gpt-5.4-mini",
+  "method_name": "a_mem",
+  "base_method_name": "a_mem",
+  "method_modality": "",
+  "mode": "mcq",
+  "num_qas": 29,
+  "num_qas_run": 29,
+  "dialog_json": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/dialog/Brand_Memory_Test.json",
+  "image_root": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image",
+  "run_dir": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/runs/brand_memory_test/20260426_114147_gpt_5_4_mini_a_mem",
+  "git_commit": "f50478ca8d87824ef1e9bc48c2b9e0d49e54305a",
+  "summary": {
+    "open_count": 29,
+    "overall": {
+      "em": 0.45689655172413796,
+      "contains_gt": 0.5862068965517241,
+      "f1": 0.45689655172413796
+    },
+    "by_x": {
+      "X4": {
+        "em": 0.25,
+        "contains_gt": 0.0,
+        "f1": 0.25
+      },
+      "X2": {
+        "em": 0.625,
+        "contains_gt": 0.8333333333333334,
+        "f1": 0.625
+      },
+      "X1": {
+        "em": 0.42857142857142855,
+        "contains_gt": 0.5714285714285714,
+        "f1": 0.42857142857142855
+      }
+    },
+    "by_y": {
+      "Y1": {
+        "em": 0.5,
+        "contains_gt": 0.5,
+        "f1": 0.5
+      },
+      "Y2": {
+        "em": 0.4537037037037037,
+        "contains_gt": 0.5925925925925926,
+        "f1": 0.4537037037037037
+      }
+    },
+    "by_cell": {
+      "X4_Y1": {
+        "em": 0.5,
+        "contains_gt": 0.0,
+        "f1": 0.5
+      },
+      "X2_Y2": {
+        "em": 0.625,
+        "contains_gt": 0.8333333333333334,
+        "f1": 0.625
+      },
+      "X1_Y2": {
+        "em": 0.425,
+        "contains_gt": 0.55,
+        "f1": 0.425
+      },
+      "X4_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0
+      },
+      "X1_Y1": {
+        "em": 0.5,
+        "contains_gt": 1.0,
+        "f1": 0.5
+      }
+    },
+    "mcq_count": 29,
+    "mcq_valid_rate": 1.0,
+    "mcq_overall": {
+      "em": 0.45689655172413796,
+      "contains_gt": 0.5862068965517241,
+      "f1": 0.45689655172413796
+    },
+    "mcq_per_position_accuracy": {
+      "A": 0.3448275862068966,
+      "B": 0.5172413793103449,
+      "C": 0.3793103448275862,
+      "D": 0.5862068965517241
+    }
+  },
+  "method_runtime": {
+    "num_memories": 72,
+    "debug_dir": "/Users/qingyuejiao/Desktop/MemoryBench/output/brand_memory_test/a_mem"
+  }
+}

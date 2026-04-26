@@ -1,0 +1,145 @@
+{
+  "task_name": "social_chat_memory_test",
+  "model_name": "gpt_5_4_mini",
+  "model_path": "gpt-5.4-mini",
+  "method_name": "gen_agents__text_only",
+  "base_method_name": "gen_agents",
+  "method_modality": "text_only",
+  "mode": "mcq",
+  "num_qas": 37,
+  "num_qas_run": 37,
+  "dialog_json": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/dialog/Social_Chat_Memory_Test.json",
+  "image_root": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image",
+  "run_dir": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/runs/social_chat_memory_test/20260426_131000_gpt_5_4_mini_gen_agents__text_only",
+  "git_commit": "f50478ca8d87824ef1e9bc48c2b9e0d49e54305a",
+  "summary": {
+    "open_count": 37,
+    "overall": {
+      "em": 0.22972972972972974,
+      "contains_gt": 0.43243243243243246,
+      "f1": 0.22972972972972974
+    },
+    "by_x": {
+      "X2": {
+        "em": 0.2413793103448276,
+        "contains_gt": 0.4482758620689655,
+        "f1": 0.2413793103448276
+      },
+      "X1": {
+        "em": 0.2,
+        "contains_gt": 0.4,
+        "f1": 0.2
+      },
+      "X3": {
+        "em": 0.125,
+        "contains_gt": 0.5,
+        "f1": 0.125
+      },
+      "X4": {
+        "em": 0.25,
+        "contains_gt": 0.0,
+        "f1": 0.25
+      }
+    },
+    "by_y": {
+      "Y2": {
+        "em": 0.23,
+        "contains_gt": 0.28,
+        "f1": 0.23
+      },
+      "Y3": {
+        "em": 0.25,
+        "contains_gt": 1.0,
+        "f1": 0.25
+      },
+      "Y1": {
+        "em": 0.20833333333333334,
+        "contains_gt": 0.5,
+        "f1": 0.20833333333333334
+      }
+    },
+    "by_cell": {
+      "X2_Y2": {
+        "em": 0.23863636363636365,
+        "contains_gt": 0.3181818181818182,
+        "f1": 0.23863636363636365
+      },
+      "X2_Y3": {
+        "em": 0.25,
+        "contains_gt": 1.0,
+        "f1": 0.25
+      },
+      "X2_Y1": {
+        "em": 0.25,
+        "contains_gt": 0.6666666666666666,
+        "f1": 0.25
+      },
+      "X1_Y1": {
+        "em": 0.125,
+        "contains_gt": 0.0,
+        "f1": 0.125
+      },
+      "X1_Y2": {
+        "em": 0.25,
+        "contains_gt": 0.0,
+        "f1": 0.25
+      },
+      "X3_Y1": {
+        "em": 0.25,
+        "contains_gt": 1.0,
+        "f1": 0.25
+      },
+      "X3_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0
+      },
+      "X4_Y2": {
+        "em": 0.25,
+        "contains_gt": 0.0,
+        "f1": 0.25
+      },
+      "X1_Y3": {
+        "em": 0.25,
+        "contains_gt": 1.0,
+        "f1": 0.25
+      }
+    },
+    "mcq_count": 37,
+    "mcq_valid_rate": 1.0,
+    "mcq_overall": {
+      "em": 0.22972972972972974,
+      "contains_gt": 0.43243243243243246,
+      "f1": 0.22972972972972974
+    },
+    "mcq_per_position_accuracy": {
+      "A": 0.21621621621621623,
+      "B": 0.21621621621621623,
+      "C": 0.05405405405405406,
+      "D": 0.43243243243243246
+    }
+  },
+  "method_runtime": {
+    "caption_validation_passed": true,
+    "caption_validation_round_count": 43,
+    "method_modality": "text_only",
+    "history_source": "retrieval",
+    "captions_loaded": true,
+    "images_loaded": false,
+    "num_memories": 53,
+    "debug_dir": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/output/social_chat_memory_test/gen_agents",
+    "history_turns_after_truncation": 1,
+    "retrieved_round_ids": [
+      "CHAT_S6:R1",
+      "CHAT_S38:R1",
+      "CHAT_S17:R1",
+      "CHAT_S4:R1",
+      "CHAT_S23:R1",
+      "CHAT_S32:R1",
+      "CHAT_S2:R1",
+      "CHAT_S21:R1",
+      "CHAT_S31:R1",
+      "CHAT_S25:R1"
+    ]
+  }
+}

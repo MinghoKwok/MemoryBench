@@ -1,0 +1,84 @@
+{
+  "task_name": "card_playlog_test_open",
+  "model_name": "gpt_5_4_mini",
+  "model_path": "gpt-5.4-mini",
+  "method_name": "a_mem",
+  "base_method_name": "a_mem",
+  "method_modality": "",
+  "mode": "open",
+  "num_qas": 48,
+  "num_qas_run": 48,
+  "dialog_json": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/dialog/Card_Playlog_Test_Open.json",
+  "image_root": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image",
+  "run_dir": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/runs/card_playlog_test_open/20260426_114918_gpt_5_4_mini_a_mem",
+  "git_commit": "f50478ca8d87824ef1e9bc48c2b9e0d49e54305a",
+  "summary": {
+    "open_count": 48,
+    "overall": {
+      "em": 0.020833333333333332,
+      "contains_gt": 0.25,
+      "f1": 0.13541666666666666,
+      "bleu": 0.029743109252461288,
+      "bleu_1": 0.09722222222222222,
+      "bleu_2": 0.03617336790887967,
+      "judge": 0.4166666666666667
+    },
+    "by_x": {
+      "X4": {
+        "em": 0.020833333333333332,
+        "contains_gt": 0.25,
+        "f1": 0.13541666666666666,
+        "bleu": 0.029743109252461288,
+        "bleu_1": 0.09722222222222222,
+        "bleu_2": 0.03617336790887967,
+        "judge": 0.4166666666666667
+      }
+    },
+    "by_y": {
+      "Y3": {
+        "em": 0.0,
+        "contains_gt": 0.15789473684210525,
+        "f1": 0.07894736842105263,
+        "bleu": 0.01794030578632894,
+        "bleu_1": 0.05263157894736842,
+        "bleu_2": 0.02038412287477588,
+        "judge": 0.3157894736842105
+      },
+      "Y2": {
+        "em": 0.034482758620689655,
+        "contains_gt": 0.3103448275862069,
+        "f1": 0.1724137931034483,
+        "bleu": 0.03747598048889282,
+        "bleu_1": 0.1264367816091954,
+        "bleu_2": 0.04651804568984423,
+        "judge": 0.4827586206896552
+      }
+    },
+    "by_cell": {
+      "X4_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.15789473684210525,
+        "f1": 0.07894736842105263,
+        "bleu": 0.01794030578632894,
+        "bleu_1": 0.05263157894736842,
+        "bleu_2": 0.02038412287477588,
+        "judge": 0.3157894736842105
+      },
+      "X4_Y2": {
+        "em": 0.034482758620689655,
+        "contains_gt": 0.3103448275862069,
+        "f1": 0.1724137931034483,
+        "bleu": 0.03747598048889282,
+        "bleu_1": 0.1264367816091954,
+        "bleu_2": 0.04651804568984423,
+        "judge": 0.4827586206896552
+      }
+    }
+  },
+  "method_runtime": {
+    "num_memories": 30,
+    "debug_dir": "/Users/qingyuejiao/Desktop/MemoryBench/output/card_playlog_test_open/a_mem"
+  },
+  "judge_model": "gpt-5.2",
+  "judge_rescored_from_predictions": true
+}

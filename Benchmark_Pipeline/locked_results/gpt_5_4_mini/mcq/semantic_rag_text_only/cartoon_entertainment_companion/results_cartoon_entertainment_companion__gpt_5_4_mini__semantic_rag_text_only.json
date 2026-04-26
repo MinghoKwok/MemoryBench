@@ -1,0 +1,194 @@
+{
+  "task_name": "cartoon_entertainment_companion",
+  "model_name": "gpt_5_4_mini",
+  "model_path": "gpt-5.4-mini",
+  "method_name": "semantic_rag_text_only",
+  "base_method_name": "semantic_rag_text_only",
+  "method_modality": "",
+  "mode": "mcq",
+  "num_qas": 76,
+  "num_qas_run": 76,
+  "dialog_json": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/dialog/Cartoon_Entertainment_Companion.json",
+  "image_root": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image",
+  "run_dir": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/runs/cartoon_entertainment_companion/20260426_105710_gpt_5_4_mini_semantic_rag_text_only",
+  "git_commit": "f50478ca8d87824ef1e9bc48c2b9e0d49e54305a",
+  "summary": {
+    "open_count": 76,
+    "overall": {
+      "em": 0.6447368421052632,
+      "contains_gt": 0.6973684210526315,
+      "f1": 0.6447368421052632
+    },
+    "by_x": {
+      "X3": {
+        "em": 0.4891304347826087,
+        "contains_gt": 0.5652173913043478,
+        "f1": 0.4891304347826087
+      },
+      "X4": {
+        "em": 0.7717391304347826,
+        "contains_gt": 0.8260869565217391,
+        "f1": 0.7717391304347826
+      },
+      "X2": {
+        "em": 0.5892857142857143,
+        "contains_gt": 0.6428571428571429,
+        "f1": 0.5892857142857143
+      },
+      "X1": {
+        "em": 0.734375,
+        "contains_gt": 0.75,
+        "f1": 0.734375
+      }
+    },
+    "by_y": {
+      "Y1": {
+        "em": 0.6953125,
+        "contains_gt": 0.75,
+        "f1": 0.6953125
+      },
+      "Y2": {
+        "em": 0.5641025641025641,
+        "contains_gt": 0.6153846153846154,
+        "f1": 0.5641025641025641
+      },
+      "Y3": {
+        "em": 0.95,
+        "contains_gt": 1.0,
+        "f1": 0.95
+      }
+    },
+    "by_cell": {
+      "X3_Y1": {
+        "em": 0.4772727272727273,
+        "contains_gt": 0.45454545454545453,
+        "f1": 0.4772727272727273
+      },
+      "X4_Y2": {
+        "em": 0.825,
+        "contains_gt": 0.8,
+        "f1": 0.825
+      },
+      "X2_Y2": {
+        "em": 0.4166666666666667,
+        "contains_gt": 0.4444444444444444,
+        "f1": 0.4166666666666667
+      },
+      "X3_Y2": {
+        "em": 0.5,
+        "contains_gt": 0.6666666666666666,
+        "f1": 0.5
+      },
+      "X4_Y1": {
+        "em": 0.7083333333333334,
+        "contains_gt": 0.8333333333333334,
+        "f1": 0.7083333333333334
+      },
+      "X1_Y1": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
+      },
+      "X1_Y2": {
+        "em": 0.5,
+        "contains_gt": 0.5,
+        "f1": 0.5
+      },
+      "X2_Y1": {
+        "em": 0.9,
+        "contains_gt": 1.0,
+        "f1": 0.9
+      },
+      "X1_Y3": {
+        "em": 0.9375,
+        "contains_gt": 1.0,
+        "f1": 0.9375
+      },
+      "X4_Y3": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
+      }
+    },
+    "mcq_count": 76,
+    "mcq_valid_rate": 1.0,
+    "mcq_overall": {
+      "em": 0.6447368421052632,
+      "contains_gt": 0.6973684210526315,
+      "f1": 0.6447368421052632
+    },
+    "mcq_per_position_accuracy": {
+      "A": 0.5921052631578947,
+      "B": 0.6710526315789473,
+      "C": 0.618421052631579,
+      "D": 0.6973684210526315
+    }
+  },
+  "method_runtime": {
+    "retrieval_backend": "dense_text",
+    "retrieval_corpus": "round_text",
+    "method_modality": "text_only",
+    "top_k": 10,
+    "neighbor_window": 0,
+    "seed_round_ids": [
+      "CARTOON_S40:R1",
+      "CARTOON_S61:R1",
+      "CARTOON_S41:R1",
+      "CARTOON_S47:R1",
+      "CARTOON_S59:R1",
+      "CARTOON_S23:R1",
+      "CARTOON_S54:R1",
+      "CARTOON_S13:R1",
+      "CARTOON_S14:R1",
+      "CARTOON_S38:R1"
+    ],
+    "selected_round_ids": [
+      "CARTOON_S40:R1",
+      "CARTOON_S61:R1",
+      "CARTOON_S41:R1",
+      "CARTOON_S47:R1",
+      "CARTOON_S59:R1",
+      "CARTOON_S23:R1",
+      "CARTOON_S54:R1",
+      "CARTOON_S13:R1",
+      "CARTOON_S14:R1",
+      "CARTOON_S38:R1"
+    ],
+    "top_candidates": [
+      {
+        "round_id": "CARTOON_S40:R1",
+        "score": 0.5492438311233877,
+        "text_dense_score": 0.5492438311233877
+      },
+      {
+        "round_id": "CARTOON_S61:R1",
+        "score": 0.5328984147511199,
+        "text_dense_score": 0.5328984147511199
+      },
+      {
+        "round_id": "CARTOON_S41:R1",
+        "score": 0.5285279094486708,
+        "text_dense_score": 0.5285279094486708
+      },
+      {
+        "round_id": "CARTOON_S47:R1",
+        "score": 0.5239205003733479,
+        "text_dense_score": 0.5239205003733479
+      },
+      {
+        "round_id": "CARTOON_S59:R1",
+        "score": 0.5170045947537092,
+        "text_dense_score": 0.5170045947537092
+      }
+    ],
+    "clue_hit_count": 2,
+    "corpus_entry_count": 299,
+    "text_embedding_model": "all-MiniLM-L6-v2",
+    "caption_text_included": true,
+    "image_embeddings_built": false,
+    "history_source": "retrieval",
+    "captions_loaded": true,
+    "images_loaded": false,
+    "history_turns_after_truncation": 20
+  }
+}
