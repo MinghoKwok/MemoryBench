@@ -1,0 +1,184 @@
+{
+  "task_name": "outdoor_navigation_route_memory_assistant",
+  "model_name": "gemini_2_5_flash_lite",
+  "model_path": "gemini-2.5-flash-lite",
+  "method_name": "semantic_rag_text_only",
+  "base_method_name": "semantic_rag_text_only",
+  "method_modality": "",
+  "mode": "mcq",
+  "num_qas": 28,
+  "num_qas_run": 28,
+  "dialog_json": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/dialog/Outdoor_Navigation_Route_Memory_Assistant.json",
+  "image_root": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/image",
+  "run_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/outdoor_navigation_route_memory_assistant/20260426_103145_gemini_2_5_flash_lite_semantic_rag_text_only",
+  "git_commit": "fa8105834c4c30aae8bc623d6a932e811089aa0a",
+  "summary": {
+    "open_count": 28,
+    "overall": {
+      "em": 0.29464285714285715,
+      "contains_gt": 0.25,
+      "f1": 0.29464285714285715
+    },
+    "by_x": {
+      "X3": {
+        "em": 0.3333333333333333,
+        "contains_gt": 0.2222222222222222,
+        "f1": 0.3333333333333333
+      },
+      "X1": {
+        "em": 0.4166666666666667,
+        "contains_gt": 0.6666666666666666,
+        "f1": 0.4166666666666667
+      },
+      "X4": {
+        "em": 0.2,
+        "contains_gt": 0.2,
+        "f1": 0.2
+      },
+      "X2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0
+      }
+    },
+    "by_y": {
+      "Y2": {
+        "em": 0.21666666666666667,
+        "contains_gt": 0.13333333333333333,
+        "f1": 0.21666666666666667
+      },
+      "Y1": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
+      },
+      "Y3": {
+        "em": 0.3333333333333333,
+        "contains_gt": 0.3333333333333333,
+        "f1": 0.3333333333333333
+      }
+    },
+    "by_cell": {
+      "X3_Y2": {
+        "em": 0.25,
+        "contains_gt": 0.15384615384615385,
+        "f1": 0.25
+      },
+      "X1_Y1": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
+      },
+      "X4_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0
+      },
+      "X2_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0
+      },
+      "X3_Y3": {
+        "em": 0.55,
+        "contains_gt": 0.4,
+        "f1": 0.55
+      },
+      "X4_Y3": {
+        "em": 0.25,
+        "contains_gt": 0.25,
+        "f1": 0.25
+      },
+      "X1_Y3": {
+        "em": 0.125,
+        "contains_gt": 0.5,
+        "f1": 0.125
+      },
+      "X2_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0
+      }
+    },
+    "mcq_count": 28,
+    "mcq_valid_rate": 1.0,
+    "mcq_overall": {
+      "em": 0.29464285714285715,
+      "contains_gt": 0.25,
+      "f1": 0.29464285714285715
+    },
+    "mcq_per_position_accuracy": {
+      "A": 0.32142857142857145,
+      "B": 0.2857142857142857,
+      "C": 0.32142857142857145,
+      "D": 0.25
+    }
+  },
+  "method_runtime": {
+    "retrieval_backend": "dense_text",
+    "retrieval_corpus": "round_text",
+    "method_modality": "text_only",
+    "top_k": 10,
+    "neighbor_window": 0,
+    "seed_round_ids": [
+      "OUTDOOR_S8:R5",
+      "OUTDOOR_S5:R2",
+      "OUTDOOR_S6:R3",
+      "OUTDOOR_S6:R2",
+      "OUTDOOR_S5:R5",
+      "OUTDOOR_S8:R2",
+      "OUTDOOR_S5:R3",
+      "OUTDOOR_S6:R5",
+      "OUTDOOR_S8:R3",
+      "OUTDOOR_S8:R4"
+    ],
+    "selected_round_ids": [
+      "OUTDOOR_S8:R5",
+      "OUTDOOR_S5:R2",
+      "OUTDOOR_S6:R3",
+      "OUTDOOR_S6:R2",
+      "OUTDOOR_S5:R5",
+      "OUTDOOR_S8:R2",
+      "OUTDOOR_S5:R3",
+      "OUTDOOR_S6:R5",
+      "OUTDOOR_S8:R3",
+      "OUTDOOR_S8:R4"
+    ],
+    "top_candidates": [
+      {
+        "round_id": "OUTDOOR_S8:R5",
+        "score": 0.28093540500409137,
+        "text_dense_score": 0.28093540500409137
+      },
+      {
+        "round_id": "OUTDOOR_S5:R2",
+        "score": 0.256962965363384,
+        "text_dense_score": 0.256962965363384
+      },
+      {
+        "round_id": "OUTDOOR_S6:R3",
+        "score": 0.2551849977359411,
+        "text_dense_score": 0.2551849977359411
+      },
+      {
+        "round_id": "OUTDOOR_S6:R2",
+        "score": 0.24237751839528365,
+        "text_dense_score": 0.24237751839528365
+      },
+      {
+        "round_id": "OUTDOOR_S5:R5",
+        "score": 0.23599151893951614,
+        "text_dense_score": 0.23599151893951614
+      }
+    ],
+    "clue_hit_count": 2,
+    "corpus_entry_count": 60,
+    "text_embedding_model": "all-MiniLM-L6-v2",
+    "caption_text_included": true,
+    "image_embeddings_built": false,
+    "history_source": "retrieval",
+    "captions_loaded": true,
+    "images_loaded": false,
+    "history_turns_after_truncation": 20
+  }
+}

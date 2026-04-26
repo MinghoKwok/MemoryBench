@@ -1,0 +1,107 @@
+{
+  "task_name": "personal_health_dashboard_assistant",
+  "model_name": "gemini_2_5_flash_lite",
+  "model_path": "gemini-2.5-flash-lite",
+  "method_name": "full_context_text_only",
+  "base_method_name": "full_context_text_only",
+  "method_modality": "",
+  "mode": "mcq",
+  "num_qas": 51,
+  "num_qas_run": 51,
+  "dialog_json": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/dialog/Personal_Health_Dashboard_Assistant.json",
+  "image_root": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/image",
+  "run_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/personal_health_dashboard_assistant/20260426_102229_gemini_2_5_flash_lite_full_context_text_only",
+  "git_commit": "fa8105834c4c30aae8bc623d6a932e811089aa0a",
+  "summary": {
+    "open_count": 51,
+    "overall": {
+      "em": 0.20588235294117646,
+      "contains_gt": 0.3137254901960784,
+      "f1": 0.20588235294117646
+    },
+    "by_x": {
+      "X4": {
+        "em": 0.17613636363636365,
+        "contains_gt": 0.29545454545454547,
+        "f1": 0.17613636363636365
+      },
+      "X3": {
+        "em": 0.1875,
+        "contains_gt": 0.25,
+        "f1": 0.1875
+      },
+      "X1": {
+        "em": 0.6666666666666666,
+        "contains_gt": 0.6666666666666666,
+        "f1": 0.6666666666666666
+      }
+    },
+    "by_y": {
+      "Y2": {
+        "em": 0.17045454545454544,
+        "contains_gt": 0.3181818181818182,
+        "f1": 0.17045454545454544
+      },
+      "Y3": {
+        "em": 0.3333333333333333,
+        "contains_gt": 0.16666666666666666,
+        "f1": 0.3333333333333333
+      },
+      "Y1": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
+      }
+    },
+    "by_cell": {
+      "X4_Y2": {
+        "em": 0.16875,
+        "contains_gt": 0.325,
+        "f1": 0.16875
+      },
+      "X4_Y3": {
+        "em": 0.25,
+        "contains_gt": 0.0,
+        "f1": 0.25
+      },
+      "X3_Y2": {
+        "em": 0.1875,
+        "contains_gt": 0.25,
+        "f1": 0.1875
+      },
+      "X1_Y3": {
+        "em": 0.5,
+        "contains_gt": 0.5,
+        "f1": 0.5
+      },
+      "X1_Y1": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
+      }
+    },
+    "mcq_count": 51,
+    "mcq_valid_rate": 0.8627450980392157,
+    "mcq_overall": {
+      "em": 0.20588235294117646,
+      "contains_gt": 0.3137254901960784,
+      "f1": 0.20588235294117646
+    },
+    "mcq_per_position_accuracy": {
+      "A": 0.21568627450980393,
+      "B": 0.09803921568627451,
+      "C": 0.19607843137254902,
+      "D": 0.3137254901960784
+    }
+  },
+  "method_runtime": {
+    "caption_validation_passed": true,
+    "caption_validation_round_count": 62,
+    "method_modality": "text_only",
+    "history_source": "full_context",
+    "captions_loaded": true,
+    "images_loaded": false,
+    "history_turns_after_truncation": 194,
+    "history_turns_before_truncation": 194
+  }
+}

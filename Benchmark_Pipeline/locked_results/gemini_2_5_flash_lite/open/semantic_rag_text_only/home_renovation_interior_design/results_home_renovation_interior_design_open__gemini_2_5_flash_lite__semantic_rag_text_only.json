@@ -1,0 +1,219 @@
+{
+  "task_name": "home_renovation_interior_design_open",
+  "model_name": "gemini_2_5_flash_lite",
+  "model_path": "gemini-2.5-flash-lite",
+  "method_name": "semantic_rag_text_only",
+  "base_method_name": "semantic_rag_text_only",
+  "method_modality": "",
+  "mode": "open",
+  "num_qas": 52,
+  "num_qas_run": 52,
+  "dialog_json": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/dialog/Home_Renovation_Interior_Design_Open.json",
+  "image_root": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image",
+  "run_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/home_renovation_interior_design_open/20260426_101922_gemini_2_5_flash_lite_semantic_rag_text_only",
+  "git_commit": "fa8105834c4c30aae8bc623d6a932e811089aa0a",
+  "summary": {
+    "open_count": 52,
+    "overall": {
+      "em": 0.019230769230769232,
+      "contains_gt": 0.09615384615384616,
+      "f1": 0.20487248736683125,
+      "bleu": 0.06294766710776524,
+      "bleu_1": 0.16383682238282635,
+      "bleu_2": 0.10837989860180329
+    },
+    "by_x": {
+      "X4": {
+        "em": 0.125,
+        "contains_gt": 0.125,
+        "f1": 0.22280219780219782,
+        "bleu": 0.05648112456970242,
+        "bleu_1": 0.18426203668606247,
+        "bleu_2": 0.14653831889025198
+      },
+      "X3": {
+        "em": 0.0,
+        "contains_gt": 0.1111111111111111,
+        "f1": 0.20452820146447598,
+        "bleu": 0.06093363397030824,
+        "bleu_1": 0.16122434664101332,
+        "bleu_2": 0.10176423712464755
+      },
+      "X2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.10113378684807257,
+        "bleu": 0.019398774082360792,
+        "bleu_1": 0.08209647495361781,
+        "bleu_2": 0.026103177119439495
+      },
+      "X1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.8,
+        "bleu": 0.4920274515385508,
+        "bleu_1": 0.6666666666666666,
+        "bleu_2": 0.6172133998483675
+      }
+    },
+    "by_y": {
+      "Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.10838540544422898,
+        "bleu": 0.023428071413592415,
+        "bleu_1": 0.08481424876895527,
+        "bleu_2": 0.04718647478360596
+      },
+      "Y1": {
+        "em": 0.0,
+        "contains_gt": 0.10256410256410256,
+        "f1": 0.21417293532678147,
+        "bleu": 0.06861318119548321,
+        "bleu_1": 0.16671137894050017,
+        "bleu_2": 0.10434659051001281
+      },
+      "Y3": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0,
+        "bleu": 0.316227766016838,
+        "bleu_1": 1.0,
+        "bleu_2": 1.0
+      }
+    },
+    "by_cell": {
+      "X4_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.07692307692307693,
+        "bleu": 0.014743412059538108,
+        "bleu_1": 0.05488116360940264,
+        "bleu_2": 0.019403421473808496
+      },
+      "X3_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.18935574229691876,
+        "bleu": 0.045846619868422096,
+        "bleu_1": 0.14523809523809522,
+        "bleu_2": 0.09695814223690648
+      },
+      "X3_Y1": {
+        "em": 0.0,
+        "contains_gt": 0.12903225806451613,
+        "f1": 0.20697537229795293,
+        "bleu": 0.0633670233415802,
+        "bleu_1": 0.16380277428664525,
+        "bleu_2": 0.10253941371944449
+      },
+      "X2_Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.253968253968254,
+        "bleu": 0.05668724253730162,
+        "bleu_1": 0.19642857142857142,
+        "bleu_2": 0.07004104828247718
+      },
+      "X2_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.039999999999999994,
+        "bleu": 0.00448338670038446,
+        "bleu_1": 0.03636363636363636,
+        "bleu_2": 0.00852802865422442
+      },
+      "X4_Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.12571428571428572,
+        "bleu": 0.02122688128434103,
+        "bleu_1": 0.07286679325393888,
+        "bleu_2": 0.02669994163487977
+      },
+      "X4_Y3": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0,
+        "bleu": 0.316227766016838,
+        "bleu_1": 1.0,
+        "bleu_2": 1.0
+      },
+      "X1_Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.8,
+        "bleu": 0.4920274515385508,
+        "bleu_1": 0.6666666666666666,
+        "bleu_2": 0.6172133998483675
+      }
+    }
+  },
+  "method_runtime": {
+    "retrieval_backend": "dense_text",
+    "retrieval_corpus": "round_text",
+    "method_modality": "text_only",
+    "top_k": 10,
+    "neighbor_window": 0,
+    "seed_round_ids": [
+      "HOME_S9:R5",
+      "HOME_S1:R7",
+      "HOME_S1:R2",
+      "HOME_S12:R6",
+      "HOME_S1:R11",
+      "HOME_S12:R1",
+      "HOME_S1:R5",
+      "HOME_S1:R10",
+      "HOME_S13:R6",
+      "HOME_S6:R4"
+    ],
+    "selected_round_ids": [
+      "HOME_S9:R5",
+      "HOME_S1:R7",
+      "HOME_S1:R2",
+      "HOME_S12:R6",
+      "HOME_S1:R11",
+      "HOME_S12:R1",
+      "HOME_S1:R5",
+      "HOME_S1:R10",
+      "HOME_S13:R6",
+      "HOME_S6:R4"
+    ],
+    "top_candidates": [
+      {
+        "round_id": "HOME_S9:R5",
+        "score": 0.3960439792654875,
+        "text_dense_score": 0.3960439792654875
+      },
+      {
+        "round_id": "HOME_S1:R7",
+        "score": 0.363948323566122,
+        "text_dense_score": 0.363948323566122
+      },
+      {
+        "round_id": "HOME_S1:R2",
+        "score": 0.3637122856418796,
+        "text_dense_score": 0.3637122856418796
+      },
+      {
+        "round_id": "HOME_S12:R6",
+        "score": 0.3621590545133458,
+        "text_dense_score": 0.3621590545133458
+      },
+      {
+        "round_id": "HOME_S1:R11",
+        "score": 0.355125631913626,
+        "text_dense_score": 0.355125631913626
+      }
+    ],
+    "clue_hit_count": 1,
+    "corpus_entry_count": 120,
+    "text_embedding_model": "all-MiniLM-L6-v2",
+    "caption_text_included": true,
+    "image_embeddings_built": false,
+    "history_source": "retrieval",
+    "captions_loaded": true,
+    "images_loaded": false,
+    "history_turns_after_truncation": 20
+  }
+}

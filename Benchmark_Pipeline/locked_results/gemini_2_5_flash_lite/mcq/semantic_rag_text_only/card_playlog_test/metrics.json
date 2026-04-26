@@ -1,0 +1,134 @@
+{
+  "task_name": "card_playlog_test",
+  "model_name": "gemini_2_5_flash_lite",
+  "model_path": "gemini-2.5-flash-lite",
+  "method_name": "semantic_rag_text_only",
+  "base_method_name": "semantic_rag_text_only",
+  "method_modality": "",
+  "mode": "mcq",
+  "num_qas": 48,
+  "num_qas_run": 48,
+  "dialog_json": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/dialog/Card_Playlog_Test.json",
+  "image_root": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/image",
+  "run_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/card_playlog_test/20260426_102547_gemini_2_5_flash_lite_semantic_rag_text_only",
+  "git_commit": "fa8105834c4c30aae8bc623d6a932e811089aa0a",
+  "summary": {
+    "open_count": 48,
+    "overall": {
+      "em": 0.2708333333333333,
+      "contains_gt": 0.4166666666666667,
+      "f1": 0.2708333333333333
+    },
+    "by_x": {
+      "X4": {
+        "em": 0.2708333333333333,
+        "contains_gt": 0.4166666666666667,
+        "f1": 0.2708333333333333
+      }
+    },
+    "by_y": {
+      "Y3": {
+        "em": 0.18421052631578946,
+        "contains_gt": 0.3157894736842105,
+        "f1": 0.18421052631578946
+      },
+      "Y2": {
+        "em": 0.3275862068965517,
+        "contains_gt": 0.4827586206896552,
+        "f1": 0.3275862068965517
+      }
+    },
+    "by_cell": {
+      "X4_Y3": {
+        "em": 0.18421052631578946,
+        "contains_gt": 0.3157894736842105,
+        "f1": 0.18421052631578946
+      },
+      "X4_Y2": {
+        "em": 0.3275862068965517,
+        "contains_gt": 0.4827586206896552,
+        "f1": 0.3275862068965517
+      }
+    },
+    "mcq_count": 48,
+    "mcq_valid_rate": 0.9583333333333334,
+    "mcq_overall": {
+      "em": 0.2708333333333333,
+      "contains_gt": 0.4166666666666667,
+      "f1": 0.2708333333333333
+    },
+    "mcq_per_position_accuracy": {
+      "A": 0.22916666666666666,
+      "B": 0.125,
+      "C": 0.3125,
+      "D": 0.4166666666666667
+    }
+  },
+  "method_runtime": {
+    "retrieval_backend": "dense_text",
+    "retrieval_corpus": "round_text",
+    "method_modality": "text_only",
+    "top_k": 10,
+    "neighbor_window": 0,
+    "seed_round_ids": [
+      "PLAY_S4:R1",
+      "PLAY_S1:R1",
+      "PLAY_S3:R1",
+      "PLAY_S3:R3",
+      "PLAY_S2:R1",
+      "PLAY_S3:R6",
+      "PLAY_S4:R6",
+      "PLAY_S4:R7",
+      "PLAY_S4:R3",
+      "PLAY_S4:R4"
+    ],
+    "selected_round_ids": [
+      "PLAY_S4:R1",
+      "PLAY_S1:R1",
+      "PLAY_S3:R1",
+      "PLAY_S3:R3",
+      "PLAY_S2:R1",
+      "PLAY_S3:R6",
+      "PLAY_S4:R6",
+      "PLAY_S4:R7",
+      "PLAY_S4:R3",
+      "PLAY_S4:R4"
+    ],
+    "top_candidates": [
+      {
+        "round_id": "PLAY_S4:R1",
+        "score": 0.5290761124946076,
+        "text_dense_score": 0.5290761124946076
+      },
+      {
+        "round_id": "PLAY_S1:R1",
+        "score": 0.5282293179523683,
+        "text_dense_score": 0.5282293179523683
+      },
+      {
+        "round_id": "PLAY_S3:R1",
+        "score": 0.5238403237334013,
+        "text_dense_score": 0.5238403237334013
+      },
+      {
+        "round_id": "PLAY_S3:R3",
+        "score": 0.5189786916356125,
+        "text_dense_score": 0.5189786916356125
+      },
+      {
+        "round_id": "PLAY_S2:R1",
+        "score": 0.5036247733565343,
+        "text_dense_score": 0.5036247733565343
+      }
+    ],
+    "clue_hit_count": 0,
+    "corpus_entry_count": 30,
+    "text_embedding_model": "all-MiniLM-L6-v2",
+    "caption_text_included": true,
+    "image_embeddings_built": false,
+    "history_source": "retrieval",
+    "captions_loaded": true,
+    "images_loaded": false,
+    "history_turns_after_truncation": 20
+  }
+}

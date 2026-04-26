@@ -1,0 +1,187 @@
+{
+  "task_name": "personal_health_dashboard_assistant_open",
+  "model_name": "gemini_2_5_flash_lite",
+  "model_path": "gemini-2.5-flash-lite",
+  "method_name": "semantic_rag_text_only",
+  "base_method_name": "semantic_rag_text_only",
+  "method_modality": "",
+  "mode": "open",
+  "num_qas": 51,
+  "num_qas_run": 51,
+  "dialog_json": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/dialog/Personal_Health_Dashboard_Assistant_Open.json",
+  "image_root": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image",
+  "run_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/personal_health_dashboard_assistant_open/20260426_102048_gemini_2_5_flash_lite_semantic_rag_text_only",
+  "git_commit": "fa8105834c4c30aae8bc623d6a932e811089aa0a",
+  "summary": {
+    "open_count": 51,
+    "overall": {
+      "em": 0.0196078431372549,
+      "contains_gt": 0.058823529411764705,
+      "f1": 0.09246550472040668,
+      "bleu": 0.028708996574495424,
+      "bleu_1": 0.07011319065371927,
+      "bleu_2": 0.05054808471866286
+    },
+    "by_x": {
+      "X4": {
+        "em": 0.022727272727272728,
+        "contains_gt": 0.06818181818181818,
+        "f1": 0.0878921793694521,
+        "bleu": 0.029608128046762106,
+        "bleu_1": 0.06723012873900347,
+        "bleu_2": 0.04938344410034651
+      },
+      "X3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0,
+        "bleu": 0.0,
+        "bleu_1": 0.0,
+        "bleu_2": 0.0
+      },
+      "X1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.2828282828282828,
+        "bleu": 0.053800397080578,
+        "bleu_1": 0.20588235294117646,
+        "bleu_2": 0.13502692674551975
+      }
+    },
+    "by_y": {
+      "Y2": {
+        "em": 0.022727272727272728,
+        "contains_gt": 0.06818181818181818,
+        "f1": 0.06989975512702785,
+        "bleu": 0.027734209192243484,
+        "bleu_1": 0.056975292954804024,
+        "bleu_2": 0.046113948919134534
+      },
+      "Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.24305555555555555,
+        "bleu": 0.038362404786238584,
+        "bleu_1": 0.1585354624174626,
+        "bleu_2": 0.0869703768304257
+      },
+      "Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.1818181818181818,
+        "bleu": 0.013679192123121896,
+        "bleu_1": 0.11764705882352941,
+        "bleu_2": 0.027116307227332027
+      }
+    },
+    "by_cell": {
+      "X4_Y2": {
+        "em": 0.025,
+        "contains_gt": 0.075,
+        "f1": 0.07688973063973063,
+        "bleu": 0.030507630111467832,
+        "bleu_1": 0.06267282225028444,
+        "bleu_2": 0.050725343811047985
+      },
+      "X4_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.19791666666666666,
+        "bleu": 0.02061310739970485,
+        "bleu_1": 0.11280319362619391,
+        "bleu_2": 0.035964446993331754
+      },
+      "X3_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0,
+        "bleu": 0.0,
+        "bleu_1": 0.0,
+        "bleu_2": 0.0
+      },
+      "X1_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.3333333333333333,
+        "bleu": 0.07386099955930606,
+        "bleu_1": 0.25,
+        "bleu_2": 0.1889822365046136
+      },
+      "X1_Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.1818181818181818,
+        "bleu": 0.013679192123121896,
+        "bleu_1": 0.11764705882352941,
+        "bleu_2": 0.027116307227332027
+      }
+    }
+  },
+  "method_runtime": {
+    "retrieval_backend": "dense_text",
+    "retrieval_corpus": "round_text",
+    "method_modality": "text_only",
+    "top_k": 10,
+    "neighbor_window": 0,
+    "seed_round_ids": [
+      "HEALTH_S1:R1",
+      "HEALTH_S2:R7",
+      "HEALTH_S3:R4",
+      "HEALTH_S9:R4",
+      "HEALTH_S10:R4",
+      "HEALTH_S10:R6",
+      "HEALTH_S7:R3",
+      "HEALTH_S12:R5",
+      "HEALTH_S9:R1",
+      "HEALTH_S7:R9"
+    ],
+    "selected_round_ids": [
+      "HEALTH_S1:R1",
+      "HEALTH_S2:R7",
+      "HEALTH_S3:R4",
+      "HEALTH_S9:R4",
+      "HEALTH_S10:R4",
+      "HEALTH_S10:R6",
+      "HEALTH_S7:R3",
+      "HEALTH_S12:R5",
+      "HEALTH_S9:R1",
+      "HEALTH_S7:R9"
+    ],
+    "top_candidates": [
+      {
+        "round_id": "HEALTH_S1:R1",
+        "score": 0.4015538667540835,
+        "text_dense_score": 0.4015538667540835
+      },
+      {
+        "round_id": "HEALTH_S2:R7",
+        "score": 0.34728779940036286,
+        "text_dense_score": 0.34728779940036286
+      },
+      {
+        "round_id": "HEALTH_S3:R4",
+        "score": 0.2668858197429991,
+        "text_dense_score": 0.2668858197429991
+      },
+      {
+        "round_id": "HEALTH_S9:R4",
+        "score": 0.25906641735297636,
+        "text_dense_score": 0.25906641735297636
+      },
+      {
+        "round_id": "HEALTH_S10:R4",
+        "score": 0.2554697266125842,
+        "text_dense_score": 0.2554697266125842
+      }
+    ],
+    "clue_hit_count": 0,
+    "corpus_entry_count": 97,
+    "text_embedding_model": "all-MiniLM-L6-v2",
+    "caption_text_included": true,
+    "image_embeddings_built": false,
+    "history_source": "retrieval",
+    "captions_loaded": true,
+    "images_loaded": false,
+    "history_turns_after_truncation": 20
+  }
+}

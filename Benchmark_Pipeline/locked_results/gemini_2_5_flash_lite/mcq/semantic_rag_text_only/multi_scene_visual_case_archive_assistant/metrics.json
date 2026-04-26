@@ -1,0 +1,174 @@
+{
+  "task_name": "multi_scene_visual_case_archive_assistant",
+  "model_name": "gemini_2_5_flash_lite",
+  "model_path": "gemini-2.5-flash-lite",
+  "method_name": "semantic_rag_text_only",
+  "base_method_name": "semantic_rag_text_only",
+  "method_modality": "",
+  "mode": "mcq",
+  "num_qas": 50,
+  "num_qas_run": 50,
+  "dialog_json": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/dialog/Multi-Scene_Visual_Case_Archive_Assistant.json",
+  "image_root": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/image",
+  "run_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/multi_scene_visual_case_archive_assistant/20260426_103022_gemini_2_5_flash_lite_semantic_rag_text_only",
+  "git_commit": "fa8105834c4c30aae8bc623d6a932e811089aa0a",
+  "summary": {
+    "open_count": 50,
+    "overall": {
+      "em": 0.43,
+      "contains_gt": 0.36,
+      "f1": 0.43
+    },
+    "by_x": {
+      "X4": {
+        "em": 0.5,
+        "contains_gt": 0.5,
+        "f1": 0.5
+      },
+      "X2": {
+        "em": 0.5625,
+        "contains_gt": 0.375,
+        "f1": 0.5625
+      },
+      "X3": {
+        "em": 0.39473684210526316,
+        "contains_gt": 0.34210526315789475,
+        "f1": 0.39473684210526316
+      }
+    },
+    "by_y": {
+      "Y2": {
+        "em": 0.5,
+        "contains_gt": 0.375,
+        "f1": 0.5
+      },
+      "Y3": {
+        "em": 0.5,
+        "contains_gt": 0.36363636363636365,
+        "f1": 0.5
+      },
+      "Y1": {
+        "em": 0.3870967741935484,
+        "contains_gt": 0.3548387096774194,
+        "f1": 0.3870967741935484
+      }
+    },
+    "by_cell": {
+      "X4_Y2": {
+        "em": 0.6666666666666666,
+        "contains_gt": 0.6666666666666666,
+        "f1": 0.6666666666666666
+      },
+      "X2_Y2": {
+        "em": 0.6666666666666666,
+        "contains_gt": 0.3333333333333333,
+        "f1": 0.6666666666666666
+      },
+      "X3_Y3": {
+        "em": 0.6,
+        "contains_gt": 0.4,
+        "f1": 0.6
+      },
+      "X2_Y3": {
+        "em": 0.5,
+        "contains_gt": 0.4,
+        "f1": 0.5
+      },
+      "X3_Y1": {
+        "em": 0.3870967741935484,
+        "contains_gt": 0.3548387096774194,
+        "f1": 0.3870967741935484
+      },
+      "X3_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0
+      },
+      "X4_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0
+      }
+    },
+    "mcq_count": 50,
+    "mcq_valid_rate": 1.0,
+    "mcq_overall": {
+      "em": 0.43,
+      "contains_gt": 0.36,
+      "f1": 0.43
+    },
+    "mcq_per_position_accuracy": {
+      "A": 0.48,
+      "B": 0.34,
+      "C": 0.54,
+      "D": 0.36
+    }
+  },
+  "method_runtime": {
+    "retrieval_backend": "dense_text",
+    "retrieval_corpus": "round_text",
+    "method_modality": "text_only",
+    "top_k": 10,
+    "neighbor_window": 0,
+    "seed_round_ids": [
+      "SCENE_S2:R6",
+      "SCENE_S3:R4",
+      "SCENE_S2:R4",
+      "SCENE_S5:R6",
+      "SCENE_S8:R7",
+      "SCENE_S15:R1",
+      "SCENE_S12:R3",
+      "SCENE_S1:R4",
+      "SCENE_S8:R8",
+      "SCENE_S11:R4"
+    ],
+    "selected_round_ids": [
+      "SCENE_S2:R6",
+      "SCENE_S3:R4",
+      "SCENE_S2:R4",
+      "SCENE_S5:R6",
+      "SCENE_S8:R7",
+      "SCENE_S15:R1",
+      "SCENE_S12:R3",
+      "SCENE_S1:R4",
+      "SCENE_S8:R8",
+      "SCENE_S11:R4"
+    ],
+    "top_candidates": [
+      {
+        "round_id": "SCENE_S2:R6",
+        "score": 0.6643899853680835,
+        "text_dense_score": 0.6643899853680835
+      },
+      {
+        "round_id": "SCENE_S3:R4",
+        "score": 0.44357926869587067,
+        "text_dense_score": 0.44357926869587067
+      },
+      {
+        "round_id": "SCENE_S2:R4",
+        "score": 0.4390329257295979,
+        "text_dense_score": 0.4390329257295979
+      },
+      {
+        "round_id": "SCENE_S5:R6",
+        "score": 0.4099225828315982,
+        "text_dense_score": 0.4099225828315982
+      },
+      {
+        "round_id": "SCENE_S8:R7",
+        "score": 0.40481922134427467,
+        "text_dense_score": 0.40481922134427467
+      }
+    ],
+    "clue_hit_count": 3,
+    "corpus_entry_count": 117,
+    "text_embedding_model": "all-MiniLM-L6-v2",
+    "caption_text_included": true,
+    "image_embeddings_built": false,
+    "history_source": "retrieval",
+    "captions_loaded": true,
+    "images_loaded": false,
+    "history_turns_after_truncation": 20
+  }
+}

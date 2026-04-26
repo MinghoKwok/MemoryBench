@@ -1,0 +1,111 @@
+{
+  "task": {
+    "name": "cartoon_entertainment_companion_open",
+    "dataset": {
+      "dialog_json": "data/dialog/Cartoon_Entertainment_Companion_Open.json",
+      "image_root": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image"
+    },
+    "eval": {
+      "mode": "open",
+      "output_json": "output/results_cartoon_entertainment_companion_open.json",
+      "max_questions": 0
+    }
+  },
+  "dataset": {
+    "dialog_json": "data/dialog/Cartoon_Entertainment_Companion_Open.json",
+    "image_root": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image"
+  },
+  "eval": {
+    "mode": "open",
+    "output_json": "output/results_cartoon_entertainment_companion_open.json",
+    "max_questions": 0
+  },
+  "model": {
+    "name": "gemini_2_5_flash_lite",
+    "provider": "gemini_api",
+    "model": "gemini-2.5-flash-lite",
+    "api_key_env": "GEMINI_API_KEY",
+    "base_url": "https://generativelanguage.googleapis.com/v1beta",
+    "max_new_tokens": 128,
+    "timeout": 90
+  },
+  "method": {
+    "name": "semantic_rag_text_only",
+    "retrieval_backend": "dense_text",
+    "top_k": 10,
+    "neighbor_window": 0,
+    "text_embedding_model": "all-MiniLM-L6-v2",
+    "text_dense_weight": 1.0,
+    "image_dense_weight": 0.0
+  },
+  "run": {
+    "output_root": "runs",
+    "method_runtime": {
+      "retrieval_backend": "dense_text",
+      "retrieval_corpus": "round_text",
+      "method_modality": "text_only",
+      "top_k": 10,
+      "neighbor_window": 0,
+      "seed_round_ids": [
+        "CARTOON_S40:R1",
+        "CARTOON_S23:R1",
+        "CARTOON_S61:R1",
+        "CARTOON_S41:R1",
+        "CARTOON_S47:R1",
+        "CARTOON_S59:R1",
+        "CARTOON_S14:R1",
+        "CARTOON_S54:R1",
+        "CARTOON_S13:R1",
+        "CARTOON_S38:R1"
+      ],
+      "selected_round_ids": [
+        "CARTOON_S40:R1",
+        "CARTOON_S23:R1",
+        "CARTOON_S61:R1",
+        "CARTOON_S41:R1",
+        "CARTOON_S47:R1",
+        "CARTOON_S59:R1",
+        "CARTOON_S14:R1",
+        "CARTOON_S54:R1",
+        "CARTOON_S13:R1",
+        "CARTOON_S38:R1"
+      ],
+      "top_candidates": [
+        {
+          "round_id": "CARTOON_S40:R1",
+          "score": 0.5544204240229292,
+          "text_dense_score": 0.5544204240229292
+        },
+        {
+          "round_id": "CARTOON_S23:R1",
+          "score": 0.5372510748972015,
+          "text_dense_score": 0.5372510748972015
+        },
+        {
+          "round_id": "CARTOON_S61:R1",
+          "score": 0.5367382888588396,
+          "text_dense_score": 0.5367382888588396
+        },
+        {
+          "round_id": "CARTOON_S41:R1",
+          "score": 0.5310102159448687,
+          "text_dense_score": 0.5310102159448687
+        },
+        {
+          "round_id": "CARTOON_S47:R1",
+          "score": 0.5228604118640403,
+          "text_dense_score": 0.5228604118640403
+        }
+      ],
+      "clue_hit_count": 2,
+      "corpus_entry_count": 299,
+      "text_embedding_model": "all-MiniLM-L6-v2",
+      "caption_text_included": true,
+      "image_embeddings_built": false,
+      "history_source": "retrieval",
+      "captions_loaded": true,
+      "images_loaded": false,
+      "history_turns_after_truncation": 20
+    }
+  }
+}

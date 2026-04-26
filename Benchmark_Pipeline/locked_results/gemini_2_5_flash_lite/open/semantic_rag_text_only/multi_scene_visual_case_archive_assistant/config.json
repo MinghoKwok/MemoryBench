@@ -1,0 +1,111 @@
+{
+  "task": {
+    "name": "multi_scene_visual_case_archive_assistant_open",
+    "dataset": {
+      "dialog_json": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/dialog/Multi-Scene_Visual_Case_Archive_Assistant_Open.json",
+      "image_root": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image"
+    },
+    "eval": {
+      "mode": "open",
+      "output_json": "output/results_multi_scene_visual_case_archive_assistant_open.json",
+      "max_questions": 0
+    }
+  },
+  "dataset": {
+    "dialog_json": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/dialog/Multi-Scene_Visual_Case_Archive_Assistant_Open.json",
+    "image_root": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image"
+  },
+  "eval": {
+    "mode": "open",
+    "output_json": "output/results_multi_scene_visual_case_archive_assistant_open.json",
+    "max_questions": 0
+  },
+  "model": {
+    "name": "gemini_2_5_flash_lite",
+    "provider": "gemini_api",
+    "model": "gemini-2.5-flash-lite",
+    "api_key_env": "GEMINI_API_KEY",
+    "base_url": "https://generativelanguage.googleapis.com/v1beta",
+    "max_new_tokens": 128,
+    "timeout": 90
+  },
+  "method": {
+    "name": "semantic_rag_text_only",
+    "retrieval_backend": "dense_text",
+    "top_k": 10,
+    "neighbor_window": 0,
+    "text_embedding_model": "all-MiniLM-L6-v2",
+    "text_dense_weight": 1.0,
+    "image_dense_weight": 0.0
+  },
+  "run": {
+    "output_root": "runs",
+    "method_runtime": {
+      "retrieval_backend": "dense_text",
+      "retrieval_corpus": "round_text",
+      "method_modality": "text_only",
+      "top_k": 10,
+      "neighbor_window": 0,
+      "seed_round_ids": [
+        "SCENE_S2:R6",
+        "SCENE_S3:R4",
+        "SCENE_S2:R4",
+        "SCENE_S5:R6",
+        "SCENE_S8:R7",
+        "SCENE_S15:R1",
+        "SCENE_S12:R3",
+        "SCENE_S1:R4",
+        "SCENE_S8:R8",
+        "SCENE_S11:R4"
+      ],
+      "selected_round_ids": [
+        "SCENE_S2:R6",
+        "SCENE_S3:R4",
+        "SCENE_S2:R4",
+        "SCENE_S5:R6",
+        "SCENE_S8:R7",
+        "SCENE_S15:R1",
+        "SCENE_S12:R3",
+        "SCENE_S1:R4",
+        "SCENE_S8:R8",
+        "SCENE_S11:R4"
+      ],
+      "top_candidates": [
+        {
+          "round_id": "SCENE_S2:R6",
+          "score": 0.6643899853680835,
+          "text_dense_score": 0.6643899853680835
+        },
+        {
+          "round_id": "SCENE_S3:R4",
+          "score": 0.44357926869587067,
+          "text_dense_score": 0.44357926869587067
+        },
+        {
+          "round_id": "SCENE_S2:R4",
+          "score": 0.4390329257295979,
+          "text_dense_score": 0.4390329257295979
+        },
+        {
+          "round_id": "SCENE_S5:R6",
+          "score": 0.4099225828315982,
+          "text_dense_score": 0.4099225828315982
+        },
+        {
+          "round_id": "SCENE_S8:R7",
+          "score": 0.40481922134427467,
+          "text_dense_score": 0.40481922134427467
+        }
+      ],
+      "clue_hit_count": 3,
+      "corpus_entry_count": 117,
+      "text_embedding_model": "all-MiniLM-L6-v2",
+      "caption_text_included": true,
+      "image_embeddings_built": false,
+      "history_source": "retrieval",
+      "captions_loaded": true,
+      "images_loaded": false,
+      "history_turns_after_truncation": 20
+    }
+  }
+}

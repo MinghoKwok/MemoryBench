@@ -1,0 +1,111 @@
+{
+  "task": {
+    "name": "outdoor_navigation_route_memory_assistant",
+    "dataset": {
+      "dialog_json": "data/dialog/Outdoor_Navigation_Route_Memory_Assistant.json",
+      "image_root": "data/image"
+    },
+    "eval": {
+      "mode": "open",
+      "output_json": "output/results_outdoor_navigation_route_memory_assistant.json",
+      "max_questions": 0
+    }
+  },
+  "dataset": {
+    "dialog_json": "data/dialog/Outdoor_Navigation_Route_Memory_Assistant.json",
+    "image_root": "data/image"
+  },
+  "eval": {
+    "mode": "open",
+    "output_json": "output/results_outdoor_navigation_route_memory_assistant.json",
+    "max_questions": 0
+  },
+  "model": {
+    "name": "gemini_2_5_flash_lite",
+    "provider": "gemini_api",
+    "model": "gemini-2.5-flash-lite",
+    "api_key_env": "GEMINI_API_KEY",
+    "base_url": "https://generativelanguage.googleapis.com/v1beta",
+    "max_new_tokens": 128,
+    "timeout": 90
+  },
+  "method": {
+    "name": "semantic_rag_text_only",
+    "retrieval_backend": "dense_text",
+    "top_k": 10,
+    "neighbor_window": 0,
+    "text_embedding_model": "all-MiniLM-L6-v2",
+    "text_dense_weight": 1.0,
+    "image_dense_weight": 0.0
+  },
+  "run": {
+    "output_root": "runs",
+    "method_runtime": {
+      "retrieval_backend": "dense_text",
+      "retrieval_corpus": "round_text",
+      "method_modality": "text_only",
+      "top_k": 10,
+      "neighbor_window": 0,
+      "seed_round_ids": [
+        "OUTDOOR_S8:R5",
+        "OUTDOOR_S5:R2",
+        "OUTDOOR_S6:R3",
+        "OUTDOOR_S6:R2",
+        "OUTDOOR_S5:R5",
+        "OUTDOOR_S8:R2",
+        "OUTDOOR_S5:R3",
+        "OUTDOOR_S6:R5",
+        "OUTDOOR_S8:R3",
+        "OUTDOOR_S8:R4"
+      ],
+      "selected_round_ids": [
+        "OUTDOOR_S8:R5",
+        "OUTDOOR_S5:R2",
+        "OUTDOOR_S6:R3",
+        "OUTDOOR_S6:R2",
+        "OUTDOOR_S5:R5",
+        "OUTDOOR_S8:R2",
+        "OUTDOOR_S5:R3",
+        "OUTDOOR_S6:R5",
+        "OUTDOOR_S8:R3",
+        "OUTDOOR_S8:R4"
+      ],
+      "top_candidates": [
+        {
+          "round_id": "OUTDOOR_S8:R5",
+          "score": 0.28093540500409137,
+          "text_dense_score": 0.28093540500409137
+        },
+        {
+          "round_id": "OUTDOOR_S5:R2",
+          "score": 0.256962965363384,
+          "text_dense_score": 0.256962965363384
+        },
+        {
+          "round_id": "OUTDOOR_S6:R3",
+          "score": 0.2551849977359411,
+          "text_dense_score": 0.2551849977359411
+        },
+        {
+          "round_id": "OUTDOOR_S6:R2",
+          "score": 0.24237751839528365,
+          "text_dense_score": 0.24237751839528365
+        },
+        {
+          "round_id": "OUTDOOR_S5:R5",
+          "score": 0.23599151893951614,
+          "text_dense_score": 0.23599151893951614
+        }
+      ],
+      "clue_hit_count": 2,
+      "corpus_entry_count": 60,
+      "text_embedding_model": "all-MiniLM-L6-v2",
+      "caption_text_included": true,
+      "image_embeddings_built": false,
+      "history_source": "retrieval",
+      "captions_loaded": true,
+      "images_loaded": false,
+      "history_turns_after_truncation": 20
+    }
+  }
+}

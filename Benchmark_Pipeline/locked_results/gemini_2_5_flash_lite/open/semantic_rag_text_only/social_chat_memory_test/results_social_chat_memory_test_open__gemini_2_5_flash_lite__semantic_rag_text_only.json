@@ -1,0 +1,227 @@
+{
+  "task_name": "social_chat_memory_test_open",
+  "model_name": "gemini_2_5_flash_lite",
+  "model_path": "gemini-2.5-flash-lite",
+  "method_name": "semantic_rag_text_only",
+  "base_method_name": "semantic_rag_text_only",
+  "method_modality": "",
+  "mode": "open",
+  "num_qas": 37,
+  "num_qas_run": 37,
+  "dialog_json": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/dialog/Social_Chat_Memory_Test_Open.json",
+  "image_root": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image",
+  "run_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/social_chat_memory_test_open/20260426_102121_gemini_2_5_flash_lite_semantic_rag_text_only",
+  "git_commit": "fa8105834c4c30aae8bc623d6a932e811089aa0a",
+  "summary": {
+    "open_count": 37,
+    "overall": {
+      "em": 0.08108108108108109,
+      "contains_gt": 0.08108108108108109,
+      "f1": 0.24849816247347017,
+      "bleu": 0.045125697261797826,
+      "bleu_1": 0.18073739500602481,
+      "bleu_2": 0.08627009620977533
+    },
+    "by_x": {
+      "X2": {
+        "em": 0.10344827586206896,
+        "contains_gt": 0.10344827586206896,
+        "f1": 0.27056510706760545,
+        "bleu": 0.050127366652111656,
+        "bleu_1": 0.20347903031700976,
+        "bleu_2": 0.09400452200636299
+      },
+      "X1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.2696087813115677,
+        "bleu": 0.04319143315505628,
+        "bleu_1": 0.15727834720592698,
+        "bleu_2": 0.09317248431543206
+      },
+      "X3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0,
+        "bleu": 0.0,
+        "bleu_1": 0.0,
+        "bleu_2": 0.0
+      },
+      "X4": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0,
+        "bleu": 0.0,
+        "bleu_1": 0.0,
+        "bleu_2": 0.0
+      }
+    },
+    "by_y": {
+      "Y2": {
+        "em": 0.12,
+        "contains_gt": 0.12,
+        "f1": 0.24342664353190668,
+        "bleu": 0.0455395144732923,
+        "bleu_1": 0.19731350693000113,
+        "bleu_2": 0.08566937787419104
+      },
+      "Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.4361832094256771,
+        "bleu": 0.08464636987034158,
+        "bleu_1": 0.26174358311634144,
+        "bleu_2": 0.16762132858377812
+      },
+      "Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.08194444444444444,
+        "bleu": 0.0038807862720270938,
+        "bleu_1": 0.030664073879140174,
+        "bleu_2": 0.007421856900707029
+      }
+    },
+    "by_cell": {
+      "X2_Y2": {
+        "em": 0.13636363636363635,
+        "contains_gt": 0.13636363636363635,
+        "f1": 0.27183649683649685,
+        "bleu": 0.05114863246390592,
+        "bleu_1": 0.22118959120833462,
+        "bleu_2": 0.09635966626505349
+      },
+      "X2_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.3935796269727403,
+        "bleu": 0.0781459760683979,
+        "bleu_1": 0.21890749087975306,
+        "bleu_2": 0.14320501646905126
+      },
+      "X2_Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.09722222222222222,
+        "bleu": 0.005279938143905422,
+        "bleu_1": 0.053030303030303025,
+        "bleu_2": 0.011132804825714947
+      },
+      "X1_Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.1,
+        "bleu": 0.0037224516002231475,
+        "bleu_1": 0.012446767091965986,
+        "bleu_2": 0.005566363463548665
+      },
+      "X1_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.10526315789473685,
+        "bleu": 0.013217947626377298,
+        "bleu_1": 0.06666666666666667,
+        "bleu_2": 0.02182178902359924
+      },
+      "X3_Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0,
+        "bleu": 0.0,
+        "bleu_1": 0.0,
+        "bleu_2": 0.0
+      },
+      "X3_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0,
+        "bleu": 0.0,
+        "bleu_1": 0.0,
+        "bleu_2": 0.0
+      },
+      "X4_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0,
+        "bleu": 0.0,
+        "bleu_1": 0.0,
+        "bleu_2": 0.0
+      },
+      "X1_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.5213903743315508,
+        "bleu": 0.0976471574742289,
+        "bleu_1": 0.3474157675895182,
+        "bleu_2": 0.21645395281323188
+      }
+    }
+  },
+  "method_runtime": {
+    "retrieval_backend": "dense_text",
+    "retrieval_corpus": "round_text",
+    "method_modality": "text_only",
+    "top_k": 10,
+    "neighbor_window": 0,
+    "seed_round_ids": [
+      "CHAT_S38:R1",
+      "CHAT_S6:R1",
+      "CHAT_S35:R2",
+      "CHAT_S35:R1",
+      "CHAT_S17:R1",
+      "CHAT_S21:R1",
+      "CHAT_S27:R1",
+      "CHAT_S13:R1",
+      "CHAT_S4:R1",
+      "CHAT_S15:R2"
+    ],
+    "selected_round_ids": [
+      "CHAT_S38:R1",
+      "CHAT_S6:R1",
+      "CHAT_S35:R2",
+      "CHAT_S35:R1",
+      "CHAT_S17:R1",
+      "CHAT_S21:R1",
+      "CHAT_S27:R1",
+      "CHAT_S13:R1",
+      "CHAT_S4:R1",
+      "CHAT_S15:R2"
+    ],
+    "top_candidates": [
+      {
+        "round_id": "CHAT_S38:R1",
+        "score": 0.5825211727371424,
+        "text_dense_score": 0.5825211727371424
+      },
+      {
+        "round_id": "CHAT_S6:R1",
+        "score": 0.5487804729002089,
+        "text_dense_score": 0.5487804729002089
+      },
+      {
+        "round_id": "CHAT_S35:R2",
+        "score": 0.42790501934690356,
+        "text_dense_score": 0.42790501934690356
+      },
+      {
+        "round_id": "CHAT_S35:R1",
+        "score": 0.37692406885095386,
+        "text_dense_score": 0.37692406885095386
+      },
+      {
+        "round_id": "CHAT_S17:R1",
+        "score": 0.34137444856178173,
+        "text_dense_score": 0.34137444856178173
+      }
+    ],
+    "clue_hit_count": 3,
+    "corpus_entry_count": 53,
+    "text_embedding_model": "all-MiniLM-L6-v2",
+    "caption_text_included": true,
+    "image_embeddings_built": false,
+    "history_source": "retrieval",
+    "captions_loaded": true,
+    "images_loaded": false,
+    "history_turns_after_truncation": 20
+  }
+}

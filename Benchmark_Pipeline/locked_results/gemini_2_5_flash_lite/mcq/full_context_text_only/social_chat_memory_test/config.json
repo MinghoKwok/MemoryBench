@@ -1,0 +1,49 @@
+{
+  "task": {
+    "name": "social_chat_memory_test",
+    "dataset": {
+      "dialog_json": "data/dialog/Social_Chat_Memory_Test.json",
+      "image_root": "data/image"
+    },
+    "eval": {
+      "mode": "open",
+      "output_json": "output/results_social_chat_memory_test.json",
+      "max_questions": 0
+    }
+  },
+  "dataset": {
+    "dialog_json": "data/dialog/Social_Chat_Memory_Test.json",
+    "image_root": "data/image"
+  },
+  "eval": {
+    "mode": "open",
+    "output_json": "output/results_social_chat_memory_test.json",
+    "max_questions": 0
+  },
+  "model": {
+    "name": "gemini_2_5_flash_lite",
+    "provider": "gemini_api",
+    "model": "gemini-2.5-flash-lite",
+    "api_key_env": "GEMINI_API_KEY",
+    "base_url": "https://generativelanguage.googleapis.com/v1beta",
+    "max_new_tokens": 128,
+    "timeout": 90
+  },
+  "method": {
+    "name": "full_context_text_only",
+    "context_token_limit": 128000
+  },
+  "run": {
+    "output_root": "runs",
+    "method_runtime": {
+      "caption_validation_passed": true,
+      "caption_validation_round_count": 43,
+      "method_modality": "text_only",
+      "history_source": "full_context",
+      "captions_loaded": true,
+      "images_loaded": false,
+      "history_turns_after_truncation": 106,
+      "history_turns_before_truncation": 106
+    }
+  }
+}

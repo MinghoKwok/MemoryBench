@@ -1,0 +1,189 @@
+{
+  "task_name": "social_chat_memory_test",
+  "model_name": "gemini_2_5_flash_lite",
+  "model_path": "gemini-2.5-flash-lite",
+  "method_name": "semantic_rag_text_only",
+  "base_method_name": "semantic_rag_text_only",
+  "method_modality": "",
+  "mode": "mcq",
+  "num_qas": 37,
+  "num_qas_run": 37,
+  "dialog_json": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/dialog/Social_Chat_Memory_Test.json",
+  "image_root": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/image",
+  "run_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/social_chat_memory_test/20260426_103353_gemini_2_5_flash_lite_semantic_rag_text_only",
+  "git_commit": "fa8105834c4c30aae8bc623d6a932e811089aa0a",
+  "summary": {
+    "open_count": 37,
+    "overall": {
+      "em": 0.44594594594594594,
+      "contains_gt": 0.4594594594594595,
+      "f1": 0.44594594594594594
+    },
+    "by_x": {
+      "X2": {
+        "em": 0.4396551724137931,
+        "contains_gt": 0.4482758620689655,
+        "f1": 0.4396551724137931
+      },
+      "X1": {
+        "em": 0.6,
+        "contains_gt": 0.6,
+        "f1": 0.6
+      },
+      "X3": {
+        "em": 0.375,
+        "contains_gt": 0.5,
+        "f1": 0.375
+      },
+      "X4": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0
+      }
+    },
+    "by_y": {
+      "Y2": {
+        "em": 0.3,
+        "contains_gt": 0.32,
+        "f1": 0.3
+      },
+      "Y3": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
+      },
+      "Y1": {
+        "em": 0.5,
+        "contains_gt": 0.5,
+        "f1": 0.5
+      }
+    },
+    "by_cell": {
+      "X2_Y2": {
+        "em": 0.3409090909090909,
+        "contains_gt": 0.36363636363636365,
+        "f1": 0.3409090909090909
+      },
+      "X2_Y3": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
+      },
+      "X2_Y1": {
+        "em": 0.4166666666666667,
+        "contains_gt": 0.3333333333333333,
+        "f1": 0.4166666666666667
+      },
+      "X1_Y1": {
+        "em": 0.5,
+        "contains_gt": 0.5,
+        "f1": 0.5
+      },
+      "X1_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0
+      },
+      "X3_Y1": {
+        "em": 0.75,
+        "contains_gt": 1.0,
+        "f1": 0.75
+      },
+      "X3_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0
+      },
+      "X4_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0
+      },
+      "X1_Y3": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
+      }
+    },
+    "mcq_count": 37,
+    "mcq_valid_rate": 1.0,
+    "mcq_overall": {
+      "em": 0.44594594594594594,
+      "contains_gt": 0.4594594594594595,
+      "f1": 0.44594594594594594
+    },
+    "mcq_per_position_accuracy": {
+      "A": 0.40540540540540543,
+      "B": 0.3783783783783784,
+      "C": 0.5405405405405406,
+      "D": 0.4594594594594595
+    }
+  },
+  "method_runtime": {
+    "retrieval_backend": "dense_text",
+    "retrieval_corpus": "round_text",
+    "method_modality": "text_only",
+    "top_k": 10,
+    "neighbor_window": 0,
+    "seed_round_ids": [
+      "CHAT_S6:R1",
+      "CHAT_S35:R2",
+      "CHAT_S38:R1",
+      "CHAT_S17:R1",
+      "CHAT_S21:R1",
+      "CHAT_S4:R1",
+      "CHAT_S27:R1",
+      "CHAT_S35:R1",
+      "CHAT_S13:R1",
+      "CHAT_S15:R2"
+    ],
+    "selected_round_ids": [
+      "CHAT_S6:R1",
+      "CHAT_S35:R2",
+      "CHAT_S38:R1",
+      "CHAT_S17:R1",
+      "CHAT_S21:R1",
+      "CHAT_S4:R1",
+      "CHAT_S27:R1",
+      "CHAT_S35:R1",
+      "CHAT_S13:R1",
+      "CHAT_S15:R2"
+    ],
+    "top_candidates": [
+      {
+        "round_id": "CHAT_S6:R1",
+        "score": 0.4818833489606203,
+        "text_dense_score": 0.4818833489606203
+      },
+      {
+        "round_id": "CHAT_S35:R2",
+        "score": 0.4418166560526336,
+        "text_dense_score": 0.4418166560526336
+      },
+      {
+        "round_id": "CHAT_S38:R1",
+        "score": 0.4245783316029175,
+        "text_dense_score": 0.4245783316029175
+      },
+      {
+        "round_id": "CHAT_S17:R1",
+        "score": 0.37646876393885137,
+        "text_dense_score": 0.37646876393885137
+      },
+      {
+        "round_id": "CHAT_S21:R1",
+        "score": 0.3539685486748614,
+        "text_dense_score": 0.3539685486748614
+      }
+    ],
+    "clue_hit_count": 3,
+    "corpus_entry_count": 53,
+    "text_embedding_model": "all-MiniLM-L6-v2",
+    "caption_text_included": true,
+    "image_embeddings_built": false,
+    "history_source": "retrieval",
+    "captions_loaded": true,
+    "images_loaded": false,
+    "history_turns_after_truncation": 20
+  }
+}

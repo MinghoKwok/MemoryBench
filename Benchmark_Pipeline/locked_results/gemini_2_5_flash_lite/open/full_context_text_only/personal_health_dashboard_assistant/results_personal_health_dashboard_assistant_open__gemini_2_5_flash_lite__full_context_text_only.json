@@ -1,0 +1,130 @@
+{
+  "task_name": "personal_health_dashboard_assistant_open",
+  "model_name": "gemini_2_5_flash_lite",
+  "model_path": "gemini-2.5-flash-lite",
+  "method_name": "full_context_text_only",
+  "base_method_name": "full_context_text_only",
+  "method_modality": "",
+  "mode": "open",
+  "num_qas": 51,
+  "num_qas_run": 51,
+  "dialog_json": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/dialog/Personal_Health_Dashboard_Assistant_Open.json",
+  "image_root": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image",
+  "run_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/personal_health_dashboard_assistant_open/20260426_101700_gemini_2_5_flash_lite_full_context_text_only",
+  "git_commit": "fa8105834c4c30aae8bc623d6a932e811089aa0a",
+  "summary": {
+    "open_count": 51,
+    "overall": {
+      "em": 0.058823529411764705,
+      "contains_gt": 0.09803921568627451,
+      "f1": 0.1648177716229049,
+      "bleu": 0.05866264799958341,
+      "bleu_1": 0.13985665875301506,
+      "bleu_2": 0.1057301047760244
+    },
+    "by_x": {
+      "X4": {
+        "em": 0.06818181818181818,
+        "contains_gt": 0.11363636363636363,
+        "f1": 0.1700332711028574,
+        "bleu": 0.06436281899622046,
+        "bleu_1": 0.14835060087520524,
+        "bleu_2": 0.11341109838403826
+      },
+      "X3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0,
+        "bleu": 0.0,
+        "bleu_1": 0.0,
+        "bleu_2": 0.0
+      },
+      "X1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.30808080808080807,
+        "bleu": 0.053277004048351326,
+        "bleu_1": 0.20175438596491227,
+        "bleu_2": 0.13404900489318697
+      }
+    },
+    "by_y": {
+      "Y2": {
+        "em": 0.06818181818181818,
+        "contains_gt": 0.09090909090909091,
+        "f1": 0.1536562657552638,
+        "bleu": 0.05814172454821858,
+        "bleu_1": 0.13567577570038009,
+        "bleu_2": 0.10503298040608049
+      },
+      "Y3": {
+        "em": 0.0,
+        "contains_gt": 0.16666666666666666,
+        "f1": 0.24636066547831253,
+        "bleu": 0.07024169247178241,
+        "bleu_1": 0.17628205128205127,
+        "bleu_2": 0.12443361067322825
+      },
+      "Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.16666666666666666,
+        "bleu": 0.012109013026441871,
+        "bleu_1": 0.10526315789473682,
+        "bleu_2": 0.024182541670333724
+      }
+    },
+    "by_cell": {
+      "X4_Y2": {
+        "em": 0.075,
+        "contains_gt": 0.1,
+        "f1": 0.1690218923307902,
+        "bleu": 0.06395589700304044,
+        "bleu_1": 0.14924335327041807,
+        "bleu_2": 0.11553627844668853
+      },
+      "X4_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.25,
+        "f1": 0.1801470588235294,
+        "bleu": 0.06843203892802059,
+        "bleu_1": 0.13942307692307693,
+        "bleu_2": 0.09215929775753556
+      },
+      "X3_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0,
+        "bleu": 0.0,
+        "bleu_1": 0.0,
+        "bleu_2": 0.0
+      },
+      "X1_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.3787878787878788,
+        "bleu": 0.07386099955930606,
+        "bleu_1": 0.25,
+        "bleu_2": 0.1889822365046136
+      },
+      "X1_Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.16666666666666666,
+        "bleu": 0.012109013026441871,
+        "bleu_1": 0.10526315789473682,
+        "bleu_2": 0.024182541670333724
+      }
+    }
+  },
+  "method_runtime": {
+    "caption_validation_passed": true,
+    "caption_validation_round_count": 62,
+    "method_modality": "text_only",
+    "history_source": "full_context",
+    "captions_loaded": true,
+    "images_loaded": false,
+    "history_turns_after_truncation": 194,
+    "history_turns_before_truncation": 194
+  }
+}

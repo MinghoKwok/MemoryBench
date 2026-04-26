@@ -1,0 +1,146 @@
+{
+  "task_name": "multi_scene_visual_case_archive_assistant_open",
+  "model_name": "gemini_2_5_flash_lite",
+  "model_path": "gemini-2.5-flash-lite",
+  "method_name": "full_context_text_only",
+  "base_method_name": "full_context_text_only",
+  "method_modality": "",
+  "mode": "open",
+  "num_qas": 50,
+  "num_qas_run": 50,
+  "dialog_json": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/dialog/Multi-Scene_Visual_Case_Archive_Assistant_Open.json",
+  "image_root": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image",
+  "run_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/multi_scene_visual_case_archive_assistant_open/20260426_101617_gemini_2_5_flash_lite_full_context_text_only",
+  "git_commit": "fa8105834c4c30aae8bc623d6a932e811089aa0a",
+  "summary": {
+    "open_count": 50,
+    "overall": {
+      "em": 0.1,
+      "contains_gt": 0.26,
+      "f1": 0.33040494804650883,
+      "bleu": 0.160441669495898,
+      "bleu_1": 0.2724330638425026,
+      "bleu_2": 0.22725428427113514
+    },
+    "by_x": {
+      "X4": {
+        "em": 0.0,
+        "contains_gt": 0.25,
+        "f1": 0.2875,
+        "bleu": 0.13146936716879806,
+        "bleu_1": 0.22916666666666666,
+        "bleu_2": 0.19158312642355982
+      },
+      "X2": {
+        "em": 0.0,
+        "contains_gt": 0.25,
+        "f1": 0.23396215853112406,
+        "bleu": 0.06939369561183203,
+        "bleu_1": 0.17541278963692758,
+        "bleu_2": 0.12418671379702628
+      },
+      "X3": {
+        "em": 0.13157894736842105,
+        "contains_gt": 0.2631578947368421,
+        "f1": 0.35522500352832764,
+        "bleu": 0.1826593800322382,
+        "bleu_1": 0.29741274232534326,
+        "bleu_2": 0.25270757888121864
+      }
+    },
+    "by_y": {
+      "Y2": {
+        "em": 0.0,
+        "contains_gt": 0.125,
+        "f1": 0.12884852216748768,
+        "bleu": 0.06101394508569611,
+        "bleu_1": 0.10449735449735449,
+        "bleu_2": 0.08074591487749523
+      },
+      "Y3": {
+        "em": 0.0,
+        "contains_gt": 0.18181818181818182,
+        "f1": 0.29489011785662506,
+        "bleu": 0.11304141024207026,
+        "bleu_1": 0.2348552701217278,
+        "bleu_2": 0.1868458992204588
+      },
+      "Y1": {
+        "em": 0.16129032258064516,
+        "contains_gt": 0.3225806451612903,
+        "f1": 0.3950215460826666,
+        "bleu": 0.2029198839176309,
+        "bleu_1": 0.329105367251848,
+        "bleu_2": 0.2794013549390887
+      }
+    },
+    "by_cell": {
+      "X4_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.25,
+        "bleu": 0.15571265924273336,
+        "bleu_1": 0.2222222222222222,
+        "bleu_2": 0.19245008972987523
+      },
+      "X2_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.3333333333333333,
+        "f1": 0.09359605911330049,
+        "bleu": 0.006991194319122935,
+        "bleu_1": 0.05643738977072311,
+        "bleu_2": 0.02287234994344538
+      },
+      "X3_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.2505764411027569,
+        "bleu": 0.13010800795569863,
+        "bleu_1": 0.2198835647111509,
+        "bleu_2": 0.1882891988749118
+      },
+      "X2_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.2,
+        "f1": 0.3181818181818182,
+        "bleu": 0.1068351963874575,
+        "bleu_1": 0.24679802955665026,
+        "bleu_2": 0.18497533210917483
+      },
+      "X3_Y1": {
+        "em": 0.16129032258064516,
+        "contains_gt": 0.3225806451612903,
+        "f1": 0.3950215460826666,
+        "bleu": 0.2029198839176309,
+        "bleu_1": 0.329105367251848,
+        "bleu_2": 0.2794013549390887
+      },
+      "X3_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0,
+        "bleu": 0.0,
+        "bleu_1": 0.0,
+        "bleu_2": 0.0
+      },
+      "X4_Y3": {
+        "em": 0.0,
+        "contains_gt": 1.0,
+        "f1": 0.4,
+        "bleu": 0.05873949094699214,
+        "bleu_1": 0.25,
+        "bleu_2": 0.18898223650461357
+      }
+    }
+  },
+  "method_runtime": {
+    "caption_validation_passed": true,
+    "caption_validation_round_count": 57,
+    "method_modality": "text_only",
+    "history_source": "full_context",
+    "captions_loaded": true,
+    "images_loaded": false,
+    "history_turns_after_truncation": 234,
+    "history_turns_before_truncation": 234
+  }
+}
