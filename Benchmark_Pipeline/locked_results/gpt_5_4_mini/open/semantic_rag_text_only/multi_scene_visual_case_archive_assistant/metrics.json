@@ -1,0 +1,219 @@
+{
+  "task_name": "multi_scene_visual_case_archive_assistant_open",
+  "model_name": "gpt_5_4_mini",
+  "model_path": "gpt-5.4-mini",
+  "method_name": "semantic_rag_text_only",
+  "base_method_name": "semantic_rag_text_only",
+  "method_modality": "",
+  "mode": "open",
+  "num_qas": 50,
+  "num_qas_run": 50,
+  "dialog_json": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/dialog/Multi-Scene_Visual_Case_Archive_Assistant_Open.json",
+  "image_root": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image",
+  "run_dir": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/runs/multi_scene_visual_case_archive_assistant_open/20260426_110719_gpt_5_4_mini_semantic_rag_text_only",
+  "git_commit": "f50478ca8d87824ef1e9bc48c2b9e0d49e54305a",
+  "summary": {
+    "open_count": 50,
+    "overall": {
+      "em": 0.18,
+      "contains_gt": 0.18,
+      "f1": 0.3029814956285545,
+      "bleu": 0.1593540853673471,
+      "bleu_1": 0.25564579205864557,
+      "bleu_2": 0.21719930920314662,
+      "judge": 0.41
+    },
+    "by_x": {
+      "X4": {
+        "em": 0.25,
+        "contains_gt": 0.25,
+        "f1": 0.25,
+        "bleu": 0.0790569415042095,
+        "bleu_1": 0.25,
+        "bleu_2": 0.25,
+        "judge": 0.25
+      },
+      "X2": {
+        "em": 0.125,
+        "contains_gt": 0.125,
+        "f1": 0.24318181818181817,
+        "bleu": 0.1470082471702002,
+        "bleu_1": 0.18432373606898095,
+        "bleu_2": 0.17588668663419427,
+        "judge": 0.5625
+      },
+      "X3": {
+        "em": 0.18421052631578946,
+        "contains_gt": 0.18421052631578946,
+        "f1": 0.32114790094666257,
+        "bleu": 0.17040554013128725,
+        "bleu_1": 0.2712552556415903,
+        "bleu_2": 0.2224439991337836,
+        "judge": 0.39473684210526316
+      }
+    },
+    "by_y": {
+      "Y2": {
+        "em": 0.125,
+        "contains_gt": 0.125,
+        "f1": 0.125,
+        "bleu": 0.07029266564879363,
+        "bleu_1": 0.125,
+        "bleu_2": 0.125,
+        "judge": 0.25
+      },
+      "Y3": {
+        "em": 0.18181818181818182,
+        "contains_gt": 0.18181818181818182,
+        "f1": 0.37772530499803225,
+        "bleu": 0.14237715451939506,
+        "bleu_1": 0.2939378814319061,
+        "bleu_2": 0.23217155001455478,
+        "judge": 0.5909090909090909
+      },
+      "Y1": {
+        "em": 0.1935483870967742,
+        "contains_gt": 0.1935483870967742,
+        "f1": 0.3223902073048183,
+        "bleu": 0.18836174978915032,
+        "bleu_1": 0.2757733195864939,
+        "bleu_2": 0.23567994870958803,
+        "judge": 0.3870967741935484
+      }
+    },
+    "by_cell": {
+      "X4_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0,
+        "bleu": 0.0,
+        "bleu_1": 0.0,
+        "bleu_2": 0.0,
+        "judge": 0.0
+      },
+      "X2_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0,
+        "bleu": 0.0,
+        "bleu_1": 0.0,
+        "bleu_2": 0.0,
+        "judge": 0.3333333333333333
+      },
+      "X3_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.24190476190476193,
+        "bleu": 0.01477099126698123,
+        "bleu_1": 0.1517453614398239,
+        "bleu_2": 0.029358711417309637,
+        "judge": 0.4
+      },
+      "X2_Y3": {
+        "em": 0.2,
+        "contains_gt": 0.2,
+        "f1": 0.3890909090909091,
+        "bleu": 0.2352131954723203,
+        "bleu_1": 0.29491797771036954,
+        "bleu_2": 0.28141869861471086,
+        "judge": 0.7
+      },
+      "X3_Y1": {
+        "em": 0.1935483870967742,
+        "contains_gt": 0.1935483870967742,
+        "f1": 0.3223902073048183,
+        "bleu": 0.18836174978915032,
+        "bleu_1": 0.2757733195864939,
+        "bleu_2": 0.23567994870958803,
+        "judge": 0.3870967741935484
+      },
+      "X3_Y2": {
+        "em": 0.5,
+        "contains_gt": 0.5,
+        "f1": 0.5,
+        "bleu": 0.28117066259517454,
+        "bleu_1": 0.5,
+        "bleu_2": 0.5,
+        "judge": 0.5
+      },
+      "X4_Y3": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0,
+        "bleu": 0.316227766016838,
+        "bleu_1": 1.0,
+        "bleu_2": 1.0,
+        "judge": 1.0
+      }
+    }
+  },
+  "method_runtime": {
+    "retrieval_backend": "dense_text",
+    "retrieval_corpus": "round_text",
+    "method_modality": "text_only",
+    "top_k": 10,
+    "neighbor_window": 0,
+    "seed_round_ids": [
+      "SCENE_S2:R6",
+      "SCENE_S3:R4",
+      "SCENE_S2:R4",
+      "SCENE_S5:R6",
+      "SCENE_S8:R7",
+      "SCENE_S15:R1",
+      "SCENE_S12:R3",
+      "SCENE_S1:R4",
+      "SCENE_S8:R8",
+      "SCENE_S11:R4"
+    ],
+    "selected_round_ids": [
+      "SCENE_S2:R6",
+      "SCENE_S3:R4",
+      "SCENE_S2:R4",
+      "SCENE_S5:R6",
+      "SCENE_S8:R7",
+      "SCENE_S15:R1",
+      "SCENE_S12:R3",
+      "SCENE_S1:R4",
+      "SCENE_S8:R8",
+      "SCENE_S11:R4"
+    ],
+    "top_candidates": [
+      {
+        "round_id": "SCENE_S2:R6",
+        "score": 0.6643898893090485,
+        "text_dense_score": 0.6643898893090485
+      },
+      {
+        "round_id": "SCENE_S3:R4",
+        "score": 0.4435792248615012,
+        "text_dense_score": 0.4435792248615012
+      },
+      {
+        "round_id": "SCENE_S2:R4",
+        "score": 0.43903297675637015,
+        "text_dense_score": 0.43903297675637015
+      },
+      {
+        "round_id": "SCENE_S5:R6",
+        "score": 0.4099226283381658,
+        "text_dense_score": 0.4099226283381658
+      },
+      {
+        "round_id": "SCENE_S8:R7",
+        "score": 0.404819284489313,
+        "text_dense_score": 0.404819284489313
+      }
+    ],
+    "clue_hit_count": 3,
+    "corpus_entry_count": 117,
+    "text_embedding_model": "all-MiniLM-L6-v2",
+    "caption_text_included": true,
+    "image_embeddings_built": false,
+    "history_source": "retrieval",
+    "captions_loaded": true,
+    "images_loaded": false,
+    "history_turns_after_truncation": 20
+  },
+  "judge_model": "gpt-5.2",
+  "judge_rescored_from_predictions": true
+}

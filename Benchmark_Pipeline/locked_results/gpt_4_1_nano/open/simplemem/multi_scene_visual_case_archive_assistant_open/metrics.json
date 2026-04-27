@@ -1,0 +1,157 @@
+{
+  "task_name": "multi_scene_visual_case_archive_assistant_open",
+  "model_name": "gpt_4_1_nano",
+  "model_path": "gpt-4.1-nano",
+  "method_name": "simplemem",
+  "base_method_name": "simplemem",
+  "method_modality": "",
+  "mode": "open",
+  "num_qas": 50,
+  "num_qas_run": 50,
+  "dialog_json": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/dialog/Multi-Scene_Visual_Case_Archive_Assistant_Open.json",
+  "image_root": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image",
+  "run_dir": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/runs/multi_scene_visual_case_archive_assistant_open/20260426_093138_gpt_4_1_nano_simplemem",
+  "git_commit": "f50478ca8d87824ef1e9bc48c2b9e0d49e54305a",
+  "summary": {
+    "open_count": 50,
+    "overall": {
+      "em": 0.1,
+      "contains_gt": 0.1,
+      "f1": 0.2689195278405805,
+      "bleu": 0.15423520857237472,
+      "bleu_1": 0.2195622625177076,
+      "bleu_2": 0.19282965696495052,
+      "judge": 0.28
+    },
+    "by_x": {
+      "X4": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.2992424242424242,
+        "bleu": 0.1788629919612805,
+        "bleu_1": 0.22662583060153668,
+        "bleu_2": 0.1828255764428378,
+        "judge": 0.25
+      },
+      "X2": {
+        "em": 0.125,
+        "contains_gt": 0.125,
+        "f1": 0.43286056049213945,
+        "bleu": 0.2491740262760535,
+        "bleu_1": 0.35193149295467774,
+        "bleu_2": 0.335012851201783,
+        "judge": 0.6875
+      },
+      "X3": {
+        "em": 0.10526315789473684,
+        "contains_gt": 0.10526315789473684,
+        "f1": 0.23121374239795292,
+        "bleu": 0.13165569080434697,
+        "bleu_1": 0.19095152262741608,
+        "bleu_2": 0.16394941402268187,
+        "judge": 0.19736842105263158
+      }
+    },
+    "by_y": {
+      "Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.254884370015949,
+        "bleu": 0.1488340431655424,
+        "bleu_1": 0.19922407514963986,
+        "bleu_2": 0.17095106680427674,
+        "judge": 0.375
+      },
+      "Y3": {
+        "em": 0.09090909090909091,
+        "contains_gt": 0.09090909090909091,
+        "f1": 0.3149426331244513,
+        "bleu": 0.14841167745014391,
+        "bleu_1": 0.24995824615413323,
+        "bleu_2": 0.20112498169254256,
+        "judge": 0.36363636363636365
+      },
+      "Y1": {
+        "em": 0.12903225806451613,
+        "contains_gt": 0.12903225806451613,
+        "f1": 0.2562107247591119,
+        "bleu": 0.15769547197880043,
+        "bleu_1": 0.21402515538686437,
+        "bleu_2": 0.19553224242565626,
+        "judge": 0.22580645161290322
+      }
+    },
+    "by_cell": {
+      "X4_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.39898989898989895,
+        "bleu": 0.23848398928170733,
+        "bleu_1": 0.3021677741353822,
+        "bleu_2": 0.24376743525711708,
+        "judge": 0.3333333333333333
+      },
+      "X2_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.28070175438596495,
+        "bleu": 0.15840679249307243,
+        "bleu_1": 0.22909642626365742,
+        "bleu_2": 0.21210207622095426,
+        "judge": 0.6666666666666666
+      },
+      "X3_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.1687179487179487,
+        "bleu": 0.022871323844474434,
+        "bleu_1": 0.12427560856980321,
+        "bleu_2": 0.03371564353331344,
+        "judge": 0.1
+      },
+      "X2_Y3": {
+        "em": 0.2,
+        "contains_gt": 0.2,
+        "f1": 0.5241558441558442,
+        "bleu": 0.3036343665458422,
+        "bleu_1": 0.42563253296928993,
+        "bleu_2": 0.40875931619028016,
+        "judge": 0.7
+      },
+      "X3_Y1": {
+        "em": 0.12903225806451613,
+        "contains_gt": 0.12903225806451613,
+        "f1": 0.2562107247591119,
+        "bleu": 0.15769547197880043,
+        "bleu_1": 0.21402515538686437,
+        "bleu_2": 0.19553224242565626,
+        "judge": 0.22580645161290322
+      },
+      "X3_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0,
+        "bleu": 0.0,
+        "bleu_1": 0.0,
+        "bleu_2": 0.0,
+        "judge": 0.0
+      },
+      "X4_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0,
+        "bleu": 0.0,
+        "bleu_1": 0.0,
+        "bleu_2": 0.0,
+        "judge": 0.0
+      }
+    }
+  },
+  "method_runtime": {
+    "num_memories": 117,
+    "debug_dir": "/Users/qingyuejiao/Desktop/MemoryBench/output/multi-scene_visual_case_archive_assistant/simplemem",
+    "data_dir": "/Users/qingyuejiao/Desktop/MemoryBench/runs/simplemem/multi-scene_visual_case_archive_assistant"
+  },
+  "judge_model": "gpt-5.2",
+  "judge_rescored_from_predictions": true
+}

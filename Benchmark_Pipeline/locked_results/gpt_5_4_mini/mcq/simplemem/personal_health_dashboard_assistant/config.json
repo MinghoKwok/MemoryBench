@@ -1,0 +1,53 @@
+{
+  "task": {
+    "name": "personal_health_dashboard_assistant",
+    "dataset": {
+      "dialog_json": "data/dialog/Personal_Health_Dashboard_Assistant.json",
+      "image_root": "data/image"
+    },
+    "eval": {
+      "mode": "mcq",
+      "output_json": "output/results_personal_health_dashboard_assistant.json",
+      "max_questions": 0
+    }
+  },
+  "dataset": {
+    "dialog_json": "data/dialog/Personal_Health_Dashboard_Assistant.json",
+    "image_root": "data/image"
+  },
+  "eval": {
+    "mode": "mcq",
+    "output_json": "output/results_personal_health_dashboard_assistant.json",
+    "max_questions": 0
+  },
+  "model": {
+    "name": "gpt_5_4_mini",
+    "provider": "openai_api",
+    "model": "gpt-5.4-mini",
+    "api_key_env": "OPENAI_API_KEY",
+    "base_url": "https://api.openai.com/v1",
+    "max_new_tokens": 128,
+    "timeout": 90
+  },
+  "method": {
+    "name": "simplemem",
+    "llm_model": "",
+    "llm_api_key": "",
+    "llm_api_key_env": "OPENAI_API_KEY",
+    "retrieve_k": 20,
+    "embedding_model": "all-MiniLM-L6-v2",
+    "embedding_dim": 384,
+    "caption_preprocessed": true,
+    "temperature": 0.0,
+    "max_tokens": 1000,
+    "enable_self_evolution": false
+  },
+  "run": {
+    "output_root": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/runs",
+    "method_runtime": {
+      "num_memories": 97,
+      "debug_dir": "/Users/qingyuejiao/Desktop/MemoryBench/output/personal_health_dashboard_assistant/simplemem",
+      "data_dir": "/Users/qingyuejiao/Desktop/MemoryBench/runs/simplemem/personal_health_dashboard_assistant"
+    }
+  }
+}

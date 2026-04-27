@@ -1,0 +1,131 @@
+{
+  "task_name": "cartoon_entertainment_companion",
+  "model_name": "gpt_4_1_nano",
+  "model_path": "gpt-4.1-nano",
+  "method_name": "reflexion",
+  "base_method_name": "reflexion",
+  "method_modality": "",
+  "mode": "mcq",
+  "num_qas": 76,
+  "num_qas_run": 76,
+  "dialog_json": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/dialog/Cartoon_Entertainment_Companion.json",
+  "image_root": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image",
+  "run_dir": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/runs/cartoon_entertainment_companion/20260424_234052_gpt_4_1_nano_reflexion",
+  "git_commit": "35aa30ab7205e464bf92b809f6f3a6932c7f7aef",
+  "summary": {
+    "open_count": 76,
+    "overall": {
+      "em": 0.4375,
+      "contains_gt": 0.3157894736842105,
+      "f1": 0.4375
+    },
+    "by_x": {
+      "X3": {
+        "em": 0.358695652173913,
+        "contains_gt": 0.17391304347826086,
+        "f1": 0.358695652173913
+      },
+      "X4": {
+        "em": 0.42391304347826086,
+        "contains_gt": 0.30434782608695654,
+        "f1": 0.42391304347826086
+      },
+      "X2": {
+        "em": 0.44642857142857145,
+        "contains_gt": 0.35714285714285715,
+        "f1": 0.44642857142857145
+      },
+      "X1": {
+        "em": 0.5625,
+        "contains_gt": 0.5,
+        "f1": 0.5625
+      }
+    },
+    "by_y": {
+      "Y1": {
+        "em": 0.5078125,
+        "contains_gt": 0.375,
+        "f1": 0.5078125
+      },
+      "Y2": {
+        "em": 0.38461538461538464,
+        "contains_gt": 0.2564102564102564,
+        "f1": 0.38461538461538464
+      },
+      "Y3": {
+        "em": 0.4,
+        "contains_gt": 0.4,
+        "f1": 0.4
+      }
+    },
+    "by_cell": {
+      "X3_Y1": {
+        "em": 0.3181818181818182,
+        "contains_gt": 0.09090909090909091,
+        "f1": 0.3181818181818182
+      },
+      "X4_Y2": {
+        "em": 0.4,
+        "contains_gt": 0.3,
+        "f1": 0.4
+      },
+      "X2_Y2": {
+        "em": 0.3611111111111111,
+        "contains_gt": 0.2222222222222222,
+        "f1": 0.3611111111111111
+      },
+      "X3_Y2": {
+        "em": 0.3958333333333333,
+        "contains_gt": 0.25,
+        "f1": 0.3958333333333333
+      },
+      "X4_Y1": {
+        "em": 0.4791666666666667,
+        "contains_gt": 0.3333333333333333,
+        "f1": 0.4791666666666667
+      },
+      "X1_Y1": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
+      },
+      "X1_Y2": {
+        "em": 0.375,
+        "contains_gt": 0.25,
+        "f1": 0.375
+      },
+      "X2_Y1": {
+        "em": 0.6,
+        "contains_gt": 0.6,
+        "f1": 0.6
+      },
+      "X1_Y3": {
+        "em": 0.5,
+        "contains_gt": 0.5,
+        "f1": 0.5
+      },
+      "X4_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0
+      }
+    },
+    "mcq_count": 76,
+    "mcq_valid_rate": 0.9473684210526315,
+    "mcq_overall": {
+      "em": 0.4375,
+      "contains_gt": 0.3157894736842105,
+      "f1": 0.4375
+    },
+    "mcq_per_position_accuracy": {
+      "A": 0.5131578947368421,
+      "B": 0.40789473684210525,
+      "C": 0.5131578947368421,
+      "D": 0.3157894736842105
+    }
+  },
+  "method_runtime": {
+    "num_memories": 299,
+    "debug_dir": "/Users/qingyuejiao/Desktop/MemoryBench/output/cartoon_entertainment_companion/reflexion"
+  }
+}

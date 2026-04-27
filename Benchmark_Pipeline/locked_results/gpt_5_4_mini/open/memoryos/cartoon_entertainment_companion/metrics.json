@@ -1,0 +1,196 @@
+{
+  "task_name": "cartoon_entertainment_companion_open",
+  "model_name": "gpt_5_4_mini",
+  "model_path": "gpt-5.4-mini",
+  "method_name": "memoryos",
+  "base_method_name": "memoryos",
+  "method_modality": "",
+  "mode": "open",
+  "num_qas": 76,
+  "num_qas_run": 76,
+  "dialog_json": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/dialog/Cartoon_Entertainment_Companion_Open.json",
+  "image_root": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image",
+  "run_dir": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/runs/cartoon_entertainment_companion_open/20260426_123103_gpt_5_4_mini_memoryos",
+  "git_commit": "f50478ca8d87824ef1e9bc48c2b9e0d49e54305a",
+  "summary": {
+    "open_count": 76,
+    "overall": {
+      "em": 0.039473684210526314,
+      "contains_gt": 0.06578947368421052,
+      "f1": 0.2736030581973856,
+      "bleu": 0.06825024330504406,
+      "bleu_1": 0.214121170893596,
+      "bleu_2": 0.13558835026581345,
+      "judge": 0.4407894736842105
+    },
+    "by_x": {
+      "X3": {
+        "em": 0.041666666666666664,
+        "contains_gt": 0.125,
+        "f1": 0.2172578381366332,
+        "bleu": 0.045535947483766756,
+        "bleu_1": 0.1801911802489427,
+        "bleu_2": 0.10880068135297881,
+        "judge": 0.3958333333333333
+      },
+      "X4": {
+        "em": 0.07692307692307693,
+        "contains_gt": 0.07692307692307693,
+        "f1": 0.31265551717672824,
+        "bleu": 0.10512984292220155,
+        "bleu_1": 0.2679037595607703,
+        "bleu_2": 0.18127637059679425,
+        "judge": 0.46153846153846156
+      },
+      "X2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.3337469547995864,
+        "bleu": 0.07098924213522226,
+        "bleu_1": 0.19411421057757763,
+        "bleu_2": 0.13213429398897214,
+        "judge": 0.5
+      },
+      "X1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.25707070707070706,
+        "bleu": 0.040680463390217705,
+        "bleu_1": 0.19012380047392924,
+        "bleu_2": 0.10368560577024745,
+        "judge": 0.4375
+      }
+    },
+    "by_y": {
+      "Y1": {
+        "em": 0.06060606060606061,
+        "contains_gt": 0.12121212121212122,
+        "f1": 0.21032698484311388,
+        "bleu": 0.06935209250012354,
+        "bleu_1": 0.1559864008104162,
+        "bleu_2": 0.09538150164644138,
+        "judge": 0.2878787878787879
+      },
+      "Y2": {
+        "em": 0.02631578947368421,
+        "contains_gt": 0.02631578947368421,
+        "f1": 0.34661304977453994,
+        "bleu": 0.07461868088986674,
+        "bleu_1": 0.2809393507092779,
+        "bleu_2": 0.18313348758614414,
+        "judge": 0.5526315789473685
+      },
+      "Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.13634920634920633,
+        "bleu": 0.012577912972867023,
+        "bleu_1": 0.08999248684340033,
+        "bleu_2": 0.039610507519155756,
+        "judge": 0.6
+      }
+    },
+    "by_cell": {
+      "X3_Y1": {
+        "em": 0.0,
+        "contains_gt": 0.16666666666666666,
+        "f1": 0.09088089330024814,
+        "bleu": 0.01924361280672679,
+        "bleu_1": 0.06203703703703703,
+        "bleu_2": 0.03440531952074894,
+        "judge": 0.2916666666666667
+      },
+      "X4_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.4361262874764019,
+        "bleu": 0.11303356440470401,
+        "bleu_1": 0.3591814391463459,
+        "bleu_2": 0.2529552532082835,
+        "judge": 0.7692307692307693
+      },
+      "X2_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.15087719298245617,
+        "bleu": 0.01358704365383518,
+        "bleu_1": 0.10666711873254806,
+        "bleu_2": 0.04424376456274396,
+        "judge": 0.4
+      },
+      "X3_Y2": {
+        "em": 0.08333333333333333,
+        "contains_gt": 0.08333333333333333,
+        "f1": 0.34363478297301825,
+        "bleu": 0.07182828216080672,
+        "bleu_1": 0.2983453234608484,
+        "bleu_2": 0.18319604318520868,
+        "judge": 0.5
+      },
+      "X4_Y1": {
+        "em": 0.16666666666666666,
+        "contains_gt": 0.16666666666666666,
+        "f1": 0.20032051282051283,
+        "bleu": 0.10532829822634068,
+        "bleu_1": 0.19134491997312755,
+        "bleu_2": 0.11873061198408037,
+        "judge": 0.16666666666666666
+      },
+      "X1_Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.21582251082251083,
+        "bleu": 0.03794972925605511,
+        "bleu_1": 0.17479030762718084,
+        "bleu_2": 0.05245856479965302,
+        "judge": 0.25
+      },
+      "X1_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.3279563492063492,
+        "bleu": 0.054524866544365974,
+        "bleu_1": 0.23660714285714285,
+        "bleu_2": 0.15638536194119604,
+        "judge": 0.375
+      },
+      "X2_Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.5166167166167166,
+        "bleu": 0.12839144061660934,
+        "bleu_1": 0.2815613024226072,
+        "bleu_2": 0.22002482341520033,
+        "judge": 0.6
+      },
+      "X1_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.15654761904761905,
+        "bleu": 0.015722391216083778,
+        "bleu_1": 0.11249060855425043,
+        "bleu_2": 0.04951313439894469,
+        "judge": 0.75
+      },
+      "X4_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.05555555555555555,
+        "bleu": 0.0,
+        "bleu_1": 0.0,
+        "bleu_2": 0.0,
+        "judge": 0.0
+      }
+    }
+  },
+  "method_runtime": {
+    "caption_validation_passed": true,
+    "caption_validation_round_count": 87,
+    "num_memories": 299,
+    "debug_dir": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/output/cartoon_entertainment_companion_open/memoryos/38813391b178e046",
+    "data_storage_path": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/runs/cartoon_entertainment_companion_open/memoryos_data/38813391b178e046",
+    "runtime_signature": "38813391b178e046"
+  },
+  "judge_model": "gpt-5.2",
+  "judge_rescored_from_predictions": true
+}

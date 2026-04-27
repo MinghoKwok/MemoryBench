@@ -1,0 +1,51 @@
+{
+  "task": {
+    "name": "outdoor_navigation_route_memory_assistant",
+    "dataset": {
+      "dialog_json": "data/dialog/Outdoor_Navigation_Route_Memory_Assistant.json",
+      "image_root": "data/image"
+    },
+    "eval": {
+      "mode": "mcq",
+      "output_json": "output/results_outdoor_navigation_route_memory_assistant.json",
+      "max_questions": 0
+    }
+  },
+  "dataset": {
+    "dialog_json": "data/dialog/Outdoor_Navigation_Route_Memory_Assistant.json",
+    "image_root": "data/image"
+  },
+  "eval": {
+    "mode": "mcq",
+    "output_json": "output/results_outdoor_navigation_route_memory_assistant.json",
+    "max_questions": 0
+  },
+  "model": {
+    "name": "gpt_4_1_nano",
+    "provider": "openai_api",
+    "model": "gpt-4.1-nano",
+    "api_key_env": "OPENAI_API_KEY",
+    "base_url": "https://api.openai.com/v1",
+    "max_new_tokens": 128,
+    "timeout": 90
+  },
+  "method": {
+    "name": "reflexion",
+    "caption_preprocessed": true,
+    "context_word_limit": 6000,
+    "empty_memory": "No stored memory yet.",
+    "llm_model": "",
+    "llm_api_key": "",
+    "llm_api_key_env": "OPENAI_API_KEY",
+    "llm_base_url": "https://api.openai.com/v1",
+    "reflection_temperature": 0.0,
+    "reflection_example": ""
+  },
+  "run": {
+    "output_root": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/runs",
+    "method_runtime": {
+      "num_memories": 60,
+      "debug_dir": "/Users/qingyuejiao/Desktop/MemoryBench/output/outdoor_navigation_route_memory_assistant/reflexion"
+    }
+  }
+}

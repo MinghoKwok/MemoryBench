@@ -1,0 +1,139 @@
+{
+  "task_name": "personal_health_dashboard_assistant_open",
+  "model_name": "gpt_4_1_nano",
+  "model_path": "gpt-4.1-nano",
+  "method_name": "simplemem",
+  "base_method_name": "simplemem",
+  "method_modality": "",
+  "mode": "open",
+  "num_qas": 51,
+  "num_qas_run": 51,
+  "dialog_json": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/dialog/Personal_Health_Dashboard_Assistant_Open.json",
+  "image_root": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image",
+  "run_dir": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/runs/personal_health_dashboard_assistant_open/20260426_101315_gpt_4_1_nano_simplemem",
+  "git_commit": "f50478ca8d87824ef1e9bc48c2b9e0d49e54305a",
+  "summary": {
+    "open_count": 51,
+    "overall": {
+      "em": 0.0392156862745098,
+      "contains_gt": 0.058823529411764705,
+      "f1": 0.11482939718233835,
+      "bleu": 0.05912587202652072,
+      "bleu_1": 0.10233386157264177,
+      "bleu_2": 0.07501344303593831,
+      "judge": 0.08823529411764706
+    },
+    "by_x": {
+      "X4": {
+        "em": 0.045454545454545456,
+        "contains_gt": 0.06818181818181818,
+        "f1": 0.11012068739341467,
+        "bleu": 0.06420189083862947,
+        "bleu_1": 0.10232944612797593,
+        "bleu_2": 0.07543230559531007,
+        "judge": 0.07954545454545454
+      },
+      "X3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0,
+        "bleu": 0.0,
+        "bleu_1": 0.0,
+        "bleu_2": 0.0,
+        "judge": 0.0
+      },
+      "X1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.33699633699633696,
+        "bleu": 0.06351209215095331,
+        "bleu_1": 0.2388437701912631,
+        "bleu_2": 0.16888804954640355,
+        "judge": 0.3333333333333333
+      }
+    },
+    "by_y": {
+      "Y2": {
+        "em": 0.045454545454545456,
+        "contains_gt": 0.06818181818181818,
+        "f1": 0.1022005772005772,
+        "bleu": 0.06281989462226001,
+        "bleu_1": 0.09624178379031358,
+        "bleu_2": 0.07336292567749524,
+        "judge": 0.06818181818181818
+      },
+      "Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.22657897657897658,
+        "bleu": 0.041890684995519324,
+        "bleu_1": 0.1640647422384887,
+        "bleu_2": 0.09961947750384385,
+        "judge": 0.25
+      },
+      "Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0,
+        "bleu": 0.0,
+        "bleu_1": 0.0,
+        "bleu_2": 0.0,
+        "judge": 0.0
+      }
+    },
+    "by_cell": {
+      "X4_Y2": {
+        "em": 0.05,
+        "contains_gt": 0.075,
+        "f1": 0.11242063492063492,
+        "bleu": 0.06910188408448602,
+        "bleu_1": 0.10586596216934493,
+        "bleu_2": 0.08069921824524476,
+        "judge": 0.075
+      },
+      "X4_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.08712121212121213,
+        "bleu": 0.015201958380063996,
+        "bleu_1": 0.06696428571428573,
+        "bleu_2": 0.022763179095963124,
+        "judge": 0.125
+      },
+      "X3_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0,
+        "bleu": 0.0,
+        "bleu_1": 0.0,
+        "bleu_2": 0.0,
+        "judge": 0.0
+      },
+      "X1_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.5054945054945055,
+        "bleu": 0.09526813822642997,
+        "bleu_1": 0.35826565528689464,
+        "bleu_2": 0.2533320743196053,
+        "judge": 0.5
+      },
+      "X1_Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0,
+        "bleu": 0.0,
+        "bleu_1": 0.0,
+        "bleu_2": 0.0,
+        "judge": 0.0
+      }
+    }
+  },
+  "method_runtime": {
+    "num_memories": 97,
+    "debug_dir": "/Users/qingyuejiao/Desktop/MemoryBench/output/personal_health_dashboard_assistant/simplemem",
+    "data_dir": "/Users/qingyuejiao/Desktop/MemoryBench/runs/simplemem/personal_health_dashboard_assistant"
+  },
+  "judge_model": "gpt-5.2",
+  "judge_rescored_from_predictions": true
+}

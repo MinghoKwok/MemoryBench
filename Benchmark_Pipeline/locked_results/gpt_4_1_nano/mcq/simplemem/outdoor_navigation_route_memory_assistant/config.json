@@ -1,0 +1,53 @@
+{
+  "task": {
+    "name": "outdoor_navigation_route_memory_assistant",
+    "dataset": {
+      "dialog_json": "data/dialog/Outdoor_Navigation_Route_Memory_Assistant.json",
+      "image_root": "data/image"
+    },
+    "eval": {
+      "mode": "mcq",
+      "output_json": "output/results_outdoor_navigation_route_memory_assistant.json",
+      "max_questions": 0
+    }
+  },
+  "dataset": {
+    "dialog_json": "data/dialog/Outdoor_Navigation_Route_Memory_Assistant.json",
+    "image_root": "data/image"
+  },
+  "eval": {
+    "mode": "mcq",
+    "output_json": "output/results_outdoor_navigation_route_memory_assistant.json",
+    "max_questions": 0
+  },
+  "model": {
+    "name": "gpt_4_1_nano",
+    "provider": "openai_api",
+    "model": "gpt-4.1-nano",
+    "api_key_env": "OPENAI_API_KEY",
+    "base_url": "https://api.openai.com/v1",
+    "max_new_tokens": 128,
+    "timeout": 90
+  },
+  "method": {
+    "name": "simplemem",
+    "llm_model": "",
+    "llm_api_key": "",
+    "llm_api_key_env": "OPENAI_API_KEY",
+    "retrieve_k": 20,
+    "embedding_model": "all-MiniLM-L6-v2",
+    "embedding_dim": 384,
+    "caption_preprocessed": true,
+    "temperature": 0.0,
+    "max_tokens": 1000,
+    "enable_self_evolution": false
+  },
+  "run": {
+    "output_root": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/runs",
+    "method_runtime": {
+      "num_memories": 60,
+      "debug_dir": "/Users/qingyuejiao/Desktop/MemoryBench/output/outdoor_navigation_route_memory_assistant/simplemem",
+      "data_dir": "/Users/qingyuejiao/Desktop/MemoryBench/runs/simplemem/outdoor_navigation_route_memory_assistant"
+    }
+  }
+}

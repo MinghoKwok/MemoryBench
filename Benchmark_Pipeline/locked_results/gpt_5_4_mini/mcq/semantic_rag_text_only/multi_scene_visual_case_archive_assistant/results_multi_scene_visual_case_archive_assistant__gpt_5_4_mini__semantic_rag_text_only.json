@@ -1,0 +1,174 @@
+{
+  "task_name": "multi_scene_visual_case_archive_assistant",
+  "model_name": "gpt_5_4_mini",
+  "model_path": "gpt-5.4-mini",
+  "method_name": "semantic_rag_text_only",
+  "base_method_name": "semantic_rag_text_only",
+  "method_modality": "",
+  "mode": "mcq",
+  "num_qas": 50,
+  "num_qas_run": 50,
+  "dialog_json": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/dialog/Multi-Scene_Visual_Case_Archive_Assistant.json",
+  "image_root": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image",
+  "run_dir": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/runs/multi_scene_visual_case_archive_assistant/20260426_110611_gpt_5_4_mini_semantic_rag_text_only",
+  "git_commit": "f50478ca8d87824ef1e9bc48c2b9e0d49e54305a",
+  "summary": {
+    "open_count": 50,
+    "overall": {
+      "em": 0.395,
+      "contains_gt": 0.46,
+      "f1": 0.395
+    },
+    "by_x": {
+      "X4": {
+        "em": 0.5,
+        "contains_gt": 0.5,
+        "f1": 0.5
+      },
+      "X2": {
+        "em": 0.65625,
+        "contains_gt": 0.625,
+        "f1": 0.65625
+      },
+      "X3": {
+        "em": 0.32894736842105265,
+        "contains_gt": 0.42105263157894735,
+        "f1": 0.32894736842105265
+      }
+    },
+    "by_y": {
+      "Y2": {
+        "em": 0.5,
+        "contains_gt": 0.625,
+        "f1": 0.5
+      },
+      "Y3": {
+        "em": 0.5681818181818182,
+        "contains_gt": 0.6363636363636364,
+        "f1": 0.5681818181818182
+      },
+      "Y1": {
+        "em": 0.3064516129032258,
+        "contains_gt": 0.3548387096774194,
+        "f1": 0.3064516129032258
+      }
+    },
+    "by_cell": {
+      "X4_Y2": {
+        "em": 0.6666666666666666,
+        "contains_gt": 0.6666666666666666,
+        "f1": 0.6666666666666666
+      },
+      "X2_Y2": {
+        "em": 0.5,
+        "contains_gt": 0.3333333333333333,
+        "f1": 0.5
+      },
+      "X3_Y3": {
+        "em": 0.5,
+        "contains_gt": 0.6,
+        "f1": 0.5
+      },
+      "X2_Y3": {
+        "em": 0.75,
+        "contains_gt": 0.8,
+        "f1": 0.75
+      },
+      "X3_Y1": {
+        "em": 0.3064516129032258,
+        "contains_gt": 0.3548387096774194,
+        "f1": 0.3064516129032258
+      },
+      "X3_Y2": {
+        "em": 0.25,
+        "contains_gt": 1.0,
+        "f1": 0.25
+      },
+      "X4_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0
+      }
+    },
+    "mcq_count": 50,
+    "mcq_valid_rate": 1.0,
+    "mcq_overall": {
+      "em": 0.395,
+      "contains_gt": 0.46,
+      "f1": 0.395
+    },
+    "mcq_per_position_accuracy": {
+      "A": 0.36,
+      "B": 0.36,
+      "C": 0.4,
+      "D": 0.46
+    }
+  },
+  "method_runtime": {
+    "retrieval_backend": "dense_text",
+    "retrieval_corpus": "round_text",
+    "method_modality": "text_only",
+    "top_k": 10,
+    "neighbor_window": 0,
+    "seed_round_ids": [
+      "SCENE_S2:R6",
+      "SCENE_S3:R4",
+      "SCENE_S2:R4",
+      "SCENE_S5:R6",
+      "SCENE_S8:R7",
+      "SCENE_S15:R1",
+      "SCENE_S12:R3",
+      "SCENE_S1:R4",
+      "SCENE_S8:R8",
+      "SCENE_S11:R4"
+    ],
+    "selected_round_ids": [
+      "SCENE_S2:R6",
+      "SCENE_S3:R4",
+      "SCENE_S2:R4",
+      "SCENE_S5:R6",
+      "SCENE_S8:R7",
+      "SCENE_S15:R1",
+      "SCENE_S12:R3",
+      "SCENE_S1:R4",
+      "SCENE_S8:R8",
+      "SCENE_S11:R4"
+    ],
+    "top_candidates": [
+      {
+        "round_id": "SCENE_S2:R6",
+        "score": 0.6643898893090485,
+        "text_dense_score": 0.6643898893090485
+      },
+      {
+        "round_id": "SCENE_S3:R4",
+        "score": 0.4435792248615012,
+        "text_dense_score": 0.4435792248615012
+      },
+      {
+        "round_id": "SCENE_S2:R4",
+        "score": 0.43903297675637015,
+        "text_dense_score": 0.43903297675637015
+      },
+      {
+        "round_id": "SCENE_S5:R6",
+        "score": 0.4099226283381658,
+        "text_dense_score": 0.4099226283381658
+      },
+      {
+        "round_id": "SCENE_S8:R7",
+        "score": 0.404819284489313,
+        "text_dense_score": 0.404819284489313
+      }
+    ],
+    "clue_hit_count": 3,
+    "corpus_entry_count": 117,
+    "text_embedding_model": "all-MiniLM-L6-v2",
+    "caption_text_included": true,
+    "image_embeddings_built": false,
+    "history_source": "retrieval",
+    "captions_loaded": true,
+    "images_loaded": false,
+    "history_turns_after_truncation": 20
+  }
+}

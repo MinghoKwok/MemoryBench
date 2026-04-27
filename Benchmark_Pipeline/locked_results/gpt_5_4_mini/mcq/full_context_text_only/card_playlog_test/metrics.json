@@ -1,0 +1,77 @@
+{
+  "task_name": "card_playlog_test",
+  "model_name": "gpt_5_4_mini",
+  "model_path": "gpt-5.4-mini",
+  "method_name": "full_context_text_only",
+  "base_method_name": "full_context_text_only",
+  "method_modality": "",
+  "mode": "mcq",
+  "num_qas": 48,
+  "num_qas_run": 48,
+  "dialog_json": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/dialog/Card_Playlog_Test.json",
+  "image_root": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image",
+  "run_dir": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/runs/card_playlog_test/20260426_100146_gpt_5_4_mini_full_context_text_only",
+  "git_commit": "f50478ca8d87824ef1e9bc48c2b9e0d49e54305a",
+  "summary": {
+    "open_count": 48,
+    "overall": {
+      "em": 0.4166666666666667,
+      "contains_gt": 0.25,
+      "f1": 0.4166666666666667
+    },
+    "by_x": {
+      "X4": {
+        "em": 0.4166666666666667,
+        "contains_gt": 0.25,
+        "f1": 0.4166666666666667
+      }
+    },
+    "by_y": {
+      "Y3": {
+        "em": 0.32894736842105265,
+        "contains_gt": 0.21052631578947367,
+        "f1": 0.32894736842105265
+      },
+      "Y2": {
+        "em": 0.47413793103448276,
+        "contains_gt": 0.27586206896551724,
+        "f1": 0.47413793103448276
+      }
+    },
+    "by_cell": {
+      "X4_Y3": {
+        "em": 0.32894736842105265,
+        "contains_gt": 0.21052631578947367,
+        "f1": 0.32894736842105265
+      },
+      "X4_Y2": {
+        "em": 0.47413793103448276,
+        "contains_gt": 0.27586206896551724,
+        "f1": 0.47413793103448276
+      }
+    },
+    "mcq_count": 48,
+    "mcq_valid_rate": 1.0,
+    "mcq_overall": {
+      "em": 0.4166666666666667,
+      "contains_gt": 0.25,
+      "f1": 0.4166666666666667
+    },
+    "mcq_per_position_accuracy": {
+      "A": 0.5833333333333334,
+      "B": 0.4583333333333333,
+      "C": 0.375,
+      "D": 0.25
+    }
+  },
+  "method_runtime": {
+    "caption_validation_passed": true,
+    "caption_validation_round_count": 30,
+    "method_modality": "text_only",
+    "history_source": "full_context",
+    "captions_loaded": true,
+    "images_loaded": false,
+    "history_turns_after_truncation": 60,
+    "history_turns_before_truncation": 60
+  }
+}

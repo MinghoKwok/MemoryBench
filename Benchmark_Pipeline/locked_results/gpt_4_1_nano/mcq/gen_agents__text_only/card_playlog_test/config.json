@@ -1,0 +1,76 @@
+{
+  "task": {
+    "name": "card_playlog_test",
+    "dataset": {
+      "dialog_json": "data/dialog/Card_Playlog_Test.json",
+      "image_root": "data/image"
+    },
+    "eval": {
+      "output_json": "output/results_card_playlog_test.json",
+      "mode": "mcq",
+      "max_questions": 0
+    }
+  },
+  "dataset": {
+    "dialog_json": "data/dialog/Card_Playlog_Test.json",
+    "image_root": "data/image"
+  },
+  "eval": {
+    "output_json": "output/results_card_playlog_test.json",
+    "mode": "mcq",
+    "max_questions": 0
+  },
+  "model": {
+    "name": "gpt_4_1_nano",
+    "provider": "openai_api",
+    "model": "gpt-4.1-nano",
+    "api_key_env": "OPENAI_API_KEY",
+    "base_url": "https://api.openai.com/v1",
+    "max_new_tokens": 128,
+    "timeout": 90
+  },
+  "method": {
+    "name": "gen_agents",
+    "modality": "text_only",
+    "llm_model": "gpt-4.1-nano",
+    "llm_api_key": "",
+    "llm_api_key_env": "OPENAI_API_KEY",
+    "embedding_model": "all-MiniLM-L6-v2",
+    "retrieve_k": 10,
+    "caption_preprocessed": true,
+    "llm_temperature": 0.0,
+    "importance_post_scale": 10.0,
+    "reflection_threshold": 8.0,
+    "reflection_topk": 2,
+    "reflection_question_number": 2,
+    "reflection_insight_number": 2,
+    "recency_decay": 0.995,
+    "recall_truncation_words": 4000
+  },
+  "run": {
+    "output_root": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/runs",
+    "method_runtime": {
+      "caption_validation_passed": true,
+      "caption_validation_round_count": 30,
+      "method_modality": "text_only",
+      "history_source": "retrieval",
+      "captions_loaded": true,
+      "images_loaded": false,
+      "num_memories": 30,
+      "debug_dir": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/output/card_playlog_test/gen_agents",
+      "history_turns_after_truncation": 1,
+      "retrieved_round_ids": [
+        "PLAY_S2:R1",
+        "PLAY_S3:R3",
+        "PLAY_S4:R6",
+        "PLAY_S4:R3",
+        "PLAY_S1:R6",
+        "PLAY_S4:R7",
+        "PLAY_S4:R2",
+        "PLAY_S2:R5",
+        "PLAY_S2:R6",
+        "PLAY_S4:R1"
+      ]
+    }
+  }
+}

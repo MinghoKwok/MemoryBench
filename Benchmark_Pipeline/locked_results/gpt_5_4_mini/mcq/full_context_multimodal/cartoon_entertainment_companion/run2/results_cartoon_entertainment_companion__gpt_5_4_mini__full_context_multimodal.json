@@ -1,0 +1,135 @@
+{
+  "task_name": "cartoon_entertainment_companion",
+  "model_name": "gpt_5_4_mini",
+  "model_path": "gpt-5.4-mini",
+  "method_name": "full_context_multimodal",
+  "base_method_name": "full_context_multimodal",
+  "method_modality": "",
+  "mode": "mcq",
+  "num_qas": 76,
+  "num_qas_run": 76,
+  "dialog_json": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/dialog/Cartoon_Entertainment_Companion.json",
+  "image_root": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image",
+  "run_dir": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/runs/cartoon_entertainment_companion/20260426_101820_gpt_5_4_mini_full_context_multimodal",
+  "git_commit": "f50478ca8d87824ef1e9bc48c2b9e0d49e54305a",
+  "summary": {
+    "open_count": 76,
+    "overall": {
+      "em": 0.6677631578947368,
+      "contains_gt": 0.7368421052631579,
+      "f1": 0.6677631578947368
+    },
+    "by_x": {
+      "X3": {
+        "em": 0.5652173913043478,
+        "contains_gt": 0.7391304347826086,
+        "f1": 0.5652173913043478
+      },
+      "X4": {
+        "em": 0.6195652173913043,
+        "contains_gt": 0.5652173913043478,
+        "f1": 0.6195652173913043
+      },
+      "X2": {
+        "em": 0.6607142857142857,
+        "contains_gt": 0.7857142857142857,
+        "f1": 0.6607142857142857
+      },
+      "X1": {
+        "em": 0.890625,
+        "contains_gt": 0.9375,
+        "f1": 0.890625
+      }
+    },
+    "by_y": {
+      "Y1": {
+        "em": 0.6328125,
+        "contains_gt": 0.6875,
+        "f1": 0.6328125
+      },
+      "Y2": {
+        "em": 0.6538461538461539,
+        "contains_gt": 0.7435897435897436,
+        "f1": 0.6538461538461539
+      },
+      "Y3": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
+      }
+    },
+    "by_cell": {
+      "X3_Y1": {
+        "em": 0.5454545454545454,
+        "contains_gt": 0.7272727272727273,
+        "f1": 0.5454545454545454
+      },
+      "X4_Y2": {
+        "em": 0.775,
+        "contains_gt": 0.7,
+        "f1": 0.775
+      },
+      "X2_Y2": {
+        "em": 0.5,
+        "contains_gt": 0.6666666666666666,
+        "f1": 0.5
+      },
+      "X3_Y2": {
+        "em": 0.5833333333333334,
+        "contains_gt": 0.75,
+        "f1": 0.5833333333333334
+      },
+      "X4_Y1": {
+        "em": 0.4583333333333333,
+        "contains_gt": 0.4166666666666667,
+        "f1": 0.4583333333333333
+      },
+      "X1_Y1": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
+      },
+      "X1_Y2": {
+        "em": 0.78125,
+        "contains_gt": 0.875,
+        "f1": 0.78125
+      },
+      "X2_Y1": {
+        "em": 0.95,
+        "contains_gt": 1.0,
+        "f1": 0.95
+      },
+      "X1_Y3": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
+      },
+      "X4_Y3": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
+      }
+    },
+    "mcq_count": 76,
+    "mcq_valid_rate": 1.0,
+    "mcq_overall": {
+      "em": 0.6677631578947368,
+      "contains_gt": 0.7368421052631579,
+      "f1": 0.6677631578947368
+    },
+    "mcq_per_position_accuracy": {
+      "A": 0.5789473684210527,
+      "B": 0.6578947368421053,
+      "C": 0.6973684210526315,
+      "D": 0.7368421052631579
+    }
+  },
+  "method_runtime": {
+    "method_modality": "multimodal",
+    "history_source": "full_context",
+    "captions_loaded": false,
+    "images_loaded": true,
+    "history_turns_after_truncation": 598,
+    "history_turns_before_truncation": 598
+  }
+}

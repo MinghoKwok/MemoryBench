@@ -1,0 +1,209 @@
+{
+  "task_name": "social_chat_memory_test",
+  "model_name": "gpt_5_4_mini",
+  "model_path": "gpt-5.4-mini",
+  "method_name": "semantic_rag_multimodal",
+  "base_method_name": "semantic_rag_multimodal",
+  "method_modality": "multimodal",
+  "mode": "mcq",
+  "num_qas": 37,
+  "num_qas_run": 37,
+  "dialog_json": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/dialog/Social_Chat_Memory_Test.json",
+  "image_root": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image",
+  "run_dir": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/runs/social_chat_memory_test/20260426_113628_gpt_5_4_mini_semantic_rag_multimodal",
+  "git_commit": "f50478ca8d87824ef1e9bc48c2b9e0d49e54305a",
+  "summary": {
+    "open_count": 37,
+    "overall": {
+      "em": 0.5337837837837838,
+      "contains_gt": 0.5405405405405406,
+      "f1": 0.5337837837837838
+    },
+    "by_x": {
+      "X2": {
+        "em": 0.5775862068965517,
+        "contains_gt": 0.5862068965517241,
+        "f1": 0.5775862068965517
+      },
+      "X1": {
+        "em": 0.4,
+        "contains_gt": 0.4,
+        "f1": 0.4
+      },
+      "X3": {
+        "em": 0.5,
+        "contains_gt": 0.5,
+        "f1": 0.5
+      },
+      "X4": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0
+      }
+    },
+    "by_y": {
+      "Y2": {
+        "em": 0.49,
+        "contains_gt": 0.48,
+        "f1": 0.49
+      },
+      "Y3": {
+        "em": 0.5,
+        "contains_gt": 0.5,
+        "f1": 0.5
+      },
+      "Y1": {
+        "em": 0.75,
+        "contains_gt": 0.8333333333333334,
+        "f1": 0.75
+      }
+    },
+    "by_cell": {
+      "X2_Y2": {
+        "em": 0.5568181818181818,
+        "contains_gt": 0.5454545454545454,
+        "f1": 0.5568181818181818
+      },
+      "X2_Y3": {
+        "em": 0.75,
+        "contains_gt": 0.75,
+        "f1": 0.75
+      },
+      "X2_Y1": {
+        "em": 0.5,
+        "contains_gt": 0.6666666666666666,
+        "f1": 0.5
+      },
+      "X1_Y1": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
+      },
+      "X1_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0
+      },
+      "X3_Y1": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
+      },
+      "X3_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0
+      },
+      "X4_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0
+      },
+      "X1_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0
+      }
+    },
+    "mcq_count": 37,
+    "mcq_valid_rate": 1.0,
+    "mcq_overall": {
+      "em": 0.5337837837837838,
+      "contains_gt": 0.5405405405405406,
+      "f1": 0.5337837837837838
+    },
+    "mcq_per_position_accuracy": {
+      "A": 0.4864864864864865,
+      "B": 0.5675675675675675,
+      "C": 0.5405405405405406,
+      "D": 0.5405405405405406
+    }
+  },
+  "method_runtime": {
+    "retrieval_backend": "dense_multimodal",
+    "retrieval_corpus": "round_text",
+    "method_modality": "multimodal",
+    "top_k": 10,
+    "neighbor_window": 0,
+    "seed_round_ids": [
+      "CHAT_S18:R2",
+      "CHAT_S35:R2",
+      "CHAT_S15:R2",
+      "CHAT_S2:R2",
+      "CHAT_S4:R2",
+      "CHAT_S28:R2",
+      "CHAT_S11:R2",
+      "CHAT_S3:R2",
+      "CHAT_S19:R2",
+      "CHAT_S26:R2"
+    ],
+    "selected_round_ids": [
+      "CHAT_S18:R2",
+      "CHAT_S35:R2",
+      "CHAT_S15:R2",
+      "CHAT_S2:R2",
+      "CHAT_S4:R2",
+      "CHAT_S28:R2",
+      "CHAT_S11:R2",
+      "CHAT_S3:R2",
+      "CHAT_S19:R2",
+      "CHAT_S26:R2"
+    ],
+    "top_candidates": [
+      {
+        "round_id": "CHAT_S18:R2",
+        "score": 0.08448036932934072,
+        "text_dense_score": 0.06549520710296511,
+        "image_dense_score": 0.10346553155571635,
+        "indexed_image_count": 1,
+        "best_image_path": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image/Social_Chat_Memory_Test/screenshots/F4_2.png"
+      },
+      {
+        "round_id": "CHAT_S35:R2",
+        "score": 0.08419214965217858,
+        "text_dense_score": 0.06549520710296511,
+        "image_dense_score": 0.10288909220139204,
+        "indexed_image_count": 1,
+        "best_image_path": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image/Social_Chat_Memory_Test/screenshots/R4_2.png"
+      },
+      {
+        "round_id": "CHAT_S15:R2",
+        "score": 0.07790054318825558,
+        "text_dense_score": 0.06549520710296511,
+        "image_dense_score": 0.09030587927354605,
+        "indexed_image_count": 1,
+        "best_image_path": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image/Social_Chat_Memory_Test/screenshots/R2_2.png"
+      },
+      {
+        "round_id": "CHAT_S2:R2",
+        "score": 0.07762508631941624,
+        "text_dense_score": 0.06549520710296511,
+        "image_dense_score": 0.08975496553586737,
+        "indexed_image_count": 1,
+        "best_image_path": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image/Social_Chat_Memory_Test/screenshots/B1_2.png"
+      },
+      {
+        "round_id": "CHAT_S4:R2",
+        "score": 0.07642997165474352,
+        "text_dense_score": 0.06549520710296511,
+        "image_dense_score": 0.08736473620652195,
+        "indexed_image_count": 1,
+        "best_image_path": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image/Social_Chat_Memory_Test/screenshots/B2_2.png"
+      }
+    ],
+    "clue_hit_count": 1,
+    "corpus_entry_count": 53,
+    "text_embedding_model": "all-MiniLM-L6-v2",
+    "multimodal_embedding_model": "siglip2-base-patch16-384",
+    "text_dense_weight": 0.5,
+    "image_dense_weight": 0.5,
+    "caption_text_included": false,
+    "image_embeddings_built": true,
+    "multi_image_indexing_enabled": true,
+    "indexed_image_count": 43,
+    "history_source": "retrieval",
+    "captions_loaded": false,
+    "images_loaded": true,
+    "history_turns_after_truncation": 20
+  }
+}

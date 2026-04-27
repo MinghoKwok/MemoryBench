@@ -1,0 +1,167 @@
+{
+  "task_name": "card_playlog_test_open",
+  "model_name": "gpt_5_4_mini",
+  "model_path": "gpt-5.4-mini",
+  "method_name": "semantic_rag_multimodal",
+  "base_method_name": "semantic_rag_multimodal",
+  "method_modality": "multimodal",
+  "mode": "open",
+  "num_qas": 48,
+  "num_qas_run": 48,
+  "dialog_json": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/dialog/Card_Playlog_Test_Open.json",
+  "image_root": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image",
+  "run_dir": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/runs/card_playlog_test_open/20260426_111117_gpt_5_4_mini_semantic_rag_multimodal",
+  "git_commit": "f50478ca8d87824ef1e9bc48c2b9e0d49e54305a",
+  "summary": {
+    "open_count": 48,
+    "overall": {
+      "em": 0.2708333333333333,
+      "contains_gt": 0.2708333333333333,
+      "f1": 0.2708333333333333,
+      "bleu": 0.048161734021887496,
+      "bleu_1": 0.2708333333333333,
+      "bleu_2": 0.08564501996289363,
+      "judge": 0.2708333333333333
+    },
+    "by_x": {
+      "X4": {
+        "em": 0.2708333333333333,
+        "contains_gt": 0.2708333333333333,
+        "f1": 0.2708333333333333,
+        "bleu": 0.048161734021887496,
+        "bleu_1": 0.2708333333333333,
+        "bleu_2": 0.08564501996289363,
+        "judge": 0.2708333333333333
+      }
+    },
+    "by_y": {
+      "Y3": {
+        "em": 0.3157894736842105,
+        "contains_gt": 0.3157894736842105,
+        "f1": 0.3157894736842105,
+        "bleu": 0.05615619189596599,
+        "bleu_1": 0.3157894736842105,
+        "bleu_2": 0.09986139979479094,
+        "judge": 0.3157894736842105
+      },
+      "Y2": {
+        "em": 0.2413793103448276,
+        "contains_gt": 0.2413793103448276,
+        "f1": 0.2413793103448276,
+        "bleu": 0.04292398575956021,
+        "bleu_1": 0.2413793103448276,
+        "bleu_2": 0.07633084007302986,
+        "judge": 0.2413793103448276
+      }
+    },
+    "by_cell": {
+      "X4_Y3": {
+        "em": 0.3157894736842105,
+        "contains_gt": 0.3157894736842105,
+        "f1": 0.3157894736842105,
+        "bleu": 0.05615619189596599,
+        "bleu_1": 0.3157894736842105,
+        "bleu_2": 0.09986139979479094,
+        "judge": 0.3157894736842105
+      },
+      "X4_Y2": {
+        "em": 0.2413793103448276,
+        "contains_gt": 0.2413793103448276,
+        "f1": 0.2413793103448276,
+        "bleu": 0.04292398575956021,
+        "bleu_1": 0.2413793103448276,
+        "bleu_2": 0.07633084007302986,
+        "judge": 0.2413793103448276
+      }
+    }
+  },
+  "method_runtime": {
+    "retrieval_backend": "dense_multimodal",
+    "retrieval_corpus": "round_text",
+    "method_modality": "multimodal",
+    "top_k": 10,
+    "neighbor_window": 0,
+    "seed_round_ids": [
+      "PLAY_S1:R1",
+      "PLAY_S3:R1",
+      "PLAY_S2:R1",
+      "PLAY_S4:R1",
+      "PLAY_S3:R3",
+      "PLAY_S4:R6",
+      "PLAY_S4:R5",
+      "PLAY_S2:R3",
+      "PLAY_S4:R3",
+      "PLAY_S3:R6"
+    ],
+    "selected_round_ids": [
+      "PLAY_S1:R1",
+      "PLAY_S3:R1",
+      "PLAY_S2:R1",
+      "PLAY_S4:R1",
+      "PLAY_S3:R3",
+      "PLAY_S4:R6",
+      "PLAY_S4:R5",
+      "PLAY_S2:R3",
+      "PLAY_S4:R3",
+      "PLAY_S3:R6"
+    ],
+    "top_candidates": [
+      {
+        "round_id": "PLAY_S1:R1",
+        "score": 0.35629280452427803,
+        "text_dense_score": 0.5862275440668321,
+        "image_dense_score": 0.12635806498172392,
+        "indexed_image_count": 1,
+        "best_image_path": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image/Card_Playlog_Test/uno_44/state_0000.jpg"
+      },
+      {
+        "round_id": "PLAY_S3:R1",
+        "score": 0.33529163139482526,
+        "text_dense_score": 0.5518056928691789,
+        "image_dense_score": 0.11877756992047162,
+        "indexed_image_count": 1,
+        "best_image_path": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image/Card_Playlog_Test/uno_44/state_0002.jpg"
+      },
+      {
+        "round_id": "PLAY_S2:R1",
+        "score": 0.3335254077691429,
+        "text_dense_score": 0.5434317851617789,
+        "image_dense_score": 0.12361903037650693,
+        "indexed_image_count": 1,
+        "best_image_path": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image/Card_Playlog_Test/uno_44/state_0001.jpg"
+      },
+      {
+        "round_id": "PLAY_S4:R1",
+        "score": 0.3224738679654875,
+        "text_dense_score": 0.5244686569836053,
+        "image_dense_score": 0.1204790789473697,
+        "indexed_image_count": 1,
+        "best_image_path": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image/Card_Playlog_Test/uno_44/state_0003.jpg"
+      },
+      {
+        "round_id": "PLAY_S3:R3",
+        "score": 0.30848356832553814,
+        "text_dense_score": 0.4882373551686552,
+        "image_dense_score": 0.12872978148242104,
+        "indexed_image_count": 1,
+        "best_image_path": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image/Card_Playlog_Test/uno_44/state_0010.jpg"
+      }
+    ],
+    "clue_hit_count": 1,
+    "corpus_entry_count": 30,
+    "text_embedding_model": "all-MiniLM-L6-v2",
+    "multimodal_embedding_model": "siglip2-base-patch16-384",
+    "text_dense_weight": 0.5,
+    "image_dense_weight": 0.5,
+    "caption_text_included": false,
+    "image_embeddings_built": true,
+    "multi_image_indexing_enabled": true,
+    "indexed_image_count": 30,
+    "history_source": "retrieval",
+    "captions_loaded": false,
+    "images_loaded": true,
+    "history_turns_after_truncation": 20
+  },
+  "judge_model": "gpt-5.2",
+  "judge_rescored_from_predictions": true
+}

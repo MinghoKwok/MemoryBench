@@ -1,0 +1,147 @@
+{
+  "task_name": "card_playlog_test_open",
+  "model_name": "gpt_5_4_mini",
+  "model_path": "gpt-5.4-mini",
+  "method_name": "semantic_rag_text_only",
+  "base_method_name": "semantic_rag_text_only",
+  "method_modality": "",
+  "mode": "open",
+  "num_qas": 48,
+  "num_qas_run": 48,
+  "dialog_json": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/dialog/Card_Playlog_Test_Open.json",
+  "image_root": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image",
+  "run_dir": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/runs/card_playlog_test_open/20260426_105607_gpt_5_4_mini_semantic_rag_text_only",
+  "git_commit": "f50478ca8d87824ef1e9bc48c2b9e0d49e54305a",
+  "summary": {
+    "open_count": 48,
+    "overall": {
+      "em": 0.375,
+      "contains_gt": 0.375,
+      "f1": 0.375,
+      "bleu": 0.0666854778764596,
+      "bleu_1": 0.375,
+      "bleu_2": 0.11858541225631425,
+      "judge": 0.375
+    },
+    "by_x": {
+      "X4": {
+        "em": 0.375,
+        "contains_gt": 0.375,
+        "f1": 0.375,
+        "bleu": 0.0666854778764596,
+        "bleu_1": 0.375,
+        "bleu_2": 0.11858541225631425,
+        "judge": 0.375
+      }
+    },
+    "by_y": {
+      "Y3": {
+        "em": 0.2631578947368421,
+        "contains_gt": 0.2631578947368421,
+        "f1": 0.2631578947368421,
+        "bleu": 0.046796826579971654,
+        "bleu_1": 0.2631578947368421,
+        "bleu_2": 0.08321783316232578,
+        "judge": 0.2631578947368421
+      },
+      "Y2": {
+        "em": 0.4482758620689655,
+        "contains_gt": 0.4482758620689655,
+        "f1": 0.4482758620689655,
+        "bleu": 0.07971597355346896,
+        "bleu_1": 0.4482758620689655,
+        "bleu_2": 0.14175727442134117,
+        "judge": 0.4482758620689655
+      }
+    },
+    "by_cell": {
+      "X4_Y3": {
+        "em": 0.2631578947368421,
+        "contains_gt": 0.2631578947368421,
+        "f1": 0.2631578947368421,
+        "bleu": 0.046796826579971654,
+        "bleu_1": 0.2631578947368421,
+        "bleu_2": 0.08321783316232578,
+        "judge": 0.2631578947368421
+      },
+      "X4_Y2": {
+        "em": 0.4482758620689655,
+        "contains_gt": 0.4482758620689655,
+        "f1": 0.4482758620689655,
+        "bleu": 0.07971597355346896,
+        "bleu_1": 0.4482758620689655,
+        "bleu_2": 0.14175727442134117,
+        "judge": 0.4482758620689655
+      }
+    }
+  },
+  "method_runtime": {
+    "retrieval_backend": "dense_text",
+    "retrieval_corpus": "round_text",
+    "method_modality": "text_only",
+    "top_k": 10,
+    "neighbor_window": 0,
+    "seed_round_ids": [
+      "PLAY_S1:R1",
+      "PLAY_S4:R1",
+      "PLAY_S3:R1",
+      "PLAY_S3:R3",
+      "PLAY_S2:R1",
+      "PLAY_S3:R6",
+      "PLAY_S4:R7",
+      "PLAY_S4:R6",
+      "PLAY_S4:R3",
+      "PLAY_S4:R4"
+    ],
+    "selected_round_ids": [
+      "PLAY_S1:R1",
+      "PLAY_S4:R1",
+      "PLAY_S3:R1",
+      "PLAY_S3:R3",
+      "PLAY_S2:R1",
+      "PLAY_S3:R6",
+      "PLAY_S4:R7",
+      "PLAY_S4:R6",
+      "PLAY_S4:R3",
+      "PLAY_S4:R4"
+    ],
+    "top_candidates": [
+      {
+        "round_id": "PLAY_S1:R1",
+        "score": 0.5394042847880628,
+        "text_dense_score": 0.5394042847880628
+      },
+      {
+        "round_id": "PLAY_S4:R1",
+        "score": 0.5351180075554457,
+        "text_dense_score": 0.5351180075554457
+      },
+      {
+        "round_id": "PLAY_S3:R1",
+        "score": 0.5273098327670225,
+        "text_dense_score": 0.5273098327670225
+      },
+      {
+        "round_id": "PLAY_S3:R3",
+        "score": 0.5244891772869864,
+        "text_dense_score": 0.5244891772869864
+      },
+      {
+        "round_id": "PLAY_S2:R1",
+        "score": 0.5079459356215262,
+        "text_dense_score": 0.5079459356215262
+      }
+    ],
+    "clue_hit_count": 0,
+    "corpus_entry_count": 30,
+    "text_embedding_model": "all-MiniLM-L6-v2",
+    "caption_text_included": true,
+    "image_embeddings_built": false,
+    "history_source": "retrieval",
+    "captions_loaded": true,
+    "images_loaded": false,
+    "history_turns_after_truncation": 20
+  },
+  "judge_model": "gpt-5.2",
+  "judge_rescored_from_predictions": true
+}

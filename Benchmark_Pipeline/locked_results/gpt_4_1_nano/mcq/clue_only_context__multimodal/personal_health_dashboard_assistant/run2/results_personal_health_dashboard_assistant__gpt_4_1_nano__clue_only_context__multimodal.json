@@ -1,0 +1,104 @@
+{
+  "task_name": "personal_health_dashboard_assistant",
+  "model_name": "gpt_4_1_nano",
+  "model_path": "gpt-4.1-nano",
+  "method_name": "clue_only_context__multimodal",
+  "base_method_name": "clue_only_context",
+  "method_modality": "multimodal",
+  "mode": "mcq",
+  "num_qas": 51,
+  "num_qas_run": 51,
+  "dialog_json": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/dialog/Personal_Health_Dashboard_Assistant.json",
+  "image_root": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image",
+  "run_dir": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/Benchmark_Pipeline/runs_clue_only_mcq_ablation/personal_health_dashboard_assistant/20260425_230927_gpt_4_1_nano_clue_only_context__multimodal",
+  "git_commit": "35aa30ab7205e464bf92b809f6f3a6932c7f7aef",
+  "summary": {
+    "open_count": 51,
+    "overall": {
+      "em": 0.28431372549019607,
+      "contains_gt": 0.23529411764705882,
+      "f1": 0.28431372549019607
+    },
+    "by_x": {
+      "X4": {
+        "em": 0.25,
+        "contains_gt": 0.1590909090909091,
+        "f1": 0.25
+      },
+      "X3": {
+        "em": 0.1875,
+        "contains_gt": 0.5,
+        "f1": 0.1875
+      },
+      "X1": {
+        "em": 0.9166666666666666,
+        "contains_gt": 1.0,
+        "f1": 0.9166666666666666
+      }
+    },
+    "by_y": {
+      "Y2": {
+        "em": 0.22727272727272727,
+        "contains_gt": 0.1590909090909091,
+        "f1": 0.22727272727272727
+      },
+      "Y3": {
+        "em": 0.5833333333333334,
+        "contains_gt": 0.6666666666666666,
+        "f1": 0.5833333333333334
+      },
+      "Y1": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
+      }
+    },
+    "by_cell": {
+      "X4_Y2": {
+        "em": 0.23125,
+        "contains_gt": 0.125,
+        "f1": 0.23125
+      },
+      "X4_Y3": {
+        "em": 0.4375,
+        "contains_gt": 0.5,
+        "f1": 0.4375
+      },
+      "X3_Y2": {
+        "em": 0.1875,
+        "contains_gt": 0.5,
+        "f1": 0.1875
+      },
+      "X1_Y3": {
+        "em": 0.875,
+        "contains_gt": 1.0,
+        "f1": 0.875
+      },
+      "X1_Y1": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
+      }
+    },
+    "mcq_count": 51,
+    "mcq_valid_rate": 1.0,
+    "mcq_overall": {
+      "em": 0.28431372549019607,
+      "contains_gt": 0.23529411764705882,
+      "f1": 0.28431372549019607
+    },
+    "mcq_per_position_accuracy": {
+      "A": 0.35294117647058826,
+      "B": 0.21568627450980393,
+      "C": 0.3333333333333333,
+      "D": 0.23529411764705882
+    }
+  },
+  "method_runtime": {
+    "method_modality": "multimodal",
+    "history_source": "clue_only",
+    "captions_loaded": false,
+    "images_loaded": true,
+    "history_turns_after_truncation": 6
+  }
+}

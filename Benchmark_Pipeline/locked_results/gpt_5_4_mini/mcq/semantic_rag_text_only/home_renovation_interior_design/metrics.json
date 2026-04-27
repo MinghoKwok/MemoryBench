@@ -1,0 +1,184 @@
+{
+  "task_name": "home_renovation_interior_design",
+  "model_name": "gpt_5_4_mini",
+  "model_path": "gpt-5.4-mini",
+  "method_name": "semantic_rag_text_only",
+  "base_method_name": "semantic_rag_text_only",
+  "method_modality": "",
+  "mode": "mcq",
+  "num_qas": 52,
+  "num_qas_run": 52,
+  "dialog_json": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/dialog/Home_Renovation_Interior_Design.json",
+  "image_root": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image",
+  "run_dir": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/runs/home_renovation_interior_design/20260426_105926_gpt_5_4_mini_semantic_rag_text_only",
+  "git_commit": "f50478ca8d87824ef1e9bc48c2b9e0d49e54305a",
+  "summary": {
+    "open_count": 52,
+    "overall": {
+      "em": 0.44711538461538464,
+      "contains_gt": 0.4807692307692308,
+      "f1": 0.44711538461538464
+    },
+    "by_x": {
+      "X4": {
+        "em": 0.25,
+        "contains_gt": 0.25,
+        "f1": 0.25
+      },
+      "X3": {
+        "em": 0.4722222222222222,
+        "contains_gt": 0.5,
+        "f1": 0.4722222222222222
+      },
+      "X2": {
+        "em": 0.5,
+        "contains_gt": 0.5714285714285714,
+        "f1": 0.5
+      },
+      "X1": {
+        "em": 0.75,
+        "contains_gt": 1.0,
+        "f1": 0.75
+      }
+    },
+    "by_y": {
+      "Y2": {
+        "em": 0.3125,
+        "contains_gt": 0.3333333333333333,
+        "f1": 0.3125
+      },
+      "Y1": {
+        "em": 0.47435897435897434,
+        "contains_gt": 0.5128205128205128,
+        "f1": 0.47435897435897434
+      },
+      "Y3": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
+      }
+    },
+    "by_cell": {
+      "X4_Y2": {
+        "em": 0.125,
+        "contains_gt": 0.0,
+        "f1": 0.125
+      },
+      "X3_Y2": {
+        "em": 0.2,
+        "contains_gt": 0.2,
+        "f1": 0.2
+      },
+      "X3_Y1": {
+        "em": 0.5161290322580645,
+        "contains_gt": 0.5483870967741935,
+        "f1": 0.5161290322580645
+      },
+      "X2_Y1": {
+        "em": 0.5,
+        "contains_gt": 0.5,
+        "f1": 0.5
+      },
+      "X2_Y2": {
+        "em": 0.5,
+        "contains_gt": 0.6,
+        "f1": 0.5
+      },
+      "X4_Y1": {
+        "em": 0.15,
+        "contains_gt": 0.2,
+        "f1": 0.15
+      },
+      "X4_Y3": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
+      },
+      "X1_Y1": {
+        "em": 0.75,
+        "contains_gt": 1.0,
+        "f1": 0.75
+      }
+    },
+    "mcq_count": 52,
+    "mcq_valid_rate": 1.0,
+    "mcq_overall": {
+      "em": 0.44711538461538464,
+      "contains_gt": 0.4807692307692308,
+      "f1": 0.44711538461538464
+    },
+    "mcq_per_position_accuracy": {
+      "A": 0.40384615384615385,
+      "B": 0.4423076923076923,
+      "C": 0.46153846153846156,
+      "D": 0.4807692307692308
+    }
+  },
+  "method_runtime": {
+    "retrieval_backend": "dense_text",
+    "retrieval_corpus": "round_text",
+    "method_modality": "text_only",
+    "top_k": 10,
+    "neighbor_window": 0,
+    "seed_round_ids": [
+      "HOME_S9:R5",
+      "HOME_S1:R10",
+      "HOME_S1:R11",
+      "HOME_S13:R6",
+      "HOME_S1:R7",
+      "HOME_S6:R4",
+      "HOME_S12:R1",
+      "HOME_S1:R5",
+      "HOME_S12:R6",
+      "HOME_S10:R7"
+    ],
+    "selected_round_ids": [
+      "HOME_S9:R5",
+      "HOME_S1:R10",
+      "HOME_S1:R11",
+      "HOME_S13:R6",
+      "HOME_S1:R7",
+      "HOME_S6:R4",
+      "HOME_S12:R1",
+      "HOME_S1:R5",
+      "HOME_S12:R6",
+      "HOME_S10:R7"
+    ],
+    "top_candidates": [
+      {
+        "round_id": "HOME_S9:R5",
+        "score": 0.41742302610892773,
+        "text_dense_score": 0.41742302610892773
+      },
+      {
+        "round_id": "HOME_S1:R10",
+        "score": 0.3913432701986887,
+        "text_dense_score": 0.3913432701986887
+      },
+      {
+        "round_id": "HOME_S1:R11",
+        "score": 0.38409026668254526,
+        "text_dense_score": 0.38409026668254526
+      },
+      {
+        "round_id": "HOME_S13:R6",
+        "score": 0.3791916016859843,
+        "text_dense_score": 0.3791916016859843
+      },
+      {
+        "round_id": "HOME_S1:R7",
+        "score": 0.379047998692167,
+        "text_dense_score": 0.379047998692167
+      }
+    ],
+    "clue_hit_count": 0,
+    "corpus_entry_count": 120,
+    "text_embedding_model": "all-MiniLM-L6-v2",
+    "caption_text_included": true,
+    "image_embeddings_built": false,
+    "history_source": "retrieval",
+    "captions_loaded": true,
+    "images_loaded": false,
+    "history_turns_after_truncation": 20
+  }
+}

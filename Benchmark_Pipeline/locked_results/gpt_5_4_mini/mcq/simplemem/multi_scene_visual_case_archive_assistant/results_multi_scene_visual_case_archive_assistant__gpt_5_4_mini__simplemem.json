@@ -1,0 +1,112 @@
+{
+  "task_name": "multi_scene_visual_case_archive_assistant",
+  "model_name": "gpt_5_4_mini",
+  "model_path": "gpt-5.4-mini",
+  "method_name": "simplemem",
+  "base_method_name": "simplemem",
+  "method_modality": "",
+  "mode": "mcq",
+  "num_qas": 50,
+  "num_qas_run": 50,
+  "dialog_json": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/dialog/Multi-Scene_Visual_Case_Archive_Assistant.json",
+  "image_root": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image",
+  "run_dir": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/runs/multi_scene_visual_case_archive_assistant/20260426_162247_gpt_5_4_mini_simplemem",
+  "git_commit": "f50478ca8d87824ef1e9bc48c2b9e0d49e54305a",
+  "summary": {
+    "open_count": 50,
+    "overall": {
+      "em": 0.215,
+      "contains_gt": 0.18,
+      "f1": 0.215
+    },
+    "by_x": {
+      "X4": {
+        "em": 0.5625,
+        "contains_gt": 0.5,
+        "f1": 0.5625
+      },
+      "X2": {
+        "em": 0.53125,
+        "contains_gt": 0.5,
+        "f1": 0.53125
+      },
+      "X3": {
+        "em": 0.1118421052631579,
+        "contains_gt": 0.07894736842105263,
+        "f1": 0.1118421052631579
+      }
+    },
+    "by_y": {
+      "Y2": {
+        "em": 0.34375,
+        "contains_gt": 0.25,
+        "f1": 0.34375
+      },
+      "Y3": {
+        "em": 0.38636363636363635,
+        "contains_gt": 0.36363636363636365,
+        "f1": 0.38636363636363635
+      },
+      "Y1": {
+        "em": 0.12096774193548387,
+        "contains_gt": 0.0967741935483871,
+        "f1": 0.12096774193548387
+      }
+    },
+    "by_cell": {
+      "X4_Y2": {
+        "em": 0.6666666666666666,
+        "contains_gt": 0.6666666666666666,
+        "f1": 0.6666666666666666
+      },
+      "X2_Y2": {
+        "em": 0.16666666666666666,
+        "contains_gt": 0.0,
+        "f1": 0.16666666666666666
+      },
+      "X3_Y3": {
+        "em": 0.05,
+        "contains_gt": 0.0,
+        "f1": 0.05
+      },
+      "X2_Y3": {
+        "em": 0.75,
+        "contains_gt": 0.8,
+        "f1": 0.75
+      },
+      "X3_Y1": {
+        "em": 0.12096774193548387,
+        "contains_gt": 0.0967741935483871,
+        "f1": 0.12096774193548387
+      },
+      "X3_Y2": {
+        "em": 0.125,
+        "contains_gt": 0.0,
+        "f1": 0.125
+      },
+      "X4_Y3": {
+        "em": 0.25,
+        "contains_gt": 0.0,
+        "f1": 0.25
+      }
+    },
+    "mcq_count": 50,
+    "mcq_valid_rate": 0.8,
+    "mcq_overall": {
+      "em": 0.215,
+      "contains_gt": 0.18,
+      "f1": 0.215
+    },
+    "mcq_per_position_accuracy": {
+      "A": 0.22,
+      "B": 0.26,
+      "C": 0.2,
+      "D": 0.18
+    }
+  },
+  "method_runtime": {
+    "num_memories": 117,
+    "debug_dir": "/Users/qingyuejiao/Desktop/MemoryBench/output/multi-scene_visual_case_archive_assistant/simplemem",
+    "data_dir": "/Users/qingyuejiao/Desktop/MemoryBench/runs/simplemem/multi-scene_visual_case_archive_assistant"
+  }
+}

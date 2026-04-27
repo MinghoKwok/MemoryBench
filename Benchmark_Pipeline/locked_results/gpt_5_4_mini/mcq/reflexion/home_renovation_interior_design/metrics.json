@@ -1,0 +1,121 @@
+{
+  "task_name": "home_renovation_interior_design",
+  "model_name": "gpt_5_4_mini",
+  "model_path": "gpt-5.4-mini",
+  "method_name": "reflexion",
+  "base_method_name": "reflexion",
+  "method_modality": "",
+  "mode": "mcq",
+  "num_qas": 52,
+  "num_qas_run": 52,
+  "dialog_json": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/dialog/Home_Renovation_Interior_Design.json",
+  "image_root": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image",
+  "run_dir": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/runs/home_renovation_interior_design/20260426_131924_gpt_5_4_mini_reflexion",
+  "git_commit": "f50478ca8d87824ef1e9bc48c2b9e0d49e54305a",
+  "summary": {
+    "open_count": 52,
+    "overall": {
+      "em": 0.1971153846153846,
+      "contains_gt": 0.23076923076923078,
+      "f1": 0.1971153846153846
+    },
+    "by_x": {
+      "X4": {
+        "em": 0.1875,
+        "contains_gt": 0.125,
+        "f1": 0.1875
+      },
+      "X3": {
+        "em": 0.1736111111111111,
+        "contains_gt": 0.2222222222222222,
+        "f1": 0.1736111111111111
+      },
+      "X2": {
+        "em": 0.21428571428571427,
+        "contains_gt": 0.2857142857142857,
+        "f1": 0.21428571428571427
+      },
+      "X1": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
+      }
+    },
+    "by_y": {
+      "Y2": {
+        "em": 0.14583333333333334,
+        "contains_gt": 0.16666666666666666,
+        "f1": 0.14583333333333334
+      },
+      "Y1": {
+        "em": 0.1987179487179487,
+        "contains_gt": 0.23076923076923078,
+        "f1": 0.1987179487179487
+      },
+      "Y3": {
+        "em": 0.75,
+        "contains_gt": 1.0,
+        "f1": 0.75
+      }
+    },
+    "by_cell": {
+      "X4_Y2": {
+        "em": 0.125,
+        "contains_gt": 0.0,
+        "f1": 0.125
+      },
+      "X3_Y2": {
+        "em": 0.2,
+        "contains_gt": 0.2,
+        "f1": 0.2
+      },
+      "X3_Y1": {
+        "em": 0.1693548387096774,
+        "contains_gt": 0.22580645161290322,
+        "f1": 0.1693548387096774
+      },
+      "X2_Y1": {
+        "em": 0.5,
+        "contains_gt": 0.5,
+        "f1": 0.5
+      },
+      "X2_Y2": {
+        "em": 0.1,
+        "contains_gt": 0.2,
+        "f1": 0.1
+      },
+      "X4_Y1": {
+        "em": 0.1,
+        "contains_gt": 0.0,
+        "f1": 0.1
+      },
+      "X4_Y3": {
+        "em": 0.75,
+        "contains_gt": 1.0,
+        "f1": 0.75
+      },
+      "X1_Y1": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
+      }
+    },
+    "mcq_count": 52,
+    "mcq_valid_rate": 1.0,
+    "mcq_overall": {
+      "em": 0.1971153846153846,
+      "contains_gt": 0.23076923076923078,
+      "f1": 0.1971153846153846
+    },
+    "mcq_per_position_accuracy": {
+      "A": 0.28846153846153844,
+      "B": 0.17307692307692307,
+      "C": 0.09615384615384616,
+      "D": 0.23076923076923078
+    }
+  },
+  "method_runtime": {
+    "num_memories": 120,
+    "debug_dir": "/Users/qingyuejiao/Desktop/MemoryBench/output/home_renovation_interior_design/reflexion"
+  }
+}

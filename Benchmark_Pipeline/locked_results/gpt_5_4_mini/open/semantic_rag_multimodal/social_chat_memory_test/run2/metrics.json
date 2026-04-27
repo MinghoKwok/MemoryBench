@@ -1,0 +1,266 @@
+{
+  "task_name": "social_chat_memory_test_open",
+  "model_name": "gpt_5_4_mini",
+  "model_path": "gpt-5.4-mini",
+  "method_name": "semantic_rag_multimodal",
+  "base_method_name": "semantic_rag_multimodal",
+  "method_modality": "multimodal",
+  "mode": "open",
+  "num_qas": 37,
+  "num_qas_run": 37,
+  "dialog_json": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/dialog/Social_Chat_Memory_Test_Open.json",
+  "image_root": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image",
+  "run_dir": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/runs/social_chat_memory_test_open/20260426_113804_gpt_5_4_mini_semantic_rag_multimodal",
+  "git_commit": "f50478ca8d87824ef1e9bc48c2b9e0d49e54305a",
+  "summary": {
+    "open_count": 37,
+    "overall": {
+      "em": 0.05405405405405406,
+      "contains_gt": 0.05405405405405406,
+      "f1": 0.25954473946305734,
+      "bleu": 0.05432650634293828,
+      "bleu_1": 0.17545933953964904,
+      "bleu_2": 0.10290849241796966,
+      "judge": 0.43243243243243246
+    },
+    "by_x": {
+      "X2": {
+        "em": 0.034482758620689655,
+        "contains_gt": 0.034482758620689655,
+        "f1": 0.2035805655461601,
+        "bleu": 0.0295959100898222,
+        "bleu_1": 0.12042683797053579,
+        "bleu_2": 0.05546405021530516,
+        "judge": 0.3620689655172414
+      },
+      "X1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.37986379185889585,
+        "bleu": 0.0458081832708802,
+        "bleu_1": 0.2786173204217687,
+        "bleu_2": 0.11852522070167885,
+        "judge": 0.7
+      },
+      "X3": {
+        "em": 0.5,
+        "contains_gt": 0.5,
+        "f1": 0.5,
+        "bleu": 0.158113883008419,
+        "bleu_1": 0.5,
+        "bleu_2": 0.5,
+        "judge": 0.5
+      },
+      "X4": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.8,
+        "bleu": 0.6065306597126334,
+        "bleu_1": 0.6065306597126334,
+        "bleu_2": 0.6065306597126334,
+        "judge": 1.0
+      }
+    },
+    "by_y": {
+      "Y2": {
+        "em": 0.04,
+        "contains_gt": 0.04,
+        "f1": 0.17767673372379256,
+        "bleu": 0.041163700892893784,
+        "bleu_1": 0.10596527662772132,
+        "bleu_2": 0.056088586014405584,
+        "judge": 0.3
+      },
+      "Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.3666164259166412,
+        "bleu": 0.025952392137518158,
+        "bleu_1": 0.21324601305233537,
+        "bleu_2": 0.1006732580687447,
+        "judge": 0.6666666666666666
+      },
+      "Y1": {
+        "em": 0.16666666666666666,
+        "contains_gt": 0.16666666666666666,
+        "f1": 0.49358974358974356,
+        "bleu": 0.13754564325687713,
+        "bleu_1": 0.42723126149332824,
+        "bleu_2": 0.3002266701153783,
+        "judge": 0.75
+      }
+    },
+    "by_cell": {
+      "X2_Y2": {
+        "em": 0.045454545454545456,
+        "contains_gt": 0.045454545454545456,
+        "f1": 0.16554174286794607,
+        "bleu": 0.01920735739135051,
+        "bleu_1": 0.09284551163547271,
+        "bleu_2": 0.03616745412034119,
+        "judge": 0.2727272727272727
+      },
+      "X2_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.35714618110262397,
+        "bleu": 0.022806781368376525,
+        "bleu_1": 0.17891911446539616,
+        "bleu_2": 0.08826668061433886,
+        "judge": 0.75
+      },
+      "X2_Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.2777777777777778,
+        "bleu": 0.11483080150720884,
+        "bleu_1": 0.2447001957678512,
+        "bleu_2": 0.1532355810463294,
+        "judge": 0.5
+      },
+      "X1_Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.5641025641025641,
+        "bleu": 0.08227684450139908,
+        "bleu_1": 0.41464349082820795,
+        "bleu_2": 0.17082663877664078,
+        "judge": 1.0
+      },
+      "X1_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0,
+        "bleu": 0.0,
+        "bleu_1": 0.0,
+        "bleu_2": 0.0,
+        "judge": 0.5
+      },
+      "X3_Y1": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0,
+        "bleu": 0.316227766016838,
+        "bleu_1": 1.0,
+        "bleu_2": 1.0,
+        "judge": 1.0
+      },
+      "X3_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0,
+        "bleu": 0.0,
+        "bleu_1": 0.0,
+        "bleu_2": 0.0,
+        "judge": 0.0
+      },
+      "X4_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.8,
+        "bleu": 0.6065306597126334,
+        "bleu_1": 0.6065306597126334,
+        "bleu_2": 0.6065306597126334,
+        "judge": 1.0
+      },
+      "X1_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.38555691554467564,
+        "bleu": 0.032243613675801426,
+        "bleu_1": 0.2818998102262138,
+        "bleu_2": 0.1254864129775564,
+        "judge": 0.5
+      }
+    }
+  },
+  "method_runtime": {
+    "retrieval_backend": "dense_multimodal",
+    "retrieval_corpus": "round_text",
+    "method_modality": "multimodal",
+    "top_k": 10,
+    "neighbor_window": 0,
+    "seed_round_ids": [
+      "CHAT_S35:R2",
+      "CHAT_S38:R1",
+      "CHAT_S35:R1",
+      "CHAT_S6:R1",
+      "CHAT_S2:R2",
+      "CHAT_S18:R2",
+      "CHAT_S15:R2",
+      "CHAT_S28:R2",
+      "CHAT_S18:R1",
+      "CHAT_S4:R2"
+    ],
+    "selected_round_ids": [
+      "CHAT_S35:R2",
+      "CHAT_S38:R1",
+      "CHAT_S35:R1",
+      "CHAT_S6:R1",
+      "CHAT_S2:R2",
+      "CHAT_S18:R2",
+      "CHAT_S15:R2",
+      "CHAT_S28:R2",
+      "CHAT_S18:R1",
+      "CHAT_S4:R2"
+    ],
+    "top_candidates": [
+      {
+        "round_id": "CHAT_S35:R2",
+        "score": 0.09027617422222675,
+        "text_dense_score": 0.03656703472398569,
+        "image_dense_score": 0.1439853137204678,
+        "indexed_image_count": 1,
+        "best_image_path": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image/Social_Chat_Memory_Test/screenshots/R4_2.png"
+      },
+      {
+        "round_id": "CHAT_S38:R1",
+        "score": 0.08394590116965588,
+        "text_dense_score": 0.018676557317969546,
+        "image_dense_score": 0.1492152450213422,
+        "indexed_image_count": 1,
+        "best_image_path": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image/Social_Chat_Memory_Test/screenshots/R4b_1.png"
+      },
+      {
+        "round_id": "CHAT_S35:R1",
+        "score": 0.08215390228412583,
+        "text_dense_score": 0.01867653128465822,
+        "image_dense_score": 0.14563127328359346,
+        "indexed_image_count": 1,
+        "best_image_path": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image/Social_Chat_Memory_Test/screenshots/R4_1.png"
+      },
+      {
+        "round_id": "CHAT_S6:R1",
+        "score": 0.0761295182120096,
+        "text_dense_score": 0.018676557317969546,
+        "image_dense_score": 0.13358247910604965,
+        "indexed_image_count": 1,
+        "best_image_path": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image/Social_Chat_Memory_Test/screenshots/R1_1.png"
+      },
+      {
+        "round_id": "CHAT_S2:R2",
+        "score": 0.07473515610808074,
+        "text_dense_score": 0.03656703472398569,
+        "image_dense_score": 0.1129032774921758,
+        "indexed_image_count": 1,
+        "best_image_path": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image/Social_Chat_Memory_Test/screenshots/B1_2.png"
+      }
+    ],
+    "clue_hit_count": 3,
+    "corpus_entry_count": 53,
+    "text_embedding_model": "all-MiniLM-L6-v2",
+    "multimodal_embedding_model": "siglip2-base-patch16-384",
+    "text_dense_weight": 0.5,
+    "image_dense_weight": 0.5,
+    "caption_text_included": false,
+    "image_embeddings_built": true,
+    "multi_image_indexing_enabled": true,
+    "indexed_image_count": 43,
+    "history_source": "retrieval",
+    "captions_loaded": false,
+    "images_loaded": true,
+    "history_turns_after_truncation": 20
+  },
+  "judge_model": "gpt-5.2",
+  "judge_rescored_from_predictions": true
+}

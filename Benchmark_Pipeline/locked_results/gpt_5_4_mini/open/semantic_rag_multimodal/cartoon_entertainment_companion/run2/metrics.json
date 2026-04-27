@@ -1,0 +1,275 @@
+{
+  "task_name": "cartoon_entertainment_companion_open",
+  "model_name": "gpt_5_4_mini",
+  "model_path": "gpt-5.4-mini",
+  "method_name": "semantic_rag_multimodal",
+  "base_method_name": "semantic_rag_multimodal",
+  "method_modality": "multimodal",
+  "mode": "open",
+  "num_qas": 76,
+  "num_qas_run": 76,
+  "dialog_json": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/dialog/Cartoon_Entertainment_Companion_Open.json",
+  "image_root": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image",
+  "run_dir": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/runs/cartoon_entertainment_companion_open/20260426_111523_gpt_5_4_mini_semantic_rag_multimodal",
+  "git_commit": "f50478ca8d87824ef1e9bc48c2b9e0d49e54305a",
+  "summary": {
+    "open_count": 76,
+    "overall": {
+      "em": 0.10526315789473684,
+      "contains_gt": 0.15789473684210525,
+      "f1": 0.35378440656002896,
+      "bleu": 0.10603957496361832,
+      "bleu_1": 0.2874522491628251,
+      "bleu_2": 0.17822874827558483,
+      "judge": 0.625
+    },
+    "by_x": {
+      "X3": {
+        "em": 0.0,
+        "contains_gt": 0.125,
+        "f1": 0.28853872576698664,
+        "bleu": 0.05522071365044656,
+        "bleu_1": 0.20032837609752419,
+        "bleu_2": 0.11353190653764078,
+        "judge": 0.6458333333333334
+      },
+      "X4": {
+        "em": 0.2692307692307692,
+        "contains_gt": 0.2692307692307692,
+        "f1": 0.452474039118776,
+        "bleu": 0.18006384047391935,
+        "bleu_1": 0.3994383508478208,
+        "bleu_2": 0.239810863398974,
+        "judge": 0.7692307692307693
+      },
+      "X2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.33935730935730934,
+        "bleu": 0.08816929493758513,
+        "bleu_1": 0.21562671465221547,
+        "bleu_2": 0.14891958620282528,
+        "judge": 0.45
+      },
+      "X1": {
+        "em": 0.0625,
+        "contains_gt": 0.125,
+        "f1": 0.30029921059332826,
+        "bleu": 0.0731473604954075,
+        "bleu_1": 0.28105160259178924,
+        "bleu_2": 0.19352130010246815,
+        "judge": 0.46875
+      }
+    },
+    "by_y": {
+      "Y1": {
+        "em": 0.18181818181818182,
+        "contains_gt": 0.21212121212121213,
+        "f1": 0.39949773933731153,
+        "bleu": 0.11332989233669846,
+        "bleu_1": 0.33400828896198637,
+        "bleu_2": 0.1741748957100948,
+        "judge": 0.6060606060606061
+      },
+      "Y2": {
+        "em": 0.05263157894736842,
+        "contains_gt": 0.13157894736842105,
+        "f1": 0.3436808241740194,
+        "bleu": 0.11173126690489718,
+        "bleu_1": 0.26993238773585493,
+        "bleu_2": 0.19862815401645656,
+        "judge": 0.6710526315789473
+      },
+      "Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.12886363636363637,
+        "bleu": 0.014666621547570018,
+        "bleu_1": 0.11333333333333334,
+        "bleu_2": 0.049948691577193616,
+        "judge": 0.4
+      }
+    },
+    "by_cell": {
+      "X3_Y1": {
+        "em": 0.0,
+        "contains_gt": 0.08333333333333333,
+        "f1": 0.2117063492063492,
+        "bleu": 0.029273281399752757,
+        "bleu_1": 0.14456510256373822,
+        "bleu_2": 0.07560052272534992,
+        "judge": 0.6666666666666666
+      },
+      "X4_Y2": {
+        "em": 0.07692307692307693,
+        "contains_gt": 0.07692307692307693,
+        "f1": 0.34436283015230384,
+        "bleu": 0.14261495167032234,
+        "bleu_1": 0.27271503528074437,
+        "bleu_2": 0.2118046102560809,
+        "judge": 0.8846153846153846
+      },
+      "X2_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.2721212121212121,
+        "bleu": 0.12438036656257224,
+        "bleu_1": 0.19447376261408433,
+        "bleu_2": 0.1391948130539825,
+        "judge": 0.4
+      },
+      "X3_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.16666666666666666,
+        "f1": 0.36537110232762404,
+        "bleu": 0.08116814590114037,
+        "bleu_1": 0.25609164963131015,
+        "bleu_2": 0.15146329034993164,
+        "judge": 0.625
+      },
+      "X4_Y1": {
+        "em": 0.5,
+        "contains_gt": 0.5,
+        "f1": 0.6020923520923521,
+        "bleu": 0.23563879005064275,
+        "bleu_1": 0.570008471949472,
+        "bleu_2": 0.2901352095870227,
+        "judge": 0.7083333333333334
+      },
+      "X1_Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.346218487394958,
+        "bleu": 0.07528761828582825,
+        "bleu_1": 0.3158730770338236,
+        "bleu_2": 0.14143024348157923,
+        "judge": 0.25
+      },
+      "X1_Y2": {
+        "em": 0.125,
+        "contains_gt": 0.25,
+        "f1": 0.3547619047619048,
+        "bleu": 0.09948427338066962,
+        "bleu_1": 0.3333333333333333,
+        "bleu_2": 0.2851095462284007,
+        "judge": 0.5625
+      },
+      "X2_Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.4065934065934066,
+        "bleu": 0.051958223312598015,
+        "bleu_1": 0.2367796666903466,
+        "bleu_2": 0.15864435935166807,
+        "judge": 0.5
+      },
+      "X1_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.14545454545454548,
+        "bleu": 0.018333276934462524,
+        "bleu_1": 0.14166666666666666,
+        "bleu_2": 0.06243586447149202,
+        "judge": 0.5
+      },
+      "X4_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0625,
+        "bleu": 0.0,
+        "bleu_1": 0.0,
+        "bleu_2": 0.0,
+        "judge": 0.0
+      }
+    }
+  },
+  "method_runtime": {
+    "retrieval_backend": "dense_multimodal",
+    "retrieval_corpus": "round_text",
+    "method_modality": "multimodal",
+    "top_k": 10,
+    "neighbor_window": 0,
+    "seed_round_ids": [
+      "CARTOON_S13:R1",
+      "CARTOON_S63:R1",
+      "CARTOON_S56:R1",
+      "CARTOON_S40:R1",
+      "CARTOON_S65:R1",
+      "CARTOON_S59:R1",
+      "CARTOON_S61:R1",
+      "CARTOON_S54:R1",
+      "CARTOON_S22:R1",
+      "CARTOON_S39:R1"
+    ],
+    "selected_round_ids": [
+      "CARTOON_S13:R1",
+      "CARTOON_S63:R1",
+      "CARTOON_S56:R1",
+      "CARTOON_S40:R1",
+      "CARTOON_S65:R1",
+      "CARTOON_S59:R1",
+      "CARTOON_S61:R1",
+      "CARTOON_S54:R1",
+      "CARTOON_S22:R1",
+      "CARTOON_S39:R1"
+    ],
+    "top_candidates": [
+      {
+        "round_id": "CARTOON_S13:R1",
+        "score": 0.3485313794414455,
+        "text_dense_score": 0.6073938748862114,
+        "image_dense_score": 0.08966888399667963,
+        "indexed_image_count": 1,
+        "best_image_path": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image/Cartoon_Entertainment_Companion/Alley_Oop_Page_1.jpg"
+      },
+      {
+        "round_id": "CARTOON_S63:R1",
+        "score": 0.34783412439471084,
+        "text_dense_score": 0.5886211785395831,
+        "image_dense_score": 0.10704707024983859,
+        "indexed_image_count": 1,
+        "best_image_path": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image/Cartoon_Entertainment_Companion/Alley_Oop_Page_34.jpg"
+      },
+      {
+        "round_id": "CARTOON_S56:R1",
+        "score": 0.34671562482837615,
+        "text_dense_score": 0.5915948695777525,
+        "image_dense_score": 0.10183638007899974,
+        "indexed_image_count": 1,
+        "best_image_path": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image/Cartoon_Entertainment_Companion/Alley_Oop_Page_31.jpg"
+      },
+      {
+        "round_id": "CARTOON_S40:R1",
+        "score": 0.3442472264677857,
+        "text_dense_score": 0.5874182847358476,
+        "image_dense_score": 0.10107616819972387,
+        "indexed_image_count": 1,
+        "best_image_path": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image/Cartoon_Entertainment_Companion/Alley_Oop_Page_27.jpg"
+      },
+      {
+        "round_id": "CARTOON_S65:R1",
+        "score": 0.343162621436015,
+        "text_dense_score": 0.5841854113488235,
+        "image_dense_score": 0.1021398315232065,
+        "indexed_image_count": 1,
+        "best_image_path": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image/Cartoon_Entertainment_Companion/Alley_Oop_Page_35.jpg"
+      }
+    ],
+    "clue_hit_count": 2,
+    "corpus_entry_count": 299,
+    "text_embedding_model": "all-MiniLM-L6-v2",
+    "multimodal_embedding_model": "siglip2-base-patch16-384",
+    "text_dense_weight": 0.5,
+    "image_dense_weight": 0.5,
+    "caption_text_included": false,
+    "image_embeddings_built": true,
+    "multi_image_indexing_enabled": true,
+    "indexed_image_count": 87,
+    "history_source": "retrieval",
+    "captions_loaded": false,
+    "images_loaded": true,
+    "history_turns_after_truncation": 20
+  },
+  "judge_model": "gpt-5.2",
+  "judge_rescored_from_predictions": true
+}

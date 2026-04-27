@@ -1,0 +1,138 @@
+{
+  "task_name": "personal_health_dashboard_assistant_open",
+  "model_name": "gpt_5_4_mini",
+  "model_path": "gpt-5.4-mini",
+  "method_name": "reflexion",
+  "base_method_name": "reflexion",
+  "method_modality": "",
+  "mode": "open",
+  "num_qas": 51,
+  "num_qas_run": 51,
+  "dialog_json": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/dialog/Personal_Health_Dashboard_Assistant_Open.json",
+  "image_root": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image",
+  "run_dir": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/runs/personal_health_dashboard_assistant_open/20260426_174751_gpt_5_4_mini_reflexion",
+  "git_commit": "f50478ca8d87824ef1e9bc48c2b9e0d49e54305a",
+  "summary": {
+    "open_count": 51,
+    "overall": {
+      "em": 0.21568627450980393,
+      "contains_gt": 0.21568627450980393,
+      "f1": 0.314254590725179,
+      "bleu": 0.18911489611256513,
+      "bleu_1": 0.29917512632576054,
+      "bleu_2": 0.263416580590319,
+      "judge": 0.29411764705882354
+    },
+    "by_x": {
+      "X4": {
+        "em": 0.22727272727272727,
+        "contains_gt": 0.22727272727272727,
+        "f1": 0.30183982683982685,
+        "bleu": 0.197354954465427,
+        "bleu_1": 0.2920214893763687,
+        "bleu_2": 0.25880846302230376,
+        "judge": 0.26136363636363635
+      },
+      "X3": {
+        "em": 0.25,
+        "contains_gt": 0.25,
+        "f1": 0.25,
+        "bleu": 0.0790569415042095,
+        "bleu_1": 0.25,
+        "bleu_2": 0.25,
+        "judge": 0.25
+      },
+      "X1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.582010582010582,
+        "bleu": 0.21500464641506503,
+        "bleu_1": 0.46966197001785515,
+        "bleu_2": 0.3488910790416356,
+        "judge": 0.8333333333333334
+      }
+    },
+    "by_y": {
+      "Y2": {
+        "em": 0.25,
+        "contains_gt": 0.25,
+        "f1": 0.2920995670995671,
+        "bleu": 0.19657830464499762,
+        "bleu_1": 0.28760742458190697,
+        "bleu_2": 0.2670581571103601,
+        "judge": 0.25
+      },
+      "Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.4920634920634921,
+        "bleu": 0.155473871529889,
+        "bleu_1": 0.40141742754033827,
+        "bleu_2": 0.2687653729669911,
+        "judge": 0.5833333333333334
+      },
+      "Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.22222222222222224,
+        "bleu": 0.06257106818159155,
+        "bleu_1": 0.19470019576785122,
+        "bleu_2": 0.07109445944848267,
+        "judge": 0.5
+      }
+    },
+    "by_cell": {
+      "X4_Y2": {
+        "em": 0.25,
+        "contains_gt": 0.25,
+        "f1": 0.2963095238095238,
+        "bleu": 0.20833044095907644,
+        "bleu_1": 0.29136816704009766,
+        "bleu_2": 0.268763972821396,
+        "judge": 0.25
+      },
+      "X4_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.3571428571428572,
+        "bleu": 0.08760008952893263,
+        "bleu_1": 0.29855471273907885,
+        "bleu_2": 0.15925336503138066,
+        "judge": 0.375
+      },
+      "X3_Y2": {
+        "em": 0.25,
+        "contains_gt": 0.25,
+        "f1": 0.25,
+        "bleu": 0.0790569415042095,
+        "bleu_1": 0.25,
+        "bleu_2": 0.25,
+        "judge": 0.25
+      },
+      "X1_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.7619047619047619,
+        "bleu": 0.2912214355318018,
+        "bleu_1": 0.6071428571428572,
+        "bleu_2": 0.48778938883821205,
+        "judge": 1.0
+      },
+      "X1_Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.22222222222222224,
+        "bleu": 0.06257106818159155,
+        "bleu_1": 0.19470019576785122,
+        "bleu_2": 0.07109445944848267,
+        "judge": 0.5
+      }
+    }
+  },
+  "method_runtime": {
+    "num_memories": 97,
+    "debug_dir": "/Users/qingyuejiao/Desktop/MemoryBench/output/personal_health_dashboard_assistant/reflexion"
+  },
+  "judge_model": "gpt-5.2",
+  "judge_rescored_from_predictions": true
+}

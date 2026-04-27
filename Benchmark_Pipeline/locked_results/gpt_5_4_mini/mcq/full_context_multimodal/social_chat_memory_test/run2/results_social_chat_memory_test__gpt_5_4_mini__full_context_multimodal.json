@@ -1,0 +1,130 @@
+{
+  "task_name": "social_chat_memory_test",
+  "model_name": "gpt_5_4_mini",
+  "model_path": "gpt-5.4-mini",
+  "method_name": "full_context_multimodal",
+  "base_method_name": "full_context_multimodal",
+  "method_modality": "",
+  "mode": "mcq",
+  "num_qas": 37,
+  "num_qas_run": 37,
+  "dialog_json": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/dialog/Social_Chat_Memory_Test.json",
+  "image_root": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image",
+  "run_dir": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/runs/social_chat_memory_test/20260426_104708_gpt_5_4_mini_full_context_multimodal",
+  "git_commit": "f50478ca8d87824ef1e9bc48c2b9e0d49e54305a",
+  "summary": {
+    "open_count": 37,
+    "overall": {
+      "em": 0.6486486486486487,
+      "contains_gt": 0.6756756756756757,
+      "f1": 0.6486486486486487
+    },
+    "by_x": {
+      "X2": {
+        "em": 0.6120689655172413,
+        "contains_gt": 0.6206896551724138,
+        "f1": 0.6120689655172413
+      },
+      "X1": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
+      },
+      "X3": {
+        "em": 0.5,
+        "contains_gt": 0.5,
+        "f1": 0.5
+      },
+      "X4": {
+        "em": 0.25,
+        "contains_gt": 1.0,
+        "f1": 0.25
+      }
+    },
+    "by_y": {
+      "Y2": {
+        "em": 0.52,
+        "contains_gt": 0.52,
+        "f1": 0.52
+      },
+      "Y3": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
+      },
+      "Y1": {
+        "em": 0.8333333333333334,
+        "contains_gt": 1.0,
+        "f1": 0.8333333333333334
+      }
+    },
+    "by_cell": {
+      "X2_Y2": {
+        "em": 0.5340909090909091,
+        "contains_gt": 0.5,
+        "f1": 0.5340909090909091
+      },
+      "X2_Y3": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
+      },
+      "X2_Y1": {
+        "em": 0.6666666666666666,
+        "contains_gt": 1.0,
+        "f1": 0.6666666666666666
+      },
+      "X1_Y1": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
+      },
+      "X1_Y2": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
+      },
+      "X3_Y1": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
+      },
+      "X3_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0
+      },
+      "X4_Y2": {
+        "em": 0.25,
+        "contains_gt": 1.0,
+        "f1": 0.25
+      },
+      "X1_Y3": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
+      }
+    },
+    "mcq_count": 37,
+    "mcq_valid_rate": 1.0,
+    "mcq_overall": {
+      "em": 0.6486486486486487,
+      "contains_gt": 0.6756756756756757,
+      "f1": 0.6486486486486487
+    },
+    "mcq_per_position_accuracy": {
+      "A": 0.6216216216216216,
+      "B": 0.6216216216216216,
+      "C": 0.6756756756756757,
+      "D": 0.6756756756756757
+    }
+  },
+  "method_runtime": {
+    "method_modality": "multimodal",
+    "history_source": "full_context",
+    "captions_loaded": false,
+    "images_loaded": true,
+    "history_turns_after_truncation": 106,
+    "history_turns_before_truncation": 106
+  }
+}

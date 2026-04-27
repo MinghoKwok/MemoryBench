@@ -1,0 +1,101 @@
+{
+  "task_name": "personal_health_dashboard_assistant",
+  "model_name": "gpt_5_4_mini",
+  "model_path": "gpt-5.4-mini",
+  "method_name": "reflexion",
+  "base_method_name": "reflexion",
+  "method_modality": "",
+  "mode": "mcq",
+  "num_qas": 51,
+  "num_qas_run": 51,
+  "dialog_json": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/dialog/Personal_Health_Dashboard_Assistant.json",
+  "image_root": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image",
+  "run_dir": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/runs/personal_health_dashboard_assistant/20260426_173404_gpt_5_4_mini_reflexion",
+  "git_commit": "f50478ca8d87824ef1e9bc48c2b9e0d49e54305a",
+  "summary": {
+    "open_count": 51,
+    "overall": {
+      "em": 0.1568627450980392,
+      "contains_gt": 0.0784313725490196,
+      "f1": 0.1568627450980392
+    },
+    "by_x": {
+      "X4": {
+        "em": 0.13636363636363635,
+        "contains_gt": 0.06818181818181818,
+        "f1": 0.13636363636363635
+      },
+      "X3": {
+        "em": 0.125,
+        "contains_gt": 0.0,
+        "f1": 0.125
+      },
+      "X1": {
+        "em": 0.5,
+        "contains_gt": 0.3333333333333333,
+        "f1": 0.5
+      }
+    },
+    "by_y": {
+      "Y2": {
+        "em": 0.10227272727272728,
+        "contains_gt": 0.06818181818181818,
+        "f1": 0.10227272727272728
+      },
+      "Y3": {
+        "em": 0.4583333333333333,
+        "contains_gt": 0.16666666666666666,
+        "f1": 0.4583333333333333
+      },
+      "Y1": {
+        "em": 0.75,
+        "contains_gt": 0.0,
+        "f1": 0.75
+      }
+    },
+    "by_cell": {
+      "X4_Y2": {
+        "em": 0.1,
+        "contains_gt": 0.075,
+        "f1": 0.1
+      },
+      "X4_Y3": {
+        "em": 0.5,
+        "contains_gt": 0.0,
+        "f1": 0.5
+      },
+      "X3_Y2": {
+        "em": 0.125,
+        "contains_gt": 0.0,
+        "f1": 0.125
+      },
+      "X1_Y3": {
+        "em": 0.375,
+        "contains_gt": 0.5,
+        "f1": 0.375
+      },
+      "X1_Y1": {
+        "em": 0.75,
+        "contains_gt": 0.0,
+        "f1": 0.75
+      }
+    },
+    "mcq_count": 51,
+    "mcq_valid_rate": 1.0,
+    "mcq_overall": {
+      "em": 0.1568627450980392,
+      "contains_gt": 0.0784313725490196,
+      "f1": 0.1568627450980392
+    },
+    "mcq_per_position_accuracy": {
+      "A": 0.3333333333333333,
+      "B": 0.09803921568627451,
+      "C": 0.11764705882352941,
+      "D": 0.0784313725490196
+    }
+  },
+  "method_runtime": {
+    "num_memories": 97,
+    "debug_dir": "/Users/qingyuejiao/Desktop/MemoryBench/output/personal_health_dashboard_assistant/reflexion"
+  }
+}

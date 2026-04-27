@@ -1,0 +1,46 @@
+{
+  "task": {
+    "name": "brand_memory_test",
+    "dataset": {
+      "dialog_json": "data/dialog/Brand_Memory_Test.json",
+      "image_root": "data/image"
+    },
+    "eval": {
+      "mode": "mcq",
+      "output_json": "output/results_brand_memory_test.json",
+      "max_questions": 0
+    }
+  },
+  "dataset": {
+    "dialog_json": "data/dialog/Brand_Memory_Test.json",
+    "image_root": "data/image"
+  },
+  "eval": {
+    "mode": "mcq",
+    "output_json": "output/results_brand_memory_test.json",
+    "max_questions": 0
+  },
+  "model": {
+    "name": "gpt_4_1_nano",
+    "provider": "openai_api",
+    "model": "gpt-4.1-nano",
+    "api_key_env": "OPENAI_API_KEY",
+    "base_url": "https://api.openai.com/v1",
+    "max_new_tokens": 128,
+    "timeout": 90
+  },
+  "method": {
+    "name": "clue_only_context",
+    "modality": "multimodal"
+  },
+  "run": {
+    "output_root": "Benchmark_Pipeline/runs_clue_only_mcq_ablation",
+    "method_runtime": {
+      "method_modality": "multimodal",
+      "history_source": "clue_only",
+      "captions_loaded": false,
+      "images_loaded": true,
+      "history_turns_after_truncation": 2
+    }
+  }
+}

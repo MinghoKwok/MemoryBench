@@ -1,0 +1,121 @@
+{
+  "task_name": "outdoor_navigation_route_memory_assistant",
+  "model_name": "gpt_5_4_mini",
+  "model_path": "gpt-5.4-mini",
+  "method_name": "a_mem",
+  "base_method_name": "a_mem",
+  "method_modality": "",
+  "mode": "mcq",
+  "num_qas": 28,
+  "num_qas_run": 28,
+  "dialog_json": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/dialog/Outdoor_Navigation_Route_Memory_Assistant.json",
+  "image_root": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image",
+  "run_dir": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/runs/outdoor_navigation_route_memory_assistant/20260426_120532_gpt_5_4_mini_a_mem",
+  "git_commit": "f50478ca8d87824ef1e9bc48c2b9e0d49e54305a",
+  "summary": {
+    "open_count": 28,
+    "overall": {
+      "em": 0.4107142857142857,
+      "contains_gt": 0.39285714285714285,
+      "f1": 0.4107142857142857
+    },
+    "by_x": {
+      "X3": {
+        "em": 0.4583333333333333,
+        "contains_gt": 0.4444444444444444,
+        "f1": 0.4583333333333333
+      },
+      "X1": {
+        "em": 0.3333333333333333,
+        "contains_gt": 0.3333333333333333,
+        "f1": 0.3333333333333333
+      },
+      "X4": {
+        "em": 0.3,
+        "contains_gt": 0.2,
+        "f1": 0.3
+      },
+      "X2": {
+        "em": 0.375,
+        "contains_gt": 0.5,
+        "f1": 0.375
+      }
+    },
+    "by_y": {
+      "Y2": {
+        "em": 0.4166666666666667,
+        "contains_gt": 0.4666666666666667,
+        "f1": 0.4166666666666667
+      },
+      "Y1": {
+        "em": 0.75,
+        "contains_gt": 1.0,
+        "f1": 0.75
+      },
+      "Y3": {
+        "em": 0.375,
+        "contains_gt": 0.25,
+        "f1": 0.375
+      }
+    },
+    "by_cell": {
+      "X3_Y2": {
+        "em": 0.4423076923076923,
+        "contains_gt": 0.46153846153846156,
+        "f1": 0.4423076923076923
+      },
+      "X1_Y1": {
+        "em": 0.75,
+        "contains_gt": 1.0,
+        "f1": 0.75
+      },
+      "X4_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0
+      },
+      "X2_Y2": {
+        "em": 0.5,
+        "contains_gt": 1.0,
+        "f1": 0.5
+      },
+      "X3_Y3": {
+        "em": 0.5,
+        "contains_gt": 0.4,
+        "f1": 0.5
+      },
+      "X4_Y3": {
+        "em": 0.375,
+        "contains_gt": 0.25,
+        "f1": 0.375
+      },
+      "X1_Y3": {
+        "em": 0.125,
+        "contains_gt": 0.0,
+        "f1": 0.125
+      },
+      "X2_Y3": {
+        "em": 0.25,
+        "contains_gt": 0.0,
+        "f1": 0.25
+      }
+    },
+    "mcq_count": 28,
+    "mcq_valid_rate": 1.0,
+    "mcq_overall": {
+      "em": 0.4107142857142857,
+      "contains_gt": 0.39285714285714285,
+      "f1": 0.4107142857142857
+    },
+    "mcq_per_position_accuracy": {
+      "A": 0.2857142857142857,
+      "B": 0.5,
+      "C": 0.4642857142857143,
+      "D": 0.39285714285714285
+    }
+  },
+  "method_runtime": {
+    "num_memories": 60,
+    "debug_dir": "/Users/qingyuejiao/Desktop/MemoryBench/output/outdoor_navigation_route_memory_assistant/a_mem"
+  }
+}

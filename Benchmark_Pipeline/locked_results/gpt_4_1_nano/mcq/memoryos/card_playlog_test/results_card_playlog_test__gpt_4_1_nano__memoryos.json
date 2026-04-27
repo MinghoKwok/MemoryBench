@@ -1,0 +1,75 @@
+{
+  "task_name": "card_playlog_test",
+  "model_name": "gpt_4_1_nano",
+  "model_path": "gpt-4.1-nano",
+  "method_name": "memoryos",
+  "base_method_name": "memoryos",
+  "method_modality": "",
+  "mode": "mcq",
+  "num_qas": 48,
+  "num_qas_run": 48,
+  "dialog_json": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/dialog/Card_Playlog_Test.json",
+  "image_root": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image",
+  "run_dir": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/runs/card_playlog_test/20260426_005004_gpt_4_1_nano_memoryos",
+  "git_commit": "f50478ca8d87824ef1e9bc48c2b9e0d49e54305a",
+  "summary": {
+    "open_count": 48,
+    "overall": {
+      "em": 0.265625,
+      "contains_gt": 0.08333333333333333,
+      "f1": 0.265625
+    },
+    "by_x": {
+      "X4": {
+        "em": 0.265625,
+        "contains_gt": 0.08333333333333333,
+        "f1": 0.265625
+      }
+    },
+    "by_y": {
+      "Y3": {
+        "em": 0.21052631578947367,
+        "contains_gt": 0.05263157894736842,
+        "f1": 0.21052631578947367
+      },
+      "Y2": {
+        "em": 0.3017241379310345,
+        "contains_gt": 0.10344827586206896,
+        "f1": 0.3017241379310345
+      }
+    },
+    "by_cell": {
+      "X4_Y3": {
+        "em": 0.21052631578947367,
+        "contains_gt": 0.05263157894736842,
+        "f1": 0.21052631578947367
+      },
+      "X4_Y2": {
+        "em": 0.3017241379310345,
+        "contains_gt": 0.10344827586206896,
+        "f1": 0.3017241379310345
+      }
+    },
+    "mcq_count": 48,
+    "mcq_valid_rate": 1.0,
+    "mcq_overall": {
+      "em": 0.265625,
+      "contains_gt": 0.08333333333333333,
+      "f1": 0.265625
+    },
+    "mcq_per_position_accuracy": {
+      "A": 0.6875,
+      "B": 0.14583333333333334,
+      "C": 0.14583333333333334,
+      "D": 0.08333333333333333
+    }
+  },
+  "method_runtime": {
+    "caption_validation_passed": true,
+    "caption_validation_round_count": 30,
+    "num_memories": 30,
+    "debug_dir": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/output/card_playlog_test/memoryos/8e5f2565ef9a5d81",
+    "data_storage_path": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/runs/card_playlog_test/memoryos_data/8e5f2565ef9a5d81",
+    "runtime_signature": "8e5f2565ef9a5d81"
+  }
+}

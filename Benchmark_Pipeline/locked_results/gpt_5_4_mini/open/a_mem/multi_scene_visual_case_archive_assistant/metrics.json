@@ -1,0 +1,156 @@
+{
+  "task_name": "multi_scene_visual_case_archive_assistant_open",
+  "model_name": "gpt_5_4_mini",
+  "model_path": "gpt-5.4-mini",
+  "method_name": "a_mem",
+  "base_method_name": "a_mem",
+  "method_modality": "",
+  "mode": "open",
+  "num_qas": 50,
+  "num_qas_run": 50,
+  "dialog_json": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/dialog/Multi-Scene_Visual_Case_Archive_Assistant_Open.json",
+  "image_root": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image",
+  "run_dir": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/runs/multi_scene_visual_case_archive_assistant_open/20260426_122130_gpt_5_4_mini_a_mem",
+  "git_commit": "f50478ca8d87824ef1e9bc48c2b9e0d49e54305a",
+  "summary": {
+    "open_count": 50,
+    "overall": {
+      "em": 0.3,
+      "contains_gt": 0.32,
+      "f1": 0.4797268683453871,
+      "bleu": 0.2876837505041348,
+      "bleu_1": 0.4247742971545083,
+      "bleu_2": 0.3957504200409769,
+      "judge": 0.48
+    },
+    "by_x": {
+      "X4": {
+        "em": 0.25,
+        "contains_gt": 0.25,
+        "f1": 0.625,
+        "bleu": 0.35870446101754,
+        "bleu_1": 0.5516440207160377,
+        "bleu_2": 0.5473869302551608,
+        "judge": 0.5
+      },
+      "X2": {
+        "em": 0.5,
+        "contains_gt": 0.5,
+        "f1": 0.6024209486166008,
+        "bleu": 0.3775432005511287,
+        "bleu_1": 0.5506683981934685,
+        "bleu_2": 0.5311195980419698,
+        "judge": 0.5625
+      },
+      "X3": {
+        "em": 0.2631578947368421,
+        "contains_gt": 0.2894736842105263,
+        "f1": 0.43860462706148806,
+        "bleu": 0.26129010728230395,
+        "bleu_1": 0.38491556813982936,
+        "bleu_2": 0.35128990780769587,
+        "judge": 0.4605263157894737
+      }
+    },
+    "by_y": {
+      "Y2": {
+        "em": 0.125,
+        "contains_gt": 0.125,
+        "f1": 0.3467391304347826,
+        "bleu": 0.1837977250595253,
+        "bleu_1": 0.3028809581967921,
+        "bleu_2": 0.281203612814855,
+        "judge": 0.25
+      },
+      "Y3": {
+        "em": 0.36363636363636365,
+        "contains_gt": 0.36363636363636365,
+        "f1": 0.5323513379295851,
+        "bleu": 0.28420085563155284,
+        "bleu_1": 0.4609104019086045,
+        "bleu_2": 0.417448629585385,
+        "judge": 0.5909090909090909
+      },
+      "Y1": {
+        "em": 0.3225806451612903,
+        "contains_gt": 0.3548387096774194,
+        "f1": 0.49537308569566635,
+        "bleu": 0.3157289133155954,
+        "bleu_1": 0.4434081539082719,
+        "bleu_2": 0.41761152174486355,
+        "judge": 0.5
+      }
+    },
+    "by_cell": {
+      "X4_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.49999999999999994,
+        "bleu": 0.3728633593511073,
+        "bleu_1": 0.4021920276213836,
+        "bleu_2": 0.3965159070068811,
+        "judge": 0.3333333333333333
+      },
+      "X2_Y2": {
+        "em": 0.3333333333333333,
+        "contains_gt": 0.3333333333333333,
+        "f1": 0.4246376811594203,
+        "bleu": 0.11726390747429344,
+        "bleu_1": 0.405490527570062,
+        "bleu_2": 0.3533603938327322,
+        "judge": 0.3333333333333333
+      },
+      "X3_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.26208203435417815,
+        "bleu": 0.028285552788818665,
+        "bleu_1": 0.17622776363141757,
+        "bleu_2": 0.0806118645203346,
+        "judge": 0.4
+      },
+      "X2_Y3": {
+        "em": 0.6,
+        "contains_gt": 0.6,
+        "f1": 0.7090909090909091,
+        "bleu": 0.53371077639723,
+        "bleu_1": 0.6377751205675124,
+        "bleu_2": 0.6377751205675124,
+        "judge": 0.7
+      },
+      "X3_Y1": {
+        "em": 0.3225806451612903,
+        "contains_gt": 0.3548387096774194,
+        "f1": 0.49537308569566635,
+        "bleu": 0.3157289133155954,
+        "bleu_1": 0.4434081539082719,
+        "bleu_2": 0.41761152174486355,
+        "judge": 0.5
+      },
+      "X3_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0,
+        "bleu": 0.0,
+        "bleu_1": 0.0,
+        "bleu_2": 0.0,
+        "judge": 0.0
+      },
+      "X4_Y3": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0,
+        "bleu": 0.316227766016838,
+        "bleu_1": 1.0,
+        "bleu_2": 1.0,
+        "judge": 1.0
+      }
+    }
+  },
+  "method_runtime": {
+    "num_memories": 117,
+    "debug_dir": "/Users/qingyuejiao/Desktop/MemoryBench/output/multi-scene_visual_case_archive_assistant/a_mem"
+  },
+  "judge_model": "gpt-5.2",
+  "judge_rescored_from_predictions": true
+}

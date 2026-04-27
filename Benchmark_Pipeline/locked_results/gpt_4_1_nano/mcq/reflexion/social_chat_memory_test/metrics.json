@@ -1,0 +1,126 @@
+{
+  "task_name": "social_chat_memory_test",
+  "model_name": "gpt_4_1_nano",
+  "model_path": "gpt-4.1-nano",
+  "method_name": "reflexion",
+  "base_method_name": "reflexion",
+  "method_modality": "",
+  "mode": "mcq",
+  "num_qas": 37,
+  "num_qas_run": 37,
+  "dialog_json": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/dialog/Social_Chat_Memory_Test.json",
+  "image_root": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image",
+  "run_dir": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/runs/social_chat_memory_test/20260426_003617_gpt_4_1_nano_reflexion",
+  "git_commit": "f50478ca8d87824ef1e9bc48c2b9e0d49e54305a",
+  "summary": {
+    "open_count": 37,
+    "overall": {
+      "em": 0.39864864864864863,
+      "contains_gt": 0.24324324324324326,
+      "f1": 0.39864864864864863
+    },
+    "by_x": {
+      "X2": {
+        "em": 0.3879310344827586,
+        "contains_gt": 0.20689655172413793,
+        "f1": 0.3879310344827586
+      },
+      "X1": {
+        "em": 0.5,
+        "contains_gt": 0.4,
+        "f1": 0.5
+      },
+      "X3": {
+        "em": 0.5,
+        "contains_gt": 0.5,
+        "f1": 0.5
+      },
+      "X4": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0
+      }
+    },
+    "by_y": {
+      "Y2": {
+        "em": 0.32,
+        "contains_gt": 0.2,
+        "f1": 0.32
+      },
+      "Y3": {
+        "em": 0.7083333333333334,
+        "contains_gt": 0.5,
+        "f1": 0.7083333333333334
+      },
+      "Y1": {
+        "em": 0.4166666666666667,
+        "contains_gt": 0.16666666666666666,
+        "f1": 0.4166666666666667
+      }
+    },
+    "by_cell": {
+      "X2_Y2": {
+        "em": 0.36363636363636365,
+        "contains_gt": 0.22727272727272727,
+        "f1": 0.36363636363636365
+      },
+      "X2_Y3": {
+        "em": 0.5625,
+        "contains_gt": 0.25,
+        "f1": 0.5625
+      },
+      "X2_Y1": {
+        "em": 0.3333333333333333,
+        "contains_gt": 0.0,
+        "f1": 0.3333333333333333
+      },
+      "X1_Y1": {
+        "em": 0.25,
+        "contains_gt": 0.0,
+        "f1": 0.25
+      },
+      "X1_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0
+      },
+      "X3_Y1": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
+      },
+      "X3_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0
+      },
+      "X4_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0
+      },
+      "X1_Y3": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
+      }
+    },
+    "mcq_count": 37,
+    "mcq_valid_rate": 1.0,
+    "mcq_overall": {
+      "em": 0.39864864864864863,
+      "contains_gt": 0.24324324324324326,
+      "f1": 0.39864864864864863
+    },
+    "mcq_per_position_accuracy": {
+      "A": 0.5675675675675675,
+      "B": 0.4594594594594595,
+      "C": 0.32432432432432434,
+      "D": 0.24324324324324326
+    }
+  },
+  "method_runtime": {
+    "num_memories": 53,
+    "debug_dir": "/Users/qingyuejiao/Desktop/MemoryBench/output/social_chat_memory_test/reflexion"
+  }
+}

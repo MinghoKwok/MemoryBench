@@ -1,0 +1,211 @@
+{
+  "task_name": "cartoon_entertainment_companion_open",
+  "model_name": "gpt_5_4_mini",
+  "model_path": "gpt-5.4-mini",
+  "method_name": "gen_agents__text_only",
+  "base_method_name": "gen_agents",
+  "method_modality": "text_only",
+  "mode": "open",
+  "num_qas": 76,
+  "num_qas_run": 76,
+  "dialog_json": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/dialog/Cartoon_Entertainment_Companion_Open.json",
+  "image_root": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image",
+  "run_dir": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/runs/cartoon_entertainment_companion_open/20260426_125952_gpt_5_4_mini_gen_agents__text_only",
+  "git_commit": "f50478ca8d87824ef1e9bc48c2b9e0d49e54305a",
+  "summary": {
+    "open_count": 76,
+    "overall": {
+      "em": 0.0,
+      "contains_gt": 0.013157894736842105,
+      "f1": 0.19869310712186675,
+      "bleu": 0.04446635981199877,
+      "bleu_1": 0.14340113545731686,
+      "bleu_2": 0.08768870522393503,
+      "judge": 0.2236842105263158
+    },
+    "by_x": {
+      "X3": {
+        "em": 0.0,
+        "contains_gt": 0.041666666666666664,
+        "f1": 0.1442416953205564,
+        "bleu": 0.018002674947195155,
+        "bleu_1": 0.09341469795584417,
+        "bleu_2": 0.04461560633820815,
+        "judge": 0.125
+      },
+      "X4": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.1973463863075509,
+        "bleu": 0.062406024363676954,
+        "bleu_1": 0.15234805245453992,
+        "bleu_2": 0.1046743628063326,
+        "judge": 0.2692307692307692
+      },
+      "X2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.21958389563652722,
+        "bleu": 0.058438227326080595,
+        "bleu_1": 0.14762678561765932,
+        "bleu_2": 0.09774139471959827,
+        "judge": 0.3
+      },
+      "X1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.2695019033254327,
+        "bleu": 0.046277515016426005,
+        "bleu_1": 0.2012010202388244,
+        "bleu_2": 0.11841372904633977,
+        "judge": 0.25
+      }
+    },
+    "by_y": {
+      "Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.10514640680648586,
+        "bleu": 0.02409884258154093,
+        "bleu_1": 0.0678655345570804,
+        "bleu_2": 0.03673263140681735,
+        "judge": 0.13636363636363635
+      },
+      "Y2": {
+        "em": 0.0,
+        "contains_gt": 0.02631578947368421,
+        "f1": 0.2865629401367065,
+        "bleu": 0.06545881993445876,
+        "bleu_1": 0.2122560681032102,
+        "bleu_2": 0.13561738916446944,
+        "judge": 0.3026315789473684
+      },
+      "Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.1482905982905983,
+        "bleu": 0.019349276602324585,
+        "bleu_1": 0.11863861329008808,
+        "bleu_2": 0.05974079446885025,
+        "judge": 0.2
+      }
+    },
+    "by_cell": {
+      "X3_Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.06641609598131337,
+        "bleu": 0.006093302043967825,
+        "bleu_1": 0.029751618832997793,
+        "bleu_2": 0.013503755933281328,
+        "judge": 0.16666666666666666
+      },
+      "X4_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.37487925280158196,
+        "bleu": 0.12138632358888944,
+        "bleu_1": 0.2891822070422408,
+        "bleu_2": 0.20412033112277206,
+        "judge": 0.5384615384615384
+      },
+      "X2_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.10087719298245615,
+        "bleu": 0.011423965530826358,
+        "bleu_1": 0.08095238095238094,
+        "bleu_2": 0.039503603500524516,
+        "judge": 0.2
+      },
+      "X3_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.08333333333333333,
+        "f1": 0.2220672946597994,
+        "bleu": 0.029912047850422487,
+        "bleu_1": 0.15707777707869056,
+        "bleu_2": 0.07572745674313497,
+        "judge": 0.08333333333333333
+      },
+      "X4_Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.021464646464646464,
+        "bleu": 0.0037112022333365092,
+        "bleu_1": 0.01680672268907563,
+        "bleu_2": 0.0056640940307175775,
+        "judge": 0.0
+      },
+      "X1_Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.18095238095238098,
+        "bleu": 0.03758632706413111,
+        "bleu_1": 0.15233914767602091,
+        "bleu_2": 0.050566676790906456,
+        "judge": 0.125
+      },
+      "X1_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.3558459922430511,
+        "bleu": 0.06166856862433359,
+        "bleu_1": 0.2520833333333333,
+        "bleu_2": 0.1742061231541949,
+        "judge": 0.3125
+      },
+      "X2_Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.33829059829059827,
+        "bleu": 0.10545248912133484,
+        "bleu_1": 0.2143011902829377,
+        "bleu_2": 0.155979185938672,
+        "judge": 0.4
+      },
+      "X1_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.18536324786324787,
+        "bleu": 0.02418659575290573,
+        "bleu_1": 0.14829826661261009,
+        "bleu_2": 0.07467599308606282,
+        "judge": 0.25
+      },
+      "X4_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0,
+        "bleu": 0.0,
+        "bleu_1": 0.0,
+        "bleu_2": 0.0,
+        "judge": 0.0
+      }
+    }
+  },
+  "method_runtime": {
+    "caption_validation_passed": true,
+    "caption_validation_round_count": 87,
+    "method_modality": "text_only",
+    "history_source": "retrieval",
+    "captions_loaded": true,
+    "images_loaded": false,
+    "num_memories": 299,
+    "debug_dir": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/output/cartoon_entertainment_companion_open/gen_agents",
+    "history_turns_after_truncation": 1,
+    "retrieved_round_ids": [
+      "CARTOON_S61:R1",
+      "CARTOON_S59:R1",
+      "CARTOON_S61:R3",
+      "CARTOON_S63:R2",
+      "CARTOON_S56:R1",
+      "CARTOON_S57:R2",
+      "CARTOON_S68:R1",
+      "CARTOON_S80:R1",
+      "CARTOON_S83:R1",
+      "CARTOON_S79:R1"
+    ]
+  },
+  "judge_model": "gpt-5.2",
+  "judge_rescored_from_predictions": true
+}

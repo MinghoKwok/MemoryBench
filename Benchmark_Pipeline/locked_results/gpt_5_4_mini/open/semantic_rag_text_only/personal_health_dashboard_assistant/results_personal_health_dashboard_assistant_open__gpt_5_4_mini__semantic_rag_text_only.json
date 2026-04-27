@@ -1,0 +1,201 @@
+{
+  "task_name": "personal_health_dashboard_assistant_open",
+  "model_name": "gpt_5_4_mini",
+  "model_path": "gpt-5.4-mini",
+  "method_name": "semantic_rag_text_only",
+  "base_method_name": "semantic_rag_text_only",
+  "method_modality": "",
+  "mode": "open",
+  "num_qas": 51,
+  "num_qas_run": 51,
+  "dialog_json": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/dialog/Personal_Health_Dashboard_Assistant_Open.json",
+  "image_root": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image",
+  "run_dir": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/runs/personal_health_dashboard_assistant_open/20260426_110439_gpt_5_4_mini_semantic_rag_text_only",
+  "git_commit": "f50478ca8d87824ef1e9bc48c2b9e0d49e54305a",
+  "summary": {
+    "open_count": 51,
+    "overall": {
+      "em": 0.13725490196078433,
+      "contains_gt": 0.13725490196078433,
+      "f1": 0.19437980320333262,
+      "bleu": 0.12408326896477821,
+      "bleu_1": 0.17911048082634864,
+      "bleu_2": 0.15755147460737423,
+      "judge": 0.19607843137254902
+    },
+    "by_x": {
+      "X4": {
+        "em": 0.1590909090909091,
+        "contains_gt": 0.1590909090909091,
+        "f1": 0.19664502164502165,
+        "bleu": 0.1381676134858807,
+        "bleu_1": 0.18743100390664683,
+        "bleu_2": 0.1695949816200267,
+        "judge": 0.19318181818181818
+      },
+      "X3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0,
+        "bleu": 0.0,
+        "bleu_1": 0.0,
+        "bleu_2": 0.0,
+        "judge": 0.0
+      },
+      "X1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.4203296703296703,
+        "bleu": 0.08295724127497933,
+        "bleu_1": 0.29589011675043997,
+        "bleu_2": 0.19098200456497044,
+        "judge": 0.5
+      }
+    },
+    "by_y": {
+      "Y2": {
+        "em": 0.1590909090909091,
+        "contains_gt": 0.1590909090909091,
+        "f1": 0.17537878787878788,
+        "bleu": 0.13429011237391775,
+        "bleu_1": 0.17518939393939395,
+        "bleu_2": 0.1650600966028985,
+        "judge": 0.1590909090909091
+      },
+      "Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.32445054945054946,
+        "bleu": 0.0601910542298717,
+        "bleu_1": 0.20919369152215272,
+        "bleu_2": 0.11769984823214182,
+        "judge": 0.4166666666666667
+      },
+      "Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.25,
+        "bleu": 0.05833544737207805,
+        "bleu_1": 0.17113903967753066,
+        "bleu_2": 0.06628186505570068,
+        "judge": 0.5
+      }
+    },
+    "by_cell": {
+      "X4_Y2": {
+        "em": 0.175,
+        "contains_gt": 0.175,
+        "f1": 0.19291666666666665,
+        "bleu": 0.1477191236113095,
+        "bleu_1": 0.19270833333333334,
+        "bleu_2": 0.18156610626318836,
+        "judge": 0.175
+      },
+      "X4_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.23392857142857143,
+        "bleu": 0.04265251223159256,
+        "bleu_1": 0.13465770963978174,
+        "bleu_2": 0.049883735188410064,
+        "judge": 0.375
+      },
+      "X3_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0,
+        "bleu": 0.0,
+        "bleu_1": 0.0,
+        "bleu_2": 0.0,
+        "judge": 0.0
+      },
+      "X1_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.5054945054945055,
+        "bleu": 0.09526813822642997,
+        "bleu_1": 0.35826565528689464,
+        "bleu_2": 0.2533320743196053,
+        "judge": 0.5
+      },
+      "X1_Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.25,
+        "bleu": 0.05833544737207805,
+        "bleu_1": 0.17113903967753066,
+        "bleu_2": 0.06628186505570068,
+        "judge": 0.5
+      }
+    }
+  },
+  "method_runtime": {
+    "retrieval_backend": "dense_text",
+    "retrieval_corpus": "round_text",
+    "method_modality": "text_only",
+    "top_k": 10,
+    "neighbor_window": 0,
+    "seed_round_ids": [
+      "HEALTH_S1:R1",
+      "HEALTH_S2:R7",
+      "HEALTH_S3:R4",
+      "HEALTH_S9:R4",
+      "HEALTH_S10:R4",
+      "HEALTH_S10:R6",
+      "HEALTH_S7:R3",
+      "HEALTH_S12:R5",
+      "HEALTH_S9:R1",
+      "HEALTH_S7:R9"
+    ],
+    "selected_round_ids": [
+      "HEALTH_S1:R1",
+      "HEALTH_S2:R7",
+      "HEALTH_S3:R4",
+      "HEALTH_S9:R4",
+      "HEALTH_S10:R4",
+      "HEALTH_S10:R6",
+      "HEALTH_S7:R3",
+      "HEALTH_S12:R5",
+      "HEALTH_S9:R1",
+      "HEALTH_S7:R9"
+    ],
+    "top_candidates": [
+      {
+        "round_id": "HEALTH_S1:R1",
+        "score": 0.40155394546482054,
+        "text_dense_score": 0.40155394546482054
+      },
+      {
+        "round_id": "HEALTH_S2:R7",
+        "score": 0.3472878337442719,
+        "text_dense_score": 0.3472878337442719
+      },
+      {
+        "round_id": "HEALTH_S3:R4",
+        "score": 0.26688579751864383,
+        "text_dense_score": 0.26688579751864383
+      },
+      {
+        "round_id": "HEALTH_S9:R4",
+        "score": 0.25906629070967113,
+        "text_dense_score": 0.25906629070967113
+      },
+      {
+        "round_id": "HEALTH_S10:R4",
+        "score": 0.25546967119314506,
+        "text_dense_score": 0.25546967119314506
+      }
+    ],
+    "clue_hit_count": 0,
+    "corpus_entry_count": 97,
+    "text_embedding_model": "all-MiniLM-L6-v2",
+    "caption_text_included": true,
+    "image_embeddings_built": false,
+    "history_source": "retrieval",
+    "captions_loaded": true,
+    "images_loaded": false,
+    "history_turns_after_truncation": 20
+  },
+  "judge_model": "gpt-5.2",
+  "judge_rescored_from_predictions": true
+}

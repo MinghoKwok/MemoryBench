@@ -1,0 +1,102 @@
+{
+  "task_name": "personal_health_dashboard_assistant",
+  "model_name": "gpt_5_4_mini",
+  "model_path": "gpt-5.4-mini",
+  "method_name": "simplemem",
+  "base_method_name": "simplemem",
+  "method_modality": "",
+  "mode": "mcq",
+  "num_qas": 51,
+  "num_qas_run": 51,
+  "dialog_json": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/dialog/Personal_Health_Dashboard_Assistant.json",
+  "image_root": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image",
+  "run_dir": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/runs/personal_health_dashboard_assistant/20260426_151721_gpt_5_4_mini_simplemem",
+  "git_commit": "f50478ca8d87824ef1e9bc48c2b9e0d49e54305a",
+  "summary": {
+    "open_count": 51,
+    "overall": {
+      "em": 0.15196078431372548,
+      "contains_gt": 0.19607843137254902,
+      "f1": 0.15196078431372548
+    },
+    "by_x": {
+      "X4": {
+        "em": 0.14204545454545456,
+        "contains_gt": 0.18181818181818182,
+        "f1": 0.14204545454545456
+      },
+      "X3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0
+      },
+      "X1": {
+        "em": 0.5,
+        "contains_gt": 0.6666666666666666,
+        "f1": 0.5
+      }
+    },
+    "by_y": {
+      "Y2": {
+        "em": 0.10227272727272728,
+        "contains_gt": 0.13636363636363635,
+        "f1": 0.10227272727272728
+      },
+      "Y3": {
+        "em": 0.4166666666666667,
+        "contains_gt": 0.5,
+        "f1": 0.4166666666666667
+      },
+      "Y1": {
+        "em": 0.75,
+        "contains_gt": 1.0,
+        "f1": 0.75
+      }
+    },
+    "by_cell": {
+      "X4_Y2": {
+        "em": 0.1125,
+        "contains_gt": 0.15,
+        "f1": 0.1125
+      },
+      "X4_Y3": {
+        "em": 0.4375,
+        "contains_gt": 0.5,
+        "f1": 0.4375
+      },
+      "X3_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0
+      },
+      "X1_Y3": {
+        "em": 0.375,
+        "contains_gt": 0.5,
+        "f1": 0.375
+      },
+      "X1_Y1": {
+        "em": 0.75,
+        "contains_gt": 1.0,
+        "f1": 0.75
+      }
+    },
+    "mcq_count": 51,
+    "mcq_valid_rate": 0.7843137254901961,
+    "mcq_overall": {
+      "em": 0.15196078431372548,
+      "contains_gt": 0.19607843137254902,
+      "f1": 0.15196078431372548
+    },
+    "mcq_per_position_accuracy": {
+      "A": 0.13725490196078433,
+      "B": 0.11764705882352941,
+      "C": 0.1568627450980392,
+      "D": 0.19607843137254902
+    }
+  },
+  "method_runtime": {
+    "num_memories": 97,
+    "debug_dir": "/Users/qingyuejiao/Desktop/MemoryBench/output/personal_health_dashboard_assistant/simplemem",
+    "data_dir": "/Users/qingyuejiao/Desktop/MemoryBench/runs/simplemem/personal_health_dashboard_assistant"
+  }
+}

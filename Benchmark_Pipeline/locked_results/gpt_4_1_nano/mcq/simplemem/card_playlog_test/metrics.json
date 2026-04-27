@@ -1,0 +1,72 @@
+{
+  "task_name": "card_playlog_test",
+  "model_name": "gpt_4_1_nano",
+  "model_path": "gpt-4.1-nano",
+  "method_name": "simplemem",
+  "base_method_name": "simplemem",
+  "method_modality": "",
+  "mode": "mcq",
+  "num_qas": 48,
+  "num_qas_run": 48,
+  "dialog_json": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/dialog/Card_Playlog_Test.json",
+  "image_root": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image",
+  "run_dir": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/runs/card_playlog_test/20260426_030502_gpt_4_1_nano_simplemem",
+  "git_commit": "f50478ca8d87824ef1e9bc48c2b9e0d49e54305a",
+  "summary": {
+    "open_count": 48,
+    "overall": {
+      "em": 0.2552083333333333,
+      "contains_gt": 0.14583333333333334,
+      "f1": 0.2552083333333333
+    },
+    "by_x": {
+      "X4": {
+        "em": 0.2552083333333333,
+        "contains_gt": 0.14583333333333334,
+        "f1": 0.2552083333333333
+      }
+    },
+    "by_y": {
+      "Y3": {
+        "em": 0.18421052631578946,
+        "contains_gt": 0.05263157894736842,
+        "f1": 0.18421052631578946
+      },
+      "Y2": {
+        "em": 0.3017241379310345,
+        "contains_gt": 0.20689655172413793,
+        "f1": 0.3017241379310345
+      }
+    },
+    "by_cell": {
+      "X4_Y3": {
+        "em": 0.18421052631578946,
+        "contains_gt": 0.05263157894736842,
+        "f1": 0.18421052631578946
+      },
+      "X4_Y2": {
+        "em": 0.3017241379310345,
+        "contains_gt": 0.20689655172413793,
+        "f1": 0.3017241379310345
+      }
+    },
+    "mcq_count": 48,
+    "mcq_valid_rate": 0.6875,
+    "mcq_overall": {
+      "em": 0.2552083333333333,
+      "contains_gt": 0.14583333333333334,
+      "f1": 0.2552083333333333
+    },
+    "mcq_per_position_accuracy": {
+      "A": 0.25,
+      "B": 0.3958333333333333,
+      "C": 0.22916666666666666,
+      "D": 0.14583333333333334
+    }
+  },
+  "method_runtime": {
+    "num_memories": 30,
+    "debug_dir": "/Users/qingyuejiao/Desktop/MemoryBench/output/card_playlog_test/simplemem",
+    "data_dir": "/Users/qingyuejiao/Desktop/MemoryBench/runs/simplemem/card_playlog_test"
+  }
+}
