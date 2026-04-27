@@ -1,0 +1,278 @@
+{
+  "task_name": "concat_brand_social_open",
+  "model_name": "gpt_5_4_mini",
+  "model_path": "gpt-5.4-mini",
+  "method_name": "semantic_rag_multimodal",
+  "base_method_name": "semantic_rag_multimodal",
+  "method_modality": "multimodal",
+  "mode": "open",
+  "num_qas": 66,
+  "num_qas_run": 66,
+  "dialog_json": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/dialog/concat_brand_social_open.json",
+  "image_root": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image",
+  "run_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/concat_brand_social_open/20260427_000207_gpt_5_4_mini_semantic_rag_multimodal",
+  "git_commit": "aa51866922099e1acda04d2e12b1cada3d7736c0",
+  "summary": {
+    "open_count": 66,
+    "overall": {
+      "em": 0.2727272727272727,
+      "contains_gt": 0.2727272727272727,
+      "f1": 0.43460538801690524,
+      "bleu": 0.10090542848265122,
+      "bleu_1": 0.3785308857789634,
+      "bleu_2": 0.18314225592048605,
+      "judge": 0.5454545454545454
+    },
+    "by_x": {
+      "X4": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.4888888888888889,
+        "bleu": 0.22398330109127118,
+        "bleu_1": 0.3248033669613586,
+        "bleu_2": 0.24095478451926713,
+        "judge": 0.6666666666666666
+      },
+      "X2": {
+        "em": 0.14285714285714285,
+        "contains_gt": 0.14285714285714285,
+        "f1": 0.311475911818833,
+        "bleu": 0.050264796985648195,
+        "bleu_1": 0.2382327952683062,
+        "bleu_2": 0.09474741255992349,
+        "judge": 0.45714285714285713
+      },
+      "X1": {
+        "em": 0.46153846153846156,
+        "contains_gt": 0.46153846153846156,
+        "f1": 0.589062770338074,
+        "bleu": 0.15047356600256315,
+        "bleu_1": 0.5642492510052611,
+        "bleu_2": 0.2710909652921907,
+        "judge": 0.6538461538461539
+      },
+      "X3": {
+        "em": 0.5,
+        "contains_gt": 0.5,
+        "f1": 0.5,
+        "bleu": 0.158113883008419,
+        "bleu_1": 0.5,
+        "bleu_2": 0.5,
+        "judge": 0.5
+      }
+    },
+    "by_y": {
+      "Y1": {
+        "em": 0.125,
+        "contains_gt": 0.125,
+        "f1": 0.5465811965811965,
+        "bleu": 0.136273258924956,
+        "bleu_1": 0.43597470873050564,
+        "bleu_2": 0.32108430311420266,
+        "judge": 0.8125
+      },
+      "Y2": {
+        "em": 0.3269230769230769,
+        "contains_gt": 0.3269230769230769,
+        "f1": 0.4283488570253276,
+        "bleu": 0.1040126980858303,
+        "bleu_1": 0.3895994951758174,
+        "bleu_2": 0.1713503676257262,
+        "judge": 0.49038461538461536
+      },
+      "Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.3395275785248562,
+        "bleu": 0.02681865133202607,
+        "bleu_1": 0.20601117373750524,
+        "bleu_2": 0.10141589155011617,
+        "judge": 0.6666666666666666
+      }
+    },
+    "by_cell": {
+      "X4_Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.6666666666666666,
+        "bleu": 0.06541924356118012,
+        "bleu_1": 0.36787944117144233,
+        "bleu_2": 0.11633369384516798,
+        "judge": 1.0
+      },
+      "X2_Y2": {
+        "em": 0.17857142857142858,
+        "contains_gt": 0.17857142857142858,
+        "f1": 0.31157644876132273,
+        "bleu": 0.046785253582544865,
+        "bleu_1": 0.24652296747963826,
+        "bleu_2": 0.08693942912393575,
+        "judge": 0.4107142857142857
+      },
+      "X1_Y2": {
+        "em": 0.5714285714285714,
+        "contains_gt": 0.5714285714285714,
+        "f1": 0.6071428571428571,
+        "bleu": 0.1662925019256803,
+        "bleu_1": 0.6071428571428571,
+        "bleu_2": 0.2794944972073775,
+        "judge": 0.6190476190476191
+      },
+      "X4_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.4,
+        "bleu": 0.3032653298563167,
+        "bleu_1": 0.3032653298563167,
+        "bleu_2": 0.3032653298563167,
+        "judge": 0.5
+      },
+      "X1_Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.6427350427350427,
+        "bleu": 0.11878517484814773,
+        "bleu_1": 0.4786058804563498,
+        "bleu_2": 0.31606131242197166,
+        "judge": 1.0
+      },
+      "X2_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.3499346426410855,
+        "bleu": 0.024274314227310974,
+        "bleu_1": 0.18785103941432305,
+        "bleu_2": 0.09442465758114557,
+        "judge": 0.75
+      },
+      "X2_Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.2592592592592593,
+        "bleu": 0.1173945124257289,
+        "bleu_1": 0.22803352910118457,
+        "bleu_2": 0.16805226460084616,
+        "judge": 0.5
+      },
+      "X3_Y1": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0,
+        "bleu": 0.316227766016838,
+        "bleu_1": 1.0,
+        "bleu_2": 1.0,
+        "judge": 1.0
+      },
+      "X3_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0,
+        "bleu": 0.0,
+        "bleu_1": 0.0,
+        "bleu_2": 0.0,
+        "judge": 0.0
+      },
+      "X1_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.3187134502923976,
+        "bleu": 0.03190732554145626,
+        "bleu_1": 0.24233144238386958,
+        "bleu_2": 0.11539835948805735,
+        "judge": 0.5
+      }
+    }
+  },
+  "method_runtime": {
+    "retrieval_backend": "dense_multimodal",
+    "retrieval_corpus": "round_text",
+    "method_modality": "multimodal",
+    "top_k": 10,
+    "neighbor_window": 0,
+    "seed_round_ids": [
+      "BRAND_S37:R1",
+      "BRAND_S13:R2",
+      "CHAT_S35:R2",
+      "CHAT_S38:R1",
+      "CHAT_S35:R1",
+      "CHAT_S6:R1",
+      "BRAND_S17:R1",
+      "CHAT_S2:R2",
+      "CHAT_S18:R2",
+      "CHAT_S15:R2"
+    ],
+    "selected_round_ids": [
+      "BRAND_S37:R1",
+      "BRAND_S13:R2",
+      "CHAT_S35:R2",
+      "CHAT_S38:R1",
+      "CHAT_S35:R1",
+      "CHAT_S6:R1",
+      "BRAND_S17:R1",
+      "CHAT_S2:R2",
+      "CHAT_S18:R2",
+      "CHAT_S15:R2"
+    ],
+    "top_candidates": [
+      {
+        "round_id": "BRAND_S37:R1",
+        "score": 0.10323256471438903,
+        "text_dense_score": 0.15892410909829735,
+        "image_dense_score": 0.04754102033048072,
+        "indexed_image_count": 1,
+        "best_image_path": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image/Brand_Memory_Test/Dunkin_5.png"
+      },
+      {
+        "round_id": "BRAND_S13:R2",
+        "score": 0.09336716726423547,
+        "text_dense_score": 0.18673433452847094,
+        "image_dense_score": 0.0,
+        "indexed_image_count": 0,
+        "best_image_path": ""
+      },
+      {
+        "round_id": "CHAT_S35:R2",
+        "score": 0.09027624063655744,
+        "text_dense_score": 0.0365669856557593,
+        "image_dense_score": 0.14398549561735557,
+        "indexed_image_count": 1,
+        "best_image_path": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image/Social_Chat_Memory_Test/screenshots/R4_2.png"
+      },
+      {
+        "round_id": "CHAT_S38:R1",
+        "score": 0.08394595022411254,
+        "text_dense_score": 0.018676569240021073,
+        "image_dense_score": 0.14921533120820402,
+        "indexed_image_count": 1,
+        "best_image_path": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image/Social_Chat_Memory_Test/screenshots/R4b_1.png"
+      },
+      {
+        "round_id": "CHAT_S35:R1",
+        "score": 0.08215382227830924,
+        "text_dense_score": 0.018676569240021073,
+        "image_dense_score": 0.1456310753165974,
+        "indexed_image_count": 1,
+        "best_image_path": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image/Social_Chat_Memory_Test/screenshots/R4_1.png"
+      }
+    ],
+    "clue_hit_count": 3,
+    "corpus_entry_count": 125,
+    "text_embedding_model": "all-MiniLM-L6-v2",
+    "multimodal_embedding_model": "siglip2-base-patch16-384",
+    "text_dense_weight": 0.5,
+    "image_dense_weight": 0.5,
+    "caption_text_included": false,
+    "image_embeddings_built": true,
+    "multi_image_indexing_enabled": true,
+    "indexed_image_count": 73,
+    "history_source": "retrieval",
+    "captions_loaded": false,
+    "images_loaded": true,
+    "history_turns_after_truncation": 20
+  },
+  "judge": {
+    "enabled": true,
+    "model": "gpt-5.2",
+    "scored_open_rows": 66
+  }
+}

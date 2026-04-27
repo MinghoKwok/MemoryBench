@@ -1,0 +1,202 @@
+{
+  "task_name": "cartoon_entertainment_companion_open",
+  "model_name": "gpt_5_4_mini",
+  "model_path": "gpt-5.4-mini",
+  "method_name": "mirix",
+  "base_method_name": "mirix",
+  "method_modality": "",
+  "mode": "open",
+  "num_qas": 76,
+  "num_qas_run": 76,
+  "dialog_json": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/dialog/Cartoon_Entertainment_Companion_Open.json",
+  "image_root": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image",
+  "run_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/cartoon_entertainment_companion_open/20260426_044702_gpt_5_4_mini_mirix",
+  "git_commit": "054322ce5a2f8d0e731520e829f334c056239afd",
+  "summary": {
+    "open_count": 76,
+    "overall": {
+      "em": 0.05263157894736842,
+      "contains_gt": 0.07894736842105263,
+      "f1": 0.20403622611704736,
+      "bleu": 0.061195901866785286,
+      "bleu_1": 0.15477919204838095,
+      "bleu_2": 0.10214555925327302,
+      "judge": 0.3223684210526316
+    },
+    "by_x": {
+      "X3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.041574940582293524,
+        "bleu": 0.005608356887968329,
+        "bleu_1": 0.028413137604980297,
+        "bleu_2": 0.008689009730680656,
+        "judge": 0.125
+      },
+      "X4": {
+        "em": 0.038461538461538464,
+        "contains_gt": 0.07692307692307693,
+        "f1": 0.20844239986416696,
+        "bleu": 0.0664222697448384,
+        "bleu_1": 0.1586545047385077,
+        "bleu_2": 0.11254507079824808,
+        "judge": 0.36538461538461536
+      },
+      "X2": {
+        "em": 0.1,
+        "contains_gt": 0.1,
+        "f1": 0.32783411033411036,
+        "bleu": 0.08798395012805764,
+        "bleu_1": 0.210707766862291,
+        "bleu_2": 0.1632567889950195,
+        "judge": 0.45
+      },
+      "X1": {
+        "em": 0.125,
+        "contains_gt": 0.1875,
+        "f1": 0.36319444444444443,
+        "bleu": 0.11934184136987919,
+        "bleu_1": 0.30307553133333226,
+        "bleu_2": 0.18723665868798559,
+        "judge": 0.46875
+      }
+    },
+    "by_y": {
+      "Y1": {
+        "em": 0.030303030303030304,
+        "contains_gt": 0.06060606060606061,
+        "f1": 0.1241770855407219,
+        "bleu": 0.02162799190910439,
+        "bleu_1": 0.08595600174973904,
+        "bleu_2": 0.03999184625299001,
+        "judge": 0.22727272727272727
+      },
+      "Y2": {
+        "em": 0.07894736842105263,
+        "contains_gt": 0.10526315789473684,
+        "f1": 0.27425283617763657,
+        "bleu": 0.09933445828033587,
+        "bleu_1": 0.21240814883289125,
+        "bleu_2": 0.15951568795313184,
+        "judge": 0.3684210526315789
+      },
+      "Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.19746031746031745,
+        "bleu": 0.032491078844494765,
+        "bleu_1": 0.17103217645713936,
+        "bleu_2": 0.0763470869362139,
+        "judge": 0.6
+      }
+    },
+    "by_cell": {
+      "X3_Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.026262626262626262,
+        "bleu": 0.005716751615542018,
+        "bleu_1": 0.02430555555555556,
+        "bleu_2": 0.008332728304615702,
+        "judge": 0.16666666666666666
+      },
+      "X4_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.23838381353504,
+        "bleu": 0.0917719169681822,
+        "bleu_1": 0.1768311037458788,
+        "bleu_2": 0.1460227366347677,
+        "judge": 0.38461538461538464
+      },
+      "X2_Y2": {
+        "em": 0.2,
+        "contains_gt": 0.2,
+        "f1": 0.3898989898989899,
+        "bleu": 0.15928741415723674,
+        "bleu_1": 0.30268181041059283,
+        "bleu_2": 0.2965927360991617,
+        "judge": 0.6
+      },
+      "X3_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.05688725490196078,
+        "bleu": 0.005499962160394641,
+        "bleu_1": 0.032520719654405034,
+        "bleu_2": 0.009045291156745612,
+        "judge": 0.08333333333333333
+      },
+      "X4_Y1": {
+        "em": 0.08333333333333333,
+        "contains_gt": 0.16666666666666666,
+        "f1": 0.19337606837606838,
+        "bleu": 0.0444953410649525,
+        "bleu_1": 0.15218439787539798,
+        "bleu_2": 0.08565635537520581,
+        "judge": 0.2916666666666667
+      },
+      "X1_Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.03333333333333333,
+        "bleu": 0.00694404758502948,
+        "bleu_1": 0.03125000000000001,
+        "bleu_2": 0.010564428184106458,
+        "judge": 0.125
+      },
+      "X1_Y2": {
+        "em": 0.25,
+        "contains_gt": 0.375,
+        "f1": 0.5863095238095238,
+        "bleu": 0.21490473466943438,
+        "bleu_1": 0.4836309523809524,
+        "bleu_2": 0.32147417394878425,
+        "judge": 0.625
+      },
+      "X2_Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.26576923076923076,
+        "bleu": 0.01668048609887856,
+        "bleu_1": 0.11873372331398921,
+        "bleu_2": 0.029920841890877237,
+        "judge": 0.3
+      },
+      "X1_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.24682539682539684,
+        "bleu": 0.04061384855561846,
+        "bleu_1": 0.21379022057142422,
+        "bleu_2": 0.09543385867026738,
+        "judge": 0.5
+      },
+      "X4_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0,
+        "bleu": 0.0,
+        "bleu_1": 0.0,
+        "bleu_2": 0.0,
+        "judge": 1.0
+      }
+    }
+  },
+  "method_runtime": {
+    "official_mirix": true,
+    "official_model_name": "gpt-5.4-mini",
+    "ingested_turns": 598,
+    "runtime_signature": "4ce7c4ad854dee2e",
+    "runtime_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/cartoon_entertainment_companion_open/mirix/4ce7c4ad854dee2e",
+    "runtime_home": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/cartoon_entertainment_companion_open/mirix/4ce7c4ad854dee2e/runtime_home",
+    "debug_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/output/cartoon_entertainment_companion_open/mirix/4ce7c4ad854dee2e",
+    "resumed": false,
+    "completed_ingestion": true
+  },
+  "judge": {
+    "enabled": true,
+    "model": "gpt-5.2",
+    "scored_open_rows": 76
+  }
+}

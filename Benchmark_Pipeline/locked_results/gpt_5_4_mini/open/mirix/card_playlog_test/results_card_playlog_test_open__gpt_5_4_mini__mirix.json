@@ -1,0 +1,94 @@
+{
+  "task_name": "card_playlog_test_open",
+  "model_name": "gpt_5_4_mini",
+  "model_path": "gpt-5.4-mini",
+  "method_name": "mirix",
+  "base_method_name": "mirix",
+  "method_modality": "",
+  "mode": "open",
+  "num_qas": 48,
+  "num_qas_run": 48,
+  "dialog_json": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/dialog/Card_Playlog_Test_Open.json",
+  "image_root": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image",
+  "run_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/card_playlog_test_open/20260426_184120_gpt_5_4_mini_mirix",
+  "git_commit": "054322ce5a2f8d0e731520e829f334c056239afd",
+  "summary": {
+    "open_count": 48,
+    "overall": {
+      "em": 0.4375,
+      "contains_gt": 0.4375,
+      "f1": 0.4375,
+      "bleu": 0.07779972418920288,
+      "bleu_1": 0.4375,
+      "bleu_2": 0.13834964763236662,
+      "judge": 0.4375
+    },
+    "by_x": {
+      "X4": {
+        "em": 0.4375,
+        "contains_gt": 0.4375,
+        "f1": 0.4375,
+        "bleu": 0.07779972418920288,
+        "bleu_1": 0.4375,
+        "bleu_2": 0.13834964763236662,
+        "judge": 0.4375
+      }
+    },
+    "by_y": {
+      "Y3": {
+        "em": 0.21052631578947367,
+        "contains_gt": 0.21052631578947367,
+        "f1": 0.21052631578947367,
+        "bleu": 0.037437461263977324,
+        "bleu_1": 0.21052631578947367,
+        "bleu_2": 0.06657426652986063,
+        "judge": 0.21052631578947367
+      },
+      "Y2": {
+        "em": 0.5862068965517241,
+        "contains_gt": 0.5862068965517241,
+        "f1": 0.5862068965517241,
+        "bleu": 0.1042439654160748,
+        "bleu_1": 0.5862068965517241,
+        "bleu_2": 0.18537489732021536,
+        "judge": 0.5862068965517241
+      }
+    },
+    "by_cell": {
+      "X4_Y3": {
+        "em": 0.21052631578947367,
+        "contains_gt": 0.21052631578947367,
+        "f1": 0.21052631578947367,
+        "bleu": 0.037437461263977324,
+        "bleu_1": 0.21052631578947367,
+        "bleu_2": 0.06657426652986063,
+        "judge": 0.21052631578947367
+      },
+      "X4_Y2": {
+        "em": 0.5862068965517241,
+        "contains_gt": 0.5862068965517241,
+        "f1": 0.5862068965517241,
+        "bleu": 0.1042439654160748,
+        "bleu_1": 0.5862068965517241,
+        "bleu_2": 0.18537489732021536,
+        "judge": 0.5862068965517241
+      }
+    }
+  },
+  "method_runtime": {
+    "official_mirix": true,
+    "official_model_name": "gpt-5.4-mini",
+    "ingested_turns": 60,
+    "runtime_signature": "ee67c3f04c9c3e9b",
+    "runtime_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/card_playlog_test_open/mirix/ee67c3f04c9c3e9b",
+    "runtime_home": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/card_playlog_test_open/mirix/ee67c3f04c9c3e9b/runtime_home",
+    "debug_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/output/card_playlog_test_open/mirix/ee67c3f04c9c3e9b",
+    "resumed": false,
+    "completed_ingestion": true
+  },
+  "judge": {
+    "enabled": true,
+    "model": "gpt-5.2",
+    "scored_open_rows": 48
+  }
+}

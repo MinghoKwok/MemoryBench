@@ -179,5 +179,10 @@
     "debug_dir": "/Users/qingyuejiao/Desktop/MemoryBench/output/social_chat_memory_test_open/reflexion"
   },
   "judge_model": "gpt-5.2",
-  "judge_rescored_from_predictions": true
+  "judge_rescored_from_predictions": true,
+  "judge": {
+    "enabled": true,
+    "model": "gpt-5.2",
+    "scored_open_rows": 37
+  }
 }

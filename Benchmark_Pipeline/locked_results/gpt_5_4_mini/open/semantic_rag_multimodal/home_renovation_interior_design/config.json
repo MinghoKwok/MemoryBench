@@ -1,0 +1,133 @@
+{
+  "task": {
+    "name": "home_renovation_interior_design_open",
+    "dataset": {
+      "dialog_json": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/dialog/Home_Renovation_Interior_Design_Open.json",
+      "image_root": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image"
+    },
+    "eval": {
+      "mode": "open",
+      "output_json": "output/results_home_renovation_interior_design_open.json",
+      "max_questions": 0
+    }
+  },
+  "dataset": {
+    "dialog_json": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/dialog/Home_Renovation_Interior_Design_Open.json",
+    "image_root": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image"
+  },
+  "eval": {
+    "mode": "open",
+    "output_json": "output/results_home_renovation_interior_design_open.json",
+    "max_questions": 0
+  },
+  "model": {
+    "name": "gpt_5_4_mini",
+    "provider": "openai_api",
+    "model": "gpt-5.4-mini",
+    "api_key_env": "OPENAI_API_KEY",
+    "base_url": "https://api.openai.com/v1",
+    "max_new_tokens": 128,
+    "timeout": 90
+  },
+  "method": {
+    "name": "semantic_rag_multimodal",
+    "modality": "multimodal",
+    "retrieval_backend": "dense_multimodal",
+    "top_k": 10,
+    "neighbor_window": 0,
+    "text_embedding_model": "all-MiniLM-L6-v2",
+    "multimodal_embedding_model": "siglip2-base-patch16-384",
+    "text_dense_weight": 0.5,
+    "image_dense_weight": 0.5
+  },
+  "run": {
+    "output_root": "runs",
+    "method_runtime": {
+      "retrieval_backend": "dense_multimodal",
+      "retrieval_corpus": "round_text",
+      "method_modality": "multimodal",
+      "top_k": 10,
+      "neighbor_window": 0,
+      "seed_round_ids": [
+        "HOME_S1:R10",
+        "HOME_S12:R6",
+        "HOME_S13:R6",
+        "HOME_S1:R2",
+        "HOME_S1:R4",
+        "HOME_S1:R7",
+        "HOME_S10:R2",
+        "HOME_S10:R7",
+        "HOME_S1:R3",
+        "HOME_S1:R5"
+      ],
+      "selected_round_ids": [
+        "HOME_S1:R10",
+        "HOME_S12:R6",
+        "HOME_S13:R6",
+        "HOME_S1:R2",
+        "HOME_S1:R4",
+        "HOME_S1:R7",
+        "HOME_S10:R2",
+        "HOME_S10:R7",
+        "HOME_S1:R3",
+        "HOME_S1:R5"
+      ],
+      "top_candidates": [
+        {
+          "round_id": "HOME_S1:R10",
+          "score": 0.25870925957327057,
+          "text_dense_score": 0.3966785338936308,
+          "image_dense_score": 0.12073998525291035,
+          "indexed_image_count": 1,
+          "best_image_path": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image/Home_Renovation_Interior_Design/D1_IMG_007.jpg"
+        },
+        {
+          "round_id": "HOME_S12:R6",
+          "score": 0.2447246110438501,
+          "text_dense_score": 0.40853531194619325,
+          "image_dense_score": 0.08091391014150694,
+          "indexed_image_count": 1,
+          "best_image_path": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image/Home_Renovation_Interior_Design/D12_IMG_005.jpg"
+        },
+        {
+          "round_id": "HOME_S13:R6",
+          "score": 0.2366291095803276,
+          "text_dense_score": 0.40111238277364536,
+          "image_dense_score": 0.07214583638700985,
+          "indexed_image_count": 1,
+          "best_image_path": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image/Home_Renovation_Interior_Design/D13_IMG_005.jpg"
+        },
+        {
+          "round_id": "HOME_S1:R2",
+          "score": 0.230937072011498,
+          "text_dense_score": 0.3598335686155545,
+          "image_dense_score": 0.10204057540744146,
+          "indexed_image_count": 1,
+          "best_image_path": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image/Home_Renovation_Interior_Design/D1_IMG_001.jpg"
+        },
+        {
+          "round_id": "HOME_S1:R4",
+          "score": 0.2290574141673485,
+          "text_dense_score": 0.3667310074605597,
+          "image_dense_score": 0.09138382087413731,
+          "indexed_image_count": 1,
+          "best_image_path": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image/Home_Renovation_Interior_Design/D1_IMG_003.jpg"
+        }
+      ],
+      "clue_hit_count": 1,
+      "corpus_entry_count": 120,
+      "text_embedding_model": "all-MiniLM-L6-v2",
+      "multimodal_embedding_model": "siglip2-base-patch16-384",
+      "text_dense_weight": 0.5,
+      "image_dense_weight": 0.5,
+      "caption_text_included": false,
+      "image_embeddings_built": true,
+      "multi_image_indexing_enabled": true,
+      "indexed_image_count": 89,
+      "history_source": "retrieval",
+      "captions_loaded": false,
+      "images_loaded": true,
+      "history_turns_after_truncation": 20
+    }
+  }
+}

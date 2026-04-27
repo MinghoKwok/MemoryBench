@@ -1,0 +1,214 @@
+{
+  "task_name": "concat_cartoon_card",
+  "model_name": "gpt_5_4_mini",
+  "model_path": "gpt-5.4-mini",
+  "method_name": "semantic_rag_multimodal",
+  "base_method_name": "semantic_rag_multimodal",
+  "method_modality": "multimodal",
+  "mode": "mcq",
+  "num_qas": 124,
+  "num_qas_run": 124,
+  "dialog_json": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/dialog/concat_cartoon_card.json",
+  "image_root": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image",
+  "run_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/concat_cartoon_card/20260427_000451_gpt_5_4_mini_semantic_rag_multimodal",
+  "git_commit": "aa51866922099e1acda04d2e12b1cada3d7736c0",
+  "summary": {
+    "open_count": 124,
+    "overall": {
+      "em": 0.6048387096774194,
+      "contains_gt": 0.5887096774193549,
+      "f1": 0.6048387096774194
+    },
+    "by_x": {
+      "X3": {
+        "em": 0.5652173913043478,
+        "contains_gt": 0.6086956521739131,
+        "f1": 0.5652173913043478
+      },
+      "X4": {
+        "em": 0.5633802816901409,
+        "contains_gt": 0.5211267605633803,
+        "f1": 0.5633802816901409
+      },
+      "X2": {
+        "em": 0.6607142857142857,
+        "contains_gt": 0.6428571428571429,
+        "f1": 0.6607142857142857
+      },
+      "X1": {
+        "em": 0.796875,
+        "contains_gt": 0.8125,
+        "f1": 0.796875
+      }
+    },
+    "by_y": {
+      "Y1": {
+        "em": 0.734375,
+        "contains_gt": 0.8125,
+        "f1": 0.734375
+      },
+      "Y2": {
+        "em": 0.5441176470588235,
+        "contains_gt": 0.5,
+        "f1": 0.5441176470588235
+      },
+      "Y3": {
+        "em": 0.6041666666666666,
+        "contains_gt": 0.5416666666666666,
+        "f1": 0.6041666666666666
+      }
+    },
+    "by_cell": {
+      "X3_Y1": {
+        "em": 0.6136363636363636,
+        "contains_gt": 0.6363636363636364,
+        "f1": 0.6136363636363636
+      },
+      "X4_Y2": {
+        "em": 0.5,
+        "contains_gt": 0.4358974358974359,
+        "f1": 0.5
+      },
+      "X2_Y2": {
+        "em": 0.6111111111111112,
+        "contains_gt": 0.5555555555555556,
+        "f1": 0.6111111111111112
+      },
+      "X3_Y2": {
+        "em": 0.5208333333333334,
+        "contains_gt": 0.5833333333333334,
+        "f1": 0.5208333333333334
+      },
+      "X4_Y1": {
+        "em": 0.8125,
+        "contains_gt": 0.9166666666666666,
+        "f1": 0.8125
+      },
+      "X1_Y1": {
+        "em": 0.8125,
+        "contains_gt": 1.0,
+        "f1": 0.8125
+      },
+      "X1_Y2": {
+        "em": 0.71875,
+        "contains_gt": 0.625,
+        "f1": 0.71875
+      },
+      "X2_Y1": {
+        "em": 0.75,
+        "contains_gt": 0.8,
+        "f1": 0.75
+      },
+      "X1_Y3": {
+        "em": 0.9375,
+        "contains_gt": 1.0,
+        "f1": 0.9375
+      },
+      "X4_Y3": {
+        "em": 0.5375,
+        "contains_gt": 0.45,
+        "f1": 0.5375
+      }
+    },
+    "mcq_count": 124,
+    "mcq_valid_rate": 1.0,
+    "mcq_overall": {
+      "em": 0.6048387096774194,
+      "contains_gt": 0.5887096774193549,
+      "f1": 0.6048387096774194
+    },
+    "mcq_per_position_accuracy": {
+      "A": 0.5887096774193549,
+      "B": 0.6693548387096774,
+      "C": 0.5725806451612904,
+      "D": 0.5887096774193549
+    }
+  },
+  "method_runtime": {
+    "retrieval_backend": "dense_multimodal",
+    "retrieval_corpus": "round_text",
+    "method_modality": "multimodal",
+    "top_k": 10,
+    "neighbor_window": 0,
+    "seed_round_ids": [
+      "PLAY_S1:R1",
+      "PLAY_S3:R1",
+      "PLAY_S2:R1",
+      "PLAY_S4:R1",
+      "PLAY_S3:R3",
+      "PLAY_S4:R6",
+      "PLAY_S4:R5",
+      "PLAY_S4:R3",
+      "PLAY_S2:R3",
+      "PLAY_S3:R6"
+    ],
+    "selected_round_ids": [
+      "PLAY_S1:R1",
+      "PLAY_S3:R1",
+      "PLAY_S2:R1",
+      "PLAY_S4:R1",
+      "PLAY_S3:R3",
+      "PLAY_S4:R6",
+      "PLAY_S4:R5",
+      "PLAY_S4:R3",
+      "PLAY_S2:R3",
+      "PLAY_S3:R6"
+    ],
+    "top_candidates": [
+      {
+        "round_id": "PLAY_S1:R1",
+        "score": 0.3518901260814465,
+        "text_dense_score": 0.5804197289251971,
+        "image_dense_score": 0.12336052323769586,
+        "indexed_image_count": 1,
+        "best_image_path": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image/Card_Playlog_Test/uno_44/state_0000.jpg"
+      },
+      {
+        "round_id": "PLAY_S3:R1",
+        "score": 0.33250805497299285,
+        "text_dense_score": 0.551392110899986,
+        "image_dense_score": 0.11362399904599968,
+        "indexed_image_count": 1,
+        "best_image_path": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image/Card_Playlog_Test/uno_44/state_0002.jpg"
+      },
+      {
+        "round_id": "PLAY_S2:R1",
+        "score": 0.3292489070255706,
+        "text_dense_score": 0.5431647638971294,
+        "image_dense_score": 0.11533305015401177,
+        "indexed_image_count": 1,
+        "best_image_path": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image/Card_Playlog_Test/uno_44/state_0001.jpg"
+      },
+      {
+        "round_id": "PLAY_S4:R1",
+        "score": 0.3183630319489451,
+        "text_dense_score": 0.5212186862029454,
+        "image_dense_score": 0.11550737769494482,
+        "indexed_image_count": 1,
+        "best_image_path": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image/Card_Playlog_Test/uno_44/state_0003.jpg"
+      },
+      {
+        "round_id": "PLAY_S3:R3",
+        "score": 0.3035416676123519,
+        "text_dense_score": 0.48129253428426155,
+        "image_dense_score": 0.12579080094044223,
+        "indexed_image_count": 1,
+        "best_image_path": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image/Card_Playlog_Test/uno_44/state_0010.jpg"
+      }
+    ],
+    "clue_hit_count": 1,
+    "corpus_entry_count": 329,
+    "text_embedding_model": "all-MiniLM-L6-v2",
+    "multimodal_embedding_model": "siglip2-base-patch16-384",
+    "text_dense_weight": 0.5,
+    "image_dense_weight": 0.5,
+    "caption_text_included": false,
+    "image_embeddings_built": true,
+    "multi_image_indexing_enabled": true,
+    "indexed_image_count": 117,
+    "history_source": "retrieval",
+    "captions_loaded": false,
+    "images_loaded": true,
+    "history_turns_after_truncation": 20
+  }
+}

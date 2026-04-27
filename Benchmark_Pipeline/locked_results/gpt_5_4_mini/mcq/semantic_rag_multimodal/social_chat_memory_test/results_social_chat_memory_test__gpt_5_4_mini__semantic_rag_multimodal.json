@@ -1,0 +1,209 @@
+{
+  "task_name": "social_chat_memory_test",
+  "model_name": "gpt_5_4_mini",
+  "model_path": "gpt-5.4-mini",
+  "method_name": "semantic_rag_multimodal",
+  "base_method_name": "semantic_rag_multimodal",
+  "method_modality": "multimodal",
+  "mode": "mcq",
+  "num_qas": 37,
+  "num_qas_run": 37,
+  "dialog_json": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/dialog/Social_Chat_Memory_Test.json",
+  "image_root": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/image",
+  "run_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/social_chat_memory_test/20260426_004135_gpt_5_4_mini_semantic_rag_multimodal",
+  "git_commit": "7eb4b31f1f56487e02ecff48e751fe66ab6c6c5f",
+  "summary": {
+    "open_count": 37,
+    "overall": {
+      "em": 0.5472972972972973,
+      "contains_gt": 0.4864864864864865,
+      "f1": 0.5472972972972973
+    },
+    "by_x": {
+      "X2": {
+        "em": 0.5862068965517241,
+        "contains_gt": 0.5172413793103449,
+        "f1": 0.5862068965517241
+      },
+      "X1": {
+        "em": 0.45,
+        "contains_gt": 0.4,
+        "f1": 0.45
+      },
+      "X3": {
+        "em": 0.5,
+        "contains_gt": 0.5,
+        "f1": 0.5
+      },
+      "X4": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0
+      }
+    },
+    "by_y": {
+      "Y2": {
+        "em": 0.51,
+        "contains_gt": 0.4,
+        "f1": 0.51
+      },
+      "Y3": {
+        "em": 0.5,
+        "contains_gt": 0.5,
+        "f1": 0.5
+      },
+      "Y1": {
+        "em": 0.75,
+        "contains_gt": 0.8333333333333334,
+        "f1": 0.75
+      }
+    },
+    "by_cell": {
+      "X2_Y2": {
+        "em": 0.5681818181818182,
+        "contains_gt": 0.45454545454545453,
+        "f1": 0.5681818181818182
+      },
+      "X2_Y3": {
+        "em": 0.75,
+        "contains_gt": 0.75,
+        "f1": 0.75
+      },
+      "X2_Y1": {
+        "em": 0.5,
+        "contains_gt": 0.6666666666666666,
+        "f1": 0.5
+      },
+      "X1_Y1": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
+      },
+      "X1_Y2": {
+        "em": 0.25,
+        "contains_gt": 0.0,
+        "f1": 0.25
+      },
+      "X3_Y1": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
+      },
+      "X3_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0
+      },
+      "X4_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0
+      },
+      "X1_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0
+      }
+    },
+    "mcq_count": 37,
+    "mcq_valid_rate": 1.0,
+    "mcq_overall": {
+      "em": 0.5472972972972973,
+      "contains_gt": 0.4864864864864865,
+      "f1": 0.5472972972972973
+    },
+    "mcq_per_position_accuracy": {
+      "A": 0.43243243243243246,
+      "B": 0.5945945945945946,
+      "C": 0.6756756756756757,
+      "D": 0.4864864864864865
+    }
+  },
+  "method_runtime": {
+    "retrieval_backend": "dense_multimodal",
+    "retrieval_corpus": "round_text",
+    "method_modality": "multimodal",
+    "top_k": 10,
+    "neighbor_window": 0,
+    "seed_round_ids": [
+      "CHAT_S18:R2",
+      "CHAT_S35:R2",
+      "CHAT_S15:R2",
+      "CHAT_S2:R2",
+      "CHAT_S4:R2",
+      "CHAT_S28:R2",
+      "CHAT_S11:R2",
+      "CHAT_S3:R2",
+      "CHAT_S19:R2",
+      "CHAT_S26:R2"
+    ],
+    "selected_round_ids": [
+      "CHAT_S18:R2",
+      "CHAT_S35:R2",
+      "CHAT_S15:R2",
+      "CHAT_S2:R2",
+      "CHAT_S4:R2",
+      "CHAT_S28:R2",
+      "CHAT_S11:R2",
+      "CHAT_S3:R2",
+      "CHAT_S19:R2",
+      "CHAT_S26:R2"
+    ],
+    "top_candidates": [
+      {
+        "round_id": "CHAT_S18:R2",
+        "score": 0.08448032408059748,
+        "text_dense_score": 0.06549514614658895,
+        "image_dense_score": 0.10346550201460601,
+        "indexed_image_count": 1,
+        "best_image_path": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/image/Social_Chat_Memory_Test/screenshots/F4_2.png"
+      },
+      {
+        "round_id": "CHAT_S35:R2",
+        "score": 0.0841921572007272,
+        "text_dense_score": 0.06549514614658895,
+        "image_dense_score": 0.10288916825486547,
+        "indexed_image_count": 1,
+        "best_image_path": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/image/Social_Chat_Memory_Test/screenshots/R4_2.png"
+      },
+      {
+        "round_id": "CHAT_S15:R2",
+        "score": 0.0779005113285679,
+        "text_dense_score": 0.06549514614658895,
+        "image_dense_score": 0.09030587651054685,
+        "indexed_image_count": 1,
+        "best_image_path": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/image/Social_Chat_Memory_Test/screenshots/R2_2.png"
+      },
+      {
+        "round_id": "CHAT_S2:R2",
+        "score": 0.07762503050471518,
+        "text_dense_score": 0.06549514614658895,
+        "image_dense_score": 0.08975491486284141,
+        "indexed_image_count": 1,
+        "best_image_path": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/image/Social_Chat_Memory_Test/screenshots/B1_2.png"
+      },
+      {
+        "round_id": "CHAT_S4:R2",
+        "score": 0.07642996255684242,
+        "text_dense_score": 0.06549514614658895,
+        "image_dense_score": 0.08736477896709591,
+        "indexed_image_count": 1,
+        "best_image_path": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/image/Social_Chat_Memory_Test/screenshots/B2_2.png"
+      }
+    ],
+    "clue_hit_count": 1,
+    "corpus_entry_count": 53,
+    "text_embedding_model": "all-MiniLM-L6-v2",
+    "multimodal_embedding_model": "siglip2-base-patch16-384",
+    "text_dense_weight": 0.5,
+    "image_dense_weight": 0.5,
+    "caption_text_included": false,
+    "image_embeddings_built": true,
+    "multi_image_indexing_enabled": true,
+    "indexed_image_count": 43,
+    "history_source": "retrieval",
+    "captions_loaded": false,
+    "images_loaded": true,
+    "history_turns_after_truncation": 20
+  }
+}

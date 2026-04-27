@@ -1,0 +1,269 @@
+{
+  "task_name": "concat_health_home_open",
+  "model_name": "gpt_5_4_mini",
+  "model_path": "gpt-5.4-mini",
+  "method_name": "semantic_rag_multimodal",
+  "base_method_name": "semantic_rag_multimodal",
+  "method_modality": "multimodal",
+  "mode": "open",
+  "num_qas": 103,
+  "num_qas_run": 103,
+  "dialog_json": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/dialog/concat_health_home_open.json",
+  "image_root": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image",
+  "run_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/concat_health_home_open/20260427_004126_gpt_5_4_mini_semantic_rag_multimodal",
+  "git_commit": "aa51866922099e1acda04d2e12b1cada3d7736c0",
+  "summary": {
+    "open_count": 103,
+    "overall": {
+      "em": 0.1553398058252427,
+      "contains_gt": 0.1941747572815534,
+      "f1": 0.3796789748103283,
+      "bleu": 0.18115221740561516,
+      "bleu_1": 0.3207598076614023,
+      "bleu_2": 0.2519541493898033,
+      "judge": 0.5
+    },
+    "by_x": {
+      "X4": {
+        "em": 0.21153846153846154,
+        "contains_gt": 0.23076923076923078,
+        "f1": 0.3072524697524697,
+        "bleu": 0.19190080461507686,
+        "bleu_1": 0.27651007978670233,
+        "bleu_2": 0.2409506461019537,
+        "judge": 0.3173076923076923
+      },
+      "X3": {
+        "em": 0.125,
+        "contains_gt": 0.2,
+        "f1": 0.474987573700809,
+        "bleu": 0.19688635854045064,
+        "bleu_1": 0.39243461726863194,
+        "bleu_2": 0.2921855568130891,
+        "judge": 0.675
+      },
+      "X1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.37007575757575756,
+        "bleu": 0.05426426497430632,
+        "bleu_1": 0.2584441005787233,
+        "bleu_2": 0.13820979386084897,
+        "judge": 0.75
+      },
+      "X2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.37857142857142856,
+        "bleu": 0.08390359303987346,
+        "bleu_1": 0.27551070673653466,
+        "bleu_2": 0.1687974774115989,
+        "judge": 0.7142857142857143
+      }
+    },
+    "by_y": {
+      "Y2": {
+        "em": 0.19642857142857142,
+        "contains_gt": 0.23214285714285715,
+        "f1": 0.32145820449391876,
+        "bleu": 0.18362282802833477,
+        "bleu_1": 0.27787565516291296,
+        "bleu_2": 0.23886658709494096,
+        "judge": 0.39285714285714285
+      },
+      "Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.24514533085961657,
+        "bleu": 0.03463947693797227,
+        "bleu_1": 0.16228960580953353,
+        "bleu_2": 0.05155679361501043,
+        "judge": 0.2857142857142857
+      },
+      "Y1": {
+        "em": 0.125,
+        "contains_gt": 0.175,
+        "f1": 0.48473144094467624,
+        "bleu": 0.20333309211564524,
+        "bleu_1": 0.4085299064833643,
+        "bleu_2": 0.30534627386319946,
+        "judge": 0.6875
+      }
+    },
+    "by_cell": {
+      "X4_Y2": {
+        "em": 0.2619047619047619,
+        "contains_gt": 0.2857142857142857,
+        "f1": 0.33594276094276093,
+        "bleu": 0.23153506060144047,
+        "bleu_1": 0.31679398101217343,
+        "bleu_2": 0.28956804542033876,
+        "judge": 0.30952380952380953
+      },
+      "X4_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.23047619047619047,
+        "bleu": 0.03753154955659885,
+        "bleu_1": 0.15467797560587443,
+        "bleu_2": 0.053314503038749184,
+        "judge": 0.1
+      },
+      "X3_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.1111111111111111,
+        "f1": 0.20282186948853617,
+        "bleu": 0.00941140107709814,
+        "bleu_1": 0.07338309697660354,
+        "bleu_2": 0.018020896961650466,
+        "judge": 0.5555555555555556
+      },
+      "X1_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.28181818181818186,
+        "bleu": 0.02740929539140583,
+        "bleu_1": 0.1813186813186813,
+        "bleu_2": 0.04716252005566354,
+        "judge": 0.75
+      },
+      "X1_Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.4583333333333333,
+        "bleu": 0.08111923455720682,
+        "bleu_1": 0.3355695198387653,
+        "bleu_2": 0.22925706766603438,
+        "judge": 0.75
+      },
+      "X3_Y1": {
+        "em": 0.16129032258064516,
+        "contains_gt": 0.22580645161290322,
+        "f1": 0.5540034233108236,
+        "bleu": 0.25131457199755297,
+        "bleu_1": 0.48506247799857566,
+        "bleu_2": 0.3717817483828616,
+        "judge": 0.7096774193548387
+      },
+      "X2_Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.29166666666666663,
+        "bleu": 0.056810968323374976,
+        "bleu_1": 0.16666666666666666,
+        "bleu_2": 0.06454972243679029,
+        "judge": 0.5
+      },
+      "X2_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.41333333333333333,
+        "bleu": 0.09474064292647286,
+        "bleu_1": 0.31904832276448186,
+        "bleu_2": 0.21049657940152236,
+        "judge": 0.8
+      },
+      "X4_Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.14303030303030304,
+        "bleu": 0.01334230938810057,
+        "bleu_1": 0.05995741367357279,
+        "bleu_2": 0.02020063489072376,
+        "judge": 0.6
+      }
+    }
+  },
+  "method_runtime": {
+    "retrieval_backend": "dense_multimodal",
+    "retrieval_corpus": "round_text",
+    "method_modality": "multimodal",
+    "top_k": 10,
+    "neighbor_window": 0,
+    "seed_round_ids": [
+      "HOME_S1:R10",
+      "HOME_S12:R6",
+      "HOME_S13:R6",
+      "HOME_S1:R2",
+      "HOME_S1:R4",
+      "HOME_S1:R7",
+      "HOME_S10:R2",
+      "HOME_S10:R7",
+      "HOME_S1:R3",
+      "HOME_S1:R5"
+    ],
+    "selected_round_ids": [
+      "HOME_S1:R10",
+      "HOME_S12:R6",
+      "HOME_S13:R6",
+      "HOME_S1:R2",
+      "HOME_S1:R4",
+      "HOME_S1:R7",
+      "HOME_S10:R2",
+      "HOME_S10:R7",
+      "HOME_S1:R3",
+      "HOME_S1:R5"
+    ],
+    "top_candidates": [
+      {
+        "round_id": "HOME_S1:R10",
+        "score": 0.25870923949228575,
+        "text_dense_score": 0.39667849373166114,
+        "image_dense_score": 0.12073998525291035,
+        "indexed_image_count": 1,
+        "best_image_path": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image/Home_Renovation_Interior_Design/D1_IMG_007.jpg"
+      },
+      {
+        "round_id": "HOME_S12:R6",
+        "score": 0.2447246110438501,
+        "text_dense_score": 0.40853531194619325,
+        "image_dense_score": 0.08091391014150694,
+        "indexed_image_count": 1,
+        "best_image_path": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image/Home_Renovation_Interior_Design/D12_IMG_005.jpg"
+      },
+      {
+        "round_id": "HOME_S13:R6",
+        "score": 0.2366291095803276,
+        "text_dense_score": 0.40111238277364536,
+        "image_dense_score": 0.07214583638700985,
+        "indexed_image_count": 1,
+        "best_image_path": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image/Home_Renovation_Interior_Design/D13_IMG_005.jpg"
+      },
+      {
+        "round_id": "HOME_S1:R2",
+        "score": 0.230937072011498,
+        "text_dense_score": 0.3598335686155545,
+        "image_dense_score": 0.10204057540744146,
+        "indexed_image_count": 1,
+        "best_image_path": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image/Home_Renovation_Interior_Design/D1_IMG_001.jpg"
+      },
+      {
+        "round_id": "HOME_S1:R4",
+        "score": 0.2290574141673485,
+        "text_dense_score": 0.3667310074605597,
+        "image_dense_score": 0.09138382087413731,
+        "indexed_image_count": 1,
+        "best_image_path": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image/Home_Renovation_Interior_Design/D1_IMG_003.jpg"
+      }
+    ],
+    "clue_hit_count": 1,
+    "corpus_entry_count": 217,
+    "text_embedding_model": "all-MiniLM-L6-v2",
+    "multimodal_embedding_model": "siglip2-base-patch16-384",
+    "text_dense_weight": 0.5,
+    "image_dense_weight": 0.5,
+    "caption_text_included": false,
+    "image_embeddings_built": true,
+    "multi_image_indexing_enabled": true,
+    "indexed_image_count": 151,
+    "history_source": "retrieval",
+    "captions_loaded": false,
+    "images_loaded": true,
+    "history_turns_after_truncation": 20
+  },
+  "judge": {
+    "enabled": true,
+    "model": "gpt-5.2",
+    "scored_open_rows": 103
+  }
+}

@@ -1,0 +1,105 @@
+{
+  "task_name": "personal_health_dashboard_assistant",
+  "model_name": "gpt_5_4_mini",
+  "model_path": "gpt-5.4-mini",
+  "method_name": "full_context_multimodal",
+  "base_method_name": "full_context_multimodal",
+  "method_modality": "",
+  "mode": "mcq",
+  "num_qas": 51,
+  "num_qas_run": 51,
+  "dialog_json": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/dialog/Personal_Health_Dashboard_Assistant.json",
+  "image_root": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/image",
+  "run_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/personal_health_dashboard_assistant/20260425_232202_gpt_5_4_mini_full_context_multimodal",
+  "git_commit": "7eb4b31f1f56487e02ecff48e751fe66ab6c6c5f",
+  "summary": {
+    "open_count": 51,
+    "overall": {
+      "em": 0.3382352941176471,
+      "contains_gt": 0.4117647058823529,
+      "f1": 0.3382352941176471
+    },
+    "by_x": {
+      "X4": {
+        "em": 0.30113636363636365,
+        "contains_gt": 0.36363636363636365,
+        "f1": 0.30113636363636365
+      },
+      "X3": {
+        "em": 0.25,
+        "contains_gt": 0.5,
+        "f1": 0.25
+      },
+      "X1": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
+      }
+    },
+    "by_y": {
+      "Y2": {
+        "em": 0.26136363636363635,
+        "contains_gt": 0.3409090909090909,
+        "f1": 0.26136363636363635
+      },
+      "Y3": {
+        "em": 0.7916666666666666,
+        "contains_gt": 0.8333333333333334,
+        "f1": 0.7916666666666666
+      },
+      "Y1": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
+      }
+    },
+    "by_cell": {
+      "X4_Y2": {
+        "em": 0.2625,
+        "contains_gt": 0.325,
+        "f1": 0.2625
+      },
+      "X4_Y3": {
+        "em": 0.6875,
+        "contains_gt": 0.75,
+        "f1": 0.6875
+      },
+      "X3_Y2": {
+        "em": 0.25,
+        "contains_gt": 0.5,
+        "f1": 0.25
+      },
+      "X1_Y3": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
+      },
+      "X1_Y1": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
+      }
+    },
+    "mcq_count": 51,
+    "mcq_valid_rate": 1.0,
+    "mcq_overall": {
+      "em": 0.3382352941176471,
+      "contains_gt": 0.4117647058823529,
+      "f1": 0.3382352941176471
+    },
+    "mcq_per_position_accuracy": {
+      "A": 0.3137254901960784,
+      "B": 0.27450980392156865,
+      "C": 0.35294117647058826,
+      "D": 0.4117647058823529
+    }
+  },
+  "method_runtime": {
+    "method_modality": "multimodal",
+    "history_source": "full_context",
+    "captions_loaded": false,
+    "images_loaded": true,
+    "history_turns_after_truncation": 194,
+    "history_turns_before_truncation": 194
+  }
+}

@@ -1,0 +1,122 @@
+{
+  "task_name": "concat_multiscene_outdoor",
+  "model_name": "gpt_5_4_mini",
+  "model_path": "gpt-5.4-mini",
+  "method_name": "mma",
+  "base_method_name": "mma",
+  "method_modality": "",
+  "mode": "mcq",
+  "num_qas": 78,
+  "num_qas_run": 78,
+  "dialog_json": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/dialog/concat_multiscene_outdoor.json",
+  "image_root": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/image",
+  "run_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/concat_multiscene_outdoor/20260427_002720_gpt_5_4_mini_mma",
+  "git_commit": "aa51866922099e1acda04d2e12b1cada3d7736c0",
+  "summary": {
+    "open_count": 78,
+    "overall": {
+      "em": 0.483974358974359,
+      "contains_gt": 0.44871794871794873,
+      "f1": 0.483974358974359
+    },
+    "by_x": {
+      "X4": {
+        "em": 0.5833333333333334,
+        "contains_gt": 0.6666666666666666,
+        "f1": 0.5833333333333334
+      },
+      "X2": {
+        "em": 0.3,
+        "contains_gt": 0.2,
+        "f1": 0.3
+      },
+      "X3": {
+        "em": 0.5044642857142857,
+        "contains_gt": 0.44642857142857145,
+        "f1": 0.5044642857142857
+      },
+      "X1": {
+        "em": 0.4166666666666667,
+        "contains_gt": 0.6666666666666666,
+        "f1": 0.4166666666666667
+      }
+    },
+    "by_y": {
+      "Y2": {
+        "em": 0.5108695652173914,
+        "contains_gt": 0.5217391304347826,
+        "f1": 0.5108695652173914
+      },
+      "Y3": {
+        "em": 0.5760869565217391,
+        "contains_gt": 0.5217391304347826,
+        "f1": 0.5760869565217391
+      },
+      "Y1": {
+        "em": 0.3984375,
+        "contains_gt": 0.34375,
+        "f1": 0.3984375
+      }
+    },
+    "by_cell": {
+      "X4_Y2": {
+        "em": 0.8125,
+        "contains_gt": 1.0,
+        "f1": 0.8125
+      },
+      "X2_Y2": {
+        "em": 0.0625,
+        "contains_gt": 0.0,
+        "f1": 0.0625
+      },
+      "X3_Y3": {
+        "em": 0.75,
+        "contains_gt": 0.7,
+        "f1": 0.75
+      },
+      "X2_Y3": {
+        "em": 0.4583333333333333,
+        "contains_gt": 0.3333333333333333,
+        "f1": 0.4583333333333333
+      },
+      "X3_Y1": {
+        "em": 0.4032258064516129,
+        "contains_gt": 0.3225806451612903,
+        "f1": 0.4032258064516129
+      },
+      "X3_Y2": {
+        "em": 0.55,
+        "contains_gt": 0.5333333333333333,
+        "f1": 0.55
+      },
+      "X4_Y3": {
+        "em": 0.4,
+        "contains_gt": 0.4,
+        "f1": 0.4
+      },
+      "X1_Y1": {
+        "em": 0.25,
+        "contains_gt": 1.0,
+        "f1": 0.25
+      },
+      "X1_Y3": {
+        "em": 0.5,
+        "contains_gt": 0.5,
+        "f1": 0.5
+      }
+    },
+    "mcq_count": 78,
+    "mcq_valid_rate": 1.0,
+    "mcq_overall": {
+      "em": 0.483974358974359,
+      "contains_gt": 0.44871794871794873,
+      "f1": 0.483974358974359
+    },
+    "mcq_per_position_accuracy": {
+      "A": 0.5128205128205128,
+      "B": 0.47435897435897434,
+      "C": 0.5,
+      "D": 0.44871794871794873
+    }
+  }
+}

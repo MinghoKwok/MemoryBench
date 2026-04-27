@@ -1,0 +1,51 @@
+{
+  "task": {
+    "name": "personal_health_dashboard_assistant",
+    "dataset": {
+      "dialog_json": "data/dialog/Personal_Health_Dashboard_Assistant.json",
+      "image_root": "data/image"
+    },
+    "eval": {
+      "mode": "open",
+      "output_json": "output/results_personal_health_dashboard_assistant.json",
+      "max_questions": 0
+    }
+  },
+  "dataset": {
+    "dialog_json": "data/dialog/Personal_Health_Dashboard_Assistant.json",
+    "image_root": "data/image"
+  },
+  "eval": {
+    "mode": "open",
+    "output_json": "output/results_personal_health_dashboard_assistant.json",
+    "max_questions": 0
+  },
+  "model": {
+    "name": "gpt_5_4_mini",
+    "provider": "openai_api",
+    "model": "gpt-5.4-mini",
+    "api_key_env": "OPENAI_API_KEY",
+    "base_url": "https://api.openai.com/v1",
+    "max_new_tokens": 128,
+    "timeout": 90
+  },
+  "method": {
+    "name": "mirix",
+    "official_runtime": true,
+    "official_model_name": "gpt-5.4-mini"
+  },
+  "run": {
+    "output_root": "runs",
+    "method_runtime": {
+      "official_mirix": true,
+      "official_model_name": "gpt-5.4-mini",
+      "ingested_turns": 194,
+      "runtime_signature": "c7a8aa905bde855c",
+      "runtime_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/personal_health_dashboard_assistant/mirix/c7a8aa905bde855c",
+      "runtime_home": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/personal_health_dashboard_assistant/mirix/c7a8aa905bde855c/runtime_home",
+      "debug_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/output/personal_health_dashboard_assistant/mirix/c7a8aa905bde855c",
+      "resumed": false,
+      "completed_ingestion": true
+    }
+  }
+}

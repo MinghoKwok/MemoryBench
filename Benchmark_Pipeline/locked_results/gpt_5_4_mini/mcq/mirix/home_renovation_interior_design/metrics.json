@@ -1,0 +1,128 @@
+{
+  "task_name": "home_renovation_interior_design",
+  "model_name": "gpt_5_4_mini",
+  "model_path": "gpt-5.4-mini",
+  "method_name": "mirix",
+  "base_method_name": "mirix",
+  "method_modality": "",
+  "mode": "mcq",
+  "num_qas": 52,
+  "num_qas_run": 52,
+  "dialog_json": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/dialog/Home_Renovation_Interior_Design.json",
+  "image_root": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/image",
+  "run_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/home_renovation_interior_design/20260426_064454_gpt_5_4_mini_mirix",
+  "git_commit": "fa8105834c4c30aae8bc623d6a932e811089aa0a",
+  "summary": {
+    "open_count": 52,
+    "overall": {
+      "em": 0.5528846153846154,
+      "contains_gt": 0.4807692307692308,
+      "f1": 0.5528846153846154
+    },
+    "by_x": {
+      "X4": {
+        "em": 0.25,
+        "contains_gt": 0.25,
+        "f1": 0.25
+      },
+      "X3": {
+        "em": 0.5833333333333334,
+        "contains_gt": 0.4722222222222222,
+        "f1": 0.5833333333333334
+      },
+      "X2": {
+        "em": 0.7142857142857143,
+        "contains_gt": 0.7142857142857143,
+        "f1": 0.7142857142857143
+      },
+      "X1": {
+        "em": 0.75,
+        "contains_gt": 1.0,
+        "f1": 0.75
+      }
+    },
+    "by_y": {
+      "Y2": {
+        "em": 0.5625,
+        "contains_gt": 0.4166666666666667,
+        "f1": 0.5625
+      },
+      "Y1": {
+        "em": 0.5641025641025641,
+        "contains_gt": 0.5128205128205128,
+        "f1": 0.5641025641025641
+      },
+      "Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0
+      }
+    },
+    "by_cell": {
+      "X4_Y2": {
+        "em": 0.125,
+        "contains_gt": 0.0,
+        "f1": 0.125
+      },
+      "X3_Y2": {
+        "em": 0.6,
+        "contains_gt": 0.2,
+        "f1": 0.6
+      },
+      "X3_Y1": {
+        "em": 0.5806451612903226,
+        "contains_gt": 0.5161290322580645,
+        "f1": 0.5806451612903226
+      },
+      "X2_Y1": {
+        "em": 0.75,
+        "contains_gt": 0.5,
+        "f1": 0.75
+      },
+      "X2_Y2": {
+        "em": 0.7,
+        "contains_gt": 0.8,
+        "f1": 0.7
+      },
+      "X4_Y1": {
+        "em": 0.35,
+        "contains_gt": 0.4,
+        "f1": 0.35
+      },
+      "X4_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0
+      },
+      "X1_Y1": {
+        "em": 0.75,
+        "contains_gt": 1.0,
+        "f1": 0.75
+      }
+    },
+    "mcq_count": 52,
+    "mcq_valid_rate": 1.0,
+    "mcq_overall": {
+      "em": 0.5528846153846154,
+      "contains_gt": 0.4807692307692308,
+      "f1": 0.5528846153846154
+    },
+    "mcq_per_position_accuracy": {
+      "A": 0.75,
+      "B": 0.5384615384615384,
+      "C": 0.4423076923076923,
+      "D": 0.4807692307692308
+    }
+  },
+  "method_runtime": {
+    "official_mirix": true,
+    "official_model_name": "gpt-5.4-mini",
+    "ingested_turns": 240,
+    "runtime_signature": "9085b171aedf694a",
+    "runtime_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/home_renovation_interior_design/mirix/9085b171aedf694a",
+    "runtime_home": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/home_renovation_interior_design/mirix/9085b171aedf694a/runtime_home",
+    "debug_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/output/home_renovation_interior_design/mirix/9085b171aedf694a",
+    "resumed": false,
+    "completed_ingestion": true
+  }
+}

@@ -1,0 +1,133 @@
+{
+  "task": {
+    "name": "card_playlog_test",
+    "dataset": {
+      "dialog_json": "data/dialog/Card_Playlog_Test.json",
+      "image_root": "data/image"
+    },
+    "eval": {
+      "output_json": "output/results_card_playlog_test.json",
+      "mode": "open",
+      "max_questions": 0
+    }
+  },
+  "dataset": {
+    "dialog_json": "data/dialog/Card_Playlog_Test.json",
+    "image_root": "data/image"
+  },
+  "eval": {
+    "output_json": "output/results_card_playlog_test.json",
+    "mode": "open",
+    "max_questions": 0
+  },
+  "model": {
+    "name": "gpt_5_4_mini",
+    "provider": "openai_api",
+    "model": "gpt-5.4-mini",
+    "api_key_env": "OPENAI_API_KEY",
+    "base_url": "https://api.openai.com/v1",
+    "max_new_tokens": 128,
+    "timeout": 90
+  },
+  "method": {
+    "name": "semantic_rag_multimodal",
+    "modality": "multimodal",
+    "retrieval_backend": "dense_multimodal",
+    "top_k": 10,
+    "neighbor_window": 0,
+    "text_embedding_model": "all-MiniLM-L6-v2",
+    "multimodal_embedding_model": "siglip2-base-patch16-384",
+    "text_dense_weight": 0.5,
+    "image_dense_weight": 0.5
+  },
+  "run": {
+    "output_root": "runs",
+    "method_runtime": {
+      "retrieval_backend": "dense_multimodal",
+      "retrieval_corpus": "round_text",
+      "method_modality": "multimodal",
+      "top_k": 10,
+      "neighbor_window": 0,
+      "seed_round_ids": [
+        "PLAY_S1:R1",
+        "PLAY_S3:R1",
+        "PLAY_S2:R1",
+        "PLAY_S4:R1",
+        "PLAY_S3:R3",
+        "PLAY_S4:R6",
+        "PLAY_S4:R5",
+        "PLAY_S4:R3",
+        "PLAY_S2:R3",
+        "PLAY_S3:R6"
+      ],
+      "selected_round_ids": [
+        "PLAY_S1:R1",
+        "PLAY_S3:R1",
+        "PLAY_S2:R1",
+        "PLAY_S4:R1",
+        "PLAY_S3:R3",
+        "PLAY_S4:R6",
+        "PLAY_S4:R5",
+        "PLAY_S4:R3",
+        "PLAY_S2:R3",
+        "PLAY_S3:R6"
+      ],
+      "top_candidates": [
+        {
+          "round_id": "PLAY_S1:R1",
+          "score": 0.351890163654714,
+          "text_dense_score": 0.5804198040717321,
+          "image_dense_score": 0.12336052323769586,
+          "indexed_image_count": 1,
+          "best_image_path": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/image/Card_Playlog_Test/uno_44/state_0000.jpg"
+        },
+        {
+          "round_id": "PLAY_S3:R1",
+          "score": 0.33250805497299285,
+          "text_dense_score": 0.551392110899986,
+          "image_dense_score": 0.11362399904599968,
+          "indexed_image_count": 1,
+          "best_image_path": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/image/Card_Playlog_Test/uno_44/state_0002.jpg"
+        },
+        {
+          "round_id": "PLAY_S2:R1",
+          "score": 0.32924895089898565,
+          "text_dense_score": 0.5431648516439596,
+          "image_dense_score": 0.11533305015401177,
+          "indexed_image_count": 1,
+          "best_image_path": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/image/Card_Playlog_Test/uno_44/state_0001.jpg"
+        },
+        {
+          "round_id": "PLAY_S4:R1",
+          "score": 0.3183630348127815,
+          "text_dense_score": 0.5212186919306182,
+          "image_dense_score": 0.11550737769494482,
+          "indexed_image_count": 1,
+          "best_image_path": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/image/Card_Playlog_Test/uno_44/state_0003.jpg"
+        },
+        {
+          "round_id": "PLAY_S3:R3",
+          "score": 0.3035416769534946,
+          "text_dense_score": 0.48129255296654694,
+          "image_dense_score": 0.12579080094044223,
+          "indexed_image_count": 1,
+          "best_image_path": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/image/Card_Playlog_Test/uno_44/state_0010.jpg"
+        }
+      ],
+      "clue_hit_count": 1,
+      "corpus_entry_count": 30,
+      "text_embedding_model": "all-MiniLM-L6-v2",
+      "multimodal_embedding_model": "siglip2-base-patch16-384",
+      "text_dense_weight": 0.5,
+      "image_dense_weight": 0.5,
+      "caption_text_included": false,
+      "image_embeddings_built": true,
+      "multi_image_indexing_enabled": true,
+      "indexed_image_count": 30,
+      "history_source": "retrieval",
+      "captions_loaded": false,
+      "images_loaded": true,
+      "history_turns_after_truncation": 20
+    }
+  }
+}

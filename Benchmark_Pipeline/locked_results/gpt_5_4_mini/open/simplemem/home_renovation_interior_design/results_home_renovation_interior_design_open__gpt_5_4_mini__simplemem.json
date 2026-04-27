@@ -171,5 +171,10 @@
     "data_dir": "/Users/qingyuejiao/Desktop/MemoryBench/runs/simplemem/home_renovation_interior_design"
   },
   "judge_model": "gpt-5.2",
-  "judge_rescored_from_predictions": true
+  "judge_rescored_from_predictions": true,
+  "judge": {
+    "enabled": true,
+    "model": "gpt-5.2",
+    "scored_open_rows": 52
+  }
 }

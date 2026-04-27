@@ -1,0 +1,51 @@
+{
+  "task": {
+    "name": "outdoor_navigation_route_memory_assistant",
+    "dataset": {
+      "dialog_json": "data/dialog/Outdoor_Navigation_Route_Memory_Assistant.json",
+      "image_root": "data/image"
+    },
+    "eval": {
+      "mode": "open",
+      "output_json": "output/results_outdoor_navigation_route_memory_assistant.json",
+      "max_questions": 0
+    }
+  },
+  "dataset": {
+    "dialog_json": "data/dialog/Outdoor_Navigation_Route_Memory_Assistant.json",
+    "image_root": "data/image"
+  },
+  "eval": {
+    "mode": "open",
+    "output_json": "output/results_outdoor_navigation_route_memory_assistant.json",
+    "max_questions": 0
+  },
+  "model": {
+    "name": "gpt_5_4_mini",
+    "provider": "openai_api",
+    "model": "gpt-5.4-mini",
+    "api_key_env": "OPENAI_API_KEY",
+    "base_url": "https://api.openai.com/v1",
+    "max_new_tokens": 128,
+    "timeout": 90
+  },
+  "method": {
+    "name": "mirix",
+    "official_runtime": true,
+    "official_model_name": "gpt-5.4-mini"
+  },
+  "run": {
+    "output_root": "runs",
+    "method_runtime": {
+      "official_mirix": true,
+      "official_model_name": "gpt-5.4-mini",
+      "ingested_turns": 120,
+      "runtime_signature": "e7c7cf10f2daab67",
+      "runtime_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/outdoor_navigation_route_memory_assistant/mirix/e7c7cf10f2daab67",
+      "runtime_home": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/outdoor_navigation_route_memory_assistant/mirix/e7c7cf10f2daab67/runtime_home",
+      "debug_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/output/outdoor_navigation_route_memory_assistant/mirix/e7c7cf10f2daab67",
+      "resumed": false,
+      "completed_ingestion": true
+    }
+  }
+}

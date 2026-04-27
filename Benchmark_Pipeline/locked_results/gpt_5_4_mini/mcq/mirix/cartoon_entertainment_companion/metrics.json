@@ -1,0 +1,138 @@
+{
+  "task_name": "cartoon_entertainment_companion",
+  "model_name": "gpt_5_4_mini",
+  "model_path": "gpt-5.4-mini",
+  "method_name": "mirix",
+  "base_method_name": "mirix",
+  "method_modality": "",
+  "mode": "mcq",
+  "num_qas": 76,
+  "num_qas_run": 76,
+  "dialog_json": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/dialog/Cartoon_Entertainment_Companion.json",
+  "image_root": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image",
+  "run_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/cartoon_entertainment_companion/20260425_234815_gpt_5_4_mini_mirix",
+  "git_commit": "fa8105834c4c30aae8bc623d6a932e811089aa0a",
+  "summary": {
+    "open_count": 76,
+    "overall": {
+      "em": 0.47039473684210525,
+      "contains_gt": 0.4342105263157895,
+      "f1": 0.47039473684210525
+    },
+    "by_x": {
+      "X3": {
+        "em": 0.32608695652173914,
+        "contains_gt": 0.2608695652173913,
+        "f1": 0.32608695652173914
+      },
+      "X4": {
+        "em": 0.5,
+        "contains_gt": 0.43478260869565216,
+        "f1": 0.5
+      },
+      "X2": {
+        "em": 0.6428571428571429,
+        "contains_gt": 0.5,
+        "f1": 0.6428571428571429
+      },
+      "X1": {
+        "em": 0.484375,
+        "contains_gt": 0.625,
+        "f1": 0.484375
+      }
+    },
+    "by_y": {
+      "Y1": {
+        "em": 0.4765625,
+        "contains_gt": 0.40625,
+        "f1": 0.4765625
+      },
+      "Y2": {
+        "em": 0.46153846153846156,
+        "contains_gt": 0.38461538461538464,
+        "f1": 0.46153846153846156
+      },
+      "Y3": {
+        "em": 0.5,
+        "contains_gt": 1.0,
+        "f1": 0.5
+      }
+    },
+    "by_cell": {
+      "X3_Y1": {
+        "em": 0.3409090909090909,
+        "contains_gt": 0.36363636363636365,
+        "f1": 0.3409090909090909
+      },
+      "X4_Y2": {
+        "em": 0.625,
+        "contains_gt": 0.6,
+        "f1": 0.625
+      },
+      "X2_Y2": {
+        "em": 0.5555555555555556,
+        "contains_gt": 0.3333333333333333,
+        "f1": 0.5555555555555556
+      },
+      "X3_Y2": {
+        "em": 0.3125,
+        "contains_gt": 0.16666666666666666,
+        "f1": 0.3125
+      },
+      "X4_Y1": {
+        "em": 0.4166666666666667,
+        "contains_gt": 0.25,
+        "f1": 0.4166666666666667
+      },
+      "X1_Y1": {
+        "em": 0.625,
+        "contains_gt": 0.5,
+        "f1": 0.625
+      },
+      "X1_Y2": {
+        "em": 0.375,
+        "contains_gt": 0.5,
+        "f1": 0.375
+      },
+      "X2_Y1": {
+        "em": 0.8,
+        "contains_gt": 0.8,
+        "f1": 0.8
+      },
+      "X1_Y3": {
+        "em": 0.5625,
+        "contains_gt": 1.0,
+        "f1": 0.5625
+      },
+      "X4_Y3": {
+        "em": 0.25,
+        "contains_gt": 1.0,
+        "f1": 0.25
+      }
+    },
+    "mcq_count": 76,
+    "mcq_valid_rate": 1.0,
+    "mcq_overall": {
+      "em": 0.47039473684210525,
+      "contains_gt": 0.4342105263157895,
+      "f1": 0.47039473684210525
+    },
+    "mcq_per_position_accuracy": {
+      "A": 0.5789473684210527,
+      "B": 0.4868421052631579,
+      "C": 0.3815789473684211,
+      "D": 0.4342105263157895
+    }
+  },
+  "method_runtime": {
+    "official_mirix": true,
+    "official_model_name": "gpt-5.4-mini",
+    "ingested_turns": 598,
+    "runtime_signature": "de766a24fa83f86a",
+    "runtime_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/cartoon_entertainment_companion/mirix/de766a24fa83f86a",
+    "runtime_home": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/cartoon_entertainment_companion/mirix/de766a24fa83f86a/runtime_home",
+    "debug_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/output/cartoon_entertainment_companion/mirix/de766a24fa83f86a",
+    "resumed": false,
+    "completed_ingestion": true
+  }
+}

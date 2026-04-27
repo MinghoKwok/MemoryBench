@@ -1,0 +1,128 @@
+{
+  "task_name": "outdoor_navigation_route_memory_assistant",
+  "model_name": "gpt_5_4_mini",
+  "model_path": "gpt-5.4-mini",
+  "method_name": "mirix",
+  "base_method_name": "mirix",
+  "method_modality": "",
+  "mode": "mcq",
+  "num_qas": 28,
+  "num_qas_run": 28,
+  "dialog_json": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/dialog/Outdoor_Navigation_Route_Memory_Assistant.json",
+  "image_root": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/image",
+  "run_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/outdoor_navigation_route_memory_assistant/20260426_121703_gpt_5_4_mini_mirix",
+  "git_commit": "054322ce5a2f8d0e731520e829f334c056239afd",
+  "summary": {
+    "open_count": 28,
+    "overall": {
+      "em": 0.38392857142857145,
+      "contains_gt": 0.2857142857142857,
+      "f1": 0.38392857142857145
+    },
+    "by_x": {
+      "X3": {
+        "em": 0.375,
+        "contains_gt": 0.2222222222222222,
+        "f1": 0.375
+      },
+      "X1": {
+        "em": 0.6666666666666666,
+        "contains_gt": 0.6666666666666666,
+        "f1": 0.6666666666666666
+      },
+      "X4": {
+        "em": 0.25,
+        "contains_gt": 0.2,
+        "f1": 0.25
+      },
+      "X2": {
+        "em": 0.375,
+        "contains_gt": 0.5,
+        "f1": 0.375
+      }
+    },
+    "by_y": {
+      "Y2": {
+        "em": 0.36666666666666664,
+        "contains_gt": 0.2,
+        "f1": 0.36666666666666664
+      },
+      "Y1": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
+      },
+      "Y3": {
+        "em": 0.3541666666666667,
+        "contains_gt": 0.3333333333333333,
+        "f1": 0.3541666666666667
+      }
+    },
+    "by_cell": {
+      "X3_Y2": {
+        "em": 0.38461538461538464,
+        "contains_gt": 0.23076923076923078,
+        "f1": 0.38461538461538464
+      },
+      "X1_Y1": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
+      },
+      "X4_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0
+      },
+      "X2_Y2": {
+        "em": 0.5,
+        "contains_gt": 0.0,
+        "f1": 0.5
+      },
+      "X3_Y3": {
+        "em": 0.35,
+        "contains_gt": 0.2,
+        "f1": 0.35
+      },
+      "X4_Y3": {
+        "em": 0.3125,
+        "contains_gt": 0.25,
+        "f1": 0.3125
+      },
+      "X1_Y3": {
+        "em": 0.5,
+        "contains_gt": 0.5,
+        "f1": 0.5
+      },
+      "X2_Y3": {
+        "em": 0.25,
+        "contains_gt": 1.0,
+        "f1": 0.25
+      }
+    },
+    "mcq_count": 28,
+    "mcq_valid_rate": 1.0,
+    "mcq_overall": {
+      "em": 0.38392857142857145,
+      "contains_gt": 0.2857142857142857,
+      "f1": 0.38392857142857145
+    },
+    "mcq_per_position_accuracy": {
+      "A": 0.42857142857142855,
+      "B": 0.5357142857142857,
+      "C": 0.2857142857142857,
+      "D": 0.2857142857142857
+    }
+  },
+  "method_runtime": {
+    "official_mirix": true,
+    "official_model_name": "gpt-5.4-mini",
+    "ingested_turns": 120,
+    "runtime_signature": "e7c7cf10f2daab67",
+    "runtime_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/outdoor_navigation_route_memory_assistant/mirix/e7c7cf10f2daab67",
+    "runtime_home": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/outdoor_navigation_route_memory_assistant/mirix/e7c7cf10f2daab67/runtime_home",
+    "debug_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/output/outdoor_navigation_route_memory_assistant/mirix/e7c7cf10f2daab67",
+    "resumed": false,
+    "completed_ingestion": true
+  }
+}

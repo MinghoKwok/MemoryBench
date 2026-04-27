@@ -1,0 +1,51 @@
+{
+  "task": {
+    "name": "personal_health_dashboard_assistant_open",
+    "dataset": {
+      "dialog_json": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/dialog/Personal_Health_Dashboard_Assistant_Open.json",
+      "image_root": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image"
+    },
+    "eval": {
+      "mode": "open",
+      "output_json": "output/results_personal_health_dashboard_assistant_open.json",
+      "max_questions": 0
+    }
+  },
+  "dataset": {
+    "dialog_json": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/dialog/Personal_Health_Dashboard_Assistant_Open.json",
+    "image_root": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image"
+  },
+  "eval": {
+    "mode": "open",
+    "output_json": "output/results_personal_health_dashboard_assistant_open.json",
+    "max_questions": 0
+  },
+  "model": {
+    "name": "gpt_5_4_mini",
+    "provider": "openai_api",
+    "model": "gpt-5.4-mini",
+    "api_key_env": "OPENAI_API_KEY",
+    "base_url": "https://api.openai.com/v1",
+    "max_new_tokens": 128,
+    "timeout": 90
+  },
+  "method": {
+    "name": "mirix",
+    "official_runtime": true,
+    "official_model_name": "gpt-5.4-mini"
+  },
+  "run": {
+    "output_root": "runs",
+    "method_runtime": {
+      "official_mirix": true,
+      "official_model_name": "gpt-5.4-mini",
+      "ingested_turns": 194,
+      "runtime_signature": "c777d86956c0ae89",
+      "runtime_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/personal_health_dashboard_assistant/mirix/c777d86956c0ae89",
+      "runtime_home": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/personal_health_dashboard_assistant/mirix/c777d86956c0ae89/runtime_home",
+      "debug_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/output/personal_health_dashboard_assistant/mirix/c777d86956c0ae89",
+      "resumed": false,
+      "completed_ingestion": true
+    }
+  }
+}

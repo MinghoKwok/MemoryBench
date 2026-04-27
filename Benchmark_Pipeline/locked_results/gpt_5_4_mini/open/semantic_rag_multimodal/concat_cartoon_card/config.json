@@ -1,0 +1,133 @@
+{
+  "task": {
+    "dataset": {
+      "dialog_json": "data/dialog/concat_cartoon_card_open.json",
+      "image_root": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image"
+    },
+    "eval": {
+      "max_questions": 0,
+      "mode": "open",
+      "output_json": "output/results_concat_cartoon_card_open.json"
+    },
+    "name": "concat_cartoon_card_open"
+  },
+  "dataset": {
+    "dialog_json": "data/dialog/concat_cartoon_card_open.json",
+    "image_root": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image"
+  },
+  "eval": {
+    "max_questions": 0,
+    "mode": "open",
+    "output_json": "output/results_concat_cartoon_card_open.json"
+  },
+  "model": {
+    "name": "gpt_5_4_mini",
+    "provider": "openai_api",
+    "model": "gpt-5.4-mini",
+    "api_key_env": "OPENAI_API_KEY",
+    "base_url": "https://api.openai.com/v1",
+    "max_new_tokens": 128,
+    "timeout": 90
+  },
+  "method": {
+    "name": "semantic_rag_multimodal",
+    "modality": "multimodal",
+    "retrieval_backend": "dense_multimodal",
+    "top_k": 10,
+    "neighbor_window": 0,
+    "text_embedding_model": "all-MiniLM-L6-v2",
+    "multimodal_embedding_model": "siglip2-base-patch16-384",
+    "text_dense_weight": 0.5,
+    "image_dense_weight": 0.5
+  },
+  "run": {
+    "output_root": "runs",
+    "method_runtime": {
+      "retrieval_backend": "dense_multimodal",
+      "retrieval_corpus": "round_text",
+      "method_modality": "multimodal",
+      "top_k": 10,
+      "neighbor_window": 0,
+      "seed_round_ids": [
+        "PLAY_S1:R1",
+        "PLAY_S3:R1",
+        "PLAY_S2:R1",
+        "PLAY_S4:R1",
+        "PLAY_S3:R3",
+        "PLAY_S4:R6",
+        "PLAY_S4:R5",
+        "PLAY_S2:R3",
+        "PLAY_S4:R3",
+        "PLAY_S3:R6"
+      ],
+      "selected_round_ids": [
+        "PLAY_S1:R1",
+        "PLAY_S3:R1",
+        "PLAY_S2:R1",
+        "PLAY_S4:R1",
+        "PLAY_S3:R3",
+        "PLAY_S4:R6",
+        "PLAY_S4:R5",
+        "PLAY_S2:R3",
+        "PLAY_S4:R3",
+        "PLAY_S3:R6"
+      ],
+      "top_candidates": [
+        {
+          "round_id": "PLAY_S1:R1",
+          "score": 0.3562928346139877,
+          "text_dense_score": 0.5862274359064885,
+          "image_dense_score": 0.1263582333214869,
+          "indexed_image_count": 1,
+          "best_image_path": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image/Card_Playlog_Test/uno_44/state_0000.jpg"
+        },
+        {
+          "round_id": "PLAY_S3:R1",
+          "score": 0.33529164571875,
+          "text_dense_score": 0.5518056481000736,
+          "image_dense_score": 0.11877764333742631,
+          "indexed_image_count": 1,
+          "best_image_path": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image/Card_Playlog_Test/uno_44/state_0002.jpg"
+        },
+        {
+          "round_id": "PLAY_S2:R1",
+          "score": 0.33352543711876814,
+          "text_dense_score": 0.543431726047941,
+          "image_dense_score": 0.12361914818959527,
+          "indexed_image_count": 1,
+          "best_image_path": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image/Card_Playlog_Test/uno_44/state_0001.jpg"
+        },
+        {
+          "round_id": "PLAY_S4:R1",
+          "score": 0.32247392392369784,
+          "text_dense_score": 0.5244686781175689,
+          "image_dense_score": 0.12047916972982674,
+          "indexed_image_count": 1,
+          "best_image_path": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image/Card_Playlog_Test/uno_44/state_0003.jpg"
+        },
+        {
+          "round_id": "PLAY_S3:R3",
+          "score": 0.3084835920990088,
+          "text_dense_score": 0.48823734141522096,
+          "image_dense_score": 0.12872984278279653,
+          "indexed_image_count": 1,
+          "best_image_path": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image/Card_Playlog_Test/uno_44/state_0010.jpg"
+        }
+      ],
+      "clue_hit_count": 1,
+      "corpus_entry_count": 329,
+      "text_embedding_model": "all-MiniLM-L6-v2",
+      "multimodal_embedding_model": "siglip2-base-patch16-384",
+      "text_dense_weight": 0.5,
+      "image_dense_weight": 0.5,
+      "caption_text_included": false,
+      "image_embeddings_built": true,
+      "multi_image_indexing_enabled": true,
+      "indexed_image_count": 117,
+      "history_source": "retrieval",
+      "captions_loaded": false,
+      "images_loaded": true,
+      "history_turns_after_truncation": 20
+    }
+  }
+}

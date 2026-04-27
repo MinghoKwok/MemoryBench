@@ -140,5 +140,10 @@
     "history_turns_before_truncation": 194
   },
   "judge_model": "gpt-5.2",
-  "judge_rescored_from_predictions": true
+  "judge_rescored_from_predictions": true,
+  "judge": {
+    "enabled": true,
+    "model": "gpt-5.2",
+    "scored_open_rows": 51
+  }
 }
