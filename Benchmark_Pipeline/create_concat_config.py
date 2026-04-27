@@ -28,7 +28,6 @@ def main():
         t = load_yaml(tc)
         p = t["dataset"]["dialog_json"]
         if not os.path.isabs(p):
-            p = os.path.join(os.path.dirname(tc), "..", p)
             p = os.path.normpath(p)
         d = json.load(open(p))
         all_sessions.extend(d["multi_session_dialogues"])
