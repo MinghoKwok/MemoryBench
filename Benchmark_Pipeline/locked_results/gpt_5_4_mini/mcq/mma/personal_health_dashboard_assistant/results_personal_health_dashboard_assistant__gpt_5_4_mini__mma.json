@@ -10,88 +10,88 @@
   "num_qas_run": 51,
   "dialog_json": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/dialog/Personal_Health_Dashboard_Assistant.json",
   "image_root": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/image",
-  "run_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/personal_health_dashboard_assistant/20260425_224008_gpt_5_4_mini_mma",
-  "git_commit": "7eb4b31f1f56487e02ecff48e751fe66ab6c6c5f",
+  "run_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/personal_health_dashboard_assistant/20260426_105001_gpt_5_4_mini_mma",
+  "git_commit": "054322ce5a2f8d0e731520e829f334c056239afd",
   "summary": {
     "open_count": 51,
     "overall": {
-      "em": 0.0,
-      "contains_gt": 0.0,
-      "f1": 0.0
+      "em": 0.27450980392156865,
+      "contains_gt": 0.3333333333333333,
+      "f1": 0.27450980392156865
     },
     "by_x": {
       "X4": {
-        "em": 0.0,
-        "contains_gt": 0.0,
-        "f1": 0.0
+        "em": 0.26136363636363635,
+        "contains_gt": 0.3181818181818182,
+        "f1": 0.26136363636363635
       },
       "X3": {
-        "em": 0.0,
+        "em": 0.125,
         "contains_gt": 0.0,
-        "f1": 0.0
+        "f1": 0.125
       },
       "X1": {
-        "em": 0.0,
-        "contains_gt": 0.0,
-        "f1": 0.0
+        "em": 0.6666666666666666,
+        "contains_gt": 1.0,
+        "f1": 0.6666666666666666
       }
     },
     "by_y": {
       "Y2": {
-        "em": 0.0,
-        "contains_gt": 0.0,
-        "f1": 0.0
+        "em": 0.22727272727272727,
+        "contains_gt": 0.2727272727272727,
+        "f1": 0.22727272727272727
       },
       "Y3": {
-        "em": 0.0,
-        "contains_gt": 0.0,
-        "f1": 0.0
+        "em": 0.5416666666666666,
+        "contains_gt": 0.6666666666666666,
+        "f1": 0.5416666666666666
       },
       "Y1": {
-        "em": 0.0,
-        "contains_gt": 0.0,
-        "f1": 0.0
+        "em": 0.75,
+        "contains_gt": 1.0,
+        "f1": 0.75
       }
     },
     "by_cell": {
       "X4_Y2": {
-        "em": 0.0,
-        "contains_gt": 0.0,
-        "f1": 0.0
+        "em": 0.2375,
+        "contains_gt": 0.3,
+        "f1": 0.2375
       },
       "X4_Y3": {
-        "em": 0.0,
-        "contains_gt": 0.0,
-        "f1": 0.0
+        "em": 0.5,
+        "contains_gt": 0.5,
+        "f1": 0.5
       },
       "X3_Y2": {
-        "em": 0.0,
+        "em": 0.125,
         "contains_gt": 0.0,
-        "f1": 0.0
+        "f1": 0.125
       },
       "X1_Y3": {
-        "em": 0.0,
-        "contains_gt": 0.0,
-        "f1": 0.0
+        "em": 0.625,
+        "contains_gt": 1.0,
+        "f1": 0.625
       },
       "X1_Y1": {
-        "em": 0.0,
-        "contains_gt": 0.0,
-        "f1": 0.0
+        "em": 0.75,
+        "contains_gt": 1.0,
+        "f1": 0.75
       }
     },
     "mcq_count": 51,
-    "mcq_valid_rate": 0.0,
+    "mcq_valid_rate": 1.0,
     "mcq_overall": {
-      "em": 0.0,
-      "contains_gt": 0.0,
-      "f1": 0.0
+      "em": 0.27450980392156865,
+      "contains_gt": 0.3333333333333333,
+      "f1": 0.27450980392156865
     },
     "mcq_per_position_accuracy": {
-      "A": 0.0,
-      "B": 0.0,
-      "C": 0.0,
-      "D": 0.0
+      "A": 0.29411764705882354,
+      "B": 0.1568627450980392,
+      "C": 0.3137254901960784,
+      "D": 0.3333333333333333
     }
   }
 }

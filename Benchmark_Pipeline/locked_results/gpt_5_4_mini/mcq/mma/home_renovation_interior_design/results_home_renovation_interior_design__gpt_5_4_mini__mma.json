@@ -10,108 +10,108 @@
   "num_qas_run": 52,
   "dialog_json": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/dialog/Home_Renovation_Interior_Design.json",
   "image_root": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/image",
-  "run_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/home_renovation_interior_design/20260425_184650_gpt_5_4_mini_mma",
-  "git_commit": "7eb4b31f1f56487e02ecff48e751fe66ab6c6c5f",
+  "run_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/home_renovation_interior_design/20260426_103539_gpt_5_4_mini_mma",
+  "git_commit": "054322ce5a2f8d0e731520e829f334c056239afd",
   "summary": {
     "open_count": 52,
     "overall": {
-      "em": 0.0,
-      "contains_gt": 0.0,
-      "f1": 0.0
+      "em": 0.6730769230769231,
+      "contains_gt": 0.6346153846153846,
+      "f1": 0.6730769230769231
     },
     "by_x": {
       "X4": {
-        "em": 0.0,
-        "contains_gt": 0.0,
-        "f1": 0.0
+        "em": 0.5625,
+        "contains_gt": 0.625,
+        "f1": 0.5625
       },
       "X3": {
-        "em": 0.0,
-        "contains_gt": 0.0,
-        "f1": 0.0
+        "em": 0.7013888888888888,
+        "contains_gt": 0.6388888888888888,
+        "f1": 0.7013888888888888
       },
       "X2": {
-        "em": 0.0,
-        "contains_gt": 0.0,
-        "f1": 0.0
+        "em": 0.6071428571428571,
+        "contains_gt": 0.5714285714285714,
+        "f1": 0.6071428571428571
       },
       "X1": {
-        "em": 0.0,
-        "contains_gt": 0.0,
-        "f1": 0.0
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
       }
     },
     "by_y": {
       "Y2": {
-        "em": 0.0,
-        "contains_gt": 0.0,
-        "f1": 0.0
+        "em": 0.625,
+        "contains_gt": 0.5833333333333334,
+        "f1": 0.625
       },
       "Y1": {
-        "em": 0.0,
-        "contains_gt": 0.0,
-        "f1": 0.0
+        "em": 0.6794871794871795,
+        "contains_gt": 0.6410256410256411,
+        "f1": 0.6794871794871795
       },
       "Y3": {
-        "em": 0.0,
-        "contains_gt": 0.0,
-        "f1": 0.0
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
       }
     },
     "by_cell": {
       "X4_Y2": {
-        "em": 0.0,
-        "contains_gt": 0.0,
-        "f1": 0.0
+        "em": 0.375,
+        "contains_gt": 0.5,
+        "f1": 0.375
       },
       "X3_Y2": {
-        "em": 0.0,
-        "contains_gt": 0.0,
-        "f1": 0.0
+        "em": 0.65,
+        "contains_gt": 0.6,
+        "f1": 0.65
       },
       "X3_Y1": {
-        "em": 0.0,
-        "contains_gt": 0.0,
-        "f1": 0.0
+        "em": 0.7096774193548387,
+        "contains_gt": 0.6451612903225806,
+        "f1": 0.7096774193548387
       },
       "X2_Y1": {
-        "em": 0.0,
-        "contains_gt": 0.0,
-        "f1": 0.0
+        "em": 0.375,
+        "contains_gt": 0.5,
+        "f1": 0.375
       },
       "X2_Y2": {
-        "em": 0.0,
-        "contains_gt": 0.0,
-        "f1": 0.0
+        "em": 0.7,
+        "contains_gt": 0.6,
+        "f1": 0.7
       },
       "X4_Y1": {
-        "em": 0.0,
-        "contains_gt": 0.0,
-        "f1": 0.0
+        "em": 0.55,
+        "contains_gt": 0.6,
+        "f1": 0.55
       },
       "X4_Y3": {
-        "em": 0.0,
-        "contains_gt": 0.0,
-        "f1": 0.0
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
       },
       "X1_Y1": {
-        "em": 0.0,
-        "contains_gt": 0.0,
-        "f1": 0.0
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
       }
     },
     "mcq_count": 52,
-    "mcq_valid_rate": 0.0,
+    "mcq_valid_rate": 1.0,
     "mcq_overall": {
-      "em": 0.0,
-      "contains_gt": 0.0,
-      "f1": 0.0
+      "em": 0.6730769230769231,
+      "contains_gt": 0.6346153846153846,
+      "f1": 0.6730769230769231
     },
     "mcq_per_position_accuracy": {
-      "A": 0.0,
-      "B": 0.0,
-      "C": 0.0,
-      "D": 0.0
+      "A": 0.6923076923076923,
+      "B": 0.6923076923076923,
+      "C": 0.6730769230769231,
+      "D": 0.6346153846153846
     }
   }
 }

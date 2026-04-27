@@ -10,128 +10,111 @@
   "num_qas_run": 51,
   "dialog_json": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/dialog/Personal_Health_Dashboard_Assistant_Open.json",
   "image_root": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image",
-  "run_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/personal_health_dashboard_assistant_open/20260425_183238_gpt_5_4_mini_mma",
-  "git_commit": "7eb4b31f1f56487e02ecff48e751fe66ab6c6c5f",
+  "run_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/personal_health_dashboard_assistant_open/20260426_110818_gpt_5_4_mini_mma",
+  "git_commit": "054322ce5a2f8d0e731520e829f334c056239afd",
   "summary": {
     "open_count": 51,
     "overall": {
-      "em": 0.0,
-      "contains_gt": 0.0,
-      "f1": 0.0,
-      "bleu": 0.0,
-      "bleu_1": 0.0,
-      "bleu_2": 0.0,
-      "judge": 0.0
+      "em": 0.17647058823529413,
+      "contains_gt": 0.19607843137254902,
+      "f1": 0.27163985252220546,
+      "bleu": 0.16531414945486703,
+      "bleu_1": 0.2564403554147148,
+      "bleu_2": 0.23230510746678204
     },
     "by_x": {
       "X4": {
-        "em": 0.0,
-        "contains_gt": 0.0,
-        "f1": 0.0,
-        "bleu": 0.0,
-        "bleu_1": 0.0,
-        "bleu_2": 0.0,
-        "judge": 0.0
+        "em": 0.18181818181818182,
+        "contains_gt": 0.20454545454545456,
+        "f1": 0.24842171717171718,
+        "bleu": 0.15958969384691746,
+        "bleu_1": 0.23433721276323438,
+        "bleu_2": 0.21442720206499022
       },
       "X3": {
-        "em": 0.0,
-        "contains_gt": 0.0,
-        "f1": 0.0,
-        "bleu": 0.0,
-        "bleu_1": 0.0,
-        "bleu_2": 0.0,
-        "judge": 0.0
+        "em": 0.25,
+        "contains_gt": 0.25,
+        "f1": 0.25,
+        "bleu": 0.0790569415042095,
+        "bleu_1": 0.25,
+        "bleu_2": 0.25
       },
       "X1": {
         "em": 0.0,
         "contains_gt": 0.0,
-        "f1": 0.0,
-        "bleu": 0.0,
-        "bleu_1": 0.0,
-        "bleu_2": 0.0,
-        "judge": 0.0
+        "f1": 0.641025641025641,
+        "bleu": 0.3642824423056706,
+        "bleu_1": 0.5892069215227149,
+        "bleu_2": 0.4709211966487715
       }
     },
     "by_y": {
       "Y2": {
-        "em": 0.0,
-        "contains_gt": 0.0,
-        "f1": 0.0,
-        "bleu": 0.0,
-        "bleu_1": 0.0,
-        "bleu_2": 0.0,
-        "judge": 0.0
+        "em": 0.18181818181818182,
+        "contains_gt": 0.20454545454545456,
+        "f1": 0.24842171717171718,
+        "bleu": 0.1440494158018456,
+        "bleu_1": 0.23433721276323438,
+        "bleu_2": 0.21442720206499022
       },
       "Y3": {
-        "em": 0.0,
-        "contains_gt": 0.0,
-        "f1": 0.0,
-        "bleu": 0.0,
-        "bleu_1": 0.0,
-        "bleu_2": 0.0,
-        "judge": 0.0
+        "em": 0.16666666666666666,
+        "contains_gt": 0.16666666666666666,
+        "f1": 0.4455128205128205,
+        "bleu": 0.339085313257489,
+        "bleu_1": 0.43274695414843567,
+        "bleu_2": 0.391080287481769
       },
       "Y1": {
         "em": 0.0,
         "contains_gt": 0.0,
-        "f1": 0.0,
-        "bleu": 0.0,
-        "bleu_1": 0.0,
-        "bleu_2": 0.0,
-        "judge": 0.0
+        "f1": 0.25,
+        "bleu": 0.05833544737207805,
+        "bleu_1": 0.17113903967753066,
+        "bleu_2": 0.06628186505570068
       }
     },
     "by_cell": {
       "X4_Y2": {
-        "em": 0.0,
-        "contains_gt": 0.0,
-        "f1": 0.0,
-        "bleu": 0.0,
-        "bleu_1": 0.0,
-        "bleu_2": 0.0,
-        "judge": 0.0
+        "em": 0.175,
+        "contains_gt": 0.2,
+        "f1": 0.2482638888888889,
+        "bleu": 0.1505486632316092,
+        "bleu_1": 0.23277093403955781,
+        "bleu_2": 0.21086992227148924
       },
       "X4_Y3": {
-        "em": 0.0,
-        "contains_gt": 0.0,
-        "f1": 0.0,
-        "bleu": 0.0,
-        "bleu_1": 0.0,
-        "bleu_2": 0.0,
-        "judge": 0.0
+        "em": 0.25,
+        "contains_gt": 0.25,
+        "f1": 0.25,
+        "bleu": 0.25,
+        "bleu_1": 0.25,
+        "bleu_2": 0.25
       },
       "X3_Y2": {
-        "em": 0.0,
-        "contains_gt": 0.0,
-        "f1": 0.0,
-        "bleu": 0.0,
-        "bleu_1": 0.0,
-        "bleu_2": 0.0,
-        "judge": 0.0
+        "em": 0.25,
+        "contains_gt": 0.25,
+        "f1": 0.25,
+        "bleu": 0.0790569415042095,
+        "bleu_1": 0.25,
+        "bleu_2": 0.25
       },
       "X1_Y3": {
         "em": 0.0,
         "contains_gt": 0.0,
-        "f1": 0.0,
-        "bleu": 0.0,
-        "bleu_1": 0.0,
-        "bleu_2": 0.0,
-        "judge": 0.0
+        "f1": 0.8365384615384615,
+        "bleu": 0.5172559397724669,
+        "bleu_1": 0.798240862445307,
+        "bleu_2": 0.673240862445307
       },
       "X1_Y1": {
         "em": 0.0,
         "contains_gt": 0.0,
-        "f1": 0.0,
-        "bleu": 0.0,
-        "bleu_1": 0.0,
-        "bleu_2": 0.0,
-        "judge": 0.0
+        "f1": 0.25,
+        "bleu": 0.05833544737207805,
+        "bleu_1": 0.17113903967753066,
+        "bleu_2": 0.06628186505570068
       }
     }
-  },
-  "judge": {
-    "enabled": true,
-    "model": "gpt-5.2",
-    "scored_open_rows": 51
   }
 }

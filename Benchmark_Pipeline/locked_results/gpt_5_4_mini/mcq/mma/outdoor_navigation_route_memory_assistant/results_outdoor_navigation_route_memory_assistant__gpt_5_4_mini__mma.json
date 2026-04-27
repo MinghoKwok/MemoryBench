@@ -10,69 +10,69 @@
   "num_qas_run": 28,
   "dialog_json": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/dialog/Outdoor_Navigation_Route_Memory_Assistant.json",
   "image_root": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/image",
-  "run_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/outdoor_navigation_route_memory_assistant/20260425_223858_gpt_5_4_mini_mma",
-  "git_commit": "7eb4b31f1f56487e02ecff48e751fe66ab6c6c5f",
+  "run_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/outdoor_navigation_route_memory_assistant/20260426_104655_gpt_5_4_mini_mma",
+  "git_commit": "054322ce5a2f8d0e731520e829f334c056239afd",
   "summary": {
     "open_count": 28,
     "overall": {
-      "em": 0.0,
-      "contains_gt": 0.0,
-      "f1": 0.0
+      "em": 0.5,
+      "contains_gt": 0.5357142857142857,
+      "f1": 0.5
     },
     "by_x": {
       "X3": {
-        "em": 0.0,
-        "contains_gt": 0.0,
-        "f1": 0.0
+        "em": 0.5972222222222222,
+        "contains_gt": 0.5555555555555556,
+        "f1": 0.5972222222222222
       },
       "X1": {
-        "em": 0.0,
-        "contains_gt": 0.0,
-        "f1": 0.0
+        "em": 0.25,
+        "contains_gt": 0.3333333333333333,
+        "f1": 0.25
       },
       "X4": {
-        "em": 0.0,
-        "contains_gt": 0.0,
-        "f1": 0.0
+        "em": 0.35,
+        "contains_gt": 0.6,
+        "f1": 0.35
       },
       "X2": {
-        "em": 0.0,
-        "contains_gt": 0.0,
-        "f1": 0.0
+        "em": 0.375,
+        "contains_gt": 0.5,
+        "f1": 0.375
       }
     },
     "by_y": {
       "Y2": {
-        "em": 0.0,
-        "contains_gt": 0.0,
-        "f1": 0.0
+        "em": 0.5,
+        "contains_gt": 0.5333333333333333,
+        "f1": 0.5
       },
       "Y1": {
-        "em": 0.0,
-        "contains_gt": 0.0,
-        "f1": 0.0
+        "em": 0.25,
+        "contains_gt": 1.0,
+        "f1": 0.25
       },
       "Y3": {
-        "em": 0.0,
-        "contains_gt": 0.0,
-        "f1": 0.0
+        "em": 0.5208333333333334,
+        "contains_gt": 0.5,
+        "f1": 0.5208333333333334
       }
     },
     "by_cell": {
       "X3_Y2": {
-        "em": 0.0,
-        "contains_gt": 0.0,
-        "f1": 0.0
+        "em": 0.5576923076923077,
+        "contains_gt": 0.5384615384615384,
+        "f1": 0.5576923076923077
       },
       "X1_Y1": {
-        "em": 0.0,
-        "contains_gt": 0.0,
-        "f1": 0.0
+        "em": 0.25,
+        "contains_gt": 1.0,
+        "f1": 0.25
       },
       "X4_Y2": {
-        "em": 0.0,
-        "contains_gt": 0.0,
-        "f1": 0.0
+        "em": 0.25,
+        "contains_gt": 1.0,
+        "f1": 0.25
       },
       "X2_Y2": {
         "em": 0.0,
@@ -80,38 +80,38 @@
         "f1": 0.0
       },
       "X3_Y3": {
-        "em": 0.0,
-        "contains_gt": 0.0,
-        "f1": 0.0
+        "em": 0.7,
+        "contains_gt": 0.6,
+        "f1": 0.7
       },
       "X4_Y3": {
-        "em": 0.0,
-        "contains_gt": 0.0,
-        "f1": 0.0
+        "em": 0.375,
+        "contains_gt": 0.5,
+        "f1": 0.375
       },
       "X1_Y3": {
-        "em": 0.0,
+        "em": 0.25,
         "contains_gt": 0.0,
-        "f1": 0.0
+        "f1": 0.25
       },
       "X2_Y3": {
-        "em": 0.0,
-        "contains_gt": 0.0,
-        "f1": 0.0
+        "em": 0.75,
+        "contains_gt": 1.0,
+        "f1": 0.75
       }
     },
     "mcq_count": 28,
-    "mcq_valid_rate": 0.0,
+    "mcq_valid_rate": 1.0,
     "mcq_overall": {
-      "em": 0.0,
-      "contains_gt": 0.0,
-      "f1": 0.0
+      "em": 0.5,
+      "contains_gt": 0.5357142857142857,
+      "f1": 0.5
     },
     "mcq_per_position_accuracy": {
-      "A": 0.0,
-      "B": 0.0,
-      "C": 0.0,
-      "D": 0.0
+      "A": 0.5357142857142857,
+      "B": 0.5,
+      "C": 0.42857142857142855,
+      "D": 0.5357142857142857
     }
   }
 }

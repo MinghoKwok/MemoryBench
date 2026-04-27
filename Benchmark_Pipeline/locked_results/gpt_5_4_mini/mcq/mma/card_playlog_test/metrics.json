@@ -10,58 +10,58 @@
   "num_qas_run": 48,
   "dialog_json": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/dialog/Card_Playlog_Test.json",
   "image_root": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/image",
-  "run_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/card_playlog_test/20260425_154759_gpt_5_4_mini_mma",
-  "git_commit": "7eb4b31f1f56487e02ecff48e751fe66ab6c6c5f",
+  "run_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/card_playlog_test/20260426_102113_gpt_5_4_mini_mma",
+  "git_commit": "fa8105834c4c30aae8bc623d6a932e811089aa0a",
   "summary": {
     "open_count": 48,
     "overall": {
-      "em": 0.0,
-      "contains_gt": 0.0,
-      "f1": 0.0
+      "em": 0.4166666666666667,
+      "contains_gt": 0.4166666666666667,
+      "f1": 0.4166666666666667
     },
     "by_x": {
       "X4": {
-        "em": 0.0,
-        "contains_gt": 0.0,
-        "f1": 0.0
+        "em": 0.4166666666666667,
+        "contains_gt": 0.4166666666666667,
+        "f1": 0.4166666666666667
       }
     },
     "by_y": {
       "Y3": {
-        "em": 0.0,
-        "contains_gt": 0.0,
-        "f1": 0.0
+        "em": 0.3026315789473684,
+        "contains_gt": 0.2631578947368421,
+        "f1": 0.3026315789473684
       },
       "Y2": {
-        "em": 0.0,
-        "contains_gt": 0.0,
-        "f1": 0.0
+        "em": 0.49137931034482757,
+        "contains_gt": 0.5172413793103449,
+        "f1": 0.49137931034482757
       }
     },
     "by_cell": {
       "X4_Y3": {
-        "em": 0.0,
-        "contains_gt": 0.0,
-        "f1": 0.0
+        "em": 0.3026315789473684,
+        "contains_gt": 0.2631578947368421,
+        "f1": 0.3026315789473684
       },
       "X4_Y2": {
-        "em": 0.0,
-        "contains_gt": 0.0,
-        "f1": 0.0
+        "em": 0.49137931034482757,
+        "contains_gt": 0.5172413793103449,
+        "f1": 0.49137931034482757
       }
     },
     "mcq_count": 48,
-    "mcq_valid_rate": 0.0,
+    "mcq_valid_rate": 1.0,
     "mcq_overall": {
-      "em": 0.0,
-      "contains_gt": 0.0,
-      "f1": 0.0
+      "em": 0.4166666666666667,
+      "contains_gt": 0.4166666666666667,
+      "f1": 0.4166666666666667
     },
     "mcq_per_position_accuracy": {
-      "A": 0.0,
-      "B": 0.0,
-      "C": 0.0,
-      "D": 0.0
+      "A": 0.125,
+      "B": 0.7083333333333334,
+      "C": 0.4166666666666667,
+      "D": 0.4166666666666667
     }
   }
 }
