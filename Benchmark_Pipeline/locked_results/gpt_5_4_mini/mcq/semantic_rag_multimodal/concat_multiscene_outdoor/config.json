@@ -1,0 +1,133 @@
+{
+  "task": {
+    "dataset": {
+      "dialog_json": "data/dialog/concat_multiscene_outdoor.json",
+      "image_root": "data/image"
+    },
+    "eval": {
+      "max_questions": 0,
+      "mode": "open",
+      "output_json": "output/results_concat_multiscene_outdoor.json"
+    },
+    "name": "concat_multiscene_outdoor"
+  },
+  "dataset": {
+    "dialog_json": "data/dialog/concat_multiscene_outdoor.json",
+    "image_root": "data/image"
+  },
+  "eval": {
+    "max_questions": 0,
+    "mode": "open",
+    "output_json": "output/results_concat_multiscene_outdoor.json"
+  },
+  "model": {
+    "name": "gpt_5_4_mini",
+    "provider": "openai_api",
+    "model": "gpt-5.4-mini",
+    "api_key_env": "OPENAI_API_KEY",
+    "base_url": "https://api.openai.com/v1",
+    "max_new_tokens": 128,
+    "timeout": 90
+  },
+  "method": {
+    "name": "semantic_rag_multimodal",
+    "modality": "multimodal",
+    "retrieval_backend": "dense_multimodal",
+    "top_k": 10,
+    "neighbor_window": 0,
+    "text_embedding_model": "all-MiniLM-L6-v2",
+    "multimodal_embedding_model": "siglip2-base-patch16-384",
+    "text_dense_weight": 0.5,
+    "image_dense_weight": 0.5
+  },
+  "run": {
+    "output_root": "runs",
+    "method_runtime": {
+      "retrieval_backend": "dense_multimodal",
+      "retrieval_corpus": "round_text",
+      "method_modality": "multimodal",
+      "top_k": 10,
+      "neighbor_window": 0,
+      "seed_round_ids": [
+        "SCENE_S12:R8",
+        "SCENE_S11:R7",
+        "SCENE_S6:R2",
+        "SCENE_S6:R3",
+        "OUTDOOR_S5:R5",
+        "SCENE_S4:R6",
+        "OUTDOOR_S6:R5",
+        "SCENE_S9:R1",
+        "SCENE_S15:R8",
+        "OUTDOOR_S5:R2"
+      ],
+      "selected_round_ids": [
+        "SCENE_S12:R8",
+        "SCENE_S11:R7",
+        "SCENE_S6:R2",
+        "SCENE_S6:R3",
+        "OUTDOOR_S5:R5",
+        "SCENE_S4:R6",
+        "OUTDOOR_S6:R5",
+        "SCENE_S9:R1",
+        "SCENE_S15:R8",
+        "OUTDOOR_S5:R2"
+      ],
+      "top_candidates": [
+        {
+          "round_id": "SCENE_S12:R8",
+          "score": 0.1861576849840129,
+          "text_dense_score": 0.32411316885053604,
+          "image_dense_score": 0.048202201117489754,
+          "indexed_image_count": 1,
+          "best_image_path": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/image/Multi-Scene_Visual_Case_Archive_Assistant/S12-IMG3.png"
+        },
+        {
+          "round_id": "SCENE_S11:R7",
+          "score": 0.13274348761103363,
+          "text_dense_score": 0.26017269033571716,
+          "image_dense_score": 0.0053142848863501095,
+          "indexed_image_count": 1,
+          "best_image_path": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/image/Multi-Scene_Visual_Case_Archive_Assistant/S11-IMG4.png"
+        },
+        {
+          "round_id": "SCENE_S6:R2",
+          "score": 0.12369188222365475,
+          "text_dense_score": 0.21901165385046611,
+          "image_dense_score": 0.028372110596843386,
+          "indexed_image_count": 1,
+          "best_image_path": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/image/Multi-Scene_Visual_Case_Archive_Assistant/S6-IMG1.png"
+        },
+        {
+          "round_id": "SCENE_S6:R3",
+          "score": 0.11936610980262548,
+          "text_dense_score": 0.20536881745214836,
+          "image_dense_score": 0.03336340215310261,
+          "indexed_image_count": 1,
+          "best_image_path": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/image/Multi-Scene_Visual_Case_Archive_Assistant/S6-IMG2.png"
+        },
+        {
+          "round_id": "OUTDOOR_S5:R5",
+          "score": 0.11103641749137992,
+          "text_dense_score": 0.0543764740290493,
+          "image_dense_score": 0.16769636095371054,
+          "indexed_image_count": 1,
+          "best_image_path": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/image/Outdoor_Navigation_Route_Memory_Assistant/S5_R5.jpg"
+        }
+      ],
+      "clue_hit_count": 1,
+      "corpus_entry_count": 177,
+      "text_embedding_model": "all-MiniLM-L6-v2",
+      "multimodal_embedding_model": "siglip2-base-patch16-384",
+      "text_dense_weight": 0.5,
+      "image_dense_weight": 0.5,
+      "caption_text_included": false,
+      "image_embeddings_built": true,
+      "multi_image_indexing_enabled": true,
+      "indexed_image_count": 97,
+      "history_source": "retrieval",
+      "captions_loaded": false,
+      "images_loaded": true,
+      "history_turns_after_truncation": 20
+    }
+  }
+}

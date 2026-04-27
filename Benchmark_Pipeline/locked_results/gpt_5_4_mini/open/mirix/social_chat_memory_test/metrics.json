@@ -1,0 +1,171 @@
+{
+  "task_name": "social_chat_memory_test_open",
+  "model_name": "gpt_5_4_mini",
+  "model_path": "gpt-5.4-mini",
+  "method_name": "mirix",
+  "base_method_name": "mirix",
+  "method_modality": "",
+  "mode": "open",
+  "num_qas": 37,
+  "num_qas_run": 37,
+  "dialog_json": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/dialog/Social_Chat_Memory_Test_Open.json",
+  "image_root": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image",
+  "run_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/social_chat_memory_test_open/20260427_135046_gpt_5_4_mini_mirix",
+  "git_commit": "d8ac0cb71367c6f0314274b4a514968eab3f678b",
+  "summary": {
+    "open_count": 37,
+    "overall": {
+      "em": 0.02702702702702703,
+      "contains_gt": 0.02702702702702703,
+      "f1": 0.20222010517177647,
+      "bleu": 0.02770239838290872,
+      "bleu_1": 0.13720614041983276,
+      "bleu_2": 0.06556637604032196
+    },
+    "by_x": {
+      "X2": {
+        "em": 0.034482758620689655,
+        "contains_gt": 0.034482758620689655,
+        "f1": 0.20294665557289662,
+        "bleu": 0.023704925178410004,
+        "bleu_1": 0.13750355953680243,
+        "bleu_2": 0.0644034428980064
+      },
+      "X1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.2621953188054883,
+        "bleu": 0.056763482680511096,
+        "bleu_1": 0.17780479379330813,
+        "bleu_2": 0.09750907826621448
+      },
+      "X3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.14285714285714288,
+        "bleu": 0.026864248295588544,
+        "bleu_1": 0.1,
+        "bleu_2": 0.03535533905932738
+      },
+      "X4": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0,
+        "bleu": 0.0,
+        "bleu_1": 0.0,
+        "bleu_2": 0.0
+      }
+    },
+    "by_y": {
+      "Y2": {
+        "em": 0.04,
+        "contains_gt": 0.04,
+        "f1": 0.13530720741247057,
+        "bleu": 0.015257826496943131,
+        "bleu_1": 0.08297376784330393,
+        "bleu_2": 0.03187964329532192
+      },
+      "Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.3357932535566301,
+        "bleu": 0.03924306928205538,
+        "bleu_1": 0.21744262339970763,
+        "bleu_2": 0.11723508393796939
+      },
+      "Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.34745069745069745,
+        "bleu": 0.06801411034195202,
+        "bleu_1": 0.28293787650882796,
+        "bleu_2": 0.15425905458017472
+      }
+    },
+    "by_cell": {
+      "X2_Y2": {
+        "em": 0.045454545454545456,
+        "contains_gt": 0.045454545454545456,
+        "f1": 0.15375819024144383,
+        "bleu": 0.01733843920107174,
+        "bleu_1": 0.094288372549209,
+        "bleu_2": 0.036226867381047634
+      },
+      "X2_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.35094573182808475,
+        "bleu": 0.027155195903086297,
+        "bleu_1": 0.23513132640390924,
+        "bleu_2": 0.11265115924345506
+      },
+      "X2_Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.36632996632996634,
+        "bleu": 0.06579212804598888,
+        "bleu_1": 0.3242445749563453,
+        "bleu_2": 0.20670137489510576
+      },
+      "X1_Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.35,
+        "bleu": 0.0784898906612842,
+        "bleu_1": 0.26244676709196596,
+        "bleu_2": 0.11736976233853816
+      },
+      "X1_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0,
+        "bleu": 0.0,
+        "bleu_1": 0.0,
+        "bleu_2": 0.0
+      },
+      "X3_Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.28571428571428575,
+        "bleu": 0.05372849659117709,
+        "bleu_1": 0.2,
+        "bleu_2": 0.07071067811865477
+      },
+      "X3_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0,
+        "bleu": 0.0,
+        "bleu_1": 0.0,
+        "bleu_2": 0.0
+      },
+      "X4_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0,
+        "bleu": 0.0,
+        "bleu_1": 0.0,
+        "bleu_2": 0.0
+      },
+      "X1_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.3054882970137207,
+        "bleu": 0.06341881603999354,
+        "bleu_1": 0.18206521739130438,
+        "bleu_2": 0.12640293332699803
+      }
+    }
+  },
+  "method_runtime": {
+    "official_mirix": true,
+    "official_model_name": "gpt-5.4-mini",
+    "ingested_turns": 106,
+    "runtime_signature": "8c0509eedf35b0f7",
+    "runtime_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/social_chat_memory_test_open/mirix/8c0509eedf35b0f7",
+    "runtime_home": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/social_chat_memory_test_open/mirix/8c0509eedf35b0f7/runtime_home",
+    "debug_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/output/social_chat_memory_test_open/mirix/8c0509eedf35b0f7",
+    "resumed": false,
+    "completed_ingestion": true
+  }
+}

@@ -1,0 +1,133 @@
+{
+  "task": {
+    "dataset": {
+      "dialog_json": "data/dialog/concat_quad_b_open.json",
+      "image_root": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image"
+    },
+    "eval": {
+      "max_questions": 0,
+      "mode": "open",
+      "output_json": "output/results_concat_quad_b_open.json"
+    },
+    "name": "concat_quad_b_open"
+  },
+  "dataset": {
+    "dialog_json": "data/dialog/concat_quad_b_open.json",
+    "image_root": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image"
+  },
+  "eval": {
+    "max_questions": 0,
+    "mode": "open",
+    "output_json": "output/results_concat_quad_b_open.json"
+  },
+  "model": {
+    "name": "gpt_5_4_mini",
+    "provider": "openai_api",
+    "model": "gpt-5.4-mini",
+    "api_key_env": "OPENAI_API_KEY",
+    "base_url": "https://api.openai.com/v1",
+    "max_new_tokens": 128,
+    "timeout": 90
+  },
+  "method": {
+    "name": "semantic_rag_multimodal",
+    "modality": "multimodal",
+    "retrieval_backend": "dense_multimodal",
+    "top_k": 10,
+    "neighbor_window": 0,
+    "text_embedding_model": "all-MiniLM-L6-v2",
+    "multimodal_embedding_model": "siglip2-base-patch16-384",
+    "text_dense_weight": 0.5,
+    "image_dense_weight": 0.5
+  },
+  "run": {
+    "output_root": "runs",
+    "method_runtime": {
+      "retrieval_backend": "dense_multimodal",
+      "retrieval_corpus": "round_text",
+      "method_modality": "multimodal",
+      "top_k": 10,
+      "neighbor_window": 0,
+      "seed_round_ids": [
+        "HOME_S3:R6",
+        "HEALTH_S6:R7",
+        "SCENE_S12:R8",
+        "HOME_S11:R3",
+        "HEALTH_S2:R6",
+        "HOME_S3:R5",
+        "HEALTH_S9:R7",
+        "HEALTH_S3:R7",
+        "HOME_S8:R6",
+        "HEALTH_S1:R6"
+      ],
+      "selected_round_ids": [
+        "HOME_S3:R6",
+        "HEALTH_S6:R7",
+        "SCENE_S12:R8",
+        "HOME_S11:R3",
+        "HEALTH_S2:R6",
+        "HOME_S3:R5",
+        "HEALTH_S9:R7",
+        "HEALTH_S3:R7",
+        "HOME_S8:R6",
+        "HEALTH_S1:R6"
+      ],
+      "top_candidates": [
+        {
+          "round_id": "HOME_S3:R6",
+          "score": 0.266142035578479,
+          "text_dense_score": 0.44448535230668723,
+          "image_dense_score": 0.08779871885027078,
+          "indexed_image_count": 1,
+          "best_image_path": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image/Home_Renovation_Interior_Design/D3_IMG_005.jpg"
+        },
+        {
+          "round_id": "HEALTH_S6:R7",
+          "score": 0.23201339396182652,
+          "text_dense_score": 0.3710127163585864,
+          "image_dense_score": 0.09301407156506664,
+          "indexed_image_count": 1,
+          "best_image_path": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image/Personal_Health_Dashboard_Assistant/D6_IMG_005.jpg"
+        },
+        {
+          "round_id": "SCENE_S12:R8",
+          "score": 0.1983535904361095,
+          "text_dense_score": 0.3635217466633513,
+          "image_dense_score": 0.033185434208867735,
+          "indexed_image_count": 1,
+          "best_image_path": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image/Multi-Scene_Visual_Case_Archive_Assistant/S12-IMG3.png"
+        },
+        {
+          "round_id": "HOME_S11:R3",
+          "score": 0.19108076501269966,
+          "text_dense_score": 0.33357450210550765,
+          "image_dense_score": 0.048587027919891675,
+          "indexed_image_count": 1,
+          "best_image_path": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image/Home_Renovation_Interior_Design/D11_IMG_002.jpg"
+        },
+        {
+          "round_id": "HEALTH_S2:R6",
+          "score": 0.1782059057146732,
+          "text_dense_score": 0.2635175464527283,
+          "image_dense_score": 0.09289426497661814,
+          "indexed_image_count": 1,
+          "best_image_path": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image/Personal_Health_Dashboard_Assistant/D2_IMG_004.jpg"
+        }
+      ],
+      "clue_hit_count": 0,
+      "corpus_entry_count": 394,
+      "text_embedding_model": "all-MiniLM-L6-v2",
+      "multimodal_embedding_model": "siglip2-base-patch16-384",
+      "text_dense_weight": 0.5,
+      "image_dense_weight": 0.5,
+      "caption_text_included": false,
+      "image_embeddings_built": true,
+      "multi_image_indexing_enabled": true,
+      "indexed_image_count": 248,
+      "history_source": "retrieval",
+      "captions_loaded": false,
+      "images_loaded": true,
+      "history_turns_after_truncation": 20
+    }
+  }
+}

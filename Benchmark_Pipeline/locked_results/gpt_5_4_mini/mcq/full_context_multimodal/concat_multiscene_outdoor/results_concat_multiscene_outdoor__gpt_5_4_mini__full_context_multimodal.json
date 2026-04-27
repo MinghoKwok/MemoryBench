@@ -1,0 +1,130 @@
+{
+  "task_name": "concat_multiscene_outdoor",
+  "model_name": "gpt_5_4_mini",
+  "model_path": "gpt-5.4-mini",
+  "method_name": "full_context_multimodal",
+  "base_method_name": "full_context_multimodal",
+  "method_modality": "",
+  "mode": "mcq",
+  "num_qas": 78,
+  "num_qas_run": 78,
+  "dialog_json": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/dialog/concat_multiscene_outdoor.json",
+  "image_root": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/image",
+  "run_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/concat_multiscene_outdoor/20260427_013944_gpt_5_4_mini_full_context_multimodal",
+  "git_commit": "d8ac0cb71367c6f0314274b4a514968eab3f678b",
+  "summary": {
+    "open_count": 78,
+    "overall": {
+      "em": 0.3557692307692308,
+      "contains_gt": 0.3717948717948718,
+      "f1": 0.3557692307692308
+    },
+    "by_x": {
+      "X4": {
+        "em": 0.3611111111111111,
+        "contains_gt": 0.4444444444444444,
+        "f1": 0.3611111111111111
+      },
+      "X2": {
+        "em": 0.5,
+        "contains_gt": 0.4,
+        "f1": 0.5
+      },
+      "X3": {
+        "em": 0.32589285714285715,
+        "contains_gt": 0.35714285714285715,
+        "f1": 0.32589285714285715
+      },
+      "X1": {
+        "em": 0.4166666666666667,
+        "contains_gt": 0.3333333333333333,
+        "f1": 0.4166666666666667
+      }
+    },
+    "by_y": {
+      "Y2": {
+        "em": 0.41304347826086957,
+        "contains_gt": 0.391304347826087,
+        "f1": 0.41304347826086957
+      },
+      "Y3": {
+        "em": 0.4782608695652174,
+        "contains_gt": 0.4782608695652174,
+        "f1": 0.4782608695652174
+      },
+      "Y1": {
+        "em": 0.2265625,
+        "contains_gt": 0.28125,
+        "f1": 0.2265625
+      }
+    },
+    "by_cell": {
+      "X4_Y2": {
+        "em": 0.5,
+        "contains_gt": 0.5,
+        "f1": 0.5
+      },
+      "X2_Y2": {
+        "em": 0.0625,
+        "contains_gt": 0.0,
+        "f1": 0.0625
+      },
+      "X3_Y3": {
+        "em": 0.475,
+        "contains_gt": 0.5,
+        "f1": 0.475
+      },
+      "X2_Y3": {
+        "em": 0.7916666666666666,
+        "contains_gt": 0.6666666666666666,
+        "f1": 0.7916666666666666
+      },
+      "X3_Y1": {
+        "em": 0.20161290322580644,
+        "contains_gt": 0.25806451612903225,
+        "f1": 0.20161290322580644
+      },
+      "X3_Y2": {
+        "em": 0.48333333333333334,
+        "contains_gt": 0.4666666666666667,
+        "f1": 0.48333333333333334
+      },
+      "X4_Y3": {
+        "em": 0.25,
+        "contains_gt": 0.4,
+        "f1": 0.25
+      },
+      "X1_Y1": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
+      },
+      "X1_Y3": {
+        "em": 0.125,
+        "contains_gt": 0.0,
+        "f1": 0.125
+      }
+    },
+    "mcq_count": 78,
+    "mcq_valid_rate": 1.0,
+    "mcq_overall": {
+      "em": 0.3557692307692308,
+      "contains_gt": 0.3717948717948718,
+      "f1": 0.3557692307692308
+    },
+    "mcq_per_position_accuracy": {
+      "A": 0.28205128205128205,
+      "B": 0.4358974358974359,
+      "C": 0.3333333333333333,
+      "D": 0.3717948717948718
+    }
+  },
+  "method_runtime": {
+    "method_modality": "multimodal",
+    "history_source": "full_context",
+    "captions_loaded": false,
+    "images_loaded": true,
+    "history_turns_after_truncation": 354,
+    "history_turns_before_truncation": 354
+  }
+}
