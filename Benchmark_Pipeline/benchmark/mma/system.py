@@ -432,7 +432,7 @@ class MMASystem:
             response = self._client.chat.completions.create(
                 model=self._model,
                 messages=messages,
-                max_tokens=256,
+                max_completion_tokens=256,
                 temperature=0,
             )
             return str(response.choices[0].message.content).strip()

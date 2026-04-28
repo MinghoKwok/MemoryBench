@@ -119,6 +119,20 @@ python run_benchmark.py \
   --method-config config/methods/<method>.yaml
 ```
 
+### LLM-as-a-Judge (Open evaluation)
+
+Always use **gpt-5.2** as the judge model for Open evaluation scoring:
+
+```bash
+source ../.env.local
+export OPENAI_API_KEY
+conda run -n memorybench python score_locked_llm_judge.py \
+  --root locked_results/<model>/open \
+  --judge-model gpt-5.2
+```
+
+The script scans `predictions.jsonl` files under `--root`, scores each open-mode prediction, and updates `metrics.json` and `results_*.json` in-place.
+
 ### Sync data to HuggingFace
 ```bash
 export HF_TOKEN=<token from .env.local>
