@@ -55,7 +55,7 @@ Rules:
 
 ## X-Axis Rules
 
-### `X1`: Global Scene Gist
+### `X1`: Global Scene
 
 Use `X1` when only coarse visual gist is required.
 
@@ -70,33 +70,41 @@ Do not use `X1` if the item depends on:
 - fine spatial arrangement
 - small attributes, subtle color, texture, or OCR
 
-### `X2`: Entity Instance Retrieval
+### `X2`: Region Scene
 
-Use `X2` when the model must bind a reference to a specific person, object, item, or persistent visual identity.
+Use `X2` when the decisive evidence is a semantically coherent local region, functional area, grouped visual context, or region-level layout within a scene.
 
 Use `X2` for:
 
+- local room, shelf, table, dashboard, road, or UI regions
+- grouped entities within a localized scene region
+- relative placement, ordering, or proximity when the bottleneck is the local region layout
+- state changes in a local region, such as where an object currently sits in a shelf or tabletop layout
+
+Examples:
+
+- “Which backsplash sample sits between the white subway tile and the gray herringbone sample?”
+- “Where is the key bowl on the entry-console tabletop?”
+- “Which dashboard card shows the metric closest to the warning banner?”
+
+### `X3`: Instance Identity
+
+Use `X3` when the model must bind a reference to a specific person, object, item, character, vehicle, or persistent visual identity.
+
+Use `X3` for:
+
 - “Who was the person/object/item from before?”
-- speaker or object identity tracking
+- speaker, character, vehicle, or object identity tracking
 - cross-turn or cross-session reference resolution to a particular instance
+- distinguishing visually similar instances or categories across images
 
 Examples:
 
 - “Who asked about dinner?”
 - “Which chair was the one discussed earlier?”
+- “On which run does the delivery tricycle cross in front of the stopped SUV?”
 
-### `X3`: Spatial Grounding
-
-Use `X3` when the answer depends on location, side, order, adjacency, layout, or structural arrangement in the image.
-
-Use `X3` for:
-
-- left/right or top/bottom placement
-- relative location
-- layout structure
-- visually ordered attachments or adjacency, such as a message followed by a photo card
-
-### `X4`: Micro-Attribute Reasoning
+### `X4`: Fine-Grained Attributes
 
 Use `X4` when the decisive evidence is fine-grained and likely to be lost in captioning.
 

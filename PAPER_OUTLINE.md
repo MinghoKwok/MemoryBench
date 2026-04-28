@@ -35,12 +35,12 @@ Retrieval-centric limitation of existing benchmarks -> Visual Bypassability + Re
 
 | Level | Name | Description |
 |-------|------|-------------|
-| $X_1$ | Global Scene Gist | Holistic scene-level recognition; tolerant to captioning |
-| $X_2$ | Entity Instance Retrieval | Instance-level identity binding across sessions |
-| $X_3$ | Spatial Grounding | Topological/coordinate-sensitive layout memory |
-| $X_4$ | Micro-attribute Reasoning | Subtle color, texture, OCR, tiny inscriptions |
+| $X_1$ | Global Scene | Holistic scene-level recognition; tolerant to captioning |
+| $X_2$ | Region Scene | Localized scene regions, functional areas, and grouped visual context |
+| $X_3$ | Instance Identity | Specific object/person instance localization and discrimination |
+| $X_4$ | Fine-Grained Attributes | Subtle color, texture, OCR, tiny inscriptions |
 
-Caption-Proof interpretation: $X_1$ (textual anchor) -> $X_2$ (cross-modal link) -> $X_3$ (spatial grounding) -> $X_4$ (fine-grained fixation). Higher X = more caption-resistant.
+Caption-Proof interpretation: $X_1$ (global gist) -> $X_2$ (region-level visual structure) -> $X_3$ (instance identity binding) -> $X_4$ (fine-grained visual evidence). Higher X generally requires more precise visual memory.
 
 ### 3.2 Reasoning Complexity (Y-Axis) — "How far the agent must think"
 

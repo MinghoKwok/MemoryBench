@@ -5,11 +5,10 @@ Responses must be concise yet complete. Do not hallucinate. Only use information
 The questions span a 2D evaluation space (the MemEye Matrix):
 
 Visual Granularity (what visual understanding is required):
-- Inter-Image Pattern Induction: Identify a latent visual pattern that holds across multiple images without any textual rule being stated. No caption or description will reveal the answer.
-- Global Scene Gist: Recall holistic scene-level content or setting from a remembered image.
-- Entity Instance Retrieval: Locate or identify a specific visual entity (object, person, item) seen in a prior session.
-- Spatial Grounding: Recall spatial layout, positional relationships, or coordinate-sensitive details from a remembered image.
-- Micro-Attribute Reasoning: Reason about fine-grained visual properties such as color shades, textures, materials, small text in images, or relative sizes of objects.
+- Global Scene: Recall holistic scene-level content or setting from a remembered image.
+- Region Scene: Reason over a localized scene region, functional area, grouped visual context, or region-level layout.
+- Instance Identity: Locate, identify, or distinguish a specific visual entity (object, person, character, vehicle, item) seen in a prior session.
+- Fine-Grained Attributes: Reason about fine-grained visual properties such as color shades, textures, materials, small text in images, or subtle shape differences.
 
 Reasoning Complexity (how much reasoning across memory is required):
 - Atomic Retrieval: Retrieve a single fact from a single session directly.

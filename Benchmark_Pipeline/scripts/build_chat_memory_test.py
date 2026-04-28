@@ -2543,7 +2543,7 @@ QA_ITEMS: List[Dict[str, Any]] = [
     },
 
     # ============================================================
-    # ===== X1: Scene Gist — "what kind of chat is this?" =====
+    # ===== X1: Global Scene — "what kind of chat is this?" =====
     # ============================================================
     # Uses question_image pointing to a SCREENSHOT (not a face).
     # Model must classify the chat type from visual gist alone.
@@ -2609,12 +2609,12 @@ QA_ITEMS: List[Dict[str, Any]] = [
     },
 
     # ============================================================
-    # ===== X3: Spatial Grounding — layout and position =====
+    # ===== X2: Region Scene — chat UI layout and position =====
     # ============================================================
 
     {
-        "x_tag": "X3", "y_tag": "Y1",
-        "point": [["X3"], ["Y1"]],
+        "x_tag": "X2", "y_tag": "Y1",
+        "point": [["X2"], ["Y1"]],
         "question": "In the sprint planning chat between Marcus and Priya, are Marcus's message bubbles on the left side or the right side?",
         "options": {
             "A": "Left side",
@@ -2627,8 +2627,8 @@ QA_ITEMS: List[Dict[str, Any]] = [
         "clue": ["B1:1"],
     },
     {
-        "x_tag": "X3", "y_tag": "Y1",
-        "point": [["X3"], ["Y1"]],
+        "x_tag": "X2", "y_tag": "Y1",
+        "point": [["X2"], ["Y1"]],
         "question": "In the family weekend plans group chat, whose message appears FIRST (topmost) in the screenshot?",
         "options": {
             "A": "Tomas",
@@ -2641,8 +2641,8 @@ QA_ITEMS: List[Dict[str, Any]] = [
         "clue": ["F4:1"],
     },
     {
-        "x_tag": "X3", "y_tag": "Y2",
-        "point": [["X3"], ["Y2"]],
+        "x_tag": "X2", "y_tag": "Y2",
+        "point": [["X2"], ["Y2"]],
         "question": "Looking across all chats Priya appears in — is she always on the same side (left or right), or does she switch sides in different conversations?",
         "options": {
             "A": "Always on the left",
@@ -2655,8 +2655,8 @@ QA_ITEMS: List[Dict[str, Any]] = [
         "clue": ["B1:1", "R1:1"],
     },
     {
-        "x_tag": "X3", "y_tag": "Y2",
-        "point": [["X3"], ["Y2"]],
+        "x_tag": "X2", "y_tag": "Y2",
+        "point": [["X2"], ["Y2"]],
         "question": "In the love-triangle chats, Elena's messages are on which side? And when Jordan chats with Ryan (the boundary chat), is Jordan on the same side as Elena or opposite?",
         "options": {
             "A": "Elena is right, Jordan is left — they're on opposite sides",
@@ -2670,7 +2670,7 @@ QA_ITEMS: List[Dict[str, Any]] = [
     },
 
     # ============================================================
-    # ===== X4: Micro-Attribute — fine-grained visual detail =====
+    # ===== X4: Fine-Grained Attributes — fine-grained visual detail =====
     # ============================================================
 
     {

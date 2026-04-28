@@ -110,10 +110,10 @@ Results are saved to `Benchmark_Pipeline/output/<dataset>/results_<dataset>__<mo
 MemEye evaluates multimodal agent memory along two orthogonal axes:
 
 **X-axis (Visual Granularity):**
-- `X1` Global Scene Gist — scene-level understanding
-- `X2` Entity Instance Retrieval — cross-session entity tracking
-- `X3` Spatial Grounding — layout and relative positions
-- `X4` Micro-attribute Reasoning — color, OCR, fine details
+- `X1` Global Scene — scene-level understanding
+- `X2` Region Scene — localized scene regions and grouped visual context
+- `X3` Instance Identity — specific object/person instance discrimination
+- `X4` Fine-Grained Attributes — color, OCR, texture, and small visual details
 
 **Y-axis (Reasoning Complexity):**
 - `Y1` Direct Retrieval — single-session fact lookup (RAG-solvable)
