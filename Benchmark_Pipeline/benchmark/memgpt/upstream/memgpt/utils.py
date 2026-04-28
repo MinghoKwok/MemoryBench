@@ -17,8 +17,12 @@ import typer
 import memgpt
 from memgpt.openai_tools import async_get_embedding_with_backoff
 from memgpt.constants import MEMGPT_DIR
-from llama_index import set_global_service_context, ServiceContext, VectorStoreIndex, load_index_from_storage, StorageContext
-from llama_index.embeddings import OpenAIEmbedding
+try:
+    from llama_index import set_global_service_context, ServiceContext, VectorStoreIndex, load_index_from_storage, StorageContext
+    from llama_index.embeddings import OpenAIEmbedding
+except ImportError:
+    from llama_index.core import set_global_service_context, ServiceContext, VectorStoreIndex, load_index_from_storage, StorageContext
+    from llama_index.embeddings.openai import OpenAIEmbedding
 
 
 def count_tokens(s: str, model: str = "gpt-4") -> int:

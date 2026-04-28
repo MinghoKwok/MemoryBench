@@ -6,101 +6,112 @@
   "base_method_name": "m2a",
   "method_modality": "",
   "mode": "mcq",
-  "num_qas": 50,
-  "num_qas_run": 50,
-  "dialog_json": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/dialog/Home_Renovation_Interior_Design.json",
-  "image_root": "/common/home/mg1998/.cache/memeye_hf/MemEye/data/image",
-  "run_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/home_renovation_interior_design/20260409_104225_gpt_4_1_nano_m2a",
-  "git_commit": "ea7af6bf6f4bb589d83cc267fe5554187d060b18",
+  "num_qas": 52,
+  "num_qas_run": 52,
+  "dialog_json": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/dialog/Home_Renovation_Interior_Design.json",
+  "image_root": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/image",
+  "run_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/home_renovation_interior_design/20260424_204153_gpt_4_1_nano_m2a",
+  "git_commit": "658ab1743219fa7a98e5672df9c7253b6b5b5e6d",
   "summary": {
-    "open_count": 50,
+    "open_count": 52,
     "overall": {
-      "em": 0.28,
-      "contains_gt": 0.28,
-      "f1": 0.28
+      "em": 0.39903846153846156,
+      "contains_gt": 0.28846153846153844,
+      "f1": 0.39903846153846156
     },
     "by_x": {
-      "X3": {
-        "em": 0.3333333333333333,
-        "contains_gt": 0.3333333333333333,
-        "f1": 0.3333333333333333
-      },
       "X4": {
-        "em": 0.25925925925925924,
-        "contains_gt": 0.25925925925925924,
-        "f1": 0.25925925925925924
+        "em": 0.4375,
+        "contains_gt": 0.25,
+        "f1": 0.4375
+      },
+      "X3": {
+        "em": 0.3263888888888889,
+        "contains_gt": 0.2222222222222222,
+        "f1": 0.3263888888888889
       },
       "X2": {
-        "em": 0.4,
-        "contains_gt": 0.4,
-        "f1": 0.4
+        "em": 0.6428571428571429,
+        "contains_gt": 0.5714285714285714,
+        "f1": 0.6428571428571429
       },
-      "X0": {
-        "em": 0.0,
-        "contains_gt": 0.0,
-        "f1": 0.0
+      "X1": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
       }
     },
     "by_y": {
       "Y2": {
-        "em": 0.20833333333333334,
-        "contains_gt": 0.20833333333333334,
-        "f1": 0.20833333333333334
+        "em": 0.4375,
+        "contains_gt": 0.3333333333333333,
+        "f1": 0.4375
       },
       "Y1": {
-        "em": 0.3076923076923077,
-        "contains_gt": 0.3076923076923077,
-        "f1": 0.3076923076923077
+        "em": 0.391025641025641,
+        "contains_gt": 0.28205128205128205,
+        "f1": 0.391025641025641
       },
       "Y3": {
-        "em": 0.38461538461538464,
-        "contains_gt": 0.38461538461538464,
-        "f1": 0.38461538461538464
+        "em": 0.25,
+        "contains_gt": 0.0,
+        "f1": 0.25
       }
     },
     "by_cell": {
+      "X4_Y2": {
+        "em": 0.25,
+        "contains_gt": 0.0,
+        "f1": 0.25
+      },
       "X3_Y2": {
         "em": 0.4,
         "contains_gt": 0.4,
         "f1": 0.4
       },
-      "X4_Y1": {
-        "em": 0.375,
-        "contains_gt": 0.375,
-        "f1": 0.375
-      },
-      "X2_Y3": {
-        "em": 0.4,
-        "contains_gt": 0.4,
-        "f1": 0.4
-      },
-      "X4_Y2": {
-        "em": 0.07142857142857142,
-        "contains_gt": 0.07142857142857142,
-        "f1": 0.07142857142857142
-      },
       "X3_Y1": {
-        "em": 0.2,
-        "contains_gt": 0.2,
-        "f1": 0.2
+        "em": 0.31451612903225806,
+        "contains_gt": 0.1935483870967742,
+        "f1": 0.31451612903225806
+      },
+      "X2_Y1": {
+        "em": 0.875,
+        "contains_gt": 1.0,
+        "f1": 0.875
+      },
+      "X2_Y2": {
+        "em": 0.55,
+        "contains_gt": 0.4,
+        "f1": 0.55
+      },
+      "X4_Y1": {
+        "em": 0.55,
+        "contains_gt": 0.4,
+        "f1": 0.55
       },
       "X4_Y3": {
-        "em": 0.6,
-        "contains_gt": 0.6,
-        "f1": 0.6
-      },
-      "X0_Y3": {
-        "em": 0.0,
+        "em": 0.25,
         "contains_gt": 0.0,
-        "f1": 0.0
+        "f1": 0.25
+      },
+      "X1_Y1": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
       }
     },
-    "mcq_count": 50,
-    "mcq_valid_rate": 0.92,
+    "mcq_count": 52,
+    "mcq_valid_rate": 0.9423076923076923,
     "mcq_overall": {
-      "em": 0.28,
-      "contains_gt": 0.28,
-      "f1": 0.28
+      "em": 0.39903846153846156,
+      "contains_gt": 0.28846153846153844,
+      "f1": 0.39903846153846156
+    },
+    "mcq_per_position_accuracy": {
+      "A": 0.3269230769230769,
+      "B": 0.40384615384615385,
+      "C": 0.5769230769230769,
+      "D": 0.28846153846153844
     }
   }
 }
