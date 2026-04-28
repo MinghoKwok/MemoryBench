@@ -18,7 +18,7 @@ Retrieval-centric limitation of existing benchmarks -> Visual Bypassability + Re
 - **Key Contributions**:
   1. A 4x3 binocular taxonomy with the Highest-Bottleneck annotation rule.
   2. Caption-Proof validation protocol ($\Delta = \text{Acc}_V - \text{Acc}_T$).
-  3. 8 tasks under a unified life-scenario persona (Hannah Brooks), covering 464 questions.
+  3. 8 tasks under a unified life-scenario persona (Hannah Brooks), covering 371 questions.
   4. Large-scale experiments (14 methods x 4 backbones) exposing upper-right quadrant collapse.
 
 ## 2. Related Work (~0.5-1 page)
@@ -46,9 +46,9 @@ Caption-Proof interpretation: $X_1$ (global gist) -> $X_2$ (region-level visual 
 
 | Level | Name | Description |
 |-------|------|-------------|
-| $Y_1$ | Direct Retrieval | Single fact from single session |
-| $Y_2$ | Compositional Linking | Cross-session/cross-modal evidence combination (monotonic) |
-| $Y_3$ | State-Evolving Synthesis | Non-monotonic reasoning with belief revision |
+| $Y_1$ | Atomic Retrieval | Single fact from single session |
+| $Y_2$ | Composite Retrieval | Cross-session/cross-modal evidence combination (monotonic) |
+| $Y_3$ | State Update Reasoning | Non-monotonic reasoning with belief revision |
 
 ### 3.3 The Highest-Bottleneck Annotation Rule
 
@@ -62,16 +62,16 @@ Persona: 32-year-old freelance graphic designer, apartment renovation, remote wo
 
 | Task | Life Facet | Primary $(X, Y)$ Region | $n$ |
 |------|-----------|-------------------------|-----|
-| Home Renovation | Domestic | $X_3$-$X_4$, $Y_2$-$Y_3$ | 65 |
-| Brand Memory | Work (Analysis) | $X_2$-$X_4$, $Y_1$-$Y_2$ | 33 |
+| Home Renovation | Domestic | $X_3$-$X_4$, $Y_2$-$Y_3$ | 52 |
+| Brand Memory | Work (Analysis) | $X_1$-$X_4$, $Y_1$-$Y_2$ | 29 |
 | Card Playlog | Leisure | $X_4$, $Y_2$-$Y_3$ | 48 |
-| Cartoon Entertainment | Leisure | $X_1$-$X_2$, $Y_1$-$Y_3$ | 112 |
-| Multi-Scene VCAA | Organization | $X_2$-$X_4$, $Y_2$-$Y_3$ | 59 |
-| Outdoor Navigation | Domestic | $X_3$, $Y_1$-$Y_2$ | 40 |
-| Personal Health | Health | $X_1$-$X_4$, $Y_1$-$Y_3$ | 63 |
-| Social Chat | Social | $X_2$-$X_3$, $Y_1$-$Y_2$ | 44 |
+| Cartoon Entertainment | Leisure | $X_1$-$X_4$, $Y_1$-$Y_3$ | 76 |
+| Multi-Scene VCAA | Organization | $X_2$-$X_4$, $Y_2$-$Y_3$ | 50 |
+| Outdoor Navigation | Domestic | $X_1$-$X_4$, $Y_1$-$Y_3$ | 28 |
+| Personal Health | Health | $X_1$-$X_4$, $Y_1$-$Y_3$ | 51 |
+| Social Chat | Social | $X_1$-$X_4$, $Y_1$-$Y_2$ | 37 |
 
-Total: 8 tasks, 464 questions (MCQ + open-ended).
+Total: 8 tasks, 371 questions (MCQ + open-ended).
 
 ### 4.2 Design Principles
 

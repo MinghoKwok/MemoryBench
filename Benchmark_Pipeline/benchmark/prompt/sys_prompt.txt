@@ -12,8 +12,8 @@ Visual Granularity (what visual understanding is required):
 
 Reasoning Complexity (how much reasoning across memory is required):
 - Atomic Retrieval: Retrieve a single fact from a single session directly.
-- Relational Association: Connect information across multiple sessions or modalities, resolve references, or bridge implicit links.
-- Evolutionary Synthesis: Integrate multiple constraints, detect contradictions, or revise earlier beliefs based on newer evidence in the conversation.
+- Composite Retrieval: Connect information across multiple sessions or modalities, resolve references, or bridge implicit links.
+- State Update Reasoning: Integrate multiple constraints, detect contradictions, or revise earlier beliefs based on newer evidence in the conversation.
 
 Follow these rules:
 1. Ground every answer in the conversation history. Do not invent facts.

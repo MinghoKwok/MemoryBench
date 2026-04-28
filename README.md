@@ -83,18 +83,18 @@ python run_benchmark.py \
 
 **`*_gemini` variants** automatically redirect the OpenAI SDK to Gemini's OpenAI-compatible endpoint. Use these on machines without OpenAI API access.
 
-### Available Datasets (8 tasks, 416 QAs)
+### Available Datasets (8 tasks, 371 QAs)
 
 | Dataset | Config | QAs | Domain |
 |---------|--------|-----|--------|
-| Brand Memory Test | `brand_memory_test` | 33 | Ad campaign comparison |
+| Brand Memory Test | `brand_memory_test` | 29 | Ad campaign comparison |
 | Card Playlog Test | `card_playlog_test` | 48 | Card game state tracking |
-| Cartoon Entertainment Companion | `cartoon_entertainment_companion` | 112 | Animation + comic visual narrative |
-| Home Renovation Interior Design | `home_renovation_interior_design` | 65 | Renovation planning |
-| Multi-Scene VCAA | `multi_scene_visual_case_archive_assistant` | 59 | Multi-room object tracking |
-| Outdoor Navigation | `outdoor_navigation_route_memory_assistant` | 40 | Route memory |
-| Personal Health Dashboard | `personal_health_dashboard_assistant` | 63 | Health metric tracking |
-| Social Chat Memory Test | `social_chat_memory_test` | 44 | Chat screenshot memory |
+| Cartoon Entertainment Companion | `cartoon_entertainment_companion` | 76 | Animation + comic visual narrative |
+| Home Renovation Interior Design | `home_renovation_interior_design` | 52 | Renovation planning |
+| Multi-Scene VCAA | `multi_scene_visual_case_archive_assistant` | 50 | Multi-room object tracking |
+| Outdoor Navigation | `outdoor_navigation_route_memory_assistant` | 28 | Route memory |
+| Personal Health Dashboard | `personal_health_dashboard_assistant` | 51 | Health metric tracking |
+| Social Chat Memory Test | `social_chat_memory_test` | 37 | Chat screenshot memory |
 
 ### Output
 
@@ -116,9 +116,9 @@ MemEye evaluates multimodal agent memory along two orthogonal axes:
 - `X4` Fine-Grained Attributes — color, OCR, texture, and small visual details
 
 **Y-axis (Reasoning Complexity):**
-- `Y1` Direct Retrieval — single-session fact lookup (RAG-solvable)
-- `Y2` Compositional Linking — cross-session monotonic integration (RAG-solvable)
-- `Y3` State-Evolving Synthesis — temporal logic required, later evidence overrides earlier
+- `Y1` Atomic Retrieval — single-session fact lookup
+- `Y2` Composite Retrieval — cross-session monotonic integration
+- `Y3` State Update Reasoning — temporal logic required, later evidence overrides earlier
 
 Each QA is assigned a single `(X_i, Y_j)` coordinate following the **Highest-Bottleneck Rule**: the label reflects the highest level whose absence would prevent a correct answer.
 
