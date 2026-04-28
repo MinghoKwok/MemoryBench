@@ -1,0 +1,181 @@
+{
+  "task_name": "outdoor_navigation_route_memory_assistant_open",
+  "model_name": "gpt_4_1_nano",
+  "model_path": "gpt-4.1-nano",
+  "method_name": "mirix",
+  "base_method_name": "mirix",
+  "method_modality": "",
+  "mode": "open",
+  "num_qas": 28,
+  "num_qas_run": 28,
+  "dialog_json": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/dialog/Outdoor_Navigation_Route_Memory_Assistant_Open.json",
+  "image_root": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image",
+  "run_dir": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/runs/outdoor_navigation_route_memory_assistant_open/20260428_024245_gpt_4_1_nano_mirix",
+  "git_commit": "19208b4d7805b574b0ac0a5b3894a8403f734e9b",
+  "summary": {
+    "open_count": 28,
+    "overall": {
+      "em": 0.0,
+      "contains_gt": 0.0,
+      "f1": 0.0424549536839318,
+      "bleu": 0.003556860986866867,
+      "bleu_1": 0.023414742244549057,
+      "bleu_2": 0.008593887594999202,
+      "judge": 0.0
+    },
+    "by_x": {
+      "X2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0358196344522454,
+        "bleu": 0.0028562870600804214,
+        "bleu_1": 0.018422996507673928,
+        "bleu_2": 0.005186477293387486,
+        "judge": 0.0
+      },
+      "X1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.057997557997558,
+        "bleu": 0.004897241986000605,
+        "bleu_1": 0.03504273504273504,
+        "bleu_2": 0.009188478110166305,
+        "judge": 0.0
+      },
+      "X4": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.07399852180339986,
+        "bleu": 0.006697442918564576,
+        "bleu_1": 0.04377412811620755,
+        "bleu_2": 0.023941365409700793,
+        "judge": 0.0
+      },
+      "X3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0,
+        "bleu": 0.0,
+        "bleu_1": 0.0,
+        "bleu_2": 0.0,
+        "judge": 0.0
+      }
+    },
+    "by_y": {
+      "Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.02525246890571968,
+        "bleu": 0.002467215771216588,
+        "bleu_1": 0.012903256704980843,
+        "bleu_2": 0.00597928291970421,
+        "judge": 0.0
+      },
+      "Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.07142857142857144,
+        "bleu": 0.0072658577559704465,
+        "bleu_1": 0.03846153846153846,
+        "bleu_2": 0.012403473458920851,
+        "judge": 0.0
+      },
+      "Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.06154359151131031,
+        "bleu": 0.004609834442337751,
+        "bleu_1": 0.035300199484260206,
+        "bleu_2": 0.011544677950457804,
+        "judge": 0.0
+      }
+    },
+    "by_cell": {
+      "X2_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.019813454797974923,
+        "bleu": 0.001793999585435398,
+        "bleu_1": 0.009583333333333334,
+        "bleu_2": 0.003081544392078203,
+        "judge": 0.0
+      },
+      "X1_Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.07142857142857144,
+        "bleu": 0.0072658577559704465,
+        "bleu_1": 0.03846153846153846,
+        "bleu_2": 0.012403473458920851,
+        "judge": 0.0
+      },
+      "X4_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.1212121212121212,
+        "bleu": 0.013686241957588646,
+        "bleu_1": 0.06896551724137931,
+        "bleu_2": 0.049629166698546515,
+        "judge": 0.0
+      },
+      "X3_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0,
+        "bleu": 0.0,
+        "bleu_1": 0.0,
+        "bleu_2": 0.0,
+        "judge": 0.0
+      },
+      "X2_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.07743570155334863,
+        "bleu": 0.005618234494157482,
+        "bleu_1": 0.041406120760959474,
+        "bleu_2": 0.010659302836791625,
+        "judge": 0.0
+      },
+      "X4_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.06219512195121951,
+        "bleu": 0.004950243158808558,
+        "bleu_1": 0.03747628083491461,
+        "bleu_2": 0.017519415087489366,
+        "judge": 0.0
+      },
+      "X1_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.05128205128205128,
+        "bleu": 0.0037129341010156843,
+        "bleu_1": 0.03333333333333333,
+        "bleu_2": 0.007580980435789033,
+        "judge": 0.0
+      },
+      "X3_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0,
+        "bleu": 0.0,
+        "bleu_1": 0.0,
+        "bleu_2": 0.0,
+        "judge": 0.0
+      }
+    }
+  },
+  "method_runtime": {
+    "official_mirix": true,
+    "official_model_name": "gpt-4.1-nano",
+    "ingested_turns": 120,
+    "runtime_signature": "cfa53349f18b4d69",
+    "runtime_dir": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/runs/outdoor_navigation_route_memory_assistant/mirix/cfa53349f18b4d69",
+    "runtime_home": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/runs/outdoor_navigation_route_memory_assistant/mirix/cfa53349f18b4d69/runtime_home",
+    "debug_dir": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/output/outdoor_navigation_route_memory_assistant/mirix/cfa53349f18b4d69",
+    "resumed": true,
+    "completed_ingestion": true
+  },
+  "judge_model": "gpt-5.2",
+  "judge_rescored_from_predictions": true
+}

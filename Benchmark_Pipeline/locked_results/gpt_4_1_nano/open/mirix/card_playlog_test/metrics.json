@@ -1,0 +1,91 @@
+{
+  "task_name": "card_playlog_test_open",
+  "model_name": "gpt_4_1_nano",
+  "model_path": "gpt-4.1-nano",
+  "method_name": "mirix",
+  "base_method_name": "mirix",
+  "method_modality": "",
+  "mode": "open",
+  "num_qas": 48,
+  "num_qas_run": 48,
+  "dialog_json": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/dialog/Card_Playlog_Test_Open.json",
+  "image_root": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image",
+  "run_dir": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/runs/card_playlog_test_open/20260427_075046_gpt_4_1_nano_mirix",
+  "git_commit": "95631fd94414dfcc15de0a9f649a0ce457733ad1",
+  "summary": {
+    "open_count": 48,
+    "overall": {
+      "em": 0.0,
+      "contains_gt": 0.5833333333333334,
+      "f1": 0.033302687143943514,
+      "bleu": 0.0031933711108930976,
+      "bleu_1": 0.01714605750638721,
+      "bleu_2": 0.005504498895117884,
+      "judge": 0.0
+    },
+    "by_x": {
+      "X4": {
+        "em": 0.0,
+        "contains_gt": 0.5833333333333334,
+        "f1": 0.033302687143943514,
+        "bleu": 0.0031933711108930976,
+        "bleu_1": 0.01714605750638721,
+        "bleu_2": 0.005504498895117884,
+        "judge": 0.0
+      }
+    },
+    "by_y": {
+      "Y3": {
+        "em": 0.0,
+        "contains_gt": 0.8421052631578947,
+        "f1": 0.04768903682316246,
+        "bleu": 0.004568833589209929,
+        "bleu_1": 0.024544952823680497,
+        "bleu_2": 0.00787842494162205,
+        "judge": 0.0
+      },
+      "Y2": {
+        "em": 0.0,
+        "contains_gt": 0.41379310344827586,
+        "f1": 0.023877147698937992,
+        "bleu": 0.002292206038892415,
+        "bleu_1": 0.012298505401953678,
+        "bleu_2": 0.003949168037063432,
+        "judge": 0.0
+      }
+    },
+    "by_cell": {
+      "X4_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.8421052631578947,
+        "f1": 0.04768903682316246,
+        "bleu": 0.004568833589209929,
+        "bleu_1": 0.024544952823680497,
+        "bleu_2": 0.00787842494162205,
+        "judge": 0.0
+      },
+      "X4_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.41379310344827586,
+        "f1": 0.023877147698937992,
+        "bleu": 0.002292206038892415,
+        "bleu_1": 0.012298505401953678,
+        "bleu_2": 0.003949168037063432,
+        "judge": 0.0
+      }
+    }
+  },
+  "method_runtime": {
+    "official_mirix": true,
+    "official_model_name": "gpt-4.1-nano",
+    "ingested_turns": 60,
+    "runtime_signature": "a96dfa3584cccd90",
+    "runtime_dir": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/runs/card_playlog_test_open/mirix/a96dfa3584cccd90",
+    "runtime_home": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/runs/card_playlog_test_open/mirix/a96dfa3584cccd90/runtime_home",
+    "debug_dir": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/output/card_playlog_test_open/mirix/a96dfa3584cccd90",
+    "resumed": false,
+    "completed_ingestion": true
+  },
+  "judge_model": "gpt-5.2",
+  "judge_rescored_from_predictions": true
+}

@@ -1,0 +1,133 @@
+{
+  "task_name": "social_chat_memory_test",
+  "model_name": "gpt_4_1_nano",
+  "model_path": "gpt-4.1-nano",
+  "method_name": "mirix",
+  "base_method_name": "mirix",
+  "method_modality": "",
+  "mode": "mcq",
+  "num_qas": 37,
+  "num_qas_run": 37,
+  "dialog_json": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/dialog/Social_Chat_Memory_Test.json",
+  "image_root": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image",
+  "run_dir": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/runs/social_chat_memory_test/20260427_142138_gpt_4_1_nano_mirix",
+  "git_commit": "d8ac0cb71367c6f0314274b4a514968eab3f678b",
+  "summary": {
+    "open_count": 37,
+    "overall": {
+      "em": 0.3783783783783784,
+      "contains_gt": 0.3783783783783784,
+      "f1": 0.3783783783783784
+    },
+    "by_x": {
+      "X3": {
+        "em": 0.3879310344827586,
+        "contains_gt": 0.3793103448275862,
+        "f1": 0.3879310344827586
+      },
+      "X1": {
+        "em": 0.35,
+        "contains_gt": 0.4,
+        "f1": 0.35
+      },
+      "X2": {
+        "em": 0.5,
+        "contains_gt": 0.5,
+        "f1": 0.5
+      },
+      "X4": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0
+      }
+    },
+    "by_y": {
+      "Y2": {
+        "em": 0.37,
+        "contains_gt": 0.36,
+        "f1": 0.37
+      },
+      "Y3": {
+        "em": 0.4583333333333333,
+        "contains_gt": 0.5,
+        "f1": 0.4583333333333333
+      },
+      "Y1": {
+        "em": 0.3333333333333333,
+        "contains_gt": 0.3333333333333333,
+        "f1": 0.3333333333333333
+      }
+    },
+    "by_cell": {
+      "X3_Y2": {
+        "em": 0.42045454545454547,
+        "contains_gt": 0.4090909090909091,
+        "f1": 0.42045454545454547
+      },
+      "X3_Y3": {
+        "em": 0.5,
+        "contains_gt": 0.5,
+        "f1": 0.5
+      },
+      "X3_Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0
+      },
+      "X1_Y1": {
+        "em": 0.5,
+        "contains_gt": 0.5,
+        "f1": 0.5
+      },
+      "X1_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0
+      },
+      "X2_Y1": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
+      },
+      "X2_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0
+      },
+      "X4_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0
+      },
+      "X1_Y3": {
+        "em": 0.375,
+        "contains_gt": 0.5,
+        "f1": 0.375
+      }
+    },
+    "mcq_count": 37,
+    "mcq_valid_rate": 1.0,
+    "mcq_overall": {
+      "em": 0.3783783783783784,
+      "contains_gt": 0.3783783783783784,
+      "f1": 0.3783783783783784
+    },
+    "mcq_per_position_accuracy": {
+      "A": 0.4594594594594595,
+      "B": 0.32432432432432434,
+      "C": 0.35135135135135137,
+      "D": 0.3783783783783784
+    }
+  },
+  "method_runtime": {
+    "official_mirix": true,
+    "official_model_name": "gpt-4.1-nano",
+    "ingested_turns": 106,
+    "runtime_signature": "0d9528ba2a3e8112",
+    "runtime_dir": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/runs/social_chat_memory_test/mirix/0d9528ba2a3e8112",
+    "runtime_home": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/runs/social_chat_memory_test/mirix/0d9528ba2a3e8112/runtime_home",
+    "debug_dir": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/output/social_chat_memory_test/mirix/0d9528ba2a3e8112",
+    "resumed": false,
+    "completed_ingestion": true
+  }
+}

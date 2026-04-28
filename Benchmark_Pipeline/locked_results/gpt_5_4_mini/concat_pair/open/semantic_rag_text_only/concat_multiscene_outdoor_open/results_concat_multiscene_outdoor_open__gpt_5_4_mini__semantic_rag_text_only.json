@@ -1,0 +1,246 @@
+{
+  "task_name": "concat_multiscene_outdoor_open",
+  "model_name": "gpt_5_4_mini",
+  "model_path": "gpt-5.4-mini",
+  "method_name": "semantic_rag_text_only",
+  "base_method_name": "semantic_rag_text_only",
+  "method_modality": "",
+  "mode": "open",
+  "num_qas": 78,
+  "num_qas_run": 78,
+  "dialog_json": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/dialog/concat_multiscene_outdoor_open.json",
+  "image_root": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image",
+  "run_dir": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/runs/concat_multiscene_outdoor_open/20260427_162612_gpt_5_4_mini_semantic_rag_text_only",
+  "git_commit": "d8ac0cb71367c6f0314274b4a514968eab3f678b",
+  "summary": {
+    "open_count": 78,
+    "overall": {
+      "em": 0.15384615384615385,
+      "contains_gt": 0.16666666666666666,
+      "f1": 0.27943672082480536,
+      "bleu": 0.14332236610893834,
+      "bleu_1": 0.2364828514170738,
+      "bleu_2": 0.1992086690500171,
+      "judge": 0.3076923076923077
+    },
+    "by_x": {
+      "X4": {
+        "em": 0.1111111111111111,
+        "contains_gt": 0.1111111111111111,
+        "f1": 0.15873015873015872,
+        "bleu": 0.03967092288213962,
+        "bleu_1": 0.13146659578411637,
+        "bleu_2": 0.11833922028166052,
+        "judge": 0.2222222222222222
+      },
+      "X3": {
+        "em": 0.23255813953488372,
+        "contains_gt": 0.2558139534883721,
+        "f1": 0.34919132247049234,
+        "bleu": 0.21225595662470692,
+        "bleu_1": 0.30669775307874875,
+        "bleu_2": 0.2764763901661029,
+        "judge": 0.3953488372093023
+      },
+      "X2": {
+        "em": 0.043478260869565216,
+        "contains_gt": 0.043478260869565216,
+        "f1": 0.20372170708111106,
+        "bleu": 0.06652992089545365,
+        "bleu_1": 0.15344990891346272,
+        "bleu_2": 0.10189825732766646,
+        "judge": 0.17391304347826086
+      },
+      "X1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.2222222222222222,
+        "bleu": 0.05497064503336749,
+        "bleu_1": 0.18170392035962363,
+        "bleu_2": 0.08035950256254483,
+        "judge": 0.3333333333333333
+      }
+    },
+    "by_y": {
+      "Y2": {
+        "em": 0.043478260869565216,
+        "contains_gt": 0.043478260869565216,
+        "f1": 0.09001569158481423,
+        "bleu": 0.03091423078888199,
+        "bleu_1": 0.07506713034056872,
+        "bleu_2": 0.056946601042276036,
+        "judge": 0.06521739130434782
+      },
+      "Y3": {
+        "em": 0.08695652173913043,
+        "contains_gt": 0.08695652173913043,
+        "f1": 0.25663296358199983,
+        "bleu": 0.07923627829360735,
+        "bleu_1": 0.20145667539221035,
+        "bleu_2": 0.14314994620957738,
+        "judge": 0.2608695652173913
+      },
+      "Y1": {
+        "em": 0.28125,
+        "contains_gt": 0.3125,
+        "f1": 0.4319732861093155,
+        "bleu": 0.270177588987498,
+        "bleu_1": 0.3776754649586824,
+        "bleu_2": 0.34175173747214704,
+        "judge": 0.515625
+      }
+    },
+    "by_cell": {
+      "X4_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.05555555555555556,
+        "bleu": 0.003068642566219817,
+        "bleu_1": 0.01026062482798735,
+        "bleu_2": 0.004588690921400361,
+        "judge": 0.125
+      },
+      "X3_Y2": {
+        "em": 0.16666666666666666,
+        "contains_gt": 0.16666666666666666,
+        "f1": 0.18253968253968253,
+        "bleu": 0.09690637118574369,
+        "bleu_1": 0.18174729030059933,
+        "bleu_2": 0.1716935412113109,
+        "judge": 0.16666666666666666
+      },
+      "X3_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.09947393591582976,
+        "bleu": 0.008236656378353623,
+        "bleu_1": 0.08531746031746032,
+        "bleu_2": 0.02431245475263912,
+        "judge": 0.08333333333333333
+      },
+      "X3_Y1": {
+        "em": 0.2903225806451613,
+        "contains_gt": 0.3225806451612903,
+        "f1": 0.4297788759838096,
+        "bleu": 0.27406928933799396,
+        "bleu_1": 0.3737295122154141,
+        "bleu_2": 0.34556286455995894,
+        "judge": 0.5
+      },
+      "X2_Y3": {
+        "em": 0.1,
+        "contains_gt": 0.1,
+        "f1": 0.3932698673875144,
+        "bleu": 0.14128736698304897,
+        "bleu_1": 0.29343301482921075,
+        "bleu_2": 0.20824041055174464,
+        "judge": 0.4
+      },
+      "X4_Y3": {
+        "em": 0.2,
+        "contains_gt": 0.2,
+        "f1": 0.24126984126984127,
+        "bleu": 0.06895274713487547,
+        "bleu_1": 0.2284313725490196,
+        "bleu_2": 0.20933964376986866,
+        "judge": 0.3
+      },
+      "X2_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.05791542992233924,
+        "bleu": 0.009024193135764948,
+        "bleu_1": 0.04577059667057964,
+        "bleu_2": 0.02009660100145247,
+        "judge": 0.0
+      },
+      "X1_Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.5,
+        "bleu": 0.1495348781221221,
+        "bleu_1": 0.5,
+        "bleu_2": 0.223606797749979,
+        "judge": 1.0
+      },
+      "X1_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.08333333333333333,
+        "bleu": 0.007688528488990184,
+        "bleu_1": 0.022555880539435448,
+        "bleu_2": 0.008735854968827747,
+        "judge": 0.0
+      }
+    }
+  },
+  "method_runtime": {
+    "retrieval_backend": "dense_text",
+    "retrieval_corpus": "round_text",
+    "method_modality": "text_only",
+    "top_k": 10,
+    "neighbor_window": 0,
+    "seed_round_ids": [
+      "OUTDOOR_S8:R5",
+      "OUTDOOR_S6:R3",
+      "OUTDOOR_S5:R5",
+      "OUTDOOR_S6:R2",
+      "OUTDOOR_S5:R2",
+      "OUTDOOR_S8:R2",
+      "OUTDOOR_S6:R5",
+      "SCENE_S12:R8",
+      "OUTDOOR_S8:R4",
+      "OUTDOOR_S8:R3"
+    ],
+    "selected_round_ids": [
+      "OUTDOOR_S8:R5",
+      "OUTDOOR_S6:R3",
+      "OUTDOOR_S5:R5",
+      "OUTDOOR_S6:R2",
+      "OUTDOOR_S5:R2",
+      "OUTDOOR_S8:R2",
+      "OUTDOOR_S6:R5",
+      "SCENE_S12:R8",
+      "OUTDOOR_S8:R4",
+      "OUTDOOR_S8:R3"
+    ],
+    "top_candidates": [
+      {
+        "round_id": "OUTDOOR_S8:R5",
+        "score": 0.3435514755066571,
+        "text_dense_score": 0.3435514755066571
+      },
+      {
+        "round_id": "OUTDOOR_S6:R3",
+        "score": 0.3063231821633796,
+        "text_dense_score": 0.3063231821633796
+      },
+      {
+        "round_id": "OUTDOOR_S5:R5",
+        "score": 0.2833517821857171,
+        "text_dense_score": 0.2833517821857171
+      },
+      {
+        "round_id": "OUTDOOR_S6:R2",
+        "score": 0.2804460500266887,
+        "text_dense_score": 0.2804460500266887
+      },
+      {
+        "round_id": "OUTDOOR_S5:R2",
+        "score": 0.27769559615303063,
+        "text_dense_score": 0.27769559615303063
+      }
+    ],
+    "clue_hit_count": 2,
+    "corpus_entry_count": 177,
+    "text_embedding_model": "all-MiniLM-L6-v2",
+    "caption_text_included": true,
+    "image_embeddings_built": false,
+    "history_source": "retrieval",
+    "captions_loaded": true,
+    "images_loaded": false,
+    "history_turns_after_truncation": 20
+  },
+  "judge_model": "gpt-5.2",
+  "judge_rescored_from_predictions": true
+}

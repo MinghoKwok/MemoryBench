@@ -1,0 +1,154 @@
+{
+  "task_name": "brand_memory_test_open",
+  "model_name": "gpt_4_1_nano",
+  "model_path": "gpt-4.1-nano",
+  "method_name": "mirix",
+  "base_method_name": "mirix",
+  "method_modality": "",
+  "mode": "open",
+  "num_qas": 29,
+  "num_qas_run": 29,
+  "dialog_json": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/dialog/Brand_Memory_Test_Open.json",
+  "image_root": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image",
+  "run_dir": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/runs/brand_memory_test_open/20260428_033107_gpt_4_1_nano_mirix",
+  "git_commit": "19208b4d7805b574b0ac0a5b3894a8403f734e9b",
+  "summary": {
+    "open_count": 29,
+    "overall": {
+      "em": 0.0,
+      "contains_gt": 0.06896551724137931,
+      "f1": 0.016213779702623516,
+      "bleu": 0.0015268522700762452,
+      "bleu_1": 0.008756083725364839,
+      "bleu_2": 0.004906483554976749,
+      "judge": 0.034482758620689655
+    },
+    "by_x": {
+      "X4": {
+        "em": 0.0,
+        "contains_gt": 0.5,
+        "f1": 0.07627627627627627,
+        "bleu": 0.007759253481403942,
+        "bleu_1": 0.04019933554817275,
+        "bleu_2": 0.024218585690073086,
+        "judge": 0.0
+      },
+      "X3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0457516339869281,
+        "bleu": 0.003939044729576797,
+        "bleu_1": 0.025403225806451612,
+        "bleu_2": 0.01211458708643869,
+        "judge": 0.0
+      },
+      "X1": {
+        "em": 0.0,
+        "contains_gt": 0.047619047619047616,
+        "f1": 0.004232804232804232,
+        "bleu": 0.00043166596292948785,
+        "bleu_1": 0.00221483942414175,
+        "bleu_2": 0.0015846626800945758,
+        "judge": 0.047619047619047616
+      },
+      "X2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0,
+        "bleu": 0.0,
+        "bleu_1": 0.0,
+        "bleu_2": 0.0,
+        "judge": 0.0
+      }
+    },
+    "by_y": {
+      "Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.02222222222222222,
+        "bleu": 0.0021432834272474056,
+        "bleu_1": 0.011627906976744186,
+        "bleu_2": 0.0037205841478033974,
+        "judge": 0.0
+      },
+      "Y2": {
+        "em": 0.0,
+        "contains_gt": 0.07407407407407407,
+        "f1": 0.015768709886356945,
+        "bleu": 0.0014811907028783814,
+        "bleu_1": 0.008543356077114516,
+        "bleu_2": 0.004994327955508108,
+        "judge": 0.037037037037037035
+      }
+    },
+    "by_cell": {
+      "X4_Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.04444444444444444,
+        "bleu": 0.004286566854494811,
+        "bleu_1": 0.023255813953488372,
+        "bleu_2": 0.007441168295606795,
+        "judge": 0.0
+      },
+      "X3_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0457516339869281,
+        "bleu": 0.003939044729576797,
+        "bleu_1": 0.025403225806451612,
+        "bleu_2": 0.01211458708643869,
+        "judge": 0.0
+      },
+      "X1_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.05,
+        "f1": 0.004444444444444444,
+        "bleu": 0.00045324926107596225,
+        "bleu_1": 0.0023255813953488376,
+        "bleu_2": 0.0016638958140993045,
+        "judge": 0.05
+      },
+      "X2_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0,
+        "bleu": 0.0,
+        "bleu_1": 0.0,
+        "bleu_2": 0.0,
+        "judge": 0.0
+      },
+      "X4_Y2": {
+        "em": 0.0,
+        "contains_gt": 1.0,
+        "f1": 0.1081081081081081,
+        "bleu": 0.011231940108313073,
+        "bleu_1": 0.057142857142857134,
+        "bleu_2": 0.04099600308453938,
+        "judge": 0.0
+      },
+      "X1_Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0,
+        "bleu": 0.0,
+        "bleu_1": 0.0,
+        "bleu_2": 0.0,
+        "judge": 0.0
+      }
+    }
+  },
+  "method_runtime": {
+    "official_mirix": true,
+    "official_model_name": "gpt-4.1-nano",
+    "ingested_turns": 144,
+    "runtime_signature": "4878eb503b71d754",
+    "runtime_dir": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/runs/brand_memory_test/mirix/4878eb503b71d754",
+    "runtime_home": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/runs/brand_memory_test/mirix/4878eb503b71d754/runtime_home",
+    "debug_dir": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/output/brand_memory_test/mirix/4878eb503b71d754",
+    "resumed": true,
+    "completed_ingestion": true
+  },
+  "judge_model": "gpt-5.2",
+  "judge_rescored_from_predictions": true
+}

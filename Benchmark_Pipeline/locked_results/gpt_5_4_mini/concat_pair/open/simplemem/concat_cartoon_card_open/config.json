@@ -1,0 +1,53 @@
+{
+  "task": {
+    "dataset": {
+      "dialog_json": "data/dialog/concat_cartoon_card_open.json",
+      "image_root": "data/image"
+    },
+    "eval": {
+      "max_questions": 0,
+      "mode": "open",
+      "output_json": "output/results_concat_cartoon_card_open.json"
+    },
+    "name": "concat_cartoon_card_open"
+  },
+  "dataset": {
+    "dialog_json": "data/dialog/concat_cartoon_card_open.json",
+    "image_root": "data/image"
+  },
+  "eval": {
+    "max_questions": 0,
+    "mode": "open",
+    "output_json": "output/results_concat_cartoon_card_open.json"
+  },
+  "model": {
+    "name": "gpt_5_4_mini",
+    "provider": "openai_api",
+    "model": "gpt-5.4-mini",
+    "api_key_env": "OPENAI_API_KEY",
+    "base_url": "https://api.openai.com/v1",
+    "max_new_tokens": 128,
+    "timeout": 90
+  },
+  "method": {
+    "name": "simplemem",
+    "llm_model": "",
+    "llm_api_key": "",
+    "llm_api_key_env": "OPENAI_API_KEY",
+    "retrieve_k": 20,
+    "embedding_model": "all-MiniLM-L6-v2",
+    "embedding_dim": 384,
+    "caption_preprocessed": true,
+    "temperature": 0.0,
+    "max_tokens": 1000,
+    "enable_self_evolution": false
+  },
+  "run": {
+    "output_root": "runs",
+    "method_runtime": {
+      "num_memories": 329,
+      "debug_dir": "/Users/qingyuejiao/Desktop/MemoryBench/output/concat_cartoon_card_open/simplemem",
+      "data_dir": "/Users/qingyuejiao/Desktop/MemoryBench/runs/simplemem/concat_cartoon_card_open"
+    }
+  }
+}

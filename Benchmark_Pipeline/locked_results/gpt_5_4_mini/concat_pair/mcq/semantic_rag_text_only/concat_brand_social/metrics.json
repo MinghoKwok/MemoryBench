@@ -1,0 +1,194 @@
+{
+  "task_name": "concat_brand_social",
+  "model_name": "gpt_5_4_mini",
+  "model_path": "gpt-5.4-mini",
+  "method_name": "semantic_rag_text_only",
+  "base_method_name": "semantic_rag_text_only",
+  "method_modality": "",
+  "mode": "mcq",
+  "num_qas": 66,
+  "num_qas_run": 66,
+  "dialog_json": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/dialog/concat_brand_social.json",
+  "image_root": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image",
+  "run_dir": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/runs/concat_brand_social/20260427_153747_gpt_5_4_mini_semantic_rag_text_only",
+  "git_commit": "d8ac0cb71367c6f0314274b4a514968eab3f678b",
+  "summary": {
+    "open_count": 66,
+    "overall": {
+      "em": 0.5037878787878788,
+      "contains_gt": 0.5606060606060606,
+      "f1": 0.5037878787878788
+    },
+    "by_x": {
+      "X4": {
+        "em": 0.4166666666666667,
+        "contains_gt": 0.6666666666666666,
+        "f1": 0.4166666666666667
+      },
+      "X3": {
+        "em": 0.4485294117647059,
+        "contains_gt": 0.4411764705882353,
+        "f1": 0.4485294117647059
+      },
+      "X1": {
+        "em": 0.5769230769230769,
+        "contains_gt": 0.6923076923076923,
+        "f1": 0.5769230769230769
+      },
+      "X2": {
+        "em": 0.5833333333333334,
+        "contains_gt": 0.6666666666666666,
+        "f1": 0.5833333333333334
+      }
+    },
+    "by_y": {
+      "Y1": {
+        "em": 0.78125,
+        "contains_gt": 0.625,
+        "f1": 0.78125
+      },
+      "Y2": {
+        "em": 0.40384615384615385,
+        "contains_gt": 0.5,
+        "f1": 0.40384615384615385
+      },
+      "Y3": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
+      }
+    },
+    "by_cell": {
+      "X4_Y1": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
+      },
+      "X3_Y2": {
+        "em": 0.35185185185185186,
+        "contains_gt": 0.37037037037037035,
+        "f1": 0.35185185185185186
+      },
+      "X1_Y2": {
+        "em": 0.5,
+        "contains_gt": 0.6666666666666666,
+        "f1": 0.5
+      },
+      "X2_Y2": {
+        "em": 0.375,
+        "contains_gt": 0.5,
+        "f1": 0.375
+      },
+      "X4_Y2": {
+        "em": 0.125,
+        "contains_gt": 0.5,
+        "f1": 0.125
+      },
+      "X1_Y1": {
+        "em": 0.8333333333333334,
+        "contains_gt": 0.6666666666666666,
+        "f1": 0.8333333333333334
+      },
+      "X3_Y3": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
+      },
+      "X3_Y1": {
+        "em": 0.5833333333333334,
+        "contains_gt": 0.3333333333333333,
+        "f1": 0.5833333333333334
+      },
+      "X2_Y1": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
+      },
+      "X1_Y3": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
+      }
+    },
+    "mcq_count": 66,
+    "mcq_valid_rate": 1.0,
+    "mcq_overall": {
+      "em": 0.5037878787878788,
+      "contains_gt": 0.5606060606060606,
+      "f1": 0.5037878787878788
+    },
+    "mcq_per_position_accuracy": {
+      "A": 0.4393939393939394,
+      "B": 0.5151515151515151,
+      "C": 0.5,
+      "D": 0.5606060606060606
+    }
+  },
+  "method_runtime": {
+    "retrieval_backend": "dense_text",
+    "retrieval_corpus": "round_text",
+    "method_modality": "text_only",
+    "top_k": 10,
+    "neighbor_window": 0,
+    "seed_round_ids": [
+      "CHAT_S6:R1",
+      "CHAT_S35:R2",
+      "CHAT_S38:R1",
+      "CHAT_S17:R1",
+      "CHAT_S21:R1",
+      "CHAT_S4:R1",
+      "CHAT_S27:R1",
+      "CHAT_S35:R1",
+      "CHAT_S13:R1",
+      "CHAT_S15:R2"
+    ],
+    "selected_round_ids": [
+      "CHAT_S6:R1",
+      "CHAT_S35:R2",
+      "CHAT_S38:R1",
+      "CHAT_S17:R1",
+      "CHAT_S21:R1",
+      "CHAT_S4:R1",
+      "CHAT_S27:R1",
+      "CHAT_S35:R1",
+      "CHAT_S13:R1",
+      "CHAT_S15:R2"
+    ],
+    "top_candidates": [
+      {
+        "round_id": "CHAT_S6:R1",
+        "score": 0.4818832941180181,
+        "text_dense_score": 0.4818832941180181
+      },
+      {
+        "round_id": "CHAT_S35:R2",
+        "score": 0.4418167399187125,
+        "text_dense_score": 0.4418167399187125
+      },
+      {
+        "round_id": "CHAT_S38:R1",
+        "score": 0.4245783688718612,
+        "text_dense_score": 0.4245783688718612
+      },
+      {
+        "round_id": "CHAT_S17:R1",
+        "score": 0.37646871143741717,
+        "text_dense_score": 0.37646871143741717
+      },
+      {
+        "round_id": "CHAT_S21:R1",
+        "score": 0.3539684660036434,
+        "text_dense_score": 0.3539684660036434
+      }
+    ],
+    "clue_hit_count": 3,
+    "corpus_entry_count": 125,
+    "text_embedding_model": "all-MiniLM-L6-v2",
+    "caption_text_included": true,
+    "image_embeddings_built": false,
+    "history_source": "retrieval",
+    "captions_loaded": true,
+    "images_loaded": false,
+    "history_turns_after_truncation": 20
+  }
+}

@@ -1,0 +1,131 @@
+{
+  "task_name": "concat_brand_social",
+  "model_name": "gpt_5_4_mini",
+  "model_path": "gpt-5.4-mini",
+  "method_name": "a_mem",
+  "base_method_name": "a_mem",
+  "method_modality": "",
+  "mode": "mcq",
+  "num_qas": 66,
+  "num_qas_run": 66,
+  "dialog_json": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/dialog/concat_brand_social.json",
+  "image_root": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image",
+  "run_dir": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/runs/concat_brand_social/20260427_141212_gpt_5_4_mini_a_mem",
+  "git_commit": "d8ac0cb71367c6f0314274b4a514968eab3f678b",
+  "summary": {
+    "open_count": 66,
+    "overall": {
+      "em": 0.44696969696969696,
+      "contains_gt": 0.5151515151515151,
+      "f1": 0.44696969696969696
+    },
+    "by_x": {
+      "X4": {
+        "em": 0.25,
+        "contains_gt": 0.0,
+        "f1": 0.25
+      },
+      "X3": {
+        "em": 0.5073529411764706,
+        "contains_gt": 0.5882352941176471,
+        "f1": 0.5073529411764706
+      },
+      "X1": {
+        "em": 0.3942307692307692,
+        "contains_gt": 0.46153846153846156,
+        "f1": 0.3942307692307692
+      },
+      "X2": {
+        "em": 0.4166666666666667,
+        "contains_gt": 0.6666666666666666,
+        "f1": 0.4166666666666667
+      }
+    },
+    "by_y": {
+      "Y1": {
+        "em": 0.625,
+        "contains_gt": 0.625,
+        "f1": 0.625
+      },
+      "Y2": {
+        "em": 0.375,
+        "contains_gt": 0.4423076923076923,
+        "f1": 0.375
+      },
+      "Y3": {
+        "em": 0.8333333333333334,
+        "contains_gt": 1.0,
+        "f1": 0.8333333333333334
+      }
+    },
+    "by_cell": {
+      "X4_Y1": {
+        "em": 0.75,
+        "contains_gt": 0.0,
+        "f1": 0.75
+      },
+      "X3_Y2": {
+        "em": 0.4444444444444444,
+        "contains_gt": 0.5185185185185185,
+        "f1": 0.4444444444444444
+      },
+      "X1_Y2": {
+        "em": 0.3333333333333333,
+        "contains_gt": 0.38095238095238093,
+        "f1": 0.3333333333333333
+      },
+      "X2_Y2": {
+        "em": 0.25,
+        "contains_gt": 0.5,
+        "f1": 0.25
+      },
+      "X4_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0
+      },
+      "X1_Y1": {
+        "em": 0.5,
+        "contains_gt": 0.6666666666666666,
+        "f1": 0.5
+      },
+      "X3_Y3": {
+        "em": 0.8125,
+        "contains_gt": 1.0,
+        "f1": 0.8125
+      },
+      "X3_Y1": {
+        "em": 0.6666666666666666,
+        "contains_gt": 0.6666666666666666,
+        "f1": 0.6666666666666666
+      },
+      "X2_Y1": {
+        "em": 0.75,
+        "contains_gt": 1.0,
+        "f1": 0.75
+      },
+      "X1_Y3": {
+        "em": 0.875,
+        "contains_gt": 1.0,
+        "f1": 0.875
+      }
+    },
+    "mcq_count": 66,
+    "mcq_valid_rate": 1.0,
+    "mcq_overall": {
+      "em": 0.44696969696969696,
+      "contains_gt": 0.5151515151515151,
+      "f1": 0.44696969696969696
+    },
+    "mcq_per_position_accuracy": {
+      "A": 0.4090909090909091,
+      "B": 0.42424242424242425,
+      "C": 0.4393939393939394,
+      "D": 0.5151515151515151
+    }
+  },
+  "method_runtime": {
+    "num_memories": 125,
+    "debug_dir": "/Users/qingyuejiao/Desktop/MemoryBench/output/concat_brand_social/a_mem"
+  }
+}

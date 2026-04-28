@@ -1,0 +1,113 @@
+{
+  "task_name": "multi_scene_visual_case_archive_assistant",
+  "model_name": "gpt_4_1_nano",
+  "model_path": "gpt-4.1-nano",
+  "method_name": "mirix",
+  "base_method_name": "mirix",
+  "method_modality": "",
+  "mode": "mcq",
+  "num_qas": 50,
+  "num_qas_run": 50,
+  "dialog_json": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/dialog/Multi-Scene_Visual_Case_Archive_Assistant.json",
+  "image_root": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image",
+  "run_dir": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/runs/multi_scene_visual_case_archive_assistant/20260427_174346_gpt_4_1_nano_mirix",
+  "git_commit": "d8ac0cb71367c6f0314274b4a514968eab3f678b",
+  "summary": {
+    "open_count": 50,
+    "overall": {
+      "em": 0.465,
+      "contains_gt": 0.4,
+      "f1": 0.465
+    },
+    "by_x": {
+      "X4": {
+        "em": 0.75,
+        "contains_gt": 0.75,
+        "f1": 0.75
+      },
+      "X3": {
+        "em": 0.4451219512195122,
+        "contains_gt": 0.36585365853658536,
+        "f1": 0.4451219512195122
+      },
+      "X2": {
+        "em": 0.4,
+        "contains_gt": 0.4,
+        "f1": 0.4
+      }
+    },
+    "by_y": {
+      "Y2": {
+        "em": 0.78125,
+        "contains_gt": 0.625,
+        "f1": 0.78125
+      },
+      "Y3": {
+        "em": 0.5227272727272727,
+        "contains_gt": 0.45454545454545453,
+        "f1": 0.5227272727272727
+      },
+      "Y1": {
+        "em": 0.3629032258064516,
+        "contains_gt": 0.3225806451612903,
+        "f1": 0.3629032258064516
+      }
+    },
+    "by_cell": {
+      "X4_Y2": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
+      },
+      "X3_Y2": {
+        "em": 0.65,
+        "contains_gt": 0.4,
+        "f1": 0.65
+      },
+      "X3_Y3": {
+        "em": 0.75,
+        "contains_gt": 0.6,
+        "f1": 0.75
+      },
+      "X3_Y1": {
+        "em": 0.3629032258064516,
+        "contains_gt": 0.3225806451612903,
+        "f1": 0.3629032258064516
+      },
+      "X2_Y3": {
+        "em": 0.4,
+        "contains_gt": 0.4,
+        "f1": 0.4
+      },
+      "X4_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0
+      }
+    },
+    "mcq_count": 50,
+    "mcq_valid_rate": 1.0,
+    "mcq_overall": {
+      "em": 0.465,
+      "contains_gt": 0.4,
+      "f1": 0.465
+    },
+    "mcq_per_position_accuracy": {
+      "A": 0.58,
+      "B": 0.42,
+      "C": 0.46,
+      "D": 0.4
+    }
+  },
+  "method_runtime": {
+    "official_mirix": true,
+    "official_model_name": "gpt-4.1-nano",
+    "ingested_turns": 234,
+    "runtime_signature": "4e27caef463f650d",
+    "runtime_dir": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/runs/multi-scene_visual_case_archive_assistant/mirix/4e27caef463f650d",
+    "runtime_home": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/runs/multi-scene_visual_case_archive_assistant/mirix/4e27caef463f650d/runtime_home",
+    "debug_dir": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/output/multi-scene_visual_case_archive_assistant/mirix/4e27caef463f650d",
+    "resumed": false,
+    "completed_ingestion": true
+  }
+}
