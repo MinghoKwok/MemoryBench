@@ -13,7 +13,7 @@ Retrieval-centric limitation of existing benchmarks -> Visual Bypassability + Re
   - *Visual Bypassability*: tasks solvable after replacing images with captions.
   - *Reasoning Shallowness*: tasks reducible to single-hop retrieval without state tracking or non-monotonic revision.
 - **Our Solution**: MemEye — a binocular evaluation framework.
-  - X-axis: visual granularity ($X_1$--$X_4$, from scene gist to micro-attribute).
+  - X-axis: visual granularity ($X_1$--$X_4$, from scene-level to pixel-level evidence).
   - Y-axis: reasoning complexity ($Y_1$--$Y_3$, from direct retrieval to state-evolving synthesis).
 - **Key Contributions**:
   1. A 4x3 binocular taxonomy with the Highest-Bottleneck annotation rule.
@@ -35,12 +35,12 @@ Retrieval-centric limitation of existing benchmarks -> Visual Bypassability + Re
 
 | Level | Name | Description |
 |-------|------|-------------|
-| $X_1$ | Global Scene | Holistic scene-level recognition; tolerant to captioning |
-| $X_2$ | Region Scene | Localized scene regions, functional areas, and grouped visual context |
-| $X_3$ | Instance Identity | Specific object/person instance localization and discrimination |
-| $X_4$ | Fine-Grained Attributes | Subtle color, texture, OCR, tiny inscriptions |
+| $X_1$ | Scene-level | Holistic scene-level recognition; tolerant to captioning |
+| $X_2$ | Region-level | Localized scene regions, functional areas, and grouped visual context |
+| $X_3$ | Instance-level | Specific object/person instance localization and discrimination |
+| $X_4$ | Pixel-level | Subtle color, texture, OCR, tiny inscriptions |
 
-Caption-Proof interpretation: $X_1$ (global gist) -> $X_2$ (region-level visual structure) -> $X_3$ (instance identity binding) -> $X_4$ (fine-grained visual evidence). Higher X generally requires more precise visual memory.
+Caption-Proof interpretation: $X_1$ (scene-level gist) -> $X_2$ (region-level visual structure) -> $X_3$ (instance-level binding) -> $X_4$ (pixel-level visual evidence). Higher X generally requires more precise visual memory.
 
 ### 3.2 Reasoning Complexity (Y-Axis) — "How far the agent must think"
 
@@ -118,7 +118,7 @@ Five stages: Visual Grounding -> Dialogue Construction -> QA Authoring -> Text-L
 
 - Accuracy heatmap by $(X_i, Y_j)$ cell.
 - Caption-Proof gap $\Delta$ increases monotonically with $X$ level ($+0.07$ at $X_1$ to $+0.28$ at $X_4$).
-- $(X_4, Y_2)$ and $(X_4, Y_3)$ are the hardest cells — combining fine-grained visual detail with complex reasoning.
+- $(X_4, Y_2)$ and $(X_4, Y_3)$ are the hardest cells — combining pixel-level visual detail with complex reasoning.
 
 ### 5.4 V-Stream vs. T-Stream (Caption-Proof Validation)
 

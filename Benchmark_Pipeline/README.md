@@ -265,7 +265,7 @@ Also accepted for the QA list:
 - `qas`
 
 - `point` should use MemEye binocular coordinates, for example `[['X2'], ['Y1']]`
-- X labels: `X1` (Global Scene), `X2` (Region Scene), `X3` (Instance Identity), `X4` (Fine-Grained Attributes)
+- X labels: `X1` (Scene-level), `X2` (Region-level), `X3` (Instance-level), `X4` (Pixel-level)
 - Y labels: `Y1` (Atomic Retrieval), `Y2` (Composite Retrieval), `Y3` (State Update Reasoning)
 - multiple labels are allowed when justified, for example `[['X2', 'X4'], ['Y3']]`
 - `input_image` may use relative paths such as `../image/...`, `./image/...`, `image/...`, or `data/image/...`

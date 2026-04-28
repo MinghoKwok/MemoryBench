@@ -21,7 +21,7 @@ Although `point` is stored as a two-list JSON field for schema stability, the cu
 
 MemEye now uses a single-label **Highest-Bottleneck Rule**.
 
-Visual perception and reasoning are inclusive: a question that depends on a tiny OCR token (`X4`) also depends on broader scene understanding (`X1`) and usually instance binding (`X2`). If we assigned every involved level, per-cell counts in the `(X, Y)` matrix would become uninterpretable and errors would be hard to attribute. Therefore, each question receives exactly one `X_i` and one `Y_j`: the highest level whose absence would prevent a correct answer.
+Visual perception and reasoning are inclusive: a question that depends on a tiny OCR token (`X4`) also depends on broader scene-level understanding (`X1`) and usually instance-level binding (`X3`). If we assigned every involved level, per-cell counts in the `(X, Y)` matrix would become uninterpretable and errors would be hard to attribute. Therefore, each question receives exactly one `X_i` and one `Y_j`: the highest level whose absence would prevent a correct answer.
 
 Operationally:
 
@@ -55,14 +55,14 @@ Rules:
 
 ## X-Axis Rules
 
-### `X1`: Global Scene
+### `X1`: Scene-level
 
-Use `X1` when only coarse visual gist is required.
+Use `X1` when only scene-level visual gist is required.
 
 Use `X1` for:
 
 - room type, scene type, broad style, broad environment
-- high-level visual theme that does not require precise object binding or spatial precision
+- high-level visual theme that does not require precise object binding or region-level layout
 
 Do not use `X1` if the item depends on:
 
@@ -70,7 +70,7 @@ Do not use `X1` if the item depends on:
 - fine spatial arrangement
 - small attributes, subtle color, texture, or OCR
 
-### `X2`: Region Scene
+### `X2`: Region-level
 
 Use `X2` when the decisive evidence is a semantically coherent local region, functional area, grouped visual context, or region-level layout within a scene.
 
@@ -87,7 +87,7 @@ Examples:
 - “Where is the key bowl on the entry-console tabletop?”
 - “Which dashboard card shows the metric closest to the warning banner?”
 
-### `X3`: Instance Identity
+### `X3`: Instance-level
 
 Use `X3` when the model must bind a reference to a specific person, object, item, character, vehicle, or persistent visual identity.
 
@@ -104,9 +104,9 @@ Examples:
 - “Which chair was the one discussed earlier?”
 - “On which run does the delivery tricycle cross in front of the stopped SUV?”
 
-### `X4`: Fine-Grained Attributes
+### `X4`: Pixel-level
 
-Use `X4` when the decisive evidence is fine-grained and likely to be lost in captioning.
+Use `X4` when the decisive evidence is pixel-level or fine-grained and likely to be lost in captioning.
 
 Use `X4` for:
 

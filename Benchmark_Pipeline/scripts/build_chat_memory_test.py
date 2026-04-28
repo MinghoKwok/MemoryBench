@@ -2543,7 +2543,7 @@ QA_ITEMS: List[Dict[str, Any]] = [
     },
 
     # ============================================================
-    # ===== X1: Global Scene — "what kind of chat is this?" =====
+    # ===== X1: Scene-level — "what kind of chat is this?" =====
     # ============================================================
     # Uses question_image pointing to a SCREENSHOT (not a face).
     # Model must classify the chat type from visual gist alone.
@@ -2609,7 +2609,7 @@ QA_ITEMS: List[Dict[str, Any]] = [
     },
 
     # ============================================================
-    # ===== X2: Region Scene — chat UI layout and position =====
+    # ===== X2: Region-level — chat UI layout and position =====
     # ============================================================
 
     {
@@ -2670,7 +2670,7 @@ QA_ITEMS: List[Dict[str, Any]] = [
     },
 
     # ============================================================
-    # ===== X4: Fine-Grained Attributes — fine-grained visual detail =====
+    # ===== X4: Pixel-level — fine-grained visual detail =====
     # ============================================================
 
     {
@@ -2875,7 +2875,7 @@ def _auto_point(qa: Dict[str, Any]) -> List[List[str]]:
 
     Heuristics:
     - X axis:
-        X1 if qa has x_tag="X1" (scene gist)
+        X1 if qa has x_tag="X1" (scene-level gist)
         X3 if qa has x_tag="X3" or question mentions spatial keywords
         X4 if qa has x_tag="X4" or question mentions micro-detail keywords
         X2 otherwise (default: entity instance retrieval)
