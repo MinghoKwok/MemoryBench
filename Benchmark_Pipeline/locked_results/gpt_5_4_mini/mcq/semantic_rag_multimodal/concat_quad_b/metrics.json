@@ -1,0 +1,219 @@
+{
+  "task_name": "concat_quad_b",
+  "model_name": "gpt_5_4_mini",
+  "model_path": "gpt-5.4-mini",
+  "method_name": "semantic_rag_multimodal",
+  "base_method_name": "semantic_rag_multimodal",
+  "method_modality": "multimodal",
+  "mode": "mcq",
+  "num_qas": 181,
+  "num_qas_run": 181,
+  "dialog_json": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/dialog/concat_quad_b.json",
+  "image_root": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/image",
+  "run_dir": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/runs/concat_quad_b/20260427_203757_gpt_5_4_mini_semantic_rag_multimodal",
+  "git_commit": "69e7b2bcb10a1a2a09bfb580fd4db079c8d27284",
+  "summary": {
+    "open_count": 181,
+    "overall": {
+      "em": 0.5593922651933702,
+      "contains_gt": 0.6298342541436464,
+      "f1": 0.5593922651933702
+    },
+    "by_x": {
+      "X4": {
+        "em": 0.39344262295081966,
+        "contains_gt": 0.5573770491803278,
+        "f1": 0.39344262295081966
+      },
+      "X2": {
+        "em": 0.6060606060606061,
+        "contains_gt": 0.6060606060606061,
+        "f1": 0.6060606060606061
+      },
+      "X1": {
+        "em": 0.6071428571428571,
+        "contains_gt": 0.5714285714285714,
+        "f1": 0.6071428571428571
+      },
+      "X3": {
+        "em": 0.6625,
+        "contains_gt": 0.7,
+        "f1": 0.6625
+      }
+    },
+    "by_y": {
+      "Y2": {
+        "em": 0.4430379746835443,
+        "contains_gt": 0.5443037974683544,
+        "f1": 0.4430379746835443
+      },
+      "Y3": {
+        "em": 0.5333333333333333,
+        "contains_gt": 0.6,
+        "f1": 0.5333333333333333
+      },
+      "Y1": {
+        "em": 0.6979166666666666,
+        "contains_gt": 0.7361111111111112,
+        "f1": 0.6979166666666666
+      }
+    },
+    "by_cell": {
+      "X4_Y2": {
+        "em": 0.33152173913043476,
+        "contains_gt": 0.5,
+        "f1": 0.33152173913043476
+      },
+      "X4_Y3": {
+        "em": 0.45,
+        "contains_gt": 0.6,
+        "f1": 0.45
+      },
+      "X2_Y2": {
+        "em": 0.5294117647058824,
+        "contains_gt": 0.5294117647058824,
+        "f1": 0.5294117647058824
+      },
+      "X1_Y3": {
+        "em": 0.375,
+        "contains_gt": 0.25,
+        "f1": 0.375
+      },
+      "X1_Y1": {
+        "em": 0.9166666666666666,
+        "contains_gt": 1.0,
+        "f1": 0.9166666666666666
+      },
+      "X3_Y2": {
+        "em": 0.671875,
+        "contains_gt": 0.6875,
+        "f1": 0.671875
+      },
+      "X2_Y1": {
+        "em": 0.6666666666666666,
+        "contains_gt": 0.6666666666666666,
+        "f1": 0.6666666666666666
+      },
+      "X3_Y1": {
+        "em": 0.6767241379310345,
+        "contains_gt": 0.7068965517241379,
+        "f1": 0.6767241379310345
+      },
+      "X4_Y1": {
+        "em": 0.85,
+        "contains_gt": 1.0,
+        "f1": 0.85
+      },
+      "X3_Y3": {
+        "em": 0.5,
+        "contains_gt": 0.6666666666666666,
+        "f1": 0.5
+      },
+      "X2_Y3": {
+        "em": 0.7,
+        "contains_gt": 0.7,
+        "f1": 0.7
+      }
+    },
+    "mcq_count": 181,
+    "mcq_valid_rate": 1.0,
+    "mcq_overall": {
+      "em": 0.5593922651933702,
+      "contains_gt": 0.6298342541436464,
+      "f1": 0.5593922651933702
+    },
+    "mcq_per_position_accuracy": {
+      "A": 0.5027624309392266,
+      "B": 0.569060773480663,
+      "C": 0.5359116022099447,
+      "D": 0.6298342541436464
+    }
+  },
+  "method_runtime": {
+    "retrieval_backend": "dense_multimodal",
+    "retrieval_corpus": "round_text",
+    "method_modality": "multimodal",
+    "top_k": 10,
+    "neighbor_window": 0,
+    "seed_round_ids": [
+      "HOME_S3:R6",
+      "HEALTH_S6:R7",
+      "SCENE_S12:R8",
+      "HOME_S11:R3",
+      "HEALTH_S2:R6",
+      "HEALTH_S9:R7",
+      "HOME_S3:R5",
+      "HEALTH_S4:R4",
+      "HOME_S8:R6",
+      "HOME_S12:R4"
+    ],
+    "selected_round_ids": [
+      "HOME_S3:R6",
+      "HEALTH_S6:R7",
+      "SCENE_S12:R8",
+      "HOME_S11:R3",
+      "HEALTH_S2:R6",
+      "HEALTH_S9:R7",
+      "HOME_S3:R5",
+      "HEALTH_S4:R4",
+      "HOME_S8:R6",
+      "HOME_S12:R4"
+    ],
+    "top_candidates": [
+      {
+        "round_id": "HOME_S3:R6",
+        "score": 0.25930953696996845,
+        "text_dense_score": 0.4240344993500949,
+        "image_dense_score": 0.09458457458984199,
+        "indexed_image_count": 1,
+        "best_image_path": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/image/Home_Renovation_Interior_Design/D3_IMG_005.jpg"
+      },
+      {
+        "round_id": "HEALTH_S6:R7",
+        "score": 0.19994272873032934,
+        "text_dense_score": 0.3105643237120015,
+        "image_dense_score": 0.08932113374865719,
+        "indexed_image_count": 1,
+        "best_image_path": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/image/Personal_Health_Dashboard_Assistant/D6_IMG_005.jpg"
+      },
+      {
+        "round_id": "SCENE_S12:R8",
+        "score": 0.1861576849840129,
+        "text_dense_score": 0.32411316885053604,
+        "image_dense_score": 0.048202201117489754,
+        "indexed_image_count": 1,
+        "best_image_path": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/image/Multi-Scene_Visual_Case_Archive_Assistant/S12-IMG3.png"
+      },
+      {
+        "round_id": "HOME_S11:R3",
+        "score": 0.16407488727314934,
+        "text_dense_score": 0.2649251848088226,
+        "image_dense_score": 0.06322458973747605,
+        "indexed_image_count": 1,
+        "best_image_path": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/image/Home_Renovation_Interior_Design/D11_IMG_002.jpg"
+      },
+      {
+        "round_id": "HEALTH_S2:R6",
+        "score": 0.15849935961058856,
+        "text_dense_score": 0.2276249097398822,
+        "image_dense_score": 0.08937380948129492,
+        "indexed_image_count": 1,
+        "best_image_path": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/image/Personal_Health_Dashboard_Assistant/D2_IMG_004.jpg"
+      }
+    ],
+    "clue_hit_count": 0,
+    "corpus_entry_count": 394,
+    "text_embedding_model": "all-MiniLM-L6-v2",
+    "multimodal_embedding_model": "siglip2-base-patch16-384",
+    "text_dense_weight": 0.5,
+    "image_dense_weight": 0.5,
+    "caption_text_included": false,
+    "image_embeddings_built": true,
+    "multi_image_indexing_enabled": true,
+    "indexed_image_count": 248,
+    "history_source": "retrieval",
+    "captions_loaded": false,
+    "images_loaded": true,
+    "history_turns_after_truncation": 20
+  }
+}

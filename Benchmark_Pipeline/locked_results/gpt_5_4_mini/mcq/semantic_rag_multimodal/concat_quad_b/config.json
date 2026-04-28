@@ -1,0 +1,133 @@
+{
+  "task": {
+    "dataset": {
+      "dialog_json": "data/dialog/concat_quad_b.json",
+      "image_root": "data/image"
+    },
+    "eval": {
+      "max_questions": 0,
+      "mode": "open",
+      "output_json": "output/results_concat_quad_b.json"
+    },
+    "name": "concat_quad_b"
+  },
+  "dataset": {
+    "dialog_json": "data/dialog/concat_quad_b.json",
+    "image_root": "data/image"
+  },
+  "eval": {
+    "max_questions": 0,
+    "mode": "open",
+    "output_json": "output/results_concat_quad_b.json"
+  },
+  "model": {
+    "name": "gpt_5_4_mini",
+    "provider": "openai_api",
+    "model": "gpt-5.4-mini",
+    "api_key_env": "OPENAI_API_KEY",
+    "base_url": "https://api.openai.com/v1",
+    "max_new_tokens": 128,
+    "timeout": 90
+  },
+  "method": {
+    "name": "semantic_rag_multimodal",
+    "modality": "multimodal",
+    "retrieval_backend": "dense_multimodal",
+    "top_k": 10,
+    "neighbor_window": 0,
+    "text_embedding_model": "all-MiniLM-L6-v2",
+    "multimodal_embedding_model": "siglip2-base-patch16-384",
+    "text_dense_weight": 0.5,
+    "image_dense_weight": 0.5
+  },
+  "run": {
+    "output_root": "runs",
+    "method_runtime": {
+      "retrieval_backend": "dense_multimodal",
+      "retrieval_corpus": "round_text",
+      "method_modality": "multimodal",
+      "top_k": 10,
+      "neighbor_window": 0,
+      "seed_round_ids": [
+        "HOME_S3:R6",
+        "HEALTH_S6:R7",
+        "SCENE_S12:R8",
+        "HOME_S11:R3",
+        "HEALTH_S2:R6",
+        "HEALTH_S9:R7",
+        "HOME_S3:R5",
+        "HEALTH_S4:R4",
+        "HOME_S8:R6",
+        "HOME_S12:R4"
+      ],
+      "selected_round_ids": [
+        "HOME_S3:R6",
+        "HEALTH_S6:R7",
+        "SCENE_S12:R8",
+        "HOME_S11:R3",
+        "HEALTH_S2:R6",
+        "HEALTH_S9:R7",
+        "HOME_S3:R5",
+        "HEALTH_S4:R4",
+        "HOME_S8:R6",
+        "HOME_S12:R4"
+      ],
+      "top_candidates": [
+        {
+          "round_id": "HOME_S3:R6",
+          "score": 0.25930953696996845,
+          "text_dense_score": 0.4240344993500949,
+          "image_dense_score": 0.09458457458984199,
+          "indexed_image_count": 1,
+          "best_image_path": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/image/Home_Renovation_Interior_Design/D3_IMG_005.jpg"
+        },
+        {
+          "round_id": "HEALTH_S6:R7",
+          "score": 0.19994272873032934,
+          "text_dense_score": 0.3105643237120015,
+          "image_dense_score": 0.08932113374865719,
+          "indexed_image_count": 1,
+          "best_image_path": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/image/Personal_Health_Dashboard_Assistant/D6_IMG_005.jpg"
+        },
+        {
+          "round_id": "SCENE_S12:R8",
+          "score": 0.1861576849840129,
+          "text_dense_score": 0.32411316885053604,
+          "image_dense_score": 0.048202201117489754,
+          "indexed_image_count": 1,
+          "best_image_path": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/image/Multi-Scene_Visual_Case_Archive_Assistant/S12-IMG3.png"
+        },
+        {
+          "round_id": "HOME_S11:R3",
+          "score": 0.16407488727314934,
+          "text_dense_score": 0.2649251848088226,
+          "image_dense_score": 0.06322458973747605,
+          "indexed_image_count": 1,
+          "best_image_path": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/image/Home_Renovation_Interior_Design/D11_IMG_002.jpg"
+        },
+        {
+          "round_id": "HEALTH_S2:R6",
+          "score": 0.15849935961058856,
+          "text_dense_score": 0.2276249097398822,
+          "image_dense_score": 0.08937380948129492,
+          "indexed_image_count": 1,
+          "best_image_path": "/common/home/mg1998/MemoryBench/Benchmark_Pipeline/data/image/Personal_Health_Dashboard_Assistant/D2_IMG_004.jpg"
+        }
+      ],
+      "clue_hit_count": 0,
+      "corpus_entry_count": 394,
+      "text_embedding_model": "all-MiniLM-L6-v2",
+      "multimodal_embedding_model": "siglip2-base-patch16-384",
+      "text_dense_weight": 0.5,
+      "image_dense_weight": 0.5,
+      "caption_text_included": false,
+      "image_embeddings_built": true,
+      "multi_image_indexing_enabled": true,
+      "indexed_image_count": 248,
+      "history_source": "retrieval",
+      "captions_loaded": false,
+      "images_loaded": true,
+      "history_turns_after_truncation": 20
+    }
+  }
+}
