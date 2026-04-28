@@ -1,0 +1,60 @@
+{
+  "task": {
+    "dataset": {
+      "dialog_json": "data/dialog/concat_brand_social.json",
+      "image_root": "data/image"
+    },
+    "eval": {
+      "max_questions": 0,
+      "mode": "mcq",
+      "output_json": "output/results_concat_brand_social.json"
+    },
+    "name": "concat_brand_social"
+  },
+  "dataset": {
+    "dialog_json": "data/dialog/concat_brand_social.json",
+    "image_root": "data/image"
+  },
+  "eval": {
+    "max_questions": 0,
+    "mode": "mcq",
+    "output_json": "output/results_concat_brand_social.json"
+  },
+  "model": {
+    "name": "gpt_5_4_mini",
+    "provider": "openai_api",
+    "model": "gpt-5.4-mini",
+    "api_key_env": "OPENAI_API_KEY",
+    "base_url": "https://api.openai.com/v1",
+    "max_new_tokens": 128,
+    "timeout": 90
+  },
+  "method": {
+    "name": "memoryos",
+    "llm_model": "gpt-4.1-nano",
+    "llm_api_key": "",
+    "llm_api_key_env": "OPENAI_API_KEY",
+    "llm_base_url": "https://api.openai.com/v1",
+    "llm_timeout": 90,
+    "embedding_model": "all-MiniLM-L6-v2",
+    "user_id": "memorybench_user",
+    "assistant_id": "memorybench_assistant",
+    "short_term_capacity": 10,
+    "mid_term_capacity": 2000,
+    "long_term_knowledge_capacity": 100,
+    "retrieval_queue_capacity": 10,
+    "mid_term_heat_threshold": 5.0,
+    "mid_term_similarity_threshold": 0.6
+  },
+  "run": {
+    "output_root": "runs",
+    "method_runtime": {
+      "caption_validation_passed": true,
+      "caption_validation_round_count": 73,
+      "num_memories": 125,
+      "debug_dir": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/output/concat_brand_social/memoryos/5d526646ce77cde4",
+      "data_storage_path": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/runs/concat_brand_social/memoryos_data/5d526646ce77cde4",
+      "runtime_signature": "5d526646ce77cde4"
+    }
+  }
+}

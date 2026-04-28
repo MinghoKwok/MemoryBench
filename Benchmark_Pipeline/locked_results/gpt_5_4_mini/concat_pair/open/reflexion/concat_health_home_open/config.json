@@ -1,0 +1,51 @@
+{
+  "task": {
+    "dataset": {
+      "dialog_json": "data/dialog/concat_health_home_open.json",
+      "image_root": "data/image"
+    },
+    "eval": {
+      "max_questions": 0,
+      "mode": "open",
+      "output_json": "output/results_concat_health_home_open.json"
+    },
+    "name": "concat_health_home_open"
+  },
+  "dataset": {
+    "dialog_json": "data/dialog/concat_health_home_open.json",
+    "image_root": "data/image"
+  },
+  "eval": {
+    "max_questions": 0,
+    "mode": "open",
+    "output_json": "output/results_concat_health_home_open.json"
+  },
+  "model": {
+    "name": "gpt_5_4_mini",
+    "provider": "openai_api",
+    "model": "gpt-5.4-mini",
+    "api_key_env": "OPENAI_API_KEY",
+    "base_url": "https://api.openai.com/v1",
+    "max_new_tokens": 128,
+    "timeout": 90
+  },
+  "method": {
+    "name": "reflexion",
+    "caption_preprocessed": true,
+    "context_word_limit": 6000,
+    "empty_memory": "No stored memory yet.",
+    "llm_model": "",
+    "llm_api_key": "",
+    "llm_api_key_env": "OPENAI_API_KEY",
+    "llm_base_url": "https://api.openai.com/v1",
+    "reflection_temperature": 0.0,
+    "reflection_example": ""
+  },
+  "run": {
+    "output_root": "runs",
+    "method_runtime": {
+      "num_memories": 217,
+      "debug_dir": "/Users/qingyuejiao/Desktop/MemoryBench/output/concat_health_home_open/reflexion"
+    }
+  }
+}

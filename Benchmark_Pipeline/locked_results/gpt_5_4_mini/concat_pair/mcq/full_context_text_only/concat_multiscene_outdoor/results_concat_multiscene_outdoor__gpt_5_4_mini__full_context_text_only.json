@@ -1,0 +1,132 @@
+{
+  "task_name": "concat_multiscene_outdoor",
+  "model_name": "gpt_5_4_mini",
+  "model_path": "gpt-5.4-mini",
+  "method_name": "full_context_text_only",
+  "base_method_name": "full_context_text_only",
+  "method_modality": "",
+  "mode": "mcq",
+  "num_qas": 78,
+  "num_qas_run": 78,
+  "dialog_json": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/dialog/concat_multiscene_outdoor.json",
+  "image_root": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image",
+  "run_dir": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/runs/concat_multiscene_outdoor/20260427_180348_gpt_5_4_mini_full_context_text_only",
+  "git_commit": "d8ac0cb71367c6f0314274b4a514968eab3f678b",
+  "summary": {
+    "open_count": 78,
+    "overall": {
+      "em": 0.42948717948717946,
+      "contains_gt": 0.4230769230769231,
+      "f1": 0.42948717948717946
+    },
+    "by_x": {
+      "X4": {
+        "em": 0.4166666666666667,
+        "contains_gt": 0.4444444444444444,
+        "f1": 0.4166666666666667
+      },
+      "X3": {
+        "em": 0.313953488372093,
+        "contains_gt": 0.3023255813953488,
+        "f1": 0.313953488372093
+      },
+      "X2": {
+        "em": 0.6304347826086957,
+        "contains_gt": 0.6086956521739131,
+        "f1": 0.6304347826086957
+      },
+      "X1": {
+        "em": 0.5833333333333334,
+        "contains_gt": 0.6666666666666666,
+        "f1": 0.5833333333333334
+      }
+    },
+    "by_y": {
+      "Y2": {
+        "em": 0.5,
+        "contains_gt": 0.4782608695652174,
+        "f1": 0.5
+      },
+      "Y3": {
+        "em": 0.5,
+        "contains_gt": 0.4782608695652174,
+        "f1": 0.5
+      },
+      "Y1": {
+        "em": 0.328125,
+        "contains_gt": 0.34375,
+        "f1": 0.328125
+      }
+    },
+    "by_cell": {
+      "X4_Y2": {
+        "em": 0.375,
+        "contains_gt": 0.5,
+        "f1": 0.375
+      },
+      "X3_Y2": {
+        "em": 0.375,
+        "contains_gt": 0.16666666666666666,
+        "f1": 0.375
+      },
+      "X3_Y3": {
+        "em": 0.2916666666666667,
+        "contains_gt": 0.3333333333333333,
+        "f1": 0.2916666666666667
+      },
+      "X3_Y1": {
+        "em": 0.3064516129032258,
+        "contains_gt": 0.3225806451612903,
+        "f1": 0.3064516129032258
+      },
+      "X2_Y3": {
+        "em": 0.675,
+        "contains_gt": 0.6,
+        "f1": 0.675
+      },
+      "X4_Y3": {
+        "em": 0.45,
+        "contains_gt": 0.4,
+        "f1": 0.45
+      },
+      "X2_Y2": {
+        "em": 0.5961538461538461,
+        "contains_gt": 0.6153846153846154,
+        "f1": 0.5961538461538461
+      },
+      "X1_Y1": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
+      },
+      "X1_Y3": {
+        "em": 0.375,
+        "contains_gt": 0.5,
+        "f1": 0.375
+      }
+    },
+    "mcq_count": 78,
+    "mcq_valid_rate": 1.0,
+    "mcq_overall": {
+      "em": 0.42948717948717946,
+      "contains_gt": 0.4230769230769231,
+      "f1": 0.42948717948717946
+    },
+    "mcq_per_position_accuracy": {
+      "A": 0.3974358974358974,
+      "B": 0.41025641025641024,
+      "C": 0.48717948717948717,
+      "D": 0.4230769230769231
+    }
+  },
+  "method_runtime": {
+    "caption_validation_passed": true,
+    "caption_validation_round_count": 97,
+    "method_modality": "text_only",
+    "history_source": "full_context",
+    "captions_loaded": true,
+    "images_loaded": false,
+    "history_turns_after_truncation": 354,
+    "history_turns_before_truncation": 354
+  }
+}

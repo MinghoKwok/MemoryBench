@@ -1,0 +1,126 @@
+{
+  "task_name": "concat_health_home",
+  "model_name": "gpt_5_4_mini",
+  "model_path": "gpt-5.4-mini",
+  "method_name": "reflexion",
+  "base_method_name": "reflexion",
+  "method_modality": "",
+  "mode": "mcq",
+  "num_qas": 103,
+  "num_qas_run": 103,
+  "dialog_json": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/dialog/concat_health_home.json",
+  "image_root": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image",
+  "run_dir": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/runs/concat_health_home/20260427_160207_gpt_5_4_mini_reflexion",
+  "git_commit": "d8ac0cb71367c6f0314274b4a514968eab3f678b",
+  "summary": {
+    "open_count": 103,
+    "overall": {
+      "em": 0.22815533980582525,
+      "contains_gt": 0.20388349514563106,
+      "f1": 0.22815533980582525
+    },
+    "by_x": {
+      "X4": {
+        "em": 0.17307692307692307,
+        "contains_gt": 0.1346153846153846,
+        "f1": 0.17307692307692307
+      },
+      "X2": {
+        "em": 0.175,
+        "contains_gt": 0.1,
+        "f1": 0.175
+      },
+      "X1": {
+        "em": 0.75,
+        "contains_gt": 0.75,
+        "f1": 0.75
+      },
+      "X3": {
+        "em": 0.2635135135135135,
+        "contains_gt": 0.2702702702702703,
+        "f1": 0.2635135135135135
+      }
+    },
+    "by_y": {
+      "Y2": {
+        "em": 0.11607142857142858,
+        "contains_gt": 0.10714285714285714,
+        "f1": 0.11607142857142858
+      },
+      "Y3": {
+        "em": 0.6785714285714286,
+        "contains_gt": 0.5714285714285714,
+        "f1": 0.6785714285714286
+      },
+      "Y1": {
+        "em": 0.30625,
+        "contains_gt": 0.275,
+        "f1": 0.30625
+      }
+    },
+    "by_cell": {
+      "X4_Y2": {
+        "em": 0.10119047619047619,
+        "contains_gt": 0.07142857142857142,
+        "f1": 0.10119047619047619
+      },
+      "X4_Y3": {
+        "em": 0.75,
+        "contains_gt": 0.6,
+        "f1": 0.75
+      },
+      "X2_Y2": {
+        "em": 0.125,
+        "contains_gt": 0.0,
+        "f1": 0.125
+      },
+      "X1_Y3": {
+        "em": 0.5,
+        "contains_gt": 0.5,
+        "f1": 0.5
+      },
+      "X1_Y1": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0
+      },
+      "X3_Y2": {
+        "em": 0.175,
+        "contains_gt": 0.3,
+        "f1": 0.175
+      },
+      "X2_Y1": {
+        "em": 0.20833333333333334,
+        "contains_gt": 0.16666666666666666,
+        "f1": 0.20833333333333334
+      },
+      "X3_Y1": {
+        "em": 0.2962962962962963,
+        "contains_gt": 0.25925925925925924,
+        "f1": 0.2962962962962963
+      },
+      "X4_Y1": {
+        "em": 0.2,
+        "contains_gt": 0.2,
+        "f1": 0.2
+      }
+    },
+    "mcq_count": 103,
+    "mcq_valid_rate": 1.0,
+    "mcq_overall": {
+      "em": 0.22815533980582525,
+      "contains_gt": 0.20388349514563106,
+      "f1": 0.22815533980582525
+    },
+    "mcq_per_position_accuracy": {
+      "A": 0.3106796116504854,
+      "B": 0.1941747572815534,
+      "C": 0.20388349514563106,
+      "D": 0.20388349514563106
+    }
+  },
+  "method_runtime": {
+    "num_memories": 217,
+    "debug_dir": "/Users/qingyuejiao/Desktop/MemoryBench/output/concat_health_home/reflexion"
+  }
+}
