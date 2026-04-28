@@ -128,9 +128,9 @@ Use `Y1` for:
 - one fact tied to one clearly relevant clue span
 - no cross-session linking needed
 
-### `Y2`: Composite Retrieval
+### `Y2`: Relational Association
 
-At this level, the model must connect information across sessions, modalities, or references. The answer is not contained in one isolated memory fragment, but can still be obtained by combining consistent evidence. Importantly, this level remains **monotonic**: later information does not overwrite or invalidate earlier information.
+At this level, the model must associate information across sessions, modalities, or references. The answer is not contained in one isolated memory fragment, but can still be obtained by combining consistent evidence. Importantly, this level remains **monotonic**: later information does not overwrite or invalidate earlier information.
 
 Use `Y2` for:
 
@@ -139,9 +139,9 @@ Use `Y2` for:
 - verifying whether an entity did or did not satisfy some condition after checking multiple pieces of evidence
 - cross-session or cross-modal reference resolution where evidence is consistent
 
-### `Y3`: State Update Reasoning
+### `Y3`: Evolutionary Synthesis
 
-This is the highest reasoning level. The model must reason over evolving states, where later evidence may update, override, or conflict with earlier memory. Solving these tasks requires **non-monotonic reasoning**, conflict detection, and coherent world-model revision rather than simple retrieval or linking.
+This is the highest reasoning level. The model must synthesize evolving states, where later evidence may update, override, or conflict with earlier memory. Solving these tasks requires **non-monotonic reasoning**, conflict detection, and coherent world-model revision rather than simple retrieval or association.
 
 Use `Y3` for:
 

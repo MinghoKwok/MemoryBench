@@ -117,8 +117,8 @@ MemEye evaluates multimodal agent memory along two orthogonal axes:
 
 **Y-axis (Reasoning Complexity):**
 - `Y1` Atomic Retrieval — single-session fact lookup
-- `Y2` Composite Retrieval — cross-session monotonic integration
-- `Y3` State Update Reasoning — temporal logic required, later evidence overrides earlier
+- `Y2` Relational Association — cross-session or cross-modal monotonic association
+- `Y3` Evolutionary Synthesis — updates, conflicts, overrides, and current-state inference
 
 Each QA is assigned a single `(X_i, Y_j)` coordinate following the **Highest-Bottleneck Rule**: the label reflects the highest level whose absence would prevent a correct answer.
 

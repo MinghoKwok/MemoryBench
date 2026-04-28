@@ -1956,7 +1956,7 @@ QA_ITEMS: List[Dict[str, Any]] = [
     },
 
     # ============================================================
-    # ===== Y3: State-Evolving Synthesis =====
+    # ===== Y3: Evolutionary Synthesis =====
     # ============================================================
     # Each Y3 question depends on a STATE UPDATE that overrides an
     # earlier fact. Correct answers require the model to recognize the

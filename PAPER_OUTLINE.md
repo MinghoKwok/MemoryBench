@@ -14,7 +14,7 @@ Retrieval-centric limitation of existing benchmarks -> Visual Bypassability + Re
   - *Reasoning Shallowness*: tasks reducible to single-hop retrieval without state tracking or non-monotonic revision.
 - **Our Solution**: MemEye — a binocular evaluation framework.
   - X-axis: visual granularity ($X_1$--$X_4$, from scene-level to pixel-level evidence).
-  - Y-axis: reasoning complexity ($Y_1$--$Y_3$, from direct retrieval to state-evolving synthesis).
+  - Y-axis: reasoning complexity ($Y_1$--$Y_3$, from atomic retrieval to evolutionary synthesis).
 - **Key Contributions**:
   1. A 4x3 binocular taxonomy with the Highest-Bottleneck annotation rule.
   2. Caption-Proof validation protocol ($\Delta = \text{Acc}_V - \text{Acc}_T$).
@@ -47,8 +47,8 @@ Caption-Proof interpretation: $X_1$ (scene-level gist) -> $X_2$ (region-level vi
 | Level | Name | Description |
 |-------|------|-------------|
 | $Y_1$ | Atomic Retrieval | Single fact from single session |
-| $Y_2$ | Composite Retrieval | Cross-session/cross-modal evidence combination (monotonic) |
-| $Y_3$ | State Update Reasoning | Non-monotonic reasoning with belief revision |
+| $Y_2$ | Relational Association | Cross-session/cross-modal evidence association (monotonic) |
+| $Y_3$ | Evolutionary Synthesis | Non-monotonic synthesis with belief revision |
 
 ### 3.3 The Highest-Bottleneck Annotation Rule
 
