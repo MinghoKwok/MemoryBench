@@ -1,0 +1,138 @@
+{
+  "task_name": "cartoon_entertainment_companion",
+  "model_name": "gpt_4_1_nano",
+  "model_path": "gpt-4.1-nano",
+  "method_name": "mirix",
+  "base_method_name": "mirix",
+  "method_modality": "",
+  "mode": "mcq",
+  "num_qas": 76,
+  "num_qas_run": 76,
+  "dialog_json": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/dialog/Cartoon_Entertainment_Companion.json",
+  "image_root": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image",
+  "run_dir": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/runs/cartoon_entertainment_companion/20260427_221240_gpt_4_1_nano_mirix",
+  "git_commit": "19208b4d7805b574b0ac0a5b3894a8403f734e9b",
+  "summary": {
+    "open_count": 76,
+    "overall": {
+      "em": 0.4440789473684211,
+      "contains_gt": 0.3684210526315789,
+      "f1": 0.4440789473684211
+    },
+    "by_x": {
+      "X2": {
+        "em": 0.25,
+        "contains_gt": 0.16666666666666666,
+        "f1": 0.25
+      },
+      "X4": {
+        "em": 0.4479166666666667,
+        "contains_gt": 0.375,
+        "f1": 0.4479166666666667
+      },
+      "X3": {
+        "em": 0.4666666666666667,
+        "contains_gt": 0.4,
+        "f1": 0.4666666666666667
+      },
+      "X1": {
+        "em": 0.46875,
+        "contains_gt": 0.375,
+        "f1": 0.46875
+      }
+    },
+    "by_y": {
+      "Y1": {
+        "em": 0.49242424242424243,
+        "contains_gt": 0.42424242424242425,
+        "f1": 0.49242424242424243
+      },
+      "Y2": {
+        "em": 0.40131578947368424,
+        "contains_gt": 0.3157894736842105,
+        "f1": 0.40131578947368424
+      },
+      "Y3": {
+        "em": 0.45,
+        "contains_gt": 0.4,
+        "f1": 0.45
+      }
+    },
+    "by_cell": {
+      "X2_Y1": {
+        "em": 0.3125,
+        "contains_gt": 0.25,
+        "f1": 0.3125
+      },
+      "X4_Y2": {
+        "em": 0.4318181818181818,
+        "contains_gt": 0.36363636363636365,
+        "f1": 0.4318181818181818
+      },
+      "X3_Y2": {
+        "em": 0.38235294117647056,
+        "contains_gt": 0.29411764705882354,
+        "f1": 0.38235294117647056
+      },
+      "X2_Y2": {
+        "em": 0.125,
+        "contains_gt": 0.0,
+        "f1": 0.125
+      },
+      "X4_Y1": {
+        "em": 0.5,
+        "contains_gt": 0.4166666666666667,
+        "f1": 0.5
+      },
+      "X3_Y1": {
+        "em": 0.5769230769230769,
+        "contains_gt": 0.5384615384615384,
+        "f1": 0.5769230769230769
+      },
+      "X1_Y1": {
+        "em": 0.375,
+        "contains_gt": 0.25,
+        "f1": 0.375
+      },
+      "X1_Y2": {
+        "em": 0.46875,
+        "contains_gt": 0.375,
+        "f1": 0.46875
+      },
+      "X1_Y3": {
+        "em": 0.5625,
+        "contains_gt": 0.5,
+        "f1": 0.5625
+      },
+      "X4_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0
+      }
+    },
+    "mcq_count": 76,
+    "mcq_valid_rate": 1.0,
+    "mcq_overall": {
+      "em": 0.4440789473684211,
+      "contains_gt": 0.3684210526315789,
+      "f1": 0.4440789473684211
+    },
+    "mcq_per_position_accuracy": {
+      "A": 0.6052631578947368,
+      "B": 0.40789473684210525,
+      "C": 0.39473684210526316,
+      "D": 0.3684210526315789
+    }
+  },
+  "method_runtime": {
+    "official_mirix": true,
+    "official_model_name": "gpt-4.1-nano",
+    "ingested_turns": 598,
+    "runtime_signature": "80b964e9d9b43865",
+    "runtime_dir": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/runs/cartoon_entertainment_companion/mirix/80b964e9d9b43865",
+    "runtime_home": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/runs/cartoon_entertainment_companion/mirix/80b964e9d9b43865/runtime_home",
+    "debug_dir": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/output/cartoon_entertainment_companion/mirix/80b964e9d9b43865",
+    "resumed": true,
+    "completed_ingestion": true
+  }
+}

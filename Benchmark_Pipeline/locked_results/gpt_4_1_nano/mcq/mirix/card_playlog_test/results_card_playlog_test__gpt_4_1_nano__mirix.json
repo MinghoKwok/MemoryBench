@@ -1,0 +1,78 @@
+{
+  "task_name": "card_playlog_test",
+  "model_name": "gpt_4_1_nano",
+  "model_path": "gpt-4.1-nano",
+  "method_name": "mirix",
+  "base_method_name": "mirix",
+  "method_modality": "",
+  "mode": "mcq",
+  "num_qas": 48,
+  "num_qas_run": 48,
+  "dialog_json": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/dialog/Card_Playlog_Test.json",
+  "image_root": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image",
+  "run_dir": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/runs/card_playlog_test/20260427_174343_gpt_4_1_nano_mirix",
+  "git_commit": "d8ac0cb71367c6f0314274b4a514968eab3f678b",
+  "summary": {
+    "open_count": 48,
+    "overall": {
+      "em": 0.25,
+      "contains_gt": 0.20833333333333334,
+      "f1": 0.25
+    },
+    "by_x": {
+      "X4": {
+        "em": 0.25,
+        "contains_gt": 0.20833333333333334,
+        "f1": 0.25
+      }
+    },
+    "by_y": {
+      "Y3": {
+        "em": 0.2236842105263158,
+        "contains_gt": 0.15789473684210525,
+        "f1": 0.2236842105263158
+      },
+      "Y2": {
+        "em": 0.2672413793103448,
+        "contains_gt": 0.2413793103448276,
+        "f1": 0.2672413793103448
+      }
+    },
+    "by_cell": {
+      "X4_Y3": {
+        "em": 0.2236842105263158,
+        "contains_gt": 0.15789473684210525,
+        "f1": 0.2236842105263158
+      },
+      "X4_Y2": {
+        "em": 0.2672413793103448,
+        "contains_gt": 0.2413793103448276,
+        "f1": 0.2672413793103448
+      }
+    },
+    "mcq_count": 48,
+    "mcq_valid_rate": 1.0,
+    "mcq_overall": {
+      "em": 0.25,
+      "contains_gt": 0.20833333333333334,
+      "f1": 0.25
+    },
+    "mcq_per_position_accuracy": {
+      "A": 0.3125,
+      "B": 0.22916666666666666,
+      "C": 0.25,
+      "D": 0.20833333333333334
+    }
+  },
+  "method_runtime": {
+    "official_mirix": true,
+    "official_model_name": "gpt-4.1-nano",
+    "ingested_turns": 60,
+    "runtime_signature": "47d3467924a77fd4",
+    "runtime_dir": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/runs/card_playlog_test/mirix/47d3467924a77fd4",
+    "runtime_home": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/runs/card_playlog_test/mirix/47d3467924a77fd4/runtime_home",
+    "debug_dir": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/output/card_playlog_test/mirix/47d3467924a77fd4",
+    "resumed": true,
+    "completed_ingestion": true
+  }
+}
