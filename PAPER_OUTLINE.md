@@ -1,172 +1,147 @@
-# MemEye Paper Outline (NeurIPS Datasets and Benchmarks Track)
+# MemEye Paper Outline v2 (NeurIPS Datasets and Benchmarks Track)
 
 **Title**: MemEye: A Vision-Centric Benchmark for Multimodal Agent Memory
 
+**Principle**: Benchmark section proves the dataset is diagnostically valid; Experiments section proves what memory systems fail at.
+
 ## Abstract
 
-Retrieval-centric limitation of existing benchmarks -> Visual Bypassability + Reasoning Shallowness -> Binocular taxonomy (X: visual granularity, Y: reasoning complexity) -> Caption-Proof protocol -> Upper-right quadrant performance collapse finding.
+Agent memory requires preserved visual evidence + reasoning over memory state. Current benchmarks test neither reliably. MemEye: binocular taxonomy (X: visual granularity, Y: reasoning depth). Ablation-driven construction validates both axes. 13 methods × 5 backbones expose architectural failure modes by (X, Y) coordinate.
 
-## 1. Introduction (~1-1.5 pages)
+## 1. Introduction (~1 page)
 
-- **Context**: MLLMs evolving toward long-horizon interactive agents; memory is the bottleneck.
-- **The Problem**: Two recurring weaknesses in current evaluation:
-  - *Visual Bypassability*: tasks solvable after replacing images with captions.
-  - *Reasoning Shallowness*: tasks reducible to single-hop retrieval without state tracking or non-monotonic revision.
-- **Our Solution**: MemEye — a binocular evaluation framework.
-  - X-axis: visual granularity ($X_1$--$X_4$, from scene-level to pixel-level evidence).
-  - Y-axis: reasoning complexity ($Y_1$--$Y_3$, from atomic retrieval to evolutionary synthesis).
-- **Key Contributions**:
-  1. A 4x3 binocular taxonomy with the Highest-Bottleneck annotation rule.
-  2. Caption-Proof validation protocol ($\Delta = \text{Acc}_V - \text{Acc}_T$).
-  3. 8 tasks under a unified life-scenario persona (Hannah Brooks), covering 371 questions.
-  4. Large-scale experiments (14 methods x 4 backbones) exposing upper-right quadrant collapse.
+Central claim: agent memory needs both **preserved visual evidence** and **reasoning over memory state**.
 
-## 2. Related Work (~0.5-1 page)
+- Agent memory is not just "remembering text" — real agents must retain visual details across sessions.
+- Visual evidence has granularity: scene gist survives captioning, but instance identity and pixel-level attributes do not.
+- Memory is not just retrieval: agents must associate distributed evidence and synthesize evolving state.
+- MemEye makes both dimensions explicit via a binocular taxonomy: X-axis (visual granularity) and Y-axis (reasoning depth).
 
-- **Multimodal Memory Benchmarks**: Compare with MemGallery, etc. Point out they cluster in $X_{1\text{-}2}$, $Y_{1\text{-}2}$ quadrant.
-- **Visual Grounding & Reasoning**: We test grounding *preservation* over long horizons, not just single-turn grounding.
-- **Long-Context Agents & Memory Architectures**: Paradigm shift from monotonic retrieval to non-monotonic state tracking. Covers full-context, RAG, agentic (A-Mem, MemGPT, MMA, M2A), and summarization (SimpleMem, Generative Agents) families.
+**Contributions**:
+1. A vision-centric long-term memory benchmark (371 QAs, 8 tasks, MCQ + open mirrored).
+2. A binocular (X, Y) taxonomy that localizes failures along visual and reasoning bottlenecks.
+3. Ablation-driven benchmark construction: every question passes caption-proof, option-bias, text-leak, and oracle-evidence gates.
+4. Systematic evaluation of 13 memory architectures × 5 backbones, exposing architectural failure modes by (X, Y) coordinate.
 
-## 3. The MemEye Taxonomy (~1.5 pages)
+## 2. Related Work (~0.5 page)
 
-*Core figure: Figure 1 — the 4x3 binocular matrix with task placements.*
+Three gaps:
+- **Memory benchmarks lack visual evidence granularity.** Existing benchmarks cluster in X1–X2, Y1–Y2.
+- **Multimodal dialogue benchmarks lack long-term evolving memory.** Single-turn VQA doesn't test cross-session state tracking.
+- **Memory systems lack diagnostic evaluation.** No benchmark separately measures visual preservation vs. temporal reasoning. MemEye fills this via the binocular taxonomy.
 
-### 3.1 Visual Granularity (X-Axis) — "How deeply the agent must see"
+## 3. The MemEye Benchmark (~3 pages) — core section
 
-| Level | Name | Description |
+### 3.1 A Binocular Taxonomy of Visual Memory
+
+Why "MemEye": one eye sees visual granularity, the other sees memory reasoning depth. The (X, Y) coordinate is an observation lens, not a task category. Highest-Bottleneck Rule: each question gets one (Xi, Yj).
+
+### 3.2 X-axis: Granularity of Visual Evidence — "what must survive"
+
+| Level | Name | What must be preserved |
+|-------|------|------------------------|
+| X1 | Scene-level | Holistic scene gist; caption-recoverable |
+| X2 | Region-level | Localized regions, functional areas, grouped context |
+| X3 | Instance-level | Specific object/person identity binding |
+| X4 | Pixel-level | Color, texture, OCR, micro-attributes |
+
+### 3.3 Y-axis: Reasoning over Memory — "how evidence is used"
+
+| Level | Name | Core demand |
 |-------|------|-------------|
-| $X_1$ | Scene-level | Holistic scene-level recognition; tolerant to captioning |
-| $X_2$ | Region-level | Localized scene regions, functional areas, and grouped visual context |
-| $X_3$ | Instance-level | Specific object/person instance localization and discrimination |
-| $X_4$ | Pixel-level | Subtle color, texture, OCR, tiny inscriptions |
+| Y1 | Atomic Retrieval | Retrieve one directly relevant fact |
+| Y2 | Relational Association | Associate distributed but consistent evidence |
+| Y3 | Evolutionary Synthesis | Synthesize valid state under updates/conflicts/overrides |
 
-Caption-Proof interpretation: $X_1$ (scene-level gist) -> $X_2$ (region-level visual structure) -> $X_3$ (instance-level binding) -> $X_4$ (pixel-level visual evidence). Higher X generally requires more precise visual memory.
+Emphasize: Y measures how retrieved evidence is used, not retrieval difficulty.
 
-### 3.2 Reasoning Complexity (Y-Axis) — "How far the agent must think"
+### 3.4 Dataset Construction
 
-| Level | Name | Description |
-|-------|------|-------------|
-| $Y_1$ | Atomic Retrieval | Single fact from single session |
-| $Y_2$ | Relational Association | Cross-session/cross-modal evidence association (monotonic) |
-| $Y_3$ | Evolutionary Synthesis | Non-monotonic synthesis with belief revision |
+371 questions, 8 tasks, 6 life-scenario domains. MCQ/open mirrored. Clue rounds annotated. 4-rotation MCQ debiasing.
 
-### 3.3 The Highest-Bottleneck Annotation Rule
+| Task | Domain | n |
+|------|--------|---|
+| Home Renovation | Domestic | 52 |
+| Brand Memory | Work | 29 |
+| Card Playlog | Leisure | 48 |
+| Cartoon Ent. | Leisure | 76 |
+| Multi-Scene VCAA | Organization | 50 |
+| Outdoor Nav. | Domestic | 28 |
+| Personal Health | Health | 51 |
+| Social Chat | Social | 37 |
+| **Total** | | **371** |
 
-Each question gets a single $(X_i, Y_j)$ label — the highest level whose absence would prevent a correct answer. Justification: statistical interpretability, error attribution, empirical validation via Caption-Proof.
+### 3.5 Benchmark Validation — ablation-driven data quality gates
 
-## 4. The MemEye Benchmark (~2 pages)
+**This is the key methodological contribution. Each gate proves a property of the dataset.**
 
-### 4.1 Unified Life Scenario: Hannah Brooks
+**Gate 1: Text-Leak Audit.**
+Grep answer keywords against dialogue text; verify assistant responses are generic. No question answerable from dialogue text alone.
 
-Persona: 32-year-old freelance graphic designer, apartment renovation, remote work. Each task maps to a life facet:
+**Gate 2: Option-Bias Rejection (MCQ).**
+Question-only ablation with 4-rotation MCQ under two model families (GPT-4.1-nano + Gemini-2.5-FL). Remove questions with debiased EM ≥ 0.75 under both. Result: 63/434 removed → 371 remain; QO baseline ≈ 0.30.
 
-| Task | Life Facet | Primary $(X, Y)$ Region | $n$ |
-|------|-----------|-------------------------|-----|
-| Home Renovation | Domestic | $X_3$-$X_4$, $Y_2$-$Y_3$ | 52 |
-| Brand Memory | Work (Analysis) | $X_1$-$X_4$, $Y_1$-$Y_2$ | 29 |
-| Card Playlog | Leisure | $X_4$, $Y_2$-$Y_3$ | 48 |
-| Cartoon Entertainment | Leisure | $X_1$-$X_4$, $Y_1$-$Y_3$ | 76 |
-| Multi-Scene VCAA | Organization | $X_2$-$X_4$, $Y_2$-$Y_3$ | 50 |
-| Outdoor Navigation | Domestic | $X_1$-$X_4$, $Y_1$-$Y_3$ | 28 |
-| Personal Health | Health | $X_1$-$X_4$, $Y_1$-$Y_3$ | 51 |
-| Social Chat | Social | $X_1$-$X_4$, $Y_1$-$Y_2$ | 37 |
+Case study: Outdoor Navigation R1 route-type labels.
 
-Total: 8 tasks, 371 questions (MCQ + open-ended).
+**Gate 3: Caption-Proof Validation (X-axis validity test).**
+Replace images with dense captions; compare FC(V) vs FC(T). Δ increases from X1 to X4, confirming X-axis captures visual irreplaceability.
 
-### 4.2 Design Principles
+**Gate 4: Oracle-Evidence Validation (Y-axis validity test).**
+Provide gold clue rounds + original images (perfect retrieval). Open-ended LLM-Judge still decreases: Y1 → Y2 → Y3 (0.673 → 0.601 → 0.558). Since retrieval is solved, the drop is purely reasoning difficulty.
 
-- **Visual Necessity**: Assistant never describes image content; captions are minimal labels.
-- **Cross-Task Coherence**: Consistent timeline and persona across tasks.
-- **Complementary Memory Demands**: Tasks span different regions of the matrix.
+Additional evidence: method ranking changes across Y levels (SRAG wins Y1; FC(T) overtakes FC(V) at Y3).
 
-### 4.3 Data Construction Pipeline (brief; details in Appendix)
+## 4. Experiments (~2.5 pages) — focused on memory systems
 
-Five stages: Visual Grounding -> Dialogue Construction -> QA Authoring -> Text-Leak Audit -> Caption-Proof Verification.
+Setup: 13 methods × 5 backbones. MCQ (debiased EM) + Open (LLM-Judge with gpt-5.2).
 
-### 4.4 The Caption-Proof Protocol
+### 4.1 Main Results: Reading the MemEye Matrix
 
-- Generate dense captions for every image (using GPT-4o-class VLM).
-- Replace all images with captions, re-run benchmark.
-- $\Delta = \text{Acc}_V - \text{Acc}_T$: an item is visually robust only if $\Delta$ exceeds threshold.
-- Protocol predicts monotonic relationship between $X$ level and $\Delta$ — empirically testable.
+Table: GPT-5.4-mini full (X, Y) matrix.
 
-## 5. Experiments (~2 pages)
+Five findings:
+1. **Overall performance far from saturation.** Best ≈ 0.63 EM, ≈ 0.49 Judge.
+2. **Native visual memory helps when X increases.** Δ(V-T) near zero at X1/X2, positive at X3/X4.
+3. **Y-axis changes the bottleneck.** Y1/Y2: retrieval wins. Y3: full-context and text memory catch up.
+4. **Lower-right (X4, Y3) is the strongest stress test.** Requires both pixel-level preservation and state-evolving synthesis.
+5. **Different architectures fail in different regions.** FC: attention dilution. SRAG: retrieval miss at Y2, stale evidence at Y3. MMA: strong at Y1 fine-grained, degrades at Y3. M2A: state-aware at Y3 but lossy memory writing.
 
-### 5.1 Setup
+### 4.2 Mixed-Memory Scaling
 
-**Backbone models (4)**:
-- Qwen3-VL-8B (open, via OpenRouter)
-- Qwen2.5-VL-7B (open, local)
-- GPT-4.1-nano (closed)
-- GPT-5-mini (closed)
+1-task → 2-task pairs → 4-task quads.
+- FC(V) degrades (MCQ −21%, Open −36%).
+- SRAG(V) and MMA are stable.
+- Conclusion: full context is not a scalable memory strategy.
 
-**Memory methods (14)**:
-- Text-only (8): Full Context (T), Semantic RAG (T), A-Mem, MemGPT, MemoryOS, Reflexion, Generative Agents, EverMemOS
-- Multimodal (6): Full Context (V), Semantic RAG (V), MIRIX, MMA, M2A, SimpleMem
+### 4.3 Architectural Patterns
 
-**Metrics**: MCQ exact-match (EM); Open-ended: normalized EM, F1, BLEU-1, BLEU-2, LLM-as-judge.
+Brief per-method analysis. Key: no single method dominates; best method varies by (X, Y) coordinate.
 
-### 5.2 Main Results
+## 5. Conclusion (~0.3 page)
 
-- Per-task accuracy table (14 methods x 8 tasks).
-- Key findings:
-  - No single method dominates — best method varies by task.
-  - Agentic memory shines on high-density tasks (Multi-Scene: SimpleMem 0.729 vs FC 0.271).
-  - Full context remains competitive on moderate-length tasks (<200 turns).
+- MemEye shows visual memory is not solved by captions (X-axis).
+- Memory is not solved by retrieval alone (Y-axis).
+- Future systems need to preserve visual evidence AND reason over evolving state.
+- The binocular taxonomy provides a diagnostic lens for measuring progress.
 
-### 5.3 The "Upper-Right" Collapse
+## Terminology
 
-- Accuracy heatmap by $(X_i, Y_j)$ cell.
-- Caption-Proof gap $\Delta$ increases monotonically with $X$ level ($+0.07$ at $X_1$ to $+0.28$ at $X_4$).
-- $(X_4, Y_2)$ and $(X_4, Y_3)$ are the hardest cells — combining pixel-level visual detail with complex reasoning.
+- Do NOT call benchmark validation "ablation study." Use: **Benchmark Validation** / **Diagnostic Construction Protocol**.
+- X levels: Scene-level, Region-level, Instance-level, Pixel-level.
+- Y levels: Atomic Retrieval, Relational Association, Evolutionary Synthesis.
+- Caption-Proof = X-axis validity test.
+- Oracle-Evidence = Y-axis validity test.
 
-### 5.4 V-Stream vs. T-Stream (Caption-Proof Validation)
+## Status (2026-04-28)
 
-- Matched comparison: FC(V) vs FC(T), SRAG(V) vs SRAG(T).
-- Confirms visual input consistently helps ($\Delta = +0.12$ average).
-- Two anomalies: Multi-Scene (negative $\Delta$ due to exceptionally detailed captions) and Outdoor Navigation ($\Delta = 0$).
-
-### 5.5 Context-Scale Stress Test
-
-Three conditions: clue-only (oracle) -> per-dataset -> all-concat (~850 rounds). Measures cost of context noise at increasing scales.
-
-## 6. Analysis & Case Studies (~1 page)
-
-### 6.1 Y3 Error Patterns
-
-- **Stale Memory Failure**: RAG frequency-voting returns outdated majority evidence (e.g., fossil room tag C-1127 appears 3x but was updated to A-209).
-- **A->B->A Reversal Blindness**: Models that learn "pick latest update" fail when final state reverts to initial (e.g., Oop's king->commoner arc, doctor guidance reversal).
-- **Attribute Drift**: Fine-grained visual attributes (paint colors, card details) get confused across sessions.
-
-### 6.2 Representative Cases
-
-- Paint-Color Reversal (Home Reno, $X_4$/$Y_3$): sage green -> terracotta pivot.
-- Doctor's Guidance A->B->A (Health, $X_1$/$Y_3$): portal screenshot content only readable from image.
-- Fossil Room Tag Override (Multi-Scene, $X_4$/$Y_3$): 3:1 old-vs-new evidence ratio defeats RAG.
-
-## 7. Conclusion & Limitations (~0.5 page)
-
-- MemEye redefines multimodal memory evaluation via binocular taxonomy + Caption-Proof.
-- Upper-right quadrant remains unsolved by all current methods.
-- **Limitations**:
-  - Human annotation cost is high (Text-Leak Audit + Caption-Proof are manual gates).
-  - Single persona (Hannah Brooks) — may not generalize to all agent deployment contexts.
-  - $Y_3$ questions are inherently fewer, limiting per-cell statistical power.
-  - Current caption baseline uses a single VLM; stronger future captioners may narrow $\Delta$.
-
----
-
-## Writing Priority
-
-1. **Section 3 (Taxonomy)** + **Section 4.4 (Caption-Proof)** — the formal backbone; write these first.
-2. **Figure 1** — the 4x3 matrix visualization; first impression for reviewers.
-3. **Section 5 (Experiments)** — fill the main results table once runs complete.
-4. **Section 1 (Introduction)** — write last; every claim must have experimental backing.
-
-## Open Items
-
-- [ ] GPT-5-mini: no results yet — decide whether to include or drop from claims.
-- [ ] MIRIX: no results in locked_results — run experiments or remove from method list.
-- [ ] Qwen2.5-VL-7B: tables in main.tex have data but not in locked_results — verify provenance.
-- [ ] LLM-as-judge metric: implementation TBD (`[TO-BE-FIXED]` in experiments.tex).
-- [ ] EverMemOS / MemGPT: only 8 results each — need full coverage or acknowledge partial.
+- [x] 371 QAs, 8 tasks, MCQ/open mirrored — done
+- [x] MCQ rotation + question-only filtering — done
+- [x] Locked results: gpt-4.1-nano, gemini-2.5-flash-lite, gpt-5.4-mini — done
+- [x] 13 methods × 3 models — done (nano/gemini/5.4-mini)
+- [x] LLM-as-judge (gpt-5.2) for all open results — done
+- [x] Context-scale ablation (2-task pairs + 4-task quads) — done
+- [x] Caption-proof validation — done
+- [x] Oracle-evidence Y-axis validation (clue-only) — done
+- [x] Outdoor Navigation R1 fix — done
+- [ ] Qwen3-VL-8B / Qwen2.5-VL-7B results — need re-run on new dataset
+- [ ] Paper writing: introduction, conclusion
