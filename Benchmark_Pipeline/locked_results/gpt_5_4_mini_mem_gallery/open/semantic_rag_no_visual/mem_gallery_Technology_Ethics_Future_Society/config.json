@@ -1,0 +1,111 @@
+{
+  "task": {
+    "name": "mem_gallery_Technology_Ethics_Future_Society",
+    "dataset": {
+      "dialog_json": "/Users/qingyuejiao/Desktop/MemoryBench/mem_gallery_data/data/dialog/Technology_Ethics_Future_Society.json",
+      "image_root": "/Users/qingyuejiao/Desktop/MemoryBench/mem_gallery_data/data/image"
+    },
+    "eval": {
+      "mode": "open",
+      "output_json": "output/results_mem_gallery_Technology_Ethics_Future_Society.json",
+      "max_questions": 0
+    }
+  },
+  "dataset": {
+    "dialog_json": "/Users/qingyuejiao/Desktop/MemoryBench/mem_gallery_data/data/dialog/Technology_Ethics_Future_Society.json",
+    "image_root": "/Users/qingyuejiao/Desktop/MemoryBench/mem_gallery_data/data/image"
+  },
+  "eval": {
+    "mode": "open",
+    "output_json": "output/results_mem_gallery_Technology_Ethics_Future_Society.json",
+    "max_questions": 0
+  },
+  "model": {
+    "name": "gpt_5_4_mini",
+    "provider": "openai_api",
+    "model": "gpt-5.4-mini",
+    "api_key_env": "OPENAI_API_KEY",
+    "base_url": "https://api.openai.com/v1",
+    "max_new_tokens": 128,
+    "timeout": 240
+  },
+  "method": {
+    "name": "semantic_rag_no_visual",
+    "retrieval_backend": "dense_text",
+    "top_k": 10,
+    "neighbor_window": 0,
+    "text_embedding_model": "all-MiniLM-L6-v2",
+    "text_dense_weight": 1.0,
+    "image_dense_weight": 0.0
+  },
+  "run": {
+    "output_root": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/runs",
+    "method_runtime": {
+      "retrieval_backend": "dense_text",
+      "retrieval_corpus": "round_text",
+      "method_modality": "no_visual",
+      "top_k": 10,
+      "neighbor_window": 0,
+      "seed_round_ids": [
+        "D11:17",
+        "D11:19",
+        "D11:16",
+        "D10:20",
+        "D11:20",
+        "D10:19",
+        "D10:23",
+        "D10:22",
+        "D10:21",
+        "D10:17"
+      ],
+      "selected_round_ids": [
+        "D11:17",
+        "D11:19",
+        "D11:16",
+        "D10:20",
+        "D11:20",
+        "D10:19",
+        "D10:23",
+        "D10:22",
+        "D10:21",
+        "D10:17"
+      ],
+      "top_candidates": [
+        {
+          "round_id": "D11:17",
+          "score": 0.4838772341743625,
+          "text_dense_score": 0.4838772341743625
+        },
+        {
+          "round_id": "D11:19",
+          "score": 0.45479686718784346,
+          "text_dense_score": 0.45479686718784346
+        },
+        {
+          "round_id": "D11:16",
+          "score": 0.43628438601486386,
+          "text_dense_score": 0.43628438601486386
+        },
+        {
+          "round_id": "D10:20",
+          "score": 0.40021902838274853,
+          "text_dense_score": 0.40021902838274853
+        },
+        {
+          "round_id": "D11:20",
+          "score": 0.3482296115999894,
+          "text_dense_score": 0.3482296115999894
+        }
+      ],
+      "clue_hit_count": 3,
+      "corpus_entry_count": 199,
+      "text_embedding_model": "all-MiniLM-L6-v2",
+      "caption_text_included": true,
+      "image_embeddings_built": false,
+      "history_source": "retrieval",
+      "captions_loaded": false,
+      "images_loaded": false,
+      "history_turns_after_truncation": 20
+    }
+  }
+}

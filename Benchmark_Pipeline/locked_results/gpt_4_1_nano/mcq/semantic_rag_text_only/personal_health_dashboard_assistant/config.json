@@ -1,0 +1,111 @@
+{
+  "task": {
+    "name": "personal_health_dashboard_assistant",
+    "dataset": {
+      "dialog_json": "data/dialog/Personal_Health_Dashboard_Assistant.json",
+      "image_root": "data/image"
+    },
+    "eval": {
+      "mode": "mcq",
+      "output_json": "output/results_personal_health_dashboard_assistant.json",
+      "max_questions": 0
+    }
+  },
+  "dataset": {
+    "dialog_json": "data/dialog/Personal_Health_Dashboard_Assistant.json",
+    "image_root": "data/image"
+  },
+  "eval": {
+    "mode": "mcq",
+    "output_json": "output/results_personal_health_dashboard_assistant.json",
+    "max_questions": 0
+  },
+  "model": {
+    "name": "gpt_4_1_nano",
+    "provider": "openai_api",
+    "model": "gpt-4.1-nano",
+    "api_key_env": "OPENAI_API_KEY",
+    "base_url": "https://api.openai.com/v1",
+    "max_new_tokens": 128,
+    "timeout": 90
+  },
+  "method": {
+    "name": "semantic_rag_text_only",
+    "retrieval_backend": "dense_text",
+    "top_k": 10,
+    "neighbor_window": 0,
+    "text_embedding_model": "all-MiniLM-L6-v2",
+    "text_dense_weight": 1.0,
+    "image_dense_weight": 0.0
+  },
+  "run": {
+    "output_root": "runs",
+    "method_runtime": {
+      "retrieval_backend": "dense_text",
+      "retrieval_corpus": "round_text",
+      "method_modality": "text_only",
+      "top_k": 10,
+      "neighbor_window": 0,
+      "seed_round_ids": [
+        "HEALTH_S2:R7",
+        "HEALTH_S1:R1",
+        "HEALTH_S10:R6",
+        "HEALTH_S7:R3",
+        "HEALTH_S3:R4",
+        "HEALTH_S11:R7",
+        "HEALTH_S1:R2",
+        "HEALTH_S6:R2",
+        "HEALTH_S2:R3",
+        "HEALTH_S9:R4"
+      ],
+      "selected_round_ids": [
+        "HEALTH_S2:R7",
+        "HEALTH_S1:R1",
+        "HEALTH_S10:R6",
+        "HEALTH_S7:R3",
+        "HEALTH_S3:R4",
+        "HEALTH_S11:R7",
+        "HEALTH_S1:R2",
+        "HEALTH_S6:R2",
+        "HEALTH_S2:R3",
+        "HEALTH_S9:R4"
+      ],
+      "top_candidates": [
+        {
+          "round_id": "HEALTH_S2:R7",
+          "score": 0.43049702101531834,
+          "text_dense_score": 0.43049702101531834
+        },
+        {
+          "round_id": "HEALTH_S1:R1",
+          "score": 0.41694675962104505,
+          "text_dense_score": 0.41694675962104505
+        },
+        {
+          "round_id": "HEALTH_S10:R6",
+          "score": 0.36520007798972876,
+          "text_dense_score": 0.36520007798972876
+        },
+        {
+          "round_id": "HEALTH_S7:R3",
+          "score": 0.3224587813551054,
+          "text_dense_score": 0.3224587813551054
+        },
+        {
+          "round_id": "HEALTH_S3:R4",
+          "score": 0.32140792469105833,
+          "text_dense_score": 0.32140792469105833
+        }
+      ],
+      "clue_hit_count": 1,
+      "corpus_entry_count": 97,
+      "text_embedding_model": "all-MiniLM-L6-v2",
+      "caption_text_included": true,
+      "image_embeddings_built": false,
+      "history_source": "retrieval",
+      "captions_loaded": true,
+      "images_loaded": false,
+      "history_turns_after_truncation": 20
+    }
+  }
+}

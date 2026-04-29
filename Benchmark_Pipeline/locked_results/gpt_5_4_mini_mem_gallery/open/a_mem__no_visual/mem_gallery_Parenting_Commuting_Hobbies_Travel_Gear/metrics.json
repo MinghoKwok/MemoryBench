@@ -1,0 +1,33 @@
+{
+  "task_name": "mem_gallery_Parenting_Commuting_Hobbies_Travel_Gear",
+  "model_name": "gpt_5_4_mini",
+  "model_path": "gpt-5.4-mini",
+  "method_name": "a_mem__no_visual",
+  "base_method_name": "a_mem",
+  "method_modality": "no_visual",
+  "mode": "open",
+  "num_qas": 82,
+  "num_qas_run": 82,
+  "dialog_json": "/Users/qingyuejiao/Desktop/MemoryBench/mem_gallery_data/data/dialog/Parenting_Commuting_Hobbies_Travel_Gear.json",
+  "image_root": "/Users/qingyuejiao/Desktop/MemoryBench/mem_gallery_data/data/image",
+  "run_dir": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/runs/mem_gallery_Parenting_Commuting_Hobbies_Travel_Gear/20260429_074545_gpt_5_4_mini_a_mem__no_visual",
+  "git_commit": "878c24f82b8c23afa35832b1e8f22677e85aa148",
+  "summary": {
+    "open_count": 82,
+    "overall": {
+      "em": 0.08536585365853659,
+      "contains_gt": 0.10975609756097561,
+      "f1": 0.2588538785674375,
+      "bleu": 0.0668718398791257,
+      "bleu_1": 0.1837712874313386,
+      "bleu_2": 0.13523200490923717
+    },
+    "by_x": {},
+    "by_y": {},
+    "by_cell": {}
+  },
+  "method_runtime": {
+    "num_memories": 221,
+    "debug_dir": "/Users/qingyuejiao/Desktop/MemoryBench/output/parenting_commuting_hobbies_travel_gear/a_mem"
+  }
+}

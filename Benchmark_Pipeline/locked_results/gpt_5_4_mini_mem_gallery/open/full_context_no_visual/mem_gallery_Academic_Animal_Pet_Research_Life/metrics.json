@@ -1,0 +1,37 @@
+{
+  "task_name": "mem_gallery_Academic_Animal_Pet_Research_Life",
+  "model_name": "gpt_5_4_mini",
+  "model_path": "gpt-5.4-mini",
+  "method_name": "full_context_no_visual",
+  "base_method_name": "full_context_no_visual",
+  "method_modality": "",
+  "mode": "open",
+  "num_qas": 77,
+  "num_qas_run": 77,
+  "dialog_json": "/Users/qingyuejiao/Desktop/MemoryBench/mem_gallery_data/data/dialog/Academic_Animal_Pet_Research_Life.json",
+  "image_root": "/Users/qingyuejiao/Desktop/MemoryBench/mem_gallery_data/data/image",
+  "run_dir": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/runs/mem_gallery_Academic_Animal_Pet_Research_Life/20260429_002521_gpt_5_4_mini_full_context_no_visual",
+  "git_commit": "878c24f82b8c23afa35832b1e8f22677e85aa148",
+  "summary": {
+    "open_count": 77,
+    "overall": {
+      "em": 0.22077922077922077,
+      "contains_gt": 0.35064935064935066,
+      "f1": 0.3562840594483754,
+      "bleu": 0.12950166175399666,
+      "bleu_1": 0.3094850922514158,
+      "bleu_2": 0.1889231989114153
+    },
+    "by_x": {},
+    "by_y": {},
+    "by_cell": {}
+  },
+  "method_runtime": {
+    "method_modality": "no_visual",
+    "history_source": "full_context",
+    "captions_loaded": false,
+    "images_loaded": false,
+    "history_turns_after_truncation": 354,
+    "history_turns_before_truncation": 354
+  }
+}

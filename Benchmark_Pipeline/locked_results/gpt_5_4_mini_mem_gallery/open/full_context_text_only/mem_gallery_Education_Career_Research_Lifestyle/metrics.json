@@ -1,0 +1,39 @@
+{
+  "task_name": "mem_gallery_Education_Career_Research_Lifestyle",
+  "model_name": "gpt_5_4_mini",
+  "model_path": "gpt-5.4-mini",
+  "method_name": "full_context_text_only",
+  "base_method_name": "full_context_text_only",
+  "method_modality": "",
+  "mode": "open",
+  "num_qas": 106,
+  "num_qas_run": 106,
+  "dialog_json": "/Users/qingyuejiao/Desktop/MemoryBench/mem_gallery_data/data/dialog/Education_Career_Research_Lifestyle.json",
+  "image_root": "/Users/qingyuejiao/Desktop/MemoryBench/mem_gallery_data/data/image",
+  "run_dir": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/runs/mem_gallery_Education_Career_Research_Lifestyle/20260428_223439_gpt_5_4_mini_full_context_text_only",
+  "git_commit": "878c24f82b8c23afa35832b1e8f22677e85aa148",
+  "summary": {
+    "open_count": 106,
+    "overall": {
+      "em": 0.36792452830188677,
+      "contains_gt": 0.42452830188679247,
+      "f1": 0.5352313126431704,
+      "bleu": 0.20066420149976585,
+      "bleu_1": 0.4993670955727695,
+      "bleu_2": 0.3699821440800377
+    },
+    "by_x": {},
+    "by_y": {},
+    "by_cell": {}
+  },
+  "method_runtime": {
+    "caption_validation_passed": true,
+    "caption_validation_round_count": 56,
+    "method_modality": "text_only",
+    "history_source": "full_context",
+    "captions_loaded": true,
+    "images_loaded": false,
+    "history_turns_after_truncation": 454,
+    "history_turns_before_truncation": 454
+  }
+}

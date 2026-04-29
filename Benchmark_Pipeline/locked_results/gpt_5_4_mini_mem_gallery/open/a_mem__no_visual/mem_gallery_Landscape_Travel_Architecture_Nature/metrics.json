@@ -1,0 +1,33 @@
+{
+  "task_name": "mem_gallery_Landscape_Travel_Architecture_Nature",
+  "model_name": "gpt_5_4_mini",
+  "model_path": "gpt-5.4-mini",
+  "method_name": "a_mem__no_visual",
+  "base_method_name": "a_mem",
+  "method_modality": "no_visual",
+  "mode": "open",
+  "num_qas": 92,
+  "num_qas_run": 92,
+  "dialog_json": "/Users/qingyuejiao/Desktop/MemoryBench/mem_gallery_data/data/dialog/Landscape_Travel_Architecture_Nature.json",
+  "image_root": "/Users/qingyuejiao/Desktop/MemoryBench/mem_gallery_data/data/image",
+  "run_dir": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/runs/mem_gallery_Landscape_Travel_Architecture_Nature/20260429_070153_gpt_5_4_mini_a_mem__no_visual",
+  "git_commit": "878c24f82b8c23afa35832b1e8f22677e85aa148",
+  "summary": {
+    "open_count": 92,
+    "overall": {
+      "em": 0.25,
+      "contains_gt": 0.29347826086956524,
+      "f1": 0.3153115000941088,
+      "bleu": 0.1021547384100827,
+      "bleu_1": 0.30754974896467036,
+      "bleu_2": 0.2408226337509405
+    },
+    "by_x": {},
+    "by_y": {},
+    "by_cell": {}
+  },
+  "method_runtime": {
+    "num_memories": 173,
+    "debug_dir": "/Users/qingyuejiao/Desktop/MemoryBench/output/landscape_travel_architecture_nature/a_mem"
+  }
+}

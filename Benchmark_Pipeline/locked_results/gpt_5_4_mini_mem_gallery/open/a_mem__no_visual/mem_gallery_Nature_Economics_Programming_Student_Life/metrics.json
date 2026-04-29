@@ -1,0 +1,33 @@
+{
+  "task_name": "mem_gallery_Nature_Economics_Programming_Student_Life",
+  "model_name": "gpt_5_4_mini",
+  "model_path": "gpt-5.4-mini",
+  "method_name": "a_mem__no_visual",
+  "base_method_name": "a_mem",
+  "method_modality": "no_visual",
+  "mode": "open",
+  "num_qas": 136,
+  "num_qas_run": 136,
+  "dialog_json": "/Users/qingyuejiao/Desktop/MemoryBench/mem_gallery_data/data/dialog/Nature_Economics_Programming_Student_Life.json",
+  "image_root": "/Users/qingyuejiao/Desktop/MemoryBench/mem_gallery_data/data/image",
+  "run_dir": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/runs/mem_gallery_Nature_Economics_Programming_Student_Life/20260429_073031_gpt_5_4_mini_a_mem__no_visual",
+  "git_commit": "878c24f82b8c23afa35832b1e8f22677e85aa148",
+  "summary": {
+    "open_count": 136,
+    "overall": {
+      "em": 0.15441176470588236,
+      "contains_gt": 0.18382352941176472,
+      "f1": 0.27745254484860005,
+      "bleu": 0.12395690723183568,
+      "bleu_1": 0.23372532106680471,
+      "bleu_2": 0.17022938694946585
+    },
+    "by_x": {},
+    "by_y": {},
+    "by_cell": {}
+  },
+  "method_runtime": {
+    "num_memories": 201,
+    "debug_dir": "/Users/qingyuejiao/Desktop/MemoryBench/output/nature_economics_programming_student_life/a_mem"
+  }
+}

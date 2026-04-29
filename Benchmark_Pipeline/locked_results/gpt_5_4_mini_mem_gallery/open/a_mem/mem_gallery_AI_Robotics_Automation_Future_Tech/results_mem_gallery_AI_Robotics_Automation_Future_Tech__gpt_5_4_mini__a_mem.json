@@ -1,0 +1,33 @@
+{
+  "task_name": "mem_gallery_AI_Robotics_Automation_Future_Tech",
+  "model_name": "gpt_5_4_mini",
+  "model_path": "gpt-5.4-mini",
+  "method_name": "a_mem",
+  "base_method_name": "a_mem",
+  "method_modality": "",
+  "mode": "open",
+  "num_qas": 57,
+  "num_qas_run": 57,
+  "dialog_json": "/Users/qingyuejiao/Desktop/MemoryBench/mem_gallery_data/data/dialog/AI_Robotics_Automation_Future_Tech.json",
+  "image_root": "/Users/qingyuejiao/Desktop/MemoryBench/mem_gallery_data/data/image",
+  "run_dir": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/runs/mem_gallery_AI_Robotics_Automation_Future_Tech/20260429_085250_gpt_5_4_mini_a_mem",
+  "git_commit": "878c24f82b8c23afa35832b1e8f22677e85aa148",
+  "summary": {
+    "open_count": 57,
+    "overall": {
+      "em": 0.15789473684210525,
+      "contains_gt": 0.2631578947368421,
+      "f1": 0.3471247530662134,
+      "bleu": 0.1059091097959549,
+      "bleu_1": 0.2868490014068706,
+      "bleu_2": 0.22111542843821946
+    },
+    "by_x": {},
+    "by_y": {},
+    "by_cell": {}
+  },
+  "method_runtime": {
+    "num_memories": 185,
+    "debug_dir": "/Users/qingyuejiao/Desktop/MemoryBench/output/ai_robotics_automation_future_tech/a_mem"
+  }
+}

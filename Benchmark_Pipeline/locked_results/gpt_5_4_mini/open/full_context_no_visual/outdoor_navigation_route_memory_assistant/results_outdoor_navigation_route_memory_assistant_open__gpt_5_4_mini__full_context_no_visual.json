@@ -1,0 +1,160 @@
+{
+  "task_name": "outdoor_navigation_route_memory_assistant_open",
+  "model_name": "gpt_5_4_mini",
+  "model_path": "gpt-5.4-mini",
+  "method_name": "full_context_no_visual",
+  "base_method_name": "full_context_no_visual",
+  "method_modality": "",
+  "mode": "open",
+  "num_qas": 28,
+  "num_qas_run": 28,
+  "dialog_json": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/dialog/Outdoor_Navigation_Route_Memory_Assistant_Open.json",
+  "image_root": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image",
+  "run_dir": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/runs/outdoor_navigation_route_memory_assistant_open/20260428_204801_gpt_5_4_mini_full_context_no_visual",
+  "git_commit": "878c24f82b8c23afa35832b1e8f22677e85aa148",
+  "summary": {
+    "open_count": 28,
+    "overall": {
+      "em": 0.0,
+      "contains_gt": 0.0,
+      "f1": 0.16215110286538859,
+      "bleu": 0.030652920997838385,
+      "bleu_1": 0.12429215768686347,
+      "bleu_2": 0.07249952010361424
+    },
+    "by_x": {
+      "X2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.15013187429854097,
+        "bleu": 0.029830430571380802,
+        "bleu_1": 0.11913448662558365,
+        "bleu_2": 0.07034649685048981
+      },
+      "X1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.2638888888888889,
+        "bleu": 0.030080591121339664,
+        "bleu_1": 0.15841111339406583,
+        "bleu_2": 0.051000677033911625
+      },
+      "X4": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.10923809523809525,
+        "bleu": 0.012237567961177812,
+        "bleu_1": 0.07210526315789474,
+        "bleu_2": 0.04049985960535681
+      },
+      "X3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.25,
+        "bleu": 0.08495221224235612,
+        "bleu_1": 0.25,
+        "bleu_2": 0.2041241452319315
+      }
+    },
+    "by_y": {
+      "Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.11293602693602693,
+        "bleu": 0.027079301584350155,
+        "bleu_1": 0.09426797000836391,
+        "bleu_2": 0.05544294287147406
+      },
+      "Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.6666666666666666,
+        "bleu": 0.06541924356118012,
+        "bleu_1": 0.36787944117144233,
+        "bleu_2": 0.11633369384516798
+      },
+      "Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.1816269841269841,
+        "bleu": 0.032222751717753524,
+        "bleu_1": 0.14152345199460634,
+        "bleu_2": 0.0901673938319933
+      }
+    },
+    "by_cell": {
+      "X2_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.08543900543900544,
+        "bleu": 0.017435011974334766,
+        "bleu_1": 0.06646304231734297,
+        "bleu_2": 0.03132105465347474
+      },
+      "X1_Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.6666666666666666,
+        "bleu": 0.06541924356118012,
+        "bleu_1": 0.36787944117144233,
+        "bleu_2": 0.11633369384516798
+      },
+      "X4_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.08333333333333334,
+        "bleu": 0.009629943614188135,
+        "bleu_1": 0.05000000000000001,
+        "bleu_2": 0.01622214211307625
+      },
+      "X3_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.5,
+        "bleu": 0.16990442448471224,
+        "bleu_1": 0.5,
+        "bleu_2": 0.408248290463863
+      },
+      "X2_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.3183333333333333,
+        "bleu": 0.062058518923700505,
+        "bleu_1": 0.25608024182700945,
+        "bleu_2": 0.171812646562729
+      },
+      "X4_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.11571428571428571,
+        "bleu": 0.012889474047925231,
+        "bleu_1": 0.07763157894736843,
+        "bleu_2": 0.04656928897842696
+      },
+      "X1_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0625,
+        "bleu": 0.012411264901419439,
+        "bleu_1": 0.05367694950537756,
+        "bleu_2": 0.018334168628283444
+      },
+      "X3_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0,
+        "bleu": 0.0,
+        "bleu_1": 0.0,
+        "bleu_2": 0.0
+      }
+    }
+  },
+  "method_runtime": {
+    "method_modality": "no_visual",
+    "history_source": "full_context",
+    "captions_loaded": false,
+    "images_loaded": false,
+    "history_turns_after_truncation": 120,
+    "history_turns_before_truncation": 120
+  }
+}

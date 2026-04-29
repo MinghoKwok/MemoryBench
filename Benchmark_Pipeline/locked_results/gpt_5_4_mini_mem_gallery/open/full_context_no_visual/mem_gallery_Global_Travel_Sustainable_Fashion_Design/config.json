@@ -1,0 +1,47 @@
+{
+  "task": {
+    "name": "mem_gallery_Global_Travel_Sustainable_Fashion_Design",
+    "dataset": {
+      "dialog_json": "/Users/qingyuejiao/Desktop/MemoryBench/mem_gallery_data/data/dialog/Global_Travel_Sustainable_Fashion_Design.json",
+      "image_root": "/Users/qingyuejiao/Desktop/MemoryBench/mem_gallery_data/data/image"
+    },
+    "eval": {
+      "mode": "open",
+      "output_json": "output/results_mem_gallery_Global_Travel_Sustainable_Fashion_Design.json",
+      "max_questions": 0
+    }
+  },
+  "dataset": {
+    "dialog_json": "/Users/qingyuejiao/Desktop/MemoryBench/mem_gallery_data/data/dialog/Global_Travel_Sustainable_Fashion_Design.json",
+    "image_root": "/Users/qingyuejiao/Desktop/MemoryBench/mem_gallery_data/data/image"
+  },
+  "eval": {
+    "mode": "open",
+    "output_json": "output/results_mem_gallery_Global_Travel_Sustainable_Fashion_Design.json",
+    "max_questions": 0
+  },
+  "model": {
+    "name": "gpt_5_4_mini",
+    "provider": "openai_api",
+    "model": "gpt-5.4-mini",
+    "api_key_env": "OPENAI_API_KEY",
+    "base_url": "https://api.openai.com/v1",
+    "max_new_tokens": 128,
+    "timeout": 240
+  },
+  "method": {
+    "name": "full_context_no_visual",
+    "context_token_limit": 128000
+  },
+  "run": {
+    "output_root": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/runs",
+    "method_runtime": {
+      "method_modality": "no_visual",
+      "history_source": "full_context",
+      "captions_loaded": false,
+      "images_loaded": false,
+      "history_turns_after_truncation": 318,
+      "history_turns_before_truncation": 318
+    }
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "task_name": "mem_gallery_Home_Health_Lifestyle_Product",
+  "model_name": "gpt_5_4_mini",
+  "model_path": "gpt-5.4-mini",
+  "method_name": "full_context_text_only",
+  "base_method_name": "full_context_text_only",
+  "method_modality": "",
+  "mode": "open",
+  "num_qas": 74,
+  "num_qas_run": 74,
+  "dialog_json": "/Users/qingyuejiao/Desktop/MemoryBench/mem_gallery_data/data/dialog/Home_Health_Lifestyle_Product.json",
+  "image_root": "/Users/qingyuejiao/Desktop/MemoryBench/mem_gallery_data/data/image",
+  "run_dir": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/runs/mem_gallery_Home_Health_Lifestyle_Product/20260428_230805_gpt_5_4_mini_full_context_text_only",
+  "git_commit": "878c24f82b8c23afa35832b1e8f22677e85aa148",
+  "summary": {
+    "open_count": 74,
+    "overall": {
+      "em": 0.44594594594594594,
+      "contains_gt": 0.4594594594594595,
+      "f1": 0.6201709919535731,
+      "bleu": 0.2078314545697605,
+      "bleu_1": 0.573953790955414,
+      "bleu_2": 0.36848470373858005
+    },
+    "by_x": {},
+    "by_y": {},
+    "by_cell": {}
+  },
+  "method_runtime": {
+    "caption_validation_passed": true,
+    "caption_validation_round_count": 36,
+    "method_modality": "text_only",
+    "history_source": "full_context",
+    "captions_loaded": true,
+    "images_loaded": false,
+    "history_turns_after_truncation": 326,
+    "history_turns_before_truncation": 326
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "task_name": "mem_gallery_Fashion_Personal_Care_Lifestyle_Shopping",
+  "model_name": "gpt_5_4_mini",
+  "model_path": "gpt-5.4-mini",
+  "method_name": "a_mem__no_visual",
+  "base_method_name": "a_mem",
+  "method_modality": "no_visual",
+  "mode": "open",
+  "num_qas": 61,
+  "num_qas_run": 61,
+  "dialog_json": "/Users/qingyuejiao/Desktop/MemoryBench/mem_gallery_data/data/dialog/Fashion_Personal_Care_Lifestyle_Shopping.json",
+  "image_root": "/Users/qingyuejiao/Desktop/MemoryBench/mem_gallery_data/data/image",
+  "run_dir": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/runs/mem_gallery_Fashion_Personal_Care_Lifestyle_Shopping/20260429_055218_gpt_5_4_mini_a_mem__no_visual",
+  "git_commit": "878c24f82b8c23afa35832b1e8f22677e85aa148",
+  "summary": {
+    "open_count": 61,
+    "overall": {
+      "em": 0.04918032786885246,
+      "contains_gt": 0.22950819672131148,
+      "f1": 0.2950091346199479,
+      "bleu": 0.09580281885069242,
+      "bleu_1": 0.19549327347721107,
+      "bleu_2": 0.1408283128740051
+    },
+    "by_x": {},
+    "by_y": {},
+    "by_cell": {}
+  },
+  "method_runtime": {
+    "num_memories": 168,
+    "debug_dir": "/Users/qingyuejiao/Desktop/MemoryBench/output/fashion_personal_care_lifestyle_shopping/a_mem"
+  }
+}

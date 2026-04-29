@@ -1,0 +1,51 @@
+{
+  "task": {
+    "name": "mem_gallery_Baking_Dessert_Daily_Life_Skill",
+    "dataset": {
+      "dialog_json": "/Users/qingyuejiao/Desktop/MemoryBench/mem_gallery_data/data/dialog/Baking_Dessert_Daily_Life_Skill.json",
+      "image_root": "/Users/qingyuejiao/Desktop/MemoryBench/mem_gallery_data/data/image"
+    },
+    "eval": {
+      "mode": "open",
+      "output_json": "output/results_mem_gallery_Baking_Dessert_Daily_Life_Skill.json",
+      "max_questions": 0
+    }
+  },
+  "dataset": {
+    "dialog_json": "/Users/qingyuejiao/Desktop/MemoryBench/mem_gallery_data/data/dialog/Baking_Dessert_Daily_Life_Skill.json",
+    "image_root": "/Users/qingyuejiao/Desktop/MemoryBench/mem_gallery_data/data/image"
+  },
+  "eval": {
+    "mode": "open",
+    "output_json": "output/results_mem_gallery_Baking_Dessert_Daily_Life_Skill.json",
+    "max_questions": 0
+  },
+  "model": {
+    "name": "gpt_5_4_mini",
+    "provider": "openai_api",
+    "model": "gpt-5.4-mini",
+    "api_key_env": "OPENAI_API_KEY",
+    "base_url": "https://api.openai.com/v1",
+    "max_new_tokens": 128,
+    "timeout": 240
+  },
+  "method": {
+    "name": "a_mem",
+    "modality": "no_visual",
+    "backend": "openai",
+    "llm_model": "gpt-4.1-nano",
+    "llm_api_key": "",
+    "llm_api_key_env": "OPENAI_API_KEY",
+    "retrieve_k": 10,
+    "embedding_model": "all-MiniLM-L6-v2",
+    "caption_preprocessed": false,
+    "temperature_c5": 0.5
+  },
+  "run": {
+    "output_root": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/runs",
+    "method_runtime": {
+      "num_memories": 262,
+      "debug_dir": "/Users/qingyuejiao/Desktop/MemoryBench/output/baking_dessert_daily_life_skill/a_mem"
+    }
+  }
+}

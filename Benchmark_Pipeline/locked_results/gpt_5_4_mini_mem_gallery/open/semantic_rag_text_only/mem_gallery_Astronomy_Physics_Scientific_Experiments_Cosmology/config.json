@@ -1,0 +1,111 @@
+{
+  "task": {
+    "name": "mem_gallery_Astronomy_Physics_Scientific_Experiments_Cosmology",
+    "dataset": {
+      "dialog_json": "/Users/qingyuejiao/Desktop/MemoryBench/mem_gallery_data/data/dialog/Astronomy_Physics_Scientific_Experiments_Cosmology.json",
+      "image_root": "/Users/qingyuejiao/Desktop/MemoryBench/mem_gallery_data/data/image"
+    },
+    "eval": {
+      "mode": "open",
+      "output_json": "output/results_mem_gallery_Astronomy_Physics_Scientific_Experiments_Cosmology.json",
+      "max_questions": 0
+    }
+  },
+  "dataset": {
+    "dialog_json": "/Users/qingyuejiao/Desktop/MemoryBench/mem_gallery_data/data/dialog/Astronomy_Physics_Scientific_Experiments_Cosmology.json",
+    "image_root": "/Users/qingyuejiao/Desktop/MemoryBench/mem_gallery_data/data/image"
+  },
+  "eval": {
+    "mode": "open",
+    "output_json": "output/results_mem_gallery_Astronomy_Physics_Scientific_Experiments_Cosmology.json",
+    "max_questions": 0
+  },
+  "model": {
+    "name": "gpt_5_4_mini",
+    "provider": "openai_api",
+    "model": "gpt-5.4-mini",
+    "api_key_env": "OPENAI_API_KEY",
+    "base_url": "https://api.openai.com/v1",
+    "max_new_tokens": 128,
+    "timeout": 240
+  },
+  "method": {
+    "name": "semantic_rag_text_only",
+    "retrieval_backend": "dense_text",
+    "top_k": 10,
+    "neighbor_window": 0,
+    "text_embedding_model": "all-MiniLM-L6-v2",
+    "text_dense_weight": 1.0,
+    "image_dense_weight": 0.0
+  },
+  "run": {
+    "output_root": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/runs",
+    "method_runtime": {
+      "retrieval_backend": "dense_text",
+      "retrieval_corpus": "round_text",
+      "method_modality": "text_only",
+      "top_k": 10,
+      "neighbor_window": 0,
+      "seed_round_ids": [
+        "D3:19",
+        "D11:15",
+        "D11:17",
+        "D11:14",
+        "D8:16",
+        "D7:15",
+        "D11:2",
+        "D11:16",
+        "D11:13",
+        "D7:17"
+      ],
+      "selected_round_ids": [
+        "D3:19",
+        "D11:15",
+        "D11:17",
+        "D11:14",
+        "D8:16",
+        "D7:15",
+        "D11:2",
+        "D11:16",
+        "D11:13",
+        "D7:17"
+      ],
+      "top_candidates": [
+        {
+          "round_id": "D3:19",
+          "score": 0.5079552464583859,
+          "text_dense_score": 0.5079552464583859
+        },
+        {
+          "round_id": "D11:15",
+          "score": 0.41231465833095027,
+          "text_dense_score": 0.41231465833095027
+        },
+        {
+          "round_id": "D11:17",
+          "score": 0.4038407311504144,
+          "text_dense_score": 0.4038407311504144
+        },
+        {
+          "round_id": "D11:14",
+          "score": 0.39790269102472253,
+          "text_dense_score": 0.39790269102472253
+        },
+        {
+          "round_id": "D8:16",
+          "score": 0.39761318811998103,
+          "text_dense_score": 0.39761318811998103
+        }
+      ],
+      "clue_hit_count": 0,
+      "corpus_entry_count": 203,
+      "text_embedding_model": "all-MiniLM-L6-v2",
+      "caption_text_included": true,
+      "image_embeddings_built": false,
+      "history_source": "retrieval",
+      "captions_loaded": true,
+      "images_loaded": false,
+      "history_turns_after_truncation": 20
+    }
+  }
+}

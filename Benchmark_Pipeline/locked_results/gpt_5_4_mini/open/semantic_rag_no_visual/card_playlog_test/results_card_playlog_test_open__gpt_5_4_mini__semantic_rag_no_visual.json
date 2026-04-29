@@ -1,0 +1,139 @@
+{
+  "task_name": "card_playlog_test_open",
+  "model_name": "gpt_5_4_mini",
+  "model_path": "gpt-5.4-mini",
+  "method_name": "semantic_rag_no_visual",
+  "base_method_name": "semantic_rag_no_visual",
+  "method_modality": "",
+  "mode": "open",
+  "num_qas": 48,
+  "num_qas_run": 48,
+  "dialog_json": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/dialog/Card_Playlog_Test_Open.json",
+  "image_root": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image",
+  "run_dir": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/runs/card_playlog_test_open/20260428_205816_gpt_5_4_mini_semantic_rag_no_visual",
+  "git_commit": "878c24f82b8c23afa35832b1e8f22677e85aa148",
+  "summary": {
+    "open_count": 48,
+    "overall": {
+      "em": 0.3958333333333333,
+      "contains_gt": 0.3958333333333333,
+      "f1": 0.3958333333333333,
+      "bleu": 0.07039022664737403,
+      "bleu_1": 0.3958333333333333,
+      "bleu_2": 0.12517349071499836
+    },
+    "by_x": {
+      "X4": {
+        "em": 0.3958333333333333,
+        "contains_gt": 0.3958333333333333,
+        "f1": 0.3958333333333333,
+        "bleu": 0.07039022664737403,
+        "bleu_1": 0.3958333333333333,
+        "bleu_2": 0.12517349071499836
+      }
+    },
+    "by_y": {
+      "Y3": {
+        "em": 0.21052631578947367,
+        "contains_gt": 0.21052631578947367,
+        "f1": 0.21052631578947367,
+        "bleu": 0.037437461263977324,
+        "bleu_1": 0.21052631578947367,
+        "bleu_2": 0.06657426652986063
+      },
+      "Y2": {
+        "em": 0.5172413793103449,
+        "contains_gt": 0.5172413793103449,
+        "f1": 0.5172413793103449,
+        "bleu": 0.09197996948477187,
+        "bleu_1": 0.5172413793103449,
+        "bleu_2": 0.16356608587077828
+      }
+    },
+    "by_cell": {
+      "X4_Y3": {
+        "em": 0.21052631578947367,
+        "contains_gt": 0.21052631578947367,
+        "f1": 0.21052631578947367,
+        "bleu": 0.037437461263977324,
+        "bleu_1": 0.21052631578947367,
+        "bleu_2": 0.06657426652986063
+      },
+      "X4_Y2": {
+        "em": 0.5172413793103449,
+        "contains_gt": 0.5172413793103449,
+        "f1": 0.5172413793103449,
+        "bleu": 0.09197996948477187,
+        "bleu_1": 0.5172413793103449,
+        "bleu_2": 0.16356608587077828
+      }
+    }
+  },
+  "method_runtime": {
+    "retrieval_backend": "dense_text",
+    "retrieval_corpus": "round_text",
+    "method_modality": "no_visual",
+    "top_k": 10,
+    "neighbor_window": 0,
+    "seed_round_ids": [
+      "PLAY_S1:R1",
+      "PLAY_S4:R1",
+      "PLAY_S3:R1",
+      "PLAY_S3:R3",
+      "PLAY_S2:R1",
+      "PLAY_S3:R6",
+      "PLAY_S4:R7",
+      "PLAY_S4:R6",
+      "PLAY_S4:R3",
+      "PLAY_S4:R4"
+    ],
+    "selected_round_ids": [
+      "PLAY_S1:R1",
+      "PLAY_S4:R1",
+      "PLAY_S3:R1",
+      "PLAY_S3:R3",
+      "PLAY_S2:R1",
+      "PLAY_S3:R6",
+      "PLAY_S4:R7",
+      "PLAY_S4:R6",
+      "PLAY_S4:R3",
+      "PLAY_S4:R4"
+    ],
+    "top_candidates": [
+      {
+        "round_id": "PLAY_S1:R1",
+        "score": 0.5394042847880628,
+        "text_dense_score": 0.5394042847880628
+      },
+      {
+        "round_id": "PLAY_S4:R1",
+        "score": 0.5351180075554457,
+        "text_dense_score": 0.5351180075554457
+      },
+      {
+        "round_id": "PLAY_S3:R1",
+        "score": 0.5273098327670225,
+        "text_dense_score": 0.5273098327670225
+      },
+      {
+        "round_id": "PLAY_S3:R3",
+        "score": 0.5244891772869864,
+        "text_dense_score": 0.5244891772869864
+      },
+      {
+        "round_id": "PLAY_S2:R1",
+        "score": 0.5079459356215262,
+        "text_dense_score": 0.5079459356215262
+      }
+    ],
+    "clue_hit_count": 0,
+    "corpus_entry_count": 30,
+    "text_embedding_model": "all-MiniLM-L6-v2",
+    "caption_text_included": true,
+    "image_embeddings_built": false,
+    "history_source": "retrieval",
+    "captions_loaded": false,
+    "images_loaded": false,
+    "history_turns_after_truncation": 20
+  }
+}

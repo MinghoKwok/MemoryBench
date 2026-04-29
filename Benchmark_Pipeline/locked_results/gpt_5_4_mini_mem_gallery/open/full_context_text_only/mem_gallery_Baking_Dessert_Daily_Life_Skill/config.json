@@ -1,0 +1,49 @@
+{
+  "task": {
+    "name": "mem_gallery_Baking_Dessert_Daily_Life_Skill",
+    "dataset": {
+      "dialog_json": "/Users/qingyuejiao/Desktop/MemoryBench/mem_gallery_data/data/dialog/Baking_Dessert_Daily_Life_Skill.json",
+      "image_root": "/Users/qingyuejiao/Desktop/MemoryBench/mem_gallery_data/data/image"
+    },
+    "eval": {
+      "mode": "open",
+      "output_json": "output/results_mem_gallery_Baking_Dessert_Daily_Life_Skill.json",
+      "max_questions": 0
+    }
+  },
+  "dataset": {
+    "dialog_json": "/Users/qingyuejiao/Desktop/MemoryBench/mem_gallery_data/data/dialog/Baking_Dessert_Daily_Life_Skill.json",
+    "image_root": "/Users/qingyuejiao/Desktop/MemoryBench/mem_gallery_data/data/image"
+  },
+  "eval": {
+    "mode": "open",
+    "output_json": "output/results_mem_gallery_Baking_Dessert_Daily_Life_Skill.json",
+    "max_questions": 0
+  },
+  "model": {
+    "name": "gpt_5_4_mini",
+    "provider": "openai_api",
+    "model": "gpt-5.4-mini",
+    "api_key_env": "OPENAI_API_KEY",
+    "base_url": "https://api.openai.com/v1",
+    "max_new_tokens": 128,
+    "timeout": 240
+  },
+  "method": {
+    "name": "full_context_text_only",
+    "context_token_limit": 128000
+  },
+  "run": {
+    "output_root": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/runs",
+    "method_runtime": {
+      "caption_validation_passed": true,
+      "caption_validation_round_count": 57,
+      "method_modality": "text_only",
+      "history_source": "full_context",
+      "captions_loaded": true,
+      "images_loaded": false,
+      "history_turns_after_truncation": 524,
+      "history_turns_before_truncation": 524
+    }
+  }
+}

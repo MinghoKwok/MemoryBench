@@ -1,0 +1,111 @@
+{
+  "task": {
+    "name": "mem_gallery_AI_Robotics_Automation_Future_Tech",
+    "dataset": {
+      "dialog_json": "/Users/qingyuejiao/Desktop/MemoryBench/mem_gallery_data/data/dialog/AI_Robotics_Automation_Future_Tech.json",
+      "image_root": "/Users/qingyuejiao/Desktop/MemoryBench/mem_gallery_data/data/image"
+    },
+    "eval": {
+      "mode": "open",
+      "output_json": "output/results_mem_gallery_AI_Robotics_Automation_Future_Tech.json",
+      "max_questions": 0
+    }
+  },
+  "dataset": {
+    "dialog_json": "/Users/qingyuejiao/Desktop/MemoryBench/mem_gallery_data/data/dialog/AI_Robotics_Automation_Future_Tech.json",
+    "image_root": "/Users/qingyuejiao/Desktop/MemoryBench/mem_gallery_data/data/image"
+  },
+  "eval": {
+    "mode": "open",
+    "output_json": "output/results_mem_gallery_AI_Robotics_Automation_Future_Tech.json",
+    "max_questions": 0
+  },
+  "model": {
+    "name": "gpt_5_4_mini",
+    "provider": "openai_api",
+    "model": "gpt-5.4-mini",
+    "api_key_env": "OPENAI_API_KEY",
+    "base_url": "https://api.openai.com/v1",
+    "max_new_tokens": 128,
+    "timeout": 240
+  },
+  "method": {
+    "name": "semantic_rag_no_visual",
+    "retrieval_backend": "dense_text",
+    "top_k": 10,
+    "neighbor_window": 0,
+    "text_embedding_model": "all-MiniLM-L6-v2",
+    "text_dense_weight": 1.0,
+    "image_dense_weight": 0.0
+  },
+  "run": {
+    "output_root": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/runs",
+    "method_runtime": {
+      "retrieval_backend": "dense_text",
+      "retrieval_corpus": "round_text",
+      "method_modality": "no_visual",
+      "top_k": 10,
+      "neighbor_window": 0,
+      "seed_round_ids": [
+        "D5:9",
+        "D10:19",
+        "D10:6",
+        "D1:5",
+        "D12:12",
+        "D1:9",
+        "D10:1",
+        "D7:2",
+        "D11:1",
+        "D1:2"
+      ],
+      "selected_round_ids": [
+        "D5:9",
+        "D10:19",
+        "D10:6",
+        "D1:5",
+        "D12:12",
+        "D1:9",
+        "D10:1",
+        "D7:2",
+        "D11:1",
+        "D1:2"
+      ],
+      "top_candidates": [
+        {
+          "round_id": "D5:9",
+          "score": 0.42460126722121216,
+          "text_dense_score": 0.42460126722121216
+        },
+        {
+          "round_id": "D10:19",
+          "score": 0.4119211286020209,
+          "text_dense_score": 0.4119211286020209
+        },
+        {
+          "round_id": "D10:6",
+          "score": 0.40469107554271383,
+          "text_dense_score": 0.40469107554271383
+        },
+        {
+          "round_id": "D1:5",
+          "score": 0.40315217355105526,
+          "text_dense_score": 0.40315217355105526
+        },
+        {
+          "round_id": "D12:12",
+          "score": 0.3977009658978061,
+          "text_dense_score": 0.3977009658978061
+        }
+      ],
+      "clue_hit_count": 0,
+      "corpus_entry_count": 185,
+      "text_embedding_model": "all-MiniLM-L6-v2",
+      "caption_text_included": true,
+      "image_embeddings_built": false,
+      "history_source": "retrieval",
+      "captions_loaded": false,
+      "images_loaded": false,
+      "history_turns_after_truncation": 20
+    }
+  }
+}

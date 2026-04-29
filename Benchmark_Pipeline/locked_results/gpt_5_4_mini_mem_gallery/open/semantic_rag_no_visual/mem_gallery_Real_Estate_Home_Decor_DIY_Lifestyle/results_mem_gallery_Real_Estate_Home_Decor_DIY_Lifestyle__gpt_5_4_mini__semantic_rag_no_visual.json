@@ -1,0 +1,96 @@
+{
+  "task_name": "mem_gallery_Real_Estate_Home_Decor_DIY_Lifestyle",
+  "model_name": "gpt_5_4_mini",
+  "model_path": "gpt-5.4-mini",
+  "method_name": "semantic_rag_no_visual",
+  "base_method_name": "semantic_rag_no_visual",
+  "method_modality": "",
+  "mode": "open",
+  "num_qas": 75,
+  "num_qas_run": 75,
+  "dialog_json": "/Users/qingyuejiao/Desktop/MemoryBench/mem_gallery_data/data/dialog/Real_Estate_Home_Decor_DIY_Lifestyle.json",
+  "image_root": "/Users/qingyuejiao/Desktop/MemoryBench/mem_gallery_data/data/image",
+  "run_dir": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/runs/mem_gallery_Real_Estate_Home_Decor_DIY_Lifestyle/20260429_024723_gpt_5_4_mini_semantic_rag_no_visual",
+  "git_commit": "878c24f82b8c23afa35832b1e8f22677e85aa148",
+  "summary": {
+    "open_count": 75,
+    "overall": {
+      "em": 0.2,
+      "contains_gt": 0.2,
+      "f1": 0.35280798067571006,
+      "bleu": 0.1800054553476082,
+      "bleu_1": 0.31505777493538306,
+      "bleu_2": 0.25027095695979457
+    },
+    "by_x": {},
+    "by_y": {},
+    "by_cell": {}
+  },
+  "method_runtime": {
+    "retrieval_backend": "dense_text",
+    "retrieval_corpus": "round_text",
+    "method_modality": "no_visual",
+    "top_k": 10,
+    "neighbor_window": 0,
+    "seed_round_ids": [
+      "D10:18",
+      "D10:29",
+      "D11:3",
+      "D8:6",
+      "D10:11",
+      "D8:9",
+      "D10:7",
+      "D9:17",
+      "D11:2",
+      "D10:14"
+    ],
+    "selected_round_ids": [
+      "D10:18",
+      "D10:29",
+      "D11:3",
+      "D8:6",
+      "D10:11",
+      "D8:9",
+      "D10:7",
+      "D9:17",
+      "D11:2",
+      "D10:14"
+    ],
+    "top_candidates": [
+      {
+        "round_id": "D10:18",
+        "score": 0.2199310635013981,
+        "text_dense_score": 0.2199310635013981
+      },
+      {
+        "round_id": "D10:29",
+        "score": 0.19925256295508073,
+        "text_dense_score": 0.19925256295508073
+      },
+      {
+        "round_id": "D11:3",
+        "score": 0.19370565431508627,
+        "text_dense_score": 0.19370565431508627
+      },
+      {
+        "round_id": "D8:6",
+        "score": 0.19211575695558364,
+        "text_dense_score": 0.19211575695558364
+      },
+      {
+        "round_id": "D10:11",
+        "score": 0.1902308037360462,
+        "text_dense_score": 0.1902308037360462
+      }
+    ],
+    "clue_hit_count": 2,
+    "corpus_entry_count": 196,
+    "text_embedding_model": "all-MiniLM-L6-v2",
+    "caption_text_included": true,
+    "image_embeddings_built": false,
+    "history_source": "retrieval",
+    "captions_loaded": false,
+    "images_loaded": false,
+    "history_turns_after_truncation": 20
+  }
+}

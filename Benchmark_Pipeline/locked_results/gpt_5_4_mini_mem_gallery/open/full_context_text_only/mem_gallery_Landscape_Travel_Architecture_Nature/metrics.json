@@ -1,0 +1,39 @@
+{
+  "task_name": "mem_gallery_Landscape_Travel_Architecture_Nature",
+  "model_name": "gpt_5_4_mini",
+  "model_path": "gpt-5.4-mini",
+  "method_name": "full_context_text_only",
+  "base_method_name": "full_context_text_only",
+  "method_modality": "",
+  "mode": "open",
+  "num_qas": 92,
+  "num_qas_run": 92,
+  "dialog_json": "/Users/qingyuejiao/Desktop/MemoryBench/mem_gallery_data/data/dialog/Landscape_Travel_Architecture_Nature.json",
+  "image_root": "/Users/qingyuejiao/Desktop/MemoryBench/mem_gallery_data/data/image",
+  "run_dir": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/runs/mem_gallery_Landscape_Travel_Architecture_Nature/20260428_231951_gpt_5_4_mini_full_context_text_only",
+  "git_commit": "878c24f82b8c23afa35832b1e8f22677e85aa148",
+  "summary": {
+    "open_count": 92,
+    "overall": {
+      "em": 0.32608695652173914,
+      "contains_gt": 0.3804347826086957,
+      "f1": 0.4314100633665851,
+      "bleu": 0.15721320135757397,
+      "bleu_1": 0.4165068005259057,
+      "bleu_2": 0.31674311095722524
+    },
+    "by_x": {},
+    "by_y": {},
+    "by_cell": {}
+  },
+  "method_runtime": {
+    "caption_validation_passed": true,
+    "caption_validation_round_count": 64,
+    "method_modality": "text_only",
+    "history_source": "full_context",
+    "captions_loaded": true,
+    "images_loaded": false,
+    "history_turns_after_truncation": 346,
+    "history_turns_before_truncation": 346
+  }
+}

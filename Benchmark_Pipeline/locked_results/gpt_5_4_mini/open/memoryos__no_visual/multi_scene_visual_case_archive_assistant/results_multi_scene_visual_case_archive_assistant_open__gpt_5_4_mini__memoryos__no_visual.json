@@ -1,0 +1,134 @@
+{
+  "task_name": "multi_scene_visual_case_archive_assistant_open",
+  "model_name": "gpt_5_4_mini",
+  "model_path": "gpt-5.4-mini",
+  "method_name": "memoryos__no_visual",
+  "base_method_name": "memoryos",
+  "method_modality": "no_visual",
+  "mode": "open",
+  "num_qas": 50,
+  "num_qas_run": 50,
+  "dialog_json": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/dialog/Multi-Scene_Visual_Case_Archive_Assistant_Open.json",
+  "image_root": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image",
+  "run_dir": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/runs/multi_scene_visual_case_archive_assistant_open/20260429_000204_gpt_5_4_mini_memoryos__no_visual",
+  "git_commit": "878c24f82b8c23afa35832b1e8f22677e85aa148",
+  "summary": {
+    "open_count": 50,
+    "overall": {
+      "em": 0.12,
+      "contains_gt": 0.18,
+      "f1": 0.29951506625802043,
+      "bleu": 0.16114419588263187,
+      "bleu_1": 0.2547932322240148,
+      "bleu_2": 0.20543327407765827
+    },
+    "by_x": {
+      "X4": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.2916666666666667,
+        "bleu": 0.15463078092896515,
+        "bleu_1": 0.24019607843137253,
+        "bleu_2": 0.2030460945866392
+      },
+      "X3": {
+        "em": 0.12195121951219512,
+        "contains_gt": 0.1951219512195122,
+        "f1": 0.298446122458711,
+        "bleu": 0.15509010779877322,
+        "bleu_1": 0.2549122713778523,
+        "bleu_2": 0.2033457818963396
+      },
+      "X2": {
+        "em": 0.2,
+        "contains_gt": 0.2,
+        "f1": 0.31455912508544087,
+        "bleu": 0.21599845013320607,
+        "bleu_1": 0.26549483419666114,
+        "bleu_2": 0.22446045355728653
+      }
+    },
+    "by_y": {
+      "Y2": {
+        "em": 0.0,
+        "contains_gt": 0.125,
+        "f1": 0.28273809523809523,
+        "bleu": 0.11133732390169095,
+        "bleu_1": 0.22572505436262438,
+        "bleu_2": 0.1801523138756788
+      },
+      "Y3": {
+        "em": 0.09090909090909091,
+        "contains_gt": 0.09090909090909091,
+        "f1": 0.24443093871709398,
+        "bleu": 0.10413038613951296,
+        "bleu_1": 0.20102125787746872,
+        "bleu_2": 0.11517080976474392
+      },
+      "Y1": {
+        "em": 0.16129032258064516,
+        "contains_gt": 0.22580645161290322,
+        "f1": 0.32339058790671693,
+        "bleu": 0.19422828888333624,
+        "bleu_1": 0.28137507547250284,
+        "bleu_2": 0.24398600920855804
+      }
+    },
+    "by_cell": {
+      "X4_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.3888888888888889,
+        "bleu": 0.20617437457195353,
+        "bleu_1": 0.3202614379084967,
+        "bleu_2": 0.27072812611551894
+      },
+      "X3_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.2,
+        "f1": 0.21904761904761905,
+        "bleu": 0.054435093499533384,
+        "bleu_1": 0.16900322423510097,
+        "bleu_2": 0.1258068265317747
+      },
+      "X3_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.2231889400921659,
+        "bleu": 0.013088399373722442,
+        "bleu_1": 0.17675193313376997,
+        "bleu_2": 0.028915327925150114
+      },
+      "X3_Y1": {
+        "em": 0.16129032258064516,
+        "contains_gt": 0.22580645161290322,
+        "f1": 0.32339058790671693,
+        "bleu": 0.19422828888333624,
+        "bleu_1": 0.28137507547250284,
+        "bleu_2": 0.24398600920855804
+      },
+      "X2_Y3": {
+        "em": 0.2,
+        "contains_gt": 0.2,
+        "f1": 0.31455912508544087,
+        "bleu": 0.21599845013320607,
+        "bleu_1": 0.26549483419666114,
+        "bleu_2": 0.22446045355728653
+      },
+      "X4_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0,
+        "bleu": 0.0,
+        "bleu_1": 0.0,
+        "bleu_2": 0.0
+      }
+    }
+  },
+  "method_runtime": {
+    "num_memories": 117,
+    "debug_dir": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/output/multi-scene_visual_case_archive_assistant/memoryos/9d5a02d167e2d6b7",
+    "data_storage_path": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/runs/multi-scene_visual_case_archive_assistant/memoryos_data/9d5a02d167e2d6b7",
+    "runtime_signature": "9d5a02d167e2d6b7"
+  }
+}

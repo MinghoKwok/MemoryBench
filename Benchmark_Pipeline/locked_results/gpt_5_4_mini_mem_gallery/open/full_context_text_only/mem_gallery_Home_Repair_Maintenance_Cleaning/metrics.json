@@ -1,0 +1,39 @@
+{
+  "task_name": "mem_gallery_Home_Repair_Maintenance_Cleaning",
+  "model_name": "gpt_5_4_mini",
+  "model_path": "gpt-5.4-mini",
+  "method_name": "full_context_text_only",
+  "base_method_name": "full_context_text_only",
+  "method_modality": "",
+  "mode": "open",
+  "num_qas": 68,
+  "num_qas_run": 68,
+  "dialog_json": "/Users/qingyuejiao/Desktop/MemoryBench/mem_gallery_data/data/dialog/Home_Repair_Maintenance_Cleaning.json",
+  "image_root": "/Users/qingyuejiao/Desktop/MemoryBench/mem_gallery_data/data/image",
+  "run_dir": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/runs/mem_gallery_Home_Repair_Maintenance_Cleaning/20260428_231427_gpt_5_4_mini_full_context_text_only",
+  "git_commit": "878c24f82b8c23afa35832b1e8f22677e85aa148",
+  "summary": {
+    "open_count": 68,
+    "overall": {
+      "em": 0.17647058823529413,
+      "contains_gt": 0.19117647058823528,
+      "f1": 0.44917259032569523,
+      "bleu": 0.120452766775085,
+      "bleu_1": 0.33878513915631975,
+      "bleu_2": 0.28561610856429465
+    },
+    "by_x": {},
+    "by_y": {},
+    "by_cell": {}
+  },
+  "method_runtime": {
+    "caption_validation_passed": true,
+    "caption_validation_round_count": 43,
+    "method_modality": "text_only",
+    "history_source": "full_context",
+    "captions_loaded": true,
+    "images_loaded": false,
+    "history_turns_after_truncation": 540,
+    "history_turns_before_truncation": 540
+  }
+}

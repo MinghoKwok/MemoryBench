@@ -1,0 +1,96 @@
+{
+  "task_name": "mem_gallery_Fashion_Personal_Care_Lifestyle_Shopping",
+  "model_name": "gpt_5_4_mini",
+  "model_path": "gpt-5.4-mini",
+  "method_name": "semantic_rag_no_visual",
+  "base_method_name": "semantic_rag_no_visual",
+  "method_modality": "",
+  "mode": "open",
+  "num_qas": 61,
+  "num_qas_run": 61,
+  "dialog_json": "/Users/qingyuejiao/Desktop/MemoryBench/mem_gallery_data/data/dialog/Fashion_Personal_Care_Lifestyle_Shopping.json",
+  "image_root": "/Users/qingyuejiao/Desktop/MemoryBench/mem_gallery_data/data/image",
+  "run_dir": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/runs/mem_gallery_Fashion_Personal_Care_Lifestyle_Shopping/20260429_021728_gpt_5_4_mini_semantic_rag_no_visual",
+  "git_commit": "878c24f82b8c23afa35832b1e8f22677e85aa148",
+  "summary": {
+    "open_count": 61,
+    "overall": {
+      "em": 0.14754098360655737,
+      "contains_gt": 0.2459016393442623,
+      "f1": 0.3811190089275914,
+      "bleu": 0.08703544413492924,
+      "bleu_1": 0.2903539034252499,
+      "bleu_2": 0.16114409415909614
+    },
+    "by_x": {},
+    "by_y": {},
+    "by_cell": {}
+  },
+  "method_runtime": {
+    "retrieval_backend": "dense_text",
+    "retrieval_corpus": "round_text",
+    "method_modality": "no_visual",
+    "top_k": 10,
+    "neighbor_window": 0,
+    "seed_round_ids": [
+      "D7:9",
+      "D7:8",
+      "D9:2",
+      "D9:19",
+      "D9:25",
+      "D6:11",
+      "D9:16",
+      "D7:10",
+      "D9:3",
+      "D7:6"
+    ],
+    "selected_round_ids": [
+      "D7:9",
+      "D7:8",
+      "D9:2",
+      "D9:19",
+      "D9:25",
+      "D6:11",
+      "D9:16",
+      "D7:10",
+      "D9:3",
+      "D7:6"
+    ],
+    "top_candidates": [
+      {
+        "round_id": "D7:9",
+        "score": 0.4116975106521853,
+        "text_dense_score": 0.4116975106521853
+      },
+      {
+        "round_id": "D7:8",
+        "score": 0.40495411463871156,
+        "text_dense_score": 0.40495411463871156
+      },
+      {
+        "round_id": "D9:2",
+        "score": 0.39476914039166144,
+        "text_dense_score": 0.39476914039166144
+      },
+      {
+        "round_id": "D9:19",
+        "score": 0.39385283958734124,
+        "text_dense_score": 0.39385283958734124
+      },
+      {
+        "round_id": "D9:25",
+        "score": 0.36508392925165817,
+        "text_dense_score": 0.36508392925165817
+      }
+    ],
+    "clue_hit_count": 0,
+    "corpus_entry_count": 168,
+    "text_embedding_model": "all-MiniLM-L6-v2",
+    "caption_text_included": true,
+    "image_embeddings_built": false,
+    "history_source": "retrieval",
+    "captions_loaded": false,
+    "images_loaded": false,
+    "history_turns_after_truncation": 20
+  }
+}

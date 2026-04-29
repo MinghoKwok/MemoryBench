@@ -1,0 +1,96 @@
+{
+  "task_name": "mem_gallery_Parenting_Commuting_Hobbies_Travel_Gear",
+  "model_name": "gpt_5_4_mini",
+  "model_path": "gpt-5.4-mini",
+  "method_name": "semantic_rag_no_visual",
+  "base_method_name": "semantic_rag_no_visual",
+  "method_modality": "",
+  "mode": "open",
+  "num_qas": 82,
+  "num_qas_run": 82,
+  "dialog_json": "/Users/qingyuejiao/Desktop/MemoryBench/mem_gallery_data/data/dialog/Parenting_Commuting_Hobbies_Travel_Gear.json",
+  "image_root": "/Users/qingyuejiao/Desktop/MemoryBench/mem_gallery_data/data/image",
+  "run_dir": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/runs/mem_gallery_Parenting_Commuting_Hobbies_Travel_Gear/20260429_023849_gpt_5_4_mini_semantic_rag_no_visual",
+  "git_commit": "878c24f82b8c23afa35832b1e8f22677e85aa148",
+  "summary": {
+    "open_count": 82,
+    "overall": {
+      "em": 0.0975609756097561,
+      "contains_gt": 0.0975609756097561,
+      "f1": 0.2708851306224145,
+      "bleu": 0.07228801469152546,
+      "bleu_1": 0.2265332916264719,
+      "bleu_2": 0.14627069379259722
+    },
+    "by_x": {},
+    "by_y": {},
+    "by_cell": {}
+  },
+  "method_runtime": {
+    "retrieval_backend": "dense_text",
+    "retrieval_corpus": "round_text",
+    "method_modality": "no_visual",
+    "top_k": 10,
+    "neighbor_window": 0,
+    "seed_round_ids": [
+      "D16:16",
+      "D16:1",
+      "D13:9",
+      "D9:14",
+      "D13:11",
+      "D4:1",
+      "D16:17",
+      "D13:1",
+      "D16:19",
+      "D3:1"
+    ],
+    "selected_round_ids": [
+      "D16:16",
+      "D16:1",
+      "D13:9",
+      "D9:14",
+      "D13:11",
+      "D4:1",
+      "D16:17",
+      "D13:1",
+      "D16:19",
+      "D3:1"
+    ],
+    "top_candidates": [
+      {
+        "round_id": "D16:16",
+        "score": 0.3442812866326759,
+        "text_dense_score": 0.3442812866326759
+      },
+      {
+        "round_id": "D16:1",
+        "score": 0.24254703496527016,
+        "text_dense_score": 0.24254703496527016
+      },
+      {
+        "round_id": "D13:9",
+        "score": 0.23254601468010852,
+        "text_dense_score": 0.23254601468010852
+      },
+      {
+        "round_id": "D9:14",
+        "score": 0.2239754971312744,
+        "text_dense_score": 0.2239754971312744
+      },
+      {
+        "round_id": "D13:11",
+        "score": 0.2190442813479339,
+        "text_dense_score": 0.2190442813479339
+      }
+    ],
+    "clue_hit_count": 1,
+    "corpus_entry_count": 221,
+    "text_embedding_model": "all-MiniLM-L6-v2",
+    "caption_text_included": true,
+    "image_embeddings_built": false,
+    "history_source": "retrieval",
+    "captions_loaded": false,
+    "images_loaded": false,
+    "history_turns_after_truncation": 20
+  }
+}

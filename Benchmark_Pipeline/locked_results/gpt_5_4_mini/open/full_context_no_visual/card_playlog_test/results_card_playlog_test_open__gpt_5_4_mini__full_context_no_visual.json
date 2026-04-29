@@ -1,0 +1,80 @@
+{
+  "task_name": "card_playlog_test_open",
+  "model_name": "gpt_5_4_mini",
+  "model_path": "gpt-5.4-mini",
+  "method_name": "full_context_no_visual",
+  "base_method_name": "full_context_no_visual",
+  "method_modality": "",
+  "mode": "open",
+  "num_qas": 48,
+  "num_qas_run": 48,
+  "dialog_json": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/dialog/Card_Playlog_Test_Open.json",
+  "image_root": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image",
+  "run_dir": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/runs/card_playlog_test_open/20260428_203553_gpt_5_4_mini_full_context_no_visual",
+  "git_commit": "878c24f82b8c23afa35832b1e8f22677e85aa148",
+  "summary": {
+    "open_count": 48,
+    "overall": {
+      "em": 0.5416666666666666,
+      "contains_gt": 0.5416666666666666,
+      "f1": 0.5416666666666666,
+      "bleu": 0.09632346804377499,
+      "bleu_1": 0.5416666666666666,
+      "bleu_2": 0.17129003992578726
+    },
+    "by_x": {
+      "X4": {
+        "em": 0.5416666666666666,
+        "contains_gt": 0.5416666666666666,
+        "f1": 0.5416666666666666,
+        "bleu": 0.09632346804377499,
+        "bleu_1": 0.5416666666666666,
+        "bleu_2": 0.17129003992578726
+      }
+    },
+    "by_y": {
+      "Y3": {
+        "em": 0.21052631578947367,
+        "contains_gt": 0.21052631578947367,
+        "f1": 0.21052631578947367,
+        "bleu": 0.037437461263977324,
+        "bleu_1": 0.21052631578947367,
+        "bleu_2": 0.06657426652986063
+      },
+      "Y2": {
+        "em": 0.7586206896551724,
+        "contains_gt": 0.7586206896551724,
+        "f1": 0.7586206896551724,
+        "bleu": 0.13490395524433207,
+        "bleu_1": 0.7586206896551724,
+        "bleu_2": 0.23989692594380813
+      }
+    },
+    "by_cell": {
+      "X4_Y3": {
+        "em": 0.21052631578947367,
+        "contains_gt": 0.21052631578947367,
+        "f1": 0.21052631578947367,
+        "bleu": 0.037437461263977324,
+        "bleu_1": 0.21052631578947367,
+        "bleu_2": 0.06657426652986063
+      },
+      "X4_Y2": {
+        "em": 0.7586206896551724,
+        "contains_gt": 0.7586206896551724,
+        "f1": 0.7586206896551724,
+        "bleu": 0.13490395524433207,
+        "bleu_1": 0.7586206896551724,
+        "bleu_2": 0.23989692594380813
+      }
+    }
+  },
+  "method_runtime": {
+    "method_modality": "no_visual",
+    "history_source": "full_context",
+    "captions_loaded": false,
+    "images_loaded": false,
+    "history_turns_after_truncation": 60,
+    "history_turns_before_truncation": 60
+  }
+}
