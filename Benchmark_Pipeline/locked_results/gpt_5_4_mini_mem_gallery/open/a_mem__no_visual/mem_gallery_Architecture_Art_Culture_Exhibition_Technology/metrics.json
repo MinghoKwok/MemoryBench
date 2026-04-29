@@ -1,0 +1,33 @@
+{
+  "task_name": "mem_gallery_Architecture_Art_Culture_Exhibition_Technology",
+  "model_name": "gpt_5_4_mini",
+  "model_path": "gpt-5.4-mini",
+  "method_name": "a_mem__no_visual",
+  "base_method_name": "a_mem",
+  "method_modality": "no_visual",
+  "mode": "open",
+  "num_qas": 74,
+  "num_qas_run": 74,
+  "dialog_json": "/Users/qingyuejiao/Desktop/MemoryBench/mem_gallery_data/data/dialog/Architecture_Art_Culture_Exhibition_Technology.json",
+  "image_root": "/Users/qingyuejiao/Desktop/MemoryBench/mem_gallery_data/data/image",
+  "run_dir": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/runs/mem_gallery_Architecture_Art_Culture_Exhibition_Technology/20260429_041359_gpt_5_4_mini_a_mem__no_visual",
+  "git_commit": "878c24f82b8c23afa35832b1e8f22677e85aa148",
+  "summary": {
+    "open_count": 74,
+    "overall": {
+      "em": 0.12162162162162163,
+      "contains_gt": 0.25675675675675674,
+      "f1": 0.25970648905431515,
+      "bleu": 0.10178787994001255,
+      "bleu_1": 0.19712498376019472,
+      "bleu_2": 0.15496178045715547
+    },
+    "by_x": {},
+    "by_y": {},
+    "by_cell": {}
+  },
+  "method_runtime": {
+    "num_memories": 186,
+    "debug_dir": "/Users/qingyuejiao/Desktop/MemoryBench/output/architecture_art_culture_exhibition_technology/a_mem"
+  }
+}

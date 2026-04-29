@@ -1,0 +1,152 @@
+{
+  "task_name": "home_renovation_interior_design_open",
+  "model_name": "gpt_5_4_mini",
+  "model_path": "gpt-5.4-mini",
+  "method_name": "full_context_no_visual",
+  "base_method_name": "full_context_no_visual",
+  "method_modality": "",
+  "mode": "open",
+  "num_qas": 52,
+  "num_qas_run": 52,
+  "dialog_json": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/dialog/Home_Renovation_Interior_Design_Open.json",
+  "image_root": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image",
+  "run_dir": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/runs/home_renovation_interior_design_open/20260428_204515_gpt_5_4_mini_full_context_no_visual",
+  "git_commit": "878c24f82b8c23afa35832b1e8f22677e85aa148",
+  "summary": {
+    "open_count": 52,
+    "overall": {
+      "em": 0.057692307692307696,
+      "contains_gt": 0.09615384615384616,
+      "f1": 0.3272056569954879,
+      "bleu": 0.11002945117356201,
+      "bleu_1": 0.28903618413333465,
+      "bleu_2": 0.19568209859167554
+    },
+    "by_x": {
+      "X4": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.12443181818181817,
+        "bleu": 0.021985890139362734,
+        "bleu_1": 0.09375,
+        "bleu_2": 0.05093935736679571
+      },
+      "X3": {
+        "em": 0.02702702702702703,
+        "contains_gt": 0.05405405405405406,
+        "f1": 0.36027470237996556,
+        "bleu": 0.09262995988192466,
+        "bleu_1": 0.3164630084336875,
+        "bleu_2": 0.2055499236754358
+      },
+      "X2": {
+        "em": 0.3333333333333333,
+        "contains_gt": 0.5,
+        "f1": 0.4285714285714286,
+        "bleu": 0.34946962029618983,
+        "bleu_1": 0.4129479233970877,
+        "bleu_2": 0.35513668677555577
+      },
+      "X1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.11764705882352941,
+        "bleu": 0.02151810250197126,
+        "bleu_1": 0.09306272250443651,
+        "bleu_2": 0.03178697118830404
+      }
+    },
+    "by_y": {
+      "Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.22177033492822967,
+        "bleu": 0.036250876011758144,
+        "bleu_1": 0.15965927187187007,
+        "bleu_2": 0.09163533064533402
+      },
+      "Y1": {
+        "em": 0.07692307692307693,
+        "contains_gt": 0.1282051282051282,
+        "f1": 0.36803718319555423,
+        "bleu": 0.1355518192021571,
+        "bleu_1": 0.33625564903771693,
+        "bleu_2": 0.23271397843649028
+      },
+      "Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0,
+        "bleu": 0.0,
+        "bleu_1": 0.0,
+        "bleu_2": 0.0
+      }
+    },
+    "by_cell": {
+      "X4_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.1,
+        "bleu": 0.0,
+        "bleu_1": 0.0,
+        "bleu_2": 0.0
+      },
+      "X3_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.2461244019138756,
+        "bleu": 0.04350105121410978,
+        "bleu_1": 0.19159112624624408,
+        "bleu_2": 0.10996239677440083
+      },
+      "X2_Y1": {
+        "em": 0.3333333333333333,
+        "contains_gt": 0.5,
+        "f1": 0.4285714285714286,
+        "bleu": 0.34946962029618983,
+        "bleu_1": 0.4129479233970877,
+        "bleu_2": 0.35513668677555577
+      },
+      "X3_Y1": {
+        "em": 0.037037037037037035,
+        "contains_gt": 0.07407407407407407,
+        "f1": 0.4025525914414803,
+        "bleu": 0.11082585198111534,
+        "bleu_1": 0.36271185368829617,
+        "bleu_2": 0.24095271141655986
+      },
+      "X4_Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.1590909090909091,
+        "bleu": 0.035177424222980376,
+        "bleu_1": 0.15,
+        "bleu_2": 0.08150297178687314
+      },
+      "X4_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0,
+        "bleu": 0.0,
+        "bleu_1": 0.0,
+        "bleu_2": 0.0
+      },
+      "X1_Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.11764705882352941,
+        "bleu": 0.02151810250197126,
+        "bleu_1": 0.09306272250443651,
+        "bleu_2": 0.03178697118830404
+      }
+    }
+  },
+  "method_runtime": {
+    "method_modality": "no_visual",
+    "history_source": "full_context",
+    "captions_loaded": false,
+    "images_loaded": false,
+    "history_turns_after_truncation": 240,
+    "history_turns_before_truncation": 240
+  }
+}

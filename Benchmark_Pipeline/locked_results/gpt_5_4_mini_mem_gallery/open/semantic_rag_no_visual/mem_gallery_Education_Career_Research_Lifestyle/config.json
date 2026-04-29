@@ -1,0 +1,111 @@
+{
+  "task": {
+    "name": "mem_gallery_Education_Career_Research_Lifestyle",
+    "dataset": {
+      "dialog_json": "/Users/qingyuejiao/Desktop/MemoryBench/mem_gallery_data/data/dialog/Education_Career_Research_Lifestyle.json",
+      "image_root": "/Users/qingyuejiao/Desktop/MemoryBench/mem_gallery_data/data/image"
+    },
+    "eval": {
+      "mode": "open",
+      "output_json": "output/results_mem_gallery_Education_Career_Research_Lifestyle.json",
+      "max_questions": 0
+    }
+  },
+  "dataset": {
+    "dialog_json": "/Users/qingyuejiao/Desktop/MemoryBench/mem_gallery_data/data/dialog/Education_Career_Research_Lifestyle.json",
+    "image_root": "/Users/qingyuejiao/Desktop/MemoryBench/mem_gallery_data/data/image"
+  },
+  "eval": {
+    "mode": "open",
+    "output_json": "output/results_mem_gallery_Education_Career_Research_Lifestyle.json",
+    "max_questions": 0
+  },
+  "model": {
+    "name": "gpt_5_4_mini",
+    "provider": "openai_api",
+    "model": "gpt-5.4-mini",
+    "api_key_env": "OPENAI_API_KEY",
+    "base_url": "https://api.openai.com/v1",
+    "max_new_tokens": 128,
+    "timeout": 240
+  },
+  "method": {
+    "name": "semantic_rag_no_visual",
+    "retrieval_backend": "dense_text",
+    "top_k": 10,
+    "neighbor_window": 0,
+    "text_embedding_model": "all-MiniLM-L6-v2",
+    "text_dense_weight": 1.0,
+    "image_dense_weight": 0.0
+  },
+  "run": {
+    "output_root": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/runs",
+    "method_runtime": {
+      "retrieval_backend": "dense_text",
+      "retrieval_corpus": "round_text",
+      "method_modality": "no_visual",
+      "top_k": 10,
+      "neighbor_window": 0,
+      "seed_round_ids": [
+        "D4:1",
+        "D8:21",
+        "D8:19",
+        "D8:16",
+        "D8:12",
+        "D8:10",
+        "D8:1",
+        "D8:8",
+        "D8:2",
+        "D8:18"
+      ],
+      "selected_round_ids": [
+        "D4:1",
+        "D8:21",
+        "D8:19",
+        "D8:16",
+        "D8:12",
+        "D8:10",
+        "D8:1",
+        "D8:8",
+        "D8:2",
+        "D8:18"
+      ],
+      "top_candidates": [
+        {
+          "round_id": "D4:1",
+          "score": 0.47511290030355197,
+          "text_dense_score": 0.47511290030355197
+        },
+        {
+          "round_id": "D8:21",
+          "score": 0.45683344023644007,
+          "text_dense_score": 0.45683344023644007
+        },
+        {
+          "round_id": "D8:19",
+          "score": 0.3934208938787957,
+          "text_dense_score": 0.3934208938787957
+        },
+        {
+          "round_id": "D8:16",
+          "score": 0.3710930027133958,
+          "text_dense_score": 0.3710930027133958
+        },
+        {
+          "round_id": "D8:12",
+          "score": 0.36882134931302585,
+          "text_dense_score": 0.36882134931302585
+        }
+      ],
+      "clue_hit_count": 2,
+      "corpus_entry_count": 227,
+      "text_embedding_model": "all-MiniLM-L6-v2",
+      "caption_text_included": true,
+      "image_embeddings_built": false,
+      "history_source": "retrieval",
+      "captions_loaded": false,
+      "images_loaded": false,
+      "history_turns_after_truncation": 20
+    }
+  }
+}

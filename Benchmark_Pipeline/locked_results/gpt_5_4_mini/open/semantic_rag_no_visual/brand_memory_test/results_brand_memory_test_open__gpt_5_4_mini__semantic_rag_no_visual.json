@@ -1,0 +1,195 @@
+{
+  "task_name": "brand_memory_test_open",
+  "model_name": "gpt_5_4_mini",
+  "model_path": "gpt-5.4-mini",
+  "method_name": "semantic_rag_no_visual",
+  "base_method_name": "semantic_rag_no_visual",
+  "method_modality": "",
+  "mode": "open",
+  "num_qas": 29,
+  "num_qas_run": 29,
+  "dialog_json": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/dialog/Brand_Memory_Test_Open.json",
+  "image_root": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image",
+  "run_dir": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/runs/brand_memory_test_open/20260428_205635_gpt_5_4_mini_semantic_rag_no_visual",
+  "git_commit": "878c24f82b8c23afa35832b1e8f22677e85aa148",
+  "summary": {
+    "open_count": 29,
+    "overall": {
+      "em": 0.20689655172413793,
+      "contains_gt": 0.20689655172413793,
+      "f1": 0.2917450365726228,
+      "bleu": 0.0563020817227676,
+      "bleu_1": 0.26804857241046787,
+      "bleu_2": 0.12669187476641128
+    },
+    "by_x": {
+      "X4": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0,
+        "bleu": 0.0,
+        "bleu_1": 0.0,
+        "bleu_2": 0.0
+      },
+      "X3": {
+        "em": 0.2,
+        "contains_gt": 0.2,
+        "f1": 0.5587878787878788,
+        "bleu": 0.1194365266509955,
+        "bleu_1": 0.4378616025200027,
+        "bleu_2": 0.3407050293212069
+      },
+      "X1": {
+        "em": 0.19047619047619047,
+        "contains_gt": 0.19047619047619047,
+        "f1": 0.2222222222222222,
+        "bleu": 0.04084522836673289,
+        "bleu_1": 0.21829050415731208,
+        "bleu_2": 0.07877673598109783
+      },
+      "X2": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0,
+        "bleu": 0.1778279410038923,
+        "bleu_1": 1.0,
+        "bleu_2": 0.316227766016838
+      }
+    },
+    "by_y": {
+      "Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0,
+        "bleu": 0.0,
+        "bleu_1": 0.0,
+        "bleu_2": 0.0
+      },
+      "Y2": {
+        "em": 0.2222222222222222,
+        "contains_gt": 0.2222222222222222,
+        "f1": 0.3133557800224467,
+        "bleu": 0.06047260629482446,
+        "bleu_1": 0.28790402221865063,
+        "bleu_2": 0.13607645808244173
+      }
+    },
+    "by_cell": {
+      "X4_Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0,
+        "bleu": 0.0,
+        "bleu_1": 0.0,
+        "bleu_2": 0.0
+      },
+      "X3_Y2": {
+        "em": 0.2,
+        "contains_gt": 0.2,
+        "f1": 0.5587878787878788,
+        "bleu": 0.1194365266509955,
+        "bleu_1": 0.4378616025200027,
+        "bleu_2": 0.3407050293212069
+      },
+      "X1_Y2": {
+        "em": 0.2,
+        "contains_gt": 0.2,
+        "f1": 0.23333333333333334,
+        "bleu": 0.04288748978506954,
+        "bleu_1": 0.22920502936517767,
+        "bleu_2": 0.08271557278015272
+      },
+      "X2_Y2": {
+        "em": 1.0,
+        "contains_gt": 1.0,
+        "f1": 1.0,
+        "bleu": 0.1778279410038923,
+        "bleu_1": 1.0,
+        "bleu_2": 0.316227766016838
+      },
+      "X4_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0,
+        "bleu": 0.0,
+        "bleu_1": 0.0,
+        "bleu_2": 0.0
+      },
+      "X1_Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0,
+        "bleu": 0.0,
+        "bleu_1": 0.0,
+        "bleu_2": 0.0
+      }
+    }
+  },
+  "method_runtime": {
+    "retrieval_backend": "dense_text",
+    "retrieval_corpus": "round_text",
+    "method_modality": "no_visual",
+    "top_k": 10,
+    "neighbor_window": 0,
+    "seed_round_ids": [
+      "BRAND_S6:R2",
+      "BRAND_S3:R2",
+      "BRAND_S38:R1",
+      "BRAND_S41:R2",
+      "BRAND_S2:R2",
+      "BRAND_S3:R1",
+      "BRAND_S18:R1",
+      "BRAND_S40:R1",
+      "BRAND_S34:R1",
+      "BRAND_S27:R1"
+    ],
+    "selected_round_ids": [
+      "BRAND_S6:R2",
+      "BRAND_S3:R2",
+      "BRAND_S38:R1",
+      "BRAND_S41:R2",
+      "BRAND_S2:R2",
+      "BRAND_S3:R1",
+      "BRAND_S18:R1",
+      "BRAND_S40:R1",
+      "BRAND_S34:R1",
+      "BRAND_S27:R1"
+    ],
+    "top_candidates": [
+      {
+        "round_id": "BRAND_S6:R2",
+        "score": 0.5446735945303565,
+        "text_dense_score": 0.5446735945303565
+      },
+      {
+        "round_id": "BRAND_S3:R2",
+        "score": 0.502954915160265,
+        "text_dense_score": 0.502954915160265
+      },
+      {
+        "round_id": "BRAND_S38:R1",
+        "score": 0.4380383903146317,
+        "text_dense_score": 0.4380383903146317
+      },
+      {
+        "round_id": "BRAND_S41:R2",
+        "score": 0.3951525935920911,
+        "text_dense_score": 0.3951525935920911
+      },
+      {
+        "round_id": "BRAND_S2:R2",
+        "score": 0.3935978297464791,
+        "text_dense_score": 0.3935978297464791
+      }
+    ],
+    "clue_hit_count": 0,
+    "corpus_entry_count": 72,
+    "text_embedding_model": "all-MiniLM-L6-v2",
+    "caption_text_included": true,
+    "image_embeddings_built": false,
+    "history_source": "retrieval",
+    "captions_loaded": false,
+    "images_loaded": false,
+    "history_turns_after_truncation": 20
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "task_name": "mem_gallery_Technology_Ethics_Future_Society",
+  "model_name": "gpt_5_4_mini",
+  "model_path": "gpt-5.4-mini",
+  "method_name": "full_context_no_visual",
+  "base_method_name": "full_context_no_visual",
+  "method_modality": "",
+  "mode": "open",
+  "num_qas": 64,
+  "num_qas_run": 64,
+  "dialog_json": "/Users/qingyuejiao/Desktop/MemoryBench/mem_gallery_data/data/dialog/Technology_Ethics_Future_Society.json",
+  "image_root": "/Users/qingyuejiao/Desktop/MemoryBench/mem_gallery_data/data/image",
+  "run_dir": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/runs/mem_gallery_Technology_Ethics_Future_Society/20260429_015220_gpt_5_4_mini_full_context_no_visual",
+  "git_commit": "878c24f82b8c23afa35832b1e8f22677e85aa148",
+  "summary": {
+    "open_count": 64,
+    "overall": {
+      "em": 0.203125,
+      "contains_gt": 0.203125,
+      "f1": 0.3152638504281008,
+      "bleu": 0.1555779752460963,
+      "bleu_1": 0.29056316369066737,
+      "bleu_2": 0.21289267629454298
+    },
+    "by_x": {},
+    "by_y": {},
+    "by_cell": {}
+  },
+  "method_runtime": {
+    "method_modality": "no_visual",
+    "history_source": "full_context",
+    "captions_loaded": false,
+    "images_loaded": false,
+    "history_turns_after_truncation": 398,
+    "history_turns_before_truncation": 398
+  }
+}

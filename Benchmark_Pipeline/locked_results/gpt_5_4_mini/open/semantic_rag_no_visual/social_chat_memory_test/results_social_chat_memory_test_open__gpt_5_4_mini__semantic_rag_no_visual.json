@@ -1,0 +1,227 @@
+{
+  "task_name": "social_chat_memory_test_open",
+  "model_name": "gpt_5_4_mini",
+  "model_path": "gpt-5.4-mini",
+  "method_name": "semantic_rag_no_visual",
+  "base_method_name": "semantic_rag_no_visual",
+  "method_modality": "",
+  "mode": "open",
+  "num_qas": 37,
+  "num_qas_run": 37,
+  "dialog_json": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/dialog/Social_Chat_Memory_Test_Open.json",
+  "image_root": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image",
+  "run_dir": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/runs/social_chat_memory_test_open/20260428_211251_gpt_5_4_mini_semantic_rag_no_visual",
+  "git_commit": "878c24f82b8c23afa35832b1e8f22677e85aa148",
+  "summary": {
+    "open_count": 37,
+    "overall": {
+      "em": 0.0,
+      "contains_gt": 0.0,
+      "f1": 0.1431266740985411,
+      "bleu": 0.02665816220811632,
+      "bleu_1": 0.1132358210324933,
+      "bleu_2": 0.05258164899976118
+    },
+    "by_x": {
+      "X3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.11791788157164293,
+        "bleu": 0.020153979596593066,
+        "bleu_1": 0.08630189578669885,
+        "bleu_2": 0.03309711298532577
+      },
+      "X1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.27521367521367524,
+        "bleu": 0.050470343055396535,
+        "bleu_1": 0.23739408007759716,
+        "bleu_2": 0.15241958773334746
+      },
+      "X2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.25,
+        "bleu": 0.07476743906106105,
+        "bleu_1": 0.25,
+        "bleu_2": 0.1118033988749895
+      },
+      "X4": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0,
+        "bleu": 0.0,
+        "bleu_1": 0.0,
+        "bleu_2": 0.0
+      }
+    },
+    "by_y": {
+      "Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0854061212444844,
+        "bleu": 0.012247537806318232,
+        "bleu_1": 0.0602255816154942,
+        "bleu_2": 0.01833699469473993
+      },
+      "Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.28003848003848003,
+        "bleu": 0.02601965027090386,
+        "bleu_1": 0.21823479574631452,
+        "bleu_2": 0.09468262113281294
+      },
+      "Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.2467171717171717,
+        "bleu": 0.08734094248615414,
+        "bleu_1": 0.2291128438895017,
+        "bleu_2": 0.15316673647096463
+      }
+    },
+    "by_cell": {
+      "X3_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.09005940351208894,
+        "bleu": 0.012827643108914941,
+        "bleu_1": 0.0633876558761929,
+        "bleu_2": 0.01914350307925008
+      },
+      "X3_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.24783549783549785,
+        "bleu": 0.020008175733656056,
+        "bleu_1": 0.18222707126456478,
+        "bleu_2": 0.05540053012663054
+      },
+      "X3_Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.14898989898989898,
+        "bleu": 0.07407485232348202,
+        "bleu_1": 0.1264394211599212,
+        "bleu_2": 0.1056856961081411
+      },
+      "X1_Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.26666666666666666,
+        "bleu": 0.07614310991217832,
+        "bleu_1": 0.24767939992862334,
+        "bleu_2": 0.18916826637569273
+      },
+      "X1_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.15384615384615383,
+        "bleu": 0.023980296761827107,
+        "bleu_1": 0.11111111111111109,
+        "bleu_2": 0.03726779962499649
+      },
+      "X2_Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.5,
+        "bleu": 0.1495348781221221,
+        "bleu_1": 0.5,
+        "bleu_2": 0.223606797749979
+      },
+      "X2_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0,
+        "bleu": 0.0,
+        "bleu_1": 0.0,
+        "bleu_2": 0.0
+      },
+      "X4_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0,
+        "bleu": 0.0,
+        "bleu_1": 0.0,
+        "bleu_2": 0.0
+      },
+      "X1_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.34444444444444444,
+        "bleu": 0.03804259934539947,
+        "bleu_1": 0.29025024470981403,
+        "bleu_2": 0.1732468031451777
+      }
+    }
+  },
+  "method_runtime": {
+    "retrieval_backend": "dense_text",
+    "retrieval_corpus": "round_text",
+    "method_modality": "no_visual",
+    "top_k": 10,
+    "neighbor_window": 0,
+    "seed_round_ids": [
+      "CHAT_S38:R1",
+      "CHAT_S6:R1",
+      "CHAT_S35:R2",
+      "CHAT_S35:R1",
+      "CHAT_S17:R1",
+      "CHAT_S21:R1",
+      "CHAT_S27:R1",
+      "CHAT_S13:R1",
+      "CHAT_S4:R1",
+      "CHAT_S15:R2"
+    ],
+    "selected_round_ids": [
+      "CHAT_S38:R1",
+      "CHAT_S6:R1",
+      "CHAT_S35:R2",
+      "CHAT_S35:R1",
+      "CHAT_S17:R1",
+      "CHAT_S21:R1",
+      "CHAT_S27:R1",
+      "CHAT_S13:R1",
+      "CHAT_S4:R1",
+      "CHAT_S15:R2"
+    ],
+    "top_candidates": [
+      {
+        "round_id": "CHAT_S38:R1",
+        "score": 0.5825212070454113,
+        "text_dense_score": 0.5825212070454113
+      },
+      {
+        "round_id": "CHAT_S6:R1",
+        "score": 0.5487805052452401,
+        "text_dense_score": 0.5487805052452401
+      },
+      {
+        "round_id": "CHAT_S35:R2",
+        "score": 0.42790509790475106,
+        "text_dense_score": 0.42790509790475106
+      },
+      {
+        "round_id": "CHAT_S35:R1",
+        "score": 0.3769240191269722,
+        "text_dense_score": 0.3769240191269722
+      },
+      {
+        "round_id": "CHAT_S17:R1",
+        "score": 0.3413744226586245,
+        "text_dense_score": 0.3413744226586245
+      }
+    ],
+    "clue_hit_count": 3,
+    "corpus_entry_count": 53,
+    "text_embedding_model": "all-MiniLM-L6-v2",
+    "caption_text_included": true,
+    "image_embeddings_built": false,
+    "history_source": "retrieval",
+    "captions_loaded": false,
+    "images_loaded": false,
+    "history_turns_after_truncation": 20
+  }
+}

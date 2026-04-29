@@ -1,0 +1,76 @@
+{
+  "task_name": "card_playlog_test_open",
+  "model_name": "gpt_5_4_mini",
+  "model_path": "gpt-5.4-mini",
+  "method_name": "a_mem__no_visual",
+  "base_method_name": "a_mem",
+  "method_modality": "no_visual",
+  "mode": "open",
+  "num_qas": 48,
+  "num_qas_run": 48,
+  "dialog_json": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/dialog/Card_Playlog_Test_Open.json",
+  "image_root": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image",
+  "run_dir": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/runs/card_playlog_test_open/20260428_212723_gpt_5_4_mini_a_mem__no_visual",
+  "git_commit": "878c24f82b8c23afa35832b1e8f22677e85aa148",
+  "summary": {
+    "open_count": 48,
+    "overall": {
+      "em": 0.020833333333333332,
+      "contains_gt": 0.3333333333333333,
+      "f1": 0.17708333333333334,
+      "bleu": 0.039211603973023784,
+      "bleu_1": 0.125,
+      "bleu_2": 0.046931654981678055
+    },
+    "by_x": {
+      "X4": {
+        "em": 0.020833333333333332,
+        "contains_gt": 0.3333333333333333,
+        "f1": 0.17708333333333334,
+        "bleu": 0.039211603973023784,
+        "bleu_1": 0.125,
+        "bleu_2": 0.046931654981678055
+      }
+    },
+    "by_y": {
+      "Y3": {
+        "em": 0.0,
+        "contains_gt": 0.2631578947368421,
+        "f1": 0.13157894736842105,
+        "bleu": 0.029900509643881565,
+        "bleu_1": 0.08771929824561403,
+        "bleu_2": 0.033973538124626466
+      },
+      "Y2": {
+        "em": 0.034482758620689655,
+        "contains_gt": 0.3793103448275862,
+        "f1": 0.20689655172413793,
+        "bleu": 0.04531197611970317,
+        "bleu_1": 0.14942528735632182,
+        "bleu_2": 0.05542145568112565
+      }
+    },
+    "by_cell": {
+      "X4_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.2631578947368421,
+        "f1": 0.13157894736842105,
+        "bleu": 0.029900509643881565,
+        "bleu_1": 0.08771929824561403,
+        "bleu_2": 0.033973538124626466
+      },
+      "X4_Y2": {
+        "em": 0.034482758620689655,
+        "contains_gt": 0.3793103448275862,
+        "f1": 0.20689655172413793,
+        "bleu": 0.04531197611970317,
+        "bleu_1": 0.14942528735632182,
+        "bleu_2": 0.05542145568112565
+      }
+    }
+  },
+  "method_runtime": {
+    "num_memories": 30,
+    "debug_dir": "/Users/qingyuejiao/Desktop/MemoryBench/output/card_playlog_test_open/a_mem"
+  }
+}

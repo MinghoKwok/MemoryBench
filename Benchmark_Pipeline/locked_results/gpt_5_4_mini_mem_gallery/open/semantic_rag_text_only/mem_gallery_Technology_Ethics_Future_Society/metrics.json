@@ -1,0 +1,96 @@
+{
+  "task_name": "mem_gallery_Technology_Ethics_Future_Society",
+  "model_name": "gpt_5_4_mini",
+  "model_path": "gpt-5.4-mini",
+  "method_name": "semantic_rag_text_only",
+  "base_method_name": "semantic_rag_text_only",
+  "method_modality": "",
+  "mode": "open",
+  "num_qas": 64,
+  "num_qas_run": 64,
+  "dialog_json": "/Users/qingyuejiao/Desktop/MemoryBench/mem_gallery_data/data/dialog/Technology_Ethics_Future_Society.json",
+  "image_root": "/Users/qingyuejiao/Desktop/MemoryBench/mem_gallery_data/data/image",
+  "run_dir": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/runs/mem_gallery_Technology_Ethics_Future_Society/20260429_034045_gpt_5_4_mini_semantic_rag_text_only",
+  "git_commit": "878c24f82b8c23afa35832b1e8f22677e85aa148",
+  "summary": {
+    "open_count": 64,
+    "overall": {
+      "em": 0.421875,
+      "contains_gt": 0.46875,
+      "f1": 0.6114200016604759,
+      "bleu": 0.1868632860893258,
+      "bleu_1": 0.5724648990162778,
+      "bleu_2": 0.3989773440622714
+    },
+    "by_x": {},
+    "by_y": {},
+    "by_cell": {}
+  },
+  "method_runtime": {
+    "retrieval_backend": "dense_text",
+    "retrieval_corpus": "round_text",
+    "method_modality": "text_only",
+    "top_k": 10,
+    "neighbor_window": 0,
+    "seed_round_ids": [
+      "D11:17",
+      "D11:19",
+      "D11:16",
+      "D10:20",
+      "D11:20",
+      "D10:19",
+      "D10:23",
+      "D10:22",
+      "D10:21",
+      "D10:17"
+    ],
+    "selected_round_ids": [
+      "D11:17",
+      "D11:19",
+      "D11:16",
+      "D10:20",
+      "D11:20",
+      "D10:19",
+      "D10:23",
+      "D10:22",
+      "D10:21",
+      "D10:17"
+    ],
+    "top_candidates": [
+      {
+        "round_id": "D11:17",
+        "score": 0.4838772341743625,
+        "text_dense_score": 0.4838772341743625
+      },
+      {
+        "round_id": "D11:19",
+        "score": 0.45479686718784346,
+        "text_dense_score": 0.45479686718784346
+      },
+      {
+        "round_id": "D11:16",
+        "score": 0.43628438601486386,
+        "text_dense_score": 0.43628438601486386
+      },
+      {
+        "round_id": "D10:20",
+        "score": 0.40021902838274853,
+        "text_dense_score": 0.40021902838274853
+      },
+      {
+        "round_id": "D11:20",
+        "score": 0.3482296115999894,
+        "text_dense_score": 0.3482296115999894
+      }
+    ],
+    "clue_hit_count": 3,
+    "corpus_entry_count": 199,
+    "text_embedding_model": "all-MiniLM-L6-v2",
+    "caption_text_included": true,
+    "image_embeddings_built": false,
+    "history_source": "retrieval",
+    "captions_loaded": true,
+    "images_loaded": false,
+    "history_turns_after_truncation": 20
+  }
+}

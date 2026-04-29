@@ -1,0 +1,33 @@
+{
+  "task_name": "mem_gallery_Music_Dance_Theater_Performance_Learning",
+  "model_name": "gpt_5_4_mini",
+  "model_path": "gpt-5.4-mini",
+  "method_name": "a_mem__no_visual",
+  "base_method_name": "a_mem",
+  "method_modality": "no_visual",
+  "mode": "open",
+  "num_qas": 57,
+  "num_qas_run": 57,
+  "dialog_json": "/Users/qingyuejiao/Desktop/MemoryBench/mem_gallery_data/data/dialog/Music_Dance_Theater_Performance_Learning.json",
+  "image_root": "/Users/qingyuejiao/Desktop/MemoryBench/mem_gallery_data/data/image",
+  "run_dir": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/runs/mem_gallery_Music_Dance_Theater_Performance_Learning/20260429_071519_gpt_5_4_mini_a_mem__no_visual",
+  "git_commit": "878c24f82b8c23afa35832b1e8f22677e85aa148",
+  "summary": {
+    "open_count": 57,
+    "overall": {
+      "em": 0.07017543859649122,
+      "contains_gt": 0.12280701754385964,
+      "f1": 0.22898477625043587,
+      "bleu": 0.07472371852092238,
+      "bleu_1": 0.15538473163150726,
+      "bleu_2": 0.12066305175798543
+    },
+    "by_x": {},
+    "by_y": {},
+    "by_cell": {}
+  },
+  "method_runtime": {
+    "num_memories": 220,
+    "debug_dir": "/Users/qingyuejiao/Desktop/MemoryBench/output/music_dance_theater_performance_learning/a_mem"
+  }
+}

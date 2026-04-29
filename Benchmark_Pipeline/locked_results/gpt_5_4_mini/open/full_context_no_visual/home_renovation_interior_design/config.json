@@ -1,0 +1,47 @@
+{
+  "task": {
+    "name": "home_renovation_interior_design_open",
+    "dataset": {
+      "dialog_json": "data/dialog/Home_Renovation_Interior_Design_Open.json",
+      "image_root": "data/image"
+    },
+    "eval": {
+      "mode": "open",
+      "output_json": "output/results_home_renovation_interior_design_open.json",
+      "max_questions": 0
+    }
+  },
+  "dataset": {
+    "dialog_json": "data/dialog/Home_Renovation_Interior_Design_Open.json",
+    "image_root": "data/image"
+  },
+  "eval": {
+    "mode": "open",
+    "output_json": "output/results_home_renovation_interior_design_open.json",
+    "max_questions": 0
+  },
+  "model": {
+    "name": "gpt_5_4_mini",
+    "provider": "openai_api",
+    "model": "gpt-5.4-mini",
+    "api_key_env": "OPENAI_API_KEY",
+    "base_url": "https://api.openai.com/v1",
+    "max_new_tokens": 128,
+    "timeout": 90
+  },
+  "method": {
+    "name": "full_context_no_visual",
+    "context_token_limit": 128000
+  },
+  "run": {
+    "output_root": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/runs",
+    "method_runtime": {
+      "method_modality": "no_visual",
+      "history_source": "full_context",
+      "captions_loaded": false,
+      "images_loaded": false,
+      "history_turns_after_truncation": 240,
+      "history_turns_before_truncation": 240
+    }
+  }
+}

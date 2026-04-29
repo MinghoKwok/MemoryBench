@@ -1,0 +1,111 @@
+{
+  "task": {
+    "name": "mem_gallery_Home_Repair_Maintenance_Cleaning",
+    "dataset": {
+      "dialog_json": "/Users/qingyuejiao/Desktop/MemoryBench/mem_gallery_data/data/dialog/Home_Repair_Maintenance_Cleaning.json",
+      "image_root": "/Users/qingyuejiao/Desktop/MemoryBench/mem_gallery_data/data/image"
+    },
+    "eval": {
+      "mode": "open",
+      "output_json": "output/results_mem_gallery_Home_Repair_Maintenance_Cleaning.json",
+      "max_questions": 0
+    }
+  },
+  "dataset": {
+    "dialog_json": "/Users/qingyuejiao/Desktop/MemoryBench/mem_gallery_data/data/dialog/Home_Repair_Maintenance_Cleaning.json",
+    "image_root": "/Users/qingyuejiao/Desktop/MemoryBench/mem_gallery_data/data/image"
+  },
+  "eval": {
+    "mode": "open",
+    "output_json": "output/results_mem_gallery_Home_Repair_Maintenance_Cleaning.json",
+    "max_questions": 0
+  },
+  "model": {
+    "name": "gpt_5_4_mini",
+    "provider": "openai_api",
+    "model": "gpt-5.4-mini",
+    "api_key_env": "OPENAI_API_KEY",
+    "base_url": "https://api.openai.com/v1",
+    "max_new_tokens": 128,
+    "timeout": 240
+  },
+  "method": {
+    "name": "semantic_rag_no_visual",
+    "retrieval_backend": "dense_text",
+    "top_k": 10,
+    "neighbor_window": 0,
+    "text_embedding_model": "all-MiniLM-L6-v2",
+    "text_dense_weight": 1.0,
+    "image_dense_weight": 0.0
+  },
+  "run": {
+    "output_root": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/runs",
+    "method_runtime": {
+      "retrieval_backend": "dense_text",
+      "retrieval_corpus": "round_text",
+      "method_modality": "no_visual",
+      "top_k": 10,
+      "neighbor_window": 0,
+      "seed_round_ids": [
+        "D18:10",
+        "D18:1",
+        "D18:6",
+        "D18:4",
+        "D18:8",
+        "D18:7",
+        "D18:9",
+        "D3:11",
+        "D8:8",
+        "D18:3"
+      ],
+      "selected_round_ids": [
+        "D18:10",
+        "D18:1",
+        "D18:6",
+        "D18:4",
+        "D18:8",
+        "D18:7",
+        "D18:9",
+        "D3:11",
+        "D8:8",
+        "D18:3"
+      ],
+      "top_candidates": [
+        {
+          "round_id": "D18:10",
+          "score": 0.555062195160334,
+          "text_dense_score": 0.555062195160334
+        },
+        {
+          "round_id": "D18:1",
+          "score": 0.4216785689332157,
+          "text_dense_score": 0.4216785689332157
+        },
+        {
+          "round_id": "D18:6",
+          "score": 0.37887490889231074,
+          "text_dense_score": 0.37887490889231074
+        },
+        {
+          "round_id": "D18:4",
+          "score": 0.36722132932134155,
+          "text_dense_score": 0.36722132932134155
+        },
+        {
+          "round_id": "D18:8",
+          "score": 0.35954879820429075,
+          "text_dense_score": 0.35954879820429075
+        }
+      ],
+      "clue_hit_count": 0,
+      "corpus_entry_count": 270,
+      "text_embedding_model": "all-MiniLM-L6-v2",
+      "caption_text_included": true,
+      "image_embeddings_built": false,
+      "history_source": "retrieval",
+      "captions_loaded": false,
+      "images_loaded": false,
+      "history_turns_after_truncation": 20
+    }
+  }
+}

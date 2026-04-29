@@ -1,0 +1,37 @@
+{
+  "task_name": "mem_gallery_Global_Travel_Sustainable_Fashion_Design",
+  "model_name": "gpt_5_4_mini",
+  "model_path": "gpt-5.4-mini",
+  "method_name": "full_context_no_visual",
+  "base_method_name": "full_context_no_visual",
+  "method_modality": "",
+  "mode": "open",
+  "num_qas": 78,
+  "num_qas_run": 78,
+  "dialog_json": "/Users/qingyuejiao/Desktop/MemoryBench/mem_gallery_data/data/dialog/Global_Travel_Sustainable_Fashion_Design.json",
+  "image_root": "/Users/qingyuejiao/Desktop/MemoryBench/mem_gallery_data/data/image",
+  "run_dir": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/runs/mem_gallery_Global_Travel_Sustainable_Fashion_Design/20260429_010416_gpt_5_4_mini_full_context_no_visual",
+  "git_commit": "878c24f82b8c23afa35832b1e8f22677e85aa148",
+  "summary": {
+    "open_count": 78,
+    "overall": {
+      "em": 0.2948717948717949,
+      "contains_gt": 0.32051282051282054,
+      "f1": 0.44526872057828903,
+      "bleu": 0.15534708171491324,
+      "bleu_1": 0.40399200663533785,
+      "bleu_2": 0.2392138854922395
+    },
+    "by_x": {},
+    "by_y": {},
+    "by_cell": {}
+  },
+  "method_runtime": {
+    "method_modality": "no_visual",
+    "history_source": "full_context",
+    "captions_loaded": false,
+    "images_loaded": false,
+    "history_turns_after_truncation": 318,
+    "history_turns_before_truncation": 318
+  }
+}

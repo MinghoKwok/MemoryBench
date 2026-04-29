@@ -1,0 +1,39 @@
+{
+  "task_name": "mem_gallery_Real_Estate_Home_Decor_DIY_Lifestyle",
+  "model_name": "gpt_5_4_mini",
+  "model_path": "gpt-5.4-mini",
+  "method_name": "full_context_text_only",
+  "base_method_name": "full_context_text_only",
+  "method_modality": "",
+  "mode": "open",
+  "num_qas": 75,
+  "num_qas_run": 75,
+  "dialog_json": "/Users/qingyuejiao/Desktop/MemoryBench/mem_gallery_data/data/dialog/Real_Estate_Home_Decor_DIY_Lifestyle.json",
+  "image_root": "/Users/qingyuejiao/Desktop/MemoryBench/mem_gallery_data/data/image",
+  "run_dir": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/runs/mem_gallery_Real_Estate_Home_Decor_DIY_Lifestyle/20260429_000052_gpt_5_4_mini_full_context_text_only",
+  "git_commit": "878c24f82b8c23afa35832b1e8f22677e85aa148",
+  "summary": {
+    "open_count": 75,
+    "overall": {
+      "em": 0.4,
+      "contains_gt": 0.44,
+      "f1": 0.6221024552789258,
+      "bleu": 0.22203961128905164,
+      "bleu_1": 0.5454114709296198,
+      "bleu_2": 0.4649024721325997
+    },
+    "by_x": {},
+    "by_y": {},
+    "by_cell": {}
+  },
+  "method_runtime": {
+    "caption_validation_passed": true,
+    "caption_validation_round_count": 53,
+    "method_modality": "text_only",
+    "history_source": "full_context",
+    "captions_loaded": true,
+    "images_loaded": false,
+    "history_turns_after_truncation": 392,
+    "history_turns_before_truncation": 392
+  }
+}

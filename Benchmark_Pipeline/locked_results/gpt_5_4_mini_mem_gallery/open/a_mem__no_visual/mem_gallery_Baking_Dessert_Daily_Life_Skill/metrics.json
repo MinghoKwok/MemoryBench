@@ -1,0 +1,33 @@
+{
+  "task_name": "mem_gallery_Baking_Dessert_Daily_Life_Skill",
+  "model_name": "gpt_5_4_mini",
+  "model_path": "gpt-5.4-mini",
+  "method_name": "a_mem__no_visual",
+  "base_method_name": "a_mem",
+  "method_modality": "no_visual",
+  "mode": "open",
+  "num_qas": 111,
+  "num_qas_run": 111,
+  "dialog_json": "/Users/qingyuejiao/Desktop/MemoryBench/mem_gallery_data/data/dialog/Baking_Dessert_Daily_Life_Skill.json",
+  "image_root": "/Users/qingyuejiao/Desktop/MemoryBench/mem_gallery_data/data/image",
+  "run_dir": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/runs/mem_gallery_Baking_Dessert_Daily_Life_Skill/20260429_044750_gpt_5_4_mini_a_mem__no_visual",
+  "git_commit": "878c24f82b8c23afa35832b1e8f22677e85aa148",
+  "summary": {
+    "open_count": 111,
+    "overall": {
+      "em": 0.23423423423423423,
+      "contains_gt": 0.32432432432432434,
+      "f1": 0.4156121903285298,
+      "bleu": 0.16556869226585247,
+      "bleu_1": 0.35804117057458185,
+      "bleu_2": 0.2631676585106634
+    },
+    "by_x": {},
+    "by_y": {},
+    "by_cell": {}
+  },
+  "method_runtime": {
+    "num_memories": 262,
+    "debug_dir": "/Users/qingyuejiao/Desktop/MemoryBench/output/baking_dessert_daily_life_skill/a_mem"
+  }
+}

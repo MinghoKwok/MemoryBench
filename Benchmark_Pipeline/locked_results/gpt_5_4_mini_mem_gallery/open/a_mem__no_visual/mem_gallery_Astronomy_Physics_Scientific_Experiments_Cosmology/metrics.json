@@ -1,0 +1,33 @@
+{
+  "task_name": "mem_gallery_Astronomy_Physics_Scientific_Experiments_Cosmology",
+  "model_name": "gpt_5_4_mini",
+  "model_path": "gpt-5.4-mini",
+  "method_name": "a_mem__no_visual",
+  "base_method_name": "a_mem",
+  "method_modality": "no_visual",
+  "mode": "open",
+  "num_qas": 54,
+  "num_qas_run": 54,
+  "dialog_json": "/Users/qingyuejiao/Desktop/MemoryBench/mem_gallery_data/data/dialog/Astronomy_Physics_Scientific_Experiments_Cosmology.json",
+  "image_root": "/Users/qingyuejiao/Desktop/MemoryBench/mem_gallery_data/data/image",
+  "run_dir": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/runs/mem_gallery_Astronomy_Physics_Scientific_Experiments_Cosmology/20260429_043059_gpt_5_4_mini_a_mem__no_visual",
+  "git_commit": "878c24f82b8c23afa35832b1e8f22677e85aa148",
+  "summary": {
+    "open_count": 54,
+    "overall": {
+      "em": 0.05555555555555555,
+      "contains_gt": 0.14814814814814814,
+      "f1": 0.3474417420942431,
+      "bleu": 0.10631437329656912,
+      "bleu_1": 0.23726016243041562,
+      "bleu_2": 0.165341827786616
+    },
+    "by_x": {},
+    "by_y": {},
+    "by_cell": {}
+  },
+  "method_runtime": {
+    "num_memories": 203,
+    "debug_dir": "/Users/qingyuejiao/Desktop/MemoryBench/output/astronomy_physics_scientific_experiments_cosmology/a_mem"
+  }
+}

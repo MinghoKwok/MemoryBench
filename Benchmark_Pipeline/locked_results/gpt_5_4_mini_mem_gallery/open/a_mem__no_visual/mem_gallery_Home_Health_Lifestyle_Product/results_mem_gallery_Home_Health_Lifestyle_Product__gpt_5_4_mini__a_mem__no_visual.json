@@ -1,0 +1,33 @@
+{
+  "task_name": "mem_gallery_Home_Health_Lifestyle_Product",
+  "model_name": "gpt_5_4_mini",
+  "model_path": "gpt-5.4-mini",
+  "method_name": "a_mem__no_visual",
+  "base_method_name": "a_mem",
+  "method_modality": "no_visual",
+  "mode": "open",
+  "num_qas": 74,
+  "num_qas_run": 74,
+  "dialog_json": "/Users/qingyuejiao/Desktop/MemoryBench/mem_gallery_data/data/dialog/Home_Health_Lifestyle_Product.json",
+  "image_root": "/Users/qingyuejiao/Desktop/MemoryBench/mem_gallery_data/data/image",
+  "run_dir": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/runs/mem_gallery_Home_Health_Lifestyle_Product/20260429_062951_gpt_5_4_mini_a_mem__no_visual",
+  "git_commit": "878c24f82b8c23afa35832b1e8f22677e85aa148",
+  "summary": {
+    "open_count": 74,
+    "overall": {
+      "em": 0.20270270270270271,
+      "contains_gt": 0.25675675675675674,
+      "f1": 0.38322703415955256,
+      "bleu": 0.14052729395619903,
+      "bleu_1": 0.32431979624454504,
+      "bleu_2": 0.1995023196029416
+    },
+    "by_x": {},
+    "by_y": {},
+    "by_cell": {}
+  },
+  "method_runtime": {
+    "num_memories": 163,
+    "debug_dir": "/Users/qingyuejiao/Desktop/MemoryBench/output/home_health_lifestyle_product/a_mem"
+  }
+}

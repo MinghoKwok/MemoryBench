@@ -1,0 +1,37 @@
+{
+  "task_name": "mem_gallery_Global_Travel_Cultural_Sightseeing",
+  "model_name": "gpt_5_4_mini",
+  "model_path": "gpt-5.4-mini",
+  "method_name": "full_context_no_visual",
+  "base_method_name": "full_context_no_visual",
+  "method_modality": "",
+  "mode": "open",
+  "num_qas": 87,
+  "num_qas_run": 87,
+  "dialog_json": "/Users/qingyuejiao/Desktop/MemoryBench/mem_gallery_data/data/dialog/Global_Travel_Cultural_Sightseeing.json",
+  "image_root": "/Users/qingyuejiao/Desktop/MemoryBench/mem_gallery_data/data/image",
+  "run_dir": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/runs/mem_gallery_Global_Travel_Cultural_Sightseeing/20260429_010007_gpt_5_4_mini_full_context_no_visual",
+  "git_commit": "878c24f82b8c23afa35832b1e8f22677e85aa148",
+  "summary": {
+    "open_count": 87,
+    "overall": {
+      "em": 0.3448275862068966,
+      "contains_gt": 0.3448275862068966,
+      "f1": 0.42482088624556863,
+      "bleu": 0.23660255813964876,
+      "bleu_1": 0.413238267061617,
+      "bleu_2": 0.32896466977124966
+    },
+    "by_x": {},
+    "by_y": {},
+    "by_cell": {}
+  },
+  "method_runtime": {
+    "method_modality": "no_visual",
+    "history_source": "full_context",
+    "captions_loaded": false,
+    "images_loaded": false,
+    "history_turns_after_truncation": 352,
+    "history_turns_before_truncation": 352
+  }
+}

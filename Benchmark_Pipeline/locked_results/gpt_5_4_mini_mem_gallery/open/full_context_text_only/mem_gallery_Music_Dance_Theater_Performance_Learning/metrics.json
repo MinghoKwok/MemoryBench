@@ -1,0 +1,39 @@
+{
+  "task_name": "mem_gallery_Music_Dance_Theater_Performance_Learning",
+  "model_name": "gpt_5_4_mini",
+  "model_path": "gpt-5.4-mini",
+  "method_name": "full_context_text_only",
+  "base_method_name": "full_context_text_only",
+  "method_modality": "",
+  "mode": "open",
+  "num_qas": 57,
+  "num_qas_run": 57,
+  "dialog_json": "/Users/qingyuejiao/Desktop/MemoryBench/mem_gallery_data/data/dialog/Music_Dance_Theater_Performance_Learning.json",
+  "image_root": "/Users/qingyuejiao/Desktop/MemoryBench/mem_gallery_data/data/image",
+  "run_dir": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/runs/mem_gallery_Music_Dance_Theater_Performance_Learning/20260428_232646_gpt_5_4_mini_full_context_text_only",
+  "git_commit": "878c24f82b8c23afa35832b1e8f22677e85aa148",
+  "summary": {
+    "open_count": 57,
+    "overall": {
+      "em": 0.2807017543859649,
+      "contains_gt": 0.3157894736842105,
+      "f1": 0.44389837745428984,
+      "bleu": 0.13470939459107803,
+      "bleu_1": 0.3982969669945594,
+      "bleu_2": 0.2971098154406987
+    },
+    "by_x": {},
+    "by_y": {},
+    "by_cell": {}
+  },
+  "method_runtime": {
+    "caption_validation_passed": true,
+    "caption_validation_round_count": 43,
+    "method_modality": "text_only",
+    "history_source": "full_context",
+    "captions_loaded": true,
+    "images_loaded": false,
+    "history_turns_after_truncation": 440,
+    "history_turns_before_truncation": 440
+  }
+}

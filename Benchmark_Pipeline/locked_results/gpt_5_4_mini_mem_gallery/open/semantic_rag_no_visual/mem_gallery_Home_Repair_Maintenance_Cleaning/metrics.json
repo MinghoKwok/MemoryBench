@@ -1,0 +1,96 @@
+{
+  "task_name": "mem_gallery_Home_Repair_Maintenance_Cleaning",
+  "model_name": "gpt_5_4_mini",
+  "model_path": "gpt-5.4-mini",
+  "method_name": "semantic_rag_no_visual",
+  "base_method_name": "semantic_rag_no_visual",
+  "method_modality": "",
+  "mode": "open",
+  "num_qas": 68,
+  "num_qas_run": 68,
+  "dialog_json": "/Users/qingyuejiao/Desktop/MemoryBench/mem_gallery_data/data/dialog/Home_Repair_Maintenance_Cleaning.json",
+  "image_root": "/Users/qingyuejiao/Desktop/MemoryBench/mem_gallery_data/data/image",
+  "run_dir": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/runs/mem_gallery_Home_Repair_Maintenance_Cleaning/20260429_022717_gpt_5_4_mini_semantic_rag_no_visual",
+  "git_commit": "878c24f82b8c23afa35832b1e8f22677e85aa148",
+  "summary": {
+    "open_count": 68,
+    "overall": {
+      "em": 0.014705882352941176,
+      "contains_gt": 0.04411764705882353,
+      "f1": 0.25291771360854565,
+      "bleu": 0.0602095507225759,
+      "bleu_1": 0.15458846825036449,
+      "bleu_2": 0.1021555268805833
+    },
+    "by_x": {},
+    "by_y": {},
+    "by_cell": {}
+  },
+  "method_runtime": {
+    "retrieval_backend": "dense_text",
+    "retrieval_corpus": "round_text",
+    "method_modality": "no_visual",
+    "top_k": 10,
+    "neighbor_window": 0,
+    "seed_round_ids": [
+      "D18:10",
+      "D18:1",
+      "D18:6",
+      "D18:4",
+      "D18:8",
+      "D18:7",
+      "D18:9",
+      "D3:11",
+      "D8:8",
+      "D18:3"
+    ],
+    "selected_round_ids": [
+      "D18:10",
+      "D18:1",
+      "D18:6",
+      "D18:4",
+      "D18:8",
+      "D18:7",
+      "D18:9",
+      "D3:11",
+      "D8:8",
+      "D18:3"
+    ],
+    "top_candidates": [
+      {
+        "round_id": "D18:10",
+        "score": 0.555062195160334,
+        "text_dense_score": 0.555062195160334
+      },
+      {
+        "round_id": "D18:1",
+        "score": 0.4216785689332157,
+        "text_dense_score": 0.4216785689332157
+      },
+      {
+        "round_id": "D18:6",
+        "score": 0.37887490889231074,
+        "text_dense_score": 0.37887490889231074
+      },
+      {
+        "round_id": "D18:4",
+        "score": 0.36722132932134155,
+        "text_dense_score": 0.36722132932134155
+      },
+      {
+        "round_id": "D18:8",
+        "score": 0.35954879820429075,
+        "text_dense_score": 0.35954879820429075
+      }
+    ],
+    "clue_hit_count": 0,
+    "corpus_entry_count": 270,
+    "text_embedding_model": "all-MiniLM-L6-v2",
+    "caption_text_included": true,
+    "image_embeddings_built": false,
+    "history_source": "retrieval",
+    "captions_loaded": false,
+    "images_loaded": false,
+    "history_turns_after_truncation": 20
+  }
+}

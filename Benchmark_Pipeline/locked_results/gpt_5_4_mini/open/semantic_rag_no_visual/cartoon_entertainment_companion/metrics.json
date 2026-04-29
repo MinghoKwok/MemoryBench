@@ -1,0 +1,235 @@
+{
+  "task_name": "cartoon_entertainment_companion_open",
+  "model_name": "gpt_5_4_mini",
+  "model_path": "gpt-5.4-mini",
+  "method_name": "semantic_rag_no_visual",
+  "base_method_name": "semantic_rag_no_visual",
+  "method_modality": "",
+  "mode": "open",
+  "num_qas": 76,
+  "num_qas_run": 76,
+  "dialog_json": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/dialog/Cartoon_Entertainment_Companion_Open.json",
+  "image_root": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image",
+  "run_dir": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/runs/cartoon_entertainment_companion_open/20260428_210036_gpt_5_4_mini_semantic_rag_no_visual",
+  "git_commit": "878c24f82b8c23afa35832b1e8f22677e85aa148",
+  "summary": {
+    "open_count": 76,
+    "overall": {
+      "em": 0.02631578947368421,
+      "contains_gt": 0.06578947368421052,
+      "f1": 0.2406697488693454,
+      "bleu": 0.07849232401422586,
+      "bleu_1": 0.18436375227864105,
+      "bleu_2": 0.12503628177887918
+    },
+    "by_x": {
+      "X2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.10416666666666667,
+        "bleu": 0.014982548793867918,
+        "bleu_1": 0.084078728835144,
+        "bleu_2": 0.02180526458208183
+      },
+      "X4": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.18995664158707637,
+        "bleu": 0.04323275327431057,
+        "bleu_1": 0.13605769825291286,
+        "bleu_2": 0.08930015328663966
+      },
+      "X3": {
+        "em": 0.0,
+        "contains_gt": 0.03333333333333333,
+        "f1": 0.24960370363879136,
+        "bleu": 0.08964350038658608,
+        "bleu_1": 0.17626203181071426,
+        "bleu_2": 0.13712501853255493
+      },
+      "X1": {
+        "em": 0.125,
+        "contains_gt": 0.25,
+        "f1": 0.3511769004260423,
+        "bleu": 0.13428939013355756,
+        "bleu_1": 0.3096204429859074,
+        "bleu_2": 0.19468572455289554
+      }
+    },
+    "by_y": {
+      "Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.17146465384104936,
+        "bleu": 0.05641233804761258,
+        "bleu_1": 0.13259289689847054,
+        "bleu_2": 0.08999131042319115
+      },
+      "Y2": {
+        "em": 0.05263157894736842,
+        "contains_gt": 0.13157894736842105,
+        "f1": 0.3184893075730725,
+        "bleu": 0.10691883356809224,
+        "bleu_1": 0.2429535110968694,
+        "bleu_2": 0.16972540258066474
+      },
+      "Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.10599472990777338,
+        "bleu": 0.0081787587844889,
+        "bleu_1": 0.08076923076923077,
+        "bleu_2": 0.016695774632850255
+      }
+    },
+    "by_cell": {
+      "X2_Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0625,
+        "bleu": 0.014583861843019512,
+        "bleu_1": 0.042784759919382666,
+        "bleu_2": 0.01657046626392517
+      },
+      "X4_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.32952820126733173,
+        "bleu": 0.08533975395758818,
+        "bleu_1": 0.23763755906674133,
+        "bleu_2": 0.18000258523934093
+      },
+      "X3_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.058823529411764705,
+        "f1": 0.2714522491612275,
+        "bleu": 0.09279621987861027,
+        "bleu_1": 0.18734629050667936,
+        "bleu_2": 0.13491603749291323
+      },
+      "X2_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.1875,
+        "bleu": 0.01577992269556473,
+        "bleu_1": 0.16666666666666666,
+        "bleu_2": 0.032274861218395144
+      },
+      "X4_Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0709013209013209,
+        "bleu": 0.008237398754165313,
+        "bleu_1": 0.05428096736131283,
+        "bleu_2": 0.013597936770550118
+      },
+      "X3_Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.22103252872483642,
+        "bleu": 0.08552071335855448,
+        "bleu_1": 0.16176723197752912,
+        "bleu_2": 0.1400136860459325
+      },
+      "X1_Y1": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.4210237131289763,
+        "bleu": 0.14816341237198624,
+        "bleu_1": 0.36252023348209117,
+        "bleu_2": 0.23001955476647085
+      },
+      "X1_Y2": {
+        "em": 0.25,
+        "contains_gt": 0.5,
+        "f1": 0.43601190476190477,
+        "bleu": 0.18938534984081645,
+        "bleu_1": 0.3875,
+        "bleu_2": 0.2639268125770242
+      },
+      "X1_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.11166007905138339,
+        "bleu": 0.010223448480611125,
+        "bleu_1": 0.10096153846153846,
+        "bleu_2": 0.020869718291062815
+      },
+      "X4_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.08333333333333334,
+        "bleu": 0.0,
+        "bleu_1": 0.0,
+        "bleu_2": 0.0
+      }
+    }
+  },
+  "method_runtime": {
+    "retrieval_backend": "dense_text",
+    "retrieval_corpus": "round_text",
+    "method_modality": "no_visual",
+    "top_k": 10,
+    "neighbor_window": 0,
+    "seed_round_ids": [
+      "CARTOON_S40:R1",
+      "CARTOON_S23:R1",
+      "CARTOON_S61:R1",
+      "CARTOON_S41:R1",
+      "CARTOON_S47:R1",
+      "CARTOON_S59:R1",
+      "CARTOON_S14:R1",
+      "CARTOON_S54:R1",
+      "CARTOON_S13:R1",
+      "CARTOON_S38:R1"
+    ],
+    "selected_round_ids": [
+      "CARTOON_S40:R1",
+      "CARTOON_S23:R1",
+      "CARTOON_S61:R1",
+      "CARTOON_S41:R1",
+      "CARTOON_S47:R1",
+      "CARTOON_S59:R1",
+      "CARTOON_S14:R1",
+      "CARTOON_S54:R1",
+      "CARTOON_S13:R1",
+      "CARTOON_S38:R1"
+    ],
+    "top_candidates": [
+      {
+        "round_id": "CARTOON_S40:R1",
+        "score": 0.5544204136332266,
+        "text_dense_score": 0.5544204136332266
+      },
+      {
+        "round_id": "CARTOON_S23:R1",
+        "score": 0.5372509319710623,
+        "text_dense_score": 0.5372509319710623
+      },
+      {
+        "round_id": "CARTOON_S61:R1",
+        "score": 0.5367384459479194,
+        "text_dense_score": 0.5367384459479194
+      },
+      {
+        "round_id": "CARTOON_S41:R1",
+        "score": 0.5310101660086198,
+        "text_dense_score": 0.5310101660086198
+      },
+      {
+        "round_id": "CARTOON_S47:R1",
+        "score": 0.5228604773727975,
+        "text_dense_score": 0.5228604773727975
+      }
+    ],
+    "clue_hit_count": 2,
+    "corpus_entry_count": 299,
+    "text_embedding_model": "all-MiniLM-L6-v2",
+    "caption_text_included": true,
+    "image_embeddings_built": false,
+    "history_source": "retrieval",
+    "captions_loaded": false,
+    "images_loaded": false,
+    "history_turns_after_truncation": 20
+  }
+}

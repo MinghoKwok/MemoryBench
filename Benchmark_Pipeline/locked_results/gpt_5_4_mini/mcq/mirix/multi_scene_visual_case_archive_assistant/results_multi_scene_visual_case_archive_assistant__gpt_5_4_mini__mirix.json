@@ -1,0 +1,118 @@
+{
+  "task_name": "multi_scene_visual_case_archive_assistant",
+  "model_name": "gpt_5_4_mini",
+  "model_path": "gpt-5.4-mini",
+  "method_name": "mirix",
+  "base_method_name": "mirix",
+  "method_modality": "",
+  "mode": "mcq",
+  "num_qas": 50,
+  "num_qas_run": 50,
+  "dialog_json": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/dialog/Multi-Scene_Visual_Case_Archive_Assistant.json",
+  "image_root": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/data/image",
+  "run_dir": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/runs/multi_scene_visual_case_archive_assistant/20260427_093943_gpt_5_4_mini_mirix",
+  "git_commit": "95631fd94414dfcc15de0a9f649a0ce457733ad1",
+  "summary": {
+    "open_count": 50,
+    "overall": {
+      "em": 0.45,
+      "contains_gt": 0.42,
+      "f1": 0.45
+    },
+    "by_x": {
+      "X4": {
+        "em": 0.5,
+        "contains_gt": 0.5,
+        "f1": 0.5
+      },
+      "X2": {
+        "em": 0.40625,
+        "contains_gt": 0.375,
+        "f1": 0.40625
+      },
+      "X3": {
+        "em": 0.45394736842105265,
+        "contains_gt": 0.42105263157894735,
+        "f1": 0.45394736842105265
+      }
+    },
+    "by_y": {
+      "Y2": {
+        "em": 0.28125,
+        "contains_gt": 0.25,
+        "f1": 0.28125
+      },
+      "Y3": {
+        "em": 0.5,
+        "contains_gt": 0.5454545454545454,
+        "f1": 0.5
+      },
+      "Y1": {
+        "em": 0.47580645161290325,
+        "contains_gt": 0.41935483870967744,
+        "f1": 0.47580645161290325
+      }
+    },
+    "by_cell": {
+      "X4_Y2": {
+        "em": 0.6666666666666666,
+        "contains_gt": 0.6666666666666666,
+        "f1": 0.6666666666666666
+      },
+      "X2_Y2": {
+        "em": 0.08333333333333333,
+        "contains_gt": 0.0,
+        "f1": 0.08333333333333333
+      },
+      "X3_Y3": {
+        "em": 0.5,
+        "contains_gt": 0.6,
+        "f1": 0.5
+      },
+      "X2_Y3": {
+        "em": 0.6,
+        "contains_gt": 0.6,
+        "f1": 0.6
+      },
+      "X3_Y1": {
+        "em": 0.47580645161290325,
+        "contains_gt": 0.41935483870967744,
+        "f1": 0.47580645161290325
+      },
+      "X3_Y2": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0
+      },
+      "X4_Y3": {
+        "em": 0.0,
+        "contains_gt": 0.0,
+        "f1": 0.0
+      }
+    },
+    "mcq_count": 50,
+    "mcq_valid_rate": 1.0,
+    "mcq_overall": {
+      "em": 0.45,
+      "contains_gt": 0.42,
+      "f1": 0.45
+    },
+    "mcq_per_position_accuracy": {
+      "A": 0.44,
+      "B": 0.46,
+      "C": 0.48,
+      "D": 0.42
+    }
+  },
+  "method_runtime": {
+    "official_mirix": true,
+    "official_model_name": "gpt-5.4-mini",
+    "ingested_turns": 234,
+    "runtime_signature": "7861450adbce181e",
+    "runtime_dir": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/runs/multi-scene_visual_case_archive_assistant/mirix/7861450adbce181e",
+    "runtime_home": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/runs/multi-scene_visual_case_archive_assistant/mirix/7861450adbce181e/runtime_home",
+    "debug_dir": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/output/multi-scene_visual_case_archive_assistant/mirix/7861450adbce181e",
+    "resumed": false,
+    "completed_ingestion": true
+  }
+}

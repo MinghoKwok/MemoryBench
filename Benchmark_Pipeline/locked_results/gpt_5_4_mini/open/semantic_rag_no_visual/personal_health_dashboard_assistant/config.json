@@ -1,0 +1,111 @@
+{
+  "task": {
+    "name": "personal_health_dashboard_assistant_open",
+    "dataset": {
+      "dialog_json": "data/dialog/Personal_Health_Dashboard_Assistant_Open.json",
+      "image_root": "data/image"
+    },
+    "eval": {
+      "mode": "open",
+      "output_json": "output/results_personal_health_dashboard_assistant_open.json",
+      "max_questions": 0
+    }
+  },
+  "dataset": {
+    "dialog_json": "data/dialog/Personal_Health_Dashboard_Assistant_Open.json",
+    "image_root": "data/image"
+  },
+  "eval": {
+    "mode": "open",
+    "output_json": "output/results_personal_health_dashboard_assistant_open.json",
+    "max_questions": 0
+  },
+  "model": {
+    "name": "gpt_5_4_mini",
+    "provider": "openai_api",
+    "model": "gpt-5.4-mini",
+    "api_key_env": "OPENAI_API_KEY",
+    "base_url": "https://api.openai.com/v1",
+    "max_new_tokens": 128,
+    "timeout": 90
+  },
+  "method": {
+    "name": "semantic_rag_no_visual",
+    "retrieval_backend": "dense_text",
+    "top_k": 10,
+    "neighbor_window": 0,
+    "text_embedding_model": "all-MiniLM-L6-v2",
+    "text_dense_weight": 1.0,
+    "image_dense_weight": 0.0
+  },
+  "run": {
+    "output_root": "/Users/qingyuejiao/Desktop/MemoryBench/Benchmark_Pipeline/runs",
+    "method_runtime": {
+      "retrieval_backend": "dense_text",
+      "retrieval_corpus": "round_text",
+      "method_modality": "no_visual",
+      "top_k": 10,
+      "neighbor_window": 0,
+      "seed_round_ids": [
+        "HEALTH_S1:R1",
+        "HEALTH_S2:R7",
+        "HEALTH_S3:R4",
+        "HEALTH_S9:R4",
+        "HEALTH_S10:R4",
+        "HEALTH_S10:R6",
+        "HEALTH_S7:R3",
+        "HEALTH_S12:R5",
+        "HEALTH_S9:R1",
+        "HEALTH_S7:R9"
+      ],
+      "selected_round_ids": [
+        "HEALTH_S1:R1",
+        "HEALTH_S2:R7",
+        "HEALTH_S3:R4",
+        "HEALTH_S9:R4",
+        "HEALTH_S10:R4",
+        "HEALTH_S10:R6",
+        "HEALTH_S7:R3",
+        "HEALTH_S12:R5",
+        "HEALTH_S9:R1",
+        "HEALTH_S7:R9"
+      ],
+      "top_candidates": [
+        {
+          "round_id": "HEALTH_S1:R1",
+          "score": 0.40155394546482054,
+          "text_dense_score": 0.40155394546482054
+        },
+        {
+          "round_id": "HEALTH_S2:R7",
+          "score": 0.3472878337442719,
+          "text_dense_score": 0.3472878337442719
+        },
+        {
+          "round_id": "HEALTH_S3:R4",
+          "score": 0.26688579751864383,
+          "text_dense_score": 0.26688579751864383
+        },
+        {
+          "round_id": "HEALTH_S9:R4",
+          "score": 0.25906629070967113,
+          "text_dense_score": 0.25906629070967113
+        },
+        {
+          "round_id": "HEALTH_S10:R4",
+          "score": 0.25546967119314506,
+          "text_dense_score": 0.25546967119314506
+        }
+      ],
+      "clue_hit_count": 0,
+      "corpus_entry_count": 97,
+      "text_embedding_model": "all-MiniLM-L6-v2",
+      "caption_text_included": true,
+      "image_embeddings_built": false,
+      "history_source": "retrieval",
+      "captions_loaded": false,
+      "images_loaded": false,
+      "history_turns_after_truncation": 20
+    }
+  }
+}
